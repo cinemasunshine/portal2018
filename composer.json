@@ -1,0 +1,9 @@
+{
+    "name": "cinemasunshine/portal2018-frontend",
+    "description": "Cinemasunshine Portal2018 Frontend",
+    "type": "project",
+    "minimum-stability": "stable",
+    "require": {
+        "php": "~7.2"
+    }
+}
