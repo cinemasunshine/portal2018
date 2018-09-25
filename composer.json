@@ -3,7 +3,16 @@
     "description": "Cinemasunshine Portal2018 Frontend",
     "type": "project",
     "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {
+            "Cinemasunshine\\Portal\\": "src/"
+        }
+    },
     "require": {
-        "php": "~7.2"
+        "php": "~7.2",
+        "slim/slim" : "^3.0",
+        "slim/twig-view": "^2.4",
+        "vlucas/phpdotenv": "^2.5",
+        "monolog/monolog": "^1.23"
     }
 }

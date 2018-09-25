@@ -2,6 +2,11 @@
 ## git ignore
 ##
 
+# application
+/cache
+/public/.htaccess
+.env
+
 # composer
 composer.phar
 composer.bat
