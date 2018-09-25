@@ -19,6 +19,7 @@ use Cinemasunshine\Portal\Responder\AbstractResponder as Responder;
 /**
  * Abstract controller
  * 
+ * @property \Doctrine\ORM\EntityManager $em
  * @property \Monolog\Logger $logger
  * @property \Slim\Views\Twig $view
  */

@@ -58,3 +58,29 @@ $container['logger'] = function ($container) {
     
     return $logger;
 };
+
+/**
+ * Doctrine entity manager
+ * 
+ * @return \Doctrine\ORM\EntityManager
+ */
+$container['em'] = function ($container) {
+    $settings = $container->get('settings')['doctrine'];
+    
+    /**
+     * 第５引数について、他のアノテーションとの競合を避けるためSimpleAnnotationReaderは使用しない。
+     * @Entity => @ORM\Entity などとしておく。
+     */
+    $config = \Doctrine\ORM\Tools\Setup::createAnnotationMetadataConfiguration(
+        $settings['metadata_dirs'],
+        $settings['dev_mode'],
+        null,
+        null,
+        false
+    );
+    
+    $logger = new \Cinemasunshine\Portal\Logger\DbalLogger($container->get('logger'));
+    $config->setSQLLogger($logger);
+    
+    return \Doctrine\ORM\EntityManager::create($settings['connection'], $config);
+};
