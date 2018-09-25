@@ -84,3 +84,19 @@ $container['em'] = function ($container) {
     
     return \Doctrine\ORM\EntityManager::create($settings['connection'], $config);
 };
+
+$container['errorHandler'] = function ($container) {
+    return new \Cinemasunshine\Portal\Application\Handlers\Error($container);
+};
+
+$container['phpErrorHandler'] = function ($container) {
+    return new \Cinemasunshine\Portal\Application\Handlers\PhpError($container);
+};
+
+$container['notFoundHandler'] = function ($container) {
+    return new \Cinemasunshine\Portal\Application\Handlers\NotFound($container);
+};
+
+$container['notAllowedHandler'] = function ($container) {
+    return new \Cinemasunshine\Portal\Application\Handlers\NotAllowed($container);
+};
