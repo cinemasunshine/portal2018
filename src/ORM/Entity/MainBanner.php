@@ -1,0 +1,233 @@
+<?php
+/**
+ * MainBanner.php
+ * 
+ * @author Atsushi Okui <okui@motionpicture.jp>
+ */
+
+namespace Cinemasunshine\Portal\ORM\Entity;
+
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * MainBanner entity class
+ * 
+ * @ORM\Entity
+ * @ORM\Table(name="main_banner", options={"collate"="utf8mb4_general_ci"})
+ * @ORM\HasLifecycleCallbacks
+ */
+class MainBanner extends AbstractEntity
+{
+    use SavedUserTrait;
+    use SoftDeleteTrait;
+    use TimestampableTrait;
+    
+    const LINK_TYPE_NONE = 1;
+    const LINK_TYPE_URL = 2;
+    
+    /** @var array */
+    protected static $linkTypes = [
+        self::LINK_TYPE_NONE => 'リンクなし',
+        self::LINK_TYPE_URL  => 'URL',
+    ];
+    
+    /**
+     * id
+     * 
+     * @var int
+     * @ORM\Id
+     * @ORM\Column(type="integer", options={"unsigned"=true})
+     * @ORM\GeneratedValue
+     */
+    protected $id;
+    
+    /**
+     * image
+     *
+     * @var File
+     * @ORM\OneToOne(targetEntity="File")
+     * @ORM\JoinColumn(name="image_file_id", referencedColumnName="id", nullable=false, onDelete="RESTRICT")
+     */
+    protected $image;
+    
+    /**
+     * name
+     * 
+     * @var string
+     * @ORM\Column(type="string")
+     */
+    protected $name;
+    
+    /**
+     * link_type
+     *
+     * @var int
+     * @ORM\Column(type="smallint", name="link_type", options={"unsigned"=true})
+     */
+    protected $linkType;
+    
+    /**
+     * link_url
+     *
+     * @var string|null
+     * @ORM\Column(type="string", name="link_url", nullable=true)
+     */
+    protected $linkUrl;
+    
+    /**
+     * pages
+     * 
+     * @var Collection
+     * @ORM\OneToMany(targetEntity="PageMainBanner", mappedBy="mainBanner")
+     */
+    protected $pages;
+    
+    /**
+     * theaters
+     *
+     * @var Collection
+     * @ORM\OneToMany(targetEntity="TheaterMainBanner", mappedBy="mainBanner")
+     */
+    protected $theaters;
+    
+    /**
+     * return link types
+     *
+     * @return array
+     */
+    public static function getLinkTypes()
+    {
+        return self::$linkTypes;
+    }
+    
+    
+    /**
+     * construct
+     * 
+     * @throws \LogicException
+     */
+    public function __construct()
+    {
+        throw new \LogicException('Not allowed.');
+    }
+    
+    /**
+     * get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+    
+    /**
+     * get image
+     *
+     * @return File
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+    
+    /**
+     * set image
+     *
+     * @param File $image
+     * @return void
+     * @throws \LogicException
+     */
+    public function setImage(File $image)
+    {
+        throw new \LogicException('Not allowed.');
+    }
+    
+    /**
+     * get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+    
+    /**
+     * set name
+     *
+     * @param string $name
+     * @return void
+     * @throws \LogicException
+     */
+    public function setName(string $name)
+    {
+        throw new \LogicException('Not allowed.');
+    }
+    
+    /**
+     * get link_type
+     *
+     * @return int
+     */
+    public function getLinkType()
+    {
+        return $this->linkType;
+    }
+    
+    /**
+     * set link_type
+     *
+     * @param int $linkType
+     * @return void
+     * @throws \LogicException
+     */
+    public function setLinkType(int $linkType)
+    {
+        throw new \LogicException('Not allowed.');
+    }
+    
+    /**
+     * get link_url
+     *
+     * @return string|null
+     */
+    public function getLinkUrl()
+    {
+        return $this->linkUrl;
+    }
+    
+    /**
+     * set link_url
+     *
+     * @param string|null $linkUrl
+     * @return void
+     * @throws \LogicException
+     */
+    public function setLinkUrl($linkUrl)
+    {
+        throw new \LogicException('Not allowed.');
+    }
+    
+    /**
+     * get pages
+     *
+     * @return Collection
+     */
+    public function getPages() : Collection
+    {
+        return $this->pages;
+    }
+    
+    /**
+     * get theaters
+     *
+     * @return Collection
+     */
+    public function getTheaters() : Collection
+    {
+        return $this->theaters;
+    }
+}
