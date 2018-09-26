@@ -1,0 +1,704 @@
+body {
+    color: #333;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "ヒラギノ角ゴ ProN W3", Hiragino Kaku Gothic ProN, Arial, "メイリオ", Meiryo, sans-serif;
+}
+p {
+    line-height: 1.6;
+}
+a {
+    color: #333;
+}
+a:hover {
+    transition: opacity 0.5s;
+    color: #333;
+    opacity: 0.7;
+    text-decoration: none;
+}
+.shadow-01 {
+    box-shadow: 0 0 8px rgba(0,0,0,0.35);
+}
+.width {
+    max-width: 1200px;
+}
+.line-height-1 {
+    line-height: 1;
+}
+
+/* 文字色 */
+.text-black {
+    color: #333;
+}
+.text-light-blue {
+    color: #0563c1 !important;
+}
+.text-blue {
+    color: #0563c1 !important;
+}
+.text-dark-blue {
+    color: #0d3d95 !important;
+}
+.text-navy {
+    color: #040a1a !important;
+}
+.text-light-gray {
+    color: #ddd !important;
+}
+.text-gray {
+    color: #999 !important;
+}
+.text-dark-gray {
+    color: #555 !important;
+}
+.text-red {
+    color: rgb(219, 6, 6) !important;
+}
+.text-dark-red {
+    color: #950c0c !important;
+}
+
+/* 背景色 */
+.bg-black {
+    background-color: #000 !important;
+}
+.bg-light-gray {
+    background-color: #ddd !important;
+}
+.bg-gray {
+    background-color: #999 !important;
+}
+.bg-dark-gray {
+    background-color: #555 !important;
+}
+.bg-blue {
+    background-color: #0563c1 !important;
+}
+.bg-dark-blue {
+    background-color: #0d3d95 !important;
+}
+.bg-navy {
+    background-color: #040a1a !important;
+}
+.bg-light-blue {
+    background-color: #e3f0ff !important;
+}
+.bg-yellow {
+    background-color: #aec105 !important;
+}
+.bg-red {
+    background-color: rgb(219, 6, 6) !important;
+}
+.bg-dark-red {
+    background-color: #950c0c !important;
+}
+
+/* ボーダー */
+.border-black {
+    border-color: #333 !important;
+}
+.border-light-blue {
+    border-color: rgb(0, 114, 206) !important;
+}
+.border-blue {
+    border-color: #0563c1 !important;
+}
+.border-dark-blue {
+    border-color: #0d3d95 !important;
+}
+.border-navy {
+    border-color: #040a1a !important;
+}
+.border-light-gray {
+    border-color: #ddd !important;
+}
+.border-gray {
+    border-color: #999 !important;
+}
+.border-dark-gray {
+    border-color: #888 !important;
+}
+.border-translucent-white {
+    border-color: rgba(255, 255, 255, 0.2) !important;
+}
+.border-red {
+    border-color: rgb(219, 6, 6) !important;
+}
+.border-dark-red {
+    border-color: #950c0c !important;
+}
+
+/* フォントサイズ */
+.x-small {
+    font-size: 10px;
+}
+.small {
+    font-size: 12px;
+}
+.large {
+    font-size: 20px;
+}
+.x-large {
+    font-size: 30px;
+}
+/* ビデオ */
+.video {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%;
+}
+.video iframe {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* ヘッダー */
+header {
+    position: relative;
+    z-index: 1300;
+}
+header, 
+.header {
+    height: 70px;
+}
+header .position-fixed {
+    z-index: 1000;
+}
+.header-menu {
+    width: 60px;
+    height: 60px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    background-color: #000;
+}
+.header-company-logo a {
+    width: 200px;
+}
+.theater .header-company-logo {
+    width: 120px;
+}
+.header-imax {
+    width: 50px;
+}
+.header-4dx {
+    width: 40px;
+}
+.theater-name {
+    font-size: 20px;
+}
+
+/* サブヘッダー */
+.sub-header ul li {
+    width: 14.28%;
+    max-width: 150px;
+}
+.sub-header .active a {
+    color: #333 !important;
+}
+.sub-header ul .active a {
+    border-bottom: 4px solid #000;
+}
+
+/* IMAXヘッダー */
+.type-imax header,
+.type-imax .header {
+    height: 90px;
+}
+.type-imax .header .logo {
+    width: 112px;
+}
+
+/* IMAXサブヘッダー */
+.type-imax .sub-header {
+    background: #0072ce;
+    background: linear-gradient(to top left, #2452c6, #0072ce);
+}
+.type-imax .sub-header ul li {
+    width: 20%;
+}
+.type-imax .sub-header .active a {
+    color: #FFF !important;
+}
+.type-imax .sub-header ul .active a {
+    border-bottom: 4px solid #FFF;
+}
+
+/* 4dxヘッダー */
+.type-4dx header,
+.type-4dx .header {
+    height: 90px;
+}
+.type-4dx .header .logo {
+    width: 80px;
+}
+
+/* 4dxサブヘッダー */
+.type-4dx .sub-header {
+    background: #ce0000;
+    background: linear-gradient(to top left, #ce0000, #ce0000);
+}
+.type-4dx .sub-header ul li {
+    width: 20%;
+}
+.type-4dx .sub-header .active a {
+    color: #FFF !important;
+}
+.type-4dx .sub-header ul .active a {
+    border-bottom: 4px solid #FFF;
+}
+
+/* スライダー */
+.slider {
+    width: 100%;
+    overflow-x: hidden;
+}
+.gallery-top {
+    width: 750px;
+    max-width: 100%;
+    overflow: visible !important;
+}
+.gallery-top .swiper-slide {
+    height: 100%;
+    opacity: 0.4;
+}
+.gallery-top .swiper-slide img {
+    width: 100%;
+}
+.gallery-top .swiper-slide-active {
+    opacity: 1;
+}
+.slider .pagination {
+   bottom: -15px;
+}
+.slider .pagination .swiper-pagination-bullet {
+    width: 20px;
+    height: 3px;
+    display: block;
+    border-radius: 0;
+    background: #333;
+    opacity: 0.2;
+    margin: 4px;
+}
+.slider .pagination .swiper-pagination-bullet-active {
+    opacity: 1;
+}
+.thumbs li {
+    width: 114px;
+    opacity: 0.4;
+}
+.thumbs .active {
+    opacity: 1;
+}
+.thumbs-sp {
+    box-sizing: border-box;
+    padding: 10px 0;
+}
+.thumbs-sp .swiper-slide {
+    width: 100px;
+    height: 50px;
+    opacity: 0.4;
+}
+.thumbs-sp .swiper-slide-active {
+    opacity: 1;
+}
+
+.trailer {
+    width: 336px;
+    height: 280px;
+}
+
+/* キャンペーン */
+.campaign .swiper-slide {
+    overflow: hidden;
+}
+.campaign-inner {
+    padding: 0 80px;
+}
+.campaign .swiper-button-next {
+    background-image: url(/images/common/arrow_r.svg);
+}
+.campaign .swiper-button-prev {
+    background-image: url(/images/common/arrow_l.svg);
+}
+.campaign .swiper-button-disabled {
+    opacity: 0;
+}
+
+/* ニュース */
+.news li {
+    border-left: 1px solid #999;
+}
+.news li:last-child {
+    border-right: 1px solid #999;
+}
+.news li .image {
+    width: 100%;
+    padding-top: 75%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+/* IMAXニュース */
+.type-imax .news li {
+    border-color: rgba(255, 255, 255, 0.2) !important;
+}
+.type-imax .news li a {
+    color: #FFF;
+}
+
+/* 4dxニュース */
+.type-4dx .news li {
+    border-color: rgba(255, 255, 255, 0.2) !important;
+}
+.type-4dx .news li a {
+    color: #FFF;
+}
+
+/* インフォメーション */
+.infomation-date {
+    max-width:110px; 
+    width: 100%;
+}
+.infomation li a { 
+    background-image: url(/images/tmp/common/top_07.jpg); 
+    background-repeat: no-repeat; 
+    background-position: 98%;
+}
+
+/* IMAXインフォメーション */
+.type-imax .infomation ul,
+.type-imax .infomation li { 
+    border-color: rgba(255, 255, 255, 0.2) !important;
+}
+.type-imax .infomation li a { 
+    background-image: url(/images/tmp/common/top_07.jpg); 
+    color: #FFF;
+}
+
+/* 4dxインフォメーション */
+.type-4dx .infomation ul,
+.type-4dx .infomation li { 
+    border-color: rgba(255, 255, 255, 0.2) !important;
+}
+.type-4dx .infomation li a { 
+    background-image: url(/images/tmp/common/top_07.jpg); 
+    color: #FFF;
+}
+  
+/* 特設サイト */
+.width2 {
+    max-width: 653px;
+}
+  
+.special-sites-parts {
+    height: 120px;
+    line-height: 120px;
+}
+.special-sites-parts img {
+    width: 62%;
+}
+.special-sites .container {
+    max-width: 1200px;
+}
+
+/* ナビゲーション */
+.navigation {
+    height: 60px;
+    background-color: rgb(51, 51, 51);
+    z-index: 1301;
+}
+.navigation > div {
+    width: 20%;
+}
+.navigation a {
+    padding: 1px 0;
+}
+.navigation p {
+    line-height: 1.1;
+    color: rgb(120, 120, 120);
+}
+.navigation img {
+    width: 32px;
+    margin-bottom: 1px;
+}
+
+.active p {
+    color: rgb(7, 135, 242);
+}
+.disabled {
+    display: none;
+}
+
+/* フッター */
+.footer-logo a {
+    width: 200px;
+}
+.footer-inner {
+    background-color: rgb(82, 82, 82);
+}
+.footer-button {
+    position: absolute;
+    right: 0;
+    top: -50px;
+}
+.footer-logo {
+    background-color: #000;
+}
+.footer-home {
+    width: 52px;
+    background-color: #000;
+}
+.footer-top {
+    width: 50px;
+    background-color: rgb(54, 54, 54);
+}
+.footer-home, .footer-top {
+    height: 50px;
+}
+.footer-home img, .footer-top img {
+    width: 15px;
+}
+.sp-footer {
+    background-color: rgb(82, 82, 82);
+    padding: .95rem 1.25rem;
+}
+.footer-bnr img {
+    max-width: 500px;
+}
+/* SP版公式アプリ */
+.sp-apps {
+    background-color: rgb(233, 233, 233);
+}
+
+/* ボタン */
+.button-01 {
+    border-radius: 5px;
+    overflow: hidden;
+    max-width: 640px;
+}
+.button-01 a {
+    display: block;
+    padding: 15px 0;
+    text-align: center;
+    background-color: #f1f1f1;
+    color: #333;
+} 
+.button-02 {
+    overflow: hidden;
+}
+.button-02 a {
+    display: block;
+    padding: 15px 0;
+    text-align: center;
+    color: #333;
+    background-color: #fff;  
+    border: 1px solid #999;
+}
+.button-03 {
+    border-radius: 5px;
+    overflow: hidden;
+    max-width: 580px;
+}
+.button-03 a {
+    display: block;
+    padding: 15px 0;
+    text-align: center;
+    background-color: #f1f1f1;
+    color: #333;
+} 
+
+.plus-button {
+    overflow: hidden;
+}
+.plus-button a {
+    display: block;
+    padding: 15px 0;
+    text-align: center;
+    color: #333;
+    background-color: #fff;
+    border: 1px solid #999;
+    background-image: url(/images/common/accordion_open.svg);
+    background-repeat: no-repeat;
+    background-size: 15px;
+    background-position: right 10px center;
+}
+
+.minus-button {
+    overflow: hidden;
+}
+.minus-button a {
+    display: block;
+    padding: 15px 0;
+    text-align: center;
+    color: #333;
+    background-color: #fff;
+    border: 1px solid #999;
+    background-image: url(/images/common/accordion_close.svg);
+    background-repeat: no-repeat;
+    background-size: 15px;
+    background-position: right 10px center;
+}
+
+.black-button {
+    overflow: hidden;
+    max-width: 640px;
+}
+.black-button a {
+    border-radius: 5px;
+    display: block;
+    padding: 15px 0;
+    text-align: center;
+    color: #fff;
+    background-color: rgb(84, 84, 84);
+    border: 1px solid #999;
+}
+
+/* ニュース一覧・詳細で使うボタン */
+.news-button {
+    background-color: rgb(244, 224, 0);
+}
+.information-button {
+    color: #fff;
+    background-color: rgb(64, 64, 64 );
+}
+.event-button {
+    color: #fff;
+    background-color: rgb(112, 182, 1);
+}
+
+/* 劇場SNSアカウント */
+
+.theater-sns a {
+    width: 40px;
+}
+
+.sp-theater-sns {
+    border-color: #333;
+}
+
+/* プライバシーポリシー */
+.privacy p {
+    line-height: 1.8;
+}
+
+/* 会社概要 マップ*/
+.map iframe {
+    max-width: 1200px;
+    width: 100%;
+}
+
+/* モーダル */
+.modal {
+    z-index: 2001;
+}
+.modal-backdrop {
+    z-index: 2000;
+}
+.modal-dialog {
+    max-width: 1100px;
+}
+.modal-dialog-centered {
+    min-height: 100%;
+}
+
+@media (max-width: 767.98px) {
+    body {
+        font-size: 14px;
+    }
+    .large {
+        font-size: 16px;
+    }
+    .x-large {
+        font-size: 20px;
+    }
+    header, 
+    .header {
+        height: 60px;
+    }
+    .type-imax header, 
+    .type-imax .header {
+        height: 60px;
+    }
+    .type-4dx header, 
+    .type-4dx .header {
+        height: 60px;
+    }
+    .theater-name {
+        font-size: 15px;
+    }
+    .header-imax {
+        width: 35px;
+    }
+    .header-4dx {
+        width: 30px;
+    }
+    .header-company-logo {
+        width: 120px;
+    }
+    .theater .header-company-logo {
+        width: 90px;
+    }
+    .footer-logo img {
+        width: 150px;
+    }
+    .footer-button {
+        position: static;
+    }
+    .footer-home {
+        width: 50%;
+        border-right: 1px solid #fff;
+    }
+    .footer-top {
+        width: 50%;
+    }
+    .footer-home, .footer-top {
+        height: 42px;
+    }
+    .trailer {
+        max-width: 336px;
+        width: auto;
+        height: auto;
+    }
+    .trailer-inner {
+        position: relative;
+        width:100%;
+        height: 0;
+        padding-top:83.33%;
+    }
+    .trailer iframe,
+    .trailer-inner > * {
+        position:absolute;
+        top:0;
+        right:0;
+        width:100%;
+        height:100%;
+    }
+    /* .special-sites-parts {
+        height: 105px;
+        line-height: 100px;
+    }
+    .special-site-parts img {
+        width: 50%;
+        max-height: 100px;
+    } */
+    .news li,
+    .news li:last-child {
+      border: none;
+    }
+    .news li:nth-child(odd) {
+      border-right: 1px solid #999;
+    }
+    .theater footer {
+        padding-bottom: 60px;
+    }
+    .modal-dialog {
+        margin: 0 1rem;
+    }
+    .modal-content {
+        max-height: calc(100vh - 4rem);
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+}
