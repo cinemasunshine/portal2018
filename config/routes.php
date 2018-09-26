@@ -7,4 +7,4 @@
 
 use Cinemasunshine\Portal\Controller\IndexController;
 
-$app->get('/', IndexController::class . ':index');
+$app->get('/', IndexController::class . ':index')->setName('homepage');
