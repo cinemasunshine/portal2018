@@ -26,13 +26,32 @@ class IndexController extends BaseController
      */
     public function executeIndex($request, $response, $args)
     {
-        /** @var MainBanner[] $mainBanners */
-        $mainBanners = $this->em
+        $this->data->set('mainBanners', $this->getMainBanners());
+        
+        $this->data->set('areaToTheaters', $this->getTheaters());
+        
+        $this->data->set('titleRanking', $this->getTitleRanking());
+    }
+    
+    /**
+     * return main_banners
+     *
+     * @return Entity\MainBanner[]
+     */
+    protected function getMainBanners()
+    {
+        return $this->em
             ->getRepository(Entity\MainBanner::class)
             ->findByPageId(self::PAGE_ID);
-        
-        $this->data->set('mainBanners', $mainBanners);
-        
+    }
+    
+    /**
+     * return theaters
+     *
+     * @return array
+     */
+    protected function getTheaters()
+    {
         $theaters = $this->em
             ->getRepository(Entity\Theater::class)
             ->findByActive();
@@ -50,11 +69,16 @@ class IndexController extends BaseController
             $areaToTheaters[$area][] = $theater;
         }
         
-        $this->data->set('areaToTheaters', $areaToTheaters);
-        
-        /** @var Entity\TitleRanking $titleRanking */
-        $titleRanking = $this->em->find(Entity\TitleRanking::class, 1);
-        
-        $this->data->set('titleRanking', $titleRanking);
+        return $areaToTheaters;
+    }
+    
+    /**
+     * return title_raning
+     *
+     * @return Entity\TitleRanking
+     */
+    protected function getTitleRanking()
+    {
+        return $this->em->find(Entity\TitleRanking::class, 1);
     }
 }
