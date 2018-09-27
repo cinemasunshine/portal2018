@@ -32,7 +32,9 @@ class IndexController extends BaseController
         
         $this->data->set('titleRanking', $this->getTitleRanking());
         
-        $this->data->set('newsList', $this->getNewsList());
+        $this->data->set('newsList', $this->getNewsList(Entity\News::CATEGORY_NEWS));
+        
+        $this->data->set('imaxNewsList', $this->getNewsList(Entity\News::CATEGORY_IMAX));
     }
     
     /**
@@ -87,12 +89,13 @@ class IndexController extends BaseController
     /**
      * return news list
      *
+     * @param int $category
      * @return Entity\News[]
      */
-    protected function getNewsList()
+    protected function getNewsList(int $category)
     {
         return $this->em
             ->getRepository(Entity\News::class)
-            ->findByPage(self::PAGE_ID, Entity\News::CATEGORY_NEWS, 8);
+            ->findByPage(self::PAGE_ID, $category, 8);
     }
 }

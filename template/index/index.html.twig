@@ -30,4 +30,8 @@
         newsList: newsList
     } only %}
 </div>
+
+{% include 'index/include/imax_news.html.twig' with {
+    imaxNewsList: imaxNewsList
+} only %}
 {% endblock %}
