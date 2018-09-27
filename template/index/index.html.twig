@@ -14,4 +14,10 @@
         mainBanners: mainBanners
     } only %}
 </div>
+
+<div class="bg-light-gray mb-5">
+    {% include 'index/include/theater_list.html.twig' with {
+        areaToTheaters: areaToTheaters
+    } only %}
+</div>
 {% endblock %}

@@ -32,5 +32,24 @@ class IndexController extends BaseController
             ->findByPageId(self::PAGE_ID);
         
         $this->data->set('mainBanners', $mainBanners);
+        
+        $theaters = $this->em
+            ->getRepository(Entity\Theater::class)
+            ->findByActive();
+        
+        $areaToTheaters = [];
+        
+        foreach ($theaters as $theater) {
+            /** @var Entity\Theater $theater */
+            $area = $theater->getArea();
+            
+            if (!isset($areaToTheaters[$area])) {
+                $areaToTheaters[$area] = [];
+            }
+            
+            $areaToTheaters[$area][] = $theater;
+        }
+        
+        $this->data->set('areaToTheaters', $areaToTheaters);
     }
 }
