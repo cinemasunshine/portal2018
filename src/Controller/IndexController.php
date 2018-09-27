@@ -51,5 +51,10 @@ class IndexController extends BaseController
         }
         
         $this->data->set('areaToTheaters', $areaToTheaters);
+        
+        /** @var Entity\TitleRanking $titleRanking */
+        $titleRanking = $this->em->find(Entity\TitleRanking::class, 1);
+        
+        $this->data->set('titleRanking', $titleRanking);
     }
 }
