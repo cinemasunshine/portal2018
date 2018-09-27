@@ -30,6 +30,7 @@ $container['view'] = function ($container) {
     // add Extension
     $view->addExtension(new \Twig_Extension_Debug());
     $view->addExtension(new \Cinemasunshine\Portal\Twig\Extension\AzureStorageExtension($container));
+    $view->addExtension(new \Cinemasunshine\Portal\Twig\Extension\TheaterExtension());
 
     return $view;
 };

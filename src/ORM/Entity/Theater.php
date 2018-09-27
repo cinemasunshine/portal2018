@@ -26,6 +26,15 @@ class Theater extends AbstractEntity
     const MASTER_VERSION_V1 = 1;
     const MASTER_VERSION_V2 = 2;
     
+    /** @var array */
+    protected static $areas = [
+        1 => '関東',
+        2 => '北陸・中部',
+        3 => '関西',
+        4 => '中国・四国',
+        5 => '九州',
+    ];
+    
     /**
      * id
      * 
@@ -127,6 +136,15 @@ class Theater extends AbstractEntity
      */
     protected $mainBanners;
     
+    /**
+     * return areas
+     *
+     * @return array
+     */
+    public static function getAreas()
+    {
+        return self::$areas;
+    }
     
     /**
      * construct
