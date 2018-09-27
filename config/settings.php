@@ -68,4 +68,13 @@ $getDoctrineSetting = function() {
 
 $settings['doctrine'] = $getDoctrineSetting();
 
+// storage
+$settings['storage'] = [
+    'secure'  => true,
+    'account' => [
+        'name' => getenv('CUSTOMCONNSTR_STORAGE_NAME'),
+        'key'  => getenv('CUSTOMCONNSTR_STORAGE_KEY'),
+    ],
+];
+
 return $settings;
