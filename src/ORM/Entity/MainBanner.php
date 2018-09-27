@@ -14,7 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * MainBanner entity class
  * 
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Cinemasunshine\Portal\ORM\Repository\MainBannerRepository")
  * @ORM\Table(name="main_banner", options={"collate"="utf8mb4_general_ci"})
  * @ORM\HasLifecycleCallbacks
  */
@@ -187,6 +187,26 @@ class MainBanner extends AbstractEntity
     public function setLinkType(int $linkType)
     {
         throw new \LogicException('Not allowed.');
+    }
+    
+    /**
+     * is link_type none
+     *
+     * @return boolean
+     */
+    public function isLinkTypeNone()
+    {
+        return $this->getLinkType() === self::LINK_TYPE_NONE;
+    }
+    
+    /**
+     * is link_type URL
+     *
+     * @return boolean
+     */
+    public function isLinkTypeUrl()
+    {
+        return $this->getLinkType() === self::LINK_TYPE_URL;
     }
     
     /**

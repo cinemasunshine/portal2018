@@ -1,5 +1,17 @@
 {% extends "layout.html.twig" %}
 
+{% block css %}
+<link href="/css/top.css" rel="stylesheet">
+{% endblock %}
+
+{% block javascript %}
+<script src="/js/top.js"></script>
+{% endblock %}
+
 {% block contents %}
-hello world!
+<div class="mb-3">
+    {% include 'index/include/slider.html.twig' with {
+        mainBanners: mainBanners
+    } only %}
+</div>
 {% endblock %}
