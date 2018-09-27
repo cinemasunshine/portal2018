@@ -31,6 +31,8 @@ class IndexController extends BaseController
         $this->data->set('areaToTheaters', $this->getTheaters());
         
         $this->data->set('titleRanking', $this->getTitleRanking());
+        
+        $this->data->set('newsList', $this->getNewsList());
     }
     
     /**
@@ -80,5 +82,17 @@ class IndexController extends BaseController
     protected function getTitleRanking()
     {
         return $this->em->find(Entity\TitleRanking::class, 1);
+    }
+    
+    /**
+     * return news list
+     *
+     * @return Entity\News[]
+     */
+    protected function getNewsList()
+    {
+        return $this->em
+            ->getRepository(Entity\News::class)
+            ->findByPage(self::PAGE_ID, Entity\News::CATEGORY_NEWS, 8);
     }
 }

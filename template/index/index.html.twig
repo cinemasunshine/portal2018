@@ -24,4 +24,10 @@
 {% include 'index/include/ranking.html.twig' with {
     titleRanking: titleRanking
 } only %}
+
+<div class="mb-5">
+    {% include 'index/include/news.html.twig' with {
+        newsList: newsList
+    } only %}
+</div>
 {% endblock %}
