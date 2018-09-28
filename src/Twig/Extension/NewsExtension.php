@@ -26,10 +26,10 @@ class NewsExtension extends \Twig_Extension
     /** @var array */
     protected $categoryLabelClasses = [
         News::CATEGORY_NEWS  => 'list-type-news',
-        News::CATEGORY_INFO  => 'ist-type-information text-white',
-        News::CATEGORY_IMAX  => 'list-type-imax text-white',
-        News::CATEGORY_4DX   => 'list-type-4dx text-white',
-        News::CATEGORY_EVENT => 'list-type-event text-white',
+        News::CATEGORY_INFO  => 'list-type-information',
+        News::CATEGORY_IMAX  => 'list-type-imax',
+        News::CATEGORY_4DX   => 'list-type-4dx',
+        News::CATEGORY_EVENT => 'list-type-event',
     ];
     
     /**
