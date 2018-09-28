@@ -8,7 +8,7 @@
     </div>
     <div class="container w-100 mw-100 m-0 mb-4 px-1">
         <ul class="row mb-0">
-        {% for news in fourdxNewsList|slice(0, 4) %}
+        {% for news in newsList|slice(0, 4) %}
             <li class="col-md-3 col-6 py-2 mb-4">
                 <a href="#" class="d-block">
                     <div class="border mb-2 image border-gray" style="background-image: url({{ file_url(news.getImage()) }})"></div>
@@ -18,7 +18,7 @@
         {% endfor %}
         </ul>
         <ul class="row d-none" data-contents="4dx-more-contents">
-        {% for news in fourdxNewsList|slice(4, 4) %}
+        {% for news in newsList|slice(4, 4) %}
             <li class="col-md-3 col-6 py-2 mb-4">
                 <a href="#" class="d-block">
                     <div class="border mb-2 image border-gray" style="background-image: url({{ file_url(news.getImage()) }})"></div>
