@@ -26,7 +26,11 @@ class CampaignRepository extends EntityRepository
     {
         $qb = $this->createQueryBuilder('c');
         $qb
-            ->where('c.isDeleted = false');
+            ->where('c.isDeleted = false')
+            ->andWhere($qb->expr()->andX(
+                $qb->expr()->lte('c.startDt', 'CURRENT_TIMESTAMP()'),
+                $qb->expr()->gt('c.endDt', 'CURRENT_TIMESTAMP()')
+            ));
         
         return $qb;
     }
@@ -43,10 +47,6 @@ class CampaignRepository extends EntityRepository
         
         $qb
             ->join('c.pages', 'pc')
-            ->andWhere($qb->expr()->andX(
-                $qb->expr()->lte('c.startDt', 'CURRENT_TIMESTAMP()'),
-                $qb->expr()->gt('c.endDt', 'CURRENT_TIMESTAMP()')
-            ))
             ->andWhere('pc.page = :page_id')
             ->setParameter('page_id', $pageId)
             ->orderBy('pc.displayOrder', 'ASC');
