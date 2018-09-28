@@ -35,6 +35,8 @@ class NewsRepository extends EntityRepository
      * find by page
      *
      * @param int $pageId
+     * @param int $category
+     * @param int $limit
      * @return News[]
      */
     public function findByPage(int $pageId, int $category = null, int $limit = null)
