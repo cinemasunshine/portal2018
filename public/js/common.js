@@ -90,8 +90,30 @@ $(function () {
     });
 
     $(document).on('click', 'a[data-scroll-target]', scrollPageLink);
-    
+    $(document).on('click', '.header-menu', headerMenuToggle);
+
 });
+
+/**
+ * ハンバーガーメニュー開閉
+ */
+function headerMenuToggle() {
+    var menu = $('.sp-menu');
+    var open = $('.header-menu .open');
+    var close = $('.header-menu .close');
+    if (menu.hasClass('d-none')) {
+        // メニューが閉まっているとき
+        menu.removeClass('d-none');
+        open.addClass('d-none');
+        close.removeClass('d-none');
+    } else {
+        // メニューが開いてるとき
+        menu.addClass('d-none');
+        open.removeClass('d-none');
+        close.addClass('d-none');
+    }
+}
+
 
 function isMobile() {
     return ($(window).width() < 768);
