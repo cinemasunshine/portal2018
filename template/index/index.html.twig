@@ -38,4 +38,10 @@
 {% include 'index/include/4dx_news.html.twig' with {
     fourdxNewsList: fourdxNewsList
 } only %}
+
+<div class="mb-5 py-5 bg-light-gray">
+    {% include 'index/include/campaing.html.twig' with {
+        campaings: campaings
+    } only %}
+</div>
 {% endblock %}

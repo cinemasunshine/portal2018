@@ -38,6 +38,8 @@ class IndexController extends BaseController
         
         // twigは数値から始まる変数が利用できない
         $this->data->set('fourdxNewsList', $this->getNewsList(Entity\News::CATEGORY_4DX));
+        
+        $this->data->set('campaings', $this->getCampaigns());
     }
     
     /**
@@ -100,5 +102,17 @@ class IndexController extends BaseController
         return $this->em
             ->getRepository(Entity\News::class)
             ->findByPage(self::PAGE_ID, $category, 8);
+    }
+    
+    /**
+     * return campaigns
+     *
+     * @return Entity\Campaign[]
+     */
+    protected function getCampaigns()
+    {
+        return $this->em
+            ->getRepository(Entity\Campaign::class)
+            ->findByPage(self::PAGE_ID);
     }
 }
