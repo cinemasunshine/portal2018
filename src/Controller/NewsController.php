@@ -12,10 +12,8 @@ use Cinemasunshine\Portal\ORM\Entity;
 /**
  * News controller
  */
-class NewsController extends BaseController
+class NewsController extends GeneralController
 {
-    const PAGE_ID = 1;
-    
     /**
      * list action
      * 

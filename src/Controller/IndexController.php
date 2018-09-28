@@ -12,10 +12,8 @@ use Cinemasunshine\Portal\ORM\Entity;
 /**
  * Index controller
  */
-class IndexController extends BaseController
+class IndexController extends GeneralController
 {
-    const PAGE_ID = 1;
-    
     /**
      * index action
      * 
