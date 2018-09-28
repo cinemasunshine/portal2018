@@ -6,6 +6,12 @@
 
 {% block contents %}
 <div class="details-width mx-auto p-3 mb-5">
+    <div class="breadcrumb-list small mb-5 d-none d-md-block">
+        <a href="{{ path_for('homepage') }}" class="mr-3">ホーム</a>|
+        <a href="{{ path_for('news_list') }}" class="mx-3">NEWS＆INFO</a>|
+        <span class="font-weight-bold mx-3">{{ news.getHeadline() }}</span>
+    </div>
+            
     <div class="d-flex align-items-center">
         {% set labelClass = news_category_label_class(news.getCategory()) %}
         <div class="{{ labelClass }} py-1 px-2 text-center small mr-3">{{ news_category_label(news.getCategory()) }}</div>
