@@ -36,6 +36,22 @@ class NewsRepository extends EntityRepository
     }
     
     /**
+     * find one by id
+     *
+     * @param int $id
+     * @return News|null
+     */
+    public function findOneById(int $id)
+    {
+        $qb = $this->getActiveQuery();
+        $qb
+            ->andWhere('n.id = :id')
+            ->setParameter('id', $id);
+            
+        return $qb->getQuery()->getOneOrNullResult();
+    }
+    
+    /**
      * find by page
      *
      * @param int $pageId

@@ -13,6 +13,7 @@ $app->get('/', IndexController::class . ':index')->setName('homepage');
 
 $app->group('/news', function () {
     $this->get('/list', NewsController::class . ':list')->setName('news_list');
+    $this->get('/{id}', NewsController::class . ':show')->setName('news_show');
 });
 
 $app->get('/trailer', TrailerController::class . ':show')->setName('trailer');

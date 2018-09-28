@@ -1,0 +1,30 @@
+.details-width {
+    max-width: 980px;
+}
+
+.news-button {
+    width: 130px; 
+}
+.information-button {
+    width: 170px; 
+}
+.event-button {
+    width: 180px;                    ;
+}
+.news-share {
+    line-height: 25px;
+}
+.fb-share, .twitter-share, .line-share {
+    width: 25px;
+}
+
+/* IMAX 4dx */
+.imax-4dx {
+    height: 140px;
+}
+.imax img, .fourdx img {
+    height: 50px;
+}
+.imax img {
+    padding: 14px;
+}
