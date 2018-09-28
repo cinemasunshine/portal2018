@@ -39,7 +39,7 @@ class IndexController extends GeneralController
         
         $this->data->set('infoNewsList', $this->getNewsList(Entity\News::CATEGORY_INFO));
         
-        $this->data->set('campaings', $this->getCampaigns());
+        $this->data->set('campaings', $this->getCampaigns(self::PAGE_ID));
     }
     
     /**
@@ -102,17 +102,5 @@ class IndexController extends GeneralController
         return $this->em
             ->getRepository(Entity\News::class)
             ->findByPage(self::PAGE_ID, $category, 8);
-    }
-    
-    /**
-     * return campaigns
-     *
-     * @return Entity\Campaign[]
-     */
-    protected function getCampaigns()
-    {
-        return $this->em
-            ->getRepository(Entity\Campaign::class)
-            ->findByPage(self::PAGE_ID);
     }
 }
