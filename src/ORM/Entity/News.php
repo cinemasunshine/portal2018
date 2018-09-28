@@ -30,15 +30,6 @@ class News extends AbstractEntity
     const CATEGORY_4DX   = 4;
     const CATEGORY_EVENT = 5;
     
-    /** @var array */
-    public static $categories = [
-        self::CATEGORY_NEWS  => 'NEWS',
-        self::CATEGORY_INFO  => 'インフォメーション',
-        self::CATEGORY_IMAX  => 'IMAXニュース',
-        self::CATEGORY_4DX   => '4DXニュース',
-        self::CATEGORY_EVENT => 'イベント上映ニュース',
-    ];
-    
     /**
      * id
      * 
@@ -196,16 +187,6 @@ class News extends AbstractEntity
     public function getCategory()
     {
         return $this->category;
-    }
-    
-    /**
-     * get category label
-     *
-     * @return string|null
-     */
-    public function getCategoryLabel()
-    {
-        return self::$categories[$this->getCategory()] ?? null;
     }
     
     /**

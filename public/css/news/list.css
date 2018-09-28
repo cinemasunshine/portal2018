@@ -1,0 +1,16 @@
+
+.news-list-width {
+    max-width: 980px;;
+}
+
+
+/* IMAX 4dx */
+.imax-4dx {
+    height: 140px;
+}
+.imax img, .fourdx img {
+    height: 50px;
+}
+.imax img {
+    padding: 14px;
+}
