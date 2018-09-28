@@ -25,6 +25,8 @@ class NewsController extends GeneralController
     public function executeList($request, $response, $args)
     {
         $this->data->set('newsList', $this->getNewsList());
+        
+        $this->data->set('campaings', $this->getCampaigns(self::PAGE_ID));
     }
     
     /**

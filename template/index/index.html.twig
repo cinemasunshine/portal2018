@@ -39,11 +39,9 @@
     newsList: fourdxNewsList
 } only %}
 
-<div class="mb-5 py-5 bg-light-gray">
-    {% include 'index/include/campaing.html.twig' with {
-        campaings: campaings
-    } only %}
-</div>
+{% include 'include/campaing.html.twig' with {
+    campaings: campaings
+} only %}
 
 <div class="mb-5">
     {% include 'index/include/infomation.html.twig' with {

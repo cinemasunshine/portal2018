@@ -1,0 +1,37 @@
+<div class="mb-5 py-5 bg-light-gray">
+    <div class="campaign">
+        <div class="width mx-auto px-3">
+            <h3 class="mb-4 font-weight-bold line-height-1 large">キャンペーン<br><span class="small">CAMPAIGN</span></h3>
+        </div>
+        <div class="campaign-inner position-relative d-none d-md-block width mx-auto">
+            <div class="campaign-slider swiper-container">
+                <div class="swiper-wrapper py-3">
+                {% for campaing in campaings %}
+                    <div class="swiper-slide rounded shadow-01">
+                        <a href="{{ campaing.getUrl() }}" target="_blank" class="d-block">
+                            <img src="{{ file_url(campaing.getImage()) }}" class="w-100">
+                            <p class="bg-white p-3 mb-0">{{ campaing.getName() }}</p>
+                        </a>
+                    </div>
+                {% endfor %}
+                </div>
+            </div>
+            <div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </div>
+        <div class="campaign-slider-sp swiper-container width mx-auto d-md-none">
+            <div class="swiper-wrapper py-3 ml-3">
+            {% for campaing in campaings %}
+                <div class="swiper-slide rounded shadow-01">
+                    <a class="d-block" href="{{ campaing.getUrl() }}" target="_blank">
+                        <img src="{{ file_url(campaing.getImage()) }}" class="w-100">
+                        <p class="bg-white p-3 mb-0">{{ campaing.getName() }}</p>
+                    </a>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>

@@ -26,4 +26,8 @@
         </div>
     </div>
 </div>
+
+{% include 'include/campaing.html.twig' with {
+    campaings: campaings
+} only %}
 {% endblock %}
