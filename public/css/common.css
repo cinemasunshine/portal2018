@@ -30,6 +30,10 @@ a:hover {
     line-height: 1;
 }
 
+.not-event {
+    pointer-events: none;
+}
+
 /* 文字色 */
 .text-black {
     color: #333;
@@ -98,7 +102,7 @@ a:hover {
     border-color: #333 !important;
 }
 .border-light-blue {
-    border-color: #0072ce !important;
+    border-color: #0190d4 !important;
 }
 .border-blue {
     border-color: #0072ce !important;
@@ -337,7 +341,7 @@ header .position-fixed {
 .news li {
     border-left: 1px solid #999;
 }
-.news li:last-child {
+.news li:nth-child(4n) {
     border-right: 1px solid #999;
 }
 .news li .image {
@@ -447,9 +451,6 @@ footer {
 }
 .footer-logo a {
     width: 200px;
-}
-.footer-inner {
-
 }
 .footer-button {
     position: absolute;
@@ -567,16 +568,24 @@ footer {
 }
 
 /* ニュース一覧・詳細で使うボタン */
-.news-button {
+.list-type-news {
     background-color: rgb(244, 224, 0);
 }
-.information-button {
+.list-type-information {
     color: #fff;
     background-color: rgb(64, 64, 64 );
 }
-.event-button {
+.list-type-event {
     color: #fff;
     background-color: rgb(112, 182, 1);
+}
+.list-type-imax {
+    color: #fff;
+    background-color: rgb(43, 107, 226);
+}
+.list-type-4dx {
+    color: #fff;
+    background-color: rgb(182, 1, 1);
 }
 
 /* 劇場SNSアカウント */
@@ -649,6 +658,9 @@ footer {
     .theater-name {
         font-size: 15px;
     }
+    .header-company-logo a {
+        width: 140px;
+    }
     .header-imax {
         width: 35px;
     }
@@ -705,7 +717,8 @@ footer {
         max-height: 100px;
     } */
     .news li,
-    .news li:last-child {
+    .news li:last-child,
+    .news li:nth-child(4n) {
       border: none;
     }
     .news li:nth-child(odd) {
