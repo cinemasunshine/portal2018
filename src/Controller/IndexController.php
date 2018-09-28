@@ -39,6 +39,8 @@ class IndexController extends BaseController
         // twigは数値から始まる変数が利用できない
         $this->data->set('fourdxNewsList', $this->getNewsList(Entity\News::CATEGORY_4DX));
         
+        $this->data->set('infoNewsList', $this->getNewsList(Entity\News::CATEGORY_INFO));
+        
         $this->data->set('campaings', $this->getCampaigns());
     }
     
