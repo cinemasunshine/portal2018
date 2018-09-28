@@ -26,7 +26,11 @@ class NewsRepository extends EntityRepository
     {
         $qb = $this->createQueryBuilder('n');
         $qb
-            ->where('n.isDeleted = false');
+            ->where('n.isDeleted = false')
+            ->andWhere($qb->expr()->andX(
+                $qb->expr()->lte('n.startDt', 'CURRENT_TIMESTAMP()'),
+                $qb->expr()->gt('n.endDt', 'CURRENT_TIMESTAMP()')
+            ));
         
         return $qb;
     }
@@ -44,10 +48,6 @@ class NewsRepository extends EntityRepository
         $qb = $this->getActiveQuery();
         $qb
             ->join('n.pages', 'pn')
-            ->andWhere($qb->expr()->andX(
-                $qb->expr()->lte('n.startDt', 'CURRENT_TIMESTAMP()'),
-                $qb->expr()->gt('n.endDt', 'CURRENT_TIMESTAMP()')
-            ))
             ->andWhere('pn.page = :page_id')
             ->setParameter('page_id', $pageId)
             ->orderBy('pn.displayOrder', 'ASC');
