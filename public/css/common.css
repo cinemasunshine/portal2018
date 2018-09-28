@@ -2,6 +2,12 @@ body {
     color: #333;
     font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "ヒラギノ角ゴ ProN W3", Hiragino Kaku Gothic ProN, Arial, "メイリオ", Meiryo, sans-serif;
 }
+.type-4dx {
+    background-color: #181818;
+}
+.type-imax {
+    background-color: #040a1a;
+}
 p {
     line-height: 1.6;
 }
@@ -29,16 +35,13 @@ a:hover {
     color: #333;
 }
 .text-light-blue {
-    color: #0563c1 !important;
+    color: #0190d4 !important;
 }
 .text-blue {
-    color: #0563c1 !important;
+    color: #0072ce !important;
 }
 .text-dark-blue {
     color: #0d3d95 !important;
-}
-.text-navy {
-    color: #040a1a !important;
 }
 .text-light-gray {
     color: #ddd !important;
@@ -69,17 +72,14 @@ a:hover {
 .bg-dark-gray {
     background-color: #555 !important;
 }
+.bg-light-blue {
+    background-color: #0190d4 !important;
+}
 .bg-blue {
-    background-color: #0563c1 !important;
+    background-color: #0072ce !important;
 }
 .bg-dark-blue {
     background-color: #0d3d95 !important;
-}
-.bg-navy {
-    background-color: #040a1a !important;
-}
-.bg-light-blue {
-    background-color: #e3f0ff !important;
 }
 .bg-yellow {
     background-color: #aec105 !important;
@@ -90,22 +90,21 @@ a:hover {
 .bg-dark-red {
     background-color: #950c0c !important;
 }
-
+.bg-transparent {
+    background-color: transparent !important;
+}
 /* ボーダー */
 .border-black {
     border-color: #333 !important;
 }
 .border-light-blue {
-    border-color: rgb(0, 114, 206) !important;
+    border-color: #0072ce !important;
 }
 .border-blue {
-    border-color: #0563c1 !important;
+    border-color: #0072ce !important;
 }
 .border-dark-blue {
     border-color: #0d3d95 !important;
-}
-.border-navy {
-    border-color: #040a1a !important;
 }
 .border-light-gray {
     border-color: #ddd !important;
@@ -206,7 +205,7 @@ header .position-fixed {
     height: 90px;
 }
 .type-imax .header .logo {
-    width: 112px;
+    width: 245px;
 }
 
 /* IMAXサブヘッダー */
@@ -230,7 +229,7 @@ header .position-fixed {
     height: 90px;
 }
 .type-4dx .header .logo {
-    width: 80px;
+    width: 250px;
 }
 
 /* 4dxサブヘッダー */
@@ -325,6 +324,15 @@ header .position-fixed {
     opacity: 0;
 }
 
+/* 特設サイトキャンペーン */
+.type-imax .campaign .swiper-button-next,
+.type-4dx .campaign .swiper-button-next {
+    background-image: url(/images/common/cp_arrow_wht_right.svg);
+}
+.type-imax .campaign .swiper-button-prev,
+.type-4dx .campaign .swiper-button-prev {
+    background-image: url(/images/common/cp_arrow_wht_left.svg);
+}
 /* ニュース */
 .news li {
     border-left: 1px solid #999;
@@ -362,9 +370,10 @@ header .position-fixed {
     width: 100%;
 }
 .infomation li a { 
-    background-image: url(/images/tmp/common/top_07.jpg); 
+    background-image: url(/images/common/info_arrow.svg); 
     background-repeat: no-repeat; 
     background-position: 98%;
+    background-size: 24px;
 }
 
 /* IMAXインフォメーション */
@@ -373,7 +382,7 @@ header .position-fixed {
     border-color: rgba(255, 255, 255, 0.2) !important;
 }
 .type-imax .infomation li a { 
-    background-image: url(/images/tmp/common/top_07.jpg); 
+    background-image: url(/images/common/info_arrow_wht.svg); 
     color: #FFF;
 }
 
@@ -383,7 +392,7 @@ header .position-fixed {
     border-color: rgba(255, 255, 255, 0.2) !important;
 }
 .type-4dx .infomation li a { 
-    background-image: url(/images/tmp/common/top_07.jpg); 
+    background-image: url(/images/common/info_arrow_wht.svg); 
     color: #FFF;
 }
   
@@ -406,6 +415,7 @@ header .position-fixed {
 /* ナビゲーション */
 .navigation {
     height: 60px;
+    height: calc(60px + env(safe-area-inset-bottom));
     background-color: rgb(51, 51, 51);
     z-index: 1301;
 }
@@ -432,11 +442,14 @@ header .position-fixed {
 }
 
 /* フッター */
+footer {
+    padding-top: 50px;    
+}
 .footer-logo a {
     width: 200px;
 }
 .footer-inner {
-    background-color: rgb(82, 82, 82);
+
 }
 .footer-button {
     position: absolute;
@@ -464,13 +477,11 @@ header .position-fixed {
     background-color: rgb(82, 82, 82);
     padding: .95rem 1.25rem;
 }
-.footer-bnr img {
-    max-width: 500px;
+.footer-bnr li {
+    width: 25%;
 }
+
 /* SP版公式アプリ */
-.sp-apps {
-    background-color: rgb(233, 233, 233);
-}
 
 /* ボタン */
 .button-01 {
@@ -603,6 +614,16 @@ header .position-fixed {
     min-height: 100%;
 }
 
+/* spハンバーガー */
+.sp-menu {
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 1400;
+    top: 60px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
 @media (max-width: 767.98px) {
     body {
         font-size: 14px;
@@ -697,8 +718,20 @@ header .position-fixed {
         margin: 0 1rem;
     }
     .modal-content {
-        max-height: calc(100vh - 4rem);
+        max-height: calc(100vh - 8rem);
         overflow: auto;
         -webkit-overflow-scrolling: touch;
+    }
+    .type-imax .header .logo {
+        width: 160px;
+    }
+    .type-4dx .header .logo {
+        width: 180px;
+    }
+    .footer-bnr li {
+        width: auto;
+    }
+    footer {
+        padding-top: 0;    
     }
 }
