@@ -5,7 +5,7 @@
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
-namespace Cinemasunshine\PortalAdmin\ORM\Entity;
+namespace Cinemasunshine\Portal\ORM\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 

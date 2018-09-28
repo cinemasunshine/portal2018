@@ -5,7 +5,7 @@
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
-namespace Cinemasunshine\PortalAdmin\ORM\Entity;
+namespace Cinemasunshine\Portal\ORM\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -14,7 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * SpecialSite entity class
  * 
- * @ORM\Entity(repositoryClass="Cinemasunshine\PortalAdmin\ORM\Repository\SpecialSiteRepository")
+ * @ORM\Entity
  * @ORM\Table(name="special_site", options={"collate"="utf8mb4_general_ci"})
  * @ORM\HasLifecycleCallbacks
  */
