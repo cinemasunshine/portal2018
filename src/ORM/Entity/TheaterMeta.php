@@ -48,6 +48,22 @@ class TheaterMeta extends AbstractEntity
     protected $openingHours;
     
     /**
+     * twitter
+     *
+     * @var string|null
+     * @ORM\Column(type="string", nullable=true)
+     */
+    protected $twitter;
+    
+    /**
+     * facebook
+     *
+     * @var string|null
+     * @ORM\Column(type="string", nullable=true)
+     */
+    protected $facebook;
+    
+    /**
      * construct
      * 
      * @throws \LogicException
@@ -115,6 +131,50 @@ class TheaterMeta extends AbstractEntity
      * @throws \LogicException
      */
     public function setOpeningHours(array $openingHours)
+    {
+        throw new \LogicException('Not allowed.');
+    }
+    
+    /**
+     * get twitter
+     *
+     * @return string
+     */
+    public function getTwitter()
+    {
+        return $this->twitter;
+    }
+    
+    /**
+     * set twitter
+     *
+     * @param string|null $twitter
+     * @return void
+     * @throws \LogicException
+     */
+    public function setTwitter(?string $twitter)
+    {
+        throw new \LogicException('Not allowed.');
+    }
+    
+    /**
+     * get facebook
+     *
+     * @return string
+     */
+    public function getFacebook()
+    {
+        return $this->facebook;
+    }
+    
+    /**
+     * set facebook
+     *
+     * @param string|null $facebook
+     * @return void
+     * @throws \LogicException
+     */
+    public function setFacebook(?string $facebook)
     {
         throw new \LogicException('Not allowed.');
     }
