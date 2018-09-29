@@ -49,6 +49,13 @@ class SpecialSite extends AbstractEntity
      */
     protected $nameJa;
     
+    /**
+     * theaters
+     *
+     * @var Collection
+     * @ORM\ManyToMany(targetEntity="Theater", mappedBy="specialSites")
+     */
+    protected $theaters;
     
     /**
      * campaigns
@@ -122,6 +129,16 @@ class SpecialSite extends AbstractEntity
     public function setNameJa(string $nameJa)
     {
         throw new \LogicException('Not allowed.');
+    }
+    
+    /**
+     * get theaters
+     *
+     * @return Collection
+     */
+    public function getTheaters()
+    {
+        return $this->theaters;
     }
     
     /**

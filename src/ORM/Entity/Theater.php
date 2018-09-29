@@ -102,6 +102,18 @@ class Theater extends AbstractEntity
     protected $meta;
     
     /**
+     * special_sites
+     *
+     * @var Collection
+     * @ORM\ManyToMany(targetEntity="SpecialSite", inversedBy="theaters")
+     * @ORM\JoinTable(name="theater_special_site",
+     *      joinColumns={@ORM\JoinColumn(name="theater_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="special_site_id", referencedColumnName="id")}
+     * )
+     */
+    protected $specialSites;
+    
+    /**
      * admin_users
      * 
      * @var ArrayCollection
@@ -284,6 +296,16 @@ class Theater extends AbstractEntity
     public function getMeta()
     {
         return $this->meta;
+    }
+    
+    /**
+     * get special_sites
+     *
+     * @return Collection
+     */
+    public function getSpecialSites()
+    {
+        return $this->specialSites;
     }
     
     /**
