@@ -1,0 +1,36 @@
+{% extends "layout.html.twig" %}
+
+{% block css %}
+<link href="/css/theater-list.css" rel="stylesheet">
+{% endblock %}
+
+{% block contents %}
+<div class="width mx-auto mb-5 p-3">
+    <div class="breadcrumb-list small mb-5 d-none d-md-block">
+        <a href="{{ path_for('homepage') }}">ホーム　|　</a>
+        <span class="font-weight-bold">劇場一覧</span>
+    </div>
+    
+    <div class="line-height-1">
+        <h2 class="font-weight-bold large text-center text-md-left mb-4 mt-2">劇場一覧</h2>
+    {% for area, theaters in areaToTheaters %}
+        <div class="mb-4">
+            <div class="area-title mb-3 text-white bg-dark-gray small py-2 text-center">{{ theater_area(area) }}地区</div>
+            <ul class="area-select d-md-flex flex-wrap">
+            {% for theater in theaters %}
+                <li class="mb-3">
+                    <a href="#" class="font-weight-bold p-3 border border-gray d-flex align-items-center  mx-0 mx-md-3">
+                        <div class="mr-auto">{{ theater.getNameJa() }}</div>
+                    {% for specialSite in theater.getSpecialSites() %}
+                        <div class="mx-2 logo-{{ specialSite.getName() }}"><img class="w-100" src="/images/common/{{ specialSite.getName() }}_logo.svg"></div>
+                    {% endfor %}
+                    </a>
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+    {% endfor %}
+    </div>
+
+</div>
+{% endblock %}
