@@ -1,0 +1,21 @@
+.area-title {
+    width: 110px;
+}
+.area-select {
+    margin: 0 -1rem;
+}
+.area-select li {
+    width: 50%;
+}
+.area-select img {
+    width: 25px;
+}
+
+@media (max-width: 767.98px) {
+    .area-select {
+        margin: 0;
+    }
+    .area-select li {
+        width: 100%;
+    }
+}

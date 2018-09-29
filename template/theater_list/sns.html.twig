@@ -1,0 +1,40 @@
+{% extends "layout.html.twig" %}
+
+{% block css %}
+<link href="/css/theater-sns-list.css" rel="stylesheet">
+{% endblock %}
+
+{% block contents %}
+<div class="width mx-auto mb-5 p-3">
+    <div class="breadcrumb-list small mb-5 d-none d-md-block">
+        <a href="{{ path_for('homepage') }}">ホーム　|　</a>
+        <span class="font-weight-bold">公式SNSアカウント一覧</span>
+    </div>
+    
+    <div>
+        <h2 class="font-weight-bold large text-center text-md-left mb-4 mt-2">公式SNSアカウント一覧</h2>
+    {% for area, theaters in areaToTheaters %}
+        <div class="mb-4">
+            <div class="area-title mb-3 text-white bg-dark-gray small py-1 text-center">{{ theater_area(area) }}地区</div>
+            <ul class="area-select d-md-flex flex-wrap">
+            {% for theater in theaters %}
+                {% set meta = theater.getMeta() %}
+                <li class="mb-3">
+                    <div class="font-weight-bold px-3 py-2 border-bottom border-gray d-flex mx-0 mx-md-3 align-items-center">
+                        <span class="mr-auto">{{ theater.getNameJa() }}</span>
+                    {% if meta.getFacebook() %}
+                        <a href="https://www.facebook.com/{{ meta.getFacebook() }}" target="_blank" class="border-right px-3"><img src="/images/common/sns_fb.svg"></a>
+                    {% endif %}
+                    {% if meta.getTwitter() %}
+                        <a href="https://twitter.com/{{ meta.getTwitter() }}" target="_blank" class="px-3"><img src="/images/common/sns_twitter.svg"></a>
+                    {% endif %}
+                    </div>
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+    {% endfor %}
+    </div>
+
+</div>
+{% endblock %}

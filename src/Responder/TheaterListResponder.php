@@ -27,4 +27,16 @@ class TheaterListResponder extends BaseResponder
     {
         return $this->view->render($response, 'theater_list/index.html.twig', $data->all());
     }
+    
+    /**
+     * sns
+     *
+     * @param Response   $response
+     * @param Collection $data
+     * @return Response
+     */
+    public function sns(Response $response, Collection $data)
+    {
+        return $this->view->render($response, 'theater_list/sns.html.twig', $data->all());
+    }
 }

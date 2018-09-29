@@ -28,6 +28,19 @@ class TheaterListController extends GeneralController
     }
     
     /**
+     * sns action
+     * 
+     * @param \Slim\Http\Request  $request
+     * @param \Slim\Http\Response $response
+     * @param array               $args
+     * @return string|void
+     */
+    public function executeSns($request, $response, $args)
+    {
+        $this->data->set('areaToTheaters', $this->getTheaters());
+    }
+    
+    /**
      * return theaters
      *
      * @return array

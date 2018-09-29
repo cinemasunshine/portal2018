@@ -19,6 +19,7 @@ $app->group('/news', function () {
 
 $app->group('/theater', function () {
     $this->get('/list', TheaterListController::class . ':index')->setName('theater_list');
+    $this->get('/sns', TheaterListController::class . ':sns')->setName('theater_sns');
 });
 
 $app->get('/trailer', TrailerController::class . ':show')->setName('trailer');
