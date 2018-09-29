@@ -61,9 +61,7 @@ class IndexController extends GeneralController
      */
     protected function getTheaters()
     {
-        $theaters = $this->em
-            ->getRepository(Entity\Theater::class)
-            ->findByActive();
+        $theaters = parent::getTheaters();
         
         $areaToTheaters = [];
         

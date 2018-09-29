@@ -28,4 +28,16 @@ abstract class GeneralController extends BaseController
             ->getRepository(Entity\Campaign::class)
             ->findByPage($pageId);
     }
+    
+    /**
+     * return theaters
+     *
+     * @return Entity\Theater[]
+     */
+    protected function getTheaters()
+    {
+        return $this->em
+            ->getRepository(Entity\Theater::class)
+            ->findByActive();
+    }
 }
