@@ -7,12 +7,14 @@
 
 namespace Cinemasunshine\Portal\ORM\Entity;
 
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Criteria;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Title entity class
  * 
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Cinemasunshine\Portal\ORM\Repository\TitleRepository")
  * @ORM\Table(name="title", options={"collate"="utf8mb4_general_ci"})
  * @ORM\HasLifecycleCallbacks
  */
@@ -136,6 +138,30 @@ class Title extends AbstractEntity
      * @ORM\Column(type="json", nullable=true)
      */
     protected $universal;
+    
+    /**
+     * schedules
+     *
+     * @var Collection
+     * @ORM\OneToMany(targetEntity="Schedule", mappedBy="title", indexBy="id")
+     */
+    protected $schedules;
+    
+    /**
+     * trailers
+     *
+     * @var Collection
+     * @ORM\OneToMany(targetEntity="Trailer", mappedBy="title", indexBy="id")
+     */
+    protected $trailers;
+    
+    /**
+     * campaigns
+     *
+     * @var Collection
+     * @ORM\OneToMany(targetEntity="Campaign", mappedBy="title", indexBy="id")
+     */
+    protected $campaigns;
     
     /**
      * レイティング区分
@@ -484,6 +510,54 @@ class Title extends AbstractEntity
     public function setUniversal(array $universal)
     {
         throw new \LogicException('Not allowed.');
+    }
+    
+    /**
+     * get schedules
+     *
+     * @return Collection
+     */
+    public function getSchedules()
+    {
+        $criteria = Criteria::create()
+            ->where(Criteria::expr()->eq('isDeleted', false))
+            ->andWhere(Criteria::expr()->lte('publicStartDt', new \DateTime('now')))
+            ->andWhere(Criteria::expr()->gt('publicEndDt', new \DateTime('now')));
+            
+        return $this->schedules->matching($criteria);
+    }
+    
+    /**
+     * get trailers
+     *
+     * @return Collection
+     */
+    public function getTrailers()
+    {
+        $criteria = Criteria::create()
+            ->where(Criteria::expr()->eq('isDeleted', false))
+            ->orderBy([ 'createdAt' => Criteria::DESC ]);
+        
+        return $this->trailers->matching($criteria);
+    }
+    
+    /**
+     * get campaigns
+     * 
+     * 表示順管理は想定していない。
+     * 作品に紐付けられたものを登録された順でよいとのこと。
+     *
+     * @return Collection
+     */
+    public function getCampaigns()
+    {
+        $criteria = Criteria::create()
+            ->where(Criteria::expr()->eq('isDeleted', false))
+            ->andWhere(Criteria::expr()->lte('startDt', new \DateTime('now')))
+            ->andWhere(Criteria::expr()->gt('endDt', new \DateTime('now')))
+            ->orderBy([ 'createdAt' => Criteria::ASC ]);
+            
+        return $this->campaigns->matching($criteria);
     }
     
     /**

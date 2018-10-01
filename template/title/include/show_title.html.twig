@@ -1,14 +1,14 @@
-{% set title = schedule.getTitle() %}
-<div class="movie">
-    <div class="border border-gray position-relative d-md-flex p-2 mb-4">
-        <div class="movie-image">
-        {% if title.getImage() %}
-            <img src="{{ file_url(title.getImage()) }}" class="w-100">
-        {% endif %}
-        </div>
-        <div class="movie-info pt-md-2 pl-md-3">
+<div class="movie d-md-flex mb-4">
+    {% set schedule = title.getSchedules().get(0) %}
+    
+    <div class="movie-image py-3 py-md-0 mb-3">
+    {% if title.getImage() %}
+        <img src="{{ file_url(title.getImage()) }}" class="w-100">
+    {% endif %}
+    </div>
+        <div class="movie-info pt-md-2 pl-md-3 px-3 px-md-0">
             <div class="movie-detail mb-3">
-                <p class="title x-large"><a class="" href="{{ path_for('title_show', { id: title.getId() }) }}">{{ title.getName() }}</a></p>
+                <h2 class="title x-large font-weight-bold mb-3">{{ title.getName() }}</a></h2>
                 <div class="d-flex mb-3">
                 {% set systems = [] %}
                 {% for showingFormat in schedule.getShowingFormats() %}
@@ -28,6 +28,7 @@
                     <div class="icon-4dx py-1 bg-dark-gray text-center mr-2"><img src="/images/common/4dx_logo_wht.svg"></div>
                 {% endif %}
                 </div>
+                
                 <div class="d-flex">
                 {% if title.getRating() == 3 %}
                     <div class="icon-r mr-2"><img src="/images/movie/r_15.svg"></div>
@@ -43,7 +44,7 @@
                 {% endif %}
                 </div>
             </div>
-            <div class="movie-area">
+            <div class="movie-area py-2 px-1">
                 <div class="d-flex flex-wrap">
                 {% for theater in theaters %}
                     {% set isShowing = false %}{# ループ前に宣言する #}
@@ -63,8 +64,37 @@
                     </div>
                 {% endfor %}
                 </div>
-                <div class="x-small ml-2 ml-md-0">{{ title.getCredit() }}</div>
+                <div class="text-dark-gray x-small">{{ title.getCredit() }}</div>
             </div>
         </div>
     </div>
+    <div class="px-3 px-md-0">
+        <div>
+            <p class="desc">{{ title.getCatchcopy() }}</p>
+            <p class="mb-0 py-3">{{ title.getIntroduction() }}</p>
+        </div>
+        <div class="d-md-flex mb-3 align-items-center">
+            <div class="icon-supervisor text-white bg-dark-gray text-center mb-2 mb-md-0 py-1">監督</div>
+            <div class="person pl-md-3">{{ title.getDirector() }}</div>
+        </div>
+        <div class="d-md-flex mb-3 align-items-center">
+            <div class="icon-appearance text-white bg-dark-gray text-center py-1 mb-2 mb-md-0">出演</div>
+            <div class="person pl-md-3">{{ title.getCast() }}</div>
+        </div>
+    {% if title.getOfficialSite() %}
+        <div class="official-site mb-4"><a href="{{ title.getOfficialSite() }}" class="text-light-blue" target="_blank">公式サイト</a></div>
+    {% endif %}
+        <p class="small mb-3 text-red">※本編には光が点滅するシーンがいくつか含まれています。日本公開版におきましては、光に敏感なお客様に配慮して、該当箇所の点滅頻度や輝度の調整を含む修正を施しております。しかしながら、光に対する感受性は個々のお客様によって異なりますのでご注意ください。</p>
+    </div>
+
+{% set trailer = title.getTrailers().get(0) %}
+{% if trailer %}
+    <div class="details-movie mx-auto mb-5">
+        <div class="video">
+            <iframe type="text/html" src="https://www.youtube.com/embed/{{ trailer.getYoutube() }}?rel=0&loop=1&playsinline=1&rel=0&mute=1&autoplay=1&showinfo=0&disablekb=1&modestbranding=1&color=white"
+                frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+{% endif %}
+    
 </div>

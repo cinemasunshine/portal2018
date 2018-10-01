@@ -7,6 +7,8 @@
 
 namespace Cinemasunshine\Portal\Controller;
 
+use Slim\Exception\NotFoundException;
+
 use Cinemasunshine\Portal\ORM\Entity;
 
 /**
@@ -53,5 +55,30 @@ class TitleController extends GeneralController
         return $this->em
             ->getRepository(Entity\Schedule::class)
             ->findSoon();
+    }
+    
+    /**
+     * show action
+     * 
+     * @param \Slim\Http\Request  $request
+     * @param \Slim\Http\Response $response
+     * @param array               $args
+     * @return string|void
+     */
+    public function executeShow($request, $response, $args)
+    {
+        $title = $this->em
+            ->getRepository(Entity\Title::class)
+            ->findOneById($args['id']);
+        
+        if (is_null($title)) {
+            throw new NotFoundException($request, $response);
+        }
+        
+        /**@var Entity\Title $title */
+        
+        $this->data->set('title', $title);
+        
+        $this->data->set('theaters', $this->getTheaters());
     }
 }

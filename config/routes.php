@@ -20,6 +20,7 @@ $app->group('/news', function () {
 
 $app->group('/title', function() {
     $this->get('/list', TitleController::class . ':list')->setName('title_list');
+    $this->get('/{id}', TitleController::class . ':show')->setName('title_show');
 });
 
 $app->group('/theater', function () {

@@ -27,4 +27,16 @@ class TitleResponder extends BaseResponder
     {
         return $this->view->render($response, 'title/list.html.twig', $data->all());
     }
+    
+    /**
+     * show
+     *
+     * @param Response   $response
+     * @param Collection $data
+     * @return Response
+     */
+    public function show(Response $response, Collection $data)
+    {
+        return $this->view->render($response, 'title/show.html.twig', $data->all());
+    }
 }
