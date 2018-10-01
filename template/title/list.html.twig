@@ -1,0 +1,65 @@
+{% extends "layout.html.twig" %}
+
+{% block css %}
+<link href="/css/movie/list.css" rel="stylesheet">
+{% endblock %}
+
+{% block javascript %}
+<script src="/js/movie/list.js"></script>
+{% endblock %}
+
+{% block contents %}
+<div class="width mx-auto p-3">
+    <div class="breadcrumb-list small mb-5 d-none d-md-block">
+        <a href="{{ path_for('homepage') }}">ホーム　|　</a>
+        <span class="font-weight-bold">作品一覧</span>
+    </div>
+
+    <h2 class="font-weight-bold large text-center text-md-left mb-4 mt-3">作品一覧</h2>
+    <form>
+        <div class="form-group mb-5">
+            <p class="text-center mb-2">ご利用の劇場を選択してください</p>
+            <select class="form-control region-selection shadow-01 mx-auto">
+                <option value="" selected>すべての劇場</option>
+            {% for theater in theaters %}
+                <option value="{{ theater.getId() }}">{{ theater.getNameJa() }}</option>
+            {% endfor %}
+            </select>
+        </div>
+    </form>
+
+
+    <div class="tabs mx-auto d-flex mb-5">
+        <div class="w-50 text-center active">
+            <a class="py-2 d-block border-blue text-blue" href="#"
+                data-type="screening">上映中</a>
+        </div>
+        <div class="w-50 text-center">
+            <a class="py-2 d-block border-gray text-dark-gray" href="#" data-type="scheduled">上映予定</a>
+        </div>
+    </div>
+    
+    <div class="screening d-block">
+    
+    {% for schedule in screeningSchedules %}
+        {% include 'title/include/list_title.html.twig' with {
+            schedule: schedule,
+            theaters: theaters
+        } only %}
+    {% endfor %}
+    
+    </div>
+    
+    <div class="scheduled d-none">
+    
+    {% for schedule in soonSchedules %}
+        {% include 'title/include/list_title.html.twig' with {
+            schedule: schedule,
+            theaters: theaters
+        } only %}
+    {% endfor %}
+    
+    </div>
+    
+</div>
+{% endblock %}
