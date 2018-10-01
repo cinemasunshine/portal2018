@@ -1,14 +1,14 @@
 
 <h3 class="width mx-auto d-md-block d-none pt-4 px-3 line-height-1 font-weight-bold large">劇場一覧<br>
     <span class="small">THEATER</span></h3>
-<div class="width mx-auto d-md-flex py-3 px-3">
+<div class="width mx-auto d-md-flex py-4 px-3">
     <div class="region-selection-sp mb-4 plus-button d-md-none">
         <a href="#">
             <div>劇場一覧</div>
         </a>
     </div>
     <div class="region-selection d-md-flex d-none align-items-center bg-white mr-md-3">
-        <div class="mb-4 mb-md-0 py-3 py-md-2 px-3 small">
+        <div class="mb-4 mb-md-0 py-3 py-md-2 px-3 small w-100">
         {% for area, theaters in areaToTheaters %}
             {% if loop.last %}
             <div class="d-md-flex d-block align-items-center">

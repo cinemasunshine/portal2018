@@ -26,19 +26,16 @@
   margin: 0 15px;
 }
 .rank-01 {
-  background-color: #FFD700;
-  background-image: linear-gradient(to top left, #F7DE05, #DA8E00, #EDAC06, #F7DE05, #ECB802, #DAAF08, #B67B03);
-  text-shadow: #777 1px 1px 2px;
+  background-color: #d6cb58;
+  background-image: linear-gradient(to right, #d6cb58, #785d24);
 }
 .rank-02 {
   background-color: #C0C0C0;
-  background-image: linear-gradient(to top left, #A5A5A5, #BABAC2, #E8E8E8, #A5A5A5, #BABAC2);
-  text-shadow: #777 1px 1px 2px;
+  background-image: linear-gradient(to right, #bcbcbc, #8b8b8b);
 }
 .rank-03 {
   background-color: #C47222;
-  background: linear-gradient(to top left, #bf6e4e,#8c3310, #cf7d5c,#752201,#bf6e4e);
-  text-shadow: #777 1px 1px 2px;
+  background: linear-gradient(to right, #cc9272, #97461a);
 }
 .rank-04 {
   background-color: #7e7e7e;
@@ -95,7 +92,7 @@
   }
   .region-selection-sp div {
     padding: 3px 0;
-    background-image: url(/images/top/theater.svg);
+    background-image: url(/images/common/theater.svg);
     background-repeat: no-repeat;
     background-size: 15px;
     background-position: 10px center;
