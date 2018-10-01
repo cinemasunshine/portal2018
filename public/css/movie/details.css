@@ -1,0 +1,152 @@
+.region-selection div {
+    background-image: url(/images/top/theater.svg);
+    background-repeat: no-repeat;
+    background-size: 24px;
+    background-position: 18px center;
+}
+
+.region-selection {
+    overflow: hidden;
+    max-width: 600px;
+}
+
+.region-selection a {
+    display: block;
+    padding: 15px 0;
+    text-align: center;
+    color: #333;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.movie-image {
+    width: 22%;
+}
+
+.movie-info {
+    width: 78%;
+}
+
+.area-button {
+    width: 20%;
+}
+
+.area-button a,
+.area-button span {
+    border: 1px solid;
+    height: 50px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.icon-2d, .icon-3d, .icon-imax, .icon-4dx {
+    width: 70px;
+}
+.icon-imax img {
+    width: 50px;
+}
+.icon-4dx img {
+    width: 40px;
+    height: 14px;
+}
+.icon-r {
+    width: 44px;
+}
+.icon-onsei, .icon-jimaku {
+    width: 60px;
+}
+.icon-supervisor , .icon-appearance {
+    width: 80px;
+}
+.person {
+    width: calc(100% - 80px);
+    line-height: 30px;
+}
+.official-site a {
+    border-bottom: 1px solid rgb(0, 114, 206);
+}
+.desc {
+    font-size: 28px;
+}
+.back-list {
+    border-radius: 5px;
+    overflow: hidden;
+    max-width: 400px;
+}
+.back-list a {
+    display: block;
+    padding: 15px 0;
+    text-align: center;
+    background-color: rgb(84, 84, 84);
+} 
+
+.details-movie {
+    max-width: 600px;
+}
+
+
+@media (max-width: 767.98px) {
+    .area-button {
+        width: 50%;
+    }
+    .area-button a {
+        display: block;
+        min-width: 0;
+    }
+    .movie-image {
+        width: auto;
+        background-color: #ddd;
+    }
+    .type-imax .movie-image,
+    .type-4dx .movie-image {
+        width: auto;
+        background-color: #555;
+        margin: 0 -0.5rem;
+    }
+    .movie-image img {
+        max-width: 250px;
+        margin: 0 auto;
+        display: block;
+    }
+    .sp-bg {
+        background-color: #ddd;
+    }
+    /* .type-imax .sp-bg,
+    .type-4dx .sp-bg, {
+        background-color: #555;
+    } */
+    .movie-info {
+        width: auto;
+    }
+    .area-button {
+        width: 25%;
+    }
+    /* .movie-area {
+        margin: 0 -0.25rem;
+        background-color: #ddd;
+        
+    } */
+    .movie-area {
+        margin: -0.5rem;
+        background-color: #ddd;
+        padding: 0.5rem 0.25rem;
+    }
+    .type-imax .movie-area,
+    .type-4dx .movie-area {
+        margin: -0.5rem;
+        background-color: #000;
+        padding: 0.5rem 0.25rem;
+    }
+    .desc {
+        font-size: 14px;
+        font-weight: 700;
+    }
+    .person {
+        line-height: normal;
+        width: 100%;
+    }
+    .details-movie {
+        max-width: 100%;
+    }
+}

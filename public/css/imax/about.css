@@ -1,0 +1,56 @@
+.introduction-video {
+    max-width: 600px;
+}
+.function {
+    max-width: 1000px;
+}
+.function ul {
+    margin: -1.5rem;
+}
+.function li {
+    width: 50%;
+}
+.function li .title {
+    height: 17px;
+}
+.prices .price {
+    border-radius: 3rem;
+}
+.prices li .title {
+    width: 200px;
+}
+.prices li .description {
+    width: calc(100% - 200px);
+    line-height: 1.6;
+}
+.add-prices li .title {
+    width: 300px;
+}
+.add-prices li .description {
+    width: calc(100% - 300px);
+    line-height: 1.6;
+}
+.note dd {
+    line-height: 1.6;
+}
+@media (max-width: 767.98px) {
+    .function ul {
+        margin: 0;
+    }
+    .function li {
+        width: auto;
+    }
+    .prices li .title {
+        width: auto;
+    }
+    .prices li .description {
+        width: auto;
+    }
+    .add-prices li .title {
+        width: 50%;
+        line-height: 1.6;
+    }
+    .add-prices li .description {
+        width: 50%;
+    }
+}

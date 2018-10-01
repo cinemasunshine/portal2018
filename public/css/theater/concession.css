@@ -1,0 +1,46 @@
+.softdrink {
+    width: 50%;
+}
+.softdrink p {
+    line-height: 1.6;
+}
+
+
+.screen {
+    z-index: 1302;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.screen .close {
+    height:40px; 
+    width:40px;
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.screen .close:before, 
+.screen .close:after {
+    content: '';
+    height: 4px;
+    width: 40px;
+    display: block;
+    background: #FFF;
+    border-radius: 10px;
+    position: absolute;
+    top: 18px;
+    left: 0px;
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+  
+.screen .close:after {
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+@media (max-width: 992px) {
+    .softdrink {
+        width: 60%;
+    }
+}

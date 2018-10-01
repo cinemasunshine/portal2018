@@ -1,0 +1,17 @@
+.table td, .table th {
+    vertical-align: middle;
+}
+.special-facility img {
+    width: 340px;
+}
+
+.special-facility a {
+    text-decoration: underline; 
+    color: rgb(3, 80, 162);
+}
+
+@media (max-width: 767.98px) {
+    .special-facility img {
+        width: 100%;
+    } 
+}

@@ -1,0 +1,12 @@
+.back-button {
+    border-radius: 5px;
+    overflow: hidden;
+    max-width: 600 px;
+}
+.back-button a {
+    display: block;
+    padding: 15px 0;
+    text-align: center;
+    background-color: rgb(127, 127, 127);
+    color: rgb(255, 255, 255);
+} 

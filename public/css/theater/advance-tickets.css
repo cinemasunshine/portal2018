@@ -1,0 +1,35 @@
+.advance-information .image {
+    width: 155px;
+}
+.advance-information .detail {
+    width: calc(100% - 155px);
+}
+.advance-information .detail dt {
+    width: 8em;
+}
+.advance-information .detail dd {
+    width: calc(100% - 8em);
+}
+.advance-tooltip {
+    opacity: 1 !important;
+}
+.advance-tooltip .tooltip-inner {
+    width: 300px;
+}
+@media (max-width: 767.98px) {
+    .advance-information .image {
+        width: 25%;
+    }
+    .advance-information .detail {
+        width: 75%;
+    }
+    .advance-information .detail dt {
+        width: 6.5em;
+    }
+    .advance-information .detail dd {
+        width: calc(100% - 6.5em);
+    }
+    .advance-tooltip .tooltip-inner {
+        width: 200px;
+    }
+}

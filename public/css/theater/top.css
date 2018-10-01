@@ -1,0 +1,265 @@
+
+/* IMAX 4dx */
+.imax-4dx {
+    background-color: rgb(247, 247, 247);
+    height: 140px;
+}
+.imax img, .fourdx img {
+    height: 50px;
+}
+.imax img {
+    padding: 14px;
+}
+
+/* ピックアップ */
+.pickup {
+    max-height:280px;
+    width: calc(100% - 336px);
+}
+.pickup p {
+    line-height:1.6;
+}
+.pickup-details {
+    width: 78%;
+}
+.pickup img {
+    max-width: 400px;
+}
+
+.online-mvtk-button  {
+    margin-bottom: 2rem;
+}
+.online-mvtk-button .button-03 a {
+    padding: 25px 0;
+}
+
+.online-ticket-button {
+    border-radius: 5px;
+    overflow: hidden;
+    width: auto;
+}
+.online-ticket-button a {
+    display: block;
+    padding: 25px 0;
+    text-align: center;
+    background-color: #f1f1f1;
+    color: #333;
+} 
+
+/* .reservation-contents-button {
+    border-radius: 5px;
+    overflow: hidden;
+    max-width: 280px;
+}
+.reservation-contents-button a {
+    display: block;
+    padding: 15px 0;
+    text-align: center;
+    background-color: #f1f1f1;
+    color: #333;
+}  */
+
+/* オンラインチケット購入に関する注意事項 */
+
+
+/* イベント情報 */
+.event-information li {
+    border-left: 1px solid #ccc;
+}
+.event-information li:last-child {
+    border-right: 1px solid #ccc;
+}
+.event-information li .image {
+    width: 100%;
+    padding-top: 75%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+/* 開場時間 */
+.opening-time .swiper-slide {
+    width: auto !important;
+}
+
+/* スケジュール */
+.schedule-title h3 {
+    border-width: 4px !important;
+}
+.schedule-slider .swiper-container {
+    max-width: 1050px;
+}
+.schedule-slider a {
+    transition: all 0.4s;
+    border-bottom: 4px solid transparent;
+}
+.schedule-sort {
+    max-width: 1050px;
+}
+.schedule-sort a {
+    border-bottom: 4px solid;
+}
+.schedule-sort .active a {
+    border-color: #0563c1;
+}
+.schedule-sort .active a {
+    max-width: 1050px;
+}
+.schedule-sort-film .performances li {
+    width: 20%;
+}
+.schedule-sort-film .performances a.bg-light-gray {
+    pointer-events: none;
+}
+.print-button {
+    top: 1rem;
+    right: 0;
+}
+.selected-date.fixed-top {
+    -webkit-animation: show 0.2s both;
+    animation: show 0.2s both;
+}
+.time-icon {
+    width: 14px;
+    height: 14px;
+    display: inline-block;
+    background-image: url(/images/theater/top/date_gray.svg);
+    background-size: contain;
+}
+.status-01 {
+    text-indent: -9999px;
+    width: 14px;
+    height: 14px;
+    display: inline-block;
+    background-image: url(/images/theater/top/status_01.svg);
+    background-size: contain;
+}
+.status-02 {
+    text-indent: -9999px;
+    width: 14px;
+    height: 14px;
+    display: inline-block;
+    background-image: url(/images/theater/top/status_02.svg);
+    background-size: contain;
+}
+.first {
+    background-image: url(/images/theater/top/first_show_white.svg);
+    background-size: 12px;
+    background-repeat: no-repeat;
+    background-position: 5px 5px;
+}
+.late {
+    background-image: url(/images/theater/top/late_show_white.svg);
+    background-size: 12px;
+    background-repeat: no-repeat;
+    background-position: 5px 5px;
+}
+
+@-webkit-keyframes show {
+	0% {
+		-webkit-transform:translate(0,-100px);
+		transform:translate(0,-100px);
+	}
+	100% {
+		-webkit-transform:translate(0,0);
+		transform:translate(0,0);
+	}
+}
+
+@keyframes show {
+	0% {
+		-webkit-transform:translate(0,-100px);
+		transform:translate(0,-100px);
+	}
+	100% {
+		-webkit-transform:translate(0,0);
+		transform:translate(0,0);
+	}
+}
+
+@media (max-width: 767.98px) {
+    .event-information li,
+    .event-information li:last-child {
+      border: none;
+    }
+    .event-information li:nth-child(odd) {
+      border-right: 1px solid #ccc;
+    }
+    .notes {
+        font-weight: normal;
+    }
+    .opening-time .swiper-slide {
+        width: 100% !important;
+    }
+    .opening-time .swiper-slide .border-bottom {
+        border: none !important;
+    }
+    .opening-time-list {
+        margin: 0 -1rem;
+        background-color: #ddd;
+    }
+    .opening-time .swiper-button-next {
+        border-top: 8px solid transparent;
+        border-bottom: 8px solid transparent;
+        border-left: 16px solid #888;
+        width: auto;
+        height: auto;
+        margin-top: -8px;
+    }
+    .opening-time .swiper-button-prev {
+        border-top: 8px solid transparent;
+        border-bottom: 8px solid transparent;
+        border-right: 16px solid #888;
+        width: auto;
+        height: auto;
+        margin-top: -8px;
+    }
+    .opening-time .swiper-button-next.swiper-button-disabled, 
+    .opening-time .swiper-button-prev.swiper-button-disabled {
+        opacity: 0;
+    }
+    .schedule-title {
+        text-align: center;
+    }
+    .schedule-sort-film-sp .purchase-button > a,
+    .schedule-sort-film-sp .purchase-button > span {
+        width: 100px;
+    }
+    .schedule-sort-film-sp a[aria-expanded=false] {
+        background-image: url(/images/common/accordion_open.svg);
+        background-repeat: no-repeat;
+        background-size: 15px;
+        background-position: right 10px center;
+    }
+    .schedule-sort-film-sp a[aria-expanded=true] {
+        background-image: url(/images/common/accordion_close.svg);
+        background-size: 15px;
+    }
+    .schedule-sort-film-sp .collapsing {
+        transition: height 0.35s ease;
+    }
+    .first {
+        background-image: url(/images/theater/top/first_show_black.svg);
+        background-size: 10px;
+        background-repeat: no-repeat;
+        background-position: 5px 5px;
+    }
+    .late {
+        background-image: url(/images/theater/top/late_show_black.svg);
+        background-size: 10px;
+        background-repeat: no-repeat;
+        background-position: 5px 5px;
+    }
+}
+
+@media (max-width: 576px) {
+    .pickup img {
+        max-width: 200px;
+    }
+    .pickup-image {
+        text-align: center;
+    }
+    .pickup-details {
+        width: 100%;
+    }
+}

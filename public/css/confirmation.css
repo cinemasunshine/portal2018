@@ -1,0 +1,43 @@
+.contact-details {
+    max-width: 1000px;
+}
+.contact-details p {
+    border-color: rgb(157, 157, 157);
+}
+.edit {
+    border-radius: 5px;
+    overflow: hidden;
+    width: 50%;
+}
+.edit a {
+    display: block;
+    padding: 15px 0;
+    text-align: center;
+    background-color: rgb(127, 127, 127);
+    color: rgb(255, 255, 255);
+} 
+.send {
+    border-radius: 5px;
+    overflow: hidden;
+    width: 50%;
+    display: block;
+    padding: 15px 0;
+    text-align: center;
+    background-color: rgb(0, 138, 232);
+    color: rgb(255, 255, 255);
+} 
+button {
+    border: none;
+}
+button:hover {
+    transition: opacity 0.5s;
+    color: #fff;
+    opacity: 0.7;
+    text-decoration: none;
+}
+
+@media (max-width: 767.98px) {
+    .edit, .send {
+        width: 100%;
+    }
+}

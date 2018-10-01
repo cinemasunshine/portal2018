@@ -1,0 +1,59 @@
+.contact-details {
+    max-width: 1000px;
+}
+.checklist {
+    border: 2px solid rgb(199, 199, 199);
+    border-radius: 7px;
+}
+.sentence {
+    line-height: 1.7;
+}
+.inquiry-type {
+    width: 50%;
+}
+.form-control  {
+    padding: .5rem .75rem;
+}
+select.form-control:not([size]):not([multiple]) {
+    height: calc(2.25rem + 6px);
+}
+button {
+    border-radius: 5px;
+    overflow: hidden;
+    width: 600px;
+    padding: 0;
+}
+button a {
+    display: block;
+    padding: 15px 0;
+    text-align: center;
+    background-color: rgb(0, 138, 232);
+    color: rgb(255, 255, 255);
+} 
+button a:hover {
+    transition: opacity 0.5s;
+    color: #fff;
+    opacity: 0.7;
+    text-decoration: none;
+}
+.required {
+    border: 2px solid rgb(219, 6, 6);
+    padding: 2px 17px;
+}
+button {
+    border: none;
+}
+
+@media (max-width: 767.98px) {
+    .send {
+        width: 100%;
+    }
+    .checklist {
+        height: 450px;
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    .inquiry-type {
+        width: auto;
+    }
+}

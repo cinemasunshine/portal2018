@@ -1,0 +1,66 @@
+.mail-magazine-width {
+    max-width: 1000px;
+}
+.mail-magazine-width img {
+    max-width: 110px;
+    width: 100%;
+}
+.benefits {
+    background-color: rgb(246, 246, 246);
+}
+.benefits-details {
+    max-width: 1000px;
+}
+.benefits img {
+    max-width: 120px;
+}
+.mail-magazine-step li .position-relative {
+    padding-left: calc(60px + 2rem);
+}
+.number {
+    height: 60px;
+    width: 60px;
+    line-height: 60px;
+    top: 50%;
+    left: 1rem;
+    margin-top: -30px;
+}
+.mail-magazine-step {
+    margin: 0 -1rem;
+}
+.mail-magazine-step li {
+    width: 50%;
+}
+.registration {
+    border-radius: 5px;
+    overflow: hidden;
+    width: 600px;
+}
+.registration a {
+    display: block;
+    padding: 15px 0;
+    text-align: center;
+    background-color: rgb(0, 138, 232);
+    color: rgb(255, 255, 255);
+} 
+
+@media (max-width: 767.98px) {
+    .mail-magazine-step {
+        margin: 0;
+    }
+    .mail-magazine-step li {
+        width: 100%;
+    }
+    .mail-magazine-step li .position-relative {
+        padding-left: calc(40px + 2rem);
+    }
+    .number {
+        height: 40px;
+        width: 40px;
+        line-height: 40px;
+        margin-top: -20px;
+    }
+    .registration {
+        width: 100%;
+    }
+}

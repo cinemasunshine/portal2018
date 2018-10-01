@@ -341,6 +341,7 @@ header .position-fixed {
 .news li {
     border-left: 1px solid #999;
 }
+.news li:last-child,
 .news li:nth-child(4n) {
     border-right: 1px solid #999;
 }
@@ -554,7 +555,6 @@ footer {
 }
 
 .black-button {
-    overflow: hidden;
     max-width: 640px;
 }
 .black-button a {

@@ -1,0 +1,43 @@
+.mvtk-width {
+    max-width: 1000px;
+}
+.mvtk-button {
+    background-color: rgb(222, 222, 222);
+}
+.image-logo {
+    width: 32%;
+}
+.mvtk-details {
+    width: 68%;
+}
+.sp-image {
+    display: none;
+}
+.mvtk-2d {
+    border-left: 2px solid rgb(0, 114, 206);
+}
+.mvtk-2d a {
+    color: rgb(0, 114, 206);
+}
+
+
+
+@media (max-width: 767.98px) {
+    .image-logo, .mvtk-details {
+        width: 100%;
+    }
+    .image-logo {
+        max-width: 275px;
+    }
+    .pc-image {
+        display: none;
+    }
+    .sp-image {
+        display: block;
+        text-align: center;
+    }
+    .contents img {
+        max-width: 550px;
+    }
+
+}

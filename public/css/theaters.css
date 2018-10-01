@@ -1,0 +1,36 @@
+table {
+    line-height: 1.6;
+}
+th, 
+td {
+    vertical-align: middle;
+}
+.theater-table th {
+    width: 25%;
+}
+
+.theater-table td {
+    width: 75%;
+}
+
+.screen-table th {
+    width: 50%;
+}
+
+.screen-table td {
+    width: 50%;
+}
+
+.theater-button {
+    max-width: 600px;
+}
+
+/* img {
+    max-height: 310px;
+} */
+
+/* @media (max-width: 767.98px) {
+    img {
+        max-height: auto;
+    }
+} */

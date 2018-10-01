@@ -1,0 +1,15 @@
+
+/* よくある質問 */
+.headline a {
+    text-decoration: underline;
+}
+.pickup-button {
+    border-radius: 5px;
+}
+.q {
+    color: rgb(237, 0, 0);
+}
+.blue a {
+    text-decoration: underline; 
+    color: rgb(3, 80, 162);
+}

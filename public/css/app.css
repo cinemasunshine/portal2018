@@ -1,0 +1,125 @@
+.app-width {
+    max-width: 1000px;
+}
+.sentence {
+    line-height: 1.6;
+}
+.headline {
+    font-size: 18px; 
+    line-height: 1.9;
+}
+.apps {
+    background-color: rgb(246, 246, 246);
+}
+.smp-img img {
+    max-width: 350px;
+}
+.appli-logo img {
+    max-width: 120px;
+}
+.benefits {
+    border-bottom: 1px solid rgb(154, 154, 154);
+}
+.benefits-icon {
+    width: 280px;
+}
+.benefits-icon img {
+    max-width: 100px;
+}
+.benefits-img {
+    width: calc(100% - 280px);
+    text-align: right;
+}
+.benefits-img img {
+    width: 100%;
+    max-width: 450px;
+}
+.members-card {
+    background-color: rgb(0, 73, 134);
+}
+.members-card img {
+    width: 210px;
+    width: 100%;
+}
+.free-app li .position-relative {
+    padding-left: calc(60px + 2rem);
+}
+.free-app {
+    margin: 0 -1rem;
+}
+.free-app li {
+    width: 50%;
+}
+.free-app-item {
+    border: 1px solid rgb(199, 199, 199);
+}
+.free-app-item img {
+    max-width: 300px;
+
+}
+.ios img {
+    width: 150px;
+}
+.android img {
+    width: 172px;
+}
+.search {
+    width: 250px;
+}
+
+
+
+@media (max-width: 767.98px) {
+    .smp-img img {
+        max-width: 280px;
+    }
+    .headline {
+        line-height: 1.7;
+    }
+    .appli-logo img {
+        max-width: 75px;
+    }
+    .benefits {
+        border-bottom: none;
+    }
+    .benefits-icon {
+        width: 100%;
+    }
+    .benefits-img {
+        width: 100%;
+        text-align: center;
+    }
+    .benefits-icon img {
+        max-width: 80px;
+    }
+    .benefits-img img {
+        width: 290px;
+    }
+    .members-card img {
+        width: 120px;
+    }
+    .free-app {
+        margin: 0;
+    }
+    .free-app li {
+        width: 100%;
+    }
+    .free-app li .position-relative {
+        padding-left: calc(40px + 2rem);
+    }
+    .free-app-item {
+        border: none;
+    }
+    .free-app-item img {
+        max-width: 280px;
+    }
+    .ios img {
+        width: 215px;
+    }
+    .android img {
+        width: 248px;
+    }
+    .search {
+        width: auto;
+    }
+}

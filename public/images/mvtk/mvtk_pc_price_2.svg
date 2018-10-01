@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 22.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [
+	<!ENTITY st0 "fill:none;stroke:#C7C7C7;stroke-width:2.818;stroke-miterlimit:10;">
+	<!ENTITY st1 "font-family:'HiraKakuPro-W6-83pv-RKSJ-H';">
+	<!ENTITY st2 "font-size:32px;">
+	<!ENTITY st3 "font-family:'HiraKakuPro-W3-83pv-RKSJ-H';">
+	<!ENTITY st4 "font-size:28px;">
+	<!ENTITY st5 "letter-spacing:-1;">
+	<!ENTITY st6 "letter-spacing:-2;">
+	<!ENTITY st7 "letter-spacing:-14;">
+	<!ENTITY st8 "fill:#0071D0;">
+	<!ENTITY st9 "fill:#FFFFFF;">
+	<!ENTITY st10 "font-size:50px;">
+]>
+<svg version="1.1" id="レイヤー_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+	 y="0px" viewBox="0 0 1147.6 182.8" style="enable-background:new 0 0 1147.6 182.8;" xml:space="preserve">
+<g>
+	<rect x="1.4" y="1.4" style="&st0;" width="355" height="180"/>
+	<text transform="matrix(1 0 0 1 114.9087 56.4394)"><tspan x="0" y="0" style="&st1; &st2;">鑑賞料金</tspan><tspan x="-71.3" y="40.5" style="&st3; &st4; &st5;">（</tspan><tspan x="-44.4" y="40.5" style="&st3; &st4; &st6;">ム</tspan><tspan x="-19.3" y="40.5" style="&st3; &st4; &st5;">ビ</tspan><tspan x="7.4" y="40.5" style="&st3; &st4; &st6;">チ</tspan><tspan x="33.3" y="40.5" style="&st3; &st4; &st5;">ケ</tspan><tspan x="60.2" y="40.5" style="&st3; &st4;">券</tspan><tspan x="88.2" y="40.5" style="&st3; &st4;">利</tspan><tspan x="115.7" y="40.5" style="&st3; &st4;">用</tspan><tspan x="143.3" y="40.5" style="&st3; &st4;">時</tspan><tspan x="171.3" y="40.5" style="&st3; &st4; &st7;">）</tspan></text>
+	<text transform="matrix(1 0 0 1 155.245 144.4401)" style="&st1; &st2;">¥0</text>
+</g>
+<g>
+	<rect x="472.4" y="1.4" style="&st0;" width="355" height="180"/>
+	<text transform="matrix(1 0 0 1 549.4448 68.4394)"><tspan x="0" y="0" style="&st1; &st2;">4</tspan><tspan x="22.8" y="0" style="&st1; &st2; &st5;">D</tspan><tspan x="47" y="0" style="&st1; &st2;">X鑑賞料金</tspan></text>
+	<text transform="matrix(1 0 0 1 587.7497 156.4401)" style="&st1; &st2;">¥1,000</text>
+</g>
+<g>
+	<path style="&st8;" d="M414.4,63.4c-15.5,0-28,12.6-28,28s12.6,28,28,28c15.5,0,28-12.6,28-28S429.9,63.4,414.4,63.4z"/>
+	<polygon style="&st9;" points="426.5,93.8 416.8,93.8 416.8,103.5 412,103.5 412,93.8 402.3,93.8 402.3,89 412,89 412,79.3 
+		416.8,79.3 416.8,89 426.5,89 	"/>
+</g>
+<polygon style="&st8;" points="877.8,53.8 915.4,91.4 877.8,129 "/>
+<text transform="matrix(1 0 0 1 954.5068 65.3941)"><tspan x="0" y="0" style="&st1; &st2;">追加料金合計</tspan><tspan x="-1.1" y="71.8" style="&st8; &st1; &st10;">¥1,000</tspan></text>
+</svg>

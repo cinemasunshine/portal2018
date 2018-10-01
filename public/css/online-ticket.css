@@ -1,0 +1,41 @@
+.online-width {
+    max-width: 1000px;
+}
+.entry {
+    max-width: 814px;
+}
+.entry ul {
+    margin: 0 -0.5rem;
+}
+.entry li {
+    width: 33.3%;
+}
+.recommend {
+    color: rgb(0, 113, 208);
+    border: 1px solid rgb(0, 113, 208);
+}
+.sentence {
+    line-height: 1.8;
+}
+.merit_1_icon, .merit_2_icon {
+    max-width: 160px;
+}
+.merit_1 img, .merit_2 img {
+    max-width: 580px;
+}
+.smp_have img, .smp_no img, .smp_prit_no img {
+    max-width: 670px;
+}
+
+
+
+
+@media (max-width: 767.98px) {
+    .merit_1_icon, .merit_2_icon {
+        max-width: 100px;
+    }
+    .online_flow {
+        max-width: 500px;
+    }
+
+}
