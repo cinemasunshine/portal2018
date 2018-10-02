@@ -2,13 +2,18 @@
     <div class="bg-white fixed-top border-bottom border-gray">
         <div class="header d-flex align-items-center width mx-auto pl-2">
             <div class="header-logo mr-auto">
+                {% block logo %}
                 <div class="header-company-logo">
                     <a class="d-block mr-3" href="{{ path_for('homepage') }}">
                         <img src="/images/common/header_logo.svg" class="w-100">
                     </a>
                 </div>
+                {% endblock %}
             </div>
+            
             <div class="d-flex align-items-center">
+                {% block sns %}{% endblock %}
+            
                 <ul class="nav justify-content-end small d-none d-md-flex">
                     <li class="nav-item px-1 border-right border-dark-gray">
                         <a class="px-2 py-2 d-block text-dark" href="{{ path_for('theater_list') }}">劇場一覧</a>

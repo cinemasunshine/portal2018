@@ -1,0 +1,11 @@
+{% extends "theater_layout.html.twig" %}
+
+{% block navbar %}
+{% include 'theater/include/navbar.html.twig' with {
+    theater: theater,
+    active: 'top',
+} only %}
+{% endblock %}
+
+{% block contents %}
+{% endblock %}

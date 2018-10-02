@@ -8,6 +8,7 @@
 use Cinemasunshine\Portal\Controller\AboutController;
 use Cinemasunshine\Portal\Controller\IndexController;
 use Cinemasunshine\Portal\Controller\NewsController;
+use Cinemasunshine\Portal\Controller\TheaterController;
 use Cinemasunshine\Portal\Controller\TheaterListController;
 use Cinemasunshine\Portal\Controller\TitleController;
 use Cinemasunshine\Portal\Controller\TrailerController;
@@ -28,5 +29,9 @@ $app->group('/title', function() {
 
 $app->get('/theater-list', TheaterListController::class . ':index')->setName('theater_list');
 $app->get('/theater-sns-list', TheaterListController::class . ':sns')->setName('theater_sns');
+
+$app->group('/theater', function () {
+    $this->get('/{name}', TheaterController::class . ':index')->setName('theater');
+});
 
 $app->get('/trailer', TrailerController::class . ':show')->setName('trailer');

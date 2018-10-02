@@ -44,4 +44,20 @@ class TheaterRepository extends EntityRepository
         
         return $qb->getQuery()->getResult();
     }
+    
+    /**
+     * find one by name
+     *
+     * @param string $name
+     * @return Theater|null
+     */
+    public function findOneByName(string $name)
+    {
+        $qb = $this->getActiveQuery();
+        $qb
+            ->andWhere('t.name = :name')
+            ->setParameter('name', $name);
+            
+        return $qb->getQuery()->getOneOrNullResult();
+    }
 }
