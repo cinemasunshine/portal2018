@@ -112,4 +112,36 @@ class TheaterController extends BaseController
         
         $this->data->set('theater', $theater);
     }
+    
+    /**
+     * news list action
+     * 
+     * @param \Slim\Http\Request  $request
+     * @param \Slim\Http\Response $response
+     * @param array               $args
+     * @return string|void
+     */
+    public function executeNewsList($request, $response, $args)
+    {
+        $theater = $this->findByEntity($args['name']);
+        
+        $this->data->set('theater', $theater);
+        
+        $this->data->set('newsList', $this->getNewsList($theater));
+    }
+    
+    /**
+     * return news list
+     *
+     * @param Entity\Theater $theater
+     * @param int|null       $category
+     * @param int|null       $limit
+     * @return Entity\News[]
+     */
+    protected function getNewsList(Entity\Theater $theater, ?int $category = null, ?int $limit = null)
+    {
+        return $this->em
+            ->getRepository(Entity\News::class)
+            ->findByTheater($theater->getId(), $category, $limit);
+    }
 }

@@ -80,4 +80,34 @@ class NewsRepository extends EntityRepository
         
         return $qb->getQuery()->getResult();
     }
+    
+    /**
+     * find by theater
+     *
+     * @param int $theaterId
+     * @param int|null $category
+     * @param int|null $limit
+     * @return News[]
+     */
+    public function findByTheater(int $theaterId, ?int $category = null, ?int $limit = null)
+    {
+        $qb = $this->getActiveQuery();
+        $qb
+            ->join('n.theaters', 'pt')
+            ->andWhere('pt.theater = :theater_id')
+            ->setParameter('theater_id', $theaterId)
+            ->orderBy('pt.displayOrder', 'ASC');
+        
+        if ($category) {
+            $qb
+                ->andWhere('n.category = :category')
+                ->setParameter('category', $category);
+        }
+        
+        if ($limit) {
+            $qb->setMaxResults($limit);
+        }
+        
+        return $qb->getQuery()->getResult();
+    }
 }

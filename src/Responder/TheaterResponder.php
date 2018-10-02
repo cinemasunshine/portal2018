@@ -75,4 +75,16 @@ class TheaterResponder extends BaseResponder
     {
         return $this->view->render($response, 'theater/floor_guide.html.twig', $data->all());
     }
+    
+    /**
+     * news list
+     *
+     * @param Response   $response
+     * @param Collection $data
+     * @return Response
+     */
+    public function newsList(Response $response, Collection $data)
+    {
+        return $this->view->render($response, 'theater/news/list.html.twig', $data->all());
+    }
 }

@@ -36,6 +36,10 @@ $app->group('/theater/{name}', function () {
     $this->get('/admission', TheaterController::class . ':admission')->setName('theater_admission');
     $this->get('/concession', TheaterController::class . ':concession')->setName('theater_concession');
     $this->get('/facility', TheaterController::class . ':floorGuide')->setName('theater_floor_guide');
+    
+    $this->group('/news', function () {
+        $this->get('/list', TheaterController::class . ':newsList')->setName('theater_news_list');
+    });
 });
 
 $app->get('/trailer', TrailerController::class . ':show')->setName('trailer');
