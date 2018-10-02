@@ -1,0 +1,41 @@
+.title {
+    
+}
+
+.column-md-2 {
+    margin: 0 -1rem;
+}
+
+.column-md-2 li {
+    width: 50%;
+}
+
+.column-md-3 {
+    margin: 0 -1rem;
+}
+
+.column-md-3 li {
+    width: 33.3%;
+}
+
+@media (max-width: 767.98px) {
+    .title {
+        border-bottom: 1px solid #000;
+    }
+    
+    .column-md-2 {
+        margin: 0;
+    }
+    
+    .column-md-2 li {
+        width: auto;
+    }
+    
+    .column-md-3 {
+        margin: 0;
+    }
+    
+    .column-md-3 li {
+        width: auto;
+    }  
+}

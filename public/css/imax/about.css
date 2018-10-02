@@ -10,9 +10,6 @@
 .function li {
     width: 50%;
 }
-.function li .title {
-    height: 17px;
-}
 .prices .price {
     border-radius: 3rem;
 }

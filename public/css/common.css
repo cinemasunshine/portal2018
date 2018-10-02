@@ -286,6 +286,18 @@ header .position-fixed {
 .slider .pagination .swiper-pagination-bullet-active {
     opacity: 1;
 }
+
+.type-4dx .slider .pagination .swiper-pagination-bullet,
+.type-imax .slider .pagination .swiper-pagination-bullet {
+    background: #565656;
+    opacity: 1;
+}
+.type-imax .slider .pagination .swiper-pagination-bullet-active {
+    background: #0090d4;
+}
+.type-4dx .slider .pagination .swiper-pagination-bullet-active {
+    background: #ce0000;
+}
 .thumbs li {
     width: 100px;
     opacity: 0.4;
