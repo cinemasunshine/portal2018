@@ -54,6 +54,21 @@ class TheaterController extends BaseController
     }
     
     /**
+     * access action
+     * 
+     * @param \Slim\Http\Request  $request
+     * @param \Slim\Http\Response $response
+     * @param array               $args
+     * @return string|void
+     */
+    public function executeAccess($request, $response, $args)
+    {
+        $theater = $this->findByEntity($args['name']);
+        
+        $this->data->set('theater', $theater);
+    }
+    
+    /**
      * admission action
      * 
      * @param \Slim\Http\Request  $request

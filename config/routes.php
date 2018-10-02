@@ -32,8 +32,9 @@ $app->get('/theater-sns-list', TheaterListController::class . ':sns')->setName('
 
 $app->group('/theater/{name}', function () {
     $this->get('', TheaterController::class . ':index')->setName('theater');
-    $this->get('/concession', TheaterController::class . ':concession')->setName('theater_concession');
+    $this->get('/access', TheaterController::class . ':access')->setName('theater_access');
     $this->get('/admission', TheaterController::class . ':admission')->setName('theater_admission');
+    $this->get('/concession', TheaterController::class . ':concession')->setName('theater_concession');
     $this->get('/facility', TheaterController::class . ':floorGuide')->setName('theater_floor_guide');
 });
 
