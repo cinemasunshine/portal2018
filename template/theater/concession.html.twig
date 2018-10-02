@@ -1,0 +1,30 @@
+{% extends "theater_layout.html.twig" %}
+
+{% block css %}
+<link href="/css/movie/list.css" rel="stylesheet">
+{% endblock %}
+
+{% block javascript %}
+<script src="/js/theater/concession.js"></script>
+{% endblock %}
+
+{% block navbar %}
+{% include 'theater/include/navbar.html.twig' with {
+    theater: theater,
+    active: 'concession',
+} only %}
+{% endblock %}
+
+{% block contents %}
+<div class="width mx-auto p-3">
+    <div class="breadcrumb-list small mb-5 d-none d-md-block">
+        <a href="{{ path_for('theater', { name: theater.getName() }) }}" class="mr-3">ホーム | エミフルMASAKI</a>|
+        <span class="font-weight-bold mx-3">コンセッション</span>
+    </div>
+    
+    <div class="mb-5">
+        <h2 class="font-weight-bold large text-center text-md-left mb-4 mt-2">コンセッション</h2>
+        {% include 'theater/include/concession/' ~ theater.getName() ~ '.html.twig' %}
+    </div>
+</div>
+{% endblock %}

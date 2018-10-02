@@ -27,4 +27,16 @@ class TheaterResponder extends BaseResponder
     {
         return $this->view->render($response, 'theater/index.html.twig', $data->all());
     }
+    
+    /**
+     * concession
+     *
+     * @param Response   $response
+     * @param Collection $data
+     * @return Response
+     */
+    public function concession(Response $response, Collection $data)
+    {
+        return $this->view->render($response, 'theater/concession.html.twig', $data->all());
+    }
 }

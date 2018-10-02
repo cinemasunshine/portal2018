@@ -17,21 +17,6 @@ use Cinemasunshine\Portal\ORM\Entity;
 class TheaterController extends BaseController
 {
     /**
-     * index action
-     * 
-     * @param \Slim\Http\Request  $request
-     * @param \Slim\Http\Response $response
-     * @param array               $args
-     * @return string|void
-     */
-    public function executeIndex($request, $response, $args)
-    {
-        $theater = $this->findByEntity($args['name']);
-        
-        $this->data->set('theater', $theater);
-    }
-    
-    /**
      * find by entity
      *
      * @param string $name
@@ -51,5 +36,35 @@ class TheaterController extends BaseController
         /**@var Entity\Theater $theater */
         
         return $theater;
+    }
+    
+    /**
+     * index action
+     * 
+     * @param \Slim\Http\Request  $request
+     * @param \Slim\Http\Response $response
+     * @param array               $args
+     * @return string|void
+     */
+    public function executeIndex($request, $response, $args)
+    {
+        $theater = $this->findByEntity($args['name']);
+        
+        $this->data->set('theater', $theater);
+    }
+    
+    /**
+     * concession action
+     * 
+     * @param \Slim\Http\Request  $request
+     * @param \Slim\Http\Response $response
+     * @param array               $args
+     * @return string|void
+     */
+    public function executeConcession($request, $response, $args)
+    {
+        $theater = $this->findByEntity($args['name']);
+        
+        $this->data->set('theater', $theater);
     }
 }

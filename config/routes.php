@@ -32,6 +32,7 @@ $app->get('/theater-sns-list', TheaterListController::class . ':sns')->setName('
 
 $app->group('/theater', function () {
     $this->get('/{name}', TheaterController::class . ':index')->setName('theater');
+    $this->get('/{name}/concession', TheaterController::class . ':concession')->setName('theater_concession');
 });
 
 $app->get('/trailer', TrailerController::class . ':show')->setName('trailer');
