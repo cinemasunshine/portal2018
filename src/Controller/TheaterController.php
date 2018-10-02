@@ -144,4 +144,31 @@ class TheaterController extends BaseController
             ->getRepository(Entity\News::class)
             ->findByTheater($theater->getId(), $category, $limit);
     }
+    
+    /**
+     * news show action
+     * 
+     * @param \Slim\Http\Request  $request
+     * @param \Slim\Http\Response $response
+     * @param array               $args
+     * @return string|void
+     */
+    public function executeNewsShow($request, $response, $args)
+    {
+        $theater = $this->findByEntity($args['name']);
+        
+        $this->data->set('theater', $theater);
+        
+        $news = $this->em
+            ->getRepository(Entity\News::class)
+            ->findOneById($args['id']);
+        
+        if (is_null($news)) {
+            throw new NotFoundException($request, $response);
+        }
+        
+        /**@var Entity\News $news */
+        
+        $this->data->set('news', $news);
+    }
 }

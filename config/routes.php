@@ -39,6 +39,7 @@ $app->group('/theater/{name}', function () {
     
     $this->group('/news', function () {
         $this->get('/list', TheaterController::class . ':newsList')->setName('theater_news_list');
+        $this->get('/{id}', TheaterController::class . ':newsShow')->setName('theater_news_show');
     });
 });
 

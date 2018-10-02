@@ -27,7 +27,10 @@
                 <ul class="row">
                 {% for news in newsList %}
                     <li class="col-md-3 col-6 py-2 mb-4">
-                        <a href="#" class="d-block">
+                        <a href="{{ path_for('theater_news_show', {
+                            name: theater.getName(),
+                            id: news.getId()
+                        }) }}" class="d-block">
                             {% set labelClass = news_category_label_class(news.getCategory()) %}
                             <div class="{{ labelClass }} text-center py-1 x-small">{{ news_category_label(news.getCategory()) }}</div>
                             
