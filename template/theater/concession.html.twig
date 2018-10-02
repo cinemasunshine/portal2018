@@ -18,7 +18,7 @@
 {% block contents %}
 <div class="width mx-auto p-3">
     <div class="breadcrumb-list small mb-5 d-none d-md-block">
-        <a href="{{ path_for('theater', { name: theater.getName() }) }}" class="mr-3">ホーム | エミフルMASAKI</a>|
+        <a href="{{ path_for('theater', { name: theater.getName() }) }}" class="mr-3">ホーム | {{ theater.getNameJa() }}</a>|
         <span class="font-weight-bold mx-3">コンセッション</span>
     </div>
     
