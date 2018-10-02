@@ -34,6 +34,7 @@ $app->group('/theater/{name}', function () {
     $this->get('', TheaterController::class . ':index')->setName('theater');
     $this->get('/concession', TheaterController::class . ':concession')->setName('theater_concession');
     $this->get('/admission', TheaterController::class . ':admission')->setName('theater_admission');
+    $this->get('/facility', TheaterController::class . ':floorGuide')->setName('theater_floor_guide');
 });
 
 $app->get('/trailer', TrailerController::class . ':show')->setName('trailer');

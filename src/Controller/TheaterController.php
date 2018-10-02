@@ -82,4 +82,19 @@ class TheaterController extends BaseController
         
         $this->data->set('theater', $theater);
     }
+    
+    /**
+     * floor guide action
+     * 
+     * @param \Slim\Http\Request  $request
+     * @param \Slim\Http\Response $response
+     * @param array               $args
+     * @return string|void
+     */
+    public function executeFloorGuide($request, $response, $args)
+    {
+        $theater = $this->findByEntity($args['name']);
+        
+        $this->data->set('theater', $theater);
+    }
 }
