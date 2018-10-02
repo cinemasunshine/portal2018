@@ -50,7 +50,7 @@
                 </div>
             </a></li>
         <li class="d-flex {{ admissionClass }}">
-            <a class="py-2 d-flex align-items-center justify-content-center w-100 text-dark-gray" href="#">
+            <a class="py-2 d-flex align-items-center justify-content-center w-100 text-dark-gray" href="{{ path_for('theater_admission', { name: theater.getName() }) }}">
                 <div>
                     <div class="mb-1">料金案内</div>
                     <div class="x-small">ADMISSION</div>

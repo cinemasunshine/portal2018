@@ -29,6 +29,18 @@ class TheaterResponder extends BaseResponder
     }
     
     /**
+     * admission
+     *
+     * @param Response   $response
+     * @param Collection $data
+     * @return Response
+     */
+    public function admission(Response $response, Collection $data)
+    {
+        return $this->view->render($response, 'theater/admission.html.twig', $data->all());
+    }
+    
+    /**
      * concession
      *
      * @param Response   $response
