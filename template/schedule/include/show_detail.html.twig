@@ -1,5 +1,5 @@
 <div class="movie d-md-flex mb-4">
-    {% set schedule = title.getSchedules().get(0) %}
+    {% set title = schedule.getTitle() %}
     
     <div class="movie-image py-3 py-md-0 mb-3">
     {% if title.getImage() %}
@@ -57,7 +57,7 @@
                     
                     <div class="area-button mb-md-2 pr-md-2 mb-2 px-1 px-md-0 small font-weight-bold">
                     {% if isShowing %}
-                        <a href="#" data-theaterCode="{{ theater.getId() }}" class="d-flex align-items-center justify-content-center bg-white text-blue border-blue">{{ theater.getNameJa() }}</a>
+                        <a href="{{ path_for('theater', { name: theater.getName() }) }}" data-theaterCode="{{ theater.getId() }}" class="d-flex align-items-center justify-content-center bg-white text-blue border-blue">{{ theater.getNameJa() }}</a>
                     {% else %}
                         <span class="d-flex align-items-center justify-content-center text-gray border-gray bg-white">{{ theater.getNameJa() }}</span>
                     {% endif %}
@@ -84,7 +84,7 @@
     {% if title.getOfficialSite() %}
         <div class="official-site mb-4"><a href="{{ title.getOfficialSite() }}" class="text-light-blue" target="_blank">公式サイト</a></div>
     {% endif %}
-        <p class="small mb-3 text-red">※本編には光が点滅するシーンがいくつか含まれています。日本公開版におきましては、光に敏感なお客様に配慮して、該当箇所の点滅頻度や輝度の調整を含む修正を施しております。しかしながら、光に対する感受性は個々のお客様によって異なりますのでご注意ください。</p>
+        <p class="small mb-3 text-red">{{ schedule.getRemark() }}</p>
     </div>
 
 {% set trailer = title.getTrailers().get(0) %}

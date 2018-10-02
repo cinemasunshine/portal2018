@@ -1,6 +1,6 @@
 <?php
 /**
- * TitleResponder.php
+ * ScheduleResponder.php
  * 
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
@@ -12,9 +12,9 @@ use Slim\Collection;
 use Psr\Http\Message\ResponseInterface as Response;
 
 /**
- * Title responder
+ * Schedule responder
  */
-class TitleResponder extends BaseResponder
+class ScheduleResponder extends BaseResponder
 {
     /**
      * list
@@ -25,7 +25,7 @@ class TitleResponder extends BaseResponder
      */
     public function list(Response $response, Collection $data)
     {
-        return $this->view->render($response, 'title/list.html.twig', $data->all());
+        return $this->view->render($response, 'schedule/list.html.twig', $data->all());
     }
     
     /**
@@ -37,6 +37,6 @@ class TitleResponder extends BaseResponder
      */
     public function show(Response $response, Collection $data)
     {
-        return $this->view->render($response, 'title/show.html.twig', $data->all());
+        return $this->view->render($response, 'schedule/show.html.twig', $data->all());
     }
 }

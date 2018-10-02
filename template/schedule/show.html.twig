@@ -5,17 +5,18 @@
 {% endblock %}
 
 {% block contents %}
+{% set title = schedule.getTitle() %}
 <div class="width mx-auto px-3 pt-md-3">
     <div class="breadcrumb-list small mb-5 d-none d-md-block">
         <a href="{{ path_for('homepage') }}">ホーム　|　</a>
-        <a href="{{ path_for('title_list') }}">作品一覧　|　</a>
+        <a href="{{ path_for('schedule_list') }}">作品一覧　|　</a>
         <span class="font-weight-bold">{{ title.getName() }}</span>
     </div>
 </div>
 
 <div class="width mx-auto px-md-3 px-0 pt-md-3">
-    {% include 'title/include/show_title.html.twig' with {
-        title: title,
+    {% include 'schedule/include/show_detail.html.twig' with {
+        schedule: schedule,
         theaters: theaters
     } only %}
     
@@ -27,7 +28,7 @@
     
     <div class="px-3">
         <div class="back-list button-01 shadow-01 mx-auto mb-5">
-            <a href="{{ path_for('title_list') }}" class="text-white">一覧へ戻る</a>
+            <a href="{{ path_for('schedule_list') }}" class="text-white">一覧へ戻る</a>
         </div>
     </div>
 </div>

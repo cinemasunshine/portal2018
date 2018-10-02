@@ -1,6 +1,6 @@
 <?php
 /**
- * TitleController.php
+ * ScheduleController.php
  * 
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
@@ -12,9 +12,9 @@ use Slim\Exception\NotFoundException;
 use Cinemasunshine\Portal\ORM\Entity;
 
 /**
- * Title controller
+ * Schedule controller
  */
-class TitleController extends GeneralController
+class ScheduleController extends GeneralController
 {
     /**
      * list action
@@ -67,17 +67,17 @@ class TitleController extends GeneralController
      */
     public function executeShow($request, $response, $args)
     {
-        $title = $this->em
-            ->getRepository(Entity\Title::class)
-            ->findOneById($args['id']);
+        $schedule = $this->em
+            ->getRepository(Entity\Schedule::class)
+            ->findOneById($args['schedule']);
         
-        if (is_null($title)) {
+        if (is_null($schedule)) {
             throw new NotFoundException($request, $response);
         }
         
-        /**@var Entity\Title $title */
+        /**@var Entity\Schedule $schedule */
         
-        $this->data->set('title', $title);
+        $this->data->set('schedule', $schedule);
         
         $this->data->set('theaters', $this->getTheaters());
     }

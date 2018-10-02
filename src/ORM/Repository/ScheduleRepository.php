@@ -62,4 +62,20 @@ class ScheduleRepository extends EntityRepository
         
         return $qb->getQuery()->getResult();
     }
+    
+    /**
+     * find one by id
+     *
+     * @param int $id
+     * @return Schedule|null
+     */
+    public function findOneById(int $id)
+    {
+        $qb = $this->getActiveQuery();
+        $qb
+            ->andWhere('s.id = :id')
+            ->setParameter('id', $id);
+            
+        return $qb->getQuery()->getOneOrNullResult();
+    }
 }

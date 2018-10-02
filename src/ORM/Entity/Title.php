@@ -14,7 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Title entity class
  * 
- * @ORM\Entity(repositoryClass="Cinemasunshine\Portal\ORM\Repository\TitleRepository")
+ * @ORM\Entity
  * @ORM\Table(name="title", options={"collate"="utf8mb4_general_ci"})
  * @ORM\HasLifecycleCallbacks
  */
@@ -138,14 +138,6 @@ class Title extends AbstractEntity
      * @ORM\Column(type="json", nullable=true)
      */
     protected $universal;
-    
-    /**
-     * schedules
-     *
-     * @var Collection
-     * @ORM\OneToMany(targetEntity="Schedule", mappedBy="title", indexBy="id")
-     */
-    protected $schedules;
     
     /**
      * trailers
@@ -510,21 +502,6 @@ class Title extends AbstractEntity
     public function setUniversal(array $universal)
     {
         throw new \LogicException('Not allowed.');
-    }
-    
-    /**
-     * get schedules
-     *
-     * @return Collection
-     */
-    public function getSchedules()
-    {
-        $criteria = Criteria::create()
-            ->where(Criteria::expr()->eq('isDeleted', false))
-            ->andWhere(Criteria::expr()->lte('publicStartDt', new \DateTime('now')))
-            ->andWhere(Criteria::expr()->gt('publicEndDt', new \DateTime('now')));
-            
-        return $this->schedules->matching($criteria);
     }
     
     /**

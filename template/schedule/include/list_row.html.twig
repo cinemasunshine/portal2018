@@ -8,7 +8,7 @@
         </div>
         <div class="movie-info pt-md-2 pl-md-3">
             <div class="movie-detail mb-3">
-                <p class="title x-large"><a class="" href="{{ path_for('title_show', { id: title.getId() }) }}">{{ title.getName() }}</a></p>
+                <p class="title x-large"><a class="" href="{{ path_for('schedule_show', { schedule: schedule.getId() }) }}">{{ title.getName() }}</a></p>
                 <div class="d-flex mb-3">
                 {% set systems = [] %}
                 {% for showingFormat in schedule.getShowingFormats() %}

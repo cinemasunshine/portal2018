@@ -8,9 +8,9 @@
 use Cinemasunshine\Portal\Controller\AboutController;
 use Cinemasunshine\Portal\Controller\IndexController;
 use Cinemasunshine\Portal\Controller\NewsController;
+use Cinemasunshine\Portal\Controller\ScheduleController;
 use Cinemasunshine\Portal\Controller\TheaterController;
 use Cinemasunshine\Portal\Controller\TheaterListController;
-use Cinemasunshine\Portal\Controller\TitleController;
 use Cinemasunshine\Portal\Controller\TrailerController;
 
 $app->get('/', IndexController::class . ':index')->setName('homepage');
@@ -23,8 +23,8 @@ $app->group('/news', function () {
 });
 
 $app->group('/title', function() {
-    $this->get('/list', TitleController::class . ':list')->setName('title_list');
-    $this->get('/{id}', TitleController::class . ':show')->setName('title_show');
+    $this->get('/list', ScheduleController::class . ':list')->setName('schedule_list');
+    $this->get('/{schedule}', ScheduleController::class . ':show')->setName('schedule_show');
 });
 
 $app->get('/theater-list', TheaterListController::class . ':index')->setName('theater_list');
