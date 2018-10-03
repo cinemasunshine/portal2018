@@ -6,6 +6,7 @@
  */
 
 use Cinemasunshine\Portal\Controller\AboutController;
+use Cinemasunshine\Portal\Controller\ImaxController;
 use Cinemasunshine\Portal\Controller\IndexController;
 use Cinemasunshine\Portal\Controller\NewsController;
 use Cinemasunshine\Portal\Controller\ScheduleController;
@@ -44,3 +45,7 @@ $app->group('/theater/{name}', function () {
 });
 
 $app->get('/trailer', TrailerController::class . ':show')->setName('trailer');
+
+$app->group('/imax', function() {
+    $this->get('', ImaxController::class . ':index')->setName('imax');
+});

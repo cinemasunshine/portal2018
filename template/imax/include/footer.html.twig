@@ -1,0 +1,70 @@
+<footer>
+    <div class="footer-inner bg-dark-gray">
+        <div class="py-md-3 width mx-auto position-relative">
+            <div class="footer-button d-flex">
+                <div class="footer-home mr-md-1">
+                    <a class="h-100 d-flex justify-content-center align-items-center" href="{{ path_for('homepage') }}">
+                        <img src="/images/common/footer_home.svg">
+                    </a>
+                </div>
+                <div class="footer-top">
+                    <a class="h-100 d-flex justify-content-center align-items-center" href="{{ path_for('homepage') }}">
+                        <img src="/images/common/footer_top.svg">
+                    </a>
+                </div>
+            </div>
+            <ul class="nav justify-content-center small d-none d-md-flex">
+                <li class="nav-item px-2 border-right border-white">
+                    <a class="nav-link text-white" href="{{ path_for('company') }}">会社概要</a>
+                </li>
+                <li class="nav-item px-2 border-right border-white">
+                    <a class="nav-link text-white" href="#">特定商取引法に基づく表記</a>
+                </li>
+                <li class="nav-item px-2 border-right border-white">
+                    <a class="nav-link text-white" href="#">利用規約</a>
+                </li>
+                <li class="nav-item px-2 border-right border-white">
+                    <a class="nav-link text-white" href="#">プライバシーポリシー</a>
+                </li>
+                <li class="nav-item px-2">
+                    <a class="nav-link text-white" href="#">サイトマップ</a>
+                </li>
+            </ul>
+
+            <ul class="sp-footer-list list-group list-group-flush d-md-none">
+                <a class="d-block" href="{{ path_for('company') }}">
+                    <li class="list-group-item sp-footer text-white">会社概要</li>
+                </a>
+                <a class="d-block" href="#">
+                    <li class="list-group-item sp-footer text-white">特定商取引法に基づく表記</li>
+                </a>
+                <a class="d-block" href="#">
+                    <li class="list-group-item sp-footer text-white">利用規約</li>
+                </a>
+                <a class="d-block" href="#">
+                    <li class="list-group-item sp-footer text-white">プライバシーポリシー</li>
+                </a>
+                <a class="d-block" href="#">
+                    <li class="list-group-item sp-footer text-white">サイトマップ</li>
+                </a>
+            </ul>
+
+        </div>
+    </div>
+    
+    <div class="footer-logo">
+        <div class="d-flex justify-content-center width mx-auto">
+            <div class="flex-column text-center my-md-5 my-4">
+                <div class="p-2">
+                    <a class="d-block mx-auto" href="{{ path_for('homepage') }}">
+                        <img src="/images/common/footer_logo.svg" class="w-100">
+                    </a>
+                </div>
+                <div class="p-2 text-white-50 small">
+                    &copy; Cinema Sunshine Co., Ltd. All Right Reserved.
+                </div>
+            </div>
+        </div>
+    </div>
+
+</footer>
