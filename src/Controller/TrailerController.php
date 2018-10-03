@@ -31,11 +31,11 @@ class TrailerController extends BaseController
         if ($pageId = $request->getParam('p')) {
             $trailers = $this->em
                 ->getRepository(Entity\Trailer::class)
-                ->findOneByPage((int) $pageId);
+                ->findByPage((int) $pageId);
         } else if ($theaterId = $request->getParam('t')) {
             $trailers = $this->em
                 ->getRepository(Entity\Trailer::class)
-                ->findOneByTheater((int) $theaterId);
+                ->findByTheater((int) $theaterId);
         }
         
         if (count($trailers) === 0) {

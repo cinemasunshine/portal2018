@@ -32,12 +32,12 @@ class TrailerRepository extends EntityRepository
     }
     
     /**
-     * find one by page
+     * find by page
      *
      * @param int $pageId
      * @return Trailer[]
      */
-    public function findOneByPage(int $pageId)
+    public function findByPage(int $pageId)
     {
         $qb = $this->getActiveQuery();
         $qb
@@ -49,12 +49,12 @@ class TrailerRepository extends EntityRepository
     }
     
     /**
-     * find one by theater
+     * find by theater
      *
      * @param int $theaterId
      * @return Trailer[]
      */
-    public function findOneByTheater(int $theaterId)
+    public function findByTheater(int $theaterId)
     {
         $qb = $this->getActiveQuery();
         $qb
