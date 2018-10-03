@@ -17,6 +17,20 @@ use Cinemasunshine\Portal\ORM\Entity\MainBanner;
 class MainBannerRepository extends EntityRepository
 {
     /**
+     * return active query
+     *
+     * @return QueryBuilder
+     */
+    protected function getActiveQuery()
+    {
+        $qb = $this->createQueryBuilder('mb');
+        $qb
+            ->where('mb.isDeleted = false');
+        
+        return $qb;
+    }
+    
+    /**
      * find by page_id
      *
      * @param int $pageId
@@ -24,10 +38,9 @@ class MainBannerRepository extends EntityRepository
      */
     public function findByPageId(int $pageId)
     {
-        $qb = $this->createQueryBuilder('mb');
+        $qb = $this->getActiveQuery();
         $qb
             ->join('mb.pages', 'pmb')
-            ->where('mb.isDeleted = false')
             ->andWhere('pmb.page = :page_id')
             ->setParameter('page_id', $pageId);
         
