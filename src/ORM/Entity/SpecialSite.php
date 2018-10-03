@@ -66,6 +66,15 @@ class SpecialSite extends AbstractEntity
      */
     protected $campaigns;
     
+    /**
+     * main_banners
+     *
+     * @var Collection
+     * @ORM\OneToMany(targetEntity="SpecialSiteMainBanner", mappedBy="specialSite", orphanRemoval=true)
+     * @ORM\OrderBy({"displayOrder" = "ASC"})
+     */
+    protected $mainBanners;
+    
     
     /**
      * construct
@@ -149,5 +158,15 @@ class SpecialSite extends AbstractEntity
     public function getCampaigns(): Collection
     {
         return $this->campaigns;
+    }
+    
+    /**
+     * get main_banners
+     *
+     * @return Collection
+     */
+    public function getMainBanners(): Collection
+    {
+        return $this->mainBanners;
     }
 }

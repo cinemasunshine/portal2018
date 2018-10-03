@@ -93,6 +93,14 @@ class MainBanner extends AbstractEntity
     protected $theaters;
     
     /**
+     * special_sites
+     *
+     * @var Collection
+     * @ORM\OneToMany(targetEntity="SpecialSiteMainBanner", mappedBy="mainBanner")
+     */
+    protected $specialSites;
+    
+    /**
      * return link types
      *
      * @return array
@@ -249,5 +257,15 @@ class MainBanner extends AbstractEntity
     public function getTheaters() : Collection
     {
         return $this->theaters;
+    }
+    
+    /**
+     * get special_site
+     *
+     * @return Collection
+     */
+    public function getSpecialSite(): Collection
+    {
+        return $this->specialSites;
     }
 }
