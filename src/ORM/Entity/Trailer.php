@@ -92,6 +92,13 @@ class Trailer extends AbstractEntity
      */
     protected $theaterTrailers;
     
+    /**
+     * special_site_trailers
+     *
+     * @var Collection
+     * @ORM\OneToMany(targetEntity="SpecialSiteTrailer", mappedBy="trailer", orphanRemoval=true)
+     */
+    protected $specialSiteTrailers;
     
     /**
      * construct
@@ -263,6 +270,28 @@ class Trailer extends AbstractEntity
      * @throws \LogicException
      */
     public function setTheaterTrailers(Collection $theaterTrailers)
+    {
+        throw new \LogicException('Not allowed.');
+    }
+    
+    /**
+     * get special_site_trailers
+     *
+     * @return Collection
+     */
+    public function getSpecialSiteTrailers()
+    {
+        return $this->specialSiteTrailers;
+    }
+    
+    /**
+     * set special_site_trailers
+     *
+     * @param Collection $specialSiteTrailers
+     * @return void
+     * @throws \LogicException
+     */
+    public function setSpecialSiteTrailers(Collection $specialSiteTrailers)
     {
         throw new \LogicException('Not allowed.');
     }
