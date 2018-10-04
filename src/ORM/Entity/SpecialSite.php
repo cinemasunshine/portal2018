@@ -67,6 +67,15 @@ class SpecialSite extends AbstractEntity
     protected $campaigns;
     
     /**
+     * news_list
+     *
+     * @var Collection
+     * @ORM\OneToMany(targetEntity="SpecialSiteNews", mappedBy="specialSite", orphanRemoval=true)
+     * @ORM\OrderBy({"displayOrder" = "ASC"})
+     */
+    protected $newsList;
+    
+    /**
      * main_banners
      *
      * @var Collection
@@ -158,6 +167,16 @@ class SpecialSite extends AbstractEntity
     public function getCampaigns(): Collection
     {
         return $this->campaigns;
+    }
+    
+    /**
+     * get news_list
+     *
+     * @return Collection
+     */
+    public function getNewsList(): Collection
+    {
+        return $this->newsList;
     }
     
     /**

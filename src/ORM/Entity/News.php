@@ -114,6 +114,14 @@ class News extends AbstractEntity
      */
     protected $theaters;
     
+    /**
+     * special_sites
+     *
+     * @var Collection
+     * @ORM\OneToMany(targetEntity="SpecialSiteNews", mappedBy="news")
+     */
+    protected $specialSites;
+    
     
     /**
      * construct
@@ -307,5 +315,15 @@ class News extends AbstractEntity
     public function getTheaters() : Collection
     {
         return $this->theaters;
+    }
+    
+    /**
+     * get special_sites
+     *
+     * @return Collection
+     */
+    public function getSpecialSites(): Collection
+    {
+        return $this->specialSites;
     }
 }
