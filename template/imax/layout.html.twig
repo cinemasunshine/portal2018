@@ -32,7 +32,8 @@
 
 <body class="type-imax">
     {% include 'imax/include/header.html.twig' %}
-    {% include 'imax/include/navbar.html.twig' %}
+    
+    {% block navbar %}{% endblock %}
     
     <div class="contents">
         {% block contents %}{% endblock %}

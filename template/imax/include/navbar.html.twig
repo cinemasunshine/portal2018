@@ -1,6 +1,20 @@
+{% set activeClass = 'active' %}
+
+{% if active == 'top' %}
+    {% set topClass = activeClass %}
+{% elseif active == 'about' %}
+    {% set aboutClass = activeClass %}
+{% elseif active == 'title' %}
+    {% set titleClass = activeClass %}
+{% elseif active == 'news' %}
+    {% set newsClass = activeClass %}
+{% elseif active == 'theater' %}
+    {% set theaterClass = activeClass %}
+{% endif %}
+
 <div class="sub-header mb-3 d-md-block d-none">
     <ul class="d-flex justify-content-center text-center mb-0 mx-auto small">
-        <li class="active d-flex">
+        <li class="d-flex {{ topClass }}">
             <a class="py-3 d-flex align-items-center justify-content-center w-100 text-white" href="{{ path_for('imax') }}">
                 <div>
                     <div class="mb-1">TOP</div>
@@ -8,7 +22,7 @@
                 </div>
             </a>
         </li>
-        <li class="d-flex">
+        <li class="d-flex {{ aboutClass }}">
             <a class="py-3 d-flex align-items-center justify-content-center w-100 text-black" href="{{ path_for('imax_about') }}">
                 <div>
                     <div class="mb-1">IMAXとは？</div>
@@ -16,15 +30,15 @@
                 </div>
             </a>
         </li>
-        <li class="d-flex">
-            <a class="py-3 d-flex align-items-center justify-content-center w-100 text-black" href="">
+        <li class="d-flex {{ titleClass }}">
+            <a class="py-3 d-flex align-items-center justify-content-center w-100 text-black" href="{{ path_for('imax_schedule_list') }}">
                 <div>
                     <div class="mb-1">作品一覧</div>
                     <div class="x-small">MOVIE</div>
                 </div>
             </a>
         </li>
-        <li class="d-flex">
+        <li class="d-flex {{ newsClass }}">
             <a class="py-3 d-flex align-items-center justify-content-center w-100 text-black" href="">
                 <div>
                     <div class="mb-1">NEWS & INFO</div>
@@ -32,7 +46,7 @@
                 </div>
             </a>
         </li>
-        <li class="d-flex">
+        <li class="d-flex {{ theaterClass }}">
             <a class="py-3 d-flex align-items-center justify-content-center w-100 text-black" href="">
                 <div>
                     <div class="mb-1">劇場情報</div>
