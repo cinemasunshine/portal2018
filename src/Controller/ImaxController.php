@@ -32,7 +32,7 @@ class ImaxController extends SpecialSiteController
         
         $this->data->set('newsList', $this->getNewsList(8));
         
-        $this->data->set('theaters', $this->getTheaters());
+        $this->data->set('theaters', $this->getImaxTheaters());
         
         $this->data->set('screeningSchedules', $this->getScreeningSchedules());
         
@@ -81,11 +81,11 @@ class ImaxController extends SpecialSiteController
     }
     
     /**
-     * return theaters
+     * return IMAX theaters
      *
      * @return Entity\Theater[]
      */
-    protected function getTheaters()
+    protected function getImaxTheaters()
     {
         return $this->em
             ->getRepository(Entity\Theater::class)
@@ -151,5 +151,34 @@ class ImaxController extends SpecialSiteController
      */
     public function executeAbout($request, $response, $args)
     {
+    }
+    
+    /**
+     * schedule list action
+     * 
+     * @param \Slim\Http\Request  $request
+     * @param \Slim\Http\Response $response
+     * @param array               $args
+     * @return string|void
+     */
+    public function executeScheduleList($request, $response, $args)
+    {
+        $this->data->set('theaters', $this->getTheaters());
+        
+        $this->data->set('screeningSchedules', $this->getScreeningSchedules());
+        
+        $this->data->set('soonSchedules', $this->getSoonSchedules());
+    }
+    
+    /**
+     * return theaters
+     *
+     * @return Entity\Theater[]
+     */
+    protected function getTheaters()
+    {
+        return $this->em
+            ->getRepository(Entity\Theater::class)
+            ->findByActive();
     }
 }

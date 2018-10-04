@@ -1,0 +1,69 @@
+{% set title = schedule.getTitle() %}
+<div class="movie">
+    <div class="position-relative d-md-flex p-2 border border-gray mb-4">
+        <div class="movie-image">
+        {% if title.getImage() %}
+            <img src="{{ file_url(title.getImage()) }}" class="w-100">
+        {% endif %}
+        </div>
+        <div class="movie-info pt-md-2 pl-md-3">
+            <div class="movie-detail mb-3">
+                <p class="title x-large"><a class="text-white" href="#">{{ title.getName() }}</a></p>
+                
+                <div class="d-flex mb-3">
+                {% set systems = [] %}
+                {% for showingFormat in schedule.getShowingFormats() %}
+                    {% set systems = systems|merge([ showingFormat.getSystem() ]) %}
+                {% endfor %}
+                
+                {% if 1 in systems %}
+                    <div class="icon-2d py-1 text-white bg-dark-gray text-center mr-2">2D</div>
+                {% endif %}
+                {% if 2 in systems %}
+                    <div class="icon-3d py-1 text-white bg-dark-gray text-center mr-2">3D</div>
+                {% endif %}
+                {% if 3 in systems or 4 in systems %}
+                    <div class="icon-imax py-1 bg-dark-gray text-center mr-2"><img src="/images/common/imax_logo_wht.svg"></div>
+                {% endif %}
+                {% if 5 in systems or 6 in systems %}
+                    <div class="icon-4dx py-1 bg-dark-gray text-center mr-2"><img src="/images/common/4dx_logo_wht.svg"></div>
+                {% endif %}
+                </div>
+                <div class="d-flex">
+                {% if title.getRating() == 3 %}
+                    <div class="icon-r mr-2"><img src="/images/movie/r_15.svg"></div>
+                {% elseif title.getRating() == 4 %}
+                    <div class="icon-r mr-2"><img src="/images/movie/r_18.svg"></div>
+                {% endif %}
+                
+                {% if 1 in title.getUniversal() %}
+                    <div class="icon-onsei mr-2"><img src="/images/movie/ud_onsei.svg"></div>
+                {% endif %}
+                {% if 2 in title.getUniversal() %}
+                    <div class="icon-jimaku mr-2"><img src="/images/movie/ud_jimaku.svg"></div>
+                {% endif %}
+                </div>
+            </div>
+            <div class="movie-area d-flex flex-wrap ">
+            {% for theater in theaters %}
+                {% set isShowing = false %}{# ループ前に宣言する #}
+                
+                {% for showingTehater in schedule.getShowingTheaters %}
+                    {% if showingTehater.getTheater().getId() == theater.getId() %}
+                        {% set isShowing = true %}
+                    {% endif %}
+                {% endfor %}
+                
+                <div class="area-button mb-md-2 pr-md-2 mb-2 px-1 px-md-0 small font-weight-bold">
+                {% if isShowing %}
+                    <a href="{{ path_for('theater', { name: theater.getName() }) }}" data-theaterCode="{{ theater.getId() }}" class="d-flex align-items-center justify-content-center bg-transparent text-blue border-blue">{{ theater.getNameJa() }}</a>
+                {% else %}
+                    <span class="d-flex align-items-center justify-content-center text-gray border-gray bg-transparent">{{ theater.getNameJa() }}</span>
+                {% endif %}
+                </div>
+            {% endfor %}
+            </div>
+            <div class="x-small">{{ title.getCredit() }}</div>
+        </div>
+    </div>
+</div>

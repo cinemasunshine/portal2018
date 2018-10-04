@@ -39,4 +39,16 @@ class ImaxResponder extends BaseResponder
     {
         return $this->view->render($response, 'imax/about.html.twig', $data->all());
     }
+    
+    /**
+     * schedule list
+     *
+     * @param Response   $response
+     * @param Collection $data
+     * @return Response
+     */
+    public function scheduleList(Response $response, Collection $data)
+    {
+        return $this->view->render($response, 'imax/schedule/list.html.twig', $data->all());
+    }
 }
