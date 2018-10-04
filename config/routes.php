@@ -23,7 +23,7 @@ $app->group('/news', function () {
     $this->get('/{id}', NewsController::class . ':show')->setName('news_show');
 });
 
-$app->group('/title', function() {
+$app->group('/movie', function() {
     $this->get('/list', ScheduleController::class . ':list')->setName('schedule_list');
     $this->get('/{schedule}', ScheduleController::class . ':show')->setName('schedule_show');
 });
