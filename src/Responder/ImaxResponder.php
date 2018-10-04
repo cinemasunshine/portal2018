@@ -27,4 +27,16 @@ class ImaxResponder extends BaseResponder
     {
         return $this->view->render($response, 'imax/index.html.twig', $data->all());
     }
+    
+    /**
+     * about
+     *
+     * @param Response   $response
+     * @param Collection $data
+     * @return Response
+     */
+    public function about(Response $response, Collection $data)
+    {
+        return $this->view->render($response, 'imax/about.html.twig', $data->all());
+    }
 }

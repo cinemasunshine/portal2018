@@ -48,4 +48,5 @@ $app->get('/trailer', TrailerController::class . ':show')->setName('trailer');
 
 $app->group('/imax', function() {
     $this->get('', ImaxController::class . ':index')->setName('imax');
+    $this->get('/about', ImaxController::class . ':about')->setName('imax_about');
 });
