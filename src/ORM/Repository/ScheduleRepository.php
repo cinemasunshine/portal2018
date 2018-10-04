@@ -11,6 +11,7 @@ use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\QueryBuilder;
 
 use Cinemasunshine\Portal\ORM\Entity\Schedule;
+use Cinemasunshine\Portal\ORM\Entity\ShowingFormat;
 
 /**
  * Schedule repository class
@@ -34,18 +35,64 @@ class ScheduleRepository extends EntityRepository
     }
     
     /**
+     * return acreening query
+     *
+     * @return QueryBuilder
+     */
+    protected function getScreeningQuery()
+    {
+        $qb = $this->getActiveQuery();
+        
+        $qb->andWhere('s.startDate <= CURRENT_DATE()');
+        
+        return $qb;
+    }
+    
+    /**
      * find screeening
      *
      * @return Schedule[]
      */
     public function findScreening()
     {
-        $qb = $this->getActiveQuery();
-        
-        $qb
-            ->andWhere('s.startDate <= CURRENT_DATE()');
+        $qb = $this->getScreeningQuery();
         
         return $qb->getQuery()->getResult();
+    }
+    
+    /**
+     * find screening for IMAX
+     *
+     * @return Schedule[]
+     */
+    public function findScreeningForImax()
+    {
+        $systems = [
+            ShowingFormat::SYSTEM_IMAX,
+            ShowingFormat::SYSTEM_IMAX3D,
+        ];
+        
+        $qb = $this->getScreeningQuery();
+        $qb
+            ->join('s.showingFormats', 'sf')
+            ->andWhere('sf.system IN (:systems)')
+            ->setParameter('systems', $systems);
+        
+        return $qb->getQuery()->getResult();
+    }
+    
+    /**
+     * return soon query
+     *
+     * @return QueryBuilder
+     */
+    protected function getSoonQuery()
+    {
+        $qb = $this->getActiveQuery();
+        
+        $qb->andWhere('s.startDate > CURRENT_DATE()');
+        
+        return $qb;
     }
     
     /**
@@ -55,10 +102,28 @@ class ScheduleRepository extends EntityRepository
      */
     public function findSoon()
     {
-        $qb = $this->getActiveQuery();
+        $qb = $this->getSoonQuery();
         
+        return $qb->getQuery()->getResult();
+    }
+    
+    /**
+     * find soon for IMAX
+     *
+     * @return Schedule[]
+     */
+    public function findSoonForImax()
+    {
+        $systems = [
+            ShowingFormat::SYSTEM_IMAX,
+            ShowingFormat::SYSTEM_IMAX3D,
+        ];
+        
+        $qb = $this->getSoonQuery();
         $qb
-            ->andWhere('s.startDate > CURRENT_DATE()');
+            ->join('s.showingFormats', 'sf')
+            ->andWhere('sf.system IN (:systems)')
+            ->setParameter('systems', $systems);
         
         return $qb->getQuery()->getResult();
     }

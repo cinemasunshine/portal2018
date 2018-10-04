@@ -1,1 +1,77 @@
 {% extends "imax/layout.html.twig" %}
+
+{% block css %}
+<link href="/css/imax/top.css" rel="stylesheet">
+{% endblock %}
+
+{% block javascript %}
+<script src="/js/imax/top.js"></script>
+{% endblock %}
+
+{% block contents %}
+<div class="breadcrumb-list d-none d-md-block small width mx-auto mb-3 px-2 text-white">
+    <a class="text-white" href="{{ path_for('homepage') }}">ホーム</a>
+    <span class="font-weight-bold mx-2"> | </span>
+    <span>IMAX<span>
+</div>
+
+<div class="mb-3">
+    {% include 'imax/include/index/slider.html.twig' with {
+        mainBanners: mainBanners
+    } only %}
+</div>
+
+<div class="py-5 text-white">
+    <div class="width mx-auto px-3 film">
+        <div class="d-md-flex">
+        
+            <div class="about mb-5 mb-md-0">
+                <div class="mr-md-4">
+                    <h3 class="font-weight-bold large mb-4 text-center text-md-left line-height-1">
+                        <div class="mb-2">究極の映画体験「IMAX」</div>
+                        <div class="small">ABOUT IMAX</div>
+                    </h3>
+                    <div class="mb-3"><img class="w-100" src="/images/imax/top/about.jpg"></div>
+                    <div class="button-01 mx-auto px-3 px-md-5">
+                        <a class="bg-dark-blue text-white" href="#">IMAXとは？</a>
+                    </div>
+                </div>
+            </div>
+            
+        {% set trailer = trailers[0] %}
+        {% if trailer %}
+            {% include 'imax/include/index/trailer.html.twig' with {
+                trailer: trailer
+            } only %}
+        {% endif %}
+        
+        </div>
+    </div>
+</div>
+
+<div class="py-5 text-white">
+    {% include 'imax/include/index/news.html.twig' with {
+        newsList: newsList
+    } only %}
+</div>
+
+<div class="py-5 text-white">
+    {% include 'imax/include/index/title.html.twig' with {
+        theaters: theaters,
+        screeningSchedules: screeningSchedules,
+        soonSchedules: soonSchedules,
+    } only %}
+</div>
+
+<div class="py-5 text-white">
+    {% include 'imax/include/index/campaign.html.twig' with {
+        campaings: campaings
+    } only %}
+</div>
+
+<div class="mb-5 py-5 text-white">
+    {% include 'imax/include/index/infomation.html.twig' with {
+        newsList: infoNewsList
+    } only %}
+</div>
+{% endblock %}

@@ -60,4 +60,21 @@ class TheaterRepository extends EntityRepository
             
         return $qb->getQuery()->getOneOrNullResult();
     }
+    
+    /**
+     * find by special_site
+     *
+     * @param int $specialSiteId
+     * @return Theater[]
+     */
+    public function findBySpecialSite(int $specialSiteId)
+    {
+        $qb = $this->getActiveQuery();
+        $qb
+            ->join('t.specialSites', 's')
+            ->andWhere('s.id = :special_site_id')
+            ->setParameter('special_site_id', $specialSiteId);
+        
+        return $qb->getQuery()->getResult();
+    }
 }

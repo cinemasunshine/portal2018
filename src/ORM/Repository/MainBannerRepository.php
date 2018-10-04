@@ -46,4 +46,21 @@ class MainBannerRepository extends EntityRepository
         
         return $qb->getQuery()->getResult();
     }
+    
+    /**
+     * find by special_site
+     *
+     * @param int $specialSiteId
+     * @return MainBanner[]
+     */
+    public function findBySpecialSiteId(int $specialSiteId)
+    {
+        $qb = $this->getActiveQuery();
+        $qb
+            ->join('mb.specialSites', 'smb')
+            ->andWhere('smb.specialSite = :special_site_id')
+            ->setParameter('special_site_id', $specialSiteId);
+        
+        return $qb->getQuery()->getResult();
+    }
 }

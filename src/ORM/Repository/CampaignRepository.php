@@ -53,4 +53,23 @@ class CampaignRepository extends EntityRepository
         
         return $qb->getQuery()->getResult();
     }
+    
+    /**
+     * find by special_site
+     *
+     * @param int $specialSiteId
+     * @return Campaign[]
+     */
+    public function findBySpecialSite(int $specialSiteId)
+    {
+        $qb = $this->getActiveQuery();
+        
+        $qb
+            ->join('c.specialSites', 'sc')
+            ->andWhere('sc.specialSite = :special_site_id')
+            ->setParameter('special_site_id', $specialSiteId)
+            ->orderBy('sc.displayOrder', 'ASC');
+        
+        return $qb->getQuery()->getResult();
+    }
 }

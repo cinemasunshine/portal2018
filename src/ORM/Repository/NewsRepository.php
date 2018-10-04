@@ -110,4 +110,55 @@ class NewsRepository extends EntityRepository
         
         return $qb->getQuery()->getResult();
     }
+    
+    /**
+     * find by special_site
+     *
+     * @param int $specialSiteId
+     * @param int|null $category
+     * @param int|null $limit
+     * @return News[]
+     */
+    public function findBySpecialSite(int $specialSiteId, ?int $category = null, ?int $limit = null)
+    {
+        $qb = $this->getActiveQuery();
+        $qb
+            ->join('n.specialSites', 'sn')
+            ->andWhere('sn.specialSite = :special_site_id')
+            ->setParameter('special_site_id', $specialSiteId)
+            ->orderBy('sn.displayOrder', 'ASC');
+        
+        if ($category) {
+            $qb
+                ->andWhere('n.category = :category')
+                ->setParameter('category', $category);
+        }
+        
+        if ($limit) {
+            $qb->setMaxResults($limit);
+        }
+        
+        return $qb->getQuery()->getResult();
+    }
+    
+    /**
+     * find by IMAX
+     *
+     * @param int|null $limt
+     * @return News[]
+     */
+    public function findByImax(?int $limit = null)
+    {
+        $qb = $this->getActiveQuery();
+        $qb
+            ->andWhere('n.category = :category')
+            ->setParameter('category', News::CATEGORY_IMAX)
+            ->orderBy('n.createdAt', 'DESC');
+        
+        if ($limit) {
+            $qb->setMaxResults($limit);
+        }
+        
+        return $qb->getQuery()->getResult();
+    }
 }

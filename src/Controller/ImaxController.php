@@ -7,11 +7,15 @@
 
 namespace Cinemasunshine\Portal\Controller;
 
+use Cinemasunshine\Portal\ORM\Entity;
+
 /**
  * Imax controller
  */
 class ImaxController extends SpecialSiteController
 {
+    const SPECIAL_SITE_ID = 1;
+    
     /**
      * index action
      * 
@@ -22,5 +26,118 @@ class ImaxController extends SpecialSiteController
      */
     public function executeIndex($request, $response, $args)
     {
+        $this->data->set('mainBanners', $this->getMainBanners());
+        
+        $this->data->set('trailers', $this->getTrailers());
+        
+        $this->data->set('newsList', $this->getNewsList(8));
+        
+        $this->data->set('theaters', $this->getTheaters());
+        
+        $this->data->set('screeningSchedules', $this->getScreeningSchedules());
+        
+        $this->data->set('soonSchedules', $this->getSoonSchedules());
+        
+        $this->data->set('campaings', $this->getCampaigns());
+        
+        $this->data->set('infoNewsList', $this->getInfoNewsList(4));
+    }
+    
+    /**
+     * return main_banners
+     *
+     * @return Entity\MainBanner[]
+     */
+    protected function getMainBanners()
+    {
+        return $this->em
+            ->getRepository(Entity\MainBanner::class)
+            ->findBySpecialSiteId(self::SPECIAL_SITE_ID);
+    }
+    
+    /**
+     * return trailers
+     *
+     * @return Entity\Trailer[]
+     */
+    protected function getTrailers()
+    {
+        return $this->em
+            ->getRepository(Entity\Trailer::class)
+            ->findBySpecialSite(self::SPECIAL_SITE_ID);
+    }
+    
+    /**
+     * return news list
+     *
+     * @param int|null $limt
+     * @return Entity\News[]
+     */
+    protected function getNewsList(?int $limt = null)
+    {
+        return $this->em
+            ->getRepository(Entity\News::class)
+            ->findByImax();
+    }
+    
+    /**
+     * return theaters
+     *
+     * @return Entity\Theater[]
+     */
+    protected function getTheaters()
+    {
+        return $this->em
+            ->getRepository(Entity\Theater::class)
+            ->findBySpecialSite(self::SPECIAL_SITE_ID);
+    }
+    
+    /**
+     * return screening schedules
+     *
+     * @return Entity\Schedule[]
+     */
+    protected function getScreeningSchedules()
+    {
+        return $this->em
+            ->getRepository(Entity\Schedule::class)
+            ->findScreeningForImax();
+    }
+    
+    /**
+     * return soon schedules
+     *
+     * @return Entity\Schedule[]
+     */
+    protected function getSoonSchedules()
+    {
+        return $this->em
+            ->getRepository(Entity\Schedule::class)
+            ->findSoonForImax();
+    }
+    
+    /**
+     * return campaigns
+     *
+     * @return Entity\Campaign[]
+     */
+    protected function getCampaigns()
+    {
+        return $this->em
+            ->getRepository(Entity\Campaign::class)
+            ->findBySpecialSite(self::SPECIAL_SITE_ID);
+    }
+    
+    /**
+     * return information news list
+     *
+     * @param int|null $limit
+     * @return Entity\News[]
+     */
+    protected function getInfoNewsList(?int $limit = null)
+    {
+        return $this->em
+            ->getRepository(Entity\News::class)
+            ->findBySpecialSite(self::SPECIAL_SITE_ID, Entity\News::CATEGORY_INFO, $limit);
     }
 }

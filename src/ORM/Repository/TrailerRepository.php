@@ -64,4 +64,21 @@ class TrailerRepository extends EntityRepository
         
         return $qb->getQuery()->getResult();
     }
+    
+    /**
+     * find by special_site
+     *
+     * @param int $specialSiteId
+     * @return Trailer[]
+     */
+    public function findBySpecialSite(int $specialSiteId)
+    {
+        $qb = $this->getActiveQuery();
+        $qb
+            ->join('t.specialSiteTrailers', 'st')
+            ->andWhere('st.specialSite = :special_site_id')
+            ->setParameter('special_site_id', $specialSiteId);
+        
+        return $qb->getQuery()->getResult();
+    }
 }
