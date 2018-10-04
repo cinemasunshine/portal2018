@@ -1,0 +1,403 @@
+{% extends "imax/layout.html.twig" %}
+
+{% block css %}
+<link href="/css/theaters.css" rel="stylesheet">
+{% endblock %}
+
+{% block navbar %}
+{% include 'imax/include/navbar.html.twig' with {
+    active: 'theater'
+} only %}
+{% endblock %}
+
+{% block contents %}
+<div class="breadcrumb-list d-none d-md-block small width mx-auto mb-5 px-2 text-white">
+    <a class="text-white" href="{{ path_for('homepage') }}">ホーム</a>
+    <span class="font-weight-bold mx-2"> | </span>
+    <a class="text-white" href="{{ path_for('imax') }}">IMAX</a>
+    <span class="font-weight-bold mx-2"> | </span>
+    <span>劇場情報<span>
+</div>
+
+<div class="width mx-auto mb-3 px-2 text-white">
+    <h2 class="font-weight-bold large text-center text-md-left mb-4">劇場情報</h2>
+    <ul>
+        
+        <li class="bg-black px-2 py-3 mb-3">
+            <h3 class="text-center text-md-left mb-3">シネマサンシャイン平和島</h3>
+            <div class="mb-3">
+                <img class="w-100" src="/images/tmp/theater/facility/facility_01.jpg">
+            </div>
+            <table class="mb-3 w-100 theater-table small">
+                <tbody>
+                    <tr>
+                        <th class="border border-black p-2 bg-dark-gray">劇場名</th>
+                        <td class="border border-black p-2 bg-light-gray text-black">シネマサンシャイン平和島</td>
+                    </tr>
+                    <tr>
+                        <th class="border border-black p-2 bg-dark-gray">住所</th>
+                        <td class="border border-black p-2 bg-light-gray text-black">東京都大田区平和島1-1-1 ビッグファン平和島４Ｆ</td>
+                    </tr>
+                    <tr>
+                        <th class="border border-black p-2 bg-dark-gray">TEL</th>
+                        <td class="border border-black p-2 bg-light-gray text-black">03-5764-8803</td>
+                    </tr>
+                    <tr>
+                        <th class="border border-black p-2 bg-dark-gray">スクリーン数</th>
+                        <td class="border border-black p-2 bg-light-gray text-black">7スクリーン</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4 class="mb-3">スクリーン情報</h4>
+
+            <table class="mb-3 w-100 screen-table small">
+                <thead>
+                    <tr>
+                        <th class="border border-black p-2 bg-gray">スクリーン名</th>
+                        <td class="border border-black p-2 bg-gray">観客数 / 車椅子</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th class="border border-black p-2 bg-dark-gray">アメイジング・サウンドシアター</th>
+                        <td class="border border-black p-2 bg-light-gray text-black">289席 / 2</td>
+                    </tr>
+                    <tr>
+                        <th class="border border-black p-2 bg-dark-gray">アメイジング・サウンドシアター</th>
+                        <td class="border border-black p-2 bg-light-gray text-black">289席 / 2</td>
+                    </tr>
+                    <tr>
+                        <th class="border border-black p-2 bg-dark-gray">アメイジング・サウンドシアター</th>
+                        <td class="border border-black p-2 bg-light-gray text-black">289席 / 2</td>
+                    </tr>
+                    <tr>
+                        <th class="border border-black p-2 bg-dark-gray">アメイジング・サウンドシアター</th>
+                        <td class="border border-black p-2 bg-light-gray text-black">289席 / 2</td>
+                    </tr>
+                    <tr>
+                        <th class="border border-black p-2 bg-dark-gray">アメイジング・サウンドシアター</th>
+                        <td class="border border-black p-2 bg-light-gray text-black">289席 / 2</td>
+                    </tr>
+                    <tr>
+                        <th class="border border-black p-2 bg-dark-gray">アメイジング・サウンドシアター</th>
+                        <td class="border border-black p-2 bg-light-gray text-black">289席 / 2</td>
+                    </tr>
+                    <tr>
+                        <th class="border border-black p-2 bg-dark-gray">アメイジング・サウンドシアター</th>
+                        <td class="border border-black p-2 bg-light-gray text-black">289席 / 2</td>
+                    </tr>
+                    <tr>
+                        <th class="border border-black p-2 bg-dark-gray">アメイジング・サウンドシアター</th>
+                        <td class="border border-black p-2 bg-light-gray text-black">289席 / 2</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="theater-button mx-auto">
+                <a href="/theater" class="d-block text-center bg-dark-blue text-white py-3">平和島劇場TOP</a>
+            </div>
+        </li>
+        
+        <li class="bg-black px-2 py-3 mb-3">
+            <h3 class="text-center text-md-left mb-3">シネマサンシャイン平和島</h3>
+            <div class="mb-3">
+                <img class="w-100" src="/images/tmp/theater/facility/facility_01.jpg">
+            </div>
+            <table class="mb-3 w-100 theater-table small">
+                <tbody>
+                    <tr>
+                        <th class="border border-black p-2 bg-dark-gray">劇場名</th>
+                        <td class="border border-black p-2 bg-light-gray text-black">シネマサンシャイン平和島</td>
+                    </tr>
+                    <tr>
+                        <th class="border border-black p-2 bg-dark-gray">住所</th>
+                        <td class="border border-black p-2 bg-light-gray text-black">東京都大田区平和島1-1-1 ビッグファン平和島４Ｆ</td>
+                    </tr>
+                    <tr>
+                        <th class="border border-black p-2 bg-dark-gray">TEL</th>
+                        <td class="border border-black p-2 bg-light-gray text-black">03-5764-8803</td>
+                    </tr>
+                    <tr>
+                        <th class="border border-black p-2 bg-dark-gray">スクリーン数</th>
+                        <td class="border border-black p-2 bg-light-gray text-black">7スクリーン</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4 class="mb-3">スクリーン情報</h4>
+
+            <table class="mb-3 w-100 screen-table small">
+                <thead>
+                    <tr>
+                        <th class="border border-black p-2 bg-gray">スクリーン名</th>
+                        <td class="border border-black p-2 bg-gray">観客数 / 車椅子</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th class="border border-black p-2 bg-dark-gray">アメイジング・サウンドシアター</th>
+                        <td class="border border-black p-2 bg-light-gray text-black">289席 / 2</td>
+                    </tr>
+                    <tr>
+                        <th class="border border-black p-2 bg-dark-gray">アメイジング・サウンドシアター</th>
+                        <td class="border border-black p-2 bg-light-gray text-black">289席 / 2</td>
+                    </tr>
+                    <tr>
+                        <th class="border border-black p-2 bg-dark-gray">アメイジング・サウンドシアター</th>
+                        <td class="border border-black p-2 bg-light-gray text-black">289席 / 2</td>
+                    </tr>
+                    <tr>
+                        <th class="border border-black p-2 bg-dark-gray">アメイジング・サウンドシアター</th>
+                        <td class="border border-black p-2 bg-light-gray text-black">289席 / 2</td>
+                    </tr>
+                    <tr>
+                        <th class="border border-black p-2 bg-dark-gray">アメイジング・サウンドシアター</th>
+                        <td class="border border-black p-2 bg-light-gray text-black">289席 / 2</td>
+                    </tr>
+                    <tr>
+                        <th class="border border-black p-2 bg-dark-gray">アメイジング・サウンドシアター</th>
+                        <td class="border border-black p-2 bg-light-gray text-black">289席 / 2</td>
+                    </tr>
+                    <tr>
+                        <th class="border border-black p-2 bg-dark-gray">アメイジング・サウンドシアター</th>
+                        <td class="border border-black p-2 bg-light-gray text-black">289席 / 2</td>
+                    </tr>
+                    <tr>
+                        <th class="border border-black p-2 bg-dark-gray">アメイジング・サウンドシアター</th>
+                        <td class="border border-black p-2 bg-light-gray text-black">289席 / 2</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="theater-button mx-auto">
+                <a href="/theater" class="d-block text-center bg-dark-blue text-white py-3">平和島劇場TOP</a>
+            </div>
+        </li>
+        
+        <li class="bg-black px-2 py-3 mb-3">
+            <h3 class="text-center text-md-left mb-3">シネマサンシャイン平和島</h3>
+            <div class="mb-3">
+                <img class="w-100" src="/images/tmp/theater/facility/facility_01.jpg">
+            </div>
+            <table class="mb-3 w-100 theater-table small">
+                <tbody>
+                    <tr>
+                        <th class="border border-black p-2 bg-dark-gray">劇場名</th>
+                        <td class="border border-black p-2 bg-light-gray text-black">シネマサンシャイン平和島</td>
+                    </tr>
+                    <tr>
+                        <th class="border border-black p-2 bg-dark-gray">住所</th>
+                        <td class="border border-black p-2 bg-light-gray text-black">東京都大田区平和島1-1-1 ビッグファン平和島４Ｆ</td>
+                    </tr>
+                    <tr>
+                        <th class="border border-black p-2 bg-dark-gray">TEL</th>
+                        <td class="border border-black p-2 bg-light-gray text-black">03-5764-8803</td>
+                    </tr>
+                    <tr>
+                        <th class="border border-black p-2 bg-dark-gray">スクリーン数</th>
+                        <td class="border border-black p-2 bg-light-gray text-black">7スクリーン</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4 class="mb-3">スクリーン情報</h4>
+
+            <table class="mb-3 w-100 screen-table small">
+                <thead>
+                    <tr>
+                        <th class="border border-black p-2 bg-gray">スクリーン名</th>
+                        <td class="border border-black p-2 bg-gray">観客数 / 車椅子</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th class="border border-black p-2 bg-dark-gray">アメイジング・サウンドシアター</th>
+                        <td class="border border-black p-2 bg-light-gray text-black">289席 / 2</td>
+                    </tr>
+                    <tr>
+                        <th class="border border-black p-2 bg-dark-gray">アメイジング・サウンドシアター</th>
+                        <td class="border border-black p-2 bg-light-gray text-black">289席 / 2</td>
+                    </tr>
+                    <tr>
+                        <th class="border border-black p-2 bg-dark-gray">アメイジング・サウンドシアター</th>
+                        <td class="border border-black p-2 bg-light-gray text-black">289席 / 2</td>
+                    </tr>
+                    <tr>
+                        <th class="border border-black p-2 bg-dark-gray">アメイジング・サウンドシアター</th>
+                        <td class="border border-black p-2 bg-light-gray text-black">289席 / 2</td>
+                    </tr>
+                    <tr>
+                        <th class="border border-black p-2 bg-dark-gray">アメイジング・サウンドシアター</th>
+                        <td class="border border-black p-2 bg-light-gray text-black">289席 / 2</td>
+                    </tr>
+                    <tr>
+                        <th class="border border-black p-2 bg-dark-gray">アメイジング・サウンドシアター</th>
+                        <td class="border border-black p-2 bg-light-gray text-black">289席 / 2</td>
+                    </tr>
+                    <tr>
+                        <th class="border border-black p-2 bg-dark-gray">アメイジング・サウンドシアター</th>
+                        <td class="border border-black p-2 bg-light-gray text-black">289席 / 2</td>
+                    </tr>
+                    <tr>
+                        <th class="border border-black p-2 bg-dark-gray">アメイジング・サウンドシアター</th>
+                        <td class="border border-black p-2 bg-light-gray text-black">289席 / 2</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="theater-button mx-auto">
+                <a href="/theater" class="d-block text-center bg-dark-blue text-white py-3">平和島劇場TOP</a>
+            </div>
+        </li>
+        
+        <li class="bg-black px-2 py-3 mb-3">
+            <h3 class="text-center text-md-left mb-3">シネマサンシャイン平和島</h3>
+            <div class="mb-3">
+                <img class="w-100" src="/images/tmp/theater/facility/facility_01.jpg">
+            </div>
+            <table class="mb-3 w-100 theater-table small">
+                <tbody>
+                    <tr>
+                        <th class="border border-black p-2 bg-dark-gray">劇場名</th>
+                        <td class="border border-black p-2 bg-light-gray text-black">シネマサンシャイン平和島</td>
+                    </tr>
+                    <tr>
+                        <th class="border border-black p-2 bg-dark-gray">住所</th>
+                        <td class="border border-black p-2 bg-light-gray text-black">東京都大田区平和島1-1-1 ビッグファン平和島４Ｆ</td>
+                    </tr>
+                    <tr>
+                        <th class="border border-black p-2 bg-dark-gray">TEL</th>
+                        <td class="border border-black p-2 bg-light-gray text-black">03-5764-8803</td>
+                    </tr>
+                    <tr>
+                        <th class="border border-black p-2 bg-dark-gray">スクリーン数</th>
+                        <td class="border border-black p-2 bg-light-gray text-black">7スクリーン</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4 class="mb-3">スクリーン情報</h4>
+
+            <table class="mb-3 w-100 screen-table small">
+                <thead>
+                    <tr>
+                        <th class="border border-black p-2 bg-gray">スクリーン名</th>
+                        <td class="border border-black p-2 bg-gray">観客数 / 車椅子</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th class="border border-black p-2 bg-dark-gray">アメイジング・サウンドシアター</th>
+                        <td class="border border-black p-2 bg-light-gray text-black">289席 / 2</td>
+                    </tr>
+                    <tr>
+                        <th class="border border-black p-2 bg-dark-gray">アメイジング・サウンドシアター</th>
+                        <td class="border border-black p-2 bg-light-gray text-black">289席 / 2</td>
+                    </tr>
+                    <tr>
+                        <th class="border border-black p-2 bg-dark-gray">アメイジング・サウンドシアター</th>
+                        <td class="border border-black p-2 bg-light-gray text-black">289席 / 2</td>
+                    </tr>
+                    <tr>
+                        <th class="border border-black p-2 bg-dark-gray">アメイジング・サウンドシアター</th>
+                        <td class="border border-black p-2 bg-light-gray text-black">289席 / 2</td>
+                    </tr>
+                    <tr>
+                        <th class="border border-black p-2 bg-dark-gray">アメイジング・サウンドシアター</th>
+                        <td class="border border-black p-2 bg-light-gray text-black">289席 / 2</td>
+                    </tr>
+                    <tr>
+                        <th class="border border-black p-2 bg-dark-gray">アメイジング・サウンドシアター</th>
+                        <td class="border border-black p-2 bg-light-gray text-black">289席 / 2</td>
+                    </tr>
+                    <tr>
+                        <th class="border border-black p-2 bg-dark-gray">アメイジング・サウンドシアター</th>
+                        <td class="border border-black p-2 bg-light-gray text-black">289席 / 2</td>
+                    </tr>
+                    <tr>
+                        <th class="border border-black p-2 bg-dark-gray">アメイジング・サウンドシアター</th>
+                        <td class="border border-black p-2 bg-light-gray text-black">289席 / 2</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="theater-button mx-auto">
+                <a href="/theater" class="d-block text-center bg-dark-blue text-white py-3">平和島劇場TOP</a>
+            </div>
+        </li>
+        
+        <li class="bg-black px-2 py-3 mb-3">
+            <h3 class="text-center text-md-left mb-3">シネマサンシャイン平和島</h3>
+            <div class="mb-3">
+                <img class="w-100" src="/images/tmp/theater/facility/facility_01.jpg">
+            </div>
+            <table class="mb-3 w-100 theater-table small">
+                <tbody>
+                    <tr>
+                        <th class="border border-black p-2 bg-dark-gray">劇場名</th>
+                        <td class="border border-black p-2 bg-light-gray text-black">シネマサンシャイン平和島</td>
+                    </tr>
+                    <tr>
+                        <th class="border border-black p-2 bg-dark-gray">住所</th>
+                        <td class="border border-black p-2 bg-light-gray text-black">東京都大田区平和島1-1-1 ビッグファン平和島４Ｆ</td>
+                    </tr>
+                    <tr>
+                        <th class="border border-black p-2 bg-dark-gray">TEL</th>
+                        <td class="border border-black p-2 bg-light-gray text-black">03-5764-8803</td>
+                    </tr>
+                    <tr>
+                        <th class="border border-black p-2 bg-dark-gray">スクリーン数</th>
+                        <td class="border border-black p-2 bg-light-gray text-black">7スクリーン</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4 class="mb-3">スクリーン情報</h4>
+
+            <table class="mb-3 w-100 screen-table small">
+                <thead>
+                    <tr>
+                        <th class="border border-black p-2 bg-gray">スクリーン名</th>
+                        <td class="border border-black p-2 bg-gray">観客数 / 車椅子</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th class="border border-black p-2 bg-dark-gray">アメイジング・サウンドシアター</th>
+                        <td class="border border-black p-2 bg-light-gray text-black">289席 / 2</td>
+                    </tr>
+                    <tr>
+                        <th class="border border-black p-2 bg-dark-gray">アメイジング・サウンドシアター</th>
+                        <td class="border border-black p-2 bg-light-gray text-black">289席 / 2</td>
+                    </tr>
+                    <tr>
+                        <th class="border border-black p-2 bg-dark-gray">アメイジング・サウンドシアター</th>
+                        <td class="border border-black p-2 bg-light-gray text-black">289席 / 2</td>
+                    </tr>
+                    <tr>
+                        <th class="border border-black p-2 bg-dark-gray">アメイジング・サウンドシアター</th>
+                        <td class="border border-black p-2 bg-light-gray text-black">289席 / 2</td>
+                    </tr>
+                    <tr>
+                        <th class="border border-black p-2 bg-dark-gray">アメイジング・サウンドシアター</th>
+                        <td class="border border-black p-2 bg-light-gray text-black">289席 / 2</td>
+                    </tr>
+                    <tr>
+                        <th class="border border-black p-2 bg-dark-gray">アメイジング・サウンドシアター</th>
+                        <td class="border border-black p-2 bg-light-gray text-black">289席 / 2</td>
+                    </tr>
+                    <tr>
+                        <th class="border border-black p-2 bg-dark-gray">アメイジング・サウンドシアター</th>
+                        <td class="border border-black p-2 bg-light-gray text-black">289席 / 2</td>
+                    </tr>
+                    <tr>
+                        <th class="border border-black p-2 bg-dark-gray">アメイジング・サウンドシアター</th>
+                        <td class="border border-black p-2 bg-light-gray text-black">289席 / 2</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="theater-button mx-auto">
+                <a href="/theater" class="d-block text-center bg-dark-blue text-white py-3">平和島劇場TOP</a>
+            </div>
+        </li>
+        
+    </ul>
+</div>
+{% endblock %}

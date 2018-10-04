@@ -246,4 +246,16 @@ class ImaxController extends SpecialSiteController
         
         $this->data->set('news', $news);
     }
+    
+    /**
+     * theater action
+     * 
+     * @param \Slim\Http\Request  $request
+     * @param \Slim\Http\Response $response
+     * @param array               $args
+     * @return string|void
+     */
+    public function executeTheater($request, $response, $args)
+    {
+    }
 }
