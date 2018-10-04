@@ -50,4 +50,5 @@ $app->group('/imax', function() {
     $this->get('', ImaxController::class . ':index')->setName('imax');
     $this->get('/about', ImaxController::class . ':about')->setName('imax_about');
     $this->get('/movie/list', ImaxController::class . ':scheduleList')->setName('imax_schedule_list');
+    $this->get('/movie/{schedule}', ImaxController::class . ':scheduleShow')->setName('imax_schedule_show');
 });
