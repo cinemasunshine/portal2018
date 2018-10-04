@@ -56,7 +56,7 @@
                     
                     <div class="area-button mb-md-2 pr-md-2 mb-2 px-1 px-md-0 small font-weight-bold">
                     {% if isShowing %}
-                        <a href="#" data-theaterCode="{{ theater.getId() }}" class="d-flex align-items-center justify-content-center bg-white text-blue border-blue">{{ theater.getNameJa() }}</a>
+                        <a href="{{ path_for('theater', { name: theater.getName() }) }}" data-theaterCode="{{ theater.getId() }}" class="d-flex align-items-center justify-content-center bg-white text-blue border-blue">{{ theater.getNameJa() }}</a>
                     {% else %}
                         <span class="d-flex align-items-center justify-content-center text-gray border-gray bg-white">{{ theater.getNameJa() }}</span>
                     {% endif %}
