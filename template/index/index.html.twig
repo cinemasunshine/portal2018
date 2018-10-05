@@ -16,9 +16,20 @@
 </div>
 
 <div class="bg-light-gray mb-5">
-    {% include 'index/include/theater_list.html.twig' with {
-        areaToTheaters: areaToTheaters
-    } only %}
+    <h3 class="width mx-auto d-md-block d-none pt-4 px-3 line-height-1 font-weight-bold large">劇場一覧<br>
+    <span class="small">THEATER</span></h3>
+    <div class="width mx-auto d-md-flex py-4 px-3">
+        <div class="region-selection-sp mb-4 plus-button d-md-none">
+            <a href="#">
+                <div>劇場一覧</div>
+            </a>
+        </div>
+        {% include 'index/include/theater_list.html.twig' with {
+            areaToTheaters: areaToTheaters
+        } only %}
+
+        {% include 'index/include/trailer.html.twig' only %}
+    </div>
 </div>
 
 {% include 'index/include/ranking.html.twig' with {
