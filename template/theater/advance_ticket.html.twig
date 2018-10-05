@@ -1,0 +1,108 @@
+{% extends "theater_layout.html.twig" %}
+
+{% block css %}
+<link href="/css/theater/advance-tickets.css" rel="stylesheet">
+{% endblock %}
+
+{% block javascript %}
+<script src="/js/theater/advance-tickets.js"></script>
+{% endblock %}
+
+{% block navbar %}
+{% include 'theater/include/navbar.html.twig' with {
+    theater: theater,
+    active: 'advance-ticket',
+} only %}
+{% endblock %}
+
+{% block contents %}
+<div class="width mx-auto p-3">
+    <div class="breadcrumb-list small mb-5 d-none d-md-block">
+        <a href="{{ path_for('theater', { name: theater.getName() }) }}" class="mr-3">ホーム | {{ theater.getNameJa() }}</a>|
+        <span class="font-weight-bold mx-3">前売券情報</span>
+    </div>
+    
+    <div class="mb-5">
+        <h2 class="font-weight-bold large text-center text-md-left mb-4 mt-2">前売情報</h2>
+        <p>
+            <br>・前売券の販売は、公開日の前日までとなっております。
+            <br>・前売券は通常、ご鑑賞日の2日前から窓口で当日券へのお引換えが可能ですが、作品によっては早まる場合がございますのでご了承下さい。
+            <br>・前売券の販売は、公開日の前日までとなっております。
+            <br>・前売券は通常、ご鑑賞日の2日前から窓口で当日券へのお引換えが可能ですが、作品によっては早まる場合がございますのでご了承下さい。
+        <p>
+    </div>
+    
+    <div class="advance-information  border-top border-gray">
+    
+    {% for advanceTicket in advanceTickets %}
+        {% set advanceSale = advanceTicket.getAdvanceSale() %}
+        {% set title = advanceSale.getTitle() %}
+        <div class="d-flex py-3 border-bottom border-gray">
+            <div class="image">
+            {% if title.getImage() %}
+                <img src="{{ file_url(title.getImage()) }}" class="border w-100">
+            {% endif %}
+            </div>
+            <div class="detail px-md-5 pl-3 py-md-2">
+                <dl class="d-flex mb-md-2 mb-1">
+                    <dt class="font-weight-normal">作品名</dt>
+                    <dd class="mb-0">{{ title.getName() }}</dd>
+                </dl>
+                <dl class="d-flex mb-md-2 mb-1">
+                    <dt class="font-weight-normal">公開予定日</dt>
+                    <dd class="mb-0">
+                    {% if advanceSale.getPublishingExpectedDateText() %}
+                        {{ advanceSale.getPublishingExpectedDateText() }}
+                    {% elseif advanceSale.getPublishingExpectedDate() %}
+                        {{ advanceSale.getPublishingExpectedDate()|date('Y/n/j') }}
+                    {% endif %}
+                    </dd>
+                </dl>
+                <dl class="d-flex mb-md-2 mb-1">
+                    <dt class="font-weight-normal">発売日</dt>
+                    <dd class="mb-0">
+                    {% if advanceTicket.getReleaseDtText() %}
+                        {{ advanceTicket.getReleaseDtText() }}
+                    {% elseif advanceTicket.getReleaseDt() %}
+                        {{ advanceTicket.getReleaseDt()|date('Y/n/j') }}
+                    {% endif %}
+                    </dd>
+                </dl>
+                <dl class="d-flex mb-md-2 mb-1">
+                    <dt class="font-weight-normal">前売</dt>
+                    <dd class="mb-0">{{ advanceTicket.getPriceText() }}</dd>
+                </dl>
+                <dl class="d-flex mb-md-2 mb-1">
+                    <dt class="font-weight-normal">チケットタイプ</dt>
+                    <dd class="mb-0">{{ advance_ticket_type_label(advanceTicket.getType()) }}</dd>
+                </dl>
+            {% if advanceTicket.getSpecialGift() %}
+                <dl class="d-flex mb-md-2 mb-1">
+                    <dt class="font-weight-normal">前売特典</dt>
+                    <dd class="mb-0">
+                    {% if advanceTicket.isSpecialGiftStockNotIn() %}
+                        特典終了
+                    {% else %}
+                        {% set giftName = advanceTicket.getSpecialGift() %}
+                        {% if advanceTicket.isSpecialGiftStockFew() %}
+                            {% set giftName = giftName ~ '（残り僅か）' %}
+                        {% endif %}
+                        
+                        {% if advanceTicket.getSpecialGiftImage() %}
+                            <a class="text-blue" href="#" data-toggle="tooltip" data-html="true"
+                                data-title="<img class='w-100' src='{{ file_url(advanceTicket.getSpecialGiftImage()) }}'>"
+                                data-template="<div class='tooltip advance-tooltip' role='tooltip'><div class='tooltip-inner p-0 border'></div></div>">{{ giftName }}</a>
+                        {% else %}
+                            {{ giftName }}
+                        {% endif %}
+                    {% endif %}
+                    </dd>
+                </dl>
+            {% endif %}
+            </div>
+        </div>
+    {% endfor %}
+    
+    </div>
+</div>
+{% endblock %}

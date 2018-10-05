@@ -34,7 +34,7 @@
                 </div>
             </a></li>
         <li class="d-flex {{ advanceTicketClass }}">
-            <a class="py-2 d-flex align-items-center justify-content-center w-100 text-dark-gray" href="#">
+            <a class="py-2 d-flex align-items-center justify-content-center w-100 text-dark-gray" href="{{ path_for('theater_advance_ticket', { name: theater.getName() }) }}">
                 <div>
                     <div class="mb-1">前売券情報</div>
                     <div class="x-small">ADVANCE TICKET</div>

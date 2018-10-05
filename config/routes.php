@@ -35,6 +35,7 @@ $app->group('/theater/{name}', function () {
     $this->get('', TheaterController::class . ':index')->setName('theater');
     $this->get('/access', TheaterController::class . ':access')->setName('theater_access');
     $this->get('/admission', TheaterController::class . ':admission')->setName('theater_admission');
+    $this->get('/advance-tickets', TheaterController::class . ':advanceTicket')->setName('theater_advance_ticket');
     $this->get('/concession', TheaterController::class . ':concession')->setName('theater_concession');
     $this->get('/facility', TheaterController::class . ':floorGuide')->setName('theater_floor_guide');
     

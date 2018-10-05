@@ -12,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * AdvanceTicket entity class
  * 
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Cinemasunshine\Portal\ORM\Repository\AdvanceTicketRepository")
  * @ORM\Table(name="advance_ticket", options={"collate"="utf8mb4_general_ci"})
  * @ORM\HasLifecycleCallbacks
  */
@@ -27,30 +27,6 @@ class AdvanceTicket extends AbstractEntity
     const SPECIAL_GIFT_STOCK_IN     = 1;
     const SPECIAL_GIFT_STOCK_FEW    = 2;
     const SPECIAL_GIFT_STOCK_NOT_IN = 3;
-    
-    const STATUS_PRE_SALE = 1;
-    const STATUS_SALE     = 2;
-    const STATUS_SALE_END = 3;
-    
-    /** @var array */
-    protected static $types = [
-        self::TYPE_MVTK  => 'ムビチケ',
-        self::TYPE_PAPER => '紙券',
-    ];
-    
-    /** @var array */
-    protected static $specialGiftStockList = [
-        self::SPECIAL_GIFT_STOCK_IN     => '有り',
-        self::SPECIAL_GIFT_STOCK_FEW    => '残り僅か',
-        self::SPECIAL_GIFT_STOCK_NOT_IN => '特典終了',
-    ];
-    
-    /** @var array */
-    protected static $statusList = [
-        self::STATUS_PRE_SALE => '販売予定',
-        self::STATUS_SALE     => '販売中',
-        self::STATUS_SALE_END => '販売終了',
-    ];
     
     /**
      * id
@@ -268,16 +244,6 @@ class AdvanceTicket extends AbstractEntity
     }
     
     /**
-     * get type label
-     *
-     * @return string|null
-     */
-    public function getTypeLabel()
-    {
-        return self::$types[$this->getType()] ?? null;
-    }
-    
-    /**
      * set type
      *
      * @param int $type
@@ -344,13 +310,44 @@ class AdvanceTicket extends AbstractEntity
     }
     
     /**
-     * get special_gift_stock label
+     * is special gift stock
      *
-     * @return string|null
+     * @param int $stock
+     * @return boolean
      */
-    public function getSpecialGiftStockLabel()
+    public function isSpecialGiftStock(int $stock)
     {
-        return self::$specialGiftStockList[$this->getSpecialGiftStock()] ?? null;
+        return $this->getSpecialGiftStock() === $stock;
+    }
+    
+    /**
+     * 特典あり
+     *
+     * @return boolean
+     */
+    public function isSpecialGiftStockIn()
+    {
+        return $this->isSpecialGiftStock(self::SPECIAL_GIFT_STOCK_IN);
+    }
+    
+    /**
+     * 特典残り僅か
+     *
+     * @return boolean
+     */
+    public function isSpecialGiftStockFew()
+    {
+        return $this->isSpecialGiftStock(self::SPECIAL_GIFT_STOCK_FEW);
+    }
+    
+    /**
+     * 特典終了
+     *
+     * @return boolean
+     */
+    public function isSpecialGiftStockNotIn()
+    {
+        return $this->isSpecialGiftStock(self::SPECIAL_GIFT_STOCK_NOT_IN);
     }
     
     /**
@@ -385,53 +382,5 @@ class AdvanceTicket extends AbstractEntity
     public function setSpecialGiftImage($specialGiftImage)
     {
         throw new \LogicException('Not allowed.');
-    }
-    
-    /**
-     * get status label
-     *
-     * @return string|null
-     */
-    public function getStatusLabel()
-    {
-        if ($this->isSalseEnd()) {
-            return self::$statusList[self::STATUS_SALE_END];
-        }
-        
-        $now = new \DateTime('now');
-        $end = $this->getAdvanceSale()->getPublishingExpectedDate();
-        
-        if ($end && $now > $end) {
-            return self::$statusList[self::STATUS_SALE_END];
-        }
-        
-        $start = $this->getReleaseDt();
-        
-        if ($now < $start) {
-            return self::$statusList[self::STATUS_PRE_SALE];
-        }
-        
-        // 終了日（作品公開予定日）が設定されていなくても発売される
-        return self::$statusList[self::STATUS_SALE];
-    }
-    
-    /**
-     * return types
-     *
-     * @return array
-     */
-    public static function getTypes()
-    {
-        return self::$types;
-    }
-    
-    /**
-     * return special gift stock list
-     *
-     * @return array
-     */
-    public static function getSpecialGiftStockList()
-    {
-        return self::$specialGiftStockList;
     }
 }

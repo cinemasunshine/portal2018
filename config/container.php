@@ -31,6 +31,8 @@ $container['view'] = function ($container) {
     $view->addExtension(new \Twig_Extension_Debug());
     $view->addExtension(new \Cinemasunshine\Portal\Twig\Extension\AzureStorageExtension($container));
     $view->addExtension(new \Cinemasunshine\Portal\Twig\Extension\CommonExtension());
+    
+    $view->addExtension(new \Cinemasunshine\Portal\Twig\Extension\AdvanceTicketExtension());
     $view->addExtension(new \Cinemasunshine\Portal\Twig\Extension\NewsExtension());
     $view->addExtension(new \Cinemasunshine\Portal\Twig\Extension\TheaterExtension());
     
