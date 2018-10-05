@@ -24,6 +24,8 @@ class IndexController extends GeneralController
      */
     public function executeIndex($request, $response, $args)
     {
+        $this->data->set('page', $this->getPage(self::PAGE_ID));
+        
         $this->data->set('mainBanners', $this->getMainBanners());
         
         $this->data->set('areaToTheaters', $this->getTheaters());

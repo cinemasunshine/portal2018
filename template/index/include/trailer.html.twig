@@ -1,5 +1,8 @@
 <div class="trailer mx-auto mx-md-0">
     <div class="trailer-inner">
-        <iframe type="text/html" src="{{ path_for('trailer', {}, { p: 1 }) }}" frameborder="0" width="336" height="280"></iframe>
+        {# TODO: 設定で広告か直接動画表示を切り替えるような仕組み #}
+        {{ mw_ad(page) }}
+        {# 下記のタグが広告として表示される #}
+        {# <iframe type="text/html" src="{{ path_for('trailer', {}, { p: page.getId() }) }}" frameborder="0" width="336" height="280"></iframe> #}
     </div>
 </div>

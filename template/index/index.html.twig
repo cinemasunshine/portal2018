@@ -6,6 +6,7 @@
 
 {% block javascript %}
 <script src="/js/top.js"></script>
+{{ mw_ad_script(page) }}
 {% endblock %}
 
 {% block contents %}
@@ -28,7 +29,9 @@
             areaToTheaters: areaToTheaters
         } only %}
 
-        {% include 'index/include/trailer.html.twig' only %}
+        {% include 'index/include/trailer.html.twig' with {
+            page: page
+        } only %}
     </div>
 </div>
 

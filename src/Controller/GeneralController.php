@@ -17,6 +17,19 @@ abstract class GeneralController extends BaseController
     const PAGE_ID = 1;
     
     /**
+     * return page
+     *
+     * @param int $pageId
+     * @return Entity\Page|null
+     */
+    protected function getPage(int $pageId)
+    {
+        return $this->em
+            ->getRepository(Entity\Page::class)
+            ->findOneById($pageId);
+    }
+    
+    /**
      * return campaigns
      *
      * @param int $pageId
