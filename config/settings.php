@@ -77,4 +77,31 @@ $settings['storage'] = [
     ],
 ];
 
+// movie walker ad
+$getMovieWalakerAdSetting = function() {
+    $settings = [
+        'page' => [],
+    ];
+    
+    // slotとidの割り振り基準が不明なのでデータ構造は適宜変更する。
+    if (APP_ENV === 'dev') {
+        $slots = [
+            1 => '/22524478/sunshine_top_336_280',
+        ];
+        $settings['page']['slots'] = $slots;
+        
+        $ids = [
+            1 => 'div-gpt-ad-1538623317895-0',
+        ];
+        $settings['page']['ids'] = $ids;
+        
+    } else if (APP_ENV === 'prod') {
+        throw new \Exception('todo');
+    }
+    
+    return $settings;
+};
+
+$settings['mw_ad'] = $getMovieWalakerAdSetting();
+
 return $settings;

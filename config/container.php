@@ -33,6 +33,10 @@ $container['view'] = function ($container) {
     $view->addExtension(new \Cinemasunshine\Portal\Twig\Extension\CommonExtension());
     $view->addExtension(new \Cinemasunshine\Portal\Twig\Extension\NewsExtension());
     $view->addExtension(new \Cinemasunshine\Portal\Twig\Extension\TheaterExtension());
+    
+    $view->addExtension(new \Cinemasunshine\Portal\Twig\Extension\MovieWalkerAdExtension(
+        $container->get('settings')['mw_ad']
+    ));
 
     return $view;
 };
