@@ -63,5 +63,6 @@ $app->group('/imax', function() {
 $app->group('/api', function() {
     $this->group('/schedule/{name}', function() {
         $this->get('', ScheduleApiController::class . ':index');
+        $this->get('/{date:[\d]{4}-[\d]{2}-[\d]{2}}', ScheduleApiController::class . ':date');
     });
 });

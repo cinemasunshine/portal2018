@@ -17,6 +17,7 @@ use Cinemasunshine\Portal\Schedule\Builder\V1\PreSchedule as V1PreScheduleBuilde
 use Cinemasunshine\Portal\Schedule\Builder\V1\Schedule as V1ScheduleBuilder;
 use Cinemasunshine\Portal\Schedule\Builder\V2\PreSchedule as V2PreScheduleBuilder;
 use Cinemasunshine\Portal\Schedule\Builder\V2\Schedule as V2ScheduleBuilder;
+use Cinemasunshine\Portal\Schedule\Collection\Movie as MovieCollection;
 use Cinemasunshine\Portal\Schedule\Collection\Schedule as ScheduleCollection;
 use Cinemasunshine\Portal\Schedule\Theater as TheaterSchedule;
 
@@ -194,5 +195,146 @@ class ScheduleController extends BaseController
         $allSchedules->ksort();
 
         return $allSchedules;
+    }
+    
+    /**
+     * date action
+     * 
+     * @param \Slim\Http\Request  $request
+     * @param \Slim\Http\Response $response
+     * @param array               $args
+     * @return string|void
+     */
+    public function executeDate($request, $response, $args)
+    {
+        $theaterName = $args['name'];
+        $date = $args['date'];
+        
+        $useTestApi = $this->useTestApi($theaterName);
+        $theaterSchedule = new TheaterSchedule($theaterName, $useTestApi);
+        
+        if ($theaterSchedule->isVersion2()) {
+            $builer = new V2ScheduleBuilder($this->purchaseBaseUrl);
+            $preBuiler = new V2PreScheduleBuilder($this->purchaseBaseUrl);
+        } else {
+            $builer = new V1ScheduleBuilder();
+            $preBuiler = new V1PreScheduleBuilder();
+        }
+        
+        $scheduleResponse = $theaterSchedule->fetchSchedule($builer);
+        
+        if ($scheduleResponse instanceof HttpResponse) {
+            $schedules = $scheduleResponse->getContents();
+        } else {
+            $schedules = $scheduleResponse;
+        }
+
+        $preScheduleResponse = $theaterSchedule->fetchPreSchedule($preBuiler);
+        
+        if ($preScheduleResponse instanceof HttpResponse) {
+            $preSchedules = $preScheduleResponse->getContents();
+        } else {
+            $preSchedules = $preScheduleResponse;
+        }
+        
+        $meta = array();
+        $data = array();
+
+        if (
+            $schedules->getError() === V1Schedules::ERROR_OTHER
+            || $preSchedules->getError() === V1Schedules::ERROR_OTHER
+        ) {
+            throw new \RuntimeException('schedule unknown error');
+
+        } else if (
+            $schedules->getError() === V1Schedules::ERROR_NO_CONTENT
+            && $preSchedules->getError() === V1Schedules::ERROR_NO_CONTENT
+        ) {
+            $meta['error'] = V1Schedules::ERROR_NO_CONTENT;
+            $this->data->set('meta', $meta);
+            $this->data->set('data', $data);
+            
+            return;
+        }
+        
+        if (
+            $schedules->getError() === V1Schedules::ERROR_OTHER
+            || $preSchedules->getError() === V1Schedules::ERROR_OTHER
+        ) {
+            throw new \RuntimeException('schedule unknown error');
+
+        } else if (
+            $schedules->getError() === V1Schedules::ERROR_NO_CONTENT
+            && $preSchedules->getError() === V1Schedules::ERROR_NO_CONTENT
+        ) {
+            $meta['error'] = V1Schedules::ERROR_NO_CONTENT;
+            $this->data->set('meta', $meta);
+            $this->data->set('data', $data);
+            
+            return;
+        }
+
+        $meta['error']     = V1Schedules::ERROR_NOT;
+        $meta['attention'] = $schedules->getAttention(); // 通常、先行で同じ想定
+        
+        $params = [
+            'date' => $date,
+        ];
+        $movieCollection = $this->findSchedule($params, $schedules, $preSchedules);
+
+        foreach ($movieCollection as $movie) {
+            $data[] = $movie->toArray();
+        }
+        
+        $this->data->set('meta', $meta);
+        $this->data->set('data', $data);
+    }
+    
+    /**
+     * スケジュール検索
+     *
+     * @param array              $params
+     * @param SchedulesInterface $schedules
+     * @param SchedulesInterface $preSchedules
+     * @return MovieCollection
+     */
+    public function findSchedule(
+        array $params,
+        SchedulesInterface $schedules,
+        SchedulesInterface $preSchedules
+    ) {
+        $movieCollection = new MovieCollection();
+
+        $this->findMovie($params, $schedules, $movieCollection);
+
+        $this->findMovie($params, $preSchedules, $movieCollection);
+
+        return $movieCollection;
+    }
+    
+    
+    /**
+     * 作品検索
+     *
+     * @param array              $params
+     * @param SchedulesInterface $schedules
+     * @param MovieCollection    $movieCollection
+     */
+    function findMovie(
+        array $params,
+        SchedulesInterface $schedules,
+        MovieCollection $movieCollection
+    ) {
+        foreach ($schedules->getSchedule() as $schedule) {
+            if ($schedule->getDate() !== $params['date']) {
+                continue;
+            }
+
+            foreach ($schedule->getMovie() as $movie) {
+                $movieCollection->add($movie);
+            }
+
+            break; // 同じ日付は無い想定
+        }
     }
 }

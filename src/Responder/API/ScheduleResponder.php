@@ -27,4 +27,16 @@ class ScheduleResponder extends BaseResponder
     {
         return $response->withJson($data->all());
     }
+    
+    /**
+     * date
+     *
+     * @param Response   $response
+     * @param Collection $data
+     * @return Response
+     */
+    public function date(Response $response, Collection $data)
+    {
+        return $response->withJson($data->all());
+    }
 }
