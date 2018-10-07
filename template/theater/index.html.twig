@@ -22,4 +22,10 @@
     } only %}
 </div>
 
+{% set specialSites = theater.getSpecialSites() %}
+{% if specialSites|length > 0 %}
+    {% include 'theater/include/index/special_site.html.twig' with {
+        specialSites: specialSites
+    } only %}
+{% endif %}
 {% endblock %}
