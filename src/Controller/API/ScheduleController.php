@@ -86,19 +86,20 @@ class ScheduleController extends BaseController
             $preBuiler = new V1PreScheduleBuilder();
         }
         
-        $response = $theaterSchedule->fetchSchedule($builer);
-        $preResponse = $theaterSchedule->fetchPreSchedule($preBuiler);
+        $scheduleResponse = $theaterSchedule->fetchSchedule($builer);
         
-        if ($response instanceof HttpResponse) {
-            $schedules = $response->getContents();
+        if ($scheduleResponse instanceof HttpResponse) {
+            $schedules = $scheduleResponse->getContents();
         } else {
-            $schedules = $response;
+            $schedules = $scheduleResponse;
         }
+        
+        $preScheduleResponse = $theaterSchedule->fetchPreSchedule($preBuiler);
 
-        if ($response instanceof HttpResponse) {
-            $preSchedules = $preResponse->getContents();
+        if ($preScheduleResponse instanceof HttpResponse) {
+            $preSchedules = $preScheduleResponse->getContents();
         } else {
-            $preSchedules = $preResponse;
+            $preSchedules = $preScheduleResponse;
         }
         
         $meta = array();
