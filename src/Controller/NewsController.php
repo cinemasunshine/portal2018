@@ -28,7 +28,7 @@ class NewsController extends GeneralController
     {
         $this->data->set('newsList', $this->getNewsList());
         
-        $this->data->set('campaings', $this->getCampaigns(self::PAGE_ID));
+        $this->data->set('campaigns', $this->getCampaigns(self::PAGE_ID));
     }
     
     /**

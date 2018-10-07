@@ -41,7 +41,7 @@ class IndexController extends GeneralController
         
         $this->data->set('infoNewsList', $this->getNewsList(Entity\News::CATEGORY_INFO));
         
-        $this->data->set('campaings', $this->getCampaigns(self::PAGE_ID));
+        $this->data->set('campaigns', $this->getCampaigns(self::PAGE_ID));
     }
     
     /**

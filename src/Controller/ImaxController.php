@@ -40,7 +40,7 @@ class ImaxController extends SpecialSiteController
         
         $this->data->set('soonSchedules', $this->getSoonSchedules());
         
-        $this->data->set('campaings', $this->getCampaigns());
+        $this->data->set('campaigns', $this->getCampaigns());
         
         $this->data->set('infoNewsList', $this->getInfoNewsList(4));
     }

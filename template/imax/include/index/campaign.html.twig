@@ -5,11 +5,11 @@
     <div class="campaign-inner position-relative d-none d-md-block width mx-auto">
         <div class="campaign-slider swiper-container">
             <div class="swiper-wrapper py-3">
-            {% for campaing in campaings %}
+            {% for campaign in campaigns %}
                 <div class="swiper-slide rounded shadow-01">
-                    <a href="{{ campaing.getUrl() }}" target="_blank" class="d-block">
-                        <img src="{{ file_url(campaing.getImage()) }}" class="w-100">
-                        <p class="bg-white p-3 mb-0">{{ campaing.getName() }}</p>
+                    <a href="{{ campaign.getUrl() }}" target="_blank" class="d-block">
+                        <img src="{{ file_url(campaign.getImage()) }}" class="w-100">
+                        <p class="bg-white p-3 mb-0">{{ campaign.getName() }}</p>
                     </a>
                 </div>
             {% endfor %}
@@ -22,11 +22,11 @@
     </div>
     <div class="campaign-slider-sp swiper-container width mx-auto d-md-none">
         <div class="swiper-wrapper py-3 ml-3">
-        {% for campaing in campaings %}
+        {% for campaign in campaigns %}
             <div class="swiper-slide rounded shadow-01">
-                <a class="d-block" href="{{ campaing.getUrl() }}" target="_blank">
-                    <img src="{{ file_url(campaing.getImage()) }}" class="w-100">
-                    <p class="bg-white p-3 mb-0">{{ campaing.getName() }}</p>
+                <a class="d-block" href="{{ campaign.getUrl() }}" target="_blank">
+                    <img src="{{ file_url(campaign.getImage()) }}" class="w-100">
+                    <p class="bg-white p-3 mb-0">{{ campaign.getName() }}</p>
                 </a>
             </div>
         {% endfor %}
