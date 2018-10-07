@@ -13,6 +13,10 @@ use Cinemasunshine\Schedule\Entity\SchedulesInterface;
 use Cinemasunshine\Schedule\Exception\RequestException;
 use Cinemasunshine\Schedule\Response\Http as HttpResponse;
 
+use Cinemasunshine\Portal\Schedule\Builder\V1\PreSchedule as V1PreScheduleBuilder;
+use Cinemasunshine\Portal\Schedule\Builder\V1\Schedule as V1ScheduleBuilder;
+use Cinemasunshine\Portal\Schedule\Builder\V2\PreSchedule as V2PreScheduleBuilder;
+use Cinemasunshine\Portal\Schedule\Builder\V2\Schedule as V2ScheduleBuilder;
 use Cinemasunshine\Portal\Schedule\Collection\Schedule as ScheduleCollection;
 use Cinemasunshine\Portal\Schedule\Theater as TheaterSchedule;
 
@@ -28,6 +32,9 @@ class ScheduleController extends BaseController
     /** @var string */
     protected $apiEnv;
     
+    /** @var string */
+    protected $purchaseBaseUrl;
+    
     /**
      * pre execute
      * 
@@ -39,6 +46,8 @@ class ScheduleController extends BaseController
     {
         $settings = $this->settings['coa_schedule'];
         $this->apiEnv = $settings['env'];
+        
+        $this->purchaseBaseUrl = $this->settings['mp_ticket']['entrance_url'];
     }
     
     /**
@@ -67,10 +76,18 @@ class ScheduleController extends BaseController
         $theaterName = $args['name'];
         
         $useTestApi = $this->useTestApi($theaterName);
-        
         $theaterSchedule = new TheaterSchedule($theaterName, $useTestApi);
-        $response = $theaterSchedule->fetchSchedule();
-        $preResponse = $theaterSchedule->fetchPreSchedule();
+        
+        if ($theaterSchedule->isVersion2()) {
+            $builer = new V2ScheduleBuilder($this->purchaseBaseUrl);
+            $preBuiler = new V2PreScheduleBuilder($this->purchaseBaseUrl);
+        } else {
+            $builer = new V1ScheduleBuilder();
+            $preBuiler = new V1PreScheduleBuilder();
+        }
+        
+        $response = $theaterSchedule->fetchSchedule($builer);
+        $preResponse = $theaterSchedule->fetchPreSchedule($preBuiler);
         
         if ($response instanceof HttpResponse) {
             $schedules = $response->getContents();

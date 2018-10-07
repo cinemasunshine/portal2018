@@ -110,8 +110,10 @@ $getMotionpictureTicketSetting = function() {
     
     if (APP_ENV === 'prod') {
         $settings['url'] = 'https://ticket-cinemasunshine.com';
+        $settings['entrance_url'] = 'https://entrance.ticket-cinemasunshine.com';
     } else {
         $settings['url'] = 'https://sskts-frontend-development.azurewebsites.net';
+        $settings['entrance_url'] = 'https://d2n1h4enbzumbc.cloudfront.net';
     }
     
     return $settings;

@@ -100,23 +100,7 @@ class Theater extends Base
      */
     public function fetchSchedule(ScheduleBuilder $builder = null)
     {
-        if (is_null($builder)) {
-            $builder = $this->getScheduleBuilder();
-        }
-        
         return $this->client->get($this->endpoint['schedule'], $builder);
-    }
-    
-    /**
-     * return schedule builder
-     *
-     * @return ScheduleBuilder
-     */
-    protected function getScheduleBuilder()
-    {
-        $version = $this->config['version'];
-        
-        return ($version === '2') ? new V2ScheduleBuilder() : new V1ScheduleBuilder();
     }
     
     /**
@@ -127,22 +111,16 @@ class Theater extends Base
      */
     public function fetchPreSchedule(PreScheduleBuilder $builder = null)
     {
-        if (is_null($builder)) {
-            $builder = $this->getPreScheduleBuilder();
-        }
-        
         return $this->client->get($this->endpoint['pre_schedule'], $builder);
     }
     
     /**
-     * return pre schedule builder
+     * return is version2
      *
-     * @return PreScheduleBuilder
+     * @return boolean
      */
-    protected function getPreScheduleBuilder()
+    public function isVersion2()
     {
-        $version = $this->config['version'];
-        
-        return ($version === '2') ? new V2PreScheduleBuilder() : new V1PreScheduleBuilder();
+        return $this->config['version'] === '2';
     }
 }

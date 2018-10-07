@@ -21,6 +21,19 @@ use Cinemasunshine\Portal\Schedule\Entity\V2\TIme as TimeEntity;
  */
 class PreSchedule extends BaseBuilder
 {
+    /** @var string */
+    protected $purchaseBaseUrl;
+    
+    /**
+     * construct
+     *
+     * @param string $purchaseBaseUrl
+     */
+    public function __construct(string $purchaseBaseUrl)
+    {
+        $this->purchaseBaseUrl = $purchaseBaseUrl;
+    }
+    
     /**
      * create Schedules entity
      *
@@ -76,6 +89,6 @@ class PreSchedule extends BaseBuilder
      */
     protected function createTimeEntity()
     {
-        return new TimeEntity();
+        return new TimeEntity($this->purchaseBaseUrl);
     }
 }

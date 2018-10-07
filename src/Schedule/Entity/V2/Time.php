@@ -18,6 +18,19 @@ use Cinemasunshine\Portal\Schedule\Entity\PortalEntityInterface;
  */
 class Time extends BaseEntity implements PortalEntityInterface
 {
+    /** @var string */
+    protected $baseUrl;
+    
+    /**
+     * construct
+     *
+     * @param string $baseUrl
+     */
+    public function __construct(string $baseUrl)
+    {
+        $this->baseUrl = $baseUrl;
+    }
+    
     /**
      * get url
      *
@@ -46,8 +59,7 @@ class Time extends BaseEntity implements PortalEntityInterface
 
         $id = $theaterCode . $titleCode . $titleBranchNum . $dateJouei . $screenCode . $timeBegin;
 
-        throw new \Exception('todo：ベースURLの設定');
-        return TICKETING_ENTRANCE_URL . '/purchase/index.html?id=' . $id;
+        return $this->baseUrl . '/purchase/index.html?id=' . $id;
     }
 
     /**
