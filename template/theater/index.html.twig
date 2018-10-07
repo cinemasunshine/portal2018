@@ -49,4 +49,10 @@
         } only %}
     </div>
 </div>
+
+{% if theater.getMasterVersion() == 2 %}
+    {% include 'theater/include/index/online_ticket.html.twig' with {
+        masterCode: theater.getMasterCode()
+    } only %}
+{% endif %}
 {% endblock %}

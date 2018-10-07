@@ -1,0 +1,47 @@
+<div class="width mx-auto mb-5">
+    <div class="online-mvtk-button d-flex">
+        <div class="button-03 shadow-01 w-50 mx-3">
+            <a href="#" class="font-weight-bold" data-toggle="modal" data-target="#modal1">オンライン<br class="d-md-none">チケット購入について</a>
+        </div>
+        <div class="button-03 shadow-01 w-50 mx-3">
+            <a href="{{ path_for('mvtk') }}" class="font-weight-bold">ムビチケ<br class="d-md-none">ご利用手順について</a>
+        </div>
+    </div>
+    <div class="online-ticket-button shadow-01 mx-3">
+        <a href="{{ mp_ticket_inquiry(masterCode) }}" class="font-weight-bold">オンラインチケット照会/予約内容確認</a>
+    </div>
+</div>
+
+<div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content py-3 px-4">
+            <div class="modal-body">
+                <p class="font-weight-bold largr mb-4">チケット購入に関するご注意</p>
+                <p class="mb-3">インターネットでチケットを購入される方は、上映スケジュール内の購入ボタンをクリックして下さい。
+                    <br>※インターネットでチケットが売り切れの場合でも、当劇場チケット窓口にて当日券を販売しております。
+                    <br>※購入マークがない時間はインターネットでのチケット購入対象外となります。
+                </p>
+                <p class="mb-4">チケットはご鑑賞希望日の2日前から販売しております。
+                    <br>お電話でのチケット販売は受け付けておりませんのでご了承ください。
+                    <br>上映時間については、予告なく変更する場合がございます。
+                </p>
+                <p class="mb-4">【ムビチケのご利用について】
+                    <br>ご購入済みのムビチケを使用してネット座席予約をするには、
+                    <br>日付・作品・時間を決めて【〇購入】ボタンをクリックして下記画像のページに進み、
+                    <br>①規約・注意事項をご確認いただきチェック
+                    <br>②のムビチケのボタンをクリックしていただきますと、お手持ちのムビチケ情報を入力する画面に進むことができます。
+                </p>
+                <p class="mb-4">シネマサンシャインでは、差額料金を追加でお支払い頂くことで、ムビチケ2D券を3D上映やIMAX上映にご使用頂けます。
+                    <br>ネット座席予約での料金のお支払いは、クレジット決済のみとなりますのでご了承ください。
+                </p>
+                <p class="mb-4">ご注意
+                    <br>●チケットをインターネットで購入される際は、下記カレンダーのご鑑賞日付をクリックして作品と時間とをお選びくださいませ。
+                    <br>ご鑑賞日の日付間違いが増えております。ご予約の最終確認時には鑑賞日を再度ご確認ください。
+                </p>
+                <div class="text-center">
+                    <a href="#" data-dismiss="modal" class="font-weight-bold border-bottom border-navy">閉じる</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

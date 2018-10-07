@@ -39,6 +39,10 @@ $container['view'] = function ($container) {
     $view->addExtension(new \Cinemasunshine\Portal\Twig\Extension\MovieWalkerAdExtension(
         $container->get('settings')['mw_ad']
     ));
+    
+    $view->addExtension(new \Cinemasunshine\Portal\Twig\Extension\MotionpictureTicketExtension(
+        $container->get('settings')['mp_ticket']
+    ));
 
     return $view;
 };

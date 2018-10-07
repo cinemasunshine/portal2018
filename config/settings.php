@@ -104,4 +104,19 @@ $getMovieWalakerAdSetting = function() {
 
 $settings['mw_ad'] = $getMovieWalakerAdSetting();
 
+// Motionpicture Ticket
+$getMotionpictureTicketSetting = function() {
+    $settings = [];
+    
+    if (APP_ENV === 'prod') {
+        $settings['url'] = 'https://ticket-cinemasunshine.com';
+    } else {
+        $settings['url'] = 'https://sskts-frontend-development.azurewebsites.net';
+    }
+    
+    return $settings;
+};
+
+$settings['mp_ticket'] = $getMotionpictureTicketSetting();
+
 return $settings;
