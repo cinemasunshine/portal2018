@@ -53,6 +53,10 @@ class TheaterController extends BaseController
         $this->data->set('theater', $theater);
         
         $this->data->set('mainBanners', $this->getMainBanners($theater));
+        
+        $this->data->set('eventNewsList', $this->getNewsList(
+            $theater, Entity\News::CATEGORY_EVENT, 8
+        ));
     }
     
     /**

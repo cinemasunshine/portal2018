@@ -63,4 +63,11 @@
         } only %}
     </div>
 </dv>
+
+<div class="width mx-auto px-3 event-information mb-5">
+    {% include 'theater/include/index/event.html.twig' with {
+        theater: theater,
+        newsList: eventNewsList,
+    } only %}
+</div>
 {% endblock %}
