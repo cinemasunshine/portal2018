@@ -3,6 +3,12 @@
     "description": "Cinemasunshine Portal2018 Frontend",
     "type": "project",
     "minimum-stability": "stable",
+    "repositories": [
+        {
+            "type": "git",
+            "url":  "https://composer:M0P!Xmopix@m-p.backlog.jp/git/SASAKI/schedule.git"
+        }
+    ],
     "autoload": {
         "psr-4": {
             "Cinemasunshine\\Portal\\": "src/"
@@ -14,6 +20,7 @@
         "slim/twig-view": "^2.4",
         "vlucas/phpdotenv": "^2.5",
         "monolog/monolog": "^1.23",
-        "doctrine/orm": "2.6.*"
+        "doctrine/orm": "2.6.*",
+        "cinemasunshine/schedule": "2.0-beta"
     }
 }
