@@ -46,6 +46,7 @@ class TheaterOpeningHour extends AbstractEntity
      */
     protected $time;
     
+    
     /**
      * create
      *
@@ -62,6 +63,7 @@ class TheaterOpeningHour extends AbstractEntity
         
         return $entity;
     }
+    
     
     /**
      * construct
@@ -85,11 +87,10 @@ class TheaterOpeningHour extends AbstractEntity
      *
      * @param int $type
      * @return void
-     * @throws \LogicException
      */
     public function setType(int $type)
     {
-        throw new \LogicException('Not allowed.');
+        $this->type = $type;
     }
     
     /**
@@ -107,11 +108,14 @@ class TheaterOpeningHour extends AbstractEntity
      *
      * @param \DateTime|string $fromDate
      * @return void
-     * @throws \LogicException
      */
     public function setFromDate($fromDate)
     {
-        throw new \LogicException('Not allowed.');
+        if ($fromDate instanceof \Datetime) {
+            $this->fromDate = $fromDate;
+        } else {
+            $this->fromDate = new \DateTime($fromDate);
+        }
     }
     
     /**
@@ -129,11 +133,14 @@ class TheaterOpeningHour extends AbstractEntity
      *
      * @param \DateTime|string|null $toDate
      * @return void
-     * @throws \LogicException
      */
     public function setToDate($toDate)
     {
-        throw new \LogicException('Not allowed.');
+        if (is_null($toDate) || $toDate instanceof \Datetime) {
+            $this->toDate = $toDate;
+        } else {
+            $this->toDate = new \DateTime($toDate);
+        }
     }
     
     /**
@@ -151,10 +158,13 @@ class TheaterOpeningHour extends AbstractEntity
      *
      * @param \DateTime|string $time
      * @return void
-     * @throws \LogicException
      */
     public function setTime($time)
     {
-        throw new \LogicException('Not allowed.');
+        if ($time instanceof \Datetime) {
+            $this->time = $time;
+        } else {
+            $this->time = new \DateTime($time);
+        }
     }
 }
