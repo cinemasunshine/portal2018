@@ -1,0 +1,107 @@
+{% extends "layout.html.twig" %}
+
+{% block css %}
+<link href="/css/mvtk.css" rel="stylesheet">
+{% endblock %}
+
+{% block contents %}
+<div class="p-3">
+    <div class="width mx-auto breadcrumb-list small mb-5 d-none d-md-block">
+        <a href="{{ path_for('homepage') }}">ホーム　|　</a>
+        <span class="font-weight-bold">ムビチケ券ご利用方法</span>
+    </div>
+    
+    <div class="mvtk-width mx-auto">
+        <h2 class="font-weight-bold large text-center text-md-left mb-4 mt-2">ムビチケ券ご利用方法</h2>
+        <div>
+            <h3 class="mvtk-button  font-weight-bold mb-3 py-3 px-3">ムビチケについて</h3>
+            <div class="d-md-flex align-items-center">
+                <div class="image-logo p-3 mx-auto mx-md-0"><img src="/images/mvtk/mvtk_logo.svg"></div>
+                <div class="mvtk-details p-md-3 p-2">
+                    <p class="font-weight-bold">ムビチケとは？</p>
+                    <p>ムビチケとは、ネットで座席指定ができる映画前売券になります。<br>シネマサンシャインでのムビチケのご利用に関しましては下記よりご確認ください。</p>
+                    <p><a href="#01" data-scroll-target="#01" class="font-weight-bold border-bottom border-navy">ムビチケ券のご利用についてはこちら</a></p>
+                </div>
+            </div>
+        </div>
+        <div>
+            <h3 class="mvtk-button  font-weight-bold mb-3 py-3 px-3">オンラインチケット購入でのムビチケ券ご利用手順</h3>
+            <div class="mb-5">
+                <p class="font-weight-bold large">Step 1</p>
+                <p class="mb-4">上映スケジュールから鑑賞したい作品を選択してください。</p>
+                <div class="pc-image"><img src="/images/mvtk/pc_mvtk_01.png" class="w-100"></div>
+                <div class="sp-image"><img src="/images/mvtk/sp_mvtk_01.png" class="w-100"></div>
+            </div>
+            <div class="mb-5">
+                <p class="font-weight-bold large">Step 2</p>
+                <p class="mb-4">鑑賞したい座席を選択し、利用規約の同意にチェックし「次へ」ボタンを押してください。</p>
+                <div class="pc-image"><img src="/images/mvtk/pc_mvtk_02.png" class="w-100"></div>
+                <div class="sp-image"><img src="/images/mvtk/sp_mvtk_02.png" class="w-100"></div>
+            </div>
+            <div class="mb-5">
+                <p class="font-weight-bold large">Step 3</p>
+                <p class="mb-4">券種選択画面の上部にある、「ムビチケを利用する」ボタンを押してください。<br><span class="small text-red font-weight-bold">※ムビチケを利用される方は、事前に「ムビチケ購入番号」と「ムビチケ暗証番号」をご用意ください。</span></p>
+                <div class="pc-image"><img src="/images/mvtk/pc_mvtk_03.png" class="w-100"></div>
+                <div class="sp-image"><img src="/images/mvtk/sp_mvtk_03.png" class="w-100"></div>
+            </div>
+            <div class="mb-5">
+                <p class="font-weight-bold large">Step 4</p>
+                <p class="mb-4">利用するムビチケ券の「ムビチケ購入番号」と「ムビチケ暗証番号」を入力し、「認証する」を押してください。<br><span class="small text-red font-weight-bold">※ムビチケ券によっては別途追加料金が発生する場合があります、差額が発生した場合は別途クレジットカードにて差額分をお支払いいただきます。</span></p>
+                <div class="pc-image"><img src="/images/mvtk/pc_mvtk_04.png" class="w-100"></div>
+                <div class="sp-image"><img src="/images/mvtk/sp_mvtk_04.png" class="w-100"></div>
+            </div>
+            <div class="mb-5">
+                <p class="font-weight-bold large">Step 5</p>
+                <p class="mb-4">認証完了後、ムビチケ券の内容確認が表示されるので、問題なければ「券種選択へ戻る」ボタンを押してください。</p>
+                <div class="pc-image"><img src="/images/mvtk/pc_mvtk_05.png" class="w-100"></div>
+                <div class="sp-image"><img src="/images/mvtk/sp_mvtk_05.png" class="w-100"></div>
+            </div>
+            <div class="mb-5">
+                <p class="font-weight-bold large">Step 6</p>
+                <p class="mb-4">再度、券種選択画面に戻ります。ムビチケ券は券種選択一覧に追加されていますので「券種を選択してください」ボタンを押して追加されたムビチケ券を選択し「次へ」ボタンを押してください。</p>
+                <div class="pc-image"><img src="/images/mvtk/pc_mvtk_06.png" class="w-100"></div>
+                <div class="sp-image"><img src="/images/mvtk/sp_mvtk_06.png" class="w-100"></div>
+            </div>
+            <div class="mb-5">
+                <p class="font-weight-bold large">Step 7</p>
+                <p class="mb-4">後の手順は、画面に沿って手続きを進めていただきムビチケ券を利用してのオンラインチケット購入は完了となります。</p>
+                <div class="pc-image"><img src="/images/mvtk/pc_mvtk_07.png" class="w-100"></div>
+                <div class="sp-image"><img src="/images/mvtk/sp_mvtk_07.png" class="w-100"></div>
+            </div>
+        </div>
+        <div>
+            <h3 class="mvtk-button  font-weight-bold mb-3 py-3 px-3" id="01">ムビチケ券のご利用について</h3>
+            <div class="mb-5">
+                <p>シネマサンシャインでは、オンラインチケット購入でムビチケ券をご使用いただけます。
+                    <br> また、差額料金を追加でお支払い頂くことで、ムビチケ2D券を3D上映、4DX上映にご使用頂けます。
+                    <br> 差額のお支払いは、オンラインチケット購入手続きの流れの中で追加料金分をお支払い頂きます。
+                    <br> (クレジット決済のみ)
+                    <br>
+                </p>
+            </div>
+            <div class="mb-5"> 
+                <h4 class="font-weight-bold mb-4"><a href="#">【追加料金参考】</a></h4>
+                <h5 class="mvtk-2d line-height-1 font-weight-bold mb-3"><a href="#" class="pl-3">ムビチケ2D券をお持ちの方</a></h5>
+                <p class="font-weight-bold">3D上映を鑑賞する場合</p>
+                <p>姶良では3Dメガネ(MASTER IMAGE用)はお持ち帰り頂けます。次回鑑賞時にお持ち頂ければ、3D鑑賞料金を100円引き(3D鑑賞料金400円→300円)させて頂きます。</p>
+                <div class="pc-image"><img src="/images/mvtk/mvtk_pc_price_1.svg" class="w-100"></div>
+                <div class="sp-image"><img src="/images/mvtk/mvtk_sp_price_1.svg" class="w-100"></div>
+            </div>
+            <div class="mb-5">
+                <p class="font-weight-bold">4DX(2D)上映を鑑賞する場合</p>
+                <p class="small text-red font-weight-bold">※4DX(3D)上映を鑑賞する場合は4DX鑑賞料金(+1000円)に3D鑑賞料金(+400円)を加算した金額となります。</p>
+                <div class="pc-image mb-4"><img src="/images/mvtk/mvtk_pc_price_2.svg" class="w-100"></div>
+                <div class="sp-image"><img src="/images/mvtk/mvtk_sp_price_2.svg" class="w-100"></div>
+            </div>
+            <div class="mb-5">
+                <h5 class="mvtk-2d line-height-1 font-weight-bold mb-3"><a href="#" class="pl-3">ムビチケ3D券をお持ちの方</a></h5>
+                <p class="font-weight-bold">4DX上映を鑑賞する場合</p>
+                <p class="small text-red font-weight-bold">※ムビチケ3D券で2D上映の作品を鑑賞される場合、ムビチケ券のご利用は可能ですが差額分のご返金はございませんのでご注意ください。<br>※池袋では4DX上映はございません。</p>
+                <div class="pc-image"><img src="/images/mvtk/mvtk_pc_price_2.svg" class="w-100"></div>
+                <div class="sp-image"><img src="/images/mvtk/mvtk_sp_price_2.svg" class="w-100"></div>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

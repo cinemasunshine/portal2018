@@ -17,6 +17,7 @@ use Cinemasunshine\Portal\Controller\TrailerController;
 $app->get('/', IndexController::class . ':index')->setName('homepage');
 
 $app->get('/company-profile', AboutController::class . ':company')->setName('company');
+$app->get('/mvtk', AboutController::class . ':mvtk')->setName('mvtk');
 
 $app->group('/news', function () {
     $this->get('/list', NewsController::class . ':list')->setName('news_list');

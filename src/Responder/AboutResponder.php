@@ -27,4 +27,16 @@ class AboutResponder extends BaseResponder
     {
         return $this->view->render($response, 'about/company.html.twig', $data->all());
     }
+    
+    /**
+     * mvtk
+     *
+     * @param Response   $response
+     * @param Collection $data
+     * @return Response
+     */
+    public function mvtk(Response $response, Collection $data)
+    {
+        return $this->view->render($response, 'about/mvtk.html.twig', $data->all());
+    }
 }
