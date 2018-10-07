@@ -1,0 +1,24 @@
+<div class="theater-sns mb-5 mx-auto">
+    <h5 class="py-4 text-center font-weight-bold">劇場SNSアカウント</h5>
+    <div class="d-flex py-2 align-items-center justify-content-center">
+    {% if meta.getFacebook() %}
+        <div class="border-right pr-md-5 pr-4">
+            <a class="d-block" href="{{ facebook(meta.getFacebook()) }}" target="_blank">
+                <img src="/images/common/sns_fb.svg" class="w-100">
+            </a>
+        </div>
+    {% endif %}
+    {% if meta.getTwitter() %}
+        <div class="border-right px-md-5 px-4">
+            <a class="d-block" href="{{ twitter(meta.getTwitter()) }}" target="_blank">
+                <img src="/images/common/sns_twitter.svg" class="w-100">
+            </a>
+        </div>
+    {% endif %}
+        <div class="youtube pl-md-5 pl-4">
+            <a class="d-block" href="#">
+                <img src="/images/common/youtube_logo.svg" class="w-100">
+            </a>
+        </div>
+    </div>
+</div>
