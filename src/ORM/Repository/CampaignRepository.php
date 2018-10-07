@@ -55,6 +55,25 @@ class CampaignRepository extends EntityRepository
     }
     
     /**
+     * find by theater
+     *
+     * @param int $theaterId
+     * @return Campaign[]
+     */
+    public function findByTheater(int $theaterId)
+    {
+        $qb = $this->getActiveQuery();
+        
+        $qb
+            ->join('c.theaters', 'tc')
+            ->andWhere('tc.theater = :theater_id')
+            ->setParameter('theater_id', $theaterId)
+            ->orderBy('tc.displayOrder', 'ASC');
+        
+        return $qb->getQuery()->getResult();
+    }
+    
+    /**
      * find by special_site
      *
      * @param int $specialSiteId

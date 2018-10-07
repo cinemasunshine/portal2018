@@ -61,6 +61,8 @@ class TheaterController extends BaseController
         $this->data->set('newsList', $this->getNewsList(
             $theater, Entity\News::CATEGORY_NEWS, 8
         ));
+        
+        $this->data->set('campaigns', $this->getCampaigns($theater));
     }
     
     /**
@@ -74,6 +76,19 @@ class TheaterController extends BaseController
         return $this->em
             ->getRepository(Entity\MainBanner::class)
             ->findByTheaterId($theater->getId());
+    }
+    
+    /**
+     * return campaigns
+     *
+     * @param Entity\Theater $theater
+     * @return Entity\Campaign[]
+     */
+    protected function getCampaigns(Entity\Theater $theater)
+    {
+        return $this->em
+            ->getRepository(Entity\Campaign::class)
+            ->findByTheater($theater->getId());
     }
     
     /**

@@ -77,4 +77,8 @@
         newsList: newsList,
     } only %}
 </div>
+
+{% include 'include/campaign.html.twig' with {
+    campaigns: campaigns
+} only %}
 {% endblock %}
