@@ -119,4 +119,9 @@ $getMotionpictureTicketSetting = function() {
 
 $settings['mp_ticket'] = $getMotionpictureTicketSetting();
 
+// Coasystems Schedule
+$settings['coa_schedule'] = [
+    'env' => getenv('CUSTOMCONNSTR_COA_SCHEDULE'),
+];
+
 return $settings;
