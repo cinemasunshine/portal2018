@@ -81,4 +81,11 @@
 {% include 'include/campaign.html.twig' with {
     campaigns: campaigns
 } only %}
+
+<div class="mb-5">
+    {% include 'theater/include/index/infomation.html.twig' with {
+        theater: theater,
+        newsList: infoNewsList,
+    } only %}
+</div>
 {% endblock %}

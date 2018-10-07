@@ -1,0 +1,39 @@
+<div class="width mx-auto px-3 infomation">
+    <h3 class="mb-4 font-weight-bold line-height-1">インフォメーション<br><span class="small">INFORMATION</span></h3>
+    <div class="mb-5">
+        <ul class="border-top border-gray">
+        {% for news in newsList|slice(0, 4) %}
+            <li class="border-bottom border-gray">
+                <a href="{{ path_for('theater_news_show', {
+                    name: theater.getName(),
+                    id: news.getId()
+                }) }}" class="d-md-flex d-block py-3 pl-3 pr-5">
+                    <div class="mb-md-0 mb-2 infomation-date">{{ news.getStartDt()|date('Y/n/j') }}</div>
+                    <div>{{ news.getHeadline() }}</div>
+                </a>
+            </li>
+        {% endfor %}
+        </ul>
+        <ul class="border-gray d-none" data-contents="imax-more-contents">
+        {% for news in newsList|slice(4, 4) %}
+            <li class="border-bottom border-gray">
+                <a href="{{ path_for('theater_news_show', {
+                    name: theater.getName(),
+                    id: news.getId()
+                }) }}" class="d-md-flex d-block py-3 pl-3 pr-5">
+                    <div class="mb-md-0 mb-2 infomation-date">{{ news.getStartDt()|date('Y/n/j') }}</div>
+                    <div>{{ news.getHeadline() }}</div>
+                </a>
+            </li>
+        {% endfor %}
+        </ul>
+    </div>
+    
+    <div class="button-01 shadow-01 mx-auto see-more">
+        <a href="#" data-target-contents="imax-more-contents" data-target-button="imax-more-button">もっと見る</a>
+    </div>
+    <div class="button-01 shadow-01 mx-auto d-none list-display" data-button="imax-more-button">
+        <a href="{{ path_for('theater_news_list', { name: theater.getName() }) }}">一覧表示</a>
+    </div>
+    
+</div>

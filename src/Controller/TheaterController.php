@@ -63,6 +63,10 @@ class TheaterController extends BaseController
         ));
         
         $this->data->set('campaigns', $this->getCampaigns($theater));
+        
+        $this->data->set('infoNewsList', $this->getNewsList(
+            $theater, Entity\News::CATEGORY_INFO, 8
+        ));
     }
     
     /**
