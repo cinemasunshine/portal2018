@@ -1,5 +1,13 @@
 {% extends "theater/layout.html.twig" %}
 
+{% block css %}
+<link href="/css/theater/top.css" rel="stylesheet">
+{% endblock %}
+
+{% block javascript %}
+<script src="/js/theater/top.js"></script>
+{% endblock %}
+
 {% block navbar %}
 {% include 'theater/include/navbar.html.twig' with {
     theater: theater,
@@ -8,4 +16,10 @@
 {% endblock %}
 
 {% block contents %}
+<div class="mb-3">
+    {% include 'theater/include/index/slider.html.twig' with {
+        mainBanners: mainBanners
+    } only %}
+</div>
+
 {% endblock %}

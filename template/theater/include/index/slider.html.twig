@@ -1,0 +1,25 @@
+<div class="slider">
+    <div class="swiper-container gallery-top mb-md-3">
+        <div class="swiper-wrapper">
+        {% for mainBanner in mainBanners %}
+            <div class="swiper-slide">
+            {% if mainBanner.isLinkTypeUrl() %}
+                <a href="{{ mainBanner.getLinkUrl() }}" target="_blank">
+            {% endif %}
+                    <img src="{{ file_url(mainBanner.getImage()) }}">
+            {% if mainBanner.isLinkTypeUrl() %}
+                </a>
+            {% endif %}
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+    <div class="d-md-none pagination justify-content-center flex-wrap py-3"></div>
+    <ul class="d-md-flex justify-content-center thumbs d-none mb-0">
+    {% for mainBanner in mainBanners %}
+        <li class="mx-1">
+            <a href="#"><img src="{{ file_url(mainBanner.getImage()) }}" class="w-100"></a>
+        </li>
+    {% endfor %}
+    </ul>
+</div>

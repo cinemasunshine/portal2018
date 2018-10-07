@@ -48,6 +48,23 @@ class MainBannerRepository extends EntityRepository
     }
     
     /**
+     * find by theater id
+     *
+     * @param int $theaterId
+     * @return MainBanner[]
+     */
+    public function findByTheaterId(int $theaterId)
+    {
+        $qb = $this->getActiveQuery();
+        $qb
+            ->join('mb.theaters', 'tmb')
+            ->andWhere('tmb.theater = :theater_id')
+            ->setParameter('theater_id', $theaterId);
+        
+        return $qb->getQuery()->getResult();
+    }
+    
+    /**
      * find by special_site
      *
      * @param int $specialSiteId

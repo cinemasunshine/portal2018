@@ -51,6 +51,21 @@ class TheaterController extends BaseController
         $theater = $this->findByEntity($args['name']);
         
         $this->data->set('theater', $theater);
+        
+        $this->data->set('mainBanners', $this->getMainBanners($theater));
+    }
+    
+    /**
+     * return main_banners
+     *
+     * @param Entity\Theater $theater
+     * @return Entity\MainBanner[]
+     */
+    protected function getMainBanners(Entity\Theater $theater)
+    {
+        return $this->em
+            ->getRepository(Entity\MainBanner::class)
+            ->findByTheaterId($theater->getId());
     }
     
     /**
