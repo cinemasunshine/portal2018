@@ -70,4 +70,11 @@
         newsList: eventNewsList,
     } only %}
 </div>
+
+<div class="mb-5">
+    {% include 'theater/include/index/news.html.twig' with {
+        theater: theater,
+        newsList: newsList,
+    } only %}
+</div>
 {% endblock %}

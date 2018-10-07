@@ -1,0 +1,40 @@
+<div class="width mx-auto px-3 news">
+    <h3 class="font-weight-bold large mb-4 text-center text-md-left line-height-1">ニュース<br><span class="small">NEWS</span></h3>
+    <div class="container w-100 mw-100 m-0 mb-4 px-1">
+        <ul class="row mb-0">
+        {% for news in newsList|slice(0, 4) %}
+            <li class="col-md-3 col-6 py-2 mb-md-3 mb-4">
+                <a href="{{ path_for('theater_news_show', {
+                        name: theater.getName(),
+                        id: news.getId()
+                    }) }}" class="d-block">
+                    <div class="border mb-2 image border-gray" style="background-image: url({{ file_url(news.getImage()) }})"></div>
+                    <p class="mb-0">{{ news.getHeadline() }}</p>
+                </a>
+            </li>
+        {% endfor %}
+        </ul>
+        
+        <ul class="row d-none" data-contents="more-contents">
+        {% for news in newsList|slice(4, 4) %}
+            <li class="col-md-3 col-6 py-2 mb-md-3 mb-4">
+                <a href="{{ path_for('theater_news_show', {
+                        name: theater.getName(),
+                        id: news.getId()
+                    }) }}" class="d-block">
+                    <div class="border mb-2 image border-gray" style="background-image: url({{ file_url(news.getImage()) }})"></div>
+                    <p class="mb-0">{{ news.getHeadline() }}</p>
+                </a>
+            </li>
+        {% endfor %}
+        </ul>
+    </div>
+    
+    <div class="button-01 shadow-01 mx-auto see-more">
+        <a href="#" data-target-contents="more-contents" data-target-button="more-button">もっと見る</a>
+    </div>
+    <div class="button-01 shadow-01 mx-auto d-none list-display" data-button="more-button">
+        <a href="{{ path_for('theater_news_list', { name: theater.getName() }) }}">一覧表示</a>
+    </div>
+
+</div>
