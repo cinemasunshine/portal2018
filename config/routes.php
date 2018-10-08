@@ -6,6 +6,7 @@
  */
 
 use Cinemasunshine\Portal\Controller\AboutController;
+use Cinemasunshine\Portal\Controller\FourdxController;
 use Cinemasunshine\Portal\Controller\ImaxController;
 use Cinemasunshine\Portal\Controller\IndexController;
 use Cinemasunshine\Portal\Controller\NewsController;
@@ -58,6 +59,10 @@ $app->group('/imax', function() {
     $this->get('/news/list', ImaxController::class . ':newsList')->setName('imax_news_list');
     $this->get('/news/{id}', ImaxController::class . ':newsShow')->setName('imax_news_show');
     $this->get('/theater', ImaxController::class . ':theater')->setName('imax_theater');
+});
+
+$app->group('/4dx', function() {
+    $this->get('', FourdxController::class . ':index')->setName('4dx');
 });
 
 $app->group('/api', function() {
