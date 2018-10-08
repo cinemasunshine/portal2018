@@ -1,0 +1,32 @@
+{% extends "4dx/layout.html.twig" %}
+
+{% block css %}
+<link href="/css/movie/details.css" rel="stylesheet">
+{% endblock %}
+
+{% block navbar %}
+{% include '4dx/include/navbar.html.twig' with {
+    active: 'title'
+} only %}
+{% endblock %}
+
+{% block contents %}
+<div class="breadcrumb-list d-none d-md-block small width mx-auto mb-5 px-2 text-white">
+    <a class="text-white" href="{{ path_for('homepage') }}">ホーム</a>
+    <span class="font-weight-bold mx-2"> | </span>
+    <a class="text-white" href="{{ path_for('4dx') }}">4dx</a>
+    <span class="font-weight-bold mx-2"> | </span>
+    <a class="text-white" href="{{ path_for('4dx_schedule_list') }}">作品一覧</a>
+    <span class="font-weight-bold mx-2"> | </span>
+    <span><span>
+</div>
+
+{% include '4dx/schedule/include/show_detail.html.twig' with {
+    schedule: schedule,
+    theaters: theaters,
+} only %}
+
+<div class="back-list button-01 shadow-01 mx-auto mb-5">
+    <a href="{{ path_for('4dx_schedule_list') }}" class="text-white">一覧へ戻る</a>
+</div>
+{% endblock %}

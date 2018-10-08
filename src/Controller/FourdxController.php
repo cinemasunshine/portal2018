@@ -185,4 +185,29 @@ class FourdxController extends SpecialSiteController
             ->getRepository(Entity\Theater::class)
             ->findByActive();
     }
+    
+    /**
+     * schedule show action
+     * 
+     * @param \Slim\Http\Request  $request
+     * @param \Slim\Http\Response $response
+     * @param array               $args
+     * @return string|void
+     */
+    public function executeScheduleShow($request, $response, $args)
+    {
+        $schedule = $this->em
+            ->getRepository(Entity\Schedule::class)
+            ->findOneById($args['schedule']);
+        
+        if (is_null($schedule)) {
+            throw new NotFoundException($request, $response);
+        }
+        
+        /**@var Entity\Schedule $schedule */
+        
+        $this->data->set('schedule', $schedule);
+        
+        $this->data->set('theaters', $this->getTheaters());
+    }
 }
