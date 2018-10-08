@@ -9,8 +9,73 @@
 {% endblock %}
 
 {% block navbar %}
-{% include '4dx/include/navbar.html.twig' only %}
+{% include '4dx/include/navbar.html.twig' with {
+    active: 'top'
+} only %}
 {% endblock %}
 
 {% block contents %}
+<div class="breadcrumb-list d-none d-md-block small width mx-auto mb-3 px-2 text-white">
+    <a class="text-white" href="{{ path_for('homepage') }}">ホーム</a>
+    <span class="font-weight-bold mx-2"> | </span>
+    <span>4dx<span>
+</div>
+
+<div class="mb-3">
+    {% include '4dx/include/index/slider.html.twig' with {
+        mainBanners: mainBanners
+    } only %}
+</div>
+
+<div class="py-5 text-white">
+    <div class="width mx-auto px-3 film">
+        <div class="d-md-flex">
+            <div class="about mb-5 mb-md-0">
+                <div class="mr-md-4">
+                    <h3 class="font-weight-bold large mb-4 text-center text-md-left line-height-1">
+                        <div class="mb-2">究極の映画体験「4dx」</div>
+                        <div class="small">ABOUT 4dx</div>
+                    </h3>
+                    <div class="mb-3"><img class="w-100" src="/images/4dx/top/about.jpg"></div>
+                    <div class="button-01 mx-auto px-3 px-md-5">
+                        <a class="bg-dark-red text-white" href="#">4dxとは？</a>
+                    </div>
+                </div>
+            </div>
+            
+        {% set trailer = trailers[0] %}
+        {% if trailer %}
+            {% include '4dx/include/index/trailer.html.twig' with {
+                trailer: trailer
+            } only %}
+        {% endif %}
+        </div>
+    </div>
+</div>
+
+<div class="py-5 text-white">
+    {% include '4dx/include/index/news.html.twig' with {
+        newsList: newsList
+    } only %}
+</div>
+
+<div class="py-5 text-white">
+    {% include '4dx/include/index/title.html.twig' with {
+        theaters: theaters,
+        screeningSchedules: screeningSchedules,
+        soonSchedules: soonSchedules,
+    } only %}
+</div>
+
+<div class="py-5 text-white">
+    {% include '4dx/include/index/campaign.html.twig' with {
+        campaigns: campaigns
+    } only %}
+</div>
+
+<div class="mb-5 py-5 text-white">
+    {% include '4dx/include/index/infomation.html.twig' with {
+        newsList: infoNewsList
+    } only %}
+</div>
 {% endblock %}
