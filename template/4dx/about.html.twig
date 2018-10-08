@@ -1,0 +1,247 @@
+{% extends "4dx/layout.html.twig" %}
+
+{% block css %}
+<link href="/css/4dx/about.css" rel="stylesheet">
+{% endblock %}
+
+{% block navbar %}
+{% include '4dx/include/navbar.html.twig' with {
+    active: 'about'
+} only %}
+{% endblock %}
+
+{% block contents %}
+<div class="breadcrumb-list d-none d-md-block small width mx-auto mb-5 px-2 text-white">
+    <a class="text-white" href="{{ path_for('homepage') }}">ホーム</a>
+    <span class="font-weight-bold bg-black mx-md-3 h-100"> | </span>
+    <a class="text-white" href="{{ path_for('4dx') }}">4dx</a>
+    <span class="font-weight-bold bg-black mx-md-3 h-100"> | </span>
+    <span>4dxとは？<span>
+</div>
+
+<div class="width mx-auto mb-3 px-2 text-white">
+    <div class="mb-5">
+        <h2 class="font-weight-bold large text-center text-md-left mb-4 mt-3">4DX®とは？</h2>
+        <div class="mb-4"><img class="w-100" src="/images/4dx/about/4dx_about_main_03.jpg"></div>
+        <p>
+            最先端の体感型シアター4DX®は、前後左右や上下に動くモーションシートや水や風、香り、フラッシュなどの革新的なスペシャルエフェクトによって映画の様々なシーンとリアルタイムかつダイナミックに連動します。<br>
+            3Dを遥かに超え、映画を「観る」から「体感する」ことに変えてしまう、五感を揺さぶる次世代の体感型プレミアムシアター。<br>
+            これまでとは次元の違う映画体験を観客にもたらす4DX®は、世界各国の映画館に次々と導入されています。<br>
+            すでに体験者は６億人を超えており、世界中から熱い注目を集めています。
+        </p>
+    </div>
+    <div class="mb-5">
+        <h2 class="font-weight-bold large text-center text-md-left mb-4">機能紹介</h2>
+        <div class="introduction-video mx-auto mb-5">
+            <div class="video">
+                <iframe type="text/html" src="https://www.youtube.com/embed/GhUObTPvxbQ?rel=0&loop=1&playsinline=1&rel=0&mute=1&autoplay=1&showinfo=0&disablekb=1&modestbranding=1&color=white"
+                    frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+        <div class="function">
+            <ul class="d-md-flex flex-wrap">
+                <li class="my-3">
+                    <div class="bg-black mx-md-3 h-100">
+                        <div class="py-3 title" style="background-image: url(/images/4dx/about/icon_1.svg)">MOTION</div>
+                        <div><img class="w-100" src="/images/4dx/about/img_1.jpg"></div>
+                        <div class="p-3">
+                            <div class="mb-1">モーション</div>
+                            <p class="mb-0 small">
+                                座席の前後上下可動・バイブレーション振動により劇中との連動感がアップ。
+                            </p>
+                        </div>
+                    </div>
+                </li>
+                <li class="my-3">
+                    <div class="bg-black mx-md-3 h-100">
+                        <div class="py-3 title" style="background-image: url(/images/4dx/about/icon_2.svg)">LIGHTNING</div>
+                        <div><img class="w-100" src="/images/4dx/about/img_2.jpg"></div>
+                        <div class="p-3">
+                            <div class="mb-1">フラッシュ</div>
+                            <p class="mb-0 small">
+                                照明効果による光が、期待感やハラハラ感を上昇。
+                            </p>
+                        </div>
+                    </div>
+                </li>
+                <li class="my-3">
+                    <div class="bg-black mx-md-3 h-100">
+                        <div class="py-3 title" style="background-image: url(/images/4dx/about/icon_3.svg)">SCENTS</div>
+                        <div><img class="w-100" src="/images/4dx/about/img_3.jpg"></div>
+                        <div class="p-3">
+                            <div class="mb-1">香り</div>
+                            <p class="mb-0 small">
+                                香りの噴射で上映作品の世界観にシアター内が充満。
+                            </p>
+                        </div>
+                    </div>
+                </li>
+                <li class="my-3">
+                    <div class="bg-black mx-md-3 h-100">
+                        <div class="py-3 title" style="background-image: url(/images/4dx/about/icon_4.svg)">WIND</div>
+                        <div><img class="w-100" src="/images/4dx/about/img_4.jpg"></div>
+                        <div class="p-3">
+                            <div class="mb-1">風</div>
+                            <p class="mb-0 small">
+                                シアター内の強力なファンの風で嵐の中にいるような感覚を。
+                            </p>
+                        </div>
+                    </div>
+                </li>
+                <li class="my-3">
+                    <div class="bg-black mx-md-3 h-100">
+                        <div class="py-3 title" style="background-image: url(/images/4dx/about/icon_5.svg)">RAIN</div>
+                        <div><img class="w-100" src="/images/4dx/about/img_5.jpg"></div>
+                        <div class="p-3">
+                            <div class="mb-1">雨</div>
+                            <p class="mb-0 small">
+                                劇中の登場人物とともに雨を体感。
+                            </p>
+                        </div>
+                    </div>
+                </li>
+                <li class="my-3">
+                    <div class="bg-black mx-md-3 h-100">
+                        <div class="py-3 title" style="background-image: url(/images/4dx/about/icon_6.svg)">BUBBLES</div>
+                        <div><img class="w-100" src="/images/4dx/about/img_6.jpg"></div>
+                        <div class="p-3">
+                            <div class="mb-1">バブル</div>
+                            <p class="mb-0 small">
+                                リアルな泡が降り注ぐことによる幻想的な空間演出。
+                            </p>
+                        </div>
+                    </div>
+                </li>
+                <li class="my-3">
+                    <div class="bg-black mx-md-3 h-100">
+                        <div class="py-3 title" style="background-image: url(/images/4dx/about/icon_7.svg)">FOG</div>
+                        <div><img class="w-100" src="/images/4dx/about/img_7.jpg"></div>
+                        <div class="p-3">
+                            <div class="mb-1">煙</div>
+                            <p class="mb-0 small">
+                                劇中の臨場感がさらに増強。
+                            </p>
+                        </div>
+                    </div>
+                </li>
+                <li class="my-3">
+                    <div class="bg-black mx-md-3 h-100">
+                        <div class="py-3 title" style="background-image: url(/images/4dx/about/icon_8.svg)">AIR</div>
+                        <div><img class="w-100" src="/images/4dx/about/img_8.jpg"></div>
+                        <div class="p-3">
+                            <div class="mb-1">エアー</div>
+                            <p class="mb-0 small">
+                                顔に、そして頬、耳への強力なエアー効果で劇中に自分がいるような錯覚を。
+                            </p>
+                        </div>
+                    </div>
+                </li>
+                <li class="my-3">
+                    <div class="bg-black mx-md-3 h-100">
+                        <div class="py-3 title" style="background-image: url(/images/4dx/about/icon_9.svg)">WATER</div>
+                        <div><img class="w-100" src="/images/4dx/about/img_9.jpg"></div>
+                        <div class="p-3">
+                            <div class="mb-1">ミスト</div>
+                            <p class="mb-0 small">
+                                あなたの顔に飛び散る水（ミスト）！劇中の雨や霧もリアルに体感
+                            </p>
+                        </div>
+                    </div>
+                </li>
+                <li class="my-3">
+                    <div class="bg-black mx-md-3 h-100">
+                        <div class="py-3 title" style="background-image: url(/images/4dx/about/icon_10.svg)">RAINSTORM</div>
+                        <div><img class="w-100" src="/images/4dx/about/img_10.jpg"></div>
+                        <div class="p-3">
+                            <div class="mb-1">嵐</div>
+                            <p class="mb-0 small">
+                                強い風と水が緊張感を高めます。
+                            </p>
+                        </div>
+                    </div>
+                </li>
+                <li class="my-3">
+                    <div class="bg-black mx-md-3 h-100">
+                        <div class="py-3 title" style="background-image: url(/images/4dx/about/icon_11.svg)">SNOW</div>
+                        <div><img class="w-100" src="/images/4dx/about/img_11.jpg"></div>
+                        <div class="p-3">
+                            <div class="mb-1">雪</div>
+                            <p class="mb-0 small">
+                                雪のようなパウダーがシアター内に舞い降ります。
+                            </p>
+                        </div>
+                    </div>
+                </li>
+                <li class="my-3">
+                    <div class="bg-black mx-md-3 h-100">
+                        <div class="py-3 title" style="background-image: url(/images/4dx/about/icon_12.svg)">WARM
+                            AIR</div>
+                        <div><img class="w-100" src="/images/4dx/about/img_12.jpg"></div>
+                        <div class="p-3">
+                            <div class="mb-1">熱風</div>
+                            <p class="mb-0 small">
+                                座席の背面から暖かい風が吹きます。
+                            </p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="mb-5 viewing-fee">
+        <h2 class="font-weight-bold large text-center text-md-left mb-4">鑑賞料金</h2>
+        <div class="mb-5 text-center">
+            <div class="mb-4 large">4DX鑑賞料金</div>
+            <div class="bg-red py-4 px-5 x-large d-inline-block price">通常料金<span class="mx-3">+</span>￥1,000</div>
+        </div>
+        <ul class="border-top border-light-gray mb-4">
+            <li class="d-flex align-items-center border-bottom border-light-gray p-4">
+                <div class="title font-weight-bold">2D作品の場合</div>
+                <div class="description large">通常料金 + 4DX鑑賞料金1,000円</div>
+            </li>
+            <li class="d-flex align-items-center border-bottom border-light-gray p-4">
+                <div class="title font-weight-bold">3D作品の場合</div>
+                <div class="description large">通常料金 + 3D鑑賞料金400円+4DX鑑賞料金1,000円</div>
+            </li>
+            <li class="d-flex align-items-center border-bottom border-light-gray p-4">
+                <div class="title font-weight-bold">サービスデイの場合</div>
+                <div class="description large">サービスデイ料金 + 4DX鑑賞料金1,000円</div>
+            </li>
+        </ul>
+        <p class="small">
+            ※身長100cm未満の方、妊娠中の方、ご高齢の方、心臓・背中・腰・首などに障害のある方、特別な疾病のある方、乗り物酔いしやすい方、その他体調に不安のある方などは、４DX®をご利用いただけません。また、身長120cm未満のお子様は保護者の方と一緒にご鑑賞ください。
+        </p>
+    </div>
+    <div class="note">
+        <h2 class="font-weight-bold large text-center text-md-left mb-4">4DX®をより安全に快適に<br class="d-md-none">お楽しみいただくために</h2>
+
+        <dl>
+            <dt class="font-weight-bold mb-3">安全のためご利用いただけない方 </dt>
+            <dd class="mb-4">
+                ● 身長100cm未満の方、妊娠中の方、ご高齢の方、心臓・背中・腰・首などに障害のある方、特別な疾患のある方、乗り物酔いしやすい方、体調に不安のある方<br>
+                ● 身長120cm未満のお子様は保護者同伴でのご鑑賞となります。
+            </dd>
+            <dt class="font-weight-bold mb-3">スペシャルエフェクトについて </dt>
+            <dd class="mb-4">
+                ● 水や風などのスペシャルエフェクトは4DX®シート肘掛にあるスイッチでON/OFFが可能です。
+            </dd>
+            <dt class="font-weight-bold mb-3">ご飲食について </dt>
+            <dd class="mb-4">
+                ● アルコール、ホットドリンク、フード類の上映中の飲食は、ご遠慮ください。（当劇場でご購入いただいたコールドドリンクはご飲食可能です。）
+            </dd>
+            <dt class="font-weight-bold mb-3">貴重品について </dt>
+            <dd class="mb-4">
+                ● 装飾品や電子機器などの貴重品はシアター入口のロッカーにお預けください。
+            </dd>
+            <dt class="font-weight-bold mb-3">座席の共有について </dt>
+            <dd class="mb-4">
+                ● チャイルドシートのご使用やお子様を膝の上に座らせてのご鑑賞などは禁止させていただきます。
+            </dd>
+            <dt class="font-weight-bold mb-3">上映中の行為について </dt>
+            <dd class="mb-4">
+                ● 上映中は、フットレストやシートの上に立ったり、シアター内を歩き回るなどの行為はお止めください。
+            </dd>
+        </dl>
+    </div>
+</div>
+{% endblock %}

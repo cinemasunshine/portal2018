@@ -63,6 +63,7 @@ $app->group('/imax', function() {
 
 $app->group('/4dx', function() {
     $this->get('', FourdxController::class . ':index')->setName('4dx');
+    $this->get('/about', FourdxController::class . ':about')->setName('4dx_about');
 });
 
 $app->group('/api', function() {

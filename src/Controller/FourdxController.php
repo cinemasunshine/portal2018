@@ -144,4 +144,16 @@ class FourdxController extends SpecialSiteController
             ->getRepository(Entity\News::class)
             ->findBySpecialSite(self::SPECIAL_SITE_ID, Entity\News::CATEGORY_INFO, $limit);
     }
+    
+    /**
+     * about action
+     * 
+     * @param \Slim\Http\Request  $request
+     * @param \Slim\Http\Response $response
+     * @param array               $args
+     * @return string|void
+     */
+    public function executeAbout($request, $response, $args)
+    {
+    }
 }
