@@ -1,0 +1,49 @@
+{% extends "4dx/layout.html.twig" %}
+
+{% block css %}
+<link href="/css/news/list.css" rel="stylesheet">
+{% endblock %}
+
+{% block navbar %}
+{% include '4dx/include/navbar.html.twig' with {
+    active: 'news'
+} only %}
+{% endblock %}
+
+{% block contents %}
+<div class="breadcrumb-list d-none d-md-block small width mx-auto mb-5 px-2 text-white">
+    <a class="text-white" href="{{ path_for('homepage') }}">ホーム</a>
+    <span class="font-weight-bold mx-2"> | </span>
+    <a class="text-white" href="{{ path_for('4dx') }}">4dx</a>
+    <span class="font-weight-bold mx-2"> | </span>
+    <span>NEWS & INFO<span>
+</div>
+
+<div class="width mx-auto mb-3 px-2 text-white">
+    <div class="news">
+        <h2 class="font-weight-bold large mb-5 text-center text-md-left mt-2">ニュース・インフォメーション一覧</h2>
+        <div class="container w-100 mw-100 m-0 mb-4 px-1">
+            <ul class="row">
+            {% for news in newsList %}
+                <li class="col-md-3 col-6 py-2 mb-4">
+                    <a href="#" class="d-block">
+                        <div class="text-dark-gray py-2">{{ news.getStartDt()|date('Y/n/j') }}</div>
+                        <div class="border mb-2 image border-gray" style="background-image: url({{ file_url(news.getImage()) }})"></div>
+                        <p class="mb-0">{{ news.getHeadline() }}</p>
+                    </a>
+                </li>
+            {% endfor %}
+            {% for news in infoNewsList %}
+                <li class="col-md-3 col-6 py-2 mb-4">
+                    <a href="#" class="d-block">
+                        <div class="text-dark-gray py-2">{{ news.getStartDt()|date('Y/n/j') }}</div>
+                        <div class="border mb-2 image border-gray" style="background-image: url({{ file_url(news.getImage()) }})"></div>
+                        <p class="mb-0">{{ news.getHeadline() }}</p>
+                    </a>
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
