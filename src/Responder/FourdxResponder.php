@@ -41,4 +41,16 @@ class FourdxResponder extends BaseResponder
     {
         return $this->view->render($response, '4dx/about.html.twig', $data->all());
     }
+    
+    /**
+     * schedule list
+     *
+     * @param Response   $response
+     * @param Collection $data
+     * @return Response
+     */
+    public function scheduleList(Response $response, Collection $data)
+    {
+        return $this->view->render($response, '4dx/schedule/list.html.twig', $data->all());
+    }
 }

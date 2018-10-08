@@ -156,4 +156,33 @@ class FourdxController extends SpecialSiteController
     public function executeAbout($request, $response, $args)
     {
     }
+    
+    /**
+     * schedule list action
+     * 
+     * @param \Slim\Http\Request  $request
+     * @param \Slim\Http\Response $response
+     * @param array               $args
+     * @return string|void
+     */
+    public function executeScheduleList($request, $response, $args)
+    {
+        $this->data->set('theaters', $this->getTheaters());
+        
+        $this->data->set('screeningSchedules', $this->getScreeningSchedules());
+        
+        $this->data->set('soonSchedules', $this->getSoonSchedules());
+    }
+    
+    /**
+     * return theaters
+     *
+     * @return Entity\Theater[]
+     */
+    protected function getTheaters()
+    {
+        return $this->em
+            ->getRepository(Entity\Theater::class)
+            ->findByActive();
+    }
 }
