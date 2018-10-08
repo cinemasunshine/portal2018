@@ -32,18 +32,13 @@
 <div class="mb-5">
     <div class="width mx-auto d-md-flex p-3">
     
-        <div class="pickup bg-white mr-sm-3 p-3 border mb-md-0 mb-3 w-100">
-            <h3 class="pickup-button bg-black text-white font-weight-bold mb-3 py-2 px-3">ピックアップ</h3>
-            <div class="d-sm-flex">
-                <div class="pickup-image mr-sm-3 pb-3">
-                    <img class="w-100" src="/images/tmp/theater/top/theater_02.jpg">
-                </div>
-                <div class="pickup-details">
-                    <p class="mb-0 font-weight-bold">『インクレディブル・ファミリー』公開記念スタンプラリーキャンペーン開催中</p>
-                </div>
-            </div>
-        </div>
-
+    {% set picupCampaign = campaigns[0] %} 
+    {% if picupCampaign %}
+        {% include 'theater/include/index/pickup.html.twig' with {
+            campaign: picupCampaign
+        } only %}
+    {% endif %}
+    
         {% include 'theater/include/index/trailer.html.twig' with {
             theater: theater
         } only %}
