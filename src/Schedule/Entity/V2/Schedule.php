@@ -17,6 +17,29 @@ use Cinemasunshine\Portal\Schedule\Collection\Movie as MovieCollection;
  */
 class Schedule extends BaseEntity implements PortalEntityInterface
 {
+    /** @var bool 先行販売含む */
+    protected $hasPreSale;
+
+    /**
+     * get hasPreSale
+     *
+     * @return boolean
+     */
+    public function getHasPreSale()
+    {
+        return $this->hasPreSale;
+    }
+
+    /**
+     * set hasPreSale
+     *
+     * @param boolean $hasPreSale
+     */
+    public function setHasPreSale(bool $hasPreSale)
+    {
+        $this->hasPreSale = $hasPreSale;
+    }
+    
     /**
      * construct
      */
@@ -34,8 +57,9 @@ class Schedule extends BaseEntity implements PortalEntityInterface
     public function toArray($deep = true)
     {
         $data = array(
-            'date'   => $this->getDate(),
-            'usable' => $this->getUsable(),
+            'date'         => $this->getDate(),
+            'usable'       => $this->getUsable(),
+            'has_pre_sale' => $this->getHasPreSale(),
         );
 
         if ($deep) {

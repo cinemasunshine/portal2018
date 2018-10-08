@@ -36,7 +36,10 @@ class Schedule extends BaseBuilder
      */
     protected function createScheduleEntity()
     {
-        return new ScheduleEntity();
+        $schedule = new ScheduleEntity();
+        $schedule->setHasPreSale(false);
+        
+        return $schedule;
     }
 
     /**

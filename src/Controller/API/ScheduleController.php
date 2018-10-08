@@ -171,6 +171,7 @@ class ScheduleController extends BaseController
             $newSchedule = new $class($schedule);
             $newSchedule->setDate($schedule->getDate());
             $newSchedule->setUsable($schedule->getUsable());
+            $newSchedule->setHasPreSale($schedule->getHasPreSale());
 
             return $newSchedule;
         };
@@ -181,8 +182,11 @@ class ScheduleController extends BaseController
         }
 
         foreach ($preSchedules->getSchedule() as $schedule) {
+            
             // 日付重複判定
             if ($allSchedules->has($schedule->getDate())) {
+                $allSchedules->get($schedule->getDate())->setHasPreSale(true);
+                
                 if ($schedule->getUsable()) {
                     $allSchedules->get($schedule->getDate())->setUsable(true); // true優先
                 }
