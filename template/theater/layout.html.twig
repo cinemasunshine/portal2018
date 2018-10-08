@@ -30,7 +30,7 @@
     {% block javascript %}{% endblock %}
 </head>
 
-<body class="theater">
+<body class="theater" data-theater="{{ theater.getName() }}">
     {% include 'theater/include/header.html.twig' with {
         theater: theater
     } only %}
