@@ -15,27 +15,27 @@ use Cinemasunshine\Portal\Schedule\Entity\PortalEntityInterface;
  */
 class Movie extends BaseEntity implements PortalEntityInterface
 {
-    /** @var bool 先行配信フラグ */
-    protected $isPre;
+    /** @var bool 先行販売 */
+    protected $isPreSale;
 
     /**
-     * get isPre
+     * get isPreSale
      *
-     * @return bool
+     * @return boolean
      */
-    public function getIsPre()
+    public function getIsPreSale()
     {
-        return $this->isPre;
+        return $this->isPreSale;
     }
 
     /**
-     * set isPre
+     * set isPreSale
      *
-     * @param boolean $value
+     * @param boolean $isPreSale
      */
-    public function setIsPre($value)
+    public function setIsPreSale(bool $isPreSale)
     {
-        $this->isPre = $value;
+        $this->isPreSale = $isPreSale;
     }
 
     /**
@@ -46,7 +46,7 @@ class Movie extends BaseEntity implements PortalEntityInterface
     public function toArray()
     {
         $data = array(
-            'is_pre'        => $this->getIsPre(),
+            'is_pre_sale'   => $this->getIsPreSale(),
             'code'          => $this->getCode(),
             'name'          => $this->getName(),
             'ename'         => $this->getEname(),

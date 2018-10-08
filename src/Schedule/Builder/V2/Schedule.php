@@ -57,22 +57,9 @@ class Schedule extends BaseBuilder
      */
     protected function createMovieEntity()
     {
-        return new MovieEntity();
-    }
-
-    /**
-     * build movie
-     *
-     * @param \SimpleXMLElement $xmlElement
-     * @param \Cinemasunshine\Schedule\Entity\MovieInterface $movie
-     * @return \Cinemasunshine\Schedule\Entity\MovieInterface
-     */
-    protected function buildMovie(
-        \SimpleXMLElement $xmlElement, \Cinemasunshine\Schedule\Entity\MovieInterface $movie
-    ) {
-        $movie = parent::buildMovie($xmlElement, $movie);
-        $movie->setIsPre(false);
-
+        $movie = new MovieEntity();
+        $movie->setIsPreSale(false);
+        
         return $movie;
     }
 
