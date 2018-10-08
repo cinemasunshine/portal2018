@@ -225,4 +225,27 @@ class FourdxController extends SpecialSiteController
         
         $this->data->set('infoNewsList', $this->getInfoNewsList());
     }
+    
+    /**
+     * news show action
+     * 
+     * @param \Slim\Http\Request  $request
+     * @param \Slim\Http\Response $response
+     * @param array               $args
+     * @return string|void
+     */
+    public function executeNewsShow($request, $response, $args)
+    {
+        $news = $this->em
+            ->getRepository(Entity\News::class)
+            ->findOneById($args['id']);
+        
+        if (is_null($news)) {
+            throw new NotFoundException($request, $response);
+        }
+        
+        /**@var Entity\News $news */
+        
+        $this->data->set('news', $news);
+    }
 }
