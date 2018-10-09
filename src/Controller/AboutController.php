@@ -61,6 +61,18 @@ class AboutController extends GeneralController
     }
     
     /**
+     * online ticket action
+     * 
+     * @param \Slim\Http\Request  $request
+     * @param \Slim\Http\Response $response
+     * @param array               $args
+     * @return string|void
+     */
+    public function executeOnlineTicket($request, $response, $args)
+    {
+    }
+    
+    /**
      * privacy action
      * 
      * @param \Slim\Http\Request  $request

@@ -65,6 +65,18 @@ class AboutResponder extends BaseResponder
     }
     
     /**
+     * online ticket
+     *
+     * @param Response   $response
+     * @param Collection $data
+     * @return Response
+     */
+    public function onlineTicket(Response $response, Collection $data)
+    {
+        return $this->view->render($response, 'about/online_ticket.html.twig', $data->all());
+    }
+    
+    /**
      * privacy
      *
      * @param Response   $response

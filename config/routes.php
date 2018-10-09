@@ -23,6 +23,7 @@ $app->get('/company-profile', AboutController::class . ':company')->setName('com
 $app->get('/mail-magazine', AboutController::class . ':mailMagazine')->setName('mail_magazine');
 $app->get('/mvtk', AboutController::class . ':mvtk')->setName('mvtk');
 $app->get('/app', AboutController::class . ':officialApp')->setName('official_app');
+$app->get('/online-ticket', AboutController::class . ':onlineTicket')->setName('online_ticket');
 $app->get('/privacy', AboutController::class . ':privacy')->setName('privacy');
 $app->get('/question', AboutController::class . ':question')->setName('question');
 $app->get('/specific-quotient', AboutController::class . ':specificQuotient')->setName('specific_quotient');
