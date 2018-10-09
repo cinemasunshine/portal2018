@@ -20,4 +20,11 @@
     
     {% include 'theater/include/floor_guide/' ~ theater.getName() ~ '.html.twig' %}
 </div>
+
+<div class="mb-5">
+    {% include 'theater/include/infomation.html.twig' with {
+        theater: theater,
+        newsList: infoNewsList,
+    } only %}
+</div>
 {% endblock %}
