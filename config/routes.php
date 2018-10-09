@@ -25,7 +25,7 @@ $app->get('/mvtk', AboutController::class . ':mvtk')->setName('mvtk');
 $app->get('/app', AboutController::class . ':officialApp')->setName('official_app');
 $app->get('/privacy', AboutController::class . ':privacy')->setName('privacy');
 $app->get('/question', AboutController::class . ':question')->setName('question');
-$app->get('/send-completely', AboutController::class . ':sendCompletely')->setName('send_completely');
+$app->get('/specific-quotient', AboutController::class . ':specificQuotient')->setName('specific_quotient');
 $app->get('/terms-of-service', AboutController::class . ':termsOfService')->setName('terms_of_service');
 
 $app->group('/news', function () {

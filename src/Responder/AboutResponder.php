@@ -89,15 +89,15 @@ class AboutResponder extends BaseResponder
     }
     
     /**
-     * send completely
+     * specific quotient
      *
      * @param Response   $response
      * @param Collection $data
      * @return Response
      */
-    public function sendCompletely(Response $response, Collection $data)
+    public function specificQuotient(Response $response, Collection $data)
     {
-        return $this->view->render($response, 'about/send_completely.html.twig', $data->all());
+        return $this->view->render($response, 'about/specific_quotient.html.twig', $data->all());
     }
     
     /**

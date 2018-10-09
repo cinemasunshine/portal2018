@@ -85,14 +85,14 @@ class AboutController extends GeneralController
     }
     
     /**
-     * send completely action
+     * specific quotient action
      * 
      * @param \Slim\Http\Request  $request
      * @param \Slim\Http\Response $response
      * @param array               $args
      * @return string|void
      */
-    public function executeSendCompletely($request, $response, $args)
+    public function executeSpecificQuotient($request, $response, $args)
     {
     }
     
