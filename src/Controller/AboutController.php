@@ -97,6 +97,18 @@ class AboutController extends GeneralController
     }
     
     /**
+     * special ticket action
+     * 
+     * @param \Slim\Http\Request  $request
+     * @param \Slim\Http\Response $response
+     * @param array               $args
+     * @return string|void
+     */
+    public function executeSpecialTicket($request, $response, $args)
+    {
+    }
+    
+    /**
      * specific quotient action
      * 
      * @param \Slim\Http\Request  $request

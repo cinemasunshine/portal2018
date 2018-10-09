@@ -26,6 +26,7 @@ $app->get('/app', AboutController::class . ':officialApp')->setName('official_ap
 $app->get('/online-ticket', AboutController::class . ':onlineTicket')->setName('online_ticket');
 $app->get('/privacy', AboutController::class . ':privacy')->setName('privacy');
 $app->get('/question', AboutController::class . ':question')->setName('question');
+$app->get('/special_ticket', AboutController::class . ':specialTicket')->setName('special_ticket');
 $app->get('/specific-quotient', AboutController::class . ':specificQuotient')->setName('specific_quotient');
 $app->get('/terms-of-service', AboutController::class . ':termsOfService')->setName('terms_of_service');
 

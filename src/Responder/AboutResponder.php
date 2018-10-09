@@ -101,6 +101,18 @@ class AboutResponder extends BaseResponder
     }
     
     /**
+     * special ticket
+     *
+     * @param Response   $response
+     * @param Collection $data
+     * @return Response
+     */
+    public function specialTicket(Response $response, Collection $data)
+    {
+        return $this->view->render($response, 'about/special_ticket.html.twig', $data->all());
+    }
+    
+    /**
      * specific quotient
      *
      * @param Response   $response
