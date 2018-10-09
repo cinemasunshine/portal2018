@@ -21,6 +21,7 @@ $app->get('/', IndexController::class . ':index')->setName('homepage');
 
 $app->get('/company-profile', AboutController::class . ':company')->setName('company');
 $app->get('/mvtk', AboutController::class . ':mvtk')->setName('mvtk');
+$app->get('/privacy', AboutController::class . ':privacy')->setName('privacy');
 $app->get('/question', AboutController::class . ':question')->setName('question');
 $app->get('/send-completely', AboutController::class . ':sendCompletely')->setName('send_completely');
 $app->get('/terms-of-service', AboutController::class . ':termsOfService')->setName('terms_of_service');

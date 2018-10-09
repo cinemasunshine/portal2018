@@ -37,6 +37,18 @@ class AboutController extends GeneralController
     }
     
     /**
+     * privacy action
+     * 
+     * @param \Slim\Http\Request  $request
+     * @param \Slim\Http\Response $response
+     * @param array               $args
+     * @return string|void
+     */
+    public function executePrivacy($request, $response, $args)
+    {
+    }
+    
+    /**
      * question action
      * 
      * @param \Slim\Http\Request  $request

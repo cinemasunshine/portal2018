@@ -41,6 +41,18 @@ class AboutResponder extends BaseResponder
     }
     
     /**
+     * privacy
+     *
+     * @param Response   $response
+     * @param Collection $data
+     * @return Response
+     */
+    public function privacy(Response $response, Collection $data)
+    {
+        return $this->view->render($response, 'about/privacy.html.twig', $data->all());
+    }
+    
+    /**
      * question
      *
      * @param Response   $response
