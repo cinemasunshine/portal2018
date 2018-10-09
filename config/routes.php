@@ -23,6 +23,7 @@ $app->get('/company-profile', AboutController::class . ':company')->setName('com
 $app->get('/mvtk', AboutController::class . ':mvtk')->setName('mvtk');
 $app->get('/question', AboutController::class . ':question')->setName('question');
 $app->get('/send-completely', AboutController::class . ':sendCompletely')->setName('send_completely');
+$app->get('/terms-of-service', AboutController::class . ':termsOfService')->setName('terms_of_service');
 
 $app->group('/news', function () {
     $this->get('/list', NewsController::class . ':list')->setName('news_list');

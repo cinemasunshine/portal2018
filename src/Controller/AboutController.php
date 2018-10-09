@@ -59,4 +59,16 @@ class AboutController extends GeneralController
     public function executeSendCompletely($request, $response, $args)
     {
     }
+    
+    /**
+     * terms of service action
+     * 
+     * @param \Slim\Http\Request  $request
+     * @param \Slim\Http\Response $response
+     * @param array               $args
+     * @return string|void
+     */
+    public function executeTermsOfService($request, $response, $args)
+    {
+    }
 }

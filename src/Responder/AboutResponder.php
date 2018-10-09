@@ -63,4 +63,16 @@ class AboutResponder extends BaseResponder
     {
         return $this->view->render($response, 'about/send_completely.html.twig', $data->all());
     }
+    
+    /**
+     * terms of service
+     *
+     * @param Response   $response
+     * @param Collection $data
+     * @return Response
+     */
+    public function termsOfService(Response $response, Collection $data)
+    {
+        return $this->view->render($response, 'about/terms_of_service.html.twig', $data->all());
+    }
 }
