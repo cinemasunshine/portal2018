@@ -1,0 +1,227 @@
+{% extends "layout.html.twig" %}
+
+{% block css %}
+<link href="/css/app.css" rel="stylesheet">
+{% endblock %}
+
+{% block contents %}
+<div class="px-3 pt-3">
+    <div class="width mx-auto breadcrumb-list small mb-5 d-none d-md-block">
+        <a href="{{ path_for('homepage') }}">ホーム　|　</a>
+        <span class="font-weight-bold">シネマサンシャイン公式アプリ</span>
+    </div>
+    
+    <div class="app-width mx-auto">
+        <div class="d-lg-flex text-center text-lg-left d-lg-block d-none">
+            <div class="py-lg-5"> 
+                <h3 class="py-3 font-weight-bold headline mb-3">シネマサンシャインの新しい会員サービス<br>「シネマサンシャインリワード」ついにスタート</h3>
+                <p class="sentence">シネマサンシャイン公式アプリ内から<br>今すぐご入会ご利用いただけます</p>
+                <p class="sentence">アプリ対応劇場：池袋、ユーカリが丘、北島、姶良<br>(対応劇場は順次拡大予定)</p>
+            </div>
+            <div class="smp-img ml-auto mr-lg-5">
+                <img src="/images/app/smp_img.png">
+            </div>
+        </div>
+        <div class="text-center text-lg-left d-lg-none">
+            <div class="mb-4">
+                <p class="py-3 font-weight-bold headline mb-0"><span class="small font-weight-bold">シネマサンシャインの新しい会員サービス</span><br>「シネマサンシャインリワード」<br><span
+                        class="small font-weight-bold">ついにスタート</span></p>
+                <p class="sentence">シネマサンシャイン公式アプリ内から<br>今すぐご入会ご利用いただけます</p>
+                <p class="sentence small">アプリ対応劇場：池袋、ユーカリが丘、北島、姶良<br>(対応劇場は順次拡大予定)</p>
+            </div>
+            <div class="smp-img ml-auto mr-lg-5">
+                <img src="/images/app/smp_img.png">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="apps pb-md-5 pb-4 py-4 text-center">
+    <div class="my-md-5 my-3 appli-logo">
+        <img src="/images/tmp/common/appli_logo.png">
+    </div>
+    <div>
+        <h3 class="headline font-weight-bold mb-md-4">シネマサンシャインリワードで<br>もっともっと映画を楽しもう</h3>
+        <p class="small">※クレジットカードの登録が必須となりますので<br class="d-block d-md-none">予めご了承ください</p>
+    </div>
+</div>
+
+<div class="p-3">
+    <div class="app-width mx-auto">
+        <div class="benefits d-md-flex align-items-center justify-content-between my-md-4 my-4 pb-4">
+            <div class="benefits-icon text-center mb-4 mb-md-0">
+                <img src="/images/app/tokuten1_icon.svg" class="py-3">
+                <p class="font-weight-bold">年会費500円（税込み）<br>☆ご入会時に１ポイントプレゼント</p>
+            </div>
+            <div class="benefits-img pl-md-5">
+                <img src="/images/app/tokuten1_img.svg">
+            </div>
+        </div>
+        <div class="benefits d-md-flex align-items-center justify-content-between my-md-4 my-4 pb-4">
+            <div class="benefits-icon text-center mb-4 mb-md-0">
+                <img src="/images/app/tokuten2_icon.svg" class="py-3">
+                <p class="font-weight-bold">アプリのチケット購入１回ごとに<br>１ポイント進呈</p>
+            </div>
+            <div class="benefits-img pl-md-5">
+                <img src="/images/app/tokuten2_img.svg">
+            </div>
+        </div>
+        <div class="benefits d-md-flex align-items-center justify-content-between my-md-4 my-4 pb-4">
+            <div class="benefits-icon text-center mb-4 mb-md-0">
+                <img src="/images/app/tokuten3_icon.svg" class="py-3">
+                <p class="font-weight-bold">２ポイント交換で1,100円鑑賞</p>
+            </div>
+            <div class="benefits-img pl-md-5">
+                <img src="/images/app/tokuten3_img.svg">
+            </div>
+        </div>
+        <div class="benefits d-md-flex align-items-center justify-content-between my-md-4 my-4 pb-4">
+            <div class="benefits-icon text-center mb-4 mb-md-0">
+                <img src="/images/app/tokuten4_icon.svg" class="py-3">
+                <p class="font-weight-bold">６ポイント交換で無料鑑賞</p>
+            </div>
+            <div class="benefits-img pl-md-5">
+                <img src="/images/app/tokuten4_img.svg">
+            </div>
+        </div>
+        <div class="benefits d-md-flex align-items-center justify-content-between my-md-4 my-4 pb-4">
+            <div class="benefits-icon text-center mb-4 mb-md-0">
+                <img src="/images/app/tokuten5_icon.svg" class="py-3">
+                <p class="font-weight-bold">毎週木曜日は会員サービスデイ<br>会員ご本人様1,100円</p>
+            </div>
+            <div class="benefits-img pl-md-5">
+                <img src="/images/app/tokuten5_img.svg">
+            </div>
+        </div>
+        <div class="benefits d-md-flex align-items-center justify-content-between my-md-4 my-4 pb-4">
+            <div class="benefits-icon text-center mb-4 mb-md-0">
+                <img src="/images/app/tokuten6_icon.svg" class="py-3">
+                <p class="font-weight-bold">会員情報登録でチケット購入が<br>さらにラクラク</p>
+            </div>
+            <div class="benefits-img pl-md-5">
+                <img src="/images/app/tokuten6_img.svg">
+            </div>
+        </div>
+        <div class="mb-5">
+            <div class="text-center py-md-4 py-3">
+                <h3 class="font-weight-bold mb-2 mb-md-3 headline">さらに便利な機能、<br class="d-block d-md-none">会員サービスを追加予定です</h3>
+                <p class="text-gray small">会員サービスの内容は変更になる場合がございます。</p>
+            </div>
+            <div class="small">
+                <div>
+                    <p>特典１</p>
+                    <p>※年会費はご登録いただいたクレジットカードでの支払いとなります。
+                        <br> ※会員期間はご入会日から1年間です。
+                        <br> ※翌年の会員更新手続きは期限終了の1ヶ月前からアプリ内で行えます。
+                        <br> ※会員更新料は500円（税込み）☆会員更新時にも1ポイントプレゼント
+                        <br>
+                    </p>
+                </div>
+                <div>
+                    <p>特典２</p>
+                    <p>※ポイントは購入枚数に関わらず決済1回につき1ポイント付与となります。</p>
+                </div>
+                <div>
+                    <p>特典３・４</p>
+                    <p>※1,100円鑑賞／無料鑑賞はアプリでログインした状態からご鑑賞になる上映回、座席を選択し、券種選択画面でポイント使用手続きをしていただくことでご利用いただけます。
+                        <br>※3D作品やプレミアムシアターのチケットをご購入の場合は別途差額料金が発生します。
+                        <br>※一部、特別興行等で無料鑑賞・1,100円鑑賞がご利用いただけない場合がございます。
+                        <br>※ポイントを利用した券種のみでご鑑賞のチケット決済ではポイントは付与されません。
+                        <br>※ポイントの有効期限は会員期間の終了までとなりますが、翌年の会員1年更新でポイント期限も同期間まで延長します。
+                    </p>
+                </div>
+                <div>
+                    <p>特典５</p>
+                    <p>※会員1,100円券種は毎週木曜日の上映回をご購入いただく際に1枚お選びいただけます。
+                        <br>※3D作品やプレミアムシアターのチケットをご購入の場合は、別途差額料金が発生します。
+                        <br>※木曜日であっても、一部特別興行等で1,100円鑑賞がご利用いただけない場合がございます。
+                    </p>
+                </div>
+                <div>
+                    <p>特典６</p>
+                    <p>※会員登録により、チケット購入の度にお客様情報・クレジット情報の入力をする手続きが不要となります。</p>
+                </div>
+            </div>
+        </div>
+        <div class="members-card text-white d-md-flex align-items-center py-4 px-md-3 px-2 mb-5">
+            <div class="pr-md-4">
+                <h4 class="large text-md-left text-center">メンバーズカード会員様へ<br class="d-block d-md-none">アプリ移行のご案内</h4>
+                <p class="mb-4">メンバーズカード会員様が＜シネマサンシャイン リワード＞に移行していただく場合は、カードからアプリへのポイント振替を劇場窓口にて承ります。
+                    <br>お手持ちのカードポイント250ごとに1ポイント＋会員移行サービス1ポイントをアプリへ付与させていただきます。
+                    <br>振替後の残240～10ポイントは売店メニューのご飲食のクーポンとしてご利用いただけます。
+                </p>
+                <p>【ポイント振替例】
+                    <br>カード2,210ポイントの場合
+                    <br>⇒アプリ8ポイント+移行サービス1ポイント+売店210円割引
+                </p>
+                <p>移行をご希望の会員様は、あらかじめシネマサンシャインリワードへご入会の上、メンバーズカードとアプリをDLした端末をご持参の上、劇場窓口にお越しください。</p>
+                <p class="small">※なお、アプリで決済した上映回のチケットのポイントをメンバーズカードに付与することはできませんのでご了承ください。
+                    <br>ご不明な点がございましたらシネマサンシャインにお問合せください。</p>
+            </div>
+            <div class="pl-md-2 text-center">
+                <img src="/images/app/card.svg">
+            </div>
+        </div>
+        <div>
+            <h3 class="text-center large font-weight-bold mb-4">もちろん、無料版アプリの<br class="d-block d-md-none">基本機能もご利用可能</h3>
+            <div class="p-md-3">
+                <ul class="free-app d-md-flex flex-wrap">
+                    <li class="mb-4">
+                        <div class="free-app-item py-md-5 py-4 mx-0 mx-md-3 text-center h-100">
+                            <p class="large font-weight-bold">スマホがチケットに</p>
+                            <p class="mb-4">アプリ内のチケット（QR）を入場ゲートの<br>スタッフに見せるだけで入場できる。</p>
+                            <img src="/images/app/free_app_img1.svg">
+                        </div>
+                    </li>
+                    <li class="mb-4">
+                        <div class="free-app-item py-md-5 py-4 mx-0 mx-md-3 text-center h-100">
+                            <p class="large font-weight-bold">アプリでチケット管理</p>
+                            <p class="mb-4">アプリで購入したチケットは、<br>アプリ内のチケットホルダーに見やすく収納</p>
+                            <img src="/images/app/free_app_img2.svg">
+                        </div>
+                    </li>
+                    <li class="mb-4">
+                        <div class="free-app-item py-md-5 py-4 mx-0 mx-md-3 text-center h-100">
+                            <p class="large font-weight-bold">お知らせ機能で焦らず安心</p>
+                            <p class="mb-4">鑑賞当日、上映３０分前に<br>プッシュ通知でお知らせ。</p>
+                            <img src="/images/app/free_app_img3.svg">
+                        </div>
+                    </li>
+                    <li class="mb-md-4 mb-2">
+                        <div class="free-app-item py-md-5 py-4 mx-0 mx-md-3 text-center h-100 d-flex align-items-center justify-content-center">
+                            <div>
+                                <p class="large font-weight-bold">２日前からチケット購入</p>
+                                <p class="mb-4">当日まで待たなくても事前に購入できる。</p>
+                                <img src="/images/app/free_app_img4.svg">
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="apps py-5 text-center">
+    <div class="appli-logo">
+        <img src="/images/tmp/common/appli_logo.png" alt="シネマサンシャイン公式アプリのダウンロードは下記から">
+    </div>
+    <div>
+        <h3 class="headline font-weight-bold py-3 py-md-4 mb-0">シネマサンシャイン公式アプリ</h3>
+        <div class="d-md-flex justify-content-center align-items-center mb-2">
+            <div class="app-button ios">
+                <a href="https://itunes.apple.com/jp/app/%E3%82%B7%E3%83%8D%E3%83%9E%E3%82%B5%E3%83%B3%E3%82%B7%E3%83%A3%E3%82%A4%E3%83%B3%E5%85%AC%E5%BC%8F%E3%82%A2%E3%83%97%E3%83%AA/id1328731976?l=ja&amp;ls=1&amp;mt=8">
+                    <img alt="App Storeからダウンロード" src="https://linkmaker.itunes.apple.com/assets/shared/badges/ja-jp/appstore-lrg.svg">
+                </a>
+            </div>
+            <div class="app-button android ml-md-3">
+                <a href="https://play.google.com/store/apps/details?id=jp.co.cinemasunshine&amp;pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1">
+                    <img alt="Google Play で手に入れよう" src="https://play.google.com/intl/ja/badges/images/generic/ja_badge_web_generic.png">
+                </a>
+            </div>
+        </div>
+        <img src="/images/app/seach.svg" class="search mx-3 mb-4">
+        <p class="small mb-0">アプリ対応劇場：池袋、ユーカリが丘、北島、姶良<br>（対象劇場は順次拡大予定）</p>
+    </div>
+</div>
+{% endblock %}

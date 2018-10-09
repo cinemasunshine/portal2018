@@ -37,6 +37,18 @@ class AboutController extends GeneralController
     }
     
     /**
+     * official app action
+     * 
+     * @param \Slim\Http\Request  $request
+     * @param \Slim\Http\Response $response
+     * @param array               $args
+     * @return string|void
+     */
+    public function executeOfficialApp($request, $response, $args)
+    {
+    }
+    
+    /**
      * privacy action
      * 
      * @param \Slim\Http\Request  $request

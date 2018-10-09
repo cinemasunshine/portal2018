@@ -41,6 +41,18 @@ class AboutResponder extends BaseResponder
     }
     
     /**
+     * official app
+     *
+     * @param Response   $response
+     * @param Collection $data
+     * @return Response
+     */
+    public function officialApp(Response $response, Collection $data)
+    {
+        return $this->view->render($response, 'about/official_app.html.twig', $data->all());
+    }
+    
+    /**
      * privacy
      *
      * @param Response   $response
