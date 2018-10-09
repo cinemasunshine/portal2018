@@ -35,4 +35,16 @@ class AboutController extends GeneralController
     public function executeMvtk($request, $response, $args)
     {
     }
+    
+    /**
+     * question action
+     * 
+     * @param \Slim\Http\Request  $request
+     * @param \Slim\Http\Response $response
+     * @param array               $args
+     * @return string|void
+     */
+    public function executeQuestion($request, $response, $args)
+    {
+    }
 }
