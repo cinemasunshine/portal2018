@@ -200,6 +200,8 @@ class TheaterController extends BaseController
         $this->data->set('theater', $theater);
         
         $this->data->set('newsList', $this->getNewsList($theater));
+        
+        $this->data->set('campaigns', $this->getCampaigns($theater));
     }
     
     /**
