@@ -27,4 +27,15 @@
         {% include 'theater/include/concession/' ~ theater.getName() ~ '.html.twig' %}
     </div>
 </div>
+
+{% include 'include/campaign.html.twig' with {
+    campaigns: campaigns
+} only %}
+
+<div class="mb-5">
+    {% include 'theater/include/infomation.html.twig' with {
+        theater: theater,
+        newsList: infoNewsList,
+    } only %}
+</div>
 {% endblock %}
