@@ -123,6 +123,8 @@ class TheaterController extends BaseController
         $theater = $this->findByEntity($args['name']);
         
         $this->data->set('theater', $theater);
+        
+        $this->data->set('campaigns', $this->getCampaigns($theater));
     }
     
     /**

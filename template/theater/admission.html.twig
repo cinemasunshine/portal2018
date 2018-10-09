@@ -24,4 +24,8 @@
         {% include 'theater/include/admission/' ~ theater.getName() ~ '.html.twig' %}
     </div>
 </div>
+
+{% include 'include/campaign.html.twig' with {
+    campaigns: campaigns
+} only %}
 {% endblock %}
