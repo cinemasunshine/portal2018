@@ -1,0 +1,71 @@
+{% extends "layout.html.twig" %}
+
+{% block css %}
+<link href="/css/send-completely.css" rel="stylesheet">
+{% endblock %}
+
+{% block contents %}
+<div class="width mx-auto p-3">
+    <div class="breadcrumb-list small mb-5 d-md-block d-none">
+        <a href="{{ path_for('homepage') }}">ホーム　|　</a>
+        <span class="font-weight-bold">特定商取引法に基づく表示</span>
+    </div>
+
+    <div class="mb-5">
+        <h2 class="font-weight-bold large text-center text-md-left mb-4 mt-3">特定商取引法に基づく表示</h2>
+        <p class="mb-4">「特定商取引に関する法律」第11条（通信販売についての広告）に基づき、商品の提供条件を次のとおり明示します。</p>
+        <div class="mb-4">
+            <h3 class="font-weight-bold pl-3 line-height-1 mb-4" style="border-left: 2px solid black;">事業者</h3>
+            <div>
+                <h4 class="font-weight-bold mb-2">販売事業者</h4>
+                <p>佐々木興業株式会社</p>
+            </div>
+            <div>
+                <h4 class="font-weight-bold mb-2">お問い合わせ先</h4>
+                <p>〒170-0013 東京都豊島区東池袋1-14-3<br>佐々木興業株式会社　シネマサンシャイン運営部</p>
+            </div>
+            <div>
+                <h4 class="font-weight-bold mb-2">電話</h4>
+                <p>03-3982-6101<br>(月曜～金曜 10:00～18:00、ただし祝日・年末年始は除く)</p>
+            </div>
+            <div class="pb-3">
+                <h4 class="font-weight-bold mb-2">メールアドレス</h4>
+                <a href="mailto:cin-sun_mail@cinemasunshine.co.jp?Subject=%e3%81%94%e6%84%8f%e8%a6%8b%e3%83%bb%e3%81%94%e6%84%9f%e6%83%b3" class="border-bottom border-gray pb-1">cin-sun_mail@cinemasunshine.co.jp</a>
+            </div>
+        </div>
+        <div class="mb-4">
+            <h3 class="font-weight-bold pl-3 line-height-1 mb-4" style="border-left: 2px solid black;">ご購入に際して</h3>
+            <div class="mb-4">
+                <h4 class="font-weight-bold mb-2">ご購入対象・価格・期間</h4>
+                <p>チケットの販売価格は、本サイトにおいて表示された価格となります。<br>
+                    その他お客様にご負担いただく費用消費税をご負担いただきます。なお、本サイト内の表示価格は、消費税込みの金額を表示しております。
+                    <br> チケットの引渡し方法・時期チケットの発券は、チケットご購入時にWEB上の確認画面または、弊社から送信させていただきます確認の電子メールに
+                    記載された「シネマサンシャイン」に備え付けの自動発券機において、お客様は、「引換番号」および「購入チケット確認用暗証番号」を入力
+                    いただくことによって行います。「引換番号」および「購入チケット確認用暗証番号」を失念された場合、発券することができないことがございます。
+                    また、上映開始時刻を過ぎますと発券できません。予めご了承下さい。なお、郵便または宅配便等によるチケットの送付は行っておりません。<br>
+                    購入枚数の制限一回のご購入手続において購入いただけますチケット枚数の上限は、6枚までとさせていただきます。7枚以上購入される場合には、再度お手続きをお願いいたします。
+                    <br> チケットは映画上映当日の上映開始1時間前までご購入いただけます。
+                </p>
+            </div>
+            <div class="mb-4">
+                <h4 class="font-weight-bold mb-2">お支払い方法</h4>
+                <p>クレジットカードによる決済のみとなっております。<br>
+                    利用可能なクレジットカード：MUFG、DC、UFJ、NICOS、Master、VISA、UC、JCB、AmericanExpress<br> お支払い時期：
+                    <br> クレジットカード決済画面におけるクレジットカード情報の送信完了時に各カード会社にお客様情報を送信し、決済させていただきます。なお、 ご請求日は各カード会社により異なります。<br>
+                    キャンセルおよび払い戻し：
+                    <br> ご購入手続完了後においては、上映中止または延期の場合を除き、お客様の不可抗力による来場遅延等の理由にかかわらず、ご鑑賞作品の変更、
+                    他の上映時間または座席への変更、もしくはチケットの払い戻しは一切いたしません。また、ご購入されたチケットのお引き取りがない場合においても、払い戻しはいたしません。<br>
+                    弊社の事情により上映を中止または延期した場合、期間および場所を定めて当該中止にかかわるチケットの払い戻しを実施します。ただし、払い戻しの期間を過ぎた場合、発券済のチケットを紛失・破損し、または甚だしく汚損し判読しがたい場合には、一切払い戻しはいたしません。また、
+                    チケットの購入金額以外の費用（手数料、交通費、宿泊費、通信費、送付料等）はお支払いいたしません。
+                    <br> 払い戻しの期間・場所：
+                    <br> 原則として、チケットご購入時にWEB上の確認画面または、弊社から送信させていただきます確認の電子メールに記載された「劇場」において
+                    払い戻しを行います。払い戻しの期間については、各「シネマサンシャイン」までお問い合わせ下さい。</p>
+            </div>
+            <div class="mb-5">
+                <h4 class="font-weight-bold mb-2">払い戻しの方法</h4>
+                <p>原則として、チケットとの交換による現金での払い戻しとなります。<br>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -51,4 +51,16 @@ class AboutResponder extends BaseResponder
     {
         return $this->view->render($response, 'about/question.html.twig', $data->all());
     }
+    
+    /**
+     * send completely
+     *
+     * @param Response   $response
+     * @param Collection $data
+     * @return Response
+     */
+    public function sendCompletely(Response $response, Collection $data)
+    {
+        return $this->view->render($response, 'about/send_completely.html.twig', $data->all());
+    }
 }
