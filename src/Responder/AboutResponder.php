@@ -101,6 +101,18 @@ class AboutResponder extends BaseResponder
     }
     
     /**
+     * sitemap
+     *
+     * @param Response   $response
+     * @param Collection $data
+     * @return Response
+     */
+    public function sitemap(Response $response, Collection $data)
+    {
+        return $this->view->render($response, 'about/sitemap.html.twig', $data->all());
+    }
+    
+    /**
      * special ticket
      *
      * @param Response   $response

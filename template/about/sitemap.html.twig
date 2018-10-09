@@ -1,0 +1,106 @@
+{% extends "layout.html.twig" %}
+
+{% block css %}
+<link href="/css/sitemap.css" rel="stylesheet">
+{% endblock %}
+
+{% block contents %}
+<div class="width mx-auto p-3">
+    <div class="breadcrumb-list small mb-5 d-md-block d-none">
+        <a href="{{ path_for('homepage') }}">ホーム　|　</a>
+        <span class="font-weight-bold">サイトマップ</span>
+    </div>
+    
+    <div class="mb-5">
+        <h2 class="font-weight-bold large text-center text-md-left mb-4 mt-3">サイトマップ</h2>
+    </div>
+    
+    <div class="sitemap-home mb-4">
+        <h3 class="font-weight-bold py-md-3 py-4 title border-light-gray">ホーム</h3>
+        <ul class="d-md-flex flex-wrap column-md-2">
+            <li>
+                <a href="{{ path_for('homepage') }}" class="d-block border-bottom border-light-gray py-4 px-3 mx-md-3">
+                    総合TOP
+                </a>
+            </li>
+            <li>
+                <a href="{{ path_for('theater_list') }}" class="d-block border-bottom border-light-gray py-4 px-3 mx-md-3">
+                    劇場一覧
+                </a>
+            </li>
+            <li>
+                <a href="{{ path_for('schedule_list') }}" class="d-block border-bottom border-light-gray py-4 px-3 mx-md-3">
+                    作品一覧
+                </a>
+            </li>
+            <li>
+                <a href="{{ path_for('question') }}" class="d-block border-bottom border-light-gray py-4 px-3 mx-md-3">
+                    よくあるご質問(Q＆A)
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="sitemap-theater mb-4">
+        <h3 class="font-weight-bold py-md-3 py-4 title border-light-gray">劇場</h3>
+        <ul class="d-md-flex flex-wrap column-md-3">
+        {% for theater in theaters %}
+            <li>
+                <a href="{{ path_for('theater', { name: theater.getName() }) }}" class="d-block border-bottom border-light-gray py-4 px-3 mx-md-3">
+                    {{ theater.getNameJa() }}
+                </a>
+            </li>
+        {% endfor %}
+        </ul>
+    </div>
+    <div class="sitemap-company-profile mb-4">
+        <h3 class="font-weight-bold py-md-3 py-4 title border-light-gray">会社情報</h3>
+        <ul class="d-md-flex flex-wrap column-md-2">
+            <li>
+                <a href="{{ path_for('company') }}" class="d-block border-bottom border-light-gray py-4 px-3 mx-md-3">
+                    会社概要
+                </a>
+            </li>
+            <li>
+                <a href="{{ path_for('specific_quotient') }}" class="d-block border-bottom border-light-gray py-4 px-3 mx-md-3">
+                    特定商取引に基づく表示
+                </a>
+            </li>
+            <li>
+                <a href="{{ path_for('terms_of_service') }}" class="d-block border-bottom border-light-gray py-4 px-3 mx-md-3">
+                    利用規約
+                </a>
+            </li>
+            <li>
+                <a href="{{ path_for('privacy') }}" class="d-block border-bottom border-light-gray py-4 px-3 mx-md-3">
+                    プライバシーポリシー
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="sitemap-other mb-4">
+        <h3 class="font-weight-bold py-md-3 py-4 title border-light-gray">その他</h3>
+        <ul class="d-md-flex flex-wrap column-md-2">
+            <li>
+                <a href="{{ path_for('special_ticket') }}" class="d-block border-bottom border-light-gray py-4 px-3 mx-md-3">
+                    シネマサンシャイン特別鑑賞券
+                </a>
+            </li>
+            <li>
+                <a href="{{ path_for('online_ticket') }}" class="d-block border-bottom border-light-gray py-4 px-3 mx-md-3">
+                    オンラインチケット購入のメリット
+                </a>
+            </li>
+            <li>
+                <a href="{{ path_for('mvtk') }}" class="d-block border-bottom border-light-gray py-4 px-3 mx-md-3">
+                    ムビチケ券ご利用方法
+                </a>
+            </li>
+            <li>
+                <a href="{{ path_for('official_app') }}" class="d-block border-bottom border-light-gray py-4 px-3 mx-md-3">
+                    シネマサンシャイン公式アプリ
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+{% endblock %}

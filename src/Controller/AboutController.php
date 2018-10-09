@@ -97,6 +97,19 @@ class AboutController extends GeneralController
     }
     
     /**
+     * sitemap action
+     * 
+     * @param \Slim\Http\Request  $request
+     * @param \Slim\Http\Response $response
+     * @param array               $args
+     * @return string|void
+     */
+    public function executeSitemap($request, $response, $args)
+    {
+        $this->data->set('theaters', $this->getTheaters());
+    }
+    
+    /**
      * special ticket action
      * 
      * @param \Slim\Http\Request  $request
