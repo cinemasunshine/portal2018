@@ -29,6 +29,18 @@ class AboutResponder extends BaseResponder
     }
     
     /**
+     * mail magazine
+     *
+     * @param Response   $response
+     * @param Collection $data
+     * @return Response
+     */
+    public function mailMagazine(Response $response, Collection $data)
+    {
+        return $this->view->render($response, 'about/mail_magazine.html.twig', $data->all());
+    }
+    
+    /**
      * mvtk
      *
      * @param Response   $response

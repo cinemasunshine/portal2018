@@ -1,0 +1,98 @@
+{% extends "layout.html.twig" %}
+
+{% block css %}
+<link href="/css/mail-magazine.css" rel="stylesheet">
+{% endblock %}
+
+{% block contents %}
+<div class="p-3">
+    <div class="width mx-auto breadcrumb-list small mb-5 d-none d-md-block">
+        <a href="{{ path_for('homepage') }}">ホーム　|　</a>
+        <span class="font-weight-bold">メールマガジン会員サービス</span>
+    </div>
+    
+    <div class="mail-magazine-width mx-auto mb-md-5 mb-4">
+        <h2 class="large font-weight-bold text-md-left text-center mb-md-5 mb-4 mt-3">メールマガジン会員サービス</h2>
+        <div class="d-md-flex px-md-5">
+            <div class="text-center mr-md-5 mb-4 mb-md-0">
+                <img src="/images/mail-magazine/mm_top.svg">
+            </div>
+            <div class="ml-md-4">
+                <h3 class="font-weight-bold text-md-left text-center mb-3">シネマサンシャインメール会員募集中</h3>
+                <p>シネマサンシャインのキャンペーン情報や、新作映画情報、メールマガジン会員限定クーポンなど、<br class="d-none d-md-block">お得な情報を一足早くお届けする無料メール配信サービスです。</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="benefits pb-md-5 pb-4 py-3">
+    <h3 class="text-center font-weight-bold py-md-5 py-4">メールマガジンお得な3大特典</h3>
+    <div class="benefits-details mx-auto d-md-flex text-center">
+        <div class="flex-fill mb-5 mb-md-0">
+            <img src="/images/mail-magazine/mm_free.svg" class="mb-5">
+            <p class="font-weight-bold">会員登録料・年会費無料</p>
+            <p>どなたでも<br>無料でご利用いただけます。</p>
+        </div>
+        <div class="flex-fill mb-5 mb-md-0">
+            <img src="/images/mail-magazine/mm_new.svg" class="mb-5">
+            <p class="font-weight-bold">話題の最新映画情報をお届け</p>
+            <p>最新の映画情報やキャンペーン情報を<br>お届けします。</p>
+        </div>
+        <div class="flex-fill">
+            <img src="/images/mail-magazine/mm_coupon.svg" class="mb-5">
+            <p class="font-weight-bold">メルマガ会員登録限定クーポン</p>
+            <p>メルマガ会員限定の<br>お得なクーポンが付いています。</p>
+        </div>
+    </div>
+</div>
+<div class="mail-magazine-width mx-auto mb-md-5 mb-4 p-3">
+    <h3 class="text-center font-weight-bold py-md-5 py-4">メールマガジン会員登録の流れ</h3>
+    <ol class="mail-magazine-step d-md-flex flex-wrap mb-4">
+        <li class="mb-3">
+            <div class="position-relative border border-gray py-3 pr-3 mx-0 mx-md-3">
+                <div class="number position-absolute bg-dark-gray text-white rounded text-center large">１</div>
+                <div>
+                    <p class="font-weight-bold mb-1">登録フォームへ進む</p>
+                    <p class="mb-0 small">「登録する」ボタンを押し、登録フォームへ進む</p>
+                </div>
+            </div>
+        </li>
+        <li class="mb-3">
+            <div class="position-relative border border-gray py-3 pr-3 mx-0 mx-md-3">
+                <div class="number position-absolute bg-dark-gray text-white rounded text-center large">２</div>
+                <div>
+                    <p class="font-weight-bold mb-1">会員情報入力</p>
+                    <p class="mb-0 small">必要事項を入力後、「送信」ボタンを押す</p>
+                </div>
+            </div>
+        </li>
+        <li class="mb-3">
+            <div class="position-relative border border-gray py-3 pr-3 mx-0 mx-md-3">
+                <div class="number position-absolute bg-dark-gray text-white rounded text-center large">３</div>
+                <div>
+                    <p class="font-weight-bold mb-1">入力内容確認 / 登録</p>
+                    <p class="mb-0 small">入力内容確認後、「OK」ボタンを押す</p>
+                </div>
+            </div>
+        </li>
+        <li class="mb-3">
+            <div class="position-relative border border-gray py-3 pr-3 mx-0 mx-md-3">
+                <div class="number position-absolute bg-dark-gray text-white rounded text-center large">４</div>
+                <div>
+                    <p class="font-weight-bold mb-1">登録完了メール受信</p>
+                    <p class="mb-0 small">登録完了後、登録完了メールが届いて終了です。</p>
+                </div>
+            </div>
+        </li>
+    </ol>
+    <div class="mb-5">
+        <p class="small text-dark-gray">※フリーメールや、携帯電話で迷惑メール設定をしている場合、確認メールが届かない場合がございますので、ドメイン設定の変更をお願い致します。<br> ドメイン：cinemasunshine.co.jp
+            <br> ※割引券１枚で２名様まで有効。他の割引サービスとの併用はできません。
+            <br> ※特別興行などご利用いただけない場合がございます。
+            <br> ※インターネット購入（e-box、ムビチケ）ではご利用頂けません。
+        </p>
+    </div>
+    <div>
+        <div class="registration shadow-01 mx-auto"><a href="https://mm.cinemasunshine.co.jp/form_if.cgi?type=3&id=sunshine">登録する</a></div>
+    </div>
+</div>
+{% endblock %}

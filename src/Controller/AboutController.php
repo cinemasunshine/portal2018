@@ -25,6 +25,18 @@ class AboutController extends GeneralController
     }
     
     /**
+     * mail magazine action
+     * 
+     * @param \Slim\Http\Request  $request
+     * @param \Slim\Http\Response $response
+     * @param array               $args
+     * @return string|void
+     */
+    public function executeMailMagazine($request, $response, $args)
+    {
+    }
+    
+    /**
      * mvtk action
      * 
      * @param \Slim\Http\Request  $request

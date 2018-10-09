@@ -20,6 +20,7 @@ use Cinemasunshine\Portal\Controller\API\ScheduleController as ScheduleApiContro
 $app->get('/', IndexController::class . ':index')->setName('homepage');
 
 $app->get('/company-profile', AboutController::class . ':company')->setName('company');
+$app->get('/mail-magazine', AboutController::class . ':mailMagazine')->setName('mail_magazine');
 $app->get('/mvtk', AboutController::class . ':mvtk')->setName('mvtk');
 $app->get('/app', AboutController::class . ':officialApp')->setName('official_app');
 $app->get('/privacy', AboutController::class . ':privacy')->setName('privacy');
