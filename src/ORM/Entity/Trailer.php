@@ -63,7 +63,7 @@ class Trailer extends AbstractEntity
      * banner_image
      *
      * @var File
-     * @ORM\OneToOne(targetEntity="File")
+     * @ORM\OneToOne(targetEntity="File", fetch="EAGER")
      * @ORM\JoinColumn(name="banner_image_file_id", referencedColumnName="id", nullable=false, onDelete="RESTRICT")
      */
     protected $bannerImage;
