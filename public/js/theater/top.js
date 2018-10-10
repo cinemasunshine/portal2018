@@ -96,6 +96,7 @@ function createScheduleDate() {
             var date = data.date;
             var month = data.date.split('-')[1];
             var day = data.date.split('-')[2];
+            var ddd = moment(date.replace(/-/g, '')).format('ddd');
             var hasPreSale = data.has_pre_sale;
             var usable = data.usable;
             var className = (usable)
@@ -107,7 +108,7 @@ function createScheduleDate() {
                 ? 'ファーストデイ'
                 : (day === '15')
                     ? 'シネマサンシャインデイ'
-                    : (moment(date.replace(/-/g, '')).format('ddd') === '水')
+                    : (ddd === '水')
                         ? 'レディースデイ'
                         : '&nbsp';
             var dom = '<div class="swiper-slide text-center">\
@@ -115,7 +116,7 @@ function createScheduleDate() {
                     <div class="mb-2">' + month + '</div>\
                     <div class="mb-2">\
                         <strong class="large mr-1">' + day + '</strong>\
-                        <strong class="small">(月)</strong>\
+                        <strong class="small">(' + ddd + ')</strong>\
                     </div>\
                     <div class="x-small mb-1">' + service + '</div>\
                     <div class="x-small pre-sales">' + ((hasPreSale) ? '先行販売' : '&nbsp') + '</div>\
