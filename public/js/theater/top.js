@@ -1,23 +1,7 @@
 $(function () {
+    console.log(api);
     // スケジュール
-    var scheduleSwiper = new Swiper('.schedule-slider .swiper-container', {
-        spaceBetween: 0,
-        slidesPerView: 7,
-        // navigation: {
-        //     nextEl: '.schedule .swiper-button-next',
-        //     prevEl: '.schedule .swiper-button-prev',
-        // },
-        breakpoints: {
-            320: { slidesPerView: 2 },
-            767: { slidesPerView: 3 },
-            1024: { slidesPerView: 6 }
-        }
-    });
-    scheduleSwiper.on('resize', function () {
-        var target = $('.schedule-slider .swiper-slide .active').parent();
-        var index = $('.schedule-slider .swiper-slide').index(target);
-        scheduleSwiper.slideTo(index, 0, false);
-    });
+    createScheduleDate();
     // 開場時間
     var openingTimeSwiper = new Swiper('.opening-time .swiper-container', {
         spaceBetween: 20,
@@ -33,7 +17,6 @@ $(function () {
     openingTimeSwiper.on('resize', function () {
         openingTimeSwiper.slideTo(0, 0, false);
     });
-    getSchedule();
     $(document).on('click', '.schedule-slider .swiper-slide a', selectSchedule);
     var scrollTimer = null;
     $(window).on('scroll', scrollProcess);
@@ -87,6 +70,82 @@ function scrollProcess() {
         $('.selected-date').removeClass('fixed-top');
     }
 }
+
+/**
+ * スケジュール日付部分作成
+ */
+function createScheduleDate() {
+    var done = function (res, textStatus, jqXhr) {
+        // 通信成功の処理
+        console.log(res);
+        // エラー処理
+        $('.error').removeClass('d-block').addClass('d-none');
+        if (res.data.meta.error !== '000000') {
+            var message = 'エラーが発生しました。';
+            $('.error').html(message).removeClass('d-none').addClass('d-block');
+            return;
+        }
+        // 先行販売表示
+        var preSaleList = res.data.data.filter(function (data) {
+            return (data.has_pre_sale);
+        });
+        if (preSaleList.length > 0) {
+            $('.pre-sales-text').removeClass('d-none');
+        }
+        // スケジュール生成
+        var dateDom = [];
+        res.data.forEach(function (data, index) {
+            var date = data.date;
+            var month = data.date.split('-')[1];
+            var day = data.date.split('-')[2];
+            var hasPreSale = data.has_pre_sale;
+            var usable = data.usable;
+            var className = (usable)
+                ? (index === 0)
+                    ? 'active border-light-blue bg-blue text-white'
+                    : 'text-dark-gray'
+                : 'text-gray bg-dark-gray not-event'
+            var dom = '<div class="swiper-slide text-center">\
+                <a href="#" class="d-block line-height-1 pt-3 pb-2 ' + className + '" data-date="' + date + '">\
+                    <div class="mb-2">' + month + '</div>\
+                    <div class="mb-2">\
+                        <strong class="large mr-1">' + day + '</strong>\
+                        <strong class="small">(月)</strong>\
+                    </div>\
+                    <div class="x-small mb-1">サービス区分</div>\
+                    <div class="x-small pre-sales">' + ((hasPreSale) ? '先行販売' : '&nbsp') + '</div>\
+                </a>\
+            </div>';
+            dateDom.push(dom);
+        });
+        $('.schedule-slider .swiper-wrapper').append(dateDom.join('\n'));
+        // スライダー生成
+        var scheduleSwiper = new Swiper('.schedule-slider .swiper-container', {
+            spaceBetween: 0,
+            slidesPerView: 7,
+            breakpoints: {
+                320: { slidesPerView: 2 },
+                767: { slidesPerView: 3 },
+                1024: { slidesPerView: 6 }
+            }
+        });
+        scheduleSwiper.on('resize', function () {
+            var target = $('.schedule-slider .swiper-slide .active').parent();
+            var index = $('.schedule-slider .swiper-slide').index(target);
+            scheduleSwiper.slideTo(index, 0, false);
+        });
+
+    };
+    var fail = function (jqXhr, textStatus, errorThrown) {
+        // 通信失敗の処理
+        console.log(jqXhr, textStatus, errorThrown);
+        var message = 'エラーが発生しました。';
+        $('.error').html(message).removeClass('d-none').addClass('d-block');
+    }
+    var theaterName = $('body').attr('data-theater');
+    api.schedule.list(theaterName).done(done).fail(fail);
+}
+
 
 /**
  * スケジュール選択
