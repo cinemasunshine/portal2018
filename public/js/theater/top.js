@@ -102,7 +102,14 @@ function createScheduleDate() {
                 ? (index === 0)
                     ? 'active border-light-blue bg-blue text-white'
                     : 'text-dark-gray'
-                : 'text-gray bg-dark-gray not-event'
+                : 'text-gray bg-dark-gray not-event';
+            var service = (day === '01')
+                ? 'ファーストデイ'
+                : (day === '15')
+                    ? 'シネマサンシャインデイ'
+                    : (moment(date.replace(/-/g, '')).format('ddd') === '水')
+                        ? 'レディースデイ'
+                        : '&nbsp';
             var dom = '<div class="swiper-slide text-center">\
                 <a href="#" class="d-block line-height-1 pt-3 pb-2 ' + className + '" data-date="' + date + '">\
                     <div class="mb-2">' + month + '</div>\
@@ -110,7 +117,7 @@ function createScheduleDate() {
                         <strong class="large mr-1">' + day + '</strong>\
                         <strong class="small">(月)</strong>\
                     </div>\
-                    <div class="x-small mb-1">サービス区分</div>\
+                    <div class="x-small mb-1">' + service + '</div>\
                     <div class="x-small pre-sales">' + ((hasPreSale) ? '先行販売' : '&nbsp') + '</div>\
                 </a>\
             </div>';
@@ -189,7 +196,7 @@ function getSchedule() {
             film.screen.forEach(function (screen) {
                 screen.time.forEach(function (time) {
                     if (moment(date.replace(/-/g, '')).format('YYYYMMDD') === moment().format('YYYYMMDD')
-                    && time.end < moment().format('HH:mm')) {
+                        && time.end < moment().format('HH:mm')) {
                         // 上映終了
                         return;
                     }
