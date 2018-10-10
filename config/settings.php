@@ -80,6 +80,7 @@ $settings['storage'] = [
 // movie walker ad
 $getMovieWalakerAdSetting = function() {
     $settings = [
+        'support' => (getenv('CUSTOMCONNSTR_MV_AD') === 'true'),
         'page' => [],
     ];
     

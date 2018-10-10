@@ -35,9 +35,20 @@ class MovieWalkerAdExtension extends \Twig_Extension
     public function getFunctions()
     {
         return [
+            new \Twig_Function('is_mw_ad_support', [$this, 'isSupport']),
             new \Twig_Function('mw_ad_script', [$this, 'getAdScript'], [ 'is_safe' => ['html'] ]),
             new \Twig_Function('mw_ad', [$this, 'getAd'], [ 'is_safe' => ['html'] ]),
         ];
+    }
+    
+    /**
+     * is support
+     *
+     * @return boolean
+     */
+    public function isSupport()
+    {
+        return $this->settings['support'];
     }
     
     /**
@@ -45,10 +56,15 @@ class MovieWalkerAdExtension extends \Twig_Extension
      *
      * @param Page $target
      * @return string
+     * @throws \LogicException
      * @throws \InvalidArgumentException
      */
     public function getAdScript($target)
     {
+        if (!$this->isSupport()) {
+            throw new \LogicException('disabled');
+        };
+        
         if ($target instanceof Page) {
             /** @var Page $target */
             $adSlot = $this->getPageAdSlot($target);
@@ -93,10 +109,15 @@ TAG;
      *
      * @param Page $target
      * @return string
+     * @throws \LogicException
      * @throws \InvalidArgumentException
      */
     public function getAd($target)
     {
+        if (!$this->isSupport()) {
+            throw new \LogicException('disabled');
+        };
+        
         if ($target instanceof Page) {
             /** @var Page $target */
             $adSlot = $this->getPageAdSlot($target);

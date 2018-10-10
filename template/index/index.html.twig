@@ -6,7 +6,9 @@
 
 {% block javascript %}
 <script src="/js/top.js"></script>
-{{ mw_ad_script(page) }}
+{% if is_mw_ad_support() %}
+    {{ mw_ad_script(page) }}
+{% endif %}
 {% endblock %}
 
 {% block contents %}
