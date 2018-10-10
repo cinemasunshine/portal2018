@@ -5,7 +5,9 @@ var api;
 
 api = {};
 api.schedule = {};
-
+api.errorCode = {
+    OK: '000000'
+};
 /**
  * fetch schedule list
  * 

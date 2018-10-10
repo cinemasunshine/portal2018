@@ -225,15 +225,16 @@
     .schedule-sort-film-sp .purchase-button > span {
         width: 100px;
     }
-    .schedule-sort-film-sp a[aria-expanded=false] {
-        background-image: url(/images/common/accordion_open.svg);
+    .schedule-sort-film-sp a {
         background-repeat: no-repeat;
         background-size: 15px;
         background-position: right 10px center;
     }
+    .schedule-sort-film-sp a[aria-expanded=false] {
+        background-image: url(/images/common/accordion_open.svg);
+    }
     .schedule-sort-film-sp a[aria-expanded=true] {
         background-image: url(/images/common/accordion_close.svg);
-        background-size: 15px;
     }
     .schedule-sort-film-sp .collapsing {
         transition: height 0.35s ease;

@@ -1,5 +1,4 @@
 $(function () {
-    console.log(api);
     // スケジュール
     createScheduleDate();
     // 開場時間
@@ -77,16 +76,15 @@ function scrollProcess() {
 function createScheduleDate() {
     var done = function (res, textStatus, jqXhr) {
         // 通信成功の処理
-        console.log(res);
+        // console.log(res);
         // エラー処理
-        $('.error').removeClass('d-block').addClass('d-none');
-        if (res.data.meta.error !== '000000') {
+        if (res.meta.error !== api.errorCode.OK) {
             var message = 'エラーが発生しました。';
             $('.error').html(message).removeClass('d-none').addClass('d-block');
             return;
         }
         // 先行販売表示
-        var preSaleList = res.data.data.filter(function (data) {
+        var preSaleList = res.data.filter(function (data) {
             return (data.has_pre_sale);
         });
         if (preSaleList.length > 0) {
@@ -134,7 +132,8 @@ function createScheduleDate() {
             var index = $('.schedule-slider .swiper-slide').index(target);
             scheduleSwiper.slideTo(index, 0, false);
         });
-
+        // スケジュール取得
+        getSchedule();
     };
     var fail = function (jqXhr, textStatus, errorThrown) {
         // 通信失敗の処理
@@ -142,6 +141,8 @@ function createScheduleDate() {
         var message = 'エラーが発生しました。';
         $('.error').html(message).removeClass('d-none').addClass('d-block');
     }
+    // エラー初期化
+    $('.error').removeClass('d-block').addClass('d-none');
     var theaterName = $('body').attr('data-theater');
     api.schedule.list(theaterName).done(done).fail(fail);
 }
@@ -169,41 +170,42 @@ function selectSchedule(event) {
  * スケジュール取得
  */
 function getSchedule() {
-    var theaterCode = $('input[name=theaterCode]').val();
     var date = $('.schedule-slider .active').attr('data-date');
-    $('.selected-date span').text(moment(date).format('YYYY年MM月DD日(ddd)'));
-    var isPreSales = ($('.schedule-slider .active .pre-sales').text().trim().length > 0);
-    var preSales = $('.selected-date .pre-sales');
-    preSales
-        .removeClass('d-inline-block')
-        .addClass('d-none');
-    if (isPreSales) {
-        preSales
-            .addClass('d-inline-block')
-            .removeClass('d-none');
-    }
-
-    $('.schedule-sort-film').html('');
-    $('.schedule-sort-film-sp').html('');
-    $('.error').removeClass('d-block').addClass('d-none');
-
-    var options = {
-        url: '/json/schedule/' + theaterCode + '/' + date + '.json',
-        type: 'GET',
-        dataType: 'json',
-        timeout: 10000,
-    };
-    var done = function (data, textStatus, jqXhr) {
+    var done = function (res, textStatus, jqXhr) {
         // 通信成功の処理
-        // console.log(data);
-        var schedule = data;
+        // console.log(res);
+        // エラー処理
+        if (res.meta.error !== api.errorCode.OK) {
+            var message = 'エラーが発生しました。';
+            $('.error').html(message).removeClass('d-none').addClass('d-block');
+            return;
+        }
+        var schedule = res.data;
         var pcDomList = [];
         var spDomList = [];
-        var filmList = scheduleSortByFilm(schedule);
-        filmList.forEach(function (film) {
-            var parent = createScheduleFilmDom(film.info);
-            film.performances.forEach(function (performance) {
-                var child = createScheduleFilmPerformanceDom(performance);
+        schedule.forEach(function (film) {
+            var parent = createScheduleFilmDom(film);
+            var tmpPerformances = [];
+            film.screen.forEach(function (screen) {
+                screen.time.forEach(function (time) {
+                    if (moment(date.replace(/-/g, '')).format('YYYYMMDD') === moment().format('YYYYMMDD')
+                    && time.end < moment().format('HH:mm')) {
+                        // 上映終了
+                        return;
+                    }
+                    tmpPerformances.push({
+                        screen: screen,
+                        time: time
+                    });
+                });
+            });
+            var performances = tmpPerformances.sort(function (a, b) {
+                if (a.time.start < b.time.start) return -1;
+                if (a.time.start > b.time.start) return 1;
+                return 0;
+            });
+            performances.forEach(function (performance) {
+                var child = createScheduleFilmPerformanceDom(performance, film);
                 parent.pc.find('.performances').append(child.pc);
                 parent.sp.find('.performances').append(child.sp);
             });
@@ -222,43 +224,39 @@ function getSchedule() {
             : 'エラーが発生しました。';
         $('.error').html(message).removeClass('d-none').addClass('d-block');
     }
-    $.ajax(options).done(done).fail(fail);
-}
-
-/**
- * 作品順へ変換
- */
-function scheduleSortByFilm(schedule) {
-    var result = [];
-    schedule.forEach(function (targetSchedule) {
-        var film = result.find(function (targetFilm) {
-            return (targetFilm.info.movieShortCode === targetSchedule.movieShortCode
-                && targetFilm.info.movieBranchCode === targetSchedule.movieBranchCode);
-        });
-        if (film === undefined) {
-            result.push({
-                info: targetSchedule,
-                performances: [targetSchedule]
-            });
-        } else {
-            film.performances.push(targetSchedule);
-        }
-    });
-
-    return result;
+    // スケジュール表示
+    $('.selected-date span').text(moment(date.replace(/-/g, '')).format('YYYY年MM月DD日(ddd)'));
+    // 先行販売
+    var isPreSales = ($('.schedule-slider .active .pre-sales').text().trim().length > 0);
+    var preSales = $('.selected-date .pre-sales');
+    preSales
+        .removeClass('d-inline-block')
+        .addClass('d-none');
+    if (isPreSales) {
+        preSales
+            .addClass('d-inline-block')
+            .removeClass('d-none');
+    }
+    // エラー初期化
+    $('.error').removeClass('d-block').addClass('d-none');
+    // スケジュール初期化
+    $('.schedule-sort-film').html('');
+    $('.schedule-sort-film-sp').html('');
+    var theaterName = $('body').attr('data-theater');
+    api.schedule.date(theaterName, date).done(done).fail(fail);
 }
 
 /**
  * スケジュール作品Dom生成
  */
-function createScheduleFilmDom(info) {
+function createScheduleFilmDom(film) {
     var data = {
-        name: info.name,
-        comment: info.comment,
-        runningTime: info.runningTime,
-        cmTime: info.cmTime,
-        movieShortCode: info.movieShortCode,
-        movieBranchCode: info.movieBranchCode
+        name: film.name,
+        comment: film.comment,
+        runningTime: film.running_time,
+        cmTime: film.cm_time,
+        shortCode: film.short_code,
+        branchCode: film.branch_code
     };
     var pcDom = $('<div class="border mb-3">\
     <div class="border-bottom bg-light-gray p-3">\
@@ -270,12 +268,12 @@ function createScheduleFilmDom(info) {
 </div>');
     var spDom = $('<div class="rounded mb-3 shadow-01">\
 <div class="border-bottom">\
-    <a class="bg-light-gray p-3 pr-5 d-block collapsed" href="#" data-toggle="collapse" data-target="#collapse' + (data.movieShortCode + data.movieBranchCode) + '" aria-expanded="false">\
+    <a class="bg-light-gray p-3 pr-5 d-block collapsed" href="#" data-toggle="collapse" data-target="#collapse' + (data.shortCode + data.branchCode) + '" aria-expanded="false">\
         <div class="mb-2"><strong>'+ data.name + '</strong></div>\
         <div class="small text-dark-gray d-flex align-items-center"><i class="mr-2 time-icon"></i><span class="mr-2">'+ (data.runningTime + data.cmTime) + '分</span></div>\
     </a>\
 </div>\
-<div class="collapse" id="collapse'+ (data.movieShortCode + data.movieBranchCode) + '">\
+<div class="collapse" id="collapse'+ (data.shortCode + data.branchCode) + '">\
     <div class="small text-dark-gray line-height-1 p-2 border-bottom">'+ data.comment + '</div>\
     <ul class="performances mb-0 p-2"></ul>\
 </div>\
@@ -289,20 +287,20 @@ function createScheduleFilmDom(info) {
 /**
  * スケジュール子Dom生成
  */
-function createScheduleFilmPerformanceDom(performance) {
+function createScheduleFilmPerformanceDom(performance, film) {
     var data = {
-        name: performance.name,
-        comment: performance.comment,
-        runningTime: performance.runningTime,
-        cmTime: performance.cmTime,
-        movieShortCode: performance.movieShortCode,
-        movieBranchCode: performance.movieBranchCode,
-        startTime: performance.startTime,
-        endTime: performance.endTime,
-        screenName: performance.screenName,
-        available: performance.available,
-        url: performance.url,
-        late: performance.late
+        name: film.name,
+        comment: film.comment,
+        runningTime: film.running_time,
+        cmTime: film.cm_time,
+        shortCode: film.short_code,
+        branchCode: film.branch_code,
+        startTime: performance.time.start,
+        endTime: performance.time.end,
+        screenName: performance.screen.name,
+        available: performance.time.available,
+        url: performance.time.url,
+        late: performance.time.late
     };
     var lateClass = (data.late === 1)
         ? 'first'
@@ -326,7 +324,7 @@ function createScheduleFilmPerformanceDom(performance) {
                 ? '<span class="mr-2 status-02">△</span><span>購入</span>'
                 : (data.available === 4)
                     ? '窓口'
-                    : '満席';
+                    : '予約不可';
     var pcDom = $('<li class="mb-3">\
 <a class="d-block position-relative py-2 mx-2 '+ lateClass + ' ' + pcAvailableColorClass + '" href="' + data.url + '">\
     <div class="mb-2"><strong class="large">'+ data.startTime + '</strong><span>～' + data.endTime + '</span></div>\
@@ -337,14 +335,14 @@ function createScheduleFilmPerformanceDom(performance) {
     var spAvailableColorClass = (data.available === 0)
         ? ''
         : (data.available === 1)
-            ? 'bg-light-gray text-light-gray'
+            ? 'bg-light-gray text-dark-gray'
             : (data.available === 2)
                 ? ''
                 : (data.available === 4)
                     ? 'bg-light-gray text-dark-gray'
                     : 'bg-light-gray text-dark-gray';
     var spAvailable = (data.available === 0)
-        ? '<a class="d-flex align-items-center justify-content-center py-2 bg-blue text-white" href="#">\
+        ? '<a class="d-flex align-items-center justify-content-center py-2 bg-blue text-white" href="' + data.url + '">\
         <span class="mr-2 status-01">○</span><span>購入</span>\
     </a>'
         : (data.available === 1)
@@ -355,7 +353,7 @@ function createScheduleFilmPerformanceDom(performance) {
             </a>'
                 : (data.available === 4)
                     ? '<span class="d-block">窓口</span>'
-                    : '<span class="d-block">満席</span>';
+                    : '<span class="d-block">予約不可</span>';
     var spDom = $('<li class="border-bottom d-flex align-items-center justify-content-between py-3 pl-2 ' + lateClass + ' ' + spAvailableColorClass + '">\
     <div class="line-height-1">\
         <div><strong class="x-large">'+ data.startTime + '</strong></div>\
