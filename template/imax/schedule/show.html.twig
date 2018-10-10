@@ -26,6 +26,12 @@
     theaters: theaters,
 } only %}
 
+<div class="py-5 text-white">
+    {% include 'imax/include/campaign.html.twig' with {
+        campaigns: schedule.getTitle().getCampaigns()
+    } only %}
+</div>
+
 <div class="back-list button-01 shadow-01 mx-auto mb-5">
     <a href="{{ path_for('imax_schedule_list') }}" class="text-white">一覧へ戻る</a>
 </div>
