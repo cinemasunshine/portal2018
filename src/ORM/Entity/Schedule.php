@@ -38,7 +38,7 @@ class Schedule extends AbstractEntity
      * title
      *
      * @var Title
-     * @ORM\ManyToOne(targetEntity="Title")
+     * @ORM\ManyToOne(targetEntity="Title", fetch="EAGER")
      * @ORM\JoinColumn(name="title_id", referencedColumnName="id", nullable=false, onDelete="RESTRICT")
      */
     protected $title;
@@ -87,7 +87,7 @@ class Schedule extends AbstractEntity
      * showing_formats
      *
      * @var Collection
-     * @ORM\OneToMany(targetEntity="ShowingFormat", mappedBy="schedule", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="ShowingFormat", mappedBy="schedule", orphanRemoval=true, fetch="EAGER")
      */
     protected $showingFormats;
     
@@ -95,7 +95,7 @@ class Schedule extends AbstractEntity
      * showing_theaters
      *
      * @var Collection
-     * @ORM\OneToMany(targetEntity="ShowingTheater", mappedBy="schedule", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="ShowingTheater", mappedBy="schedule", orphanRemoval=true, fetch="EAGER")
      */
     protected $showingTheaters;
     
