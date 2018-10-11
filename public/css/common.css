@@ -26,6 +26,9 @@ a:hover {
 .width {
     max-width: 1200px;
 }
+.details-width{
+    max-width: 980px;
+}
 .line-height-1 {
     line-height: 1;
 }
