@@ -27,8 +27,20 @@ $getLoggerSetting = function() {
         'name' => 'app',
     ];
     
-    $settings['chrome_php'] = [
-        'level' => \Monolog\Logger::DEBUG,
+    if (APP_ENV === 'dev') {
+        $settings['chrome_php'] = [
+            'level' => \Monolog\Logger::DEBUG,
+        ];
+    }
+    
+    $settings['fingers_crossed'] = [
+        'activation_strategy' => \Monolog\Logger::ERROR,
+    ];
+    
+    $settings['azure_blob_storage'] = [
+        'level' => \Monolog\Logger::INFO,
+        'container' => 'frontend-log',
+        'blob' => date('Ymd') . '.log',
     ];
     
     return $settings;
