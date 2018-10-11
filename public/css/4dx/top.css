@@ -12,7 +12,7 @@
 }
 /* 上映中・上映中作品 */
 .theater-select {
-    justify-content: center;
+    /* justify-content: center; */
 }
 .theater-select li {
     width: 20%;

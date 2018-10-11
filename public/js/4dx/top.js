@@ -8,17 +8,21 @@ $(function () {
  */
 function selectTheater(event) {
     event.preventDefault();
+    $('.not-select').addClass('d-none');
+    $('.titles').addClass('d-block');
+    var activeClass = 'text-red border-red';
+    var defaultClass = 'text-gray border-gray';
     $('.theater-select .active')
         .removeClass('active')
         .find('a')
-        .removeClass('text-red border-red')
-        .addClass('text-gray border-gray');
+        .removeClass(activeClass)
+        .addClass(defaultClass);
     var parent = $(this).parent();
     parent
         .addClass('active')
         .find('a')
-        .removeClass('text-gray border-gray')
-        .addClass('text-red border-red');
+        .removeClass(defaultClass)
+        .addClass(activeClass);
     var theaterCode = $(this).attr('data-theaterCode');
     $('.screening, .scheduled')
         .removeClass('d-flex')
