@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-<title>BESTIA|シネマサンシャイン CHINEMA SUNSHINE</title>
+<title>BESTIA|シネマサンシャイン</title>
 <meta name="description" content="日本初導入4K・9Pレーザープロジェクションシステム。“BESTIA（ベスティア）” それは、次世代の映画館フォーマット。">
 <meta name="keywords" content="BESTIA,ベスティア,シネマサンシャイン,レーザープロジェクション,4K,9P,映画,上映,dts-X™,GDCイマーシブサウンド,3D音響,シネコン,鹿児島,姶良">
 <meta name="viewport" content="width=device-width">
@@ -83,16 +83,17 @@
         <p>2D作品の場合 〈通常料金〉+〈BESTIA鑑賞料金200円〉</p>
         <p>3D作品の場合 〈通常料金〉+〈3D鑑賞料金400円〉+〈BESTIA鑑賞料金200円〉</p>
         <p>サービスデーの場合 〈サービスデー料金〉+〈BESTIA鑑賞料金200円〉</p>
-    </section>
-
-
+    </section>    
     <img src="./_img/bestiatheater.jpg" alt="BESTIA - BEST IMMERSIVE AUDIOVISUAL">
+    <div class="button-02 ">
+            <a href="../">総合TOPに戻る</a>
+    </div>
 </article>
 
 
 <footer>
     <p>
-        Copyright &copy; 2001-2017 Cinema Sunshine Co., Ltd. All Rights Reserved.
+        &copy; Cinema Sunshine Co., Ltd. All Right Reserved.
     </p>
 </footer>
 </body>

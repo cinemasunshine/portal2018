@@ -1,0 +1,265 @@
+@charset "UTF-8";
+* {margin: 0; padding: 0;}
+
+body {
+  background-color:black;
+  font-family:'Lucida Grande','ヒラギノ角ゴ ProN W3','Hiragino Kaku Gothic ProN','メイリオ',Meiryo,Helvetica,Arial,sans-serif;
+  min-width: 1100px;
+}
+
+img {
+    vertical-align: bottom;
+}
+
+/*ue*/
+
+.toper {
+    background: white;
+    border-bottom: 4px solid #dc0002;
+    text-align: center;
+    padding-top: 13px;
+    padding-bottom: 6px;
+}
+
+.all {
+    width: 1100px;
+    background-color:black;
+    margin: 0 auto;
+}
+
+.all .up {
+    background-image:url(/lp/4dx/images/top_01.jpg);
+    background-repeat: no-repeat;
+    padding-top: 495px;
+}
+
+.manga {
+    text-align: center;
+}
+
+.manga .ma01 {
+    margin-bottom: 38px;
+}
+
+.manga .ma02 {
+    margin-bottom: 14px;
+}
+
+.manga .ma03 {
+    margin-bottom: 16px;
+}
+
+.manga .ma04 {
+    margin-bottom: 42px;
+}
+
+.manga .ma05 {
+    margin-bottom: 17px;
+}
+
+.manga .ma06 {
+    margin-bottom: 50px;
+}
+
+.manga .ma07 {
+    margin-bottom: 50px;
+}
+
+.manga .ma08 {
+    margin-bottom: 67px;
+}
+
+
+.osusume {
+    width: 1000px;
+    height: 886px;
+    margin: 0 auto;
+    background-image:url(/lp/4dx/images/bg_02.png);
+    margin-bottom: 76px;
+}
+
+.osusume .inner {
+    padding: 34px 25px 28px;
+    position: relative;
+}
+
+.osusume h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.osusume .header {
+    padding: 18px 30px;
+    position: relative;
+    margin-bottom: 36px;
+}
+
+.osusume .header h3 {
+    font-size: 24px;
+    line-height: 0.8;
+    color: white;
+}
+
+.osusume .header p {
+    padding: 8px 20px;
+    font-size: 20px;
+    background-color: black;
+    line-height: 1;
+    border-radius: 18px;
+    color: white;
+    position: absolute;
+    top: 8px;
+    right: 20px;
+}
+
+.osusume .serifu-left {
+    color: white;
+    font-size: 13px;
+    position: absolute;
+    top: 194px;
+    left: 42px;
+}
+
+.osusume .serifu-right {
+    color: white;
+    font-size: 13px;
+    position: absolute;
+    top: 193px;
+    left: 836px;
+}
+
+.osusume .kyara-left {
+    position: absolute;
+    top: 316px;
+    left: 32px;
+}
+
+.osusume .kyara-right {
+    position: absolute;
+    top: 283px;
+    left: 842px;
+}
+
+iframe {
+    margin: 0 auto;
+    display: block; 
+    margin-bottom: 42px;
+}
+
+.osusume ul {
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.osusume li {
+    float: left;
+    margin-right: 10px;
+    list-style: none;
+    width: 230px;
+    height: 136px;
+}
+
+.osusume .last {
+    margin-right: 0;
+}
+
+/*====under====*/
+
+.lineup {
+    color: white;
+    margin: 0 auto;
+    width: 1000px;
+}
+
+.lineup h2 {
+    text-align: center;
+    margin-bottom: 46px;
+    background-image:url(/lp/4dx/images/line_gurade.png);
+    background-repeat: no-repeat;
+    background-position: center 62px;
+    padding-bottom: 26px;
+}
+
+.lineup-naka-naka h3 {
+    font-size: 24px;
+    margin-bottom: 26px;
+}
+
+.lineup-naka-naka {
+    margin-bottom: 56px;
+    overflow: hidden;
+}
+
+.lineup-naka-naka img {
+    margin-bottom: 5px;
+}
+
+.lineup-naka img {
+    border: 1px solid #5f5f5f;
+}
+
+.lineup-naka-left {
+    width: 492px;
+    float: left;
+}
+
+.lineup-naka-right {
+    width: 466px;
+    float: right;
+}
+
+.lineup .date {
+    color: #a10005;
+    padding: 10px;
+    border: 1px solid #a10005;
+    display: inline-block;
+    line-height: 1;
+    font-size: 18px;
+}
+
+.lineup .text {
+    margin-bottom: 18px;
+    color: #a7a7a7;
+    font-size: 14px;
+   line-height: 24px;
+}
+
+.lineup .copy {
+    text-align: right;
+    color: #a7a7a7;
+    font-size: 11px;
+    width: 466px;
+}
+
+.bnr-4dx{
+    margin: 0 50px 68px; 
+}
+
+.footer {
+    background-image:url(/lp/4dx/images/line_gurade.png);
+    background-repeat: no-repeat;
+    background-position: center 0;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    text-align: center;
+    color: #a7a7a7;
+    line-height: 1;
+}
+
+.footer {
+    font-size: 12px;
+}
+
+.osusume a:hover{
+    opacity: 0.75;
+}
+
+
+.bnr-4dx a:hover img {
+    opacity: 0.75;
+}
+
+.bnr-4dx a {
+   background-color: #fff;
+   display: block;
+}

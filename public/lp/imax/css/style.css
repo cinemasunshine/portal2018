@@ -1,0 +1,258 @@
+@charset"UTF-8";
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+img{
+    vertical-align: bottom;
+}
+
+body{
+    background-color: #000;
+    font-family: 'Lucida Grande', 'ヒラギノ角ゴ ProN W3', 'Hiragino Kaku Gothic ProN', 'メイリオ', Meiryo, Helvetica, Arial, sans-serif;
+    min-width: 1100px;
+}
+
+.header{
+    background-color: #fff;
+    border-bottom: 4px solid #008aff;
+    padding: 17px 0;
+    text-align: center;
+}
+
+.contents{
+    width: 1100px;
+    margin: 0 auto;
+    background-image: url(/lp/imax/images/bg_top.png);
+    background-repeat: no-repeat;
+    padding: 78px 0 0;
+}
+
+.top h1{
+    margin: 0 0 87px 38px;
+}
+
+.comic{
+    width: 773px;
+    margin: 0 auto 40px;
+}
+
+.comic .last{
+    margin: 0 0 6px;
+}
+
+.comic .credit{
+    text-align: right;
+    color: #fff;
+    font-size: 10px;
+}
+
+.comic img{
+    margin: 0 0 50px; 
+}
+
+.recommend{
+    height: 743px;
+    background-image: url(/lp/imax/images/bg_recommend.png);
+    margin: 0 50px 76px;
+}
+
+.recommend-inner{
+    padding: 29px 30px 26px 35px;
+    position: relative;
+}
+
+.recommend h2{
+    text-align: center;
+    margin: 0 0 22px;
+}
+
+.recommend-header{
+    background-image: url(/lp/imax/images/bg_recommend_header.png);
+    height: 57px;
+    padding: 0 0 0 30px;
+    margin: 0 0 36px;
+    color: #fff;
+    position: relative;
+}
+
+.recommend-header h3{
+    line-height: 57px;
+    font-size: 24px;
+}
+
+.recommend-header .date{
+    background-color: #000;
+    padding: 7px 22px 5px 20px;
+    line-height: 1;
+    font-size: 20px;
+    border-radius: 17px;
+    position: absolute;
+    top: 12px;
+    right: 15px;
+}
+
+.recommend iframe{
+    margin: 0 auto 41px;
+    display: block;
+}
+
+.recommend .illust-02{
+    position: absolute;
+    top: 292px;
+    left: 20px;
+}
+
+.recommend .illust-01{
+    position: absolute;
+    top: 281px;
+    right: 53px;
+}
+
+.recommend .conversation-01{
+    position: absolute;
+    top: 185px;
+    left: 19px;
+}
+
+.recommend .conversation-02{
+    position: absolute;
+    top: 185px;
+    right: 46px;
+}
+
+.recommend p{
+    color: #fff;
+    font-size: 13px;
+}
+
+.recommend ul{
+    overflow: hidden;
+    width: 708px;
+    margin: 0 auto;
+}
+
+.recommend li{
+    float: left;
+    margin: 0 9px 0 0;
+    list-style: none;
+}
+
+.recommend .last{
+    margin: 0; 
+}
+
+.recommend li a:hover{
+    opacity: 0.75;
+}
+
+.lineup{
+    margin: 0 50px 60px;
+ }
+
+ .lineup h2{
+    text-align: center;
+    margin: 0 0 45px;
+    background-image: url(/lp/imax/images/bg_line.png);
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    padding: 0 0 25px;
+ }
+
+.lineup li{
+    overflow: hidden;
+    margin-bottom: 60px;
+}
+
+.lineup li h3{
+    color: #fff;
+    font-size: 24px;
+    margin: 0 0 5px;
+}
+
+.lineup ul li .logo{
+    margin: 0 0 10px;
+    width: 94px;
+}
+.lineup ul li .logo img{
+    width: 94px;
+    height: 18px;
+}
+
+.lineup ul li .logo_3d{
+    margin: 0 0 10px;
+    width: 144px;
+}
+.lineup ul li .logo_3d img{
+    width: 144px;
+    height: 18px;
+}
+
+.lineup li .left{
+    float: left;
+    width: 490px;
+}
+
+.lineup li .left p{
+    color: #d1d1d1;
+    font-size: 14px;
+    line-height: 24px;
+    margin: 0 0 18px;
+}
+
+.lineup li .left .date{
+    color: #00b7ff;
+    font-size: 18px;
+    padding: 10px 17px 10px 11px;
+    border: solid 1px #00b7ff;
+    line-height: 1;
+    display: inline-block;
+}
+
+.lineup li .right{
+    float: right;
+}
+
+.lineup li .right img{
+    border: solid 1px #5f5f5f;
+    margin: 0 0 8px;
+}
+
+.lineup li .right .credit{
+    font-size: 11px;
+    color: #a1a1a1;
+    text-align: right;
+    width: 466px;
+}
+
+.bnr{
+    margin: 0 50px 80px;
+}
+
+.bnr a{
+    margin: 0 0 16px;
+    display: block;
+    background-color: #fff;
+}
+
+.bnr a:hover img{
+    opacity: 0.75;
+}
+
+.bnr .credit{
+    font-size: 12px;
+    color: #a1a1a1;
+    text-align: left;
+}
+
+.footer{
+    font-size: 12px;
+    color: #a1a1a1;
+    text-align: center;
+    background-image: url(/lp/imax/images/bg_line.png);
+    background-repeat: no-repeat;
+    background-position: center 0;
+    padding: 50px 0;
+}
