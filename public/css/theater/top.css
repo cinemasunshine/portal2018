@@ -255,7 +255,11 @@
 
 @media (max-width: 576px) {
     .pickup img {
-        max-width: 200px;
+        :max-width: 200px;/*--coment-out--*/
+        max-width: 450px;
+    }
+    .pickup{
+        max-height:min-content;/*--sp用pickup調整--*/
     }
     .pickup-image {
         text-align: center;
