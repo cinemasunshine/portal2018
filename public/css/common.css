@@ -8,6 +8,11 @@ body {
 .type-imax {
     background-color: #040a1a;
 }
+select {
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+}
 p {
     line-height: 1.6;
 }
