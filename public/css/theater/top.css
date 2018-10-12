@@ -94,12 +94,12 @@
     border-bottom: 4px solid transparent;
 }
 .schedule-slider .active{
-    -webkit-animation-duration: 2s;
-    animation-duration: 2s;
+    -webkit-animation-duration: 3s;
+    animation-duration: 3s;
     -webkit-animation-fill-mode: both;
     animation-fill-mode: both;
-    -webkit-animation-name: flash;
-    animation-name: flash;
+    -webkit-animation-name: flash-text;
+    animation-name: flash-text;
 }
 .schedule-sort {
     max-width: 1050px;
@@ -277,12 +277,12 @@
     }
 }
 
-@-webkit-keyframes flash {
-    from, 20%, 40%, 60%, 80%, to { opacity: 1; }
-    10%, 30%, 50%, 70%, 90% { opacity: 0; }
+@-webkit-keyframes flash-text {
+    from, 20%, 40%, 60%, 80%, to { color: #FFF; }
+    10%, 30%, 50%, 70%, 90% { color: transparent; }
 }
 
-@keyframes flash {
-    from, 20%, 40%, 60%, 80%, to { opacity: 1; }
-    10%, 30%, 50%, 70%, 90% { opacity: 0;    }
+@keyframes flash-text {
+    from, 20%, 40%, 60%, 80%, to { color: #FFF; }
+    10%, 30%, 50%, 70%, 90% { color: transparent; }
 }
