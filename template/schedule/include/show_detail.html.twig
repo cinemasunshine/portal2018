@@ -4,6 +4,8 @@
     <div class="movie-image py-3 py-md-0 mb-3">
     {% if title.getImage() %}
         <img src="{{ file_url(title.getImage()) }}" class="w-100">
+    {% else %}
+        <img src="/images/common/no_img_movie.png" class="w-100">
     {% endif %}
     </div>
         <div class="movie-info pt-md-2 pl-md-3 px-3 px-md-0">

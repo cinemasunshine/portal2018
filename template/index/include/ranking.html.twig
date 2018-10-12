@@ -10,6 +10,8 @@
                 <div class="mb-2 border">
                 {% if rank1Title.getImage() %}
                     <img class="w-100" src="{{ file_url(rank1Title.getImage()) }}">
+                {% else %}
+                    <img class="w-100" src="/images/common/no_img_movie.png">
                 {% endif %}
                 </div>
                 <p class="mb-0">{{ rank1Title.getName() }}</p>
@@ -23,6 +25,8 @@
                 <div class="mb-2 border">
                 {% if rank2Title.getImage() %}
                     <img class="w-100" src="{{ file_url(rank2Title.getImage()) }}">
+                {% else %}
+                    <img class="w-100" src="/images/common/no_img_movie.png">
                 {% endif %}
                 </div>
                 <p class="mb-0">{{ rank2Title.getName() }}</p>
@@ -36,6 +40,8 @@
                 <div class="mb-2 border">
                 {% if rank3Title.getImage() %}
                     <img class="w-100" src="{{ file_url(rank3Title.getImage()) }}">
+                {% else %}
+                    <img class="w-100" src="/images/common/no_img_movie.png">
                 {% endif %}
                 </div>
                 <p class="mb-0">{{ rank3Title.getName() }}</p>
@@ -49,6 +55,8 @@
                 <div class="mb-2 border">
                 {% if rank4Title.getImage() %}
                     <img class="w-100" src="{{ file_url(rank4Title.getImage()) }}">
+                {% else %}
+                    <img class="w-100" src="/images/common/no_img_movie.png">
                 {% endif %}
                 </div>
                 <p class="mb-0">{{ rank4Title.getName() }}</p>
@@ -62,6 +70,8 @@
                 <div class="mb-2 border">
                 {% if rank5Title.getImage() %}
                     <img class="w-100" src="{{ file_url(rank5Title.getImage()) }}">
+                {% else %}
+                    <img class="w-100" src="/images/common/no_img_movie.png">
                 {% endif %}
                 </div>
                 <p class="mb-0">{{ rank5Title.getName() }}</p>
