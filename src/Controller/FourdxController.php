@@ -167,23 +167,11 @@ class FourdxController extends SpecialSiteController
      */
     public function executeScheduleList($request, $response, $args)
     {
-        $this->data->set('theaters', $this->getTheaters());
+        $this->data->set('theaters', $this->get4dxTheaters());
         
         $this->data->set('screeningSchedules', $this->getScreeningSchedules());
         
         $this->data->set('soonSchedules', $this->getSoonSchedules());
-    }
-    
-    /**
-     * return theaters
-     *
-     * @return Entity\Theater[]
-     */
-    protected function getTheaters()
-    {
-        return $this->em
-            ->getRepository(Entity\Theater::class)
-            ->findByActive();
     }
     
     /**
@@ -208,7 +196,7 @@ class FourdxController extends SpecialSiteController
         
         $this->data->set('schedule', $schedule);
         
-        $this->data->set('theaters', $this->getTheaters());
+        $this->data->set('theaters', $this->get4dxTheaters());
     }
     
     /**
