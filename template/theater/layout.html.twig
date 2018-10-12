@@ -46,6 +46,9 @@
     {% include 'theater/include/sns.html.twig' with {
         meta: theater.getMeta()
     } only %}
+    {% include 'theater/include/sp_navbar.html.twig' with {
+        theater: theater
+    } only %}
     {% include 'include/footer_navbar.html.twig' %}
     {% include 'include/footer_banner.html.twig' %}
     {% include 'include/footer.html.twig' %}
