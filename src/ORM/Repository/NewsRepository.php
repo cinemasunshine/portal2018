@@ -84,12 +84,12 @@ class NewsRepository extends EntityRepository
     /**
      * find by theater
      *
-     * @param int $theaterId
-     * @param int|null $category
+     * @param int      $theaterId
+     * @param array    $category
      * @param int|null $limit
      * @return News[]
      */
-    public function findByTheater(int $theaterId, ?int $category = null, ?int $limit = null)
+    public function findByTheater(int $theaterId, array $category = [], ?int $limit = null)
     {
         $qb = $this->getActiveQuery();
         $qb
@@ -100,7 +100,7 @@ class NewsRepository extends EntityRepository
         
         if ($category) {
             $qb
-                ->andWhere('n.category = :category')
+                ->andWhere('n.category IN (:category)')
                 ->setParameter('category', $category);
         }
         

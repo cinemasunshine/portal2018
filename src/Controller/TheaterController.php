@@ -58,8 +58,15 @@ class TheaterController extends BaseController
             $theater, Entity\News::CATEGORY_EVENT, 8
         ));
         
+        // NEWS、IMAXニュース、4DXニュース SASAKI-271
         $this->data->set('newsList', $this->getNewsList(
-            $theater, Entity\News::CATEGORY_NEWS, 8
+            $theater,
+            [
+                Entity\News::CATEGORY_NEWS,
+                Entity\News::CATEGORY_IMAX,
+                Entity\News::CATEGORY_4DX,
+            ],
+            8
         ));
         
         $this->data->set('campaigns', $this->getCampaigns($theater));
@@ -230,12 +237,16 @@ class TheaterController extends BaseController
      * return news list
      *
      * @param Entity\Theater $theater
-     * @param int|null       $category
+     * @param array|int      $category
      * @param int|null       $limit
      * @return Entity\News[]
      */
-    protected function getNewsList(Entity\Theater $theater, ?int $category = null, ?int $limit = null)
+    protected function getNewsList(Entity\Theater $theater, $category = [], ?int $limit = null)
     {
+        if (!is_array($category)) {
+            $category = [ $category ];
+        }
+        
         return $this->em
             ->getRepository(Entity\News::class)
             ->findByTheater($theater->getId(), $category, $limit);
