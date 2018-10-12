@@ -517,7 +517,7 @@ footer {
 
 /* ボタン */
 .button-01 {
-    border-radius: 5px;
+    border-radius: 4px;
     overflow: hidden;
     max-width: 640px;
 }
@@ -538,9 +538,10 @@ footer {
     color: #333;
     background-color: #fff;  
     border: 1px solid #999;
+    border-radius:4px;
 }
 .button-03 {
-    border-radius: 5px;
+    border-radius: 4px;
     overflow: hidden;
     max-width: 580px;
 }
@@ -588,7 +589,7 @@ footer {
     max-width: 640px;
 }
 .black-button a {
-    border-radius: 5px;
+    border-radius: 4px;
     display: block;
     padding: 15px 0;
     text-align: center;

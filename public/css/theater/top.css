@@ -162,6 +162,10 @@
     background-repeat: no-repeat;
     background-position: 5px 5px;
 }
+/*--パフォーマンスボタン--*/
+.performances li a {
+    border-radius: 4px;
+}
 
 @-webkit-keyframes show {
 	0% {

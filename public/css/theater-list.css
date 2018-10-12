@@ -9,6 +9,7 @@
 }
 .area-select li a {
     min-height: 60px;
+    border-radius: 4px;
 }
 .logo-imax {
     width: 60px;
