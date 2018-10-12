@@ -15,7 +15,7 @@
 {% endblock %}
 
 {% block contents %}
-<div class="breadcrumb-list d-none d-md-block small width mx-auto mb-5 px-2 text-white">
+<div class="breadcrumb-list d-none d-md-block small details-width mx-auto mb-5 px-2 text-white">
     <a class="text-white" href="{{ path_for('homepage') }}">ホーム</a>
     <span class="font-weight-bold mx-2"> | </span>
     <a class="text-white" href="{{ path_for('4dx') }}">4dx</a>
@@ -25,9 +25,9 @@
     <span>{{ news.getHeadline() }}<span>
 </div>
 
-<div class="width mx-auto mb-3 px-2 text-white">
+<div class="details-width mx-auto mb-3 px-2 text-white">
     <div class="d-flex align-items-center">
-        <div class="text-dark-gray">{{ news.getStartDt()|date('Y/n/j') }}</div>
+        <div class="text-gray">{{ news.getStartDt()|date('Y/n/j') }}</div>
     </div>
     
     <h2 class="font-weight-bold x-large py-4" id="shareTitle">{{ news.getHeadline() }}</h2>
