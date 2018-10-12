@@ -27,16 +27,16 @@ $(function () {
  * リサイズ処理
  */
 function resizeProcess() {
+    var scrollClass = 'fixed-top bg-super-light-gray shadow-01';
     $('.schedule-scroll').height('auto');
-    $('.schedule-slider').removeClass('fixed-top');
-    $('.selected-date-scroll').height('auto');
-    $('.selected-date').removeClass('fixed-top');
+    $('.schedule-slider').removeClass(scrollClass);
 }
 
 /**
  * スクロール処理
  */
 function scrollProcess() {
+    var scrollClass = 'fixed-top bg-super-light-gray shadow-01';
     var headerHeight = $('header').height();
     var scheduleSliderHeight = $('.schedule-slider').height();
     var scheduleHeight = $('.schedule').height();
@@ -58,15 +58,15 @@ function scrollProcess() {
     }
     if (scrollTop > (selectDateTop - headerHeight)
         && scrollTop < (selectDateTop - headerHeight + scheduleHeight - selectedDateHeight)) {
-        if (!isMobile() && !$('.selected-date').hasClass('fixed-top')) {
+        if (!isMobile() && !$('.selected-date').hasClass(scrollClass)) {
             $('.selected-date-scroll').height(selectedDateHeight);
             $('.selected-date')
-                .addClass('fixed-top')
+                .addClass(scrollClass)
                 .css('top', (headerHeight + 1) + 'px');
         }
     } else {
         $('.selected-date-scroll').height('auto');
-        $('.selected-date').removeClass('fixed-top');
+        $('.selected-date').removeClass(scrollClass);
     }
 }
 

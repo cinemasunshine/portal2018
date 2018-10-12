@@ -24,6 +24,7 @@ a:hover {
     box-shadow: 0 0 8px rgba(0,0,0,0.35);
 }
 .width {
+    width: 100%;
     max-width: 1200px;
 }
 .details-width{
@@ -50,6 +51,9 @@ a:hover {
 .text-dark-blue {
     color: #0d3d95 !important;
 }
+.text-super-light-gray {
+    color: #efefef !important;
+}
 .text-light-gray {
     color: #ddd !important;
 }
@@ -69,6 +73,9 @@ a:hover {
 /* 背景色 */
 .bg-black {
     background-color: #000 !important;
+}
+.bg-super-light-gray {
+    background-color: #efefef !important;
 }
 .bg-light-gray {
     background-color: #ddd !important;
@@ -112,6 +119,9 @@ a:hover {
 }
 .border-dark-blue {
     border-color: #0d3d95 !important;
+}
+.border-super-light-gray {
+    border-color: #efefef !important;
 }
 .border-light-gray {
     border-color: #ddd !important;
