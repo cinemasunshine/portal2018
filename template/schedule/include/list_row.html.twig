@@ -60,7 +60,7 @@
                     {% if isShowing %}
                         <a href="{{ path_for('theater', { name: theater.getName() }) }}" data-theaterCode="{{ theater.getId() }}" class="d-flex align-items-center justify-content-center bg-white text-blue border-blue">{{ theater.getNameJa() }}</a>
                     {% else %}
-                        <span class="d-flex align-items-center justify-content-center text-gray border-gray bg-white">{{ theater.getNameJa() }}</span>
+                        <span class="d-flex align-items-center justify-content-center text-light-gray border-light-gray bg-white">{{ theater.getNameJa() }}</span>
                     {% endif %}
                     </div>
                 {% endfor %}
