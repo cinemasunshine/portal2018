@@ -22,7 +22,7 @@
     <span class="font-weight-bold mx-2"> | </span>
     <a class="text-white" href="{{ path_for('imax_news_list') }}">NEWS & INFO</a>
     <span class="font-weight-bold mx-2"> | </span>
-    <span>{{ news.getHeadline() }}<span>
+    <span>{{ news.getHeadline()|truncate(34, false, '…') }}<span>
 </div>
 
 <div class="details-width mx-auto mb-3 px-2 text-white">
