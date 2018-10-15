@@ -78,6 +78,9 @@
 }
 
 /* 開場時間 */
+.opening-time h4 {
+    width: 120px;
+}
 .opening-time .swiper-slide {
     width: auto !important;
 }
@@ -199,6 +202,9 @@
     }
     .notes {
         font-weight: normal;
+    }
+    .opening-time h4 {
+        width: auto;
     }
     .opening-time .swiper-slide {
         width: 100% !important;

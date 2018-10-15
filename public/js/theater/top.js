@@ -27,7 +27,7 @@ $(function () {
  * リサイズ処理
  */
 function resizeProcess() {
-    var scrollClass = 'fixed-top bg-super-light-gray shadow-01';
+    var scrollClass = 'fixed-top';
     $('.schedule-scroll').height('auto');
     $('.schedule-slider').removeClass(scrollClass);
 }
@@ -36,7 +36,7 @@ function resizeProcess() {
  * スクロール処理
  */
 function scrollProcess() {
-    var scrollClass = 'fixed-top bg-super-light-gray shadow-01';
+    var scrollClass = 'fixed-top';
     var headerHeight = $('header').height();
     var scheduleSliderHeight = $('.schedule-slider').height();
     var scheduleHeight = $('.schedule').height();
@@ -46,27 +46,15 @@ function scrollProcess() {
     var selectDateTop = $('.selected-date-scroll').offset().top;
     if (scrollTop > (scheduleSliderTop - headerHeight)
         && scrollTop < (scheduleSliderTop - headerHeight + scheduleHeight - scheduleSliderHeight)) {
-        if (isMobile() && !$('.schedule-slider').hasClass('fixed-top')) {
+        if (!$('.schedule-slider').hasClass(scrollClass)) {
             $('.schedule-scroll').height(scheduleSliderHeight);
             $('.schedule-slider')
-                .addClass('fixed-top')
+                .addClass(scrollClass)
                 .css('top', headerHeight + 'px');
         }
     } else {
         $('.schedule-scroll').height('auto');
-        $('.schedule-slider').removeClass('fixed-top');
-    }
-    if (scrollTop > (selectDateTop - headerHeight)
-        && scrollTop < (selectDateTop - headerHeight + scheduleHeight - selectedDateHeight)) {
-        if (!isMobile() && !$('.selected-date').hasClass(scrollClass)) {
-            $('.selected-date-scroll').height(selectedDateHeight);
-            $('.selected-date')
-                .addClass(scrollClass)
-                .css('top', (headerHeight + 1) + 'px');
-        }
-    } else {
-        $('.selected-date-scroll').height('auto');
-        $('.selected-date').removeClass(scrollClass);
+        $('.schedule-slider').removeClass(scrollClass);
     }
 }
 
@@ -113,9 +101,8 @@ function createScheduleDate() {
                         : '&nbsp';
             var dom = '<div class="swiper-slide text-center">\
                 <a href="#" class="d-block line-height-1 pt-3 pb-2 ' + className + '" data-date="' + date + '">\
-                    <div class="mb-2">' + month + '</div>\
                     <div class="mb-2">\
-                        <strong class="large mr-1">' + day + '</strong>\
+                        <strong class="large mr-1">' + month + ' / ' + day + '</strong>\
                         <strong class="small">(' + ddd + ')</strong>\
                     </div>\
                     <div class="x-small mb-1">' + service + '</div>\
