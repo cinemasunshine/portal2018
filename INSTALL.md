@@ -49,6 +49,7 @@ Azure Web Appsのアプリケーション設定で設定する場合は **MYSQLC
 |CUSTOMCONNSTR_STORAGE_KEY|[storage access key]|Azure Sotrageのアクセスキー|
 |CUSTOMCONNSTR_COA_SCHEDULE|'prod' or 'prod_and_test'|コアシステムズ様スケジュールの接続環境|
 |CUSTOMCONNSTR_MV_AD|'true' or 'false'|ムービーウォーカー様広告のサポート|
+|CUSTOMCONNSTR_MP_TICKET|'prod' or 'test' or 'dev'|MPオンラインチケット|
 
 ### ３．.htaccess
 

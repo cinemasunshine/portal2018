@@ -117,13 +117,17 @@ $getMovieWalakerAdSetting = function() {
 
 $settings['mw_ad'] = $getMovieWalakerAdSetting();
 
-// Motionpicture Ticket
-$getMotionpictureTicketSetting = function() {
+// Motionpicture Online Ticket
+$getMpOnlineTicketSetting = function() {
     $settings = [];
+    $env = getenv('CUSTOMCONNSTR_MP_TICKET');
     
-    if (APP_ENV === 'prod') {
+    if ($env === 'prod') {
         $settings['url'] = 'https://ticket-cinemasunshine.com';
         $settings['entrance_url'] = 'https://entrance.ticket-cinemasunshine.com';
+    } else if ($env === 'test') {
+        $settings['url'] = 'https://sskts-frontend-test.azurewebsites.net';
+        $settings['entrance_url'] = 'https://d24x7394fq3aqi.cloudfront.net';
     } else {
         $settings['url'] = 'https://sskts-frontend-development.azurewebsites.net';
         $settings['entrance_url'] = 'https://d2n1h4enbzumbc.cloudfront.net';
@@ -132,7 +136,7 @@ $getMotionpictureTicketSetting = function() {
     return $settings;
 };
 
-$settings['mp_ticket'] = $getMotionpictureTicketSetting();
+$settings['mp_ticket'] = $getMpOnlineTicketSetting();
 
 // Coasystems Schedule
 $settings['coa_schedule'] = [
