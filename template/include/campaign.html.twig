@@ -27,7 +27,7 @@
                 <div class="swiper-slide rounded shadow-01">
                     <a class="d-block" href="{{ campaign.getUrl() }}" target="_blank">
                         <img src="{{ file_url(campaign.getImage()) }}" class="w-100">
-                        <p class="bg-white p-3 mb-0">{{ campaign.getName() }}</p>
+                        <p class="bg-white p-3 mb-0">{{ campaign.getName()|truncate(35, false, '…') }}</p>
                     </a>
                 </div>
             {% endfor %}

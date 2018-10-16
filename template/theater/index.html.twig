@@ -64,7 +64,7 @@
                 <div class="small">FILMING SCEDULE</div>
             </h3>
         </div>
-        <p class="mb-0">チケット購入のお客様はカレンダーの日時を選択してください。</p>
+        <p class="mb-0">カレンダーの日時を選択してください。</p>
         <div class="small text-red font-weight-bold text-right pre-sales-text d-none">先行販売あり >></div>
     </div>
     
@@ -122,6 +122,11 @@
 
 <div class="mb-5">
     <div class="d-md-none w-100 text-center px-3 pt-3">
+        <a href="{{ path_for('theater_admission', { name: theater.getName() }) }}" class="d-block mb-4">
+            <div class="border rounded py-3">
+                料金案内はこちら
+            </div>
+        </a>
         <a href="{{ path_for('theater_access', { name: theater.getName() }) }}" class="d-block mb-4">
             <div class="border rounded py-3">
                 アクセス情報はこちら
