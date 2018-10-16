@@ -87,12 +87,12 @@ form .form-control {
     }
     .movie-area {
         margin: -0.5rem;
-        background-color: #ddd;
+        background-color: #ececec;;
         padding: 0.5rem 0.25rem;
     }
     .type-4dx .movie-area,
     .type-imax .movie-area {
-        background-color: #555;
+        background-color: #1f1f1f;
     }
     .icon-imax img {
         width: 34px;

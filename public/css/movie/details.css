@@ -96,12 +96,12 @@
     }
     .movie-image {
         width: auto;
-        background-color: #ddd;
+        background-color: #ececec;
     }
     .type-imax .movie-image,
     .type-4dx .movie-image {
         width: auto;
-        background-color: #555;
+        background-color: #1f1f1f;
         margin: 0 -0.5rem;
     }
     .movie-image img {
@@ -110,7 +110,7 @@
         display: block;
     }
     .sp-bg {
-        background-color: #ddd;
+        background-color: #ececec;
     }
     /* .type-imax .sp-bg,
     .type-4dx .sp-bg, {
