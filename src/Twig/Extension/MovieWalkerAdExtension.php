@@ -8,6 +8,7 @@
 namespace Cinemasunshine\Portal\Twig\Extension;
 
 use Cinemasunshine\Portal\ORM\Entity\Page;
+use Cinemasunshine\Portal\ORM\Entity\Theater;
 
 /**
  * MovieWalker Ad twig extension class
@@ -67,23 +68,27 @@ class MovieWalkerAdExtension extends \Twig_Extension
         
         if ($target instanceof Page) {
             /** @var Page $target */
-            $adSlot = $this->getPageAdSlot($target);
-            $adId = $this->getPageAdId($target);
+            $adName  = $this->getPageAdName($target);
+            $adDivId = $this->getPageAdDivId($target);
+        } else if ($target instanceof Theater) {
+            /** @var Theater $target */
+            $adName  = $this->getTheaterAdName($target);
+            $adDivId = $this->getTheaterAdDivId($target);
         } else {
             throw new \InvalidArgumentException('invalid target.');
         }
         
-        return $this->getAdScriptTag($adSlot, $adId);
+        return $this->getAdScriptTag($adName, $adDivId);
     }
     
     /**
      * return ad script tag
      *
-     * @param string $slot
-     * @param string $id
+     * @param string $name
+     * @param string $divId
      * @return string
      */
-    protected function getAdScriptTag(string $slot, string $id)
+    protected function getAdScriptTag(string $name, string $divId)
     {
         $tag = <<<TAG
 <script async='async' src='https://www.googletagservices.com/tag/js/gpt.js'></script>
@@ -101,7 +106,7 @@ class MovieWalkerAdExtension extends \Twig_Extension
 </script>
 TAG;
         
-        return sprintf($tag, $slot, $id);
+        return sprintf($tag, $name, $divId);
     }
     
     /**
@@ -120,23 +125,27 @@ TAG;
         
         if ($target instanceof Page) {
             /** @var Page $target */
-            $adSlot = $this->getPageAdSlot($target);
-            $adId = $this->getPageAdId($target);
+            $adName  = $this->getPageAdName($target);
+            $adDivId = $this->getPageAdDivId($target);
+        } else if ($target instanceof Theater) {
+            /** @var Theater $target */
+            $adName  = $this->getTheaterAdName($target);
+            $adDivId = $this->getTheaterAdDivId($target);
         } else {
             throw new \InvalidArgumentException('invalid target.');
         }
         
-        return $this->getAdTab($adSlot, $adId);
+        return $this->getAdTab($adName, $adDivId);
     }
     
     /**
      * return ad tag
      *
-     * @param string $slot
-     * @param string $id
+     * @param string $name
+     * @param string $divId
      * @return string
      */
-    protected function getAdTab(string $slot, string $id)
+    protected function getAdTab(string $name, string $divId)
     {
         $tag = <<<TAG
 <!-- %s -->
@@ -146,32 +155,58 @@ googletag.cmd.push(function() { googletag.display('%s'); });
 </script>
 </div>
 TAG;
-        return sprintf($tag, $slot, $id, $id);
+        return sprintf($tag, $name, $divId, $divId);
     }
     
     /**
-     * return ad slot for page
+     * return Ad name for page
      * 
      * @param Page $page
      * @return string|null
      */
-    protected function getPageAdSlot(Page $page)
+    protected function getPageAdName(Page $page)
     {
-        $slots = $this->settings['page']['slots'];
+        $pages = $this->settings['page'];
         
-        return $slots[$page->getId()] ?? null;
+        return $pages[$page->getId()]['name'] ?? null;
     }
     
     /**
-     * return ad id for page
+     * return Ad div_id for page
      * 
      * @param Page $page
      * @return string
      */
-    protected function getPageAdId(Page $page)
+    protected function getPageAdDivId(Page $page)
     {
-        $ids = $this->settings['page']['ids'];
+        $pages = $this->settings['page'];
         
-        return $ids[$page->getId()] ?? null;
+        return $pages[$page->getId()]['div_id'] ?? null;
+    }
+    
+    /**
+     * return Ad name for theater
+     * 
+     * @param Theater $theater
+     * @return string|null
+     */
+    protected function getTheaterAdName(Theater $theater)
+    {
+        $theaters = $this->settings['theater'];
+        
+        return $theaters[$theater->getId()]['name'] ?? null;
+    }
+    
+    /**
+     * return Ad div_id for theater
+     * 
+     * @param Theater $theater
+     * @return string
+     */
+    protected function getTheaterAdDivId(Theater $theater)
+    {
+        $theaters = $this->settings['theater'];
+        
+        return $theaters[$theater->getId()]['div_id'] ?? null;
     }
 }

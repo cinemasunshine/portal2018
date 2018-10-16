@@ -5,6 +5,9 @@
 {% endblock %}
 
 {% block javascript %}
+{% if is_mw_ad_support() %}
+    {{ mw_ad_script(theater) }}
+{% endif %}
 <script src="/js/api.js"></script>
 <script src="/js/theater/top.js"></script>
 {% endblock %}

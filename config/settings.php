@@ -94,23 +94,109 @@ $getMovieWalakerAdSetting = function() {
     $settings = [
         'support' => (getenv('CUSTOMCONNSTR_MV_AD') === 'true'),
         'page' => [],
+        'theater' => [],
     ];
     
-    // slotとidの割り振り基準が不明なのでデータ構造は適宜変更する。
-    if (APP_ENV === 'dev') {
-        $slots = [
-            1 => '/22524478/sunshine_top_336_280',
-        ];
-        $settings['page']['slots'] = $slots;
+    // nameとdiv_idの割り振り基準が不明なのでデータ構造は適宜変更する。
+    $settings['page'] = [
+        // TOP
+        1 => [
+            'name'   => '/22524478/sunshine_top_336_280',
+            'div_id' => 'div-gpt-ad-1538623317895-0',
+        ],
+    ];
+    
+    $settings['theater'] = [
+        // 池袋
+        1 => [
+            'name'   => '/22524478/sunshine_ikebukuro_336_280',
+            'div_id' => 'div-gpt-ad-1538619229001-0',
+        ],
         
-        $ids = [
-            1 => 'div-gpt-ad-1538623317895-0',
-        ];
-        $settings['page']['ids'] = $ids;
+        // 平和島
+        2 => [
+            'name'   => '/22524478/sunshine_heiwajima_336_280',
+            'div_id' => 'div-gpt-ad-1538619100223-0',
+        ],
         
-    } else if (APP_ENV === 'prod') {
-        throw new \Exception('todo');
-    }
+        // 沼津
+        6 => [
+            'name'   => '/22524478/sunshine_numazu_336_280',
+            'div_id' => 'div-gpt-ad-1538622822641-0',
+        ],
+        
+        // 北島
+        7 => [
+            'name'   => '/22524478/sunshine_kitajima_336_280',
+            'div_id' => 'div-gpt-ad-1538619781081-0',
+        ],
+        
+        // 衣山
+        8 => [
+            'name'   => '/22524478/sunshine_kinuyama_336_280',
+            'div_id' => 'div-gpt-ad-1538619692600-0',
+        ],
+        
+        // 大街道
+        9 => [
+            'name'   => '/22524478/sunshine_okaido_336_280',
+            'div_id' => 'div-gpt-ad-1538622926843-0',
+        ],
+        
+        // 大洲
+        11 => [
+            'name'   => '/22524478/sunshine_ozu_336_280',
+            'div_id' => 'div-gpt-ad-1538623034591-0',
+        ],
+        
+        // 重信
+        12 => [
+            'name'   => '/22524478/sunshine_shigenobu_336_280',
+            'div_id' => 'div-gpt-ad-1538623145179-0',
+        ],
+        
+        // 土浦
+        13 => [
+            'name'   => '/22524478/sunshine_tsuchiura_336_280',
+            'div_id' => 'div-gpt-ad-1538623413599-0',
+        ],
+        
+        // かほく
+        14 => [
+            'name'   => '/22524478/sunshine_kahoku_336_280',
+            'div_id' => 'div-gpt-ad-1538619593716-0',
+        ],
+        
+        // エミフルMASAKI
+        15 => [
+            'name'   => '/22524478/sunshine_masaki_336_280',
+            'div_id' => 'div-gpt-ad-1538619880605-0',
+        ],
+        
+        // 大和郡山
+        16 => [
+            'name'   => '/22524478/sunshine_yamatokoriyama_336_280',
+            'div_id' => 'div-gpt-ad-1538623516564-0',
+        ],
+        
+        // 下関
+        17 => [
+            'name'   => '/22524478/sunshine_shimonoseki_336_280',
+            'div_id' => 'div-gpt-ad-1538623234933-0',
+        ],
+        
+        // 姶良
+        18 => [
+            'name'   => '/22524478/sunshine_aira_336_280',
+            'div_id' => 'div-gpt-ad-1538617598924-0',
+        ],
+        
+        // ユーカリが丘
+        19 => [
+            'name'   => '/22524478/sunshine_yukarigaoka_336_280',
+            'div_id' => 'div-gpt-ad-1538623639711-0',
+        ],
+    ];
     
     return $settings;
 };
