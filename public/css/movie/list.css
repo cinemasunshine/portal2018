@@ -49,10 +49,11 @@ form .form-control {
     height: 14px;
 }
 .icon-r {
-    width: 44px;
+    width: 35px;
+    padding-top:.1rem;
 }
 .icon-onsei, .icon-jimaku {
-    width: 60px;
+    width: 50px;
 }
 .tabs {
     max-width: 1000px;

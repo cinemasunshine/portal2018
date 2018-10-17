@@ -51,10 +51,11 @@
     height: 14px;
 }
 .icon-r {
-    width: 44px;
+    width: 35px;
+    padding-top:.1rem;
 }
 .icon-onsei, .icon-jimaku {
-    width: 60px;
+    width: 50px;
 }
 .icon-supervisor , .icon-appearance {
     width: 80px;
