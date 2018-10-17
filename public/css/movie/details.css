@@ -150,4 +150,11 @@
     .details-movie {
         max-width: 100%;
     }
+    .icon-r {
+        width: 25px;
+        padding-top:.1rem;
+    }
+    .icon-onsei, .icon-jimaku {
+        width: 35px;
+    }
 }
