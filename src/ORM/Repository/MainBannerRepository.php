@@ -42,7 +42,8 @@ class MainBannerRepository extends EntityRepository
         $qb
             ->join('mb.pages', 'pmb')
             ->andWhere('pmb.page = :page_id')
-            ->setParameter('page_id', $pageId);
+            ->setParameter('page_id', $pageId)
+            ->orderBy('pmb.displayOrder', 'ASC');
         
         return $qb->getQuery()->getResult();
     }
@@ -59,7 +60,8 @@ class MainBannerRepository extends EntityRepository
         $qb
             ->join('mb.theaters', 'tmb')
             ->andWhere('tmb.theater = :theater_id')
-            ->setParameter('theater_id', $theaterId);
+            ->setParameter('theater_id', $theaterId)
+            ->orderBy('tmb.displayOrder', 'ASC');
         
         return $qb->getQuery()->getResult();
     }
@@ -76,7 +78,8 @@ class MainBannerRepository extends EntityRepository
         $qb
             ->join('mb.specialSites', 'smb')
             ->andWhere('smb.specialSite = :special_site_id')
-            ->setParameter('special_site_id', $specialSiteId);
+            ->setParameter('special_site_id', $specialSiteId)
+            ->orderBy('smb.displayOrder', 'ASC');
         
         return $qb->getQuery()->getResult();
     }
