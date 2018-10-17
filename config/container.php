@@ -111,6 +111,10 @@ $container['em'] = function ($container) {
         false
     );
     
+    $config->setProxyDir(APP_ROOT . '/src/ORM/Proxy');
+    $config->setProxyNamespace('Cinemasunshine\Portal\ORM\Proxy');
+    $config->setAutoGenerateProxyClasses($settings['dev_mode']);
+    
     $logger = new \Cinemasunshine\Portal\Logger\DbalLogger($container->get('logger'));
     $config->setSQLLogger($logger);
     
