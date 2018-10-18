@@ -1,5 +1,11 @@
 {% extends "imax/layout.html.twig" %}
 
+{% block title %}IMAX特設サイト | {{ parent() }}{% endblock %}
+
+{% block description %}シネマサンシャインのIMAX特設サイトです。IMAXの設備に関する情報や作品情報、鑑賞料金、上映劇場・キャンペーン情報のご案内など{% endblock %}
+
+{% block keywords %}{{ parent() }},予約,オンライン,上映,シネマ,キャンペーン,IMAX,アイマックス,3D,作品情報{% endblock %}
+
 {% block css %}
 <link href="/css/imax/top.css" rel="stylesheet">
 {% endblock %}

@@ -1,5 +1,13 @@
 {% extends "imax/layout.html.twig" %}
 
+{% set title = schedule.getTitle() %}
+
+{% block title %}{{ title.getName() }} | {{ parent() }}IMAX特設サイト{% endblock %}
+
+{% block description %}シネマサンシャインIMAX特設サイトの作品紹介ページです。「{{ title.getName() }}」の作品情報の詳細はこちら{% endblock %}
+
+{% block keywords %}{{ parent()}},{{ title.getName() }},{{ title.getDirector()|replace({'、': ','}) }},{{ title.getCast()|replace({'、': ','}) }},IMAX,IMAX3D,{% endblock %}
+
 {% block css %}
 <link href="/css/movie/details.css" rel="stylesheet">
 {% endblock %}
@@ -18,7 +26,6 @@
     <span class="font-weight-bold mx-2"> | </span>
     <a class="text-white" href="{{ path_for('imax_schedule_list') }}">作品一覧</a>
     <span class="font-weight-bold mx-2"> | </span>
-    {% set title = schedule.getTitle() %}
     <span>{{ title.getName() }}<span>
 </div>
 
