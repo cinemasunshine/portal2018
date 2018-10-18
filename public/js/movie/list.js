@@ -1,6 +1,13 @@
 $(function () {
     $(document).on('click', '.tabs a', selectTab);
     $(document).on('change', '.region-selection', changeTheater);
+    if (getParam('theater')) {
+        var theater = getParam('theater');
+        $('.region-selection').val(theater);
+    }
+    if (getParam('showType') === '1') {
+        $('.tabs a').trigger('click');
+    }
 });
 
 /**
