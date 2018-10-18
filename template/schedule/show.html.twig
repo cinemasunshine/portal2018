@@ -5,7 +5,7 @@
 
 {% block description %}シネマサンシャインの作品紹介ページです。「「{{ title.getName() }}」」の作品情報の詳細はこちら{% endblock %}
 
-{% block keyword %}{{ parent()}},{{ title.getName() }},{{ title.getDirector()|replace({'、': ','}) }},{{ title.getCast()|replace({'、': ','}) }}{% endblock %}
+{% block keywords %}{{ parent()}},{{ title.getName() }},{{ title.getDirector()|replace({'、': ','}) }},{{ title.getCast()|replace({'、': ','}) }}{% endblock %}
 
 {% block css %}
 <link href="/css/movie/details.css" rel="stylesheet">
