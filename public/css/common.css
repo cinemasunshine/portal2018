@@ -294,7 +294,7 @@ header .position-fixed {
 }
 .slider .pagination .swiper-pagination-bullet {
     width: 20px;
-    height: 3px;
+    height: 2px;
     display: block;
     border-radius: 0;
     background: #333;
@@ -567,6 +567,7 @@ footer {
     background-repeat: no-repeat;
     background-size: 15px;
     background-position: right 10px center;
+    border-radius:4px;
 }
 
 .minus-button {
@@ -583,6 +584,7 @@ footer {
     background-repeat: no-repeat;
     background-size: 15px;
     background-position: right 10px center;
+    border-radius:4px;
 }
 
 .black-button {
