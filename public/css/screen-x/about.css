@@ -1,0 +1,42 @@
+.introduction-video {
+    max-width: 600px;
+}
+.function ul {
+    margin: -1rem;
+}
+.function li {
+    width: 33.3%;
+}
+.function li .title {
+    background-position: 15px center;
+    background-repeat: no-repeat;
+    background-size: 22px;
+    padding-left: 46px;
+}
+.viewing-fee .price {
+    border-radius: 3rem;
+}
+.viewing-fee li .title {
+    width: 200px;
+}
+.viewing-fee li .description {
+    width: calc(100% - 200px);
+    line-height: 1.6;
+}
+.note dd {
+    line-height: 1.6;
+}
+@media (max-width: 767.98px) {
+    .function ul {
+        margin: 0;
+    }
+    .function li {
+        width: auto;
+    }
+    .viewing-fee li .title {
+        width: 50%;
+    }
+    .viewing-fee li .description {
+        width: 50%;
+    }
+}
