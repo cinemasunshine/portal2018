@@ -49,25 +49,25 @@
                 </div>
             </div>
             <div class="movie-area">
-                <div class="d-flex flex-wrap">
-                {% for theater in theaters %}
-                    {% set isShowing = false %}{# ループ前に宣言する #}
-                    
-                    {% for showingTehater in schedule.getShowingTheaters %}
-                        {% if showingTehater.getTheater().getId() == theater.getId() %}
-                            {% set isShowing = true %}
+                    <div class="d-flex flex-wrap">
+                    {% for theater in theaters %}
+                        {% set isShowing = false %}{# ループ前に宣言する #}
+                        
+                        {% for showingTehater in schedule.getShowingTheaters %}
+                            {% if showingTehater.getTheater().getId() == theater.getId() %}
+                                {% set isShowing = true %}
+                            {% endif %}
+                        {% endfor %}
+                        
+                        <div class="area-button mb-md-2 pr-md-2 mb-2 px-1 px-md-0 small font-weight-bold">
+                        {% if isShowing %}
+                            <a href="{{ path_for('theater', { name: theater.getName() }) }}" data-theaterCode="{{ theater.getId() }}" class="d-flex align-items-center justify-content-center bg-transparent text-white border-red">{{ theater.getNameJa() }}</a>
+                        {% else %}
+                            <span class="d-flex align-items-center justify-content-center text-gray border-gray bg-transparent">{{ theater.getNameJa() }}</span>
                         {% endif %}
+                        </div>
                     {% endfor %}
-                    
-                    <div class="area-button mb-md-2 pr-md-2 mb-2 px-1 px-md-0 small font-weight-bold">
-                    {% if isShowing %}
-                        <a href="{{ path_for('theater', { name: theater.getName() }) }}" data-theaterCode="{{ theater.getId() }}" class="d-flex align-items-center justify-content-center bg-transparent text-white border-red">{{ theater.getNameJa() }}</a>
-                    {% else %}
-                        <span class="d-flex align-items-center justify-content-center text-gray border-gray bg-transparent">{{ theater.getNameJa() }}</span>
-                    {% endif %}
                     </div>
-                {% endfor %}
-                </div>
                 <div class="x-small ml-2 ml-md-0">{{ title.getCredit() }}</div>
             </div>
         </div>
