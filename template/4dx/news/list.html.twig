@@ -1,5 +1,11 @@
 {% extends "4dx/layout.html.twig" %}
 
+{% block title %}News&Info一覧 | {{ parent() }}4DX特設サイト{% endblock %}
+
+{% block description %}シネサンシャイン4DX特設サイトのニュース一覧ページです。映画に関する最新情報やイベント情報、ライブビューイング情報、キャンペーン情報、舞台挨拶のご案内など{% endblock %}
+
+{% block keywords %}{{ parent() }},キャンペーン,ニュース,news,最新情報,映画情報,イベント情報,ライブビューイング,舞台挨拶,4DX{% endblock %}
+
 {% block css %}
 <link href="/css/news/list.css" rel="stylesheet">
 {% endblock %}
