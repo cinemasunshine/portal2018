@@ -519,6 +519,7 @@ footer {
 .button-01 {
     overflow: hidden;
     max-width: 640px;
+    border-radius: 4px;
 }
 .button-01 a {
     border-radius: 4px;
