@@ -14,11 +14,12 @@
 <div class="breadcrumb-list d-none d-md-block small width mx-auto mb-5 px-2 text-white">
     <a class="text-white" href="{{ path_for('homepage') }}">ホーム</a>
     <span class="font-weight-bold mx-2"> | </span>
-    <a class="text-white" href="{{ path_for('4dx') }}">4dx</a>
+    <a class="text-white" href="{{ path_for('4dx') }}">4DX</a>
     <span class="font-weight-bold mx-2"> | </span>
     <a class="text-white" href="{{ path_for('4dx_schedule_list') }}">作品一覧</a>
     <span class="font-weight-bold mx-2"> | </span>
-    <span><span>
+    {% set title = schedule.getTitle() %}
+    <span>{{ title.getName() }}<span>
 </div>
 
 {% include '4dx/schedule/include/show_detail.html.twig' with {
@@ -26,7 +27,7 @@
     theaters: theaters,
 } only %}
 
-<div class="py-5 text-white">
+<div class="mb-5 py-5 text-white bg-black">
     {% include '4dx/include/campaign.html.twig' with {
         campaigns: schedule.getTitle().getCampaigns()
     } only %}

@@ -18,7 +18,8 @@
     <span class="font-weight-bold mx-2"> | </span>
     <a class="text-white" href="{{ path_for('imax_schedule_list') }}">作品一覧</a>
     <span class="font-weight-bold mx-2"> | </span>
-    <span><span>
+    {% set title = schedule.getTitle() %}
+    <span>{{ title.getName() }}<span>
 </div>
 
 {% include 'imax/schedule/include/show_detail.html.twig' with {
@@ -26,7 +27,7 @@
     theaters: theaters,
 } only %}
 
-<div class="py-5 text-white">
+<div class="mb-5 py-5 text-white bg-black">
     {% include 'imax/include/campaign.html.twig' with {
         campaigns: schedule.getTitle().getCampaigns()
     } only %}
