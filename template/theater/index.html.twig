@@ -1,5 +1,22 @@
 {% extends "theater/layout.html.twig" %}
 
+
+{% block title %}劇場トップ・上映スケジュール | {{ parent() }}{% endblock %}
+
+{% block description %}シネマサンシャイン{{ theater.getNameJa() }}の劇場サイトトップページです。上映スケジュール、ニュース、前売券情報、コンセッション、料金案内、劇場設備、アクセスのご案内など。{% endblock %}
+
+{% set keywords = theater_meta_keywords(theater) %}
+
+{% if theater.getId() == 1 %}
+    {# 池袋トップページのみ #}
+    {% set keywords =  keywords ~ ',応援上映' %}
+{% elseif theater.getId() == 2 %}
+    {# 平和島トップページのみ #}
+    {% set keywords =  keywords ~ ',4DX' %}
+{% endif %}
+
+{% block keywords %}{{ parent()}},座席指定,予約,オンライン,上映,スケジュール,キャンペーン,公式アプリ,ムビチケ{% if keywords %},{{ keywords }}{% endif %}{% endblock %}
+
 {% block css %}
 <link href="/css/theater/top.css" rel="stylesheet">
 {% endblock %}
