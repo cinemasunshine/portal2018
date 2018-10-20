@@ -51,7 +51,27 @@ Azure Web Appsのアプリケーション設定で設定する場合は **MYSQLC
 |CUSTOMCONNSTR_MV_AD|'true' or 'false'|ムービーウォーカー様広告のサポート|
 |CUSTOMCONNSTR_MP_TICKET|'prod' or 'test' or 'dev'|MPオンラインチケット|
 
-### ３．.htaccess
+### ３．Doctrine
+
+#### Schema生成
+
+このアプリケーションからのSchema更新は想定されていません。
+
+cinemasunshine/portal2018-adminを参照してください。
+
+#### Proxy生成
+
+開発環境**以外**は手動で生成が必要です。
+
+```sh
+$ vendor/bin/doctrine orm:generate-proxies
+```
+
+### ４．マスターデータ
+
+cinemasunshine/portal2018-adminを参照してください。
+
+### ５．.htaccess
 
 ドキュメントルートに *.htaccess* を設置します。 *sample.htaccess* を参考にしてください。
 
