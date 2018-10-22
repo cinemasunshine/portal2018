@@ -51,11 +51,9 @@
     titleRanking: titleRanking
 } only %}
 
-<div class="mb-5">
-    {% include 'index/include/news.html.twig' with {
-        newsList: newsList
-    } only %}
-</div>
+{% include 'index/include/news.html.twig' with {
+    newsList: newsList
+} only %}
 
 {% include 'index/include/imax_news.html.twig' with {
     newsList: imaxNewsList
