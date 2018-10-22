@@ -139,19 +139,16 @@
     </div>
 </div>
 
-<div class="width mx-auto px-3 event-information mb-5">
-    {% include 'theater/include/index/event.html.twig' with {
-        theater: theater,
-        newsList: eventNewsList,
-    } only %}
-</div>
+{% include 'theater/include/index/event.html.twig' with {
+    theater: theater,
+    newsList: eventNewsList,
+} only %}
 
-<div class="mb-5">
-    {% include 'theater/include/index/news.html.twig' with {
-        theater: theater,
-        newsList: newsList,
-    } only %}
-</div>
+{% include 'theater/include/index/news.html.twig' with {
+    theater: theater,
+    newsList: newsList,
+} only %}
+
 <!-- CS_ポータル共通_レスポンシブ横長(下部) -->
 <!-- Adsense code-->
 <ins class="adsbygoogle cs_portal_rpad my-5"
