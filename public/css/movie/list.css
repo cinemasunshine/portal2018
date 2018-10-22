@@ -41,12 +41,18 @@ form .form-control {
 .icon-2d, .icon-3d, .icon-imax, .icon-4dx {
     width: 70px;
 }
+.icon-scx {
+    width: 80px;
+}
 .icon-imax img {
     width: 50px;
 }
 .icon-4dx img {
     width: 40px;
     height: 14px;
+}
+.icon-scx img {
+    width: 60px;
 }
 .icon-r {
     width: 35px;
@@ -91,6 +97,7 @@ form .form-control {
         background-color: #ececec;;
         padding: 0.5rem 0.25rem;
     }
+    .type-scx .movie-area,
     .type-4dx .movie-area,
     .type-imax .movie-area {
         background-color: #1f1f1f;
@@ -100,5 +107,8 @@ form .form-control {
     }
     .icon-4dx img {
         width: 28px;
+    }
+    .icon-scx img {
+        width: 45px;
     }
 }
