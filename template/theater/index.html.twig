@@ -168,12 +168,10 @@ data-full-width-responsive="false"></ins>
     campaigns: campaigns
 } only %}
 
-<div class="mb-5">
-    {% include 'theater/include/infomation.html.twig' with {
-        theater: theater,
-        newsList: infoNewsList,
-    } only %}
-</div>
+{% include 'theater/include/infomation.html.twig' with {
+    theater: theater,
+    newsList: infoNewsList,
+} only %}
 
 <div class="mb-5">
     <div class="d-md-none w-100 text-center px-3 pt-3">

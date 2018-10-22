@@ -28,10 +28,8 @@
     {% include 'theater/include/access/' ~ theater.getName() ~ '.html.twig' %}
 </div>
 
-<div class="mb-5">
-    {% include 'theater/include/infomation.html.twig' with {
-        theater: theater,
-        newsList: infoNewsList,
-    } only %}
-</div>
+{% include 'theater/include/infomation.html.twig' with {
+    theater: theater,
+    newsList: infoNewsList,
+} only %}
 {% endblock %}
