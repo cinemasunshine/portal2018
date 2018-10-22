@@ -59,11 +59,9 @@
     </div>
 </div>
 
-<div class="py-5 text-white">
-    {% include '4dx/include/index/news.html.twig' with {
-        newsList: newsList
-    } only %}
-</div>
+{% include '4dx/include/index/news.html.twig' with {
+    newsList: newsList
+} only %}
 
 <div class="py-5 text-white">
     {% include '4dx/include/index/title.html.twig' with {
