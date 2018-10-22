@@ -71,9 +71,7 @@
     campaigns: campaigns
 } only %}
 
-<div class="mb-5">
-    {% include 'index/include/infomation.html.twig' with {
-        newsList: infoNewsList
-    } only %}
-</div>
+{% include 'index/include/infomation.html.twig' with {
+    newsList: infoNewsList
+} only %}
 {% endblock %}
