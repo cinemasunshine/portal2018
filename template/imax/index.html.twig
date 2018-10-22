@@ -75,11 +75,13 @@
     } only %}
 </div>
 
+{% if campaigns %}
 <div class="py-5 text-white">
     {% include 'imax/include/campaign.html.twig' with {
         campaigns: campaigns
     } only %}
 </div>
+{% endif %}
 
 <div class="mb-5 py-5 text-white">
     {% include 'imax/include/index/infomation.html.twig' with {
