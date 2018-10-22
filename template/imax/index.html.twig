@@ -83,9 +83,7 @@
 </div>
 {% endif %}
 
-<div class="mb-5 py-5 text-white">
-    {% include 'imax/include/index/infomation.html.twig' with {
-        newsList: infoNewsList
-    } only %}
-</div>
+{% include 'imax/include/index/infomation.html.twig' with {
+    newsList: infoNewsList
+} only %}
 {% endblock %}
