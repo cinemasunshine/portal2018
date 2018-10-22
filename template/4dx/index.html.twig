@@ -81,9 +81,7 @@
 </div>
 {% endif %}
 
-<div class="mb-5 py-5 text-white">
-    {% include '4dx/include/index/infomation.html.twig' with {
-        newsList: infoNewsList
-    } only %}
-</div>
+{% include '4dx/include/index/infomation.html.twig' with {
+    newsList: infoNewsList
+} only %}
 {% endblock %}
