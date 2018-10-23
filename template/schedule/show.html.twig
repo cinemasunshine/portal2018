@@ -25,12 +25,10 @@
         schedule: schedule,
         theaters: theaters
     } only %}
-    
-{% if title.getCampaigns() %}
+
     {% include 'include/campaign.html.twig' with {
         campaigns: title.getCampaigns()
     } only %}
-{% endif %}
     
     <div class="px-3">
         <div class="back-list button-01 shadow-01 mx-auto mb-5">
