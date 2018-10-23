@@ -337,13 +337,13 @@ function createScheduleFilmPerformanceDom(performance, film) {
                     ? 'bg-light-gray text-dark-gray'
                     : 'bg-light-gray text-dark-gray';
     var spAvailable = (data.available === 0)
-        ? '<a class="d-flex align-items-center justify-content-center py-2 bg-blue text-white" href="' + data.url + '">\
+        ? '<a class="d-flex align-items-center justify-content-center py-3 bg-blue text-white" href="' + data.url + '">\
         <span class="mr-2 status-01">○</span><span>購入</span>\
     </a>'
         : (data.available === 1)
             ? '<span class="d-block">窓口</span>'
             : (data.available === 2)
-                ? '<a class="d-flex align-items-center justify-content-center py-2 bg-yellow text-white" href="' + data.url + '">\
+                ? '<a class="d-flex align-items-center justify-content-center py-3 bg-yellow text-white" href="' + data.url + '">\
                 <span class="mr-2 status-02">△</span><span>購入</span>\
             </a>'
                 : (data.available === 4)
