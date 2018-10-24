@@ -2,13 +2,13 @@
 /* IMAX 4dx */
 .imax-4dx {
     background-color: rgb(247, 247, 247);
-    height: 140px;
+    height: 90px;
 }
 .imax img, .fourdx img {
-    height: 50px;
+    height: 35px;
 }
 .imax img {
-    padding: 14px;
+    padding: 8px;
 }
 
 /* ピックアップ */
@@ -204,7 +204,9 @@
         font-weight: normal;
     }
     .opening-time h4 {
-        width: auto;
+        width: 20%;
+        float:left;
+        padding-top:2.5%; 
     }
     .opening-time .swiper-slide {
         width: 100% !important;

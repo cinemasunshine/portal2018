@@ -41,6 +41,9 @@ form .form-control {
 .icon-2d, .icon-3d, .icon-imax, .icon-4dx {
     width: 70px;
 }
+.icon-scx {
+    width: 80px;
+}
 .icon-imax img {
     width: 50px;
 }
@@ -48,11 +51,15 @@ form .form-control {
     width: 40px;
     height: 14px;
 }
+.icon-scx img {
+    width: 60px;
+}
 .icon-r {
-    width: 44px;
+    width: 35px;
+    padding-top:.1rem;
 }
 .icon-onsei, .icon-jimaku {
-    width: 60px;
+    width: 50px;
 }
 .tabs {
     max-width: 1000px;
@@ -87,17 +94,21 @@ form .form-control {
     }
     .movie-area {
         margin: -0.5rem;
-        background-color: #ddd;
+        background-color: #ececec;;
         padding: 0.5rem 0.25rem;
     }
+    .type-scx .movie-area,
     .type-4dx .movie-area,
     .type-imax .movie-area {
-        background-color: #555;
+        background-color: #1f1f1f;
     }
     .icon-imax img {
         width: 34px;
     }
     .icon-4dx img {
         width: 28px;
+    }
+    .icon-scx img {
+        width: 45px;
     }
 }

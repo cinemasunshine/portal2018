@@ -1,6 +1,18 @@
 <div class="width mx-auto px-3 ranking mb-5">
+    {% set fromDate = null %}
+    
+    {% if titleRanking.getFromDate() %}
+        {% set fromDate = titleRanking.getFromDate()|date('n/j') ~ '(' ~ titleRanking.getFromDate()|weekday ~ ')' %}
+    {% endif %}
+    
+    {% set toDate = null %}
+    
+    {% if titleRanking.getToDate() %}
+        {% set toDate = titleRanking.getToDate()|date('n/j') ~ '(' ~ titleRanking.getToDate()|weekday ~ ')' %}
+    {% endif %}
+    
     <h3 class="font-weight-bold large text-center text-md-left line-height-1 mb-3">ランキング<br><span class="small">RANKING</span></h3>
-    <p class="mb-4">{{ titleRanking.getFromDate()|date('n/j') }}({{ titleRanking.getFromDate()|weekday }})-{{ titleRanking.getToDate()|date('n/j') }}({{ titleRanking.getToDate()|weekday }})に集計したランキングになります。</p>
+    <p class="mb-4">{{ fromDate }}-{{ toDate }}に集計したランキングになります。</p>
     <div class="scroll">
         <ul class="d-flex">
         {% set rank1Title = titleRanking.getRank1Title() %}

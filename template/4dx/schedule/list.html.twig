@@ -1,5 +1,11 @@
 {% extends "4dx/layout.html.twig" %}
 
+{% block title %}作品一覧 | {{ parent() }}4DX特設サイト{% endblock %}
+
+{% block description %}シネマサンシャイン4DX特設サイトの作品一覧ページです。上映中・上映予定の映画作品のご案内{% endblock %}
+
+{% block keywords %}{{ parent() }},キャンペーン,上映中,上映予定,2D,3D,公開中,公開予定,作品情報,作品紹介,4DX{% endblock %}
+
 {% block css %}
 <link href="/css/movie/list.css" rel="stylesheet">
 {% endblock %}
@@ -18,7 +24,7 @@
 <div class="breadcrumb-list d-none d-md-block small width mx-auto mb-5 px-2 text-white">
     <a class="text-white" href="{{ path_for('homepage') }}">ホーム</a>
     <span class="font-weight-bold mx-2"> | </span>
-    <a class="text-white" href="{{ path_for('4dx') }}">4dx</a>
+    <a class="text-white" href="{{ path_for('4dx') }}">4DX</a>
     <span class="font-weight-bold mx-2"> | </span>
     <span>作品一覧<span>
 </div>

@@ -1,5 +1,12 @@
 {% extends "theater/layout.html.twig" %}
 
+{% block title %}前売券情報 | {{ parent() }}{% endblock %}
+
+{% block description %}シネサンシャイン{{ theater.getNameJa() }}の前売券情報ページです。映画作品の前売券に関する発売日情報や前売特典のご案内など{% endblock %}
+
+{% set keywords = theater_meta_keywords(theater) %}
+{% block keywords %}{{ parent()}},前売券,ムビチケ,前売特典,先着限定,発売日{% if keywords %},{{ keywords }}{% endif %}{% endblock %}
+
 {% block css %}
 <link href="/css/theater/advance-tickets.css" rel="stylesheet">
 {% endblock %}
@@ -110,10 +117,8 @@
     campaigns: campaigns
 } only %}
 
-<div class="mb-5">
-    {% include 'theater/include/infomation.html.twig' with {
-        theater: theater,
-        newsList: infoNewsList,
-    } only %}
-</div>
+{% include 'theater/include/infomation.html.twig' with {
+    theater: theater,
+    newsList: infoNewsList,
+} only %}
 {% endblock %}

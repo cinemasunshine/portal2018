@@ -1,0 +1,52 @@
+/* ABOUT */
+.about {
+    width: 50%;
+}
+.pickup {
+    width: 50%;
+}
+.pickup-badge {
+    top: 0;
+    left: 20px;
+    z-index: 1;
+}
+/* 上映中・上映中作品 */
+.theater-select {
+    /* justify-content: center; */
+}
+.theater-select li {
+    width: 20%;
+}
+.film .type-default {
+    height: 12px;
+}
+.film .screening,
+.film .scheduled {
+    margin: 0 -0.5rem 0 -0.5rem;
+}
+.film .screening li,
+.film .scheduled li {
+    width: calc(20% - 1rem);
+}
+
+@media (max-width: 767.98px) {
+    .about {
+        width: auto;
+    }
+    .pickup {
+        width: auto;
+    }
+    .pickup-badge {
+        left: 0;
+    }
+    .film .screening li,
+    .film .scheduled li {
+        width: calc(33.3% - 1rem);
+    }
+    .theater-select {
+        justify-content: start;
+    }
+    .theater-select li {
+        width: 33.3%;
+    }
+}

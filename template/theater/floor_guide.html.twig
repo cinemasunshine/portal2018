@@ -1,5 +1,12 @@
 {% extends "theater/layout.html.twig" %}
 
+{% block title %}劇場設備 | {{ parent() }}{% endblock %}
+
+{% block description %}シネサンシャイン{{ theater.getNameJa() }}の劇場設備ページです。スクリーン数や座席数、劇場設備に関するのご案内など{% endblock %}
+
+{% set keywords = theater_meta_keywords(theater) %}
+{% block keywords %}{{ parent()}},設備,スクリーン,座席数,3D上映{% if keywords %},{{ keywords }}{% endif %}{% endblock %}
+
 {% block css %}
 <link href="/css/theater/facility.css" rel="stylesheet">
 {% endblock %}
@@ -21,10 +28,8 @@
     {% include 'theater/include/floor_guide/' ~ theater.getName() ~ '.html.twig' %}
 </div>
 
-<div class="mb-5">
-    {% include 'theater/include/infomation.html.twig' with {
-        theater: theater,
-        newsList: infoNewsList,
-    } only %}
-</div>
+{% include 'theater/include/infomation.html.twig' with {
+    theater: theater,
+    newsList: infoNewsList,
+} only %}
 {% endblock %}

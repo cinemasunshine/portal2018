@@ -51,10 +51,11 @@
     height: 14px;
 }
 .icon-r {
-    width: 44px;
+    width: 35px;
+    padding-top:.1rem;
 }
 .icon-onsei, .icon-jimaku {
-    width: 60px;
+    width: 50px;
 }
 .icon-supervisor , .icon-appearance {
     width: 80px;
@@ -96,12 +97,12 @@
     }
     .movie-image {
         width: auto;
-        background-color: #ddd;
+        background-color: #ececec;
     }
     .type-imax .movie-image,
     .type-4dx .movie-image {
         width: auto;
-        background-color: #555;
+        background-color: #1f1f1f;
         margin: 0 -0.5rem;
     }
     .movie-image img {
@@ -110,7 +111,7 @@
         display: block;
     }
     .sp-bg {
-        background-color: #ddd;
+        background-color: #ececec;
     }
     /* .type-imax .sp-bg,
     .type-4dx .sp-bg, {
@@ -139,7 +140,7 @@
         padding: 0.5rem 0.25rem;
     }
     .desc {
-        font-size: 14px;
+        font-size: 1.15rem;
         font-weight: 700;
     }
     .person {

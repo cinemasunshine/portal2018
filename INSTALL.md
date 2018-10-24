@@ -32,6 +32,9 @@ Azure Web Appsのアプリケーション設定で設定する場合は **APPSET
 |名前|値|説明|
 |:--|:--|:--|
 |APPSETTING_ENV|'prod' or 'dev'|アプリケーションの実行環境|
+|APPSETTING_COA_SCHEDULE|'prod' or 'prod_and_test'|コアシステムズ様スケジュールの接続環境|
+|APPSETTING_MV_AD|'true' or 'false'|ムービーウォーカー様広告のサポート|
+|APPSETTING_MP_TICKET|'prod' or 'test' or 'dev'|MPオンラインチケット|
 
 #### 接続文字列
 
@@ -47,11 +50,28 @@ Azure Web Appsのアプリケーション設定で設定する場合は **MYSQLC
 |MYSQLCONNSTR_SSL|'true' or 'false'|MySQLにSSL接続するか|
 |CUSTOMCONNSTR_STORAGE_NAME|[storage name]|Azure Storage名|
 |CUSTOMCONNSTR_STORAGE_KEY|[storage access key]|Azure Sotrageのアクセスキー|
-|CUSTOMCONNSTR_COA_SCHEDULE|'prod' or 'prod_and_test'|コアシステムズ様スケジュールの接続環境|
-|CUSTOMCONNSTR_MV_AD|'true' or 'false'|ムービーウォーカー様広告のサポート|
-|CUSTOMCONNSTR_MP_TICKET|'prod' or 'test' or 'dev'|MPオンラインチケット|
 
-### ３．.htaccess
+### ３．Doctrine
+
+#### Schema生成
+
+このアプリケーションからのSchema更新は想定されていません。
+
+cinemasunshine/portal2018-adminを参照してください。
+
+#### Proxy生成
+
+開発環境**以外**は手動で生成が必要です。
+
+```sh
+$ vendor/bin/doctrine orm:generate-proxies
+```
+
+### ４．マスターデータ
+
+cinemasunshine/portal2018-adminを参照してください。
+
+### ５．.htaccess
 
 ドキュメントルートに *.htaccess* を設置します。 *sample.htaccess* を参考にしてください。
 

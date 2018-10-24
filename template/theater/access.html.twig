@@ -1,5 +1,12 @@
 {% extends "theater/layout.html.twig" %}
 
+{% block title %}アクセス | {{ parent() }}{% endblock %}
+
+{% block description %}シネサンシャイン{{ theater.getNameJa() }}のアクセスページです。劇場周辺のマップや最寄駅、住所、問い合わせ先電話番号に関するご案内など{% endblock %}
+
+{% set keywords = theater_meta_keywords(theater) %}
+{% block keywords %}{{ parent()}},駐車場,アクセス,電話番号,マップ,行き方,電車,車,徒歩,最寄駅{% if keywords %},{{ keywords }}{% endif %}{% endblock %}
+
 {% block css %}
 <link href="/css/theater/access.css" rel="stylesheet">
 {% endblock %}
@@ -21,10 +28,8 @@
     {% include 'theater/include/access/' ~ theater.getName() ~ '.html.twig' %}
 </div>
 
-<div class="mb-5">
-    {% include 'theater/include/infomation.html.twig' with {
-        theater: theater,
-        newsList: infoNewsList,
-    } only %}
-</div>
+{% include 'theater/include/infomation.html.twig' with {
+    theater: theater,
+    newsList: infoNewsList,
+} only %}
 {% endblock %}

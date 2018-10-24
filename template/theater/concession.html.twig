@@ -1,5 +1,12 @@
 {% extends "theater/layout.html.twig" %}
 
+{% block title %}コンセッション | {{ parent() }}{% endblock %}
+
+{% block description %}シネサンシャイン{{ theater.getNameJa() }}のコンセッションページです。劇場で販売しているポップコーンなどのフードメニューやドリンクメニューのご案内{% endblock %}
+
+{% set keywords = theater_meta_keywords(theater) %}
+{% block keywords %}{{ parent()}},食べ物,フード,ドリンク,ポップコーン、メニュー,セット{% if keywords %},{{ keywords }}{% endif %}{% endblock %}
+
 {% block css %}
 <link href="/css/movie/list.css" rel="stylesheet">
 {% endblock %}
@@ -32,10 +39,8 @@
     campaigns: campaigns
 } only %}
 
-<div class="mb-5">
-    {% include 'theater/include/infomation.html.twig' with {
-        theater: theater,
-        newsList: infoNewsList,
-    } only %}
-</div>
+{% include 'theater/include/infomation.html.twig' with {
+    theater: theater,
+    newsList: infoNewsList,
+} only %}
 {% endblock %}

@@ -1,5 +1,12 @@
 {% extends "theater/layout.html.twig" %}
 
+{% block title %}News&Info一覧 | {{ parent() }}{% endblock %}
+
+{% block description %}シネサンシャイン{{ theater.getNameJa() }}のニュース一覧ページです。映画に関する最新情報やイベント情報、ライブビューイング情報、キャンペーン情報、舞台挨拶のご案内など{% endblock %}
+
+{% set keywords = theater_meta_keywords(theater) %}
+{% block keywords %}{{ parent()}},キャンペーン,ニュース,news,最新情報,映画情報,イベント情報,ライブビューイング,舞台挨拶{% if keywords %},{{ keywords }}{% endif %}{% endblock %}
+
 {% block css %}
 <link href="/css/news/list.css" rel="stylesheet">
 {% endblock %}
@@ -43,6 +50,8 @@
         </div>
     </div>
 </div>
+
+{% include 'include/adsense/buttom.html.twig' only %}
 
 {% include 'include/campaign.html.twig' with {
     campaigns: campaigns

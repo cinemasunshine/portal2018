@@ -1,5 +1,22 @@
 {% extends "theater/layout.html.twig" %}
 
+
+{% block title %}劇場トップ・上映スケジュール | {{ parent() }}{% endblock %}
+
+{% block description %}シネマサンシャイン{{ theater.getNameJa() }}の劇場サイトトップページです。上映スケジュール、ニュース、前売券情報、コンセッション、料金案内、劇場設備、アクセスのご案内など。{% endblock %}
+
+{% set keywords = theater_meta_keywords(theater) %}
+
+{% if theater.getId() == 1 %}
+    {# 池袋トップページのみ #}
+    {% set keywords =  keywords ~ ',応援上映' %}
+{% elseif theater.getId() == 2 %}
+    {# 平和島トップページのみ #}
+    {% set keywords =  keywords ~ ',4DX' %}
+{% endif %}
+
+{% block keywords %}{{ parent()}},座席指定,予約,オンライン,上映,スケジュール,キャンペーン,公式アプリ,ムビチケ{% if keywords %},{{ keywords }}{% endif %}{% endblock %}
+
 {% block css %}
 <link href="/css/theater/top.css" rel="stylesheet">
 {% endblock %}
@@ -33,6 +50,8 @@
     } only %}
 {% endif %}
 
+{% include 'include/adsense/top.html.twig' only %}
+
 <div class="mb-5">
     <div class="width mx-auto d-md-flex p-3">
     
@@ -64,11 +83,11 @@
         <div class="schedule-title">
             <h3 class="d-inline-block mb-4 px-3 border-left border-right border-blue text-blue">
                 <div class="font-weight-bold large mb-1">上映スケジュール・チケット購入</div>
-                <div class="small">FILMING SCEDULE</div>
+                <div class="small">FILMING SCHEDULE</div>
             </h3>
         </div>
         <p class="mb-0">カレンダーの日時を選択してください。</p>
-        <div class="small text-red font-weight-bold text-right pre-sales-text d-none">先行販売あり >></div>
+        <div class="small text-red font-weight-bold text-right pre-sales-text d-none">先行販売はカレンダーをスライドしてください >></div>
     </div>
     
     <div class="schedule-scroll mb-4">
@@ -98,30 +117,26 @@
     </div>
 </div>
 
-<div class="width mx-auto px-3 event-information mb-5">
-    {% include 'theater/include/index/event.html.twig' with {
-        theater: theater,
-        newsList: eventNewsList,
-    } only %}
-</div>
+{% include 'theater/include/index/event.html.twig' with {
+    theater: theater,
+    newsList: eventNewsList,
+} only %}
 
-<div class="mb-5">
-    {% include 'theater/include/index/news.html.twig' with {
-        theater: theater,
-        newsList: newsList,
-    } only %}
-</div>
+{% include 'theater/include/index/news.html.twig' with {
+    theater: theater,
+    newsList: newsList,
+} only %}
+
+{% include 'include/adsense/buttom.html.twig' only %}
 
 {% include 'include/campaign.html.twig' with {
     campaigns: campaigns
 } only %}
 
-<div class="mb-5">
-    {% include 'theater/include/infomation.html.twig' with {
-        theater: theater,
-        newsList: infoNewsList,
-    } only %}
-</div>
+{% include 'theater/include/infomation.html.twig' with {
+    theater: theater,
+    newsList: infoNewsList,
+} only %}
 
 <div class="mb-5">
     <div class="d-md-none w-100 text-center px-3 pt-3">

@@ -1,11 +1,17 @@
 {% extends "layout.html.twig" %}
+{% set title = schedule.getTitle() %}
+
+{% block title %}{{ title.getName() }} | {{ parent() }}{% endblock %}
+
+{% block description %}シネマサンシャインの作品紹介ページです。「「{{ title.getName() }}」」の作品情報の詳細はこちら{% endblock %}
+
+{% block keywords %}{{ parent()}},{{ title.getName() }},{{ title.getDirector()|replace({'、': ','}) }},{{ title.getCast()|replace({'、': ','}) }}{% endblock %}
 
 {% block css %}
 <link href="/css/movie/details.css" rel="stylesheet">
 {% endblock %}
 
 {% block contents %}
-{% set title = schedule.getTitle() %}
 <div class="width mx-auto px-3 pt-md-3">
     <div class="breadcrumb-list small mb-5 d-none d-md-block">
         <a href="{{ path_for('homepage') }}">ホーム　|　</a>
@@ -19,12 +25,10 @@
         schedule: schedule,
         theaters: theaters
     } only %}
-    
-{% if title.getCampaigns() %}
+
     {% include 'include/campaign.html.twig' with {
         campaigns: title.getCampaigns()
     } only %}
-{% endif %}
     
     <div class="px-3">
         <div class="back-list button-01 shadow-01 mx-auto mb-5">

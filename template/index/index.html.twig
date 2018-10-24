@@ -1,5 +1,13 @@
 {% extends "layout.html.twig" %}
 
+{% block title %}{{ parent() }} | 劇場情報、上映スケジュール、作品情報、オンライン予約など映画に関する総合サイト{% endblock %}
+
+{#
+{% block description %}{% endblock %}
+#}
+
+{% block keywords %}{{ parent()}},座席指定,予約,オンライン,上映,ランキング,キャンペーン,公式アプリ,ムビチケ,IMAX,4DX,BESTIA,ベスティア,東京,千葉,茨城,静岡,石川,奈良,山口,愛媛,徳島,鹿児島{% endblock %}
+
 {% block css %}
 <link href="/css/top.css" rel="stylesheet">
 {% endblock %}
@@ -37,15 +45,15 @@
     </div>
 </div>
 
+{% include 'include/adsense/top.html.twig' only %}
+
 {% include 'index/include/ranking.html.twig' with {
     titleRanking: titleRanking
 } only %}
 
-<div class="mb-5">
-    {% include 'index/include/news.html.twig' with {
-        newsList: newsList
-    } only %}
-</div>
+{% include 'index/include/news.html.twig' with {
+    newsList: newsList
+} only %}
 
 {% include 'index/include/imax_news.html.twig' with {
     newsList: imaxNewsList
@@ -55,13 +63,13 @@
     newsList: fourdxNewsList
 } only %}
 
+{% include 'include/adsense/buttom.html.twig' only %}
+
 {% include 'include/campaign.html.twig' with {
     campaigns: campaigns
 } only %}
 
-<div class="mb-5">
-    {% include 'index/include/infomation.html.twig' with {
-        newsList: infoNewsList
-    } only %}
-</div>
+{% include 'index/include/infomation.html.twig' with {
+    newsList: infoNewsList
+} only %}
 {% endblock %}

@@ -9,25 +9,27 @@
 
 $settings = [];
 
-$settings['displayErrorDetails'] = (APP_ENV === 'dev');
+$isDebug = in_array(APP_ENV, ['dev', 'test']);
+
+$settings['displayErrorDetails'] = $isDebug;
 $settings['addContentLengthHeader'] = false;
 
 // view
 $settings['view'] = [
     'template_path' => APP_ROOT . '/template',
     'settings' => [
-        'debug' => (APP_ENV === 'dev'),
+        'debug' => $isDebug,
         'cache' => APP_ROOT . '/cache/view',
     ],
 ];
 
 // logger
-$getLoggerSetting = function() {
+$getLoggerSetting = function($isDebug) {
     $settings = [
         'name' => 'app',
     ];
     
-    if (APP_ENV === 'dev') {
+    if ($isDebug) {
         $settings['chrome_php'] = [
             'level' => \Monolog\Logger::DEBUG,
         ];
@@ -46,7 +48,7 @@ $getLoggerSetting = function() {
     return $settings;
 };
 
-$settings['logger'] = $getLoggerSetting();
+$settings['logger'] = $getLoggerSetting($isDebug);
 
 // doctrine
 $getDoctrineSetting = function() {
@@ -92,7 +94,7 @@ $settings['storage'] = [
 // movie walker ad
 $getMovieWalakerAdSetting = function() {
     $settings = [
-        'support' => (getenv('CUSTOMCONNSTR_MV_AD') === 'true'),
+        'support' => (getenv('APPSETTING_MV_AD') === 'true'),
         'page' => [],
         'theater' => [],
     ];
@@ -206,7 +208,7 @@ $settings['mw_ad'] = $getMovieWalakerAdSetting();
 // Motionpicture Online Ticket
 $getMpOnlineTicketSetting = function() {
     $settings = [];
-    $env = getenv('CUSTOMCONNSTR_MP_TICKET');
+    $env = getenv('APPSETTING_MP_TICKET');
     
     if ($env === 'prod') {
         $settings['url'] = 'https://ticket-cinemasunshine.com';
@@ -226,7 +228,7 @@ $settings['mp_ticket'] = $getMpOnlineTicketSetting();
 
 // Coasystems Schedule
 $settings['coa_schedule'] = [
-    'env' => getenv('CUSTOMCONNSTR_COA_SCHEDULE'),
+    'env' => getenv('APPSETTING_COA_SCHEDULE'),
 ];
 
 return $settings;

@@ -2,6 +2,9 @@ body {
     color: #333;
     font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "ヒラギノ角ゴ ProN W3", Hiragino Kaku Gothic ProN, Arial, "メイリオ", Meiryo, sans-serif;
 }
+.type-scx {
+    background-color: #1b1b1b;
+}
 .type-4dx {
     background-color: #181818;
 }
@@ -71,6 +74,9 @@ a:hover {
 .text-red {
     color: rgb(219, 6, 6) !important;
 }
+.text-orange {
+    color:#ea5514 !important;
+}
 .text-dark-red {
     color: #950c0c !important;
 }
@@ -106,8 +112,14 @@ a:hover {
 .bg-red {
     background-color: rgb(219, 6, 6) !important;
 }
+.bg-orange {
+    background-color: rgb(254, 114, 0) !important;
+}
 .bg-dark-red {
     background-color: #950c0c !important;
+}
+.bg-dark-orange {
+    background-color: #a45100 !important;
 }
 .bg-transparent {
     background-color: transparent !important;
@@ -146,7 +158,9 @@ a:hover {
 .border-dark-red {
     border-color: #950c0c !important;
 }
-
+.border-orange {
+    border-color:rgb(254, 114, 0) !important;
+}
 /* フォントサイズ */
 .x-small {
     font-size: 10px;
@@ -205,6 +219,9 @@ header .position-fixed {
 .header-4dx {
     width: 40px;
 }
+.header-4dx {
+    width: 40px;
+}
 .theater-name {
     font-size: 20px;
 }
@@ -233,7 +250,7 @@ header .position-fixed {
 /* IMAXサブヘッダー */
 .type-imax .sub-header {
     background: #0072ce;
-    background: linear-gradient(to top left, #2452c6, #0072ce);
+    background: linear-gradient(to right, #2452c6, #0072ce);
 }
 .type-imax .sub-header ul li {
     width: 20%;
@@ -257,7 +274,7 @@ header .position-fixed {
 /* 4dxサブヘッダー */
 .type-4dx .sub-header {
     background: #ce0000;
-    background: linear-gradient(to top left, #ce0000, #ce0000);
+    background: linear-gradient(to right, #ce0000, #a90303);
 }
 .type-4dx .sub-header ul li {
     width: 20%;
@@ -266,6 +283,29 @@ header .position-fixed {
     color: #FFF !important;
 }
 .type-4dx .sub-header ul .active a {
+    border-bottom: 4px solid #FFF;
+}
+/* screen-xヘッダー */
+.type-scx header,
+.type-scx .header {
+    height: 90px;
+}
+.type-scx .header .logo {
+    width: 300px;
+}
+
+/* SCREEN-Xサブヘッダー */
+.type-scx .sub-header {
+    background: #ff4d00;
+    background: linear-gradient(to right, #f66e00, #ff4d00);
+}
+.type-scx .sub-header ul li {
+    width: 20%;
+}
+.type-scx .sub-header .active a {
+    color: #FFF !important;
+}
+.type-scx .sub-header ul .active a {
     border-bottom: 4px solid #FFF;
 }
 
@@ -294,7 +334,7 @@ header .position-fixed {
 }
 .slider .pagination .swiper-pagination-bullet {
     width: 20px;
-    height: 3px;
+    height: 2px;
     display: block;
     border-radius: 0;
     background: #333;
@@ -304,7 +344,7 @@ header .position-fixed {
 .slider .pagination .swiper-pagination-bullet-active {
     opacity: 1;
 }
-
+.type-scx .slider .pagination .swiper-pagination-bullet,
 .type-4dx .slider .pagination .swiper-pagination-bullet,
 .type-imax .slider .pagination .swiper-pagination-bullet {
     background: #565656;
@@ -315,6 +355,9 @@ header .position-fixed {
 }
 .type-4dx .slider .pagination .swiper-pagination-bullet-active {
     background: #ce0000;
+}
+.type-scx .slider .pagination .swiper-pagination-bullet-active {
+    background: #f66e00;
 }
 .thumbs li {
     width: 100px;
@@ -360,10 +403,12 @@ header .position-fixed {
 
 /* 特設サイトキャンペーン */
 .type-imax .campaign .swiper-button-next,
+.type-scx .campaign .swiper-button-next,
 .type-4dx .campaign .swiper-button-next {
     background-image: url(/images/common/cp_arrow_wht_right.svg);
 }
 .type-imax .campaign .swiper-button-prev,
+.type-scx .campaign .swiper-button-prev,
 .type-4dx .campaign .swiper-button-prev {
     background-image: url(/images/common/cp_arrow_wht_left.svg);
 }
@@ -398,6 +443,13 @@ header .position-fixed {
 .type-4dx .news li a {
     color: #FFF;
 }
+/* screen-xニュース */
+.type-scx .news li {
+    border-color: rgba(255, 255, 255, 0.2) !important;
+}
+.type-scx .news li a {
+    color: #FFF;
+}
 
 /* インフォメーション */
 .infomation-date {
@@ -427,6 +479,15 @@ header .position-fixed {
     border-color: rgba(255, 255, 255, 0.2) !important;
 }
 .type-4dx .infomation li a { 
+    background-image: url(/images/common/info_arrow_wht.svg); 
+    color: #FFF;
+}
+/* screen-xインフォメーション */
+.type-scx .infomation ul,
+.type-scx .infomation li { 
+    border-color: rgba(255, 255, 255, 0.2) !important;
+}
+.type-scx .infomation li a { 
     background-image: url(/images/common/info_arrow_wht.svg); 
     color: #FFF;
 }
@@ -517,11 +578,12 @@ footer {
 
 /* ボタン */
 .button-01 {
-    border-radius: 4px;
     overflow: hidden;
     max-width: 640px;
+    border-radius: 4px;
 }
 .button-01 a {
+    border-radius: 4px;
     display: block;
     padding: 15px 0;
     text-align: center;
@@ -567,6 +629,7 @@ footer {
     background-repeat: no-repeat;
     background-size: 15px;
     background-position: right 10px center;
+    border-radius:4px;
 }
 
 .minus-button {
@@ -583,6 +646,7 @@ footer {
     background-repeat: no-repeat;
     background-size: 15px;
     background-position: right 10px center;
+    border-radius:4px;
 }
 
 .black-button {
@@ -615,6 +679,10 @@ footer {
     background-color: rgb(43, 107, 226);
 }
 .list-type-4dx {
+    color: #fff;
+    background-color: rgb(182, 1, 1);
+}
+.list-type-scx {
     color: #fff;
     background-color: rgb(182, 1, 1);
 }
@@ -684,6 +752,10 @@ footer {
     }
     .type-4dx header, 
     .type-4dx .header {
+        height: 60px;
+    }
+    .type-scx header, 
+    .type-scx .header {
         height: 60px;
     }
     .theater-name {
@@ -770,7 +842,10 @@ footer {
         width: 160px;
     }
     .type-4dx .header .logo {
-        width: 180px;
+        width: 250px;
+    }
+    .type-scx .header .logo {
+        width: 200px;
     }
     .footer-bnr li {
         width: auto;

@@ -25,7 +25,7 @@
             </a>
         </div>
         <div class="flex-fill">
-            <a href="{{ path_for('schedule_list') }}" class="d-block h-100">
+            <a href="{{ path_for('schedule_list', {}, { showType: 1, theater: theater.getId() }) }}" class="d-block h-100">
                 <div class="disabled">
                     <img src="/images/common/sp_nav_movie_act.svg">
                     <p class="x-small mb-0">上映<br>予定作品</p>
