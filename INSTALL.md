@@ -32,6 +32,9 @@ Azure Web Appsのアプリケーション設定で設定する場合は **APPSET
 |名前|値|説明|
 |:--|:--|:--|
 |APPSETTING_ENV|'prod' or 'dev'|アプリケーションの実行環境|
+|APPSETTING_COA_SCHEDULE|'prod' or 'prod_and_test'|コアシステムズ様スケジュールの接続環境|
+|APPSETTING_MV_AD|'true' or 'false'|ムービーウォーカー様広告のサポート|
+|APPSETTING_MP_TICKET|'prod' or 'test' or 'dev'|MPオンラインチケット|
 
 #### 接続文字列
 
@@ -47,9 +50,6 @@ Azure Web Appsのアプリケーション設定で設定する場合は **MYSQLC
 |MYSQLCONNSTR_SSL|'true' or 'false'|MySQLにSSL接続するか|
 |CUSTOMCONNSTR_STORAGE_NAME|[storage name]|Azure Storage名|
 |CUSTOMCONNSTR_STORAGE_KEY|[storage access key]|Azure Sotrageのアクセスキー|
-|CUSTOMCONNSTR_COA_SCHEDULE|'prod' or 'prod_and_test'|コアシステムズ様スケジュールの接続環境|
-|CUSTOMCONNSTR_MV_AD|'true' or 'false'|ムービーウォーカー様広告のサポート|
-|CUSTOMCONNSTR_MP_TICKET|'prod' or 'test' or 'dev'|MPオンラインチケット|
 
 ### ３．Doctrine
 
