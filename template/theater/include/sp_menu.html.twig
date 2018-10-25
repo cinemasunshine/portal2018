@@ -1,0 +1,45 @@
+<div class="sp-menu d-md-none d-none position-fixed">
+        <ul>
+                <li>
+                    <a class="d-block text-white p-3 border-bottom border-dark-gray bg-dark-gray">{{ theater.getNameJa() }} | 劇場メニュー</a>
+                </li>
+                <li>
+                    <a href="{{ path_for('theater', { name: theater.getName() }) }}" class="d-block text-white p-3 border-bottom border-dark-gray">TOP/上映スケジュール<br><span class="x-small">TOP/SCHEDULE</span></a>
+                </li>
+                <li>
+                    <a href="{{ path_for('theater_news_list', { name: theater.getName() }) }}" class="d-block text-white p-3 border-bottom border-dark-gray">NEWS&INFO<br><span class="x-small">NEWS&INFORMATION</span></a>
+                </li>
+                <li>
+                    <a href="{{ path_for('theater_advance_ticket', { name: theater.getName() }) }}" class="d-block text-white p-3 border-bottom border-dark-gray">前売券情報<br><span class="x-small">ADVANCE TICKET</span></a>
+                </li>
+                <li>
+                    <a href="{{ path_for('theater_concession', { name: theater.getName() }) }}" class="d-block text-white p-3 border-bottom border-dark-gray">コンセッション<br><span class="x-small">CONCESSION</span></a>
+                </li>
+                <li>
+                    <a href="{{ path_for('theater_admission', { name: theater.getName() }) }}" class="d-block text-white p-3 border-bottom border-dark-gray">料金案内<br><span class="x-small">ADMISSION</span></a>
+                </li>
+                <li>
+                    <a href="{{ path_for('theater_floor_guide', { name: theater.getName() }) }}" class="d-block text-white p-3 border-bottom border-dark-gray">劇場設備<br><span class="x-small">FLOOR GUIDE</span></a>
+                </li>
+                <li>
+                    <a href="{{ path_for('theater_access', { name: theater.getName() }) }}" class="d-block text-white p-3 border-bottom border-dark-gray">アクセス<br><span class="x-small">ACCESS</span></a>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <a class="d-block text-white p-3 border-bottom border-dark-gray bg-dark-gray">共通メニュー</a>
+                </li>
+                <li>
+                    <a href="{{ path_for('homepage') }}" class="d-block text-white p-3 border-bottom border-dark-gray">総合TOPへ戻る</a>
+                </li>
+                <li>
+                    <a href="{{ path_for('theater_list') }}" class="d-block text-white p-3 border-bottom border-dark-gray">劇場一覧</a>
+                </li>
+                <li>
+                    <a href="{{ path_for('schedule_list') }}" class="d-block text-white p-3 border-bottom border-dark-gray">作品一覧</a>
+                </li>
+                <li>
+                    <a href="{{ path_for('question') }}" class="d-block text-white p-3 border-bottom border-dark-gray">よくあるご質問(Q＆A)</a>
+                </li>
+            </ul>
+</div>
