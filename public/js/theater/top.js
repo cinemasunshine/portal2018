@@ -127,6 +127,16 @@ function createScheduleDate() {
             var index = $('.schedule-slider .swiper-slide').index(target);
             scheduleSwiper.slideTo(index, 0, false);
         });
+        // 前回の選択
+        var json = sessionStorage.getItem('selected');
+        if (json !== null) {
+            var selected = JSON.parse(json);
+            var target = $('.schedule-slider .swiper-slide a[data-date='+ selected.date +']');
+            if (target.length > 0) {
+                target.trigger('click');
+                return;
+            }
+        }
         // スケジュール取得
         getSchedule();
     };
@@ -158,6 +168,16 @@ function selectSchedule(event) {
     $(this)
         .addClass('active border-light-blue bg-blue text-white')
         .removeClass('text-dark-gray');
+
+    // 選択を保存
+    var json = sessionStorage.getItem('selected');
+    var selected = {};
+    if (json !== null) {
+        selected = JSON.parse(json);
+    }
+    selected.date = $(this).attr('data-date');
+    sessionStorage.setItem('selected', JSON.stringify(selected));
+
     getSchedule();
 }
 
