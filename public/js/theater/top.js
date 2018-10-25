@@ -37,7 +37,7 @@ function resizeProcess() {
  */
 function scrollProcess() {
     var scrollClass = 'fixed-top';
-    var headerHeight = $('header').height();
+    var headerHeight = $('header').height() + $('.sub-header').height();
     var scheduleSliderHeight = $('.schedule-slider').height();
     var scheduleHeight = $('.schedule').height();
     var selectedDateHeight = $('.selected-date').height();
