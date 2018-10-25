@@ -261,7 +261,7 @@ header .position-fixed {
 /* IMAXサブヘッダー */
 .type-imax .sub-header-inner {
     background: #0072ce;
-    background: linear-gradient(to right, #2452c6, #0072ce);
+    background: linear-gradient(to right, #0072ce ,#2452c6);
     top: 90px;
 }
 .type-imax .sub-header ul li {
