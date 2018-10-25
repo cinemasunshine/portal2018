@@ -792,6 +792,9 @@ footer {
     .theater .header-company-logo {
         width: 90px;
     }
+    .sub-header {
+        height: 0;
+    }
     .footer-logo img {
         width: 150px;
     }
