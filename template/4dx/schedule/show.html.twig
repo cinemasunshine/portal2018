@@ -34,10 +34,11 @@
     theaters: theaters,
 } only %}
 
-{% if campaigns %}
+{% set campaigns = schedule.getTitle().getCampaigns() %}
+{% if campaigns|length > 0 %}
 <div class="mb-5 py-5 text-white bg-black">
     {% include '4dx/include/campaign.html.twig' with {
-        campaigns: schedule.getTitle().getCampaigns()
+        campaigns: campaigns
     } only %}
 </div>
 {% endif %}

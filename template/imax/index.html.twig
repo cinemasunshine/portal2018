@@ -74,8 +74,10 @@
         soonSchedules: soonSchedules,
     } only %}
 </div>
+
 {% include 'include/adsense/buttom.html.twig' only %}
-{% if campaigns %}
+
+{% if campaigns|length > 0 %}
 <div class="py-5 text-white">
     {% include 'imax/include/campaign.html.twig' with {
         campaigns: campaigns
