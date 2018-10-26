@@ -18,6 +18,12 @@
 } only %}
 {% endblock %}
 
+{% block sp_navbar %}
+{% include 'imax/include/sp_navbar.html.twig' with {
+    active: 'title'
+} only %}
+{% endblock %}
+
 {% block contents %}
 <div class="breadcrumb-list d-none d-md-block small width mx-auto mb-5 px-2 text-white">
     <a class="text-white" href="{{ path_for('homepage') }}">ホーム</a>

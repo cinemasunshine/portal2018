@@ -52,7 +52,7 @@
     {% include 'include/adsense/footer.html.twig' only %}
     {% include 'imax/include/footer_navbar.html.twig' %}
     {% include 'imax/include/footer.html.twig' %}
-    {% include 'imax/include/sp_navbar.html.twig' %}
+    {% block sp_navbar %}{% endblock %}
 </body>
 
 </html>
