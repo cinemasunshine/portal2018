@@ -47,7 +47,9 @@
         theater: theater
     } only %}
     
-    {% include 'theater/include/sp_menu.html.twig' only %}
+    {% include 'theater/include/sp_menu.html.twig' with {
+        theater: theater
+    } only %}
     
     {% block navbar %}{% endblock %}
     
