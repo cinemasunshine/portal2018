@@ -61,7 +61,7 @@
     </div>
 </div>
 
-{% include 'include/adsense/top.html.twig' only %}
+{% include 'template/include/adsense/top.html.twig' only %}
 
 {% include 'imax/include/index/news.html.twig' with {
     newsList: newsList
@@ -74,7 +74,7 @@
         soonSchedules: soonSchedules,
     } only %}
 </div>
-{% include 'include/adsense/buttom.html.twig' only %}
+{% include 'template/include/adsense/buttom.html.twig' only %}
 {% if campaigns %}
 <div class="py-5 text-white">
     {% include 'imax/include/campaign.html.twig' with {
