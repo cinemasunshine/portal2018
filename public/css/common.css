@@ -858,10 +858,10 @@ footer {
         -webkit-overflow-scrolling: touch;
     }
     .type-imax .header .logo {
-        width: 160px;
+        width: 200px;
     }
     .type-4dx .header .logo {
-        width: 250px;
+        width: 200px;
     }
     .type-scx .header .logo {
         width: 200px;
