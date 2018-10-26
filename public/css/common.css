@@ -544,8 +544,14 @@ header .position-fixed {
     margin-bottom: 1px;
 }
 
-.active p {
+.type-imax .navigation .active p {
     color: rgb(7, 135, 242);
+}
+.type-4dx .navigation .active p {
+    color:#db0606;
+}
+.type-scx .navigation .active p {
+    color:#fe7200;
 }
 .disabled {
     display: none;
