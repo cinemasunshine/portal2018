@@ -247,5 +247,6 @@ class FourdxController extends SpecialSiteController
      */
     public function executeTheater($request, $response, $args)
     {
+        $this->data->set('theaters', $this->get4dxTheaters());
     }
 }
