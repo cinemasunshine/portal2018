@@ -67,7 +67,9 @@
         theater: theater
     } only %}
     {% include 'include/footer_navbar.html.twig' only %}
-    {% include 'include/footer_banner.html.twig' only %}
+    {% include 'theater/include/footer_banner.html.twig' with {
+        theater: theater
+    } only %}
     {% include 'include/footer.html.twig' only %}
 </body>
 </html>
