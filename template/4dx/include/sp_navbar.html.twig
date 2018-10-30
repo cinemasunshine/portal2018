@@ -2,10 +2,11 @@
     <div class="navigation fixed-bottom d-flex text-center shadow-01">
         <div class="flex-fill">
             <a href="{{ path_for('4dx') }}" class="d-block h-100">
-                <div class="active">
                 {% if active == 'top' %}
+                <div class="active">
                     <img src="/images/common/sp_nav_sptop_4dx_act.svg">
                 {% else %}
+                <div>
                     <img src="/images/common/sp_nav_sptop_noact.svg">
                 {% endif %}
                     <p class="x-small mb-0">TOP</p>
@@ -14,10 +15,11 @@
         </div>
         <div class="flex-fill">
             <a href="{{ path_for('4dx_about') }}" class="d-block h-100">
-                <div class="active">
                 {% if active == 'about' %}
+                <div class="active">
                     <img src="/images/common/sp_nav_4dx_about_act.svg">
                 {% else %}
+                <div>
                     <img src="/images/common/sp_nav_about_noact.svg">
                 {% endif %}
                     <p class="x-small mb-0">4DXとは?</p>
@@ -26,10 +28,11 @@
         </div>
         <div class="flex-fill">
             <a href="{{ path_for('4dx_schedule_list') }}" class="d-block h-100">
-                <div class="active">
                 {% if active == 'title' %}
+                <div class="active">
                     <img src="/images/common/sp_nav_4dx_movie_act.svg">
                 {% else %}
+                <div>
                     <img src="/images/common/sp_nav_special_movie_noact.svg">
                 {% endif %}
                     <p class="x-small mb-0">作品一覧</p>
@@ -38,10 +41,11 @@
         </div>
         <div class="flex-fill">
             <a href="{{ path_for('4dx_news_list') }}" class="d-block h-100">
-                <div class="active">
                 {% if active == 'news' %}
+                <div class="active">
                     <img src="/images/common/sp_nav_4dx_news_act.svg">
                 {% else %}
+                <div>
                     <img src="/images/common/sp_nav_news_noact.svg">
                 {% endif %}
                     <p class="x-small mb-0">NEWS&INFO</p>
@@ -50,10 +54,11 @@
         </div>
         <div class="flex-fill">
             <a href="{{ path_for('4dx_theater') }}" class="d-block h-100">
-                <div class="active">
                 {% if active == 'theater' %}
+                <div class="active">
                     <img src="/images/common/sp_nav_tinfo_4dx_act.svg">
                 {% else %}
+                <div>
                     <img src="/images/common/sp_nav_tinfo_noact.svg">
                 {% endif %}
                     <p class="x-small mb-0">劇場情報</p>
