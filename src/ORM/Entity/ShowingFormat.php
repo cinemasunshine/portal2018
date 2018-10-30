@@ -31,12 +31,9 @@ class ShowingFormat extends AbstractEntity
     const SYSTEM_BTSX = 9;
     const SYSTEM_NONE = 99;
     
-    /** @var array */
-    protected static $voiceList = [
-        1 => '字幕',
-        2 => '吹替',
-        3 => 'なし', // SASAKI-297
-    ];
+    const VOICE_SUBTITLE = 1;
+    const VOICE_DUB = 2;
+    const VOICE_NONE = 3;
     
     /**
      * id
@@ -167,16 +164,6 @@ class ShowingFormat extends AbstractEntity
     public function getVoice()
     {
         return $this->voice;
-    }
-    
-    /**
-     * get voice label
-     *
-     * @return string|null
-     */
-    public function getVoiceLabel()
-    {
-        return self::$voiceList[$this->getVoice()] ?? null;
     }
     
     /**
