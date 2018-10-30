@@ -10,8 +10,13 @@
         </div>
         <div class="movie-info pt-md-2 pl-md-3">
             <div class="movie-detail mb-3">
+            
+            {% if schedule.getStartDate() > date() %}
+                <p class="text-gray release_date mb-1">{{ schedule.getStartDate()|date('Y/m/d') }}公開</p>
+            {% endif %}
+                
                 <p class="title x-large"><a class="" href="{{ path_for('schedule_show', { schedule: schedule.getId() }) }}">{{ title.getName() }}</a></p>
-                <div class="d-flex mb-3">
+                <div class="d-flex mb-1">
                 {% set systems = [] %}
                 {% for showingFormat in schedule.getShowingFormats() %}
                     {% set systems = systems|merge([ showingFormat.getSystem() ]) %}

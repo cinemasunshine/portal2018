@@ -25,7 +25,7 @@
         <span class="font-weight-bold mx-3">劇場施設</span>
     </div>
     
-    {% include 'theater/include/floor_guide/' ~ theater.getName() ~ '.html.twig' %}
+    {% include 'theater/include/floor_guide/' ~ theater.getName() ~ '.html.twig' only %}
 </div>
 
 {% include 'theater/include/infomation.html.twig' with {

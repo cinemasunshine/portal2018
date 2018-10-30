@@ -47,7 +47,9 @@
         theater: theater
     } only %}
     
-    {% include 'include/sp_menu.html.twig' %}
+    {% include 'theater/include/sp_menu.html.twig' with {
+        theater: theater
+    } only %}
     
     {% block navbar %}{% endblock %}
     
@@ -64,8 +66,10 @@
     {% include 'theater/include/sp_navbar.html.twig' with {
         theater: theater
     } only %}
-    {% include 'include/footer_navbar.html.twig' %}
-    {% include 'include/footer_banner.html.twig' %}
-    {% include 'include/footer.html.twig' %}
+    {% include 'include/footer_navbar.html.twig' only %}
+    {% include 'theater/include/footer_banner.html.twig' with {
+        theater: theater
+    } only %}
+    {% include 'include/footer.html.twig' only %}
 </body>
 </html>

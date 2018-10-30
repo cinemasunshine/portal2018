@@ -10,6 +10,11 @@
     </div>
         <div class="movie-info pt-md-2 pl-md-3 px-3 px-md-0">
             <div class="movie-detail mb-3">
+            
+            {% if schedule.getStartDate() > date() %}
+                <p class="text-gray release_date mb-1">{{ schedule.getStartDate()|date('Y/m/d') }}公開</p>
+            {% endif %}
+                
                 <h2 class="title x-large font-weight-bold mb-3">{{ title.getName() }}</a></h2>
                 <div class="d-flex mb-3">
                 {% set systems = [] %}

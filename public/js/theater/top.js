@@ -37,7 +37,7 @@ function resizeProcess() {
  */
 function scrollProcess() {
     var scrollClass = 'fixed-top';
-    var headerHeight = $('header').height();
+    var headerHeight = $('header').height() + $('.sub-header').height();
     var scheduleSliderHeight = $('.schedule-slider').height();
     var scheduleHeight = $('.schedule').height();
     var selectedDateHeight = $('.selected-date').height();
@@ -127,6 +127,16 @@ function createScheduleDate() {
             var index = $('.schedule-slider .swiper-slide').index(target);
             scheduleSwiper.slideTo(index, 0, false);
         });
+        // 前回の選択
+        var json = sessionStorage.getItem('selected');
+        if (json !== null) {
+            var selected = JSON.parse(json);
+            var target = $('.schedule-slider .swiper-slide a[data-date='+ selected.date +']');
+            if (target.length > 0) {
+                target.trigger('click');
+                return;
+            }
+        }
         // スケジュール取得
         getSchedule();
     };
@@ -158,6 +168,16 @@ function selectSchedule(event) {
     $(this)
         .addClass('active border-light-blue bg-blue text-white')
         .removeClass('text-dark-gray');
+
+    // 選択を保存
+    var json = sessionStorage.getItem('selected');
+    var selected = {};
+    if (json !== null) {
+        selected = JSON.parse(json);
+    }
+    selected.date = $(this).attr('data-date');
+    sessionStorage.setItem('selected', JSON.stringify(selected));
+
     getSchedule();
 }
 
@@ -297,6 +317,13 @@ function createScheduleFilmPerformanceDom(performance, film) {
         url: performance.time.url,
         late: performance.time.late
     };
+    
+    var target = '_self';
+    
+    if (data.url.match(/www1.cinemasunshine.jp/) !== null) {
+        target = '_blank';
+    }
+    
     var lateClass = (data.late === 1)
         ? 'first'
         : (data.late === 2)
@@ -321,7 +348,7 @@ function createScheduleFilmPerformanceDom(performance, film) {
                     ? '窓口'
                     : '予約不可';
     var pcDom = $('<li class="mb-3">\
-<a class="d-block position-relative py-2 mx-2 '+ lateClass + ' ' + pcAvailableColorClass + '" href="' + data.url + '">\
+<a class="d-block position-relative py-2 mx-2 '+ lateClass + ' ' + pcAvailableColorClass + '" href="' + data.url + '" target="' + target + '">\
     <div class="mb-2"><strong class="large">'+ data.startTime + '</strong><span>～' + data.endTime + '</span></div>\
     <div class="small mb-2">'+ data.screenName + '</div>\
     <div class="d-flex align-items-center justify-content-center">' + pcAvailable + '</div>\
@@ -337,7 +364,7 @@ function createScheduleFilmPerformanceDom(performance, film) {
                     ? 'bg-light-gray text-dark-gray'
                     : 'bg-light-gray text-dark-gray';
     var spAvailable = (data.available === 0)
-        ? '<a class="d-flex align-items-center justify-content-center py-3 bg-blue text-white" href="' + data.url + '">\
+        ? '<a class="d-flex align-items-center justify-content-center py-3 bg-blue text-white" href="' + data.url + '" target="' + target + '>\
         <span class="mr-2 status-01">○</span><span>購入</span>\
     </a>'
         : (data.available === 1)

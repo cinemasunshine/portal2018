@@ -46,7 +46,9 @@ function selectTab(event) {
     event.preventDefault();
     var activeClass = ($('body').hasClass('type-4dx'))
         ? 'text-red border-red'
-        : 'text-blue border-blue';
+        : ($('body').hasClass('type-scx'))
+            ? 'text-orange border-orange'
+            : 'text-blue border-blue';
     $('.tabs .active')
         .removeClass('active')
         .find('a')

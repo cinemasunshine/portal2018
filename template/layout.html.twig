@@ -43,16 +43,16 @@
     </head>
     
     <body>
-        {% include 'include/header.html.twig' %}
-        {% include 'include/sp_menu.html.twig' %}
+        {% include 'include/header.html.twig' only %}
+        {% include 'include/sp_menu.html.twig' only %}
         
         <div class="contents">
             {% block contents %}{% endblock %}
         </div>
         
         {% include 'include/special_site.html.twig' only %}
-        {% include 'include/footer_navbar.html.twig' %}
-        {% include 'include/footer_banner.html.twig' %}
-        {% include 'include/footer.html.twig' %}
+        {% include 'include/footer_navbar.html.twig' only %}
+        {% include 'include/footer_banner.html.twig' only %}
+        {% include 'include/footer.html.twig' only %}
     </body>
 </html>

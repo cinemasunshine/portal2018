@@ -2,60 +2,65 @@
     <div class="navigation fixed-bottom d-flex text-center shadow-01">
         <div class="flex-fill">
             <a href="{{ path_for('imax') }}" class="d-block h-100">
+                {% if active == 'top' %}
                 <div class="active">
-                    <img src="/images/common/sp_nav_scadule_act.svg">
-                    <p class="x-small mb-0">TOP</p>
-                </div>
-                <div class="flex-fill disabled">
-                    <img src="/images/common/sp_nav_scadule_noact.svg">
+                    <img src="/images/common/sp_nav_sptop_act.svg">
+                {% else %}
+                <div>
+                    <img src="/images/common/sp_nav_sptop_noact.svg">
+                {% endif %}
                     <p class="x-small mb-0">TOP</p>
                 </div>
             </a>
         </div>
         <div class="flex-fill">
             <a href="{{ path_for('imax_about') }}" class="d-block h-100">
-                <div class="disabled">
-                    <img src="/images/common/sp_nav_news_act.svg">
-                    <p class="x-small mb-0">IMAXとは？</p>
-                </div>
+                {% if active == 'about' %}
+                <div class="active">
+                    <img src="/images/common/sp_nav_about_act.svg">
+                {% else %}
                 <div>
-                    <img src="/images/common/sp_nav_news_noact.svg">
+                    <img src="/images/common/sp_nav_about_noact.svg">
+                {% endif %}
                     <p class="x-small mb-0">IMAXとは？</p>
                 </div>
             </a>
         </div>
         <div class="flex-fill">
             <a href="{{ path_for('imax_schedule_list') }}" class="d-block h-100">
-                <div class="disabled">
-                    <img src="/images/common/sp_nav_ticket_act.svg">
-                    <p class="x-small mb-0">作品一覧</p>
-                </div>
+                {% if active == 'title' %}
+                <div class="active">
+                    <img src="/images/common/sp_nav_special_movie_act.svg">
+                {% else %}
                 <div>
-                    <img src="/images/common/sp_nav_ticket_noact.svg">
+                    <img src="/images/common/sp_nav_special_movie_noact.svg">
+                {% endif %}
                     <p class="x-small mb-0">作品一覧</p>
                 </div>
             </a>
         </div>
         <div class="flex-fill">
             <a href="{{ path_for('imax_news_list') }}" class="d-block h-100">
-                <div class="disabled">
+                {% if active == 'news' %}
+                <div class="active">
                     <img src="/images/common/sp_nav_movie_act.svg">
-                    <p class="x-small mb-0">NEWS&INFO</p>
-                </div>
+                {% else %}
                 <div>
                     <img src="/images/common/sp_nav_movie_noact.svg">
+                {% endif %}
                     <p class="x-small mb-0">NEWS&INFO</p>
                 </div>
             </a>
         </div>
         <div class="flex-fill">
             <a href="{{ path_for('imax_theater') }}" class="d-block h-100">
-                <div class="disabled">
-                    <img src="/images/common/sp_nav_food_act.svg">
-                    <p class="x-small mb-0">劇場情報</p>
-                </div>
+                {% if active == 'theater' %}
+                <div class="active">
+                    <img src="/images/common/sp_nav_tinfo_act.svg">
+                {% else %}
                 <div>
-                    <img src="/images/common/sp_nav_food_noact.svg">
+                    <img src="/images/common/sp_nav_tinfo_noact.svg">
+                {% endif %}
                     <p class="x-small mb-0">劇場情報</p>
                 </div>
             </a>

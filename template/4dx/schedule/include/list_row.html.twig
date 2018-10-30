@@ -10,9 +10,14 @@
         </div>
         <div class="movie-info pt-md-2 pl-md-3">
             <div class="movie-detail mb-3">
+            
+            {% if schedule.getStartDate() > date() %}
+                <p class="text-gray release_date mb-1">{{ schedule.getStartDate()|date('Y/m/d') }}公開</p>
+            {% endif %}
+                
                 <p class="title x-large"><a class="text-white" href="{{ path_for('4dx_schedule_show', { schedule: schedule.getId() }) }}">{{ title.getName() }}</a></p>
                 
-                <div class="d-flex mb-3">
+                <div class="d-flex mb-1">
                 {% set systems = [] %}
                 {% for showingFormat in schedule.getShowingFormats() %}
                     {% set systems = systems|merge([ showingFormat.getSystem() ]) %}
@@ -61,7 +66,7 @@
                         
                         <div class="area-button mb-md-2 pr-md-2 mb-2 px-1 px-md-0 small font-weight-bold">
                         {% if isShowing %}
-                            <a href="{{ path_for('theater', { name: theater.getName() }) }}" data-theaterCode="{{ theater.getId() }}" class="d-flex align-items-center justify-content-center bg-transparent text-white border-red">{{ theater.getNameJa() }}</a>
+                            <a href="{{ path_for('theater', { name: theater.getName() }) }}" data-theaterCode="{{ theater.getId() }}" class="d-flex align-items-center justify-content-center text-white bg-red border-red">{{ theater.getNameJa() }}</a>
                         {% else %}
                             <span class="d-flex align-items-center justify-content-center text-gray border-gray bg-transparent">{{ theater.getNameJa() }}</span>
                         {% endif %}

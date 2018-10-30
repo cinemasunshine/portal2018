@@ -20,6 +20,12 @@
 } only %}
 {% endblock %}
 
+{% block sp_navbar %}
+{% include '4dx/include/sp_navbar.html.twig' with {
+    active: 'top'
+} only %}
+{% endblock %}
+
 {% block contents %}
 <div class="breadcrumb-list d-none d-md-block small width mx-auto mb-3 px-2 text-white">
     <a class="text-white" href="{{ path_for('homepage') }}">ホーム</a>
@@ -58,7 +64,7 @@
         </div>
     </div>
 </div>
-
+{% include '4dx/include/adsense/top.html.twig' only %}
 {% include '4dx/include/index/news.html.twig' with {
     newsList: newsList
 } only %}
@@ -71,7 +77,9 @@
     } only %}
 </div>
 
-{% if campaigns %}
+{% include '4dx/include/adsense/buttom.html.twig' only %}
+
+{% if campaigns|length > 0 %}
 <div class="py-5 text-white">
     {% include '4dx/include/campaign.html.twig' with {
         campaigns: campaigns

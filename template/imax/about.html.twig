@@ -1,11 +1,21 @@
 {% extends "imax/layout.html.twig" %}
+{% block title %}IMAX&reg;とは? | {{ parent() }}IMAX特設サイト{% endblock %}
 
+{% block description %}シネマサンシャインIMAX特設サイトのIMAX&reg;説明ページです。IMAXの設備・機能に関する情報をご案内{% endblock %}
+
+{% block keywords %}{{ parent() }},IMAX,IMAX3D,料金{% endblock %}
 {% block css %}
 <link href="/css/imax/about.css" rel="stylesheet">
 {% endblock %}
 
 {% block navbar %}
 {% include 'imax/include/navbar.html.twig' with {
+    active: 'about'
+} only %}
+{% endblock %}
+
+{% block sp_navbar %}
+{% include 'imax/include/sp_navbar.html.twig' with {
     active: 'about'
 } only %}
 {% endblock %}
@@ -21,7 +31,7 @@
 
 <div class="width mx-auto mb-3 px-2 text-white">
     <div class="mb-5">
-        <h2 class="font-weight-bold large text-center text-md-left mb-4">IMAX&reg;とは？</h2>
+        <h2 class="font-weight-bold large text-center text-md-left py-4">IMAX&reg;とは？</h2>
         <div class="mb-4"><img class="w-100" src="/images/imax/about/imax_top_03.jpg"></div>
         <p>
             映像やサウンドのクオリティはもちろん、客席の角度やスクリーンからの距離などシアター空間全体を独自に設計。<br>

@@ -227,6 +227,17 @@ header .position-fixed {
 }
 
 /* サブヘッダー */
+.sub-header {
+    height: 59px;
+}
+.sub-header-inner {
+    background-color: #FFF;
+    position: fixed;
+    top: 71px;
+    left: 0;
+    right: 0;
+    z-index: 1030;
+}
 .sub-header ul li {
     width: 14.28%;
     max-width: 150px;
@@ -248,9 +259,10 @@ header .position-fixed {
 }
 
 /* IMAXサブヘッダー */
-.type-imax .sub-header {
+.type-imax .sub-header-inner {
     background: #0072ce;
-    background: linear-gradient(to right, #2452c6, #0072ce);
+    background: linear-gradient(to right, #0072ce ,#2452c6);
+    top: 90px;
 }
 .type-imax .sub-header ul li {
     width: 20%;
@@ -272,9 +284,10 @@ header .position-fixed {
 }
 
 /* 4dxサブヘッダー */
-.type-4dx .sub-header {
+.type-4dx .sub-header-inner {
     background: #ce0000;
     background: linear-gradient(to right, #ce0000, #a90303);
+    top: 90px;
 }
 .type-4dx .sub-header ul li {
     width: 20%;
@@ -295,9 +308,10 @@ header .position-fixed {
 }
 
 /* SCREEN-Xサブヘッダー */
-.type-scx .sub-header {
+.type-scx .sub-header-inner {
     background: #ff4d00;
     background: linear-gradient(to right, #f66e00, #ff4d00);
+    top: 90px;
 }
 .type-scx .sub-header ul li {
     width: 20%;
@@ -494,7 +508,7 @@ header .position-fixed {
   
 /* 特設サイト */
 .width2 {
-    max-width: 653px;
+    max-width: 760px;
 }
   
 .special-sites-parts {
@@ -530,8 +544,14 @@ header .position-fixed {
     margin-bottom: 1px;
 }
 
-.active p {
+.type-imax .navigation .active p {
     color: rgb(7, 135, 242);
+}
+.type-4dx .navigation .active p {
+    color:#db0606;
+}
+.type-scx .navigation .active p {
+    color:#fe7200;
 }
 .disabled {
     display: none;
@@ -730,6 +750,8 @@ footer {
     left: 0;
     right: 0;
     bottom: 0;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 @media (max-width: 767.98px) {
@@ -775,6 +797,9 @@ footer {
     }
     .theater .header-company-logo {
         width: 90px;
+    }
+    .sub-header {
+        height: 0;
     }
     .footer-logo img {
         width: 150px;
@@ -839,10 +864,10 @@ footer {
         -webkit-overflow-scrolling: touch;
     }
     .type-imax .header .logo {
-        width: 160px;
+        width: 200px;
     }
     .type-4dx .header .logo {
-        width: 250px;
+        width: 200px;
     }
     .type-scx .header .logo {
         width: 200px;
@@ -852,5 +877,10 @@ footer {
     }
     footer {
         padding-top: 0;    
+    }
+    .type-imax footer,
+    .type-4dx footer,
+    .type-scx footer {
+        padding-bottom: 60px;
     }
 }

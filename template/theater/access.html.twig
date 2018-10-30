@@ -25,7 +25,7 @@
         <span class="font-weight-bold mx-3">アクセス</span>
     </div>
     
-    {% include 'theater/include/access/' ~ theater.getName() ~ '.html.twig' %}
+    {% include 'theater/include/access/' ~ theater.getName() ~ '.html.twig' only %}
 </div>
 
 {% include 'theater/include/infomation.html.twig' with {
