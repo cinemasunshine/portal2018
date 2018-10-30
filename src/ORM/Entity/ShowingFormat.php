@@ -29,19 +29,7 @@ class ShowingFormat extends AbstractEntity
     const SYSTEM_BESTIA = 7;
     const SYSTEM_BESTIA3D = 8;
     const SYSTEM_BTSX = 9;
-    
-    /** @var array */
-    protected static $systemList = [
-        self::SYSTEM_2D       => '2D',
-        self::SYSTEM_3D       => '3D',
-        self::SYSTEM_4DX      => '4DX',
-        self::SYSTEM_4DX3D    => '4DX3D',
-        self::SYSTEM_IMAX     => 'IMAX',
-        self::SYSTEM_IMAX3D   => 'IMAX3D',
-        self::SYSTEM_BESTIA   => 'BESTIA',
-        self::SYSTEM_BESTIA3D => 'BESTIA3D',
-        self::SYSTEM_BTSX     => 'dts-X',
-    ];
+    const SYSTEM_NONE = 99;
     
     /** @var array */
     protected static $voiceList = [
@@ -157,16 +145,6 @@ class ShowingFormat extends AbstractEntity
     public function getSystem()
     {
         return $this->system;
-    }
-    
-    /**
-     * get system label
-     *
-     * @return string|null
-     */
-    public function getSystemLabel()
-    {
-        return self::$systemList[$this->getSystem()] ?? null;
     }
     
     /**
