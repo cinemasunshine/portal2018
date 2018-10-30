@@ -67,7 +67,9 @@ form .form-control {
 .tabs a {
     border-bottom: 4px solid;
 }
-
+.release_date{
+    font-size: 1rem;
+}
 
 @media (max-width: 767.98px) {
     .area-button {
