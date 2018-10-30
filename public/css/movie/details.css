@@ -99,6 +99,7 @@
         width: auto;
         background-color: #ececec;
     }
+    .type-scx .movie-image,
     .type-imax .movie-image,
     .type-4dx .movie-image {
         width: auto;
@@ -133,6 +134,7 @@
         background-color: #ddd;
         padding: 0.5rem 0.25rem;
     }
+    .type-scx .movie-area,
     .type-imax .movie-area,
     .type-4dx .movie-area {
         margin: -0.5rem;
