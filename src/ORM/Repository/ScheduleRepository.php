@@ -29,7 +29,8 @@ class ScheduleRepository extends EntityRepository
         $qb
             ->where('s.isDeleted = false')
             ->andWhere('s.publicStartDt <= CURRENT_TIMESTAMP()')
-            ->andWhere('s.publicEndDt > CURRENT_TIMESTAMP()');
+            ->andWhere('s.publicEndDt > CURRENT_TIMESTAMP()')
+            ->orderBy('s.startDate', 'ASC');
         
         return $qb;
     }
