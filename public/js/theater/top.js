@@ -87,11 +87,14 @@ function createScheduleDate() {
             var ddd = moment(date.replace(/-/g, '')).format('ddd');
             var hasPreSale = data.has_pre_sale;
             var usable = data.usable;
-            var className = (usable)
-                ? (index === 0)
-                    ? 'active border-light-blue bg-blue text-white'
-                    : 'text-dark-gray'
-                : 'text-gray bg-dark-gray not-event';
+            // var className = (usable)
+            //     ? (index === 0)
+            //         ? 'active border-light-blue bg-blue text-white'
+            //         : 'text-dark-gray'
+            //     : 'text-gray bg-dark-gray not-event';
+            var className = (index === 0)
+                ? 'active border-light-blue bg-blue text-white'
+                : 'text-dark-gray';
             var service = (day === '01')
                 ? 'ファーストデイ'
                 : (day === '15')
@@ -131,7 +134,7 @@ function createScheduleDate() {
         var json = sessionStorage.getItem('selected');
         if (json !== null) {
             var selected = JSON.parse(json);
-            var target = $('.schedule-slider .swiper-slide a[data-date='+ selected.date +']');
+            var target = $('.schedule-slider .swiper-slide a[data-date=' + selected.date + ']');
             if (target.length > 0) {
                 target.trigger('click');
                 return;
@@ -317,13 +320,13 @@ function createScheduleFilmPerformanceDom(performance, film) {
         url: performance.time.url,
         late: performance.time.late
     };
-    
+
     var target = '_self';
-    
+
     if (data.url.match(/www1.cinemasunshine.jp/) !== null) {
         target = '_blank';
     }
-    
+
     var lateClass = (data.late === 1)
         ? 'first'
         : (data.late === 2)
