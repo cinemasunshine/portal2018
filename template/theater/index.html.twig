@@ -36,6 +36,13 @@
 } only %}
 {% endblock %}
 
+{% block sp_navbar %}
+{% include 'theater/include/sp_navbar.html.twig' with {
+    theater: theater,
+    active: 'top',
+} only %}
+{% endblock %}
+
 {% block contents %}
 <div class="mb-3">
     {% include 'theater/include/index/slider.html.twig' with {
