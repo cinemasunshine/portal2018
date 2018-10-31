@@ -26,6 +26,12 @@ class AdvanceTicketRepository extends EntityRepository
     {
         $qb = $this->createQueryBuilder('t');
         $qb
+            /**
+             * orderByでNULLを最後にするためのSELECT
+             * ISNULL関数は使えないのでCASEで対応
+             * 結果セットには不要なのでHIDDENを付ける
+             */
+            ->addSelect('CASE WHEN s.publishingExpectedDate IS NULL THEN 1 ELSE 0 END AS HIDDEN publishingExpectedDateIsNull')
             ->join('t.advanceSale', 's')
             ->where('t.isDeleted = false')
             ->andWhere('s.isDeleted = false')
@@ -36,7 +42,13 @@ class AdvanceTicketRepository extends EntityRepository
                     $qb->expr()->isNull('s.publishingExpectedDate'),
                     $qb->expr()->gte('s.publishingExpectedDate', 'CURRENT_DATE()')
                 )
-            ));
+            ))
+            /**
+             * NULLを最後にする
+             * IS NULLが使えないのでaddSelectでNULL並び替え用のカラムを追加
+             */
+            ->orderBy('publishingExpectedDateIsNull', 'ASC')
+            ->addOrderBy('s.publishingExpectedDate', 'ASC');
         
         return $qb;
     }
