@@ -5,9 +5,9 @@
 <IfModule mod_rewrite.c>
   RewriteEngine On
   
-  # 旧サイト用ルール SASAKI-313
-  RewriteRule ^sp$ oldpage.html [L]
-  RewriteRule ^sp/.*$ oldpage.html [L]
+  # 旧サイト用ルール SASAKI-320
+  RewriteRule ^sp$ / [L,R=301,QSD]
+  RewriteRule ^sp/.*$ / [L,R=301,QSD]
   
   # Application Rule
   RewriteCond %{REQUEST_FILENAME} !-f
