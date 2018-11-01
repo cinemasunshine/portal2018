@@ -28,6 +28,9 @@ a:hover {
     opacity: 0.7;
     text-decoration: none;
 }
+.pointer {
+    cursor: pointer !important;
+}
 .shadow-01 {
     box-shadow: 0 0 8px rgba(0,0,0,0.35);
 }
@@ -743,6 +746,15 @@ footer {
 }
 .modal-dialog-centered {
     min-height: 100%;
+}
+.modal .close-button {
+    position: absolute;
+    top: -50px;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    z-index: 2000;
+    appearance: none;
 }
 
 /* spハンバーガー */
