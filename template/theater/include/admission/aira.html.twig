@@ -163,13 +163,13 @@
         <div class="container w-100 mw-100 m-0 mb-4 px-1">
             <ul class="row mb-0">
                 <li class="col-md-3 col-6 py-2 mb-4">
-                    <a href="./" class="d-block">
+                    <a href="{{ path_for('theater', { name: theater.getName() }) }}" class="d-block">
                         <div class="border mb-2 image border-gray" style="background-image: url(/images/tmp/theater/facility/facility_02.jpg)"></div>
                         <p class="mb-0"><span class="font-weight-bold">e-box</span><br>当館はe-boxによるインターネットチケット購入に対応しております</p>
                     </a>
                 </li>
                 <li class="col-md-3 col-6 py-2 mb-4">
-                    <a href="/special_ticket" class="d-block">
+                    <a href="{{ path_for('special_ticket') }}" class="d-block">
                         <div class="border mb-2 image border-gray" style="background-image: url(/images/tmp/theater/facility/facility_03.jpg)"></div>
                         <p class="mb-0"><span class="font-weight-bold">特別鑑賞券</span><br>シネマサンシャイン全館でご利用頂ける特別鑑賞券絶賛販売中！</p>
                     </a>
@@ -181,7 +181,7 @@
                     </a>
                 </li>
                 <li class="col-md-3 col-6 py-2 mb-4">
-                    <a href="/mail_magazine" class="d-block">
+                    <a href="{{ path_for('mail_magazine') }}" class="d-block">
                         <div class="border mb-2 image border-gray" style="background-image: url(/images/tmp/theater/facility/facility_05.jpg)"></div>
                         <p class="mb-0"><span class="font-weight-bold">メールマガジン</span><br>お得な情報がいっぱいの無料メール配信サービス</p>
                     </a>
