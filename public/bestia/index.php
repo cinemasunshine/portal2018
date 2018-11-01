@@ -12,7 +12,7 @@
 <body>
 
 <header>
-    <a href="http://www.cinemasunshine.co.jp/"><img src="./_img/logo_cs.png" alt="CINEMA SUNSHINE"></a>
+    <a href="http://www.cinemasunshine.co.jp"><img src="./_img/logo_cs.png" alt="CINEMA SUNSHINE"></a>
 </header>
 
 
