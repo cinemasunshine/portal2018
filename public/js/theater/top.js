@@ -309,10 +309,10 @@ function createScheduleFilmDom(film) {
 /**
  * create random
  * 
- * @param {Integer} max 
- * @param {Integer} min 
+ * @param {Integer} min 最小値
+ * @param {Integer} max 最大値
  */
-function createRandom(max, min) {
+function createRandom(min, max) {
     return Math.floor(Math.random() * (max + 1 - min)) + min;
 }
 

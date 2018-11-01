@@ -63,9 +63,12 @@
     
     {% include 'include/adsense/footer.html.twig' only %}
     
+    {% block sp_navbar %}
     {% include 'theater/include/sp_navbar.html.twig' with {
         theater: theater
     } only %}
+    {% endblock %}
+    
     {% include 'include/footer_navbar.html.twig' only %}
     {% include 'theater/include/footer_banner.html.twig' with {
         theater: theater

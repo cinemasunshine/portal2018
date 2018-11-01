@@ -2,60 +2,65 @@
     <div class="navigation fixed-bottom d-flex text-center shadow-01">
         <div class="flex-fill">
             <a href="{{ path_for('theater', { name: theater.getName() }) }}" class="d-block h-100">
+            {% if active == 'top' %}
                 <div class="active">
                     <img src="/images/common/sp_nav_scadule_act.svg">
-                    <p class="x-small mb-0">TOP/<br>スケジュール</p>
-                </div>
-                <div class="flex-fill disabled">
+            {% else %}
+                <div>
                     <img src="/images/common/sp_nav_scadule_noact.svg">
+            {% endif %}
                     <p class="x-small mb-0">TOP/<br>スケジュール</p>
                 </div>
             </a>
         </div>
         <div class="flex-fill">
             <a href="{{ path_for('theater_news_list', { name: theater.getName() }) }}" class="d-block h-100">
-                <div class="disabled">
+            {% if active == 'news' %}
+                <div class="active">
                     <img src="/images/common/sp_nav_news_act.svg">
-                    <p class="x-small mb-0">NEWS＆<br>INFO</p>
-                </div>
+            {% else %}
                 <div>
                     <img src="/images/common/sp_nav_news_noact.svg">
+            {% endif %}
                     <p class="x-small mb-0">NEWS＆<br>INFO</p>
                 </div>
             </a>
         </div>
         <div class="flex-fill">
             <a href="{{ path_for('schedule_list', {}, { showType: 1, theater: theater.getId() }) }}" class="d-block h-100">
-                <div class="disabled">
+            {% if active == 'schedule' %}
+                <div class="active">
                     <img src="/images/common/sp_nav_movie_act.svg">
-                    <p class="x-small mb-0">上映<br>予定作品</p>
-                </div>
+            {% else %}
                 <div>
                     <img src="/images/common/sp_nav_movie_noact.svg">
+            {% endif %}
                     <p class="x-small mb-0">上映<br>予定作品</p>
                 </div>
             </a>
         </div>
         <div class="flex-fill">
             <a href="{{ path_for('theater_advance_ticket', { name: theater.getName() }) }}" class="d-block h-100">
-                <div class="disabled">
+            {% if active == 'advance-ticket' %}
+                <div class="active">
                     <img src="/images/common/sp_nav_ticket_act.svg">
-                    <p class="x-small mb-0">前売券<br>情報</p>
-                </div>
+            {% else %}
                 <div>
                     <img src="/images/common/sp_nav_ticket_noact.svg">
+            {% endif %}
                     <p class="x-small mb-0">前売券<br>情報</p>
                 </div>
             </a>
         </div>
         <div class="flex-fill">
             <a href="{{ path_for('theater_concession', { name: theater.getName() }) }}" class="d-block h-100">
-                <div class="disabled">
+            {% if active == 'concession' %}
+                <div class="active">
                     <img src="/images/common/sp_nav_food_act.svg">
-                    <p class="x-small mb-0">FOOD＆<br>DRINk</p>
-                </div>
+            {% else %}
                 <div>
                     <img src="/images/common/sp_nav_food_noact.svg">
+            {% endif %}
                     <p class="x-small mb-0">FOOD＆<br>DRINk</p>
                 </div>
             </a>

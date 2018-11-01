@@ -29,14 +29,13 @@ class ScheduleRepository extends EntityRepository
         $qb
             ->where('s.isDeleted = false')
             ->andWhere('s.publicStartDt <= CURRENT_TIMESTAMP()')
-            ->andWhere('s.publicEndDt > CURRENT_TIMESTAMP()')
-            ->orderBy('s.startDate', 'ASC');
+            ->andWhere('s.publicEndDt > CURRENT_TIMESTAMP()');
         
         return $qb;
     }
     
     /**
-     * return acreening query
+     * return screening query
      *
      * @return QueryBuilder
      */
@@ -44,13 +43,15 @@ class ScheduleRepository extends EntityRepository
     {
         $qb = $this->getActiveQuery();
         
-        $qb->andWhere('s.startDate <= CURRENT_DATE()');
+        $qb
+            ->andWhere('s.startDate <= CURRENT_DATE()')
+            ->orderBy('s.startDate', 'DESC');
         
         return $qb;
     }
     
     /**
-     * find screeening
+     * find screening
      *
      * @return Schedule[]
      */
@@ -112,7 +113,9 @@ class ScheduleRepository extends EntityRepository
     {
         $qb = $this->getActiveQuery();
         
-        $qb->andWhere('s.startDate > CURRENT_DATE()');
+        $qb
+            ->andWhere('s.startDate > CURRENT_DATE()')
+            ->orderBy('s.startDate', 'ASC');
         
         return $qb;
     }

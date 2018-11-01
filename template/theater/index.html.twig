@@ -26,11 +26,18 @@
     {{ mw_ad_script(theater) }}
 {% endif %}
 <script src="/js/api.js"></script>
-<script src="/js/theater/top.js?v=20181101"></script>
+<script src="/js/theater/top.js?v=20181101_2"></script>
 {% endblock %}
 
 {% block navbar %}
 {% include 'theater/include/navbar.html.twig' with {
+    theater: theater,
+    active: 'top',
+} only %}
+{% endblock %}
+
+{% block sp_navbar %}
+{% include 'theater/include/sp_navbar.html.twig' with {
     theater: theater,
     active: 'top',
 } only %}
@@ -91,7 +98,7 @@
     </div>
     
     <div class="schedule-scroll mb-4">
-        <div class="schedule-slider bg-light-gray border-top border-bottom">
+        <div class="schedule-slider bg-super-light-gray border-top border-bottom">
             <div class="swiper-container mx-auto">
                 <div class="swiper-wrapper">
                     {# 日付一覧 #}
