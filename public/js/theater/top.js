@@ -273,9 +273,13 @@ function createScheduleFilmDom(film) {
         comment: film.comment,
         runningTime: film.running_time,
         cmTime: film.cm_time,
-        shortCode: film.short_code,
-        branchCode: film.branch_code
+        code: film.code
     };
+    
+    // 作品コード重複を考慮したランダム値
+    var random = createRandom(100, 999);
+    var targetId = 'collapse' + data.code + '_' + random;
+    
     var pcDom = $('<div class="border mb-3">\
     <div class="border-bottom bg-light-gray p-3">\
         <div class="mb-2"><strong>'+ data.name + '</strong></div>\
@@ -286,12 +290,12 @@ function createScheduleFilmDom(film) {
 </div>');
     var spDom = $('<div class="rounded mb-3 shadow-01">\
 <div class="border-bottom">\
-    <a class="bg-light-gray p-3 pr-5 d-block collapsed" href="#" data-toggle="collapse" data-target="#collapse' + (data.shortCode + data.branchCode) + '" aria-expanded="false">\
+    <a class="bg-light-gray p-3 pr-5 d-block collapsed" href="#" data-toggle="collapse" data-target="#' + targetId + '" aria-expanded="false">\
         <div class="mb-2"><strong>'+ data.name + '</strong></div>\
         <div class="small text-dark-gray d-flex align-items-center"><i class="mr-2 time-icon"></i><span class="mr-2">'+ (data.runningTime + data.cmTime) + '分</span></div>\
     </a>\
 </div>\
-<div class="collapse" id="collapse'+ (data.shortCode + data.branchCode) + '">\
+<div class="collapse" id="' + targetId + '">\
     <div class="small text-dark-gray line-height-1 p-2 border-bottom">'+ data.comment + '</div>\
     <ul class="performances mb-0 p-2"></ul>\
 </div>\
@@ -300,6 +304,16 @@ function createScheduleFilmDom(film) {
         pc: pcDom,
         sp: spDom
     };
+}
+
+/**
+ * create random
+ * 
+ * @param {Integer} max 
+ * @param {Integer} min 
+ */
+function createRandom(max, min) {
+    return Math.floor(Math.random() * (max + 1 - min)) + min;
 }
 
 /**
