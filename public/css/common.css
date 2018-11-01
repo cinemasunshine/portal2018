@@ -539,6 +539,9 @@ header .position-fixed {
     line-height: 1.1;
     color: rgb(120, 120, 120);
 }
+.navigation .active p{
+    color: rgb(7, 135, 242);
+}
 .navigation img {
     width: 32px;
     margin-bottom: 1px;
