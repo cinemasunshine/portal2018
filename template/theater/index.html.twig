@@ -83,12 +83,16 @@ masterCode: theater.getMasterCode()
 } only %}
 {% endif %}
 
-<div class="schedule mb-5">
+<div class="mb-5">
     <div class="width mx-auto px-3 mb-3">
         {% include 'theater/include/index/opening_hour.html.twig' with {
         openingHours: theater.getMeta().getOpeningHours()
         } only %}
+    </div>
+</div>
 
+<div class="schedule mb-5">
+    <div class="width mx-auto px-3 mb-3">
         <div class="schedule-title">
             <h3 class="d-inline-block mb-4 px-3 border-left border-right border-blue text-blue">
                 <div class="font-weight-bold large mb-1">上映スケジュール・チケット購入</div>
