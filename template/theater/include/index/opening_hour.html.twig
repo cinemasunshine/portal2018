@@ -1,27 +1,31 @@
-<div class="opening-time d-md-flex align-items-center mb-5">
-    <h4 class="mb-md-0">
-        <div class="font-weight-bold mb-1">開場時間</div>
-        <div class="x-small">OPENING TIME</div>
-    </h4>
-    <div class="opening-time-list ml-md-5 py-4 py-md-0">
-        <div class="swiper-container">
-            <div class="swiper-wrapper">
-            {% for openingHour in openingHours %}
-                <div class="swiper-slide">
-                    <div class="border-bottom border-dray pb-md-2 text-center">
-                        <i class="mr-2 time-icon"></i><span>
-                            {{ openingHour.getFromDate()|date('n/j') }}({{ openingHour.getFromDate()|weekday }})
-                            {% if openingHour.getToDate() %}
-                                - {{ openingHour.getToDate()|date('n/j') }}({{ openingHour.getToDate()|weekday }})
-                            {% endif %}
-                            {{ openingHour.getTime()|date('g:i') }}
-                        </span>
+<div class="mb-5">
+    <div class="width mx-auto px-3 mb-3">
+        <div class="opening-time d-md-flex align-items-center mb-5">
+            <h4 class="mb-md-0">
+                <div class="font-weight-bold mb-1">開場時間</div>
+                <div class="x-small">OPENING TIME</div>
+            </h4>
+            <div class="opening-time-list ml-md-5 py-4 py-md-0">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                    {% for openingHour in openingHours %}
+                        <div class="swiper-slide">
+                            <div class="border-bottom border-dray pb-md-2 text-center">
+                                <i class="mr-2 time-icon"></i><span>
+                                    {{ openingHour.getFromDate()|date('n/j') }}({{ openingHour.getFromDate()|weekday }})
+                                    {% if openingHour.getToDate() %}
+                                        - {{ openingHour.getToDate()|date('n/j') }}({{ openingHour.getToDate()|weekday }})
+                                    {% endif %}
+                                    {{ openingHour.getTime()|date('g:i') }}
+                                </span>
+                            </div>
+                        </div>
+                    {% endfor %}
                     </div>
+                    <div class="swiper-button-next d-md-none"></div>
+                    <div class="swiper-button-prev d-md-none"></div>
                 </div>
-            {% endfor %}
             </div>
-            <div class="swiper-button-next d-md-none"></div>
-            <div class="swiper-button-prev d-md-none"></div>
         </div>
     </div>
 </div>

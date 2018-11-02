@@ -83,13 +83,9 @@ masterCode: theater.getMasterCode()
 } only %}
 {% endif %}
 
-<div class="mb-5">
-    <div class="width mx-auto px-3 mb-3">
-        {% include 'theater/include/index/opening_hour.html.twig' with {
-        openingHours: theater.getMeta().getOpeningHours()
-        } only %}
-    </div>
-</div>
+{% include 'theater/include/index/opening_hour.html.twig' with {
+    openingHours: theater.getMeta().getOpeningHours()
+} only %}
 
 <div class="schedule mb-5">
     <div class="width mx-auto px-3 mb-3">
