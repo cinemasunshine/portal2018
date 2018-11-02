@@ -20,8 +20,58 @@ $(function () {
     var scrollTimer = null;
     $(window).on('scroll', scrollProcess);
     $(window).on('resize', resizeProcess);
-
+    initInformations();
 });
+
+/**
+ * アプリ対応劇場判定
+ */
+function isAppCompatibleTheater() {
+    var compatibleTheaters = [
+        'ikebukuro',
+        'yukarigaoka',
+        'yamatokoriyama',
+        'kitajima',
+        'aira'
+    ];
+    var theater = $('body').attr('data-theater');
+    var findResult = compatibleTheaters.find(function (compatibleTheater) { return (compatibleTheater === theater); });
+    return (findResult !== undefined);
+}
+
+/**
+ * お知らせ表示
+ */
+function initInformations() {
+    var informationId = $('#information').val();
+    var informations = localStorage.getItem('informations');
+    informations = (informations) ? JSON.parse(informations) : [];
+    var findResult = informations.find(function (id) { return (informationId === id); });
+    if (findResult !== undefined) {
+        return;
+    }
+    if (isAppCompatibleTheater()) {
+        $('#informationModal').modal('show');
+        $('#informationModal').on('hidden.bs.modal', saveInformations);
+    }
+}
+
+/**
+ * お知らせ保存
+ */
+function saveInformations() {
+    var isChecked = $('#information').prop('checked');
+    if (isChecked) {
+        var informationId = $('#information').val();
+        var informations = localStorage.getItem('informations');
+        informations = (informations) ? JSON.parse(informations) : [];
+        var findResult = informations.find(function (id) { return (informationId === id); });
+        if (findResult === undefined) {
+            informations.push(informationId);
+        }
+        localStorage.setItem('informations', JSON.stringify(informations));
+    }
+}
 
 /**
  * リサイズ処理
@@ -275,11 +325,11 @@ function createScheduleFilmDom(film) {
         cmTime: film.cm_time,
         code: film.code
     };
-    
+
     // 作品コード重複を考慮したランダム値
     var random = createRandom(100, 999);
     var targetId = 'collapse' + data.code + '_' + random;
-    
+
     var pcDom = $('<div class="border mb-3">\
     <div class="border-bottom bg-light-gray p-3">\
         <div class="mb-2"><strong>'+ data.name + '</strong></div>\
