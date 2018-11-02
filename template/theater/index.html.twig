@@ -3,19 +3,21 @@
 
 {% block title %}劇場トップ・上映スケジュール | {{ parent() }}{% endblock %}
 
-{% block description %}シネマサンシャイン{{ theater.getNameJa() }}の劇場サイトトップページです。上映スケジュール、ニュース、前売券情報、コンセッション、料金案内、劇場設備、アクセスのご案内など。{% endblock %}
+{% block description %}シネマサンシャイン{{ theater.getNameJa()
+}}の劇場サイトトップページです。上映スケジュール、ニュース、前売券情報、コンセッション、料金案内、劇場設備、アクセスのご案内など。{% endblock %}
 
 {% set keywords = theater_meta_keywords(theater) %}
 
 {% if theater.getId() == 1 %}
-    {# 池袋トップページのみ #}
-    {% set keywords =  keywords ~ ',応援上映' %}
+{# 池袋トップページのみ #}
+{% set keywords = keywords ~ ',応援上映' %}
 {% elseif theater.getId() == 2 %}
-    {# 平和島トップページのみ #}
-    {% set keywords =  keywords ~ ',4DX' %}
+{# 平和島トップページのみ #}
+{% set keywords = keywords ~ ',4DX' %}
 {% endif %}
 
-{% block keywords %}{{ parent()}},座席指定,予約,オンライン,上映,スケジュール,キャンペーン,公式アプリ,ムビチケ{% if keywords %},{{ keywords }}{% endif %}{% endblock %}
+{% block keywords %}{{ parent()}},座席指定,予約,オンライン,上映,スケジュール,キャンペーン,公式アプリ,ムビチケ{% if keywords %},{{ keywords }}{% endif
+%}{% endblock %}
 
 {% block css %}
 <link href="/css/theater/top.css" rel="stylesheet">
@@ -23,7 +25,7 @@
 
 {% block javascript %}
 {% if is_mw_ad_support() %}
-    {{ mw_ad_script(theater) }}
+{{ mw_ad_script(theater) }}
 {% endif %}
 <script src="/js/api.js"></script>
 <script src="/js/theater/top.js?v=20181101_2"></script>
@@ -31,62 +33,62 @@
 
 {% block navbar %}
 {% include 'theater/include/navbar.html.twig' with {
-    theater: theater,
-    active: 'top',
+theater: theater,
+active: 'top',
 } only %}
 {% endblock %}
 
 {% block sp_navbar %}
 {% include 'theater/include/sp_navbar.html.twig' with {
-    theater: theater,
-    active: 'top',
+theater: theater,
+active: 'top',
 } only %}
 {% endblock %}
 
 {% block contents %}
 <div class="mb-3">
     {% include 'theater/include/index/slider.html.twig' with {
-        mainBanners: mainBanners
+    mainBanners: mainBanners
     } only %}
 </div>
 
 {% set specialSites = theater.getSpecialSites() %}
 {% if specialSites|length > 0 %}
-    {% include 'theater/include/index/special_site.html.twig' with {
-        specialSites: specialSites
-    } only %}
+{% include 'theater/include/index/special_site.html.twig' with {
+specialSites: specialSites
+} only %}
 {% endif %}
 
 {% include 'include/adsense/top.html.twig' only %}
 
 <div class="mb-5">
     <div class="width mx-auto d-md-flex p-3">
-    
-    {% set picupCampaign = campaigns[0] %} 
-    {% if picupCampaign %}
+
+        {% set picupCampaign = campaigns[0] %}
+        {% if picupCampaign %}
         {% include 'theater/include/index/pickup.html.twig' with {
-            campaign: picupCampaign
+        campaign: picupCampaign
         } only %}
-    {% endif %}
-    
+        {% endif %}
+
         {% include 'theater/include/index/trailer.html.twig' with {
-            theater: theater
+        theater: theater
         } only %}
     </div>
 </div>
 
 {% if theater.getMasterVersion() == 2 %}
-    {% include 'theater/include/index/online_ticket.html.twig' with {
-        masterCode: theater.getMasterCode()
-    } only %}
+{% include 'theater/include/index/online_ticket.html.twig' with {
+masterCode: theater.getMasterCode()
+} only %}
 {% endif %}
 
 <div class="schedule mb-5">
     <div class="width mx-auto px-3 mb-3">
         {% include 'theater/include/index/opening_hour.html.twig' with {
-            openingHours: theater.getMeta().getOpeningHours()
+        openingHours: theater.getMeta().getOpeningHours()
         } only %}
-        
+
         <div class="schedule-title">
             <h3 class="d-inline-block mb-4 px-3 border-left border-right border-blue text-blue">
                 <div class="font-weight-bold large mb-1">上映スケジュール・チケット購入</div>
@@ -96,7 +98,7 @@
         <p class="mb-0">カレンダーの日時を選択してください。</p>
         <div class="small text-red font-weight-bold text-right pre-sales-text d-none">先行販売はカレンダーをスライドしてください >></div>
     </div>
-    
+
     <div class="schedule-scroll mb-4">
         <div class="schedule-slider bg-super-light-gray border-top border-bottom">
             <div class="swiper-container mx-auto">
@@ -125,24 +127,24 @@
 </div>
 
 {% include 'theater/include/index/event.html.twig' with {
-    theater: theater,
-    newsList: eventNewsList,
+theater: theater,
+newsList: eventNewsList,
 } only %}
 
 {% include 'theater/include/index/news.html.twig' with {
-    theater: theater,
-    newsList: newsList,
+theater: theater,
+newsList: newsList,
 } only %}
 
 {% include 'include/adsense/buttom.html.twig' only %}
 
 {% include 'include/campaign.html.twig' with {
-    campaigns: campaigns
+campaigns: campaigns
 } only %}
 
 {% include 'theater/include/infomation.html.twig' with {
-    theater: theater,
-    newsList: infoNewsList,
+theater: theater,
+newsList: infoNewsList,
 } only %}
 
 <div class="mb-5">
@@ -162,6 +164,26 @@
                 劇場施設はこちら
             </div>
         </a>
+    </div>
+</div>
+<div class="modal fade information-modal" id="informationModal" tabindex="-1" role="dialog" aria-labelledby="informationModalTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered px-3" role="document">
+        <div class="modal-content border-0 rounded-0 w-auto mx-auto position-relative" style="overflow: visible;">
+            <a class="d-block close-button pointer" data-dismiss="modal" role="button">
+                    <img class="w-100" src="/images/common/close.svg">
+            </a>
+            <div class="d-none d-md-block">
+                <a class="d-block" href="/app/"><img class="w-100 align-bottom" src="/images/theater/modal/app.jpg"></a>
+            </div>
+            <div class="d-md-none">
+                <a class="d-block" href="/app/"><img class="w-100 align-bottom" src="/images/theater/modal/app_sp.jpg"></a>
+            </div>
+            <div class="d-flex justify-content-center align-items-center py-3 bg-light-gray">
+                <input class="mr-2 pointer" type="checkbox" name="information" value="001" id="information">
+                <label class="pointer" for="information">このバナーを再度表示しない</label>
+            </div>
+        </div>
     </div>
 </div>
 {% endblock %}
