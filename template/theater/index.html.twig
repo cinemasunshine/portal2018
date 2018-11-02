@@ -28,7 +28,7 @@
 {{ mw_ad_script(theater) }}
 {% endif %}
 <script src="/js/api.js"></script>
-<script src="/js/theater/top.js?v=20181101_2"></script>
+<script src="/js/theater/top.js?v=20181102"></script>
 {% endblock %}
 
 {% block navbar %}
@@ -87,6 +87,7 @@ masterCode: theater.getMasterCode()
     openingHours: theater.getMeta().getOpeningHours()
 } only %}
 
+{# scheduleテンプレートのincludeをトリガーとしてjavascriptの処理を実行する #}
 {% include 'theater/include/index/schedule.html.twig' only %}
 
 {% include 'theater/include/index/event.html.twig' with {

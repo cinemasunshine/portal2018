@@ -1,6 +1,13 @@
 $(function () {
     // スケジュール
-    createScheduleDate();
+    if ($('#schedule').length) {
+        createScheduleDate();
+        
+        $(document).on('click', '.schedule-slider .swiper-slide a', selectSchedule);
+        $(window).on('scroll', scrollProcess);
+        $(window).on('resize', resizeProcess);
+    }
+    
     // 開場時間
     var openingTimeSwiper = new Swiper('.opening-time .swiper-container', {
         spaceBetween: 20,
@@ -16,10 +23,9 @@ $(function () {
     openingTimeSwiper.on('resize', function () {
         openingTimeSwiper.slideTo(0, 0, false);
     });
-    $(document).on('click', '.schedule-slider .swiper-slide a', selectSchedule);
+    
     var scrollTimer = null;
-    $(window).on('scroll', scrollProcess);
-    $(window).on('resize', resizeProcess);
+    
     initInformations();
 });
 
