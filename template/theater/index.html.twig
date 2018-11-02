@@ -87,44 +87,7 @@ masterCode: theater.getMasterCode()
     openingHours: theater.getMeta().getOpeningHours()
 } only %}
 
-<div class="schedule mb-5">
-    <div class="width mx-auto px-3 mb-3">
-        <div class="schedule-title">
-            <h3 class="d-inline-block mb-4 px-3 border-left border-right border-blue text-blue">
-                <div class="font-weight-bold large mb-1">上映スケジュール・チケット購入</div>
-                <div class="small">FILMING SCHEDULE</div>
-            </h3>
-        </div>
-        <p class="mb-0">カレンダーの日時を選択してください。</p>
-        <div class="small text-red font-weight-bold text-right pre-sales-text d-none">先行販売はカレンダーをスライドしてください >></div>
-    </div>
-
-    <div class="schedule-scroll mb-4">
-        <div class="schedule-slider bg-super-light-gray border-top border-bottom">
-            <div class="swiper-container mx-auto">
-                <div class="swiper-wrapper">
-                    {# 日付一覧 #}
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="width mx-auto px-3 position-relative">
-        <div class="print-button position-absolute button-01 shadow-01 small mr-3 d-none d-md-block">
-            <a class="py-1 px-3" href="#" onclick="window.print(); return false;">スケジュールを印刷</a>
-        </div>
-        <div class="selected-date-scroll">
-            <div class="selected-date d-md-flex align-items-center">
-                <div class="width mx-auto py-3 px-md-3">
-                    <div class="pre-sales d-none px-2 py-1 mb-2 mb-md-0 mr-md-3 border border-red text-red small">先行販売</div>
-                    <div class="font-weight-bold line-height-1"><span class="mr-2 date"></span>上映スケジュール</div>
-                </div>
-            </div>
-        </div>
-        <div class="error p-3 border bg-light-gray text-dark-gray"></div>
-        <div class="schedule-sort-film d-none d-md-block"></div>
-        <div class="schedule-sort-film-sp d-md-none"></div>
-    </div>
-</div>
+{% include 'theater/include/index/schedule.html.twig' only %}
 
 {% include 'theater/include/index/event.html.twig' with {
 theater: theater,
