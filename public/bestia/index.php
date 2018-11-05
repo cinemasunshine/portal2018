@@ -7,6 +7,7 @@
 <meta name="keywords" content="BESTIA,ベスティア,シネマサンシャイン,レーザープロジェクション,4K,9P,映画,上映,dts-X™,GDCイマーシブサウンド,3D音響,シネコン,鹿児島,姶良">
 <meta name="viewport" content="width=device-width">
 <link rel="stylesheet" href="./_css/lpstyle.css">
+<meta name="robots" content="index,follow">
 <script type='text/javascript' src='/js/gtm_tag.js'></script>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
