@@ -8,6 +8,11 @@
   <changefreq>weekly</changefreq>
 </url>
 <url>
+  <loc>http://www.cinemasunshine.co.jp/news/</loc>
+  <priority>0.5</priority>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
   <loc>http://www.cinemasunshine.co.jp/app/</loc>
   <priority>0.2</priority>
   <changefreq>yearly</changefreq>
@@ -362,47 +367,68 @@
 </url>
 <url>
   <loc>http://www.cinemasunshine.co.jp/theater/ikebukuro/advance_ticket/</loc>
+  <priority>0.5</priority>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>http://www.cinemasunshine.co.jp/theater/ikebukuro/news/</loc>
+  <priority>0.5</priority>
   <changefreq>weekly</changefreq>
 </url>
 <url>
   <loc>http://www.cinemasunshine.co.jp/theater/ikebukuro/concession/</loc>
+  <priority>0.5</priority>
   <changefreq>yearly</changefreq>
 </url>
 <url>
   <loc>http://www.cinemasunshine.co.jp/theater/ikebukuro/admission/</loc>
+  <priority>0.5</priority>
   <changefreq>yearly</changefreq>
 </url>
 <url>
   <loc>http://www.cinemasunshine.co.jp/theater/ikebukuro/floor_guide/</loc>
+  <priority>0.5</priority>
   <changefreq>yearly</changefreq>
 </url>
 <url>
   <loc>http://www.cinemasunshine.co.jp/theater/ikebukuro/access/</loc>
+  <priority>0.5</priority>
   <changefreq>yearly</changefreq>
 </url>
 <url>
   <loc>http://www.cinemasunshine.co.jp/theater/heiwajima/</loc>
+  <priority>0.5</priority>
   <priority>1.0</priority>
   <changefreq>weekly</changefreq>
 </url>
 <url>
   <loc>http://www.cinemasunshine.co.jp/theater/heiwajima/advance_ticket/</loc>
+  <priority>0.5</priority>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>http://www.cinemasunshine.co.jp/theater/heiwajima/news/</loc>
+  <priority>0.5</priority>
   <changefreq>weekly</changefreq>
 </url>
 <url>
   <loc>http://www.cinemasunshine.co.jp/theater/heiwajima/concession/</loc>
+  <priority>0.5</priority>
   <changefreq>yearly</changefreq>
 </url>
 <url>
   <loc>http://www.cinemasunshine.co.jp/theater/heiwajima/admission/</loc>
+  <priority>0.5</priority>
   <changefreq>yearly</changefreq>
 </url>
 <url>
   <loc>http://www.cinemasunshine.co.jp/theater/heiwajima/floor_guide/</loc>
+  <priority>0.5</priority>
   <changefreq>yearly</changefreq>
 </url>
 <url>
   <loc>http://www.cinemasunshine.co.jp/theater/heiwajima/access/</loc>
+  <priority>0.5</priority>
   <changefreq>yearly</changefreq>
 </url>
 <url>
@@ -412,22 +438,32 @@
 </url>
 <url>
   <loc>http://www.cinemasunshine.co.jp/theater/yukarigaoka/advance_ticket/</loc>
+  <priority>0.5</priority>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>http://www.cinemasunshine.co.jp/theater/yukarigaoka/news/</loc>
+  <priority>0.5</priority>
   <changefreq>weekly</changefreq>
 </url>
 <url>
   <loc>http://www.cinemasunshine.co.jp/theater/yukarigaoka/concession/</loc>
+  <priority>0.5</priority>
   <changefreq>yearly</changefreq>
 </url>
 <url>
   <loc>http://www.cinemasunshine.co.jp/theater/yukarigaoka/admission/</loc>
+  <priority>0.5</priority>
   <changefreq>yearly</changefreq>
 </url>
 <url>
   <loc>http://www.cinemasunshine.co.jp/theater/yukarigaoka/floor_guide/</loc>
+  <priority>0.5</priority>
   <changefreq>yearly</changefreq>
 </url>
 <url>
   <loc>http://www.cinemasunshine.co.jp/theater/yukarigaoka/access/</loc>
+  <priority>0.5</priority>
   <changefreq>yearly</changefreq>
 </url>
 <url>
@@ -437,22 +473,32 @@
 </url>
 <url>
   <loc>http://www.cinemasunshine.co.jp/theater/tsuchiura/advance_ticket/</loc>
+  <priority>0.5</priority>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>http://www.cinemasunshine.co.jp/theater/tsuchiura/news/</loc>
+  <priority>0.5</priority>
   <changefreq>weekly</changefreq>
 </url>
 <url>
   <loc>http://www.cinemasunshine.co.jp/theater/tsuchiura/concession/</loc>
+  <priority>0.5</priority>
   <changefreq>yearly</changefreq>
 </url>
 <url>
   <loc>http://www.cinemasunshine.co.jp/theater/tsuchiura/admission/</loc>
+  <priority>0.5</priority>
   <changefreq>yearly</changefreq>
 </url>
 <url>
   <loc>http://www.cinemasunshine.co.jp/theater/tsuchiura/floor_guide/</loc>
+  <priority>0.5</priority>
   <changefreq>yearly</changefreq>
 </url>
 <url>
   <loc>http://www.cinemasunshine.co.jp/theater/tsuchiura/access/</loc>
+  <priority>0.5</priority>
   <changefreq>yearly</changefreq>
 </url>
 <url>
@@ -462,22 +508,32 @@
 </url>
 <url>
   <loc>http://www.cinemasunshine.co.jp/theater/numazu/advance_ticket/</loc>
+  <priority>0.5</priority>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>http://www.cinemasunshine.co.jp/theater/numazu/news/</loc>
+  <priority>0.5</priority>
   <changefreq>weekly</changefreq>
 </url>
 <url>
   <loc>http://www.cinemasunshine.co.jp/theater/numazu/concession/</loc>
+  <priority>0.5</priority>
   <changefreq>yearly</changefreq>
 </url>
 <url>
   <loc>http://www.cinemasunshine.co.jp/theater/numazu/admission/</loc>
+  <priority>0.5</priority>
   <changefreq>yearly</changefreq>
 </url>
 <url>
   <loc>http://www.cinemasunshine.co.jp/theater/numazu/floor_guide/</loc>
+  <priority>0.5</priority>
   <changefreq>yearly</changefreq>
 </url>
 <url>
   <loc>http://www.cinemasunshine.co.jp/theater/numazu/access/</loc>
+  <priority>0.5</priority>
   <changefreq>yearly</changefreq>
 </url>
 <url>
@@ -487,22 +543,32 @@
 </url>
 <url>
   <loc>http://www.cinemasunshine.co.jp/theater/kahoku/advance_ticket/</loc>
+  <priority>0.5</priority>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>http://www.cinemasunshine.co.jp/theater/kahoku/news/</loc>
+  <priority>0.5</priority>
   <changefreq>weekly</changefreq>
 </url>
 <url>
   <loc>http://www.cinemasunshine.co.jp/theater/kahoku/concession/</loc>
+  <priority>0.5</priority>
   <changefreq>yearly</changefreq>
 </url>
 <url>
   <loc>http://www.cinemasunshine.co.jp/theater/kahoku/admission/</loc>
+  <priority>0.5</priority>
   <changefreq>yearly</changefreq>
 </url>
 <url>
   <loc>http://www.cinemasunshine.co.jp/theater/kahoku/floor_guide/</loc>
+  <priority>0.5</priority>
   <changefreq>yearly</changefreq>
 </url>
 <url>
   <loc>http://www.cinemasunshine.co.jp/theater/kahoku/access/</loc>
+  <priority>0.5</priority>
   <changefreq>yearly</changefreq>
 </url>
 <url>
@@ -512,6 +578,11 @@
 </url>
 <url>
   <loc>http://www.cinemasunshine.co.jp/theater/yamatokoriyama/advance_ticket/</loc>
+  <priority>0.5</priority>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>http://www.cinemasunshine.co.jp/theater/yamatokoriyama/news/</loc>
   <priority>0.5</priority>
   <changefreq>weekly</changefreq>
 </url>
@@ -546,6 +617,11 @@
   <changefreq>weekly</changefreq>
 </url>
 <url>
+  <loc>http://www.cinemasunshine.co.jp/theater/shimonoseki/news/</loc>
+  <priority>0.5</priority>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
   <loc>http://www.cinemasunshine.co.jp/theater/shimonoseki/concession/</loc>
   <priority>0.5</priority>
   <changefreq>yearly</changefreq>
@@ -572,6 +648,11 @@
 </url>
 <url>
   <loc>http://www.cinemasunshine.co.jp/theater/okaido/advance_ticket/</loc>
+  <priority>0.5</priority>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>http://www.cinemasunshine.co.jp/theater/okaido/news/</loc>
   <priority>0.5</priority>
   <changefreq>weekly</changefreq>
 </url>
@@ -606,6 +687,11 @@
   <changefreq>weekly</changefreq>
 </url>
 <url>
+  <loc>http://www.cinemasunshine.co.jp/theater/kinuyama/news/</loc>
+  <priority>0.5</priority>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
   <loc>http://www.cinemasunshine.co.jp/theater/kinuyama/concession/</loc>
   <priority>0.5</priority>
   <changefreq>yearly</changefreq>
@@ -636,6 +722,11 @@
   <changefreq>weekly</changefreq>
 </url>
 <url>
+  <loc>http://www.cinemasunshine.co.jp/theater/shigenobu/news/</loc>
+  <priority>0.5</priority>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
   <loc>http://www.cinemasunshine.co.jp/theater/shigenobu/concession/</loc>
   <priority>0.5</priority>
   <changefreq>yearly</changefreq>
@@ -656,12 +747,17 @@
   <changefreq>yearly</changefreq>
 </url>
 <url>
-  <loc>http://www.cinemasunshine.co.jp/theater/masaki</loc>
+  <loc>http://www.cinemasunshine.co.jp/theater/masaki/</loc>
   <priority>1.0</priority>
   <changefreq>weekly</changefreq>
 </url>
 <url>
   <loc>http://www.cinemasunshine.co.jp/theater/masaki/advance_ticket/</loc>
+  <priority>0.5</priority>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>http://www.cinemasunshine.co.jp/theater/masaki/news/</loc>
   <priority>0.5</priority>
   <changefreq>weekly</changefreq>
 </url>
@@ -696,6 +792,11 @@
   <changefreq>weekly</changefreq>
 </url>
 <url>
+  <loc>http://www.cinemasunshine.co.jp/theater/ozu/news/</loc>
+  <priority>0.5</priority>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
   <loc>http://www.cinemasunshine.co.jp/theater/ozu/concession/</loc>
   <priority>0.5</priority>
   <changefreq>yearly</changefreq>
@@ -716,12 +817,17 @@
   <changefreq>yearly</changefreq>
 </url>
 <url>
-  <loc>http://www.cinemasunshine.co.jp/theater/kitajima</loc>
+  <loc>http://www.cinemasunshine.co.jp/theater/kitajima/</loc>
   <priority>1.0</priority>
   <changefreq>weekly</changefreq>
 </url>
 <url>
   <loc>http://www.cinemasunshine.co.jp/theater/kitajima/advance_ticket/</loc>
+  <priority>0.5</priority>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>http://www.cinemasunshine.co.jp/theater/kitajima/news/</loc>
   <priority>0.5</priority>
   <changefreq>weekly</changefreq>
 </url>
@@ -741,12 +847,17 @@
   <changefreq>yearly</changefreq>
 </url>
 <url>
-  <loc>http://www.cinemasunshine.co.jp/theater/aira</loc>
+  <loc>http://www.cinemasunshine.co.jp/theater/aira/</loc>
   <priority>1.0</priority>
   <changefreq>weekly</changefreq>
 </url>
 <url>
   <loc>http://www.cinemasunshine.co.jp/theater/aira/advance_ticket/</loc>
+  <priority>0.5</priority>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>http://www.cinemasunshine.co.jp/theater/aira/news/</loc>
   <priority>0.5</priority>
   <changefreq>weekly</changefreq>
 </url>
@@ -832,51 +943,42 @@
 </url>
 <url>
   <loc>http://www.cinemasunshine.co.jp/4dx/movie/54.php</loc>
-  <priority>0.5</priority>
   <changefreq>never</changefreq>
 </url>
 <url>
   <loc>http://www.cinemasunshine.co.jp/screen-x/</loc>
   <priority>1.0</priority>
-  <lastmod>2018-11-02T20:11:38+09:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
   <loc>http://www.cinemasunshine.co.jp/screen-x/about/</loc>
   <priority>0.5</priority>
-  <lastmod>2018-11-02T16:03:43+09:00</lastmod>
   <changefreq>never</changefreq>
 </url>
 <url>
   <loc>http://www.cinemasunshine.co.jp/screen-x/movie/</loc>
   <priority>0.5</priority>
-  <lastmod>2018-11-02T16:03:43+09:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
   <loc>http://www.cinemasunshine.co.jp/screen-x/theater/</loc>
   <priority>0.5</priority>
-  <lastmod>2018-11-05T14:34:44+09:00</lastmod>
   <changefreq>yearly</changefreq>
 </url>
 <url>
   <loc>http://www.cinemasunshine.co.jp/screen-x/movie/bohemian.html</loc>
-  <lastmod>2018-11-02T16:03:43+09:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
   <loc>http://www.cinemasunshine.co.jp/screen-x/movie/fantabe_kuro.html</loc>
-  <lastmod>2018-11-02T16:03:43+09:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 <url>
   <loc>http://www.cinemasunshine.co.jp/lp/4dx/</loc>
-  <lastmod>2018-11-02T16:03:43+09:00</lastmod>
   <changefreq>yearly</changefreq>
 </url>
 <url>
   <loc>http://www.cinemasunshine.co.jp/lp/imax/</loc>
-  <lastmod>2018-11-02T16:03:43+09:00</lastmod>
   <changefreq>yearly</changefreq>
 </url>
 </urlset>
