@@ -76,8 +76,9 @@ class ScheduleController extends BaseController
     {
         $theaterName = $args['name'];
         
-        if ($theaterName === 'kahoku') {
+        if ($theaterName === 'kahoku' || $theaterName === 'shimonoseki') {
             // かほくスケジュール非表示 SASAKI-322
+            // 下関スケジュール非表示 SASAKI-323
             $meta['error'] = V1Schedules::ERROR_OTHER;
             $this->data->set('meta', $meta);
             return;
@@ -221,8 +222,9 @@ class ScheduleController extends BaseController
         $theaterName = $args['name'];
         $date = $args['date'];
         
-        if ($theaterName === 'kahoku') {
+        if ($theaterName === 'kahoku' || $theaterName === 'shimonoseki') {
             // かほくスケジュール非表示 SASAKI-322
+            // 下関スケジュール非表示 SASAKI-323
             $meta['error'] = V1Schedules::ERROR_OTHER;
             $this->data->set('meta', $meta);
             return;
