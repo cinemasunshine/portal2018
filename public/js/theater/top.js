@@ -36,7 +36,9 @@ function isAppCompatibleTheater() {
     var compatibleTheaters = [
         'ikebukuro',
         'yukarigaoka',
+        'kahoku',
         'yamatokoriyama',
+        'shimonoseki',
         'kitajima',
         'aira'
     ];
