@@ -431,11 +431,11 @@ header .position-fixed {
 }
 /* ニュース */
 .news li {
-    border-left: 1px solid #999;
+    border-left: 1px solid #ddd;
 }
 .news li:last-child,
 .news li:nth-child(4n) {
-    border-right: 1px solid #999;
+    border-right: 1px solid #ddd;
 }
 .news li .image {
     width: 100%;
