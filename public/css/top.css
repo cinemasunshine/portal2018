@@ -24,6 +24,7 @@
 /* ランキング */
 .ranking li {
   margin: 0 15px;
+  width: 20%;
 }
 .rank-01 {
   background-color: #d6cb58;
