@@ -3,9 +3,9 @@
     <div class="width mx-auto px-3 infomation">
         <h3 class="mb-4 font-weight-bold line-height-1">インフォメーション<br><span class="small">INFORMATION</span></h3>
         <div class="mb-5">
-            <ul class="border-top border-gray">
+            <ul class="border-top border-light-gray">
             {% for news in newsList|slice(0, 4) %}
-                <li class="border-bottom border-gray">
+                <li class="border-bottom border-light-gray">
                     <a href="{{ path_for('theater_news_show', {
                         name: theater.getName(),
                         id: news.getId()
