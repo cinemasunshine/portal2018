@@ -4,6 +4,7 @@ $(function () {
     if (getParam('theater')) {
         var theater = getParam('theater');
         $('.region-selection').val(theater);
+        changeTheater(theater);
     }
     if (getParam('showType') === '1') {
         $('.tabs a').trigger('click');
@@ -13,8 +14,8 @@ $(function () {
 /**
  * 劇場選択
  */
-function changeTheater() {
-    var theaterCode = $(this).val();
+function changeTheater(theater) {
+    var theaterCode = (theater === undefined) ? $(this).val() : theater;
     if (theaterCode === '') {
         $('.screening .movie, .scheduled .movie')
             .addClass('d-block')
@@ -24,7 +25,7 @@ function changeTheater() {
     var parents = ['.screening .movie', '.scheduled .movie'];
     parents.forEach(function (parent) {
         $(parent).each(function (index, element) {
-            var target = $(element).find('a[data-theaterCode=' + theaterCode + ']');
+            var target = $(element).find('a[data-theatercode=' + theaterCode + ']');
             if (target.length > 0) {
                 $(element)
                     .addClass('d-block')
