@@ -220,7 +220,7 @@ function createScheduleDate() {
  */
 function selectSchedule(event) {
     event.preventDefault();
-    if ($(this).hasClass('active')) {
+    if ($(this).hasClass('active') && $('.schedule-sort-film > div').length > 0) {
         return;
     }
     $('.schedule-slider .active')
