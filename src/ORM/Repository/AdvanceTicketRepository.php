@@ -40,7 +40,7 @@ class AdvanceTicketRepository extends EntityRepository
                 $qb->expr()->lte('t.releaseDt', 'CURRENT_TIMESTAMP()'),
                 $qb->expr()->orX(
                     $qb->expr()->isNull('s.publishingExpectedDate'),
-                    $qb->expr()->gte('s.publishingExpectedDate', 'CURRENT_DATE()')
+                    $qb->expr()->gt('s.publishingExpectedDate', 'CURRENT_DATE()')
                 )
             ))
             /**
