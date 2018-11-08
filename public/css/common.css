@@ -865,7 +865,7 @@ footer {
       border: none;
     }
     .news li:nth-child(odd) {
-      border-right: 1px solid #999;
+      border-right: 1px solid #ddd;
     }
     .theater footer {
         padding-bottom: 60px;
