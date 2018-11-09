@@ -20,15 +20,27 @@ class TheaterController extends BaseController
      * find by entity
      *
      * @param string $name
-     * @return Entity\Theater
-     * @throws NotFoundException
+     * @return Entity\Theater|null
      */
-    protected function findByEntity(string $name)
+    protected function getTheater(string $name)
     {
-        $theater = $this->em
+        return $this->em
             ->getRepository(Entity\Theater::class)
             ->findOneByName($name);
-            
+    }
+    
+    /**
+     * thteater exists
+     *
+     * @param string $name
+     * @param \Slim\Http\Request $request
+     * @param \Slim\Http\Response $response
+     * @return Entity\Theater
+     */
+    protected function theaterExists(string $name, $request, $response)
+    {
+        $theater = $this->getTheater($name);
+        
         if (is_null($theater)) {
             throw new NotFoundException($request, $response);
         }
@@ -48,7 +60,7 @@ class TheaterController extends BaseController
      */
     public function executeIndex($request, $response, $args)
     {
-        $theater = $this->findByEntity($args['name']);
+        $theater = $this->theaterExists($args['name'], $request, $response);
         
         $this->data->set('theater', $theater);
         
@@ -112,7 +124,7 @@ class TheaterController extends BaseController
      */
     public function executeAccess($request, $response, $args)
     {
-        $theater = $this->findByEntity($args['name']);
+        $theater = $this->theaterExists($args['name'], $request, $response);
         
         $this->data->set('theater', $theater);
         
@@ -131,7 +143,7 @@ class TheaterController extends BaseController
      */
     public function executeAdmission($request, $response, $args)
     {
-        $theater = $this->findByEntity($args['name']);
+        $theater = $this->theaterExists($args['name'], $request, $response);
         
         $this->data->set('theater', $theater);
         
@@ -148,7 +160,7 @@ class TheaterController extends BaseController
      */
     public function executeAdvanceTicket($request, $response, $args)
     {
-        $theater = $this->findByEntity($args['name']);
+        $theater = $this->theaterExists($args['name'], $request, $response);
         
         $this->data->set('theater', $theater);
         
@@ -184,7 +196,7 @@ class TheaterController extends BaseController
      */
     public function executeConcession($request, $response, $args)
     {
-        $theater = $this->findByEntity($args['name']);
+        $theater = $this->theaterExists($args['name'], $request, $response);
         
         $this->data->set('theater', $theater);
         
@@ -205,7 +217,7 @@ class TheaterController extends BaseController
      */
     public function executeFloorGuide($request, $response, $args)
     {
-        $theater = $this->findByEntity($args['name']);
+        $theater = $this->theaterExists($args['name'], $request, $response);
         
         $this->data->set('theater', $theater);
         
@@ -224,7 +236,7 @@ class TheaterController extends BaseController
      */
     public function executeNewsList($request, $response, $args)
     {
-        $theater = $this->findByEntity($args['name']);
+        $theater = $this->theaterExists($args['name'], $request, $response);
         
         $this->data->set('theater', $theater);
         
@@ -262,7 +274,7 @@ class TheaterController extends BaseController
      */
     public function executeNewsShow($request, $response, $args)
     {
-        $theater = $this->findByEntity($args['name']);
+        $theater = $this->theaterExists($args['name'], $request, $response);
         
         $this->data->set('theater', $theater);
         
