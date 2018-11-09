@@ -1,4 +1,5 @@
 User-agent:*
+Disallow:/bin/
 Disallow:/js/
 Disallow:/screen-x/news/
 Disallow:/maintenance.php
