@@ -1,6 +1,9 @@
 $(function () {
     $(document).on('click', '.tabs a', selectTab);
-    $(document).on('change', '.region-selection', changeTheater);
+    $(document).on('change', '.region-selection', function(){
+        var theater = $(this).val();
+        changeTheater(theater);
+    });
     if (getParam('theater')) {
         var theater = getParam('theater');
         $('.region-selection').val(theater);
@@ -15,7 +18,7 @@ $(function () {
  * 劇場選択
  */
 function changeTheater(theater) {
-    var theaterCode = (theater === undefined) ? $(this).val() : theater;
+    var theaterCode = theater;
     if (theaterCode === '') {
         $('.screening .movie, .scheduled .movie')
             .addClass('d-block')
