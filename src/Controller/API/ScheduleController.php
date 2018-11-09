@@ -7,6 +7,8 @@
 
 namespace Cinemasunshine\Portal\Controller\API;
 
+use Slim\Exception\NotFoundException;
+
 use Cinemasunshine\Schedule\Entity\V1\Schedules as V1Schedules;
 use Cinemasunshine\Schedule\Entity\ScheduleInterface;
 use Cinemasunshine\Schedule\Entity\SchedulesInterface;
@@ -71,10 +73,17 @@ class ScheduleController extends BaseController
      * @param \Slim\Http\Response $response
      * @param array               $args
      * @return string|void
+     * @throws NotFoundException
+     * @todo エラー系のレスポンス検討
      */
     public function executeIndex($request, $response, $args)
     {
         $theaterName = $args['name'];
+        
+        if (!TheaterSchedule::validate($theaterName)) {
+            // ひとまずNotFoundとする SASAKI-338
+            throw new NotFoundException($request, $response);
+        }
         
         $useTestApi = $this->useTestApi($theaterName);
         $theaterSchedule = new TheaterSchedule($theaterName, $useTestApi);
@@ -208,11 +217,18 @@ class ScheduleController extends BaseController
      * @param \Slim\Http\Response $response
      * @param array               $args
      * @return string|void
+     * @throws NotFoundException
+     * @todo エラー系のレスポンス検討
      */
     public function executeDate($request, $response, $args)
     {
         $theaterName = $args['name'];
         $date = $args['date'];
+        
+        if (!TheaterSchedule::validate($theaterName)) {
+            // ひとまずNotFoundとする SASAKI-338
+            throw new NotFoundException($request, $response);
+        }
         
         $useTestApi = $this->useTestApi($theaterName);
         $theaterSchedule = new TheaterSchedule($theaterName, $useTestApi);
