@@ -11,6 +11,7 @@ use Cinemasunshine\Portal\Controller\ImaxController;
 use Cinemasunshine\Portal\Controller\IndexController;
 use Cinemasunshine\Portal\Controller\NewsController;
 use Cinemasunshine\Portal\Controller\ScheduleController;
+use Cinemasunshine\Portal\Controller\ScreenXController;
 use Cinemasunshine\Portal\Controller\TheaterController;
 use Cinemasunshine\Portal\Controller\TheaterListController;
 use Cinemasunshine\Portal\Controller\TrailerController;
@@ -79,6 +80,10 @@ $app->group('/4dx', function() {
     $this->get('/news/', FourdxController::class . ':newsList')->setName('4dx_news_list');
     $this->get('/news/{id}.php', FourdxController::class . ':newsShow')->setName('4dx_news_show');
     $this->get('/theater/', FourdxController::class . ':theater')->setName('4dx_theater');
+});
+
+$app->group('/screen-x', function() {
+    $this->get('/', ScreenXController::class . ':index')->setName('screenx');
 });
 
 # APIのURL設計はひとまずそのまま SASAKI-315
