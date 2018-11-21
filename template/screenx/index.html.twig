@@ -1,9 +1,87 @@
 {% extends "screenx/layout.html.twig" %}
 
+{% block title %}SCREEN X特設サイト | {{ parent() }}{% endblock %}
+
+{% block description %}シネマサンシャインのSCREEN X特設サイトです。SCREEN Xの設備に関する情報や作品情報、鑑賞料金、上映劇場・キャンペーン情報のご案内など{% endblock %}
+
+{% block keywords %}{{ parent() }},予約,オンライン,上映,キャンペーン,SCREEN X,スクリーンX,作品情報{% endblock %}
+
+{% block css %}
+<link href="/css/screen-x/top.css" rel="stylesheet">
+{% endblock %}
+
+{% block javascript %}
+<script src="/js/screen-x/top.js"></script>
+{% endblock %}
+
 {% block navbar %}
-{% include 'screenx/include/navbar.html.twig' only %}
+{% include 'screenx/include/navbar.html.twig' with {
+    active: 'top'
+} only %}
 {% endblock %}
 
 {% block sp_navbar %}
-{% include 'screenx/include/sp_navbar.html.twig' only %}
+{% include 'screenx/include/sp_navbar.html.twig' with {
+    active: 'top'
+} only %}
+{% endblock %}
+
+{% block contents %}
+<div class="breadcrumb-list d-none d-md-block small width mx-auto mb-3 px-2 text-white">
+    <a class="text-white" href="{{ path_for('homepage') }}">ホーム</a>
+    <span class="font-weight-bold mx-2"> | </span>
+    <span>SCREEN X<span>
+</div>
+
+{% include 'screenx/include/index/slider.html.twig' with {
+    mainBanners: mainBanners,
+} only %}
+
+<div class="py-5 text-white">
+    <div class="width mx-auto px-3 film">
+        <div class="d-md-flex">
+            <div class="about mb-5 mb-md-0">
+                <div class="mr-md-4">
+                    <h3 class="font-weight-bold large mb-4 text-center text-md-left line-height-1">
+                        <div class="mb-2">映画に飛び込め！「SCREEN X」</div>
+                        <div class="small">ABOUT SCREEN X</div>
+                    </h3>
+                    <div class="mb-3"><img class="w-100" src="/images/screen-x/about/scx_about_main.jpg"></div>
+                    <div class="button-01 mx-auto px-3 px-md-5">
+                        <a class="bg-orange text-white" href="#">SCREEN Xとは？</a>
+                    </div>
+                </div>
+            </div>
+
+            {% set trailer = trailers[0] %}
+            {% if trailer %}
+                {% include 'screenx/include/index/trailer.html.twig' with {
+                    trailer: trailer
+                } only %}
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% include 'include/adsense/top.html.twig' only %}
+
+{% include 'screenx/include/index/news.html.twig' with {
+    newsList: newsList,
+} only %}
+
+{% include 'screenx/include/index/schedule.html.twig' with {
+    theaters: theaters,
+    screeningSchedules: screeningSchedules,
+    soonSchedules: soonSchedules,
+} only %}
+
+{% include 'include/adsense/buttom.html.twig' only %}
+
+{% include 'screenx/include/campaign.html.twig' with {
+    campaigns: campaigns,
+} only %}
+
+{% include 'screenx/include/index/infomation.html.twig' with {
+    newsList: infoNewsList
+} only %}
 {% endblock %}

@@ -182,4 +182,25 @@ class NewsRepository extends EntityRepository
         
         return $qb->getQuery()->getResult();
     }
+    
+    /**
+     * find by ScreenX
+     *
+     * @param int|null $limt
+     * @return News[]
+     */
+    public function findByScreenX(?int $limit = null)
+    {
+        $qb = $this->getActiveQuery();
+        $qb
+            ->andWhere('n.category = :category')
+            ->setParameter('category', News::CATEGORY_SCREENX)
+            ->orderBy('n.createdAt', 'DESC');
+        
+        if ($limit) {
+            $qb->setMaxResults($limit);
+        }
+        
+        return $qb->getQuery()->getResult();
+    }
 }
