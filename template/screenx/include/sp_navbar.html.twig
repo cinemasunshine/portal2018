@@ -2,40 +2,65 @@
     <div class="navigation fixed-bottom d-flex text-center shadow-01">
         <div class="flex-fill">
             <a href="{{ path_for('screenx') }}" class="d-block h-100">
+                {% if active == 'top' %}
                 <div class="active">
                     <img src="/images/common/sp_nav_sptop_scx_act.svg">
+                {% else %}
+                <div>
+                    <img src="/images/common/sp_nav_sptop_noact.svg">
+                {% endif %}
                     <p class="x-small mb-0">TOP</p>
                 </div>
             </a>
         </div>
         <div class="flex-fill">
             <a href="#" class="d-block h-100">
+                {% if active == 'about' %}
+                <div class="active">
+                    <img src="/images/common/sp_nav_scx_about_act.svg">
+                {% else %}
                 <div>
                     <img src="/images/common/sp_nav_about_noact.svg">
+                {% endif %}
                     <p class="x-small mb-0">SCREEN Xとは?</p>
                 </div>
             </a>
         </div>
         <div class="flex-fill">
             <a href="#" class="d-block h-100">
-                <div>
-                    <img src="/images/common/sp_nav_movie_noact.svg">
-                    <p class="x-small mb-0">NEWS&amp;INFO</p>
-                </div>
-            </a>
-        </div>
-        <div class="flex-fill">
-            <a href="#" class="d-block h-100">
+                {% if active == 'title' %}
+                <div class="active">
+                    <img src="/images/common/sp_nav_scx_movie_act.svg">
+                {% else %}
                 <div>
                     <img src="/images/common/sp_nav_special_movie_noact.svg">
+                {% endif %}
                     <p class="x-small mb-0">作品一覧</p>
                 </div>
             </a>
         </div>
         <div class="flex-fill">
             <a href="#" class="d-block h-100">
+                {% if active == 'news' %}
+                <div class="active">
+                    <img src="/images/common/sp_nav_scx_news_act.svg">
+                {% else %}
+                <div>
+                    <img src="/images/common/sp_nav_news_noact.svg">
+                {% endif %}
+                    <p class="x-small mb-0">NEWS&amp;INFO</p>
+                </div>
+            </a>
+        </div>
+        <div class="flex-fill">
+            <a href="#" class="d-block h-100">
+                {% if active == 'theater' %}
+                <div class="active">
+                    <img src="/images/common/sp_nav_tinfo_scx_act.svg">
+                {% else %}
                 <div>
                     <img src="/images/common/sp_nav_tinfo_noact.svg">
+                {% endif %}
                     <p class="x-small mb-0">劇場情報</p>
                 </div>
             </a>
