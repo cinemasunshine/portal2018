@@ -1,1 +1,9 @@
-SCREEN X特設サイト
+{% extends "screenx/layout.html.twig" %}
+
+{% block navbar %}
+{% include 'screenx/include/navbar.html.twig' only %}
+{% endblock %}
+
+{% block sp_navbar %}
+{% include 'screenx/include/sp_navbar.html.twig' only %}
+{% endblock %}
