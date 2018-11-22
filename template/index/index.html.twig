@@ -25,8 +25,8 @@
         mainBanners: mainBanners
     } only %}
 </div>
-
-<div class="bg-light-gray mb-5">
+{% include 'include/pagejack/sp_animation_file.html.twig' only %}
+<div class="bg-light-gray mb-3">
     <h3 class="width mx-auto d-md-block d-none pt-4 px-3 line-height-1 font-weight-bold large">劇場一覧<br>
     <span class="small">THEATER</span></h3>
     <div class="width mx-auto d-md-flex py-4 px-3">
@@ -44,9 +44,8 @@
         } only %}
     </div>
 </div>
-
+{% include 'include/pagejack/animation_file.html.twig' only %}
 {% include 'include/adsense/top.html.twig' only %}
-
 {% include 'index/include/ranking.html.twig' with {
     titleRanking: titleRanking
 } only %}
