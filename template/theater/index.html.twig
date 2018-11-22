@@ -58,7 +58,7 @@ active: 'top',
 specialSites: specialSites
 } only %}
 {% endif %}
-
+{% include 'include/pagejack/sp_animation_file.html.twig' only %}
 {% include 'include/adsense/top.html.twig' only %}
 
 <div class="mb-5">
@@ -76,7 +76,7 @@ specialSites: specialSites
         } only %}
     </div>
 </div>
-
+{% include 'include/pagejack/animation_file.html.twig' only %}
 {% if theater.getMasterVersion() == 2 %}
 {% include 'theater/include/index/online_ticket.html.twig' with {
 masterCode: theater.getMasterCode()
