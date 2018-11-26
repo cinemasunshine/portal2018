@@ -85,6 +85,7 @@ $app->group('/4dx', function() {
 $app->group('/screen-x', function() {
     $this->get('/', ScreenXController::class . ':index')->setName('screenx');
     $this->get('/about/', ScreenXController::class . ':about')->setName('screenx_about');
+    $this->get('/movie/', ScreenXController::class . ':scheduleList')->setName('screenx_schedule_list');
 });
 
 # APIのURL設計はひとまずそのまま SASAKI-315

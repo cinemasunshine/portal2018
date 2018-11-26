@@ -154,4 +154,21 @@ class ScreenXController extends SpecialSiteController
     public function executeAbout($request, $response, $args)
     {
     }
+    
+    /**
+     * schedule list action
+     * 
+     * @param \Slim\Http\Request  $request
+     * @param \Slim\Http\Response $response
+     * @param array               $args
+     * @return string|void
+     */
+    public function executeScheduleList($request, $response, $args)
+    {
+        $this->data->set('theaters', $this->getScreenXTheaters());
+        
+        $this->data->set('screeningSchedules', $this->getScreeningSchedules());
+        
+        $this->data->set('soonSchedules', $this->getSoonSchedules());
+    }
 }
