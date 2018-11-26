@@ -87,4 +87,16 @@ class ScreenXResponder extends BaseResponder
     {
         return $this->view->render($response, 'screenx/news/show.html.twig', $data->all());
     }
+    
+    /**
+     * theater
+     *
+     * @param Response   $response
+     * @param Collection $data
+     * @return Response
+     */
+    public function theater(Response $response, Collection $data)
+    {
+        return $this->view->render($response, 'screenx/theater.html.twig', $data->all());
+    }
 }
