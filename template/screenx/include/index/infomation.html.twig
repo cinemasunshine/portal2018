@@ -6,7 +6,7 @@
             <ul class="border-top border-gray">
             {% for news in newsList %}
                 <li class="border-bottom border-gray">
-                    <a href="#" class="d-md-flex d-block py-3 pl-3 pr-5">
+                    <a href="{{ path_for('screenx_news_show', { id: news.getId() }) }}" class="d-md-flex d-block py-3 pl-3 pr-5">
                         <div class="mb-md-0 mb-2 infomation-date">{{ news.getStartDt()|date('Y/n/j') }}</div>
                         <div>{{ news.getHeadline() }}</div>
                     </a>

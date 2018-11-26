@@ -6,7 +6,7 @@
             <ul class="row mb-0">
             {% for news in newsList %}
                 <li class="col-md-3 col-6 py-2 mb-4">
-                    <a href="#" class="d-block">
+                    <a href="{{ path_for('screenx_news_show', { id: news.getId() }) }}" class="d-block">
                         <div class="border mb-2 image border-gray" style="background-image: url({{ file_url(news.getImage()) }})"></div>
                         <p class="mb-0">{{ news.getHeadline() }}</p>
                     </a>
