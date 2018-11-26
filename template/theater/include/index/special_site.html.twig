@@ -11,6 +11,11 @@
             <div class="fourdx mb-1"><img src="/images/common/4dx_logo.svg"></div>
             <p class="mb-0">特設サイトはこちら</p>
         </a>
+    {% elseif specialSite.getId() == 3 %}
+        <a href="{{ path_for('screenx') }}" class="d-block">
+            <div class="fourdx mb-1"><img src="/images/common/screen-x_logo.svg"></div>
+            <p class="mb-0">特設サイトはこちら</p>
+        </a>
     {% endif %}
     </div>
 {% endfor %}
