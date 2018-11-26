@@ -196,4 +196,19 @@ class ScreenXController extends SpecialSiteController
         
         $this->data->set('theaters', $this->getScreenXTheaters());
     }
+    
+    /**
+     * news list action
+     * 
+     * @param \Slim\Http\Request  $request
+     * @param \Slim\Http\Response $response
+     * @param array               $args
+     * @return string|void
+     */
+    public function executeNewsList($request, $response, $args)
+    {
+        $this->data->set('newsList', $this->getNewsList());
+        
+        $this->data->set('infoNewsList', $this->getInfoNewsList());
+    }
 }

@@ -87,6 +87,7 @@ $app->group('/screen-x', function() {
     $this->get('/about/', ScreenXController::class . ':about')->setName('screenx_about');
     $this->get('/movie/', ScreenXController::class . ':scheduleList')->setName('screenx_schedule_list');
     $this->get('/movie/{schedule}.php', ScreenXController::class . ':scheduleShow')->setName('screenx_schedule_show');
+    $this->get('/news/', ScreenXController::class . ':newsList')->setName('screenx_news_list');
 });
 
 # APIのURL設計はひとまずそのまま SASAKI-315
