@@ -15,7 +15,7 @@
 {% for specialSite in theater.getSpecialSites() %}
     {% if specialSite.getId() == 1 %}
         <div class="header-imax mr-md-2 mr-2 line-height-1"><img src="/images/common/imax_logo.svg" class="w-100"></div>
-    {% elseif specialSite.getId == 2 %}
+    {% elseif specialSite.getId() == 2 %}
         <div class="header-4dx line-height-1"><img src="/images/common/4dx_logo.svg" class="w-100"></div>
     {% endif %}
 {% endfor %}
