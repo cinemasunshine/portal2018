@@ -1,5 +1,5 @@
 {% if campaigns|length > 0 %}
-<div class="py-5 text-white">
+<div class="py-5 text-white bg-black">
     <div class="campaign">
         <div class="width mx-auto px-3">
             <h3 class="mb-4 font-weight-bold line-height-1 large">キャンペーン<br><span class="small">CAMPAIGN</span></h3>
@@ -10,7 +10,7 @@
                 {% for campaign in campaigns %}
                     <div class="swiper-slide rounded shadow-01">
                         <a href="{{ campaign.getUrl() }}" target="_blank" class="d-block">
-                            <img src="{{ file_url(campaign.getImage()) }}" lass="w-100">
+                            <img src="{{ file_url(campaign.getImage()) }}" class="w-100">
                             <p class="bg-white p-3 mb-0">{{ campaign.getName() }}</p>
                         </a>
                     </div>

@@ -225,6 +225,9 @@ header .position-fixed {
 .header-4dx {
     width: 40px;
 }
+.header-screen-x {
+    width: 65px;
+}
 .theater-name {
     font-size: 20px;
 }

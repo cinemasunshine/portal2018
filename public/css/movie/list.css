@@ -38,11 +38,8 @@ form .form-control {
 .title a {
     text-decoration: underline;
 }
-.icon-2d, .icon-3d, .icon-imax, .icon-4dx {
+.icon-2d, .icon-3d, .icon-imax, .icon-4dx,.icon-scx {
     width: 70px;
-}
-.icon-scx {
-    width: 80px;
 }
 .icon-imax img {
     width: 50px;
@@ -52,7 +49,7 @@ form .form-control {
     height: 14px;
 }
 .icon-scx img {
-    width: 60px;
+    width: 55px;
 }
 .icon-r {
     width: 35px;
