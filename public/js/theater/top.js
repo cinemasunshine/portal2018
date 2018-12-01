@@ -266,7 +266,8 @@ function getSchedule() {
             film.screen.forEach(function (screen) {
                 screen.time.forEach(function (time) {
                     if (moment(date.replace(/-/g, '')).format('YYYYMMDD') === moment().format('YYYYMMDD')
-                        && time.end < moment().format('HH:mm')) {
+                        && time.end < moment().format('HH:mm')
+                        && time.start < time.end) {
                         // 上映終了
                         return;
                     }
