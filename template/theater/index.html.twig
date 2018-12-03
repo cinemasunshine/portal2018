@@ -88,7 +88,11 @@ masterCode: theater.getMasterCode()
 } only %}
 
 {# scheduleテンプレートのincludeをトリガーとしてjavascriptの処理を実行する #}
+{% if theater.getId() != 6 %}
+{# 沼津を除く劇場 SASAKI-357 #}
 {% include 'theater/include/index/schedule.html.twig' only %}
+{% endif %}
+
 
 {% include 'theater/include/index/event.html.twig' with {
 theater: theater,
