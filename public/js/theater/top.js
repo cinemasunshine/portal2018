@@ -38,6 +38,7 @@ function isAppCompatibleTheater() {
         'heiwajima',
         'yukarigaoka',
         'kahoku',
+        'numazu',
         'yamatokoriyama',
         'shimonoseki',
         'kitajima',
