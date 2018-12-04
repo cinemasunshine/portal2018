@@ -40,15 +40,35 @@
     border-radius: 5px;
 }
 
-.icon-2d, .icon-3d, .icon-imax, .icon-4dx {
+.icon-2d, .icon-3d, .icon-imax, .icon-4dx, .icon-4dx3d, .icon-scx {
     width: 70px;
+}
+.icon-imax3d {
+    width: 80px;
+}
+.icon-2d img {
+    width: 20px;
+}
+.icon-3d img {
+    width: 20px;
 }
 .icon-imax img {
     width: 50px;
+    padding-bottom: 1px;
+}
+.icon-imax3d img {
+    width: 70px;
+    padding-bottom: 1px;
 }
 .icon-4dx img {
     width: 40px;
     height: 14px;
+}
+.icon-4dx3d img {
+    width: 45px;
+}
+.icon-scx img {
+    width: 60px;
 }
 .icon-r {
     width: 35px;

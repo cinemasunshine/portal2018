@@ -1,6 +1,6 @@
 {% set title = schedule.getTitle() %}
 <div class="movie">
-    <div class="position-relative d-md-flex p-2 border border-gray mb-4">
+    <div class="border border-gray position-relative d-md-flex p-2 mb-4">
         <div class="movie-image">
         {% if title.getImage() %}
             <img src="{{ file_url(title.getImage()) }}" class="w-100">
@@ -14,23 +14,17 @@
             {% if schedule.getStartDate() > date() %}
                 <p class="text-gray release_date mb-1">{{ schedule.getStartDate()|date('Y/m/d') }}公開</p>
             {% endif %}
+            
+                <p class="title x-large"><a class="text-white" href="{{ path_for('screenx_schedule_show', { schedule: schedule.getId() }) }}">{{ title.getName() }}</a></p>
                 
-                <p class="title x-large"><a class="text-white" href="{{ path_for('imax_schedule_show', { schedule: schedule.getId() }) }}">{{ title.getName() }}</a></p>
-                
-                <div class="d-flex mb-1">
-                {% set systems = [] %}
-                {% for showingFormat in schedule.getShowingFormats() %}
-                    {% set systems = systems|merge([ showingFormat.getSystem() ]) %}
-                {% endfor %}
-                
-                {% if 5 in systems %}
-                    <div class="icon-imax py-1 bg-dark-gray text-center mr-2"><img src="/images/common/imax_logo_wht.svg"></div>
-                {% endif %}
-                {% if 6 in systems %}
-                    <div class="icon-imax3d py-1 bg-dark-gray text-center mr-2"><img src="/images/common/imax3d_logo_wht.svg"></div>
-                {% endif %}
+                <!--上映方式-->
+                <div class="d-flex mb-3">
+                    <div class="icon-scx py-1 bg-dark-gray text-center mr-2"><img src="/images/common/screen-x_logo_wht.svg"></div>
                 </div>
+                <!--上映方式-->
+                
                 <div class="d-flex">
+                
                 {% if title.getRating() == 1 %}
                     <div class="icon-r mr-2"><img src="/images/movie/g.svg"></div>
                 {% elseif title.getRating() == 2 %}
@@ -47,8 +41,11 @@
                 {% if 2 in title.getUniversal() %}
                     <div class="icon-jimaku mr-2"><img src="/images/movie/ud_jimaku.svg"></div>
                 {% endif %}
+                
                 </div>
             </div>
+            
+            <!--上映劇場-->
             <div class="movie-area">
                 <div class="d-flex flex-wrap">
                 {% for theater in theaters %}
@@ -62,15 +59,18 @@
                     
                     <div class="area-button mb-md-2 pr-md-2 mb-2 px-1 px-md-0 small font-weight-bold">
                     {% if isShowing %}
-                        <a href="{{ path_for('theater', { name: theater.getName() }) }}" data-theaterCode="{{ theater.getId() }}" class="d-flex align-items-center justify-content-center bg-blue text-white border-blue">{{ theater.getNameJa() }}</a>
+                        <a class="d-flex align-items-center justify-content-center text-white border-orange bg-orange" href="{{ path_for('theater', { name: theater.getName() }) }}">{{ theater.getNameJa() }}</a>
                     {% else %}
-                        <span class="d-flex align-items-center justify-content-center text-gray border-gray bg-transparent">{{ theater.getNameJa() }}</span>
+                        <span class="d-flex align-items-center justify-content-center text-white border-orange bg-transparent">{{ theater.getNameJa() }}</span>
                     {% endif %}
                     </div>
                 {% endfor %}
                 </div>
-                <div class="x-small">{{ title.getCredit() }}</div>
+                <!--コピーライト-->
+                <div class="x-small ml-2 ml-md-0">{{ title.getCredit() }}</div>
+                <!--/コピーライト-->
             </div>
+            <!--上映劇場-->
         </div>
     </div>
 </div>

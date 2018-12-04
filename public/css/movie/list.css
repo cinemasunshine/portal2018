@@ -38,21 +38,35 @@ form .form-control {
 .title a {
     text-decoration: underline;
 }
-.icon-2d, .icon-3d, .icon-imax, .icon-4dx {
+.icon-2d, .icon-3d, .icon-imax, .icon-4dx, .icon-4dx3d, .icon-scx {
     width: 70px;
 }
-.icon-scx {
+.icon-imax3d {
     width: 80px;
+}
+.icon-2d img {
+    width: 20px;
+}
+.icon-3d img {
+    width: 20px;
 }
 .icon-imax img {
     width: 50px;
+    padding-bottom: 1px;
+}
+.icon-imax3d img {
+    width: 70px;
+    padding-bottom: 1px;
 }
 .icon-4dx img {
     width: 40px;
     height: 14px;
 }
+.icon-4dx3d img {
+    width: 45px;
+}
 .icon-scx img {
-    width: 60px;
+    width: 55px;
 }
 .icon-r {
     width: 35px;
@@ -104,11 +118,23 @@ form .form-control {
     .type-imax .movie-area {
         background-color: #1f1f1f;
     }
+    .icon-2d img {
+        width: 15px;
+    }
+    .icon-3d img {
+        width: 15px;
+    }
     .icon-imax img {
         width: 34px;
     }
+    .icon-imax3d img {
+        width: 50px;
+    }
     .icon-4dx img {
         width: 28px;
+    }
+    .icon-4dx3d img {
+        width: 34px;
     }
     .icon-scx img {
         width: 45px;

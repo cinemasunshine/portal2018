@@ -23,14 +23,11 @@
                     {% set systems = systems|merge([ showingFormat.getSystem() ]) %}
                 {% endfor %}
                 
-                {% if 1 in systems %}
-                    <div class="icon-2d py-1 text-white bg-dark-gray text-center mr-2">2D</div>
-                {% endif %}
-                {% if 2 in systems %}
-                    <div class="icon-3d py-1 text-white bg-dark-gray text-center mr-2">3D</div>
-                {% endif %}
-                {% if 5 in systems or 6 in systems %}
+                {% if 5 in systems %}
                     <div class="icon-imax py-1 bg-dark-gray text-center mr-2"><img src="/images/common/imax_logo_wht.svg"></div>
+                {% endif %}
+                {% if 6 in systems %}
+                    <div class="icon-imax3d py-1 bg-dark-gray text-center mr-2"><img src="/images/common/imax3d_logo_wht.svg"></div>
                 {% endif %}
                 </div>
                 <div class="d-flex">
