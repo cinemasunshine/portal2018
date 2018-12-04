@@ -40,7 +40,7 @@
     border-radius: 5px;
 }
 
-.icon-2d, .icon-3d, .icon-imax, .icon-4dx {
+.icon-2d, .icon-3d, .icon-imax, .icon-4dx,.icon-scx {
     width: 70px;
 }
 .icon-imax img {
@@ -49,6 +49,9 @@
 .icon-4dx img {
     width: 40px;
     height: 14px;
+}
+.icon-scx img {
+    width: 55px;
 }
 .icon-r {
     width: 35px;

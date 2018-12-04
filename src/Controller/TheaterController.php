@@ -77,6 +77,7 @@ class TheaterController extends BaseController
                 Entity\News::CATEGORY_NEWS,
                 Entity\News::CATEGORY_IMAX,
                 Entity\News::CATEGORY_4DX,
+                Entity\News::CATEGORY_SCREENX, // SASAKI-351
             ],
             8
         ));

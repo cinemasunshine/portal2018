@@ -52,6 +52,9 @@
 .news-4dx img {
   width: 80px;
 }
+.news-screen-x img {
+  width: 140px;
+}
 
 
 /* sp */
@@ -104,5 +107,8 @@
   }
   .news-4dx img {
     width: 50px;
+  }
+  .news-screen-x img {
+    width: 100px;
   }
 }

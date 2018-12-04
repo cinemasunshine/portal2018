@@ -1,45 +1,30 @@
-<div class="movie d-md-flex mb-4">
-    {% set title = schedule.getTitle() %}
+<div class="width mx-auto mb-3 px-2 text-white">
+    <div class="movie d-md-flex mb-4">
+        {% set title = schedule.getTitle() %}
     
-    <div class="movie-image py-3 py-md-0 mb-3">
-    {% if title.getImage() %}
-        <img src="{{ file_url(title.getImage()) }}" class="w-100">
-    {% else %}
-        <img src="/images/common/no_img_movie.png" class="w-100">
-    {% endif %}
-    </div>
+        <!--ポスター画像-->
+        <div class="movie-image py-3 py-md-0 mb-3">
+        {% if title.getImage() %}
+            <img src="{{ file_url(title.getImage()) }}" class="w-100">
+        {% else %}
+            <img src="/images/common/no_img_movie.png" class="w-100">
+        {% endif %}
+        </div>
+        <!--ポスター画像-->
+        
         <div class="movie-info pt-md-2 pl-md-3 px-3 px-md-0">
             <div class="movie-detail mb-3">
             
             {% if schedule.getStartDate() > date() %}
                 <p class="text-gray release_date mb-1">{{ schedule.getStartDate()|date('Y/m/d') }}公開</p>
             {% endif %}
-                
+            
                 <h2 class="title x-large font-weight-bold mb-3">{{ title.getName() }}</a></h2>
                 <div class="d-flex mb-3">
-                {% set systems = [] %}
-                {% for showingFormat in schedule.getShowingFormats() %}
-                    {% set systems = systems|merge([ showingFormat.getSystem() ]) %}
-                {% endfor %}
-                
-                {% if 1 in systems %}
-                    <div class="icon-2d py-1 text-white bg-dark-gray text-center mr-2">2D</div>
-                {% endif %}
-                {% if 2 in systems %}
-                    <div class="icon-3d py-1 text-white bg-dark-gray text-center mr-2">3D</div>
-                {% endif %}
-                {% if 5 in systems or 6 in systems %}
-                    <div class="icon-imax py-1 bg-dark-gray text-center mr-2"><img src="/images/common/imax_logo_wht.svg"></div>
-                {% endif %}
-                {% if 3 in systems or 4 in systems %}
-                    <div class="icon-4dx py-1 bg-dark-gray text-center mr-2"><img src="/images/common/4dx_logo_wht.svg"></div>
-                {% endif %}
-                {% if 10 in systems %}
                     <div class="icon-scx py-1 bg-dark-gray text-center mr-2"><img src="/images/common/screen-x_logo_wht.svg"></div>
-                {% endif %}
                 </div>
-                
                 <div class="d-flex">
+                
                 {% if title.getRating() == 1 %}
                     <div class="icon-r mr-2"><img src="/images/movie/g.svg"></div>
                 {% elseif title.getRating() == 2 %}
@@ -49,13 +34,14 @@
                 {% elseif title.getRating() == 4 %}
                     <div class="icon-r mr-2"><img src="/images/movie/r_18.svg"></div>
                 {% endif %}
-                    
+                
                 {% if 1 in title.getUniversal() %}
                     <div class="icon-onsei mr-2"><img src="/images/movie/ud_onsei.svg"></div>
                 {% endif %}
                 {% if 2 in title.getUniversal() %}
                     <div class="icon-jimaku mr-2"><img src="/images/movie/ud_jimaku.svg"></div>
                 {% endif %}
+                
                 </div>
             </div>
             <div class="movie-area py-2 px-1">
@@ -71,9 +57,9 @@
                     
                     <div class="area-button mb-md-2 pr-md-2 mb-2 px-1 px-md-0 small font-weight-bold">
                     {% if isShowing %}
-                        <a href="{{ path_for('theater', { name: theater.getName() }) }}" data-theaterCode="{{ theater.getId() }}" class="d-flex align-items-center justify-content-center bg-white text-blue border-blue">{{ theater.getNameJa() }}</a>
+                        <a class="d-flex align-items-center justify-content-center text-white border-orange bg-orange" href="{{ path_for('theater', { name: theater.getName() }) }}">{{ theater.getNameJa() }}</a>
                     {% else %}
-                        <span class="d-flex align-items-center justify-content-center text-light-gray border-light-gray bg-white">{{ theater.getNameJa() }}</span>
+                        <span class="d-flex align-items-center justify-content-center text-white border-orange bg-transparent">{{ theater.getNameJa() }}</span>
                     {% endif %}
                     </div>
                 {% endfor %}
@@ -95,9 +81,11 @@
             <div class="icon-appearance text-white bg-dark-gray text-center py-1 mb-2 mb-md-0">出演</div>
             <div class="person pl-md-3">{{ title.getCast() }}</div>
         </div>
+        
     {% if title.getOfficialSite() %}
         <div class="official-site mb-4"><a href="{{ title.getOfficialSite() }}" class="text-light-blue" target="_blank">公式サイト</a></div>
     {% endif %}
+    
         <p class="small mb-3 text-red">{{ schedule.getRemark() }}</p>
     </div>
 
@@ -110,5 +98,5 @@
         </div>
     </div>
 {% endif %}
-    
+
 </div>
