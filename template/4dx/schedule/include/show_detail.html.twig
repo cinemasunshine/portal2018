@@ -24,14 +24,11 @@
                     {% set systems = systems|merge([ showingFormat.getSystem() ]) %}
                 {% endfor %}
                 
-                {% if 1 in systems %}
-                    <div class="icon-2d py-1 text-white bg-dark-gray text-center mr-2">2D</div>
-                {% endif %}
-                {% if 2 in systems %}
-                    <div class="icon-3d py-1 text-white bg-dark-gray text-center mr-2">3D</div>
-                {% endif %}
-                {% if 3 in systems or 4 in systems %}
+                {% if 3 in systems %}
                     <div class="icon-4dx py-1 bg-dark-gray text-center mr-2"><img src="/images/common/4dx_logo_wht.svg"></div>
+                {% endif %}
+                {% if 4 in systems %}
+                    <div class="icon-4dx3d py-1 bg-dark-gray text-center mr-2"><img src="/images/common/4dx3d_logo_wht.svg"></div>
                 {% endif %}
                 </div>
                 

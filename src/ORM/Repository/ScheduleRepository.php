@@ -105,6 +105,22 @@ class ScheduleRepository extends EntityRepository
     }
     
     /**
+     * find screening for ScreenX
+     *
+     * @return Schedule[]
+     */
+    public function findScreeningForScreenX()
+    {
+        $qb = $this->getScreeningQuery();
+        $qb
+            ->join('s.showingFormats', 'sf')
+            ->andWhere('sf.system = :system')
+            ->setParameter('system', ShowingFormat::SYSTEM_SCREENX);
+        
+        return $qb->getQuery()->getResult();
+    }
+    
+    /**
      * return soon query
      *
      * @return QueryBuilder
@@ -170,6 +186,22 @@ class ScheduleRepository extends EntityRepository
             ->join('s.showingFormats', 'sf')
             ->andWhere('sf.system IN (:systems)')
             ->setParameter('systems', $systems);
+        
+        return $qb->getQuery()->getResult();
+    }
+    
+    /**
+     * find soon for ScreenX
+     *
+     * @return Schedule[]
+     */
+    public function findSoonForScreenX()
+    {
+        $qb = $this->getSoonQuery();
+        $qb
+            ->join('s.showingFormats', 'sf')
+            ->andWhere('sf.system = :system')
+            ->setParameter('system', ShowingFormat::SYSTEM_SCREENX);
         
         return $qb->getQuery()->getResult();
     }

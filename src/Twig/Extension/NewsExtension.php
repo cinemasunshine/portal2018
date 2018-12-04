@@ -16,20 +16,22 @@ class NewsExtension extends \Twig_Extension
 {
     /** @var array */
     protected $categoryLabels = [
-        News::CATEGORY_NEWS  => 'ニュース',
-        News::CATEGORY_INFO  => 'インフォメーション',
-        News::CATEGORY_IMAX  => 'IMAX',
-        News::CATEGORY_4DX   => '4DX',
-        News::CATEGORY_EVENT => 'ライブビューイング・イベント',
+        News::CATEGORY_NEWS    => 'ニュース',
+        News::CATEGORY_INFO    => 'インフォメーション',
+        News::CATEGORY_IMAX    => 'IMAX',
+        News::CATEGORY_4DX     => '4DX',
+        News::CATEGORY_SCREENX => 'ScreenX',
+        News::CATEGORY_EVENT   => 'ライブビューイング・イベント',
     ];
     
     /** @var array */
     protected $categoryLabelClasses = [
-        News::CATEGORY_NEWS  => 'list-type-news',
-        News::CATEGORY_INFO  => 'list-type-information',
-        News::CATEGORY_IMAX  => 'list-type-imax',
-        News::CATEGORY_4DX   => 'list-type-4dx',
-        News::CATEGORY_EVENT => 'list-type-event',
+        News::CATEGORY_NEWS    => 'list-type-news',
+        News::CATEGORY_INFO    => 'list-type-information',
+        News::CATEGORY_IMAX    => 'list-type-imax',
+        News::CATEGORY_4DX     => 'list-type-4dx',
+        News::CATEGORY_SCREENX => 'list-type-scx',
+        News::CATEGORY_EVENT   => 'list-type-event',
     ];
     
     /**

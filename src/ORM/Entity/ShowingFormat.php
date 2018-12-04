@@ -20,16 +20,17 @@ class ShowingFormat extends AbstractEntity
 {
     use TimestampableTrait;
     
-    const SYSTEM_2D = 1;
-    const SYSTEM_3D = 2;
-    const SYSTEM_4DX = 3;
-    const SYSTEM_4DX3D = 4;
-    const SYSTEM_IMAX = 5;
-    const SYSTEM_IMAX3D = 6;
-    const SYSTEM_BESTIA = 7;
+    const SYSTEM_2D       = 1;
+    const SYSTEM_3D       = 2;
+    const SYSTEM_4DX      = 3;
+    const SYSTEM_4DX3D    = 4;
+    const SYSTEM_IMAX     = 5;
+    const SYSTEM_IMAX3D   = 6;
+    const SYSTEM_BESTIA   = 7;
     const SYSTEM_BESTIA3D = 8;
-    const SYSTEM_BTSX = 9;
-    const SYSTEM_NONE = 99;
+    const SYSTEM_BTSX     = 9;
+    const SYSTEM_SCREENX  = 10; // SASAKI-351
+    const SYSTEM_NONE     = 99;
     
     const VOICE_SUBTITLE = 1;
     const VOICE_DUB = 2;
