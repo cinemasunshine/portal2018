@@ -42,6 +42,7 @@ function isAppCompatibleTheater() {
         'yamatokoriyama',
         'shimonoseki',
         'kitajima',
+        'masaki',
         'aira'
     ];
     var theater = $('body').attr('data-theater');
