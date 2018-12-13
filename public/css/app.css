@@ -66,7 +66,10 @@
 .search {
     width: 250px;
 }
-
+.mvtk_goriyou{
+    width: 200px;
+    margin: 15px 0px;
+}
 
 
 @media (max-width: 767.98px) {
@@ -121,5 +124,9 @@
     }
     .search {
         width: auto;
+    }
+    .mvtk_goriyou{
+        width: 200px;
+        margin: 15px;
     }
 }
