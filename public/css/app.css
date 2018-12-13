@@ -125,4 +125,8 @@
     .search {
         width: auto;
     }
+    .mvtk_goriyou{
+        width: 200px;
+        margin: 15px;
+    }
 }
