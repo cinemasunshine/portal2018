@@ -16,7 +16,7 @@
             {% endif %}
             
                 <p class="title x-large"><a class="text-white" href="{{ path_for('screenx_schedule_show', { schedule: schedule.getId() }) }}">{{ title.getName() }}</a></p>
-                
+                <p class="small mb-2 text-red pc_disp movie_notes"><small>{{ schedule.getRemark() }}</small></p>
                 <!--上映方式-->
                 <div class="d-flex mb-3">
                     <div class="icon-scx py-1 bg-dark-gray text-center mr-2"><img src="/images/common/screen-x_logo_wht.svg"></div>
@@ -44,7 +44,7 @@
                 
                 </div>
             </div>
-            
+            <p class="small mb-2 text-red pc_disp movie_notes"><small>{{ schedule.getRemark() }}</small></p>
             <!--上映劇場-->
             <div class="movie-area">
                 <div class="d-flex flex-wrap">
