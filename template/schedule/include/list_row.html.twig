@@ -1,6 +1,6 @@
 {% set title = schedule.getTitle() %}
 <div class="movie">
-    <div class="border border-gray position-relative d-md-flex p-2 mb-4">
+    <div class="border border-light-gray position-relative d-md-flex p-2 mb-4">
         <div class="movie-image">
         {% if title.getImage() %}
             <img src="{{ file_url(title.getImage()) }}" class="w-100">
