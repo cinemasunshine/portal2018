@@ -12,7 +12,7 @@
             <div class="movie-detail mb-2">
             
             {% if schedule.getStartDate() > date() %}
-                <p class="text-gray release_date mb-1"><smal>{{ schedule.getStartDate()|date('Y/m/d') }}公開</smal></p>
+                <p class="text-gray release_date mb-1"><small>{{ schedule.getStartDate()|date('Y/m/d') }}公開</small></p>
             {% endif %}
                 
                 <p class="title x-large"><a class="" href="{{ path_for('schedule_show', { schedule: schedule.getId() }) }}">{{ title.getName() }}</a></p>
