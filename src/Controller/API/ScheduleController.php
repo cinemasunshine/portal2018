@@ -325,6 +325,7 @@ class ScheduleController extends BaseController
     ) {
         $movieCollection = new MovieCollection();
 
+        // 先行販売の作品を優先するため、通常のを先にcollectionに追加する SASAKI-375
         $this->findMovie($params, $schedules, $movieCollection);
 
         $this->findMovie($params, $preSchedules, $movieCollection);
