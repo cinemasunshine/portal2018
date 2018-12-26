@@ -334,15 +334,21 @@ function getSchedule() {
 function createScheduleFilmDom(film) {
     var data = {
         name: film.name,
-        ename: '',
+        ename: film.ename,
         comment: film.comment,
         runningTime: film.running_time,
         cmTime: film.cm_time,
         code: film.code
     };
     
-    if (film.ename) {
-        data.ename = '<span class="ml-1 mr-1 text-danger">/</span><span class="text-danger">' + film.ename + '</span>'
+    var commen = film.comment;
+    
+    if (data.ename) {
+        if (commen) {
+            commen += '<span class="ml-1 mr-1">/</span>';
+        }
+        
+        commen += data.ename; // SASAKI-373
     }
 
     // 作品コード重複を考慮したランダム値
@@ -353,7 +359,7 @@ function createScheduleFilmDom(film) {
     <div class="border-bottom bg-light-gray p-3">\
         <div class="mb-2"><strong>'+ data.name + '</strong></div>\
         <div class="small text-dark-gray mb-2 d-flex align-items-center"><i class="mr-2 time-icon"></i><span class="mr-2">'+ (data.runningTime + data.cmTime) + '分</span></div>\
-        <div class="small text-dark-gray line-height-1">'+ data.comment + data.ename + '</div>\
+        <div class="small text-dark-gray line-height-1">'+ commen + '</div>\
     </div>\
     <ul class="performances d-flex flex-wrap mb-0 px-3 pt-3 pb-0 text-center"></ul>\
 </div>');
