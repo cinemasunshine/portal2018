@@ -371,7 +371,7 @@ function createScheduleFilmDom(film) {
     </a>\
 </div>\
 <div class="collapse" id="' + targetId + '">\
-    <div class="small text-dark-gray line-height-1 p-2 border-bottom">'+ data.comment + data.ename + '</div>\
+    <div class="small text-dark-gray line-height-1 p-2 border-bottom">'+ commen + '</div>\
     <ul class="performances mb-0 p-2"></ul>\
 </div>\
 </div>');
