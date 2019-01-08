@@ -37,7 +37,7 @@ class AdvanceTicketRepository extends EntityRepository
             ->andWhere('s.isDeleted = false')
             ->andWhere($qb->expr()->andX(
                 $qb->expr()->eq('t.isSalesEnd', 'false'),
-                $qb->expr()->lte('t.releaseDt', 'CURRENT_TIMESTAMP()'),
+                $qb->expr()->lte('t.publishingStartDt', 'CURRENT_TIMESTAMP()'),
                 $qb->expr()->orX(
                     $qb->expr()->isNull('s.publishingExpectedDate'),
                     $qb->expr()->gt('s.publishingExpectedDate', 'CURRENT_DATE()')
