@@ -1,0 +1,8 @@
+<li class="col-md-3 col-6 py-2 mb-4">
+    <a href="{{ path_for('news_show', { id: news.getId() }) }}" class="d-block">
+    {% if news.getImage() %}
+        <div class="border mb-2 image border-gray" style="background-image: url({{ file_url(news.getImage()) }})"></div>
+    {% endif %}
+        <p class="mb-0">{{ news.getHeadline() }}</p>
+    </a>
+</li>
