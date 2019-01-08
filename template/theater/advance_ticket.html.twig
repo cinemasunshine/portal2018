@@ -78,7 +78,11 @@
                     {% if advanceTicket.getReleaseDtText() %}
                         {{ advanceTicket.getReleaseDtText() }}
                     {% elseif advanceTicket.getReleaseDt() %}
+                        {% if advanceTicket.getReleaseDt() < date() %}
+                        発売中
+                        {% else %}
                         {{ advanceTicket.getReleaseDt()|date('Y/n/j') }}
+                        {% endif %}
                     {% endif %}
                     </dd>
                 </dl>
