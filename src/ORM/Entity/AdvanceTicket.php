@@ -48,6 +48,14 @@ class AdvanceTicket extends AbstractEntity
     protected $advanceSale;
     
     /**
+     * publishing_start_dt
+     *
+     * @var \DateTime
+     * @ORM\Column(type="datetime", name="publishing_start_dt")
+     */
+    protected $publishingStartDt;
+    
+    /**
      * release_dt
      *
      * @var \DateTime
@@ -151,6 +159,28 @@ class AdvanceTicket extends AbstractEntity
      * @throws \LogicException
      */
     public function setAdvanceSale(AdvanceSale $advanceSale)
+    {
+        throw new \LogicException('Not allowed.');
+    }
+    
+    /**
+     * get publishing_start_dt
+     *
+     * @return \DateTime
+     */
+    public function getPublishingStartDt()
+    {
+        return $this->publishingStartDt;
+    }
+    
+    /**
+     * set publishing_start_dt
+     *
+     * @param \DateTime|string $publishingStartDt
+     * @return void
+     * @throws \LogicException
+     */
+    public function setPublishingStartDt($publishingStartDt)
     {
         throw new \LogicException('Not allowed.');
     }
