@@ -29,7 +29,7 @@
                         <div class="mr-auto">{{ theater.getNameJa() }}</div>
                     {% if theater.getId() == 11 %}
                         {# 大洲閉館 SASAKI-382 #}
-                        <div class="mx-2">閉館</div>
+                        <div class="mx-2 text-gray font-weight-normal">※閉館</div>
                     {% endif %}
                     {% for specialSite in theater.getSpecialSites() %}
                         <div class="mx-2 logo-{{ specialSite.getName() }}"><img class="w-100" src="/images/common/{{ specialSite.getName() }}_logo.svg"></div>
