@@ -54,16 +54,16 @@ class Title extends AbstractEntity
     /** 
      * name_kana
      * 
-     * @var string
-     * @ORM\Column(type="string", name="name_kana")
+     * @var string|null
+     * @ORM\Column(type="string", name="name_kana", nullable=true)
      */
     protected $nameKana;
     
     /** 
      * name_original
      * 
-     * @var string
-     * @ORM\Column(type="string", name="name_original")
+     * @var string|null
+     * @ORM\Column(type="string", name="name_original", nullable=true)
      */
     protected $nameOriginal;
     
@@ -245,7 +245,7 @@ class Title extends AbstractEntity
     /**
      * get name_kana
      *
-     * @return string
+     * @return string|null
      */
     public function getNameKana()
     {
@@ -255,11 +255,11 @@ class Title extends AbstractEntity
     /**
      * set name_kana
      *
-     * @param string $nameKana
+     * @param string|null $nameKana
      * @return void
      * @throws \LogicException
      */
-    public function setNameKana(string $nameKana)
+    public function setNameKana(?string $nameKana)
     {
         throw new \LogicException('Not allowed.');
     }
@@ -267,7 +267,7 @@ class Title extends AbstractEntity
     /**
      * get name_original
      *
-     * @return string
+     * @return string|null
      */
     public function getNameOriginal()
     {
@@ -277,11 +277,11 @@ class Title extends AbstractEntity
     /**
      * set name_original
      *
-     * @param string $nameOriginal
+     * @param string|null $nameOriginal
      * @return void
      * @throws \LogicException
      */
-    public function setNameOriginal(string $nameOriginal)
+    public function setNameOriginal(?string $nameOriginal)
     {
         throw new \LogicException('Not allowed.');
     }
