@@ -289,6 +289,28 @@ class Theater extends AbstractEntity
     }
     
     /**
+     * get display_order
+     *
+     * @return int
+     */
+    public function getDisplayOrder()
+    {
+        return $this->displayOrder;
+    }
+    
+    /**
+     * set display_order
+     *
+     * @param int $displayOrder
+     * @return void
+     * @throws \LogicException
+     */
+    public function setDisplayOrder(int $displayOrder)
+    {
+        throw new \LogicException('Not allowed.');
+    }
+    
+    /**
      * get meta
      *
      * @return TheaterMeta
