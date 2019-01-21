@@ -26,6 +26,10 @@ class Theater extends AbstractEntity
     const MASTER_VERSION_V1 = 1;
     const MASTER_VERSION_V2 = 2;
     
+    const STATUS_PRE_OPEN = 1;
+    const STATUS_OPEN     = 2;
+    const STATUS_CLOSED   = 3;
+    
     /** @var array */
     protected static $areas = [
         1 => '関東',
@@ -92,6 +96,14 @@ class Theater extends AbstractEntity
      * @ORM\Column(type="smallint", name="display_order", options={"unsigned"=true})
      */
     protected $displayOrder;
+    
+    /**
+     * status
+     *
+     * @var int
+     * @ORM\Column(type="smallint", name="status", options={"unsigned"=true})
+     */
+    protected $status;
     
     /**
      * meta
@@ -306,6 +318,28 @@ class Theater extends AbstractEntity
      * @throws \LogicException
      */
     public function setDisplayOrder(int $displayOrder)
+    {
+        throw new \LogicException('Not allowed.');
+    }
+    
+    /**
+     * get status
+     *
+     * @return int
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+    
+    /**
+     * set status
+     *
+     * @param int $status
+     * @return void
+     * @throws \LogicException
+     */
+    public function setStatus(int $status)
     {
         throw new \LogicException('Not allowed.');
     }
