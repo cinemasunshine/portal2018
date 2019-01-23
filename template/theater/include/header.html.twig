@@ -3,7 +3,7 @@
 {% block logo %}
 <div class="header-company-logo mr-3 mb-1">
 <a href="{{ path_for('homepage') }}">
-    <img src="/images/common/header_logo.svg" class="w-100">
+    <img src="/images/common/header_logo.svg" class="w-100" alt="CINEMA SUNSHINE">
     </a>
 </div>
 
@@ -14,11 +14,11 @@
     
 {% for specialSite in theater.getSpecialSites() %}
     {% if specialSite.getId() == 1 %}
-        <div class="header-imax mr-md-2 mr-2 line-height-1"><img src="/images/common/imax_logo.svg" class="w-100"></div>
+        <div class="header-imax mr-md-2 mr-2 line-height-1"><img src="/images/common/imax_logo.svg" class="w-100" alt="IMAX"></div>
     {% elseif specialSite.getId() == 2 %}
-        <div class="header-4dx line-height-1"><img src="/images/common/4dx_logo.svg" class="w-100"></div>
+        <div class="header-4dx line-height-1"><img src="/images/common/4dx_logo.svg" class="w-100" alt="4DX"></div>
     {% elseif specialSite.getId() == 3 %}
-        <div class="header-screen-x line-height-1"><img src="/images/common/screen-x_logo.svg" class="w-100"></div>
+        <div class="header-screen-x line-height-1"><img src="/images/common/screen-x_logo.svg" class="w-100" alt="ScreenX"></div>
     {% endif %}
 {% endfor %}
 </div>
@@ -28,13 +28,13 @@
 {% set meta = theater.getMeta() %}
 {% if meta.getFacebook() %}
 <div class="pr-3 mr-3 border-right d-none d-md-block">
-    <a class="d-block" href="{{ facebook(meta.getFacebook()) }}" target="_blank"><img src="/images/common/sns_fb.svg" width="25"></a>
+    <a class="d-block" href="{{ facebook(meta.getFacebook()) }}" target="_blank"><img src="/images/common/sns_fb.svg" width="25" alt="facebook"></a>
 </div>
 {% endif %}
 
 {% if meta.getTwitter() %}
 <div class="mr-2">
-    <a class="d-block" href="{{ twitter(meta.getTwitter()) }}" target="_blank"><img src="/images/common/sns_twitter.svg" width="25"></a>
+    <a class="d-block" href="{{ twitter(meta.getTwitter()) }}" target="_blank"><img src="/images/common/sns_twitter.svg" width="25" alt="twitter"></a>
 </div>
 {% endif %}
 {% endblock %}
