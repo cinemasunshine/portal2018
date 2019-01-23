@@ -3,9 +3,9 @@
     <div class="border border-gray position-relative d-md-flex p-2 mb-4">
         <div class="movie-image">
         {% if title.getImage() %}
-            <img src="{{ file_url(title.getImage()) }}" class="w-100">
+            <img src="{{ file_url(title.getImage()) }}" class="w-100" alt="{{ title.getName() }}">
         {% else %}
-            <img src="/images/common/no_img_movie.png" class="w-100">
+            <img src="/images/common/no_img_movie.png" class="w-100" alt="No image">
         {% endif %}
         </div>
         <div class="movie-info pt-md-2 pl-md-3">
@@ -33,20 +33,20 @@
                 
                 <div class="d-flex">
                 {% if title.getRating() == 1 %}
-                    <div class="icon-r mr-2"><img src="/images/movie/g.svg"></div>
+                    <div class="icon-r mr-2"><img src="/images/movie/g.svg" alt="G：どなたでもご覧になれます"></div>
                 {% elseif title.getRating() == 2 %}
-                    <div class="icon-r mr-2"><img src="/images/movie/pg_12.svg"></div>
+                    <div class="icon-r mr-2"><img src="/images/movie/pg_12.svg" alt="PG12：小学生には助言・指導が必要"></div>
                 {% elseif title.getRating() == 3 %}
-                    <div class="icon-r mr-2"><img src="/images/movie/r_15.svg"></div>
+                    <div class="icon-r mr-2"><img src="/images/movie/r_15.svg" alt="R15：15歳未満は観覧禁止"></div>
                 {% elseif title.getRating() == 4 %}
-                    <div class="icon-r mr-2"><img src="/images/movie/r_18.svg"></div>
+                    <div class="icon-r mr-2"><img src="/images/movie/r_18.svg" alt="R18：18歳未満は観覧禁止"></div>
                 {% endif %}
                 
                 {% if 1 in title.getUniversal() %}
-                    <div class="icon-onsei mr-2"><img src="/images/movie/ud_onsei.svg"></div>
+                    <div class="icon-onsei mr-2"><img src="/images/movie/ud_onsei.svg" alt="音声ガイド対応"></div>
                 {% endif %}
                 {% if 2 in title.getUniversal() %}
-                    <div class="icon-jimaku mr-2"><img src="/images/movie/ud_jimaku.svg"></div>
+                    <div class="icon-jimaku mr-2"><img src="/images/movie/ud_jimaku.svg" alt="字幕ガイド対応"></div>
                 {% endif %}
                 </div>
             </div>
