@@ -345,6 +345,16 @@ class Theater extends AbstractEntity
     }
     
     /**
+     * is status closed
+     *
+     * @return boolean
+     */
+    public function isStatusClosed()
+    {
+        return $this->getStatus() === self::STATUS_CLOSED;
+    }
+    
+    /**
      * get meta
      *
      * @return TheaterMeta
