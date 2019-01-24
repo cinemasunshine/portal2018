@@ -29,6 +29,18 @@ class TheaterResponder extends BaseResponder
     }
     
     /**
+     * closed
+     *
+     * @param Response   $response
+     * @param Collection $data
+     * @return Response
+     */
+    public function closed(Response $response, Collection $data)
+    {
+        return $this->view->render($response, 'theater/index/closed.html.twig', $data->all());
+    }
+    
+    /**
      * access
      *
      * @param Response   $response
