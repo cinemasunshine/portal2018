@@ -1,0 +1,19 @@
+<div class="mb-5">
+    <div class="d-md-none w-100 text-center px-3 pt-3">
+        <a href="{{ path_for('theater_admission', { name: theater.getName() }) }}" class="d-block mb-4">
+            <div class="border rounded py-3">
+                料金案内はこちら
+            </div>
+        </a>
+        <a href="{{ path_for('theater_access', { name: theater.getName() }) }}" class="d-block mb-4">
+            <div class="border rounded py-3">
+                アクセス情報はこちら
+            </div>
+        </a>
+        <a href="{{ path_for('theater_floor_guide', { name: theater.getName() }) }}" class="d-block">
+            <div class="border rounded py-3">
+                劇場施設はこちら
+            </div>
+        </a>
+    </div>
+</div>

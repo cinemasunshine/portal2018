@@ -109,43 +109,9 @@ theater: theater,
 newsList: infoNewsList,
 } only %}
 
-<div class="mb-5">
-    <div class="d-md-none w-100 text-center px-3 pt-3">
-        <a href="{{ path_for('theater_admission', { name: theater.getName() }) }}" class="d-block mb-4">
-            <div class="border rounded py-3">
-                料金案内はこちら
-            </div>
-        </a>
-        <a href="{{ path_for('theater_access', { name: theater.getName() }) }}" class="d-block mb-4">
-            <div class="border rounded py-3">
-                アクセス情報はこちら
-            </div>
-        </a>
-        <a href="{{ path_for('theater_floor_guide', { name: theater.getName() }) }}" class="d-block">
-            <div class="border rounded py-3">
-                劇場施設はこちら
-            </div>
-        </a>
-    </div>
-</div>
-<div class="modal fade information-modal" id="informationModal" tabindex="-1" role="dialog" aria-labelledby="informationModalTitle"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered px-3" role="document">
-        <div class="modal-content border-0 rounded-0 w-auto mx-auto position-relative" style="overflow: visible;">
-            <a class="d-block close-button pointer" data-dismiss="modal" role="button">
-                    <img class="w-100" src="/images/common/close.svg">
-            </a>
-            <div class="d-none d-md-block">
-                <a class="d-block" href="/app/"><img class="w-100 align-bottom" src="/images/theater/modal/app.jpg"></a>
-            </div>
-            <div class="d-md-none">
-                <a style="height: 60vh" class="d-block text-center" href="/app/"><img class="h-100 align-bottom" src="/images/theater/modal/app_sp.jpg"></a>
-            </div>
-            <div class="d-flex justify-content-center align-items-center py-2 py-md-3 bg-light-gray">
-                <input class="mr-2 pointer" type="checkbox" name="information" value="001" id="information">
-                <label class="pointer" for="information">このバナーを再度表示しない</label>
-            </div>
-        </div>
-    </div>
-</div>
+{% include 'theater/index/include/sp_links.html.twig' with {
+    theater: theater
+} only %}
+
+{% include 'theater/index/include/app_modal.html.twig' only %}
 {% endblock %}
