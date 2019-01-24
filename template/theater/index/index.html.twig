@@ -47,14 +47,14 @@ active: 'top',
 
 {% block contents %}
 <div class="mb-3">
-    {% include 'theater/include/index/slider.html.twig' with {
+    {% include 'theater/index/include/slider.html.twig' with {
     mainBanners: mainBanners
     } only %}
 </div>
 
 {% set specialSites = theater.getSpecialSites() %}
 {% if specialSites|length > 0 %}
-{% include 'theater/include/index/special_site.html.twig' with {
+{% include 'theater/index/include/special_site.html.twig' with {
 specialSites: specialSites
 } only %}
 {% endif %}
@@ -65,35 +65,35 @@ specialSites: specialSites
 
         {% set picupCampaign = campaigns[0] %}
         {% if picupCampaign %}
-        {% include 'theater/include/index/pickup.html.twig' with {
+        {% include 'theater/index/include/pickup.html.twig' with {
         campaign: picupCampaign
         } only %}
         {% endif %}
 
-        {% include 'theater/include/index/trailer.html.twig' with {
+        {% include 'theater/index/include/trailer.html.twig' with {
         theater: theater
         } only %}
     </div>
 </div>
 {% if theater.getMasterVersion() == 2 %}
-{% include 'theater/include/index/online_ticket.html.twig' with {
+{% include 'theater/index/include/online_ticket.html.twig' with {
 masterCode: theater.getMasterCode()
 } only %}
 {% endif %}
 
-{% include 'theater/include/index/opening_hour.html.twig' with {
+{% include 'theater/index/include/opening_hour.html.twig' with {
     openingHours: theater.getMeta().getOpeningHours()
 } only %}
 
 {# scheduleテンプレートのincludeをトリガーとしてjavascriptの処理を実行する #}
-{% include 'theater/include/index/schedule.html.twig' only %}
+{% include 'theater/index/include/schedule.html.twig' only %}
 
-{% include 'theater/include/index/event.html.twig' with {
+{% include 'theater/index/include/event.html.twig' with {
 theater: theater,
 newsList: eventNewsList,
 } only %}
 
-{% include 'theater/include/index/news.html.twig' with {
+{% include 'theater/index/include/news.html.twig' with {
 theater: theater,
 newsList: newsList,
 } only %}
