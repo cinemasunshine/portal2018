@@ -12,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * PageTrailer entity class
  * 
- * @ORM\Entity
+ * @ORM\Entity(readOnly=true)
  * @ORM\Table(name="page_trailer", options={"collate"="utf8mb4_general_ci"})
  * @ORM\HasLifecycleCallbacks
  */

@@ -12,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * SpecialSiteTrailer entity class
  * 
- * @ORM\Entity
+ * @ORM\Entity(readOnly=true)
  * @ORM\Table(name="special_site_trailer", options={"collate"="utf8mb4_general_ci"})
  * @ORM\HasLifecycleCallbacks
  */

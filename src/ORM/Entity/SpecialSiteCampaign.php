@@ -12,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * SpecialSiteCampaign entity class
  * 
- * @ORM\Entity
+ * @ORM\Entity(readOnly=true)
  * @ORM\Table(name="special_site_campaign", options={"collate"="utf8mb4_general_ci"})
  * @ORM\HasLifecycleCallbacks
  */

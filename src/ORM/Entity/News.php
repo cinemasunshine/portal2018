@@ -14,7 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * News entity class
  * 
- * @ORM\Entity(repositoryClass="Cinemasunshine\Portal\ORM\Repository\NewsRepository")
+ * @ORM\Entity(readOnly=true, repositoryClass="Cinemasunshine\Portal\ORM\Repository\NewsRepository")
  * @ORM\Table(name="news", options={"collate"="utf8mb4_general_ci"})
  * @ORM\HasLifecycleCallbacks
  */

@@ -12,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * ShowingFormat entity class
  * 
- * @ORM\Entity
+ * @ORM\Entity(readOnly=true)
  * @ORM\Table(name="showing_format", options={"collate"="utf8mb4_general_ci"})
  * @ORM\HasLifecycleCallbacks
  */

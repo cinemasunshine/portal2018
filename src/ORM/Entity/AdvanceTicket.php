@@ -12,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * AdvanceTicket entity class
  * 
- * @ORM\Entity(repositoryClass="Cinemasunshine\Portal\ORM\Repository\AdvanceTicketRepository")
+ * @ORM\Entity(readOnly=true, repositoryClass="Cinemasunshine\Portal\ORM\Repository\AdvanceTicketRepository")
  * @ORM\Table(name="advance_ticket", options={"collate"="utf8mb4_general_ci"})
  * @ORM\HasLifecycleCallbacks
  */

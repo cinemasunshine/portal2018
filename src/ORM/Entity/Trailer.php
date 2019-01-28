@@ -14,7 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Trailer entity class
  * 
- * @ORM\Entity(repositoryClass="Cinemasunshine\Portal\ORM\Repository\TrailerRepository")
+ * @ORM\Entity(readOnly=true, repositoryClass="Cinemasunshine\Portal\ORM\Repository\TrailerRepository")
  * @ORM\Table(name="trailer", options={"collate"="utf8mb4_general_ci"})
  * @ORM\HasLifecycleCallbacks
  */
