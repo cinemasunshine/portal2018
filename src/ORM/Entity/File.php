@@ -14,7 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
  * 
  * @todo 削除のイベントでファイルも削除される仕組み
  * 
- * @ORM\Entity
+ * @ORM\Entity(readOnly=true)
  * @ORM\Table(name="file", options={"collate"="utf8mb4_general_ci"})
  * @ORM\HasLifecycleCallbacks
  */

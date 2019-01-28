@@ -14,7 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Campaign entity class
  * 
- * @ORM\Entity(repositoryClass="Cinemasunshine\Portal\ORM\Repository\CampaignRepository")
+ * @ORM\Entity(readOnly=true, repositoryClass="Cinemasunshine\Portal\ORM\Repository\CampaignRepository")
  * @ORM\Table(name="campaign", options={"collate"="utf8mb4_general_ci"})
  * @ORM\HasLifecycleCallbacks
  */

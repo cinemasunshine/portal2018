@@ -12,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * TheaterMeta entity class
  * 
- * @ORM\Entity
+ * @ORM\Entity(readOnly=true)
  * @ORM\Table(name="theater_meta", options={"collate"="utf8mb4_general_ci"})
  * @ORM\HasLifecycleCallbacks
  */
