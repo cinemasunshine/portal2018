@@ -45,7 +45,11 @@
     </div>
     
     <h2 class="font-weight-bold x-large py-4" id="shareTitle">{{ news.getHeadline() }}</h2>
+
+{% if news.getImage() %}
     <div class="mb-5"><img id="shareImage" class="w-100" src="{{ file_url(news.getImage()) }}"></div>
+{% endif %}
+
     <div class="mb-3 border-bottom border-gray ">
         {{ news.getBody()|raw }}
     </div>

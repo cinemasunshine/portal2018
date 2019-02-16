@@ -48,7 +48,11 @@
                         <div class="{{ labelClass }} text-center py-1 x-small">{{ news_category_label(news.getCategory()) }}</div>
                         
                         <div class="text-dark-gray py-2">{{ news.getStartDt()|date('Y/n/j') }}</div>
+                        
+                    {% if news.getImage() %}
                         <div class="border mb-2 image border-gray" style="background-image: url({{ file_url(news.getImage()) }})"></div>
+                    {% endif %}
+                    
                         <p class="mb-0">{{ news.getHeadline() }}</p>
                     </a>
                 </li>
