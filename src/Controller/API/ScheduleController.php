@@ -80,6 +80,13 @@ class ScheduleController extends BaseController
     {
         $theaterName = $args['name'];
         
+        if ($theaterName === 'tsuchiura') {
+            // 土浦スケジュール非表示 SASAKI-390
+            $meta['error'] = V1Schedules::ERROR_OTHER;
+            $this->data->set('meta', $meta);
+            return;
+        }
+        
         if (!TheaterSchedule::validate($theaterName)) {
             // ひとまずNotFoundとする SASAKI-338
             throw new NotFoundException($request, $response);
@@ -224,6 +231,13 @@ class ScheduleController extends BaseController
     {
         $theaterName = $args['name'];
         $date = $args['date'];
+        
+        if ($theaterName === 'tsuchiura') {
+            // 土浦スケジュール非表示 SASAKI-390
+            $meta['error'] = V1Schedules::ERROR_OTHER;
+            $this->data->set('meta', $meta);
+            return;
+        }
         
         if (!TheaterSchedule::validate($theaterName)) {
             // ひとまずNotFoundとする SASAKI-338
