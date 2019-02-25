@@ -37,6 +37,7 @@ function isAppCompatibleTheater() {
         'ikebukuro',
         'heiwajima',
         'yukarigaoka',
+        'tsuchiura',
         'kahoku',
         'numazu',
         'yamatokoriyama',
