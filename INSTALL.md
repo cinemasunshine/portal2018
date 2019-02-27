@@ -1,25 +1,50 @@
 # Install
 
-## Webサーバ、DB、Storage
+アプリケーションのインストールについてです。
 
-作成中。
+データベース等の各サービスを用意したうえでの手順を記載しています。
 
-[Wiki](https://m-p.backlog.jp/alias/wiki/508245)
+各サービスの構築についてはwikiを参照してください。
 
+[wiki](https://m-p.backlog.jp/alias/wiki/508245)
 
-## Application
+※ 管理画面アプリケーション（cinemasunshine/portal2018-admin）を前提とした部分もあります。そちらも合わせて確認してください。
 
-アプリケーションのインストール方法です。
+## 手順
 
-### １．composer
+### １．データベース
+
+ユーザ作成を行います。
+
+手順はwikiを参照してください。
+
+https://m-p.backlog.jp/alias/wiki/568643
+
+※ データベース作成、テーブル作成、マスターデータ登録は管理画面アプリケーションの手順を参照してください。
+
+### ２．ストレージ
+
+Azure Storageについてです。次のBlob Containerを作成します。
+
+- frontend-log
+
+※ 管理画面アプリケーションの手順も合わせて参照してください。
+
+### ３．composer
+
+composerコマンドで依存ライブラリをインストールします。
+
+※ composerがインストールされている必要があります。
+
+[Download Composer](https://getcomposer.org/download/)
 
 ```sh
 $ php composer install [--no-dev]
 ```
 
-リポジトリにcomposer.lockがあるのでupdateコマンドではなくinstallコマンドを使います。
+※ リポジトリにcomposer.lockがあるのでupdateコマンドではなくinstallコマンドを使います。
 
-### ２．環境変数
+### ４．環境変数
 
 パフォーマンスを考慮するならばサーバ等で設定します。
 
@@ -51,13 +76,13 @@ Azure Web Appsのアプリケーション設定で設定する場合は **MYSQLC
 |CUSTOMCONNSTR_STORAGE_NAME|[storage name]|Azure Storage名|
 |CUSTOMCONNSTR_STORAGE_KEY|[storage access key]|Azure Sotrageのアクセスキー|
 
-### ３．Doctrine
+### ５．Doctrine
 
 #### Schema生成
 
 このアプリケーションからのSchema更新は想定されていません。
 
-cinemasunshine/portal2018-adminを参照してください。
+管理画面アプリケーションを参照してください。
 
 #### Proxy生成
 
@@ -67,12 +92,19 @@ cinemasunshine/portal2018-adminを参照してください。
 $ vendor/bin/doctrine orm:generate-proxies
 ```
 
-### ４．マスターデータ
+### ６．マスターデータ
 
-cinemasunshine/portal2018-adminを参照してください。
+管理画面アプリケーションを参照してください。
 
-### ５．.htaccess
+### ７．その他
 
-ドキュメントルートに *.htaccess* を設置します。 *sample.htaccess* を参考にしてください。
+#### .htaccess または Web.config
+ドキュメントルートに *.htaccess* もしくは *Web.config* を設置します。
 
-Windowsサーバの場合は代わりに *Web.config* ファイルを設置します。
+内容はサンプルを参考にしてください。
+
+#### PHP設定
+
+sample.user.ini を参考に必要な設定を行います。
+
+※ 直接 php.ini を編集するなど方法は環境によって適宜選択してくだい。
