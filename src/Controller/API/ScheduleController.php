@@ -85,6 +85,13 @@ class ScheduleController extends BaseController
             throw new NotFoundException($request, $response);
         }
         
+        if ($theaterName === 'shigenobu') {
+            // 重信スケジュール非表示 SASAKI-395
+            $meta['error'] = V1Schedules::ERROR_OTHER;
+            $this->data->set('meta', $meta);
+            return;
+        }
+        
         $useTestApi = $this->useTestApi($theaterName);
         $theaterSchedule = new TheaterSchedule($theaterName, $useTestApi);
         
@@ -228,6 +235,13 @@ class ScheduleController extends BaseController
         if (!TheaterSchedule::validate($theaterName)) {
             // ひとまずNotFoundとする SASAKI-338
             throw new NotFoundException($request, $response);
+        }
+        
+        if ($theaterName === 'shigenobu') {
+            // 重信スケジュール非表示 SASAKI-395
+            $meta['error'] = V1Schedules::ERROR_OTHER;
+            $this->data->set('meta', $meta);
+            return;
         }
         
         $useTestApi = $this->useTestApi($theaterName);
