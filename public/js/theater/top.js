@@ -43,6 +43,7 @@ function isAppCompatibleTheater() {
         'yamatokoriyama',
         'shimonoseki',
         'kitajima',
+        'okaido',
         'shigenobu',
         'masaki',
         'aira'
