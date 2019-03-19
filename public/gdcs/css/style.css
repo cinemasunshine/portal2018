@@ -1,8 +1,13 @@
     @charset "utf-8";
-    h1,h2,h3,h4,h5{
+    html{
+        font-family: -apple-system, "Lucida Grande", "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "游ゴシック", "メイリオ", Meiryo, Helvetica, Arial, sans-serif;
     }
     .content_inner .content_txt{
         line-height: 1.6;
+    }
+    h5 sup{
+        font-size: 10px;
+        vertical-align: top;
     }
     /*--main--*/
     #gdcs_main_vis{
@@ -94,10 +99,7 @@
     .line_top_bestia{
         border-top:solid 5px #00a73c;
     }
-    h5 sup{
-        font-size: 10px;
-        vertical-align: top;
-    }
+    
     /*--seat--*/
     #seat_des{
         margin: 80px auto;
@@ -145,7 +147,29 @@
     }
     .res_width{
         width: 90%;
-        margin: 20 auto,
+        margin: 20px auto;
+        display: block;
+        line-height: 1.3;
+    }
+    /*--slider--*/
+    .swiper-pagination-bullet-active {
+        opacity: 1;
+        background: #a57a44!important;
+    }
+    .swiper-pagination{
+        position: unset!important;
+    }
+    .swiper-container-sp{
+        position: relative;
+    }
+    .swiper-container-pc{
+        position: relative;
+    }
+    .swiper-button-prev{
+        background-image: url(../img/allow_back.svg)!important;
+    }
+    .swiper-button-next{
+        background-image: url(../img/allow_next.svg)!important;
     }
     @media (min-width: 768px) {
         
@@ -233,6 +257,45 @@
             height: 585px;
             position: relative;
         }
+        .bg_img_area1{
+            background-image: url(../img/bg_imax.jpg);
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        .bg_img_area1 p{
+            font-size: 10px;
+            color: #fff;
+            right:5px;
+            bottom:5px;
+            position: absolute;
+        }
+        .bg_img_area2{
+            background-image: url(../img/bg_4dx.jpg);
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        .bg_img_area2 p{
+            font-size: 10px;
+            color: #fff;
+            left:5px;
+            bottom:5px;
+            position: absolute;
+        }
+        .bg_img_area3{
+            background-image: url(../img/bg_bestia.jpg);
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        .bg_img_area3 p{
+            font-size: 10px;
+            color: #fff;
+            right:5px;
+            bottom:5px;
+            position: absolute;
+        }
         .bg_img_size{
             width: 75%;
             height: 585px;;
@@ -242,6 +305,7 @@
             padding: 90px 30px;
             position: absolute;
             text-align: center;
+            box-shadow: 0px 0px 6px 1px rgba(0,0,0,0.4);
         }
         .info_text h4{
             margin: 0 auto 20px;
@@ -271,15 +335,15 @@
             width: 100%;
         }
         .l_block{
-            left:10%;
-            top: 20%;
+            left:5%;
+            top: 15%;
         }
         .r_block{
-            right:10%;
-            top: 12%;
+            right:5%;
+            top: 8%;
         }
         .content_inner{
-            width:1200px;
+            max-width:1200px;
             margin: 0 auto;
         }
         /*--RGB--*/
@@ -297,7 +361,7 @@
         }
         /*--seat--*/
         .seat_img_list{
-            width: 1090px;
+            max-width: 1090px;
             margin: 0 auto;
         }
         .seat_img_list li{
@@ -314,7 +378,7 @@
         /*--Map--*/
         #map_wrap .content_inner{
             text-align: center;
-            width: 1200px;
+            max-width: 1200px;
             margin: 0px auto;
             padding: 80px 0px;
         }
@@ -343,10 +407,13 @@
         .map_info_detail{
             margin-top: 10px;
         }
+        .map_image{
+            max-width: 1018px;
+            margin: 0 auto;
+        }
         .map_img_pc{
             display: block;
-            width:1018px;
-            margin: 0 auto;
+            width:100%;
         }
         .map_img_sp{
             display: none;
@@ -386,6 +453,7 @@
             font-size: 18px;
             margin-bottom: 20px;
             line-height: 1.6;
+            text-align: center;
         }
         .pc_non{
             display: block;
@@ -484,14 +552,39 @@
         .bg_img_area1{
             width:100%;
             height: 210px;
+            position: relative;
+        }
+        .bg_img_area1 p{
+            font-size: 10px;
+            color: #fff;
+            right:5px;
+            bottom:5px;
+            position: absolute;
         }
         .bg_img_area2{
             width:100%;
             height: 210px;
+            position: relative;
+        }
+        .bg_img_area2 p{
+            font-size: 10px;
+            color: #fff;
+            right:5px;
+            bottom:5px;
+            position: absolute;
         }
         .bg_img_area3{
             width:100%;
             height: 210px;
+            position: relative;
+        }
+        
+        .bg_img_area3 p{
+            font-size: 10px;
+            color: #fff;
+            right:5px;
+            bottom:5px;
+            position: absolute;
         }
         .info_text h4{
             margin: 20px auto;
@@ -545,6 +638,9 @@
             list-style: none;
         }
         /*--Map--*/
+        .map_inner{
+            padding: 40px 0px;
+        }
         .map_img_pc{
             display: none;
         }

@@ -3,7 +3,7 @@
  <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>grand cinema sunshine | シネマサンシャイン</title>
+  <title>グランドシネマサンシャイン | シネマサンシャイン</title>
   <meta name="description" content="グランドシネマサンシャイン、2019年7月オープン予定">
   <meta name="keywords" content="映画館,池袋,新館,オープン,シネマサンシャイン">
   <link rel="stylesheet" type="text/css" href="css/style.css">
@@ -35,7 +35,7 @@
         <div class="gdcs_intro_inner">
             <h5 class="intro_copy">
                 “日本最大のスクリーン”をはじめ<br>
-                最新鋭のシアター設備を有する<br class="pc_non">シネマコンプレックス<br class="pc_non">
+                最新鋭のシアター設備を有する<br class="pc_non">シネマコンプレックス<br class="pc_non"><br class="sp_non">
                 『グランドシネマサンシャイン』が誕生
             </h5>
             <ul class="intro_logo_list">
@@ -84,7 +84,7 @@
     <article id="rgb_des" class="content_inner">
         <div class="rgb_des_inner">
                 <h5>
-                    日本初※3、全12スクリーンに<br>
+                    日本初<sup>※3</sup>、全12スクリーンに<br>
                     RGBレーザープロジェクターを導入
                 </h5>
                 <p class="content_txt">
@@ -155,9 +155,9 @@
     </article>
 
     <article id="gallery">
-        <section>
+        <section class="sp_non">
             <!-- Slider main container -->
-            <div class="swiper-container">
+            <div class="swiper-container-pc">
                 <!-- Additional required wrapper -->
                 <div class="swiper-wrapper">
                     <!-- Slides -->
@@ -175,6 +175,26 @@
                 <div class="swiper-button-next"></div>
             </div>
         </section>
+        <section class="pc_non">
+                <!-- Slider main container -->
+                <div class="swiper-container-sp">
+                    <!-- Additional required wrapper -->
+                    <div class="swiper-wrapper">
+                        <!-- Slides -->
+                        <div class="swiper-slide"><img src="img/slide_sp_1.jpg" width="100%"></div>
+                        <div class="swiper-slide"><img src="img/slide_sp_2.jpg" width="100%"></div>
+                        <div class="swiper-slide"><img src="img/slide_sp_3.jpg" width="100%"></div>
+                        <div class="swiper-slide"><img src="img/slide_sp_4.jpg" width="100%"></div>
+                        <div class="swiper-slide"><img src="img/slide_sp_5.jpg" width="100%"></div>
+                    </div>
+                    <!-- If we need pagination -->
+                    <div class="swiper-pagination"></div>
+                    
+                    <!-- If we need navigation buttons -->
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                </div>
+            </section>
     </article>
     
     <article id="sns_wrap">
@@ -189,13 +209,13 @@
     
     <footer id="footer_wrap">
         <section class="footer_inner">
-            <p class="footer_logo"><img src="img/cs_text_logo_blk.svg" alt="シネマサンシャイン"></p>
+            <p class="footer_logo"><a href="../" ><img src="img/cs_text_logo_blk.svg" alt="シネマサンシャイン"></a></p>
             <small  class="note">© Cinema Sunshine Co., Ltd. All Right Reserved.</small>
         </section>
     </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.1/js/swiper.min.js"></script>
   <script>
-        var mySwiper = new Swiper ('.swiper-container', {
+        var mySwiper = new Swiper ('.swiper-container-pc', {
       effect: "fade",
       loop: true,
       pagination: '.swiper-pagination',
@@ -203,5 +223,14 @@
       prevButton: '.swiper-button-prev'
   }) 
     </script>
+    <script>
+            var mySwiper = new Swiper ('.swiper-container-sp', {
+          effect: "fade",
+          loop: true,
+          pagination: '.swiper-pagination',
+          nextButton: '.swiper-button-next',
+          prevButton: '.swiper-button-prev'
+      }) 
+        </script>
  </body>
  </html>
