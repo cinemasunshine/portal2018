@@ -1,6 +1,5 @@
     @charset "utf-8";
     h1,h2,h3,h4,h5{
-        font-family: serif;
     }
     .content_inner .content_txt{
         line-height: 1.6;
@@ -48,27 +47,7 @@
         line-height: 1.6;
         margin-bottom: 40px;
     }
-    #gdcs_intro .intro_logo_list{
-        overflow: hidden;
-        width: 710px;
-        margin: 0 auto;
-    }
-    #gdcs_intro .intro_logo_list li{
-        float: left;
-        margin: 0 50px;
-        list-style: none;
-    }
-    #gdcs_intro .intro_logo_list .li_imax{
-        width: 150px;
-        margin-top: 35px;
-    }
-    #gdcs_intro .intro_logo_list .li_4dx{
-        width: 100px;
-    }
-    #gdcs_intro .intro_logo_list .li_bestia{
-        width: 160px;
-        margin-top: 35px;
-    }
+    
     #gdcs_intro .intro_logo_list li img{
         width: 100%;
     }
@@ -144,6 +123,10 @@
         background-color: #f3f3f3;
         width: 100%;
     }
+    .map_image img{
+        border:solid 3px #a57a44;
+
+    }
     /*--footer--*/
     #footer_wrap{
         background-color: #a57a44;
@@ -160,6 +143,10 @@
     .footer_logo img{
         width: 100%;
     }
+    .res_width{
+        width: 90%;
+        margin: 20 auto,
+    }
     @media (min-width: 768px) {
         
         .note{
@@ -172,6 +159,12 @@
             font-size: 20px;
             margin-bottom: 30px;
             line-height: 1.6;
+        }
+        .pc_non{
+            display: none;
+        }
+        .sp_non{
+            display: block;
         }
         /*--main--*/
         #gdcs_main_vis .main_inner{
@@ -206,6 +199,29 @@
             margin-top: 25px;
 
         }
+        /*--intro--*/
+        #gdcs_intro .intro_logo_list{
+            overflow: hidden;
+            width: 710px;
+            margin: 0 auto;
+        }
+        #gdcs_intro .intro_logo_list li{
+            float: left;
+            margin: 0 50px;
+            list-style: none;
+        }
+        #gdcs_intro .intro_logo_list .li_imax{
+            width: 150px;
+            margin-top: 35px;
+        }
+        #gdcs_intro .intro_logo_list .li_4dx{
+            width: 100px;
+        }
+        #gdcs_intro .intro_logo_list .li_bestia{
+            width: 160px;
+            margin-top: 35px;
+        }
+        /*--info--*/
         #gdcs_info_ltr{
             width: 100%;
             height: 585px;
@@ -228,9 +244,18 @@
             text-align: center;
         }
         .info_text h4{
-            width: 80px;
             margin: 0 auto 20px;
         }
+        .info_text .logowidth_imax{
+            width: 100px;
+        }
+        .info_text .logowidth_4dx{
+            width: 100px;
+        }
+        .info_text .logowidth_bestia{
+            width: 150px;
+        }
+
         .info_des{
             text-align: left;
             line-height: 1.6;
@@ -314,10 +339,7 @@
             font-weight: 400;
             margin-top: 20px;
         }
-        .map_image img{
-            border:solid 3px #a57a44;
-
-        }
+        
         .map_info_detail{
             margin-top: 10px;
         }
@@ -354,8 +376,8 @@
 
     }
     @media (max-width: 767px) {
-        body{
-            overflow: hidden;
+        .mb_40{
+          margin-bottom: 40px;  
         }
         .note{
             font-size: 10px;
@@ -365,24 +387,136 @@
             margin-bottom: 20px;
             line-height: 1.6;
         }
-        /*--info--*/
-        #gdcs_info_ltr{
+        .pc_non{
+            display: block;
+        }
+        .sp_non{
+            display: none;
+        }
+        /*--main--*/
+        #gdcs_main_vis{
+            background-image: url(../img/main_bg_sp.jpg);
+            height:780px;
+            background-size: cover;
+            background-position: center ;
+        }
+        #gdcs_main_vis .main_inner{
+            width: 250px;
+            height: 440px;
+            position: absolute;
+            left: 50%;
+            margin-left: -125px;
+            top: 50%;
+            margin-top: -220px;
+            
+        }
+        #gdcs_main_vis h1{
+            width: 180px;
+            margin: 0 auto 20px;
+        }
+        #gdcs_main_vis h1 img{
             width: 100%;
         }
+        #gdcs_main_vis .open_data{
+            font-size: 50px;
+            line-height: 1;
+            letter-spacing: 2.5px;
+            color: #eaab5c;
+        }
+        #gdcs_main_vis .open_data span{
+            font-size: 30px;
+            font-weight: 200;
+            color: #eaab5c;
+        }
+        #gdcs_main_vis .open_place{
+            font-size: 25px;
+            letter-spacing: 2px;
+            margin-top: 15px;
+
+        }
+        /*--intro--*/
+        .gdcs_intro_inner{
+            margin: 40px 0px;
+            overflow: hidden;
+        }
+        #gdcs_intro .intro_copy{
+            text-align: center;
+            color: #000;
+            font-size:15px;
+            line-height: 1.6;
+            margin-bottom: 40px;
+        }
+        #gdcs_intro .intro_logo_list{
+        }
+        #gdcs_intro .intro_logo_list li{
+            float: left;
+            margin: 0 15px;
+            list-style: none;
+        }
+        #gdcs_intro .intro_logo_list .li_imax{
+            width: 90px;
+            margin-top: 25px;
+        }
+        #gdcs_intro .intro_logo_list .li_4dx{
+            width: 80px;
+        }
+        #gdcs_intro .intro_logo_list .li_bestia{
+            width: 100px;
+            margin-top: 25px;
+        }
+        /*--info--*/
+        #gdcs_info_ltr{
+            padding: 10px;
+            display: block;
+            height: auto!important;
+        }
+        .fl_l{
+            float: none;
+        }
+        .fl_r{
+            float: none;
+        }
         #gdcs_info_rtl{
-            width: 100%;
+            padding: 10px;
+            display: block;
+            height: auto!important;
         }
         .bg_img_area1{
             width:100%;
-            height: 300px;
+            height: 210px;
         }
         .bg_img_area2{
             width:100%;
-            height: 300px;
+            height: 210px;
         }
         .bg_img_area3{
             width:100%;
-            height: 300px;
+            height: 210px;
+        }
+        .info_text h4{
+            margin: 20px auto;
+        }
+        .info_text .logowidth_imax{
+            width: 100px;
+        }
+        .info_text .logowidth_4dx{
+            width: 100px;
+        }
+        .info_text .logowidth_bestia{
+            width: 150px;
+        }
+        .info_text h4 img{
+            width: 100%;
+        }
+        .info_des{
+            padding: 20px;
+            line-height: 1.5;
+        }
+        .info_text h5{
+            color: #a57a44;
+            text-align: center;
+            font-size: 15px;
+            line-height: 1.6;
         }
         /*----*/
         .content_inner{
@@ -401,7 +535,7 @@
         /*--seat--*/
         .seat_img_list li{
             float: left;
-            width: 35%;
+            width: 33%;
             border: solid 1px #eaeaea;
             margin: 2%;
             padding: 20px;
@@ -424,5 +558,38 @@
         .map_gdcs_r{
             padding: 20px;
             text-align: left;
+        }
+        .map_gdcs_r .open_data{
+            font-size: 24px;
+            text-decoration: underline;
+            font-weight: 400;
+            margin-top: 20px;
+            text-align: center;
+            display: block;
+        }
+        /*--sns--*/
+        #sns_wrap .sns_inner{
+            padding: 40px 0;
+
+        }
+        #sns_wrap .sns_inner .content_txt{
+            text-align: center!important;
+
+        }
+        .sns_inner .sns_list{
+            overflow: hidden;
+            width: 200px;
+            margin: 0 auto;
+
+        }
+        .sns_inner .sns_list li{
+            float: left;
+            width:40px;
+            margin: 30px;
+            list-style: none;
+
+        }
+        .sns_inner .sns_list li img{
+            width:100%;
         }
     }
