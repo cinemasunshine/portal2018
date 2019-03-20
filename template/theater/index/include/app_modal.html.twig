@@ -1,0 +1,20 @@
+<div class="modal fade information-modal" id="informationModal" tabindex="-1" role="dialog" aria-labelledby="informationModalTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered px-3" role="document">
+        <div class="modal-content border-0 rounded-0 w-auto mx-auto position-relative" style="overflow: visible;">
+            <a class="d-block close-button pointer" data-dismiss="modal" role="button">
+                    <img class="w-100" src="/images/common/close.svg">
+            </a>
+            <div class="d-none d-md-block">
+                <a class="d-block" href="{{ path_for('official_app') }}"><img class="w-100 align-bottom" src="/images/theater/modal/app.jpg"></a>
+            </div>
+            <div class="d-md-none">
+                <a style="height: 60vh" class="d-block text-center" href="{{ path_for('official_app') }}"><img class="h-100 align-bottom" src="/images/theater/modal/app_sp.jpg"></a>
+            </div>
+            <div class="d-flex justify-content-center align-items-center py-2 py-md-3 bg-light-gray">
+                <input class="mr-2 pointer" type="checkbox" name="information" value="001" id="information">
+                <label class="pointer" for="information">このバナーを再度表示しない</label>
+            </div>
+        </div>
+    </div>
+</div>
