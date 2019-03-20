@@ -1,6 +1,7 @@
 $(function () {
     // 大きいスライダーの作成
     var galleryTop = new Swiper('.gallery-top', {
+        effect: ($('.gallery-top .swiper-slide').length > 1) ? 'slide' : 'fade',
         speed: 500,
         spaceBetween: 0,
         loop: true,
@@ -14,6 +15,7 @@ $(function () {
         pagination: {
             el: '.slider .pagination',
         }
+        
     });
     // サムネイルの連動
     galleryTop.on('slideChangeTransitionEnd', function () {
