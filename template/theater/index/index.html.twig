@@ -58,6 +58,12 @@ active: 'top',
 specialSites: specialSites
 } only %}
 {% endif %}
+
+{% if theater.getName() not in ['ikebukuro', 'okaido'] %}
+    {# SASAKI-399 #}
+    {% include 'include/pagejack/sp_animation_file.html.twig' only %}
+{% endif %}
+
 {% include 'include/adsense/top.html.twig' only %}
 
 <div class="mb-5">
@@ -75,6 +81,12 @@ specialSites: specialSites
         } only %}
     </div>
 </div>
+
+{% if theater.getName() not in ['ikebukuro', 'okaido'] %}
+    {# SASAKI-399 #}
+    {% include 'include/pagejack/animation_file.html.twig' only %}
+{% endif %}
+
 {% if theater.getMasterVersion() == 2 %}
 {% include 'theater/index/include/online_ticket.html.twig' with {
 masterCode: theater.getMasterCode()
