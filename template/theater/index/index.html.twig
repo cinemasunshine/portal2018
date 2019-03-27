@@ -98,10 +98,7 @@ masterCode: theater.getMasterCode()
 } only %}
 
 {# scheduleテンプレートのincludeをトリガーとしてjavascriptの処理を実行する #}
-{% if theater.getId() != 8 %}
-{# 衣山を除く劇場 SASAKI-408 #}
 {% include 'theater/index/include/schedule.html.twig' only %}
-{% endif %}
 
 {% include 'theater/index/include/event.html.twig' with {
 theater: theater,
