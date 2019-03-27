@@ -440,6 +440,9 @@
         .sns_inner .sns_list li img{
             width:100%;
         }
+        .sns_inner .sns_list .twi_logo img{
+            margin-top: 6px;
+        }
 
     }
     @media (max-width: 767px) {
@@ -687,5 +690,8 @@
         }
         .sns_inner .sns_list li img{
             width:100%;
+        }
+        .sns_inner .sns_list .twi_logo img{
+            margin-top: 4px;
         }
     }
