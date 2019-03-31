@@ -782,41 +782,6 @@
   <changefreq>yearly</changefreq>
 </url>
 <url>
-  <loc>http://www.cinemasunshine.co.jp/theater/ozu/</loc>
-  <priority>1.0</priority>
-  <changefreq>weekly</changefreq>
-</url>
-<url>
-  <loc>http://www.cinemasunshine.co.jp/theater/ozu/advance_ticket/</loc>
-  <priority>0.5</priority>
-  <changefreq>weekly</changefreq>
-</url>
-<url>
-  <loc>http://www.cinemasunshine.co.jp/theater/ozu/news/</loc>
-  <priority>0.5</priority>
-  <changefreq>weekly</changefreq>
-</url>
-<url>
-  <loc>http://www.cinemasunshine.co.jp/theater/ozu/concession/</loc>
-  <priority>0.5</priority>
-  <changefreq>yearly</changefreq>
-</url>
-<url>
-  <loc>http://www.cinemasunshine.co.jp/theater/ozu/admission/</loc>
-  <priority>0.5</priority>
-  <changefreq>yearly</changefreq>
-</url>
-<url>
-  <loc>http://www.cinemasunshine.co.jp/theater/ozu/floor_guide/</loc>
-  <priority>0.5</priority>
-  <changefreq>yearly</changefreq>
-</url>
-<url>
-  <loc>http://www.cinemasunshine.co.jp/theater/ozu/access/</loc>
-  <priority>0.5</priority>
-  <changefreq>yearly</changefreq>
-</url>
-<url>
   <loc>http://www.cinemasunshine.co.jp/theater/kitajima/</loc>
   <priority>1.0</priority>
   <changefreq>weekly</changefreq>
