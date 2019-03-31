@@ -145,12 +145,6 @@ $getMovieWalakerAdSetting = function() {
             'div_id' => 'div-gpt-ad-1538622926843-0',
         ],
         
-        // 大洲
-        11 => [
-            'name'   => '/22524478/sunshine_ozu_336_280',
-            'div_id' => 'div-gpt-ad-1538623034591-0',
-        ],
-        
         // 重信
         12 => [
             'name'   => '/22524478/sunshine_shigenobu_336_280',
