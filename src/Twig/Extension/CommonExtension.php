@@ -1,7 +1,7 @@
 <?php
 /**
  * CommonExtension.php
- * 
+ *
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 

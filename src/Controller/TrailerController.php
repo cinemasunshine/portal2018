@@ -1,7 +1,7 @@
 <?php
 /**
  * TrailerController.php
- * 
+ *
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
@@ -18,7 +18,7 @@ class TrailerController extends BaseController
 {
     /**
      * show action
-     * 
+     *
      * @param \Slim\Http\Request  $request
      * @param \Slim\Http\Response $response
      * @param array               $args
@@ -32,7 +32,7 @@ class TrailerController extends BaseController
             $trailers = $this->em
                 ->getRepository(Entity\Trailer::class)
                 ->findByPage((int) $pageId);
-        } else if ($theaterId = $request->getParam('t')) {
+        } elseif ($theaterId = $request->getParam('t')) {
             $trailers = $this->em
                 ->getRepository(Entity\Trailer::class)
                 ->findByTheater((int) $theaterId);

@@ -20,7 +20,6 @@ use Cinemasunshine\Portal\Schedule\Builder\V1\Schedule as V1ScheduleBuilder;
 use Cinemasunshine\Portal\Schedule\Builder\V2\PreSchedule as V2PreScheduleBuilder;
 use Cinemasunshine\Portal\Schedule\Builder\V2\Schedule as V2ScheduleBuilder;
 
-
 /**
  * Theater class
  */
@@ -76,14 +75,16 @@ class Theater extends Base
     {
         if (!self::validate($name)) {
             throw new \InvalidArgumentException(
-                sprintf('invalid theater "%s".', $name));
+                sprintf('invalid theater "%s".', $name)
+            );
         }
 
         $this->config = self::getConfig($name);
 
         if ($useTestApi && !isset($this->config['test_endpoint'])) {
             throw new \InvalidArgumentException(
-                sprintf('theater "%s" is cannot use test endpoint.', $name));
+                sprintf('theater "%s" is cannot use test endpoint.', $name)
+            );
         }
 
         $this->name     = $name;

@@ -1,7 +1,7 @@
 <?php
 /**
  * TheaterListController.php
- * 
+ *
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
@@ -16,7 +16,7 @@ class TheaterListController extends GeneralController
 {
     /**
      * index action
-     * 
+     *
      * @param \Slim\Http\Request  $request
      * @param \Slim\Http\Response $response
      * @param array               $args
@@ -29,7 +29,7 @@ class TheaterListController extends GeneralController
     
     /**
      * sns action
-     * 
+     *
      * @param \Slim\Http\Request  $request
      * @param \Slim\Http\Response $response
      * @param array               $args

@@ -1,7 +1,7 @@
 <?php
 /**
  * SpecialSiteNews.php
- * 
+ *
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * SpecialSiteNews entity class
- * 
+ *
  * @ORM\Entity(readOnly=true)
  * @ORM\Table(name="special_site_news", options={"collate"="utf8mb4_general_ci"})
  * @ORM\HasLifecycleCallbacks
@@ -22,7 +22,7 @@ class SpecialSiteNews extends AbstractEntity
     
     /**
      * id
-     * 
+     *
      * @var int
      * @ORM\Id
      * @ORM\Column(type="integer", options={"unsigned"=true})
@@ -59,7 +59,7 @@ class SpecialSiteNews extends AbstractEntity
     
     /**
      * construct
-     * 
+     *
      * @throws \LogicException
      */
     public function __construct()

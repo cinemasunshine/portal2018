@@ -1,7 +1,7 @@
 <?php
 /**
  * AdvanceTicketRepository.php
- * 
+ *
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
@@ -25,13 +25,21 @@ class AdvanceTicketRepository extends EntityRepository
     protected function getActiveQuery()
     {
         $qb = $this->createQueryBuilder('t');
+        
+        /**
+         * orderByでNULLを最後にするためのSELECT
+         * ISNULL関数は使えないのでCASEで対応
+         * 結果セットには不要なのでHIDDENを付ける
+         */
+        $addSelect = <<<SQL
+CASE
+    WHEN s.publishingExpectedDate IS NULL THEN 1
+    ELSE 0
+END AS HIDDEN publishingExpectedDateIsNull
+SQL;
+
         $qb
-            /**
-             * orderByでNULLを最後にするためのSELECT
-             * ISNULL関数は使えないのでCASEで対応
-             * 結果セットには不要なのでHIDDENを付ける
-             */
-            ->addSelect('CASE WHEN s.publishingExpectedDate IS NULL THEN 1 ELSE 0 END AS HIDDEN publishingExpectedDateIsNull')
+            ->addSelect($addSelect)
             ->join('t.advanceSale', 's')
             ->where('t.isDeleted = false')
             ->andWhere('s.isDeleted = false')
@@ -55,7 +63,7 @@ class AdvanceTicketRepository extends EntityRepository
     
     /**
      * find by theater
-     * 
+     *
      * @param int $theaterId
      * @return AdvanceTicket[]
      */

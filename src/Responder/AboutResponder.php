@@ -1,7 +1,7 @@
 <?php
 /**
  * AboutResponder.php
- * 
+ *
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 

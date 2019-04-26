@@ -1,7 +1,7 @@
 <?php
 /**
  * Title.php
- * 
+ *
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Title entity class
- * 
+ *
  * @ORM\Entity(readOnly=true)
  * @ORM\Table(name="title", options={"collate"="utf8mb4_general_ci"})
  * @ORM\HasLifecycleCallbacks
@@ -26,7 +26,7 @@ class Title extends AbstractEntity
     
     /**
      * id
-     * 
+     *
      * @var int
      * @ORM\Id
      * @ORM\Column(type="integer", options={"unsigned"=true})
@@ -45,23 +45,23 @@ class Title extends AbstractEntity
     
     /**
      * name
-     * 
+     *
      * @var string
      * @ORM\Column(type="string")
      */
     protected $name;
     
-    /** 
+    /**
      * name_kana
-     * 
+     *
      * @var string|null
      * @ORM\Column(type="string", name="name_kana", nullable=true)
      */
     protected $nameKana;
     
-    /** 
+    /**
      * name_original
-     * 
+     *
      * @var string|null
      * @ORM\Column(type="string", name="name_original", nullable=true)
      */
@@ -180,7 +180,7 @@ class Title extends AbstractEntity
     
     /**
      * construct
-     * 
+     *
      * @throws \LogicException
      */
     public function __construct()
@@ -520,7 +520,7 @@ class Title extends AbstractEntity
     
     /**
      * get campaigns
-     * 
+     *
      * 表示順管理は想定していない。
      * 作品に紐付けられたものを登録された順でよいとのこと。
      *

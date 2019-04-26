@@ -1,7 +1,7 @@
 <?php
 /**
  * ShowingFormat.php
- * 
+ *
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * ShowingFormat entity class
- * 
+ *
  * @ORM\Entity(readOnly=true)
  * @ORM\Table(name="showing_format", options={"collate"="utf8mb4_general_ci"})
  * @ORM\HasLifecycleCallbacks
@@ -38,7 +38,7 @@ class ShowingFormat extends AbstractEntity
     
     /**
      * id
-     * 
+     *
      * @var int
      * @ORM\Id
      * @ORM\Column(type="integer", options={"unsigned"=true})
@@ -95,7 +95,7 @@ class ShowingFormat extends AbstractEntity
     
     /**
      * construct
-     * 
+     *
      * @throws \LogicException
      */
     public function __construct()

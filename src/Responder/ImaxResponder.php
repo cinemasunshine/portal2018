@@ -1,7 +1,7 @@
 <?php
 /**
  * ImaxResponder.php
- * 
+ *
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 

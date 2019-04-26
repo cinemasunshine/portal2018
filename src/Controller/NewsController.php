@@ -1,7 +1,7 @@
 <?php
 /**
  * NewsController.php
- * 
+ *
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
@@ -18,7 +18,7 @@ class NewsController extends GeneralController
 {
     /**
      * list action
-     * 
+     *
      * @param \Slim\Http\Request  $request
      * @param \Slim\Http\Response $response
      * @param array               $args
@@ -45,7 +45,7 @@ class NewsController extends GeneralController
     
     /**
      * show action
-     * 
+     *
      * @param \Slim\Http\Request  $request
      * @param \Slim\Http\Response $response
      * @param array               $args

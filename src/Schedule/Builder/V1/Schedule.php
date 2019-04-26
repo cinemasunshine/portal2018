@@ -23,7 +23,7 @@ class Schedule extends BaseBuilder
 {
     /**
      * create Schedules entity
-     * 
+     *
      * @return SchedulesEntity
      */
     protected function createSchedulesEntity()

@@ -1,7 +1,7 @@
 <?php
 /**
  * ScheduleController.php
- * 
+ *
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
@@ -23,7 +23,6 @@ use Cinemasunshine\Portal\Schedule\Collection\Movie as MovieCollection;
 use Cinemasunshine\Portal\Schedule\Collection\Schedule as ScheduleCollection;
 use Cinemasunshine\Portal\Schedule\Theater as TheaterSchedule;
 
-
 /**
  * Schedule controller
  */
@@ -40,7 +39,7 @@ class ScheduleController extends BaseController
     
     /**
      * pre execute
-     * 
+     *
      * @param \Slim\Http\Request  $request
      * @param \Slim\Http\Response $response
      * @return void
@@ -68,7 +67,7 @@ class ScheduleController extends BaseController
     
     /**
      * index action
-     * 
+     *
      * @param \Slim\Http\Request  $request
      * @param \Slim\Http\Response $response
      * @param array               $args
@@ -115,14 +114,11 @@ class ScheduleController extends BaseController
         $meta = array();
         $data = array();
 
-        if (
-            $schedules->getError() === V1Schedules::ERROR_OTHER
+        if ($schedules->getError() === V1Schedules::ERROR_OTHER
             || $preSchedules->getError() === V1Schedules::ERROR_OTHER
         ) {
             throw new \RuntimeException('schedule unknown error');
-
-        } else if (
-            $schedules->getError() === V1Schedules::ERROR_NO_CONTENT
+        } elseif ($schedules->getError() === V1Schedules::ERROR_NO_CONTENT
             && $preSchedules->getError() === V1Schedules::ERROR_NO_CONTENT
         ) {
             $meta['error'] = V1Schedules::ERROR_NO_CONTENT;
@@ -132,14 +128,11 @@ class ScheduleController extends BaseController
             return;
         }
         
-        if (
-            $schedules->getError() === V1Schedules::ERROR_OTHER
+        if ($schedules->getError() === V1Schedules::ERROR_OTHER
             || $preSchedules->getError() === V1Schedules::ERROR_OTHER
         ) {
             throw new \RuntimeException('schedule unknown error');
-
-        } else if (
-            $schedules->getError() === V1Schedules::ERROR_NO_CONTENT
+        } elseif ($schedules->getError() === V1Schedules::ERROR_NO_CONTENT
             && $preSchedules->getError() === V1Schedules::ERROR_NO_CONTENT
         ) {
             $meta['error'] = V1Schedules::ERROR_NO_CONTENT;
@@ -175,7 +168,7 @@ class ScheduleController extends BaseController
     {
         $allSchedules = new ScheduleCollection();
 
-        $shallowCopy = function(ScheduleInterface $schedule) {
+        $shallowCopy = function (ScheduleInterface $schedule) {
             $class = get_class($schedule);
             $newSchedule = new $class($schedule);
             $newSchedule->setDate($schedule->getDate());
@@ -191,7 +184,6 @@ class ScheduleController extends BaseController
         }
 
         foreach ($preSchedules->getSchedule() as $schedule) {
-            
             // 日付重複判定
             if ($allSchedules->has($schedule->getDate())) {
                 $allSchedules->get($schedule->getDate())->setHasPreSale(true);
@@ -212,7 +204,7 @@ class ScheduleController extends BaseController
     
     /**
      * date action
-     * 
+     *
      * @param \Slim\Http\Request  $request
      * @param \Slim\Http\Response $response
      * @param array               $args
@@ -260,14 +252,11 @@ class ScheduleController extends BaseController
         $meta = array();
         $data = array();
 
-        if (
-            $schedules->getError() === V1Schedules::ERROR_OTHER
+        if ($schedules->getError() === V1Schedules::ERROR_OTHER
             || $preSchedules->getError() === V1Schedules::ERROR_OTHER
         ) {
             throw new \RuntimeException('schedule unknown error');
-
-        } else if (
-            $schedules->getError() === V1Schedules::ERROR_NO_CONTENT
+        } elseif ($schedules->getError() === V1Schedules::ERROR_NO_CONTENT
             && $preSchedules->getError() === V1Schedules::ERROR_NO_CONTENT
         ) {
             $meta['error'] = V1Schedules::ERROR_NO_CONTENT;
@@ -277,14 +266,11 @@ class ScheduleController extends BaseController
             return;
         }
         
-        if (
-            $schedules->getError() === V1Schedules::ERROR_OTHER
+        if ($schedules->getError() === V1Schedules::ERROR_OTHER
             || $preSchedules->getError() === V1Schedules::ERROR_OTHER
         ) {
             throw new \RuntimeException('schedule unknown error');
-
-        } else if (
-            $schedules->getError() === V1Schedules::ERROR_NO_CONTENT
+        } elseif ($schedules->getError() === V1Schedules::ERROR_NO_CONTENT
             && $preSchedules->getError() === V1Schedules::ERROR_NO_CONTENT
         ) {
             $meta['error'] = V1Schedules::ERROR_NO_CONTENT;
@@ -341,7 +327,7 @@ class ScheduleController extends BaseController
      * @param SchedulesInterface $schedules
      * @param MovieCollection    $movieCollection
      */
-    function findMovie(
+    protected function findMovie(
         array $params,
         SchedulesInterface $schedules,
         MovieCollection $movieCollection

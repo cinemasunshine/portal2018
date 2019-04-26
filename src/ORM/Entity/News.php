@@ -1,7 +1,7 @@
 <?php
 /**
  * News.php
- * 
+ *
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * News entity class
- * 
+ *
  * @ORM\Entity(readOnly=true, repositoryClass="Cinemasunshine\Portal\ORM\Repository\NewsRepository")
  * @ORM\Table(name="news", options={"collate"="utf8mb4_general_ci"})
  * @ORM\HasLifecycleCallbacks
@@ -33,7 +33,7 @@ class News extends AbstractEntity
     
     /**
      * id
-     * 
+     *
      * @var int
      * @ORM\Id
      * @ORM\Column(type="integer", options={"unsigned"=true})
@@ -101,7 +101,7 @@ class News extends AbstractEntity
     
     /**
      * pages
-     * 
+     *
      * @var Collection
      * @ORM\OneToMany(targetEntity="PageNews", mappedBy="news")
      */
@@ -126,7 +126,7 @@ class News extends AbstractEntity
     
     /**
      * construct
-     * 
+     *
      * @throws \LogicException
      */
     public function __construct()

@@ -1,7 +1,7 @@
 <?php
 /**
  * TitleRanking.php
- * 
+ *
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * TitleRanking entity class
- * 
+ *
  * @ORM\Entity(readOnly=true)
  * @ORM\Table(name="title_ranking", options={"collate"="utf8mb4_general_ci"})
  * @ORM\HasLifecycleCallbacks
@@ -22,7 +22,7 @@ class TitleRanking extends AbstractEntity
     
     /**
      * id
-     * 
+     *
      * @var int
      * @ORM\Id
      * @ORM\Column(type="smallint", options={"unsigned"=true})
@@ -94,7 +94,7 @@ class TitleRanking extends AbstractEntity
     
     /**
      * construct
-     * 
+     *
      * @throws \LogicException
      */
     public function __construct()
@@ -166,9 +166,9 @@ class TitleRanking extends AbstractEntity
         return $this->rank1Title;
     }
     
-    /** 
+    /**
      * set rank1_title
-     * 
+     *
      * @param Title|null $title
      * @throws \LogicException
      */

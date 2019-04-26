@@ -1,7 +1,7 @@
 <?php
 /**
  * TheaterController.php
- * 
+ *
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
@@ -52,7 +52,7 @@ class TheaterController extends BaseController
     
     /**
      * index action
-     * 
+     *
      * @param \Slim\Http\Request  $request
      * @param \Slim\Http\Response $response
      * @param array               $args
@@ -67,7 +67,9 @@ class TheaterController extends BaseController
         $this->data->set('mainBanners', $this->getMainBanners($theater));
         
         $this->data->set('infoNewsList', $this->getNewsList(
-            $theater, Entity\News::CATEGORY_INFO, 8
+            $theater,
+            Entity\News::CATEGORY_INFO,
+            8
         ));
         
         if ($theater->isStatusClosed()) {
@@ -75,7 +77,9 @@ class TheaterController extends BaseController
         }
         
         $this->data->set('eventNewsList', $this->getNewsList(
-            $theater, Entity\News::CATEGORY_EVENT, 8
+            $theater,
+            Entity\News::CATEGORY_EVENT,
+            8
         ));
         
         // NEWS、IMAXニュース、4DXニュース SASAKI-271
@@ -121,7 +125,7 @@ class TheaterController extends BaseController
     
     /**
      * access action
-     * 
+     *
      * @param \Slim\Http\Request  $request
      * @param \Slim\Http\Response $response
      * @param array               $args
@@ -134,13 +138,15 @@ class TheaterController extends BaseController
         $this->data->set('theater', $theater);
         
         $this->data->set('infoNewsList', $this->getNewsList(
-            $theater, Entity\News::CATEGORY_INFO, 8
+            $theater,
+            Entity\News::CATEGORY_INFO,
+            8
         ));
     }
     
     /**
      * admission action
-     * 
+     *
      * @param \Slim\Http\Request  $request
      * @param \Slim\Http\Response $response
      * @param array               $args
@@ -157,7 +163,7 @@ class TheaterController extends BaseController
     
     /**
      * advance ticket action
-     * 
+     *
      * @param \Slim\Http\Request  $request
      * @param \Slim\Http\Response $response
      * @param array               $args
@@ -174,7 +180,9 @@ class TheaterController extends BaseController
         $this->data->set('campaigns', $this->getCampaigns($theater));
         
         $this->data->set('infoNewsList', $this->getNewsList(
-            $theater, Entity\News::CATEGORY_INFO, 8
+            $theater,
+            Entity\News::CATEGORY_INFO,
+            8
         ));
     }
     
@@ -193,7 +201,7 @@ class TheaterController extends BaseController
     
     /**
      * concession action
-     * 
+     *
      * @param \Slim\Http\Request  $request
      * @param \Slim\Http\Response $response
      * @param array               $args
@@ -208,13 +216,15 @@ class TheaterController extends BaseController
         $this->data->set('campaigns', $this->getCampaigns($theater));
         
         $this->data->set('infoNewsList', $this->getNewsList(
-            $theater, Entity\News::CATEGORY_INFO, 8
+            $theater,
+            Entity\News::CATEGORY_INFO,
+            8
         ));
     }
     
     /**
      * floor guide action
-     * 
+     *
      * @param \Slim\Http\Request  $request
      * @param \Slim\Http\Response $response
      * @param array               $args
@@ -227,13 +237,15 @@ class TheaterController extends BaseController
         $this->data->set('theater', $theater);
         
         $this->data->set('infoNewsList', $this->getNewsList(
-            $theater, Entity\News::CATEGORY_INFO, 8
+            $theater,
+            Entity\News::CATEGORY_INFO,
+            8
         ));
     }
     
     /**
      * news list action
-     * 
+     *
      * @param \Slim\Http\Request  $request
      * @param \Slim\Http\Response $response
      * @param array               $args
@@ -271,7 +283,7 @@ class TheaterController extends BaseController
     
     /**
      * news show action
-     * 
+     *
      * @param \Slim\Http\Request  $request
      * @param \Slim\Http\Response $response
      * @param array               $args
