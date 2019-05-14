@@ -1,7 +1,7 @@
 <?php
 /**
  * TheaterExtension.php
- * 
+ *
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
@@ -16,7 +16,7 @@ class TheaterExtension extends \Twig_Extension
 {
     /**
      * metaタグkeywords
-     * 
+     *
      * 添字は劇場ID。
      *
      * @var array

@@ -1,7 +1,7 @@
 <?php
 /**
  * MovieWalkerAdExtension.php
- * 
+ *
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
@@ -20,7 +20,7 @@ class MovieWalkerAdExtension extends \Twig_Extension
     
     /**
      * construct
-     * 
+     *
      * @param array $settings
      */
     public function __construct(array $settings)
@@ -70,7 +70,7 @@ class MovieWalkerAdExtension extends \Twig_Extension
             /** @var Page $target */
             $adName  = $this->getPageAdName($target);
             $adDivId = $this->getPageAdDivId($target);
-        } else if ($target instanceof Theater) {
+        } elseif ($target instanceof Theater) {
             /** @var Theater $target */
             $adName  = $this->getTheaterAdName($target);
             $adDivId = $this->getTheaterAdDivId($target);
@@ -127,7 +127,7 @@ TAG;
             /** @var Page $target */
             $adName  = $this->getPageAdName($target);
             $adDivId = $this->getPageAdDivId($target);
-        } else if ($target instanceof Theater) {
+        } elseif ($target instanceof Theater) {
             /** @var Theater $target */
             $adName  = $this->getTheaterAdName($target);
             $adDivId = $this->getTheaterAdDivId($target);
@@ -160,7 +160,7 @@ TAG;
     
     /**
      * return Ad name for page
-     * 
+     *
      * @param Page $page
      * @return string|null
      */
@@ -173,7 +173,7 @@ TAG;
     
     /**
      * return Ad div_id for page
-     * 
+     *
      * @param Page $page
      * @return string
      */
@@ -186,7 +186,7 @@ TAG;
     
     /**
      * return Ad name for theater
-     * 
+     *
      * @param Theater $theater
      * @return string|null
      */
@@ -199,7 +199,7 @@ TAG;
     
     /**
      * return Ad div_id for theater
-     * 
+     *
      * @param Theater $theater
      * @return string
      */

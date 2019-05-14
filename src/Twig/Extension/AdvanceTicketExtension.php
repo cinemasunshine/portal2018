@@ -1,7 +1,7 @@
 <?php
 /**
  * AdvanceTicketExtension.php
- * 
+ *
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
@@ -43,7 +43,7 @@ class AdvanceTicketExtension extends \Twig_Extension
     {
         if ($type === AdvanceTicket::TYPE_MVTK) {
             return 'ムビチケ';
-        } else if ($type === AdvanceTicket::TYPE_PAPER) {
+        } elseif ($type === AdvanceTicket::TYPE_PAPER) {
             return '紙券';
         }
         

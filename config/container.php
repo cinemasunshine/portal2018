@@ -1,9 +1,9 @@
 <?php
 /**
  * container.php
- * 
+ *
  * AbstractControllerのphpdoc更新を推奨。
- * 
+ *
  * @see Cinemasunshine\PortalAdmin\Controller\AbstractController\__call()
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
@@ -11,11 +11,11 @@
 /** @var \Slim\App $app */
 $container = $app->getContainer();
 
-/** 
+/**
  * view
- * 
+ *
  * @link https://www.slimframework.com/docs/v3/features/templates.html
- * 
+ *
  * @return \Slim\Views\Twig
  */
 $container['view'] = function ($container) {
@@ -51,9 +51,9 @@ $container['view'] = function ($container) {
 
 /**
  * logger
- * 
+ *
  * @link https://github.com/Seldaek/monolog
- * 
+ *
  * @return \Monolog\Logger
  */
 $container['logger'] = function ($container) {
@@ -93,7 +93,7 @@ $container['logger'] = function ($container) {
 
 /**
  * Doctrine entity manager
- * 
+ *
  * @return \Doctrine\ORM\EntityManager
  */
 $container['em'] = function ($container) {
@@ -123,7 +123,7 @@ $container['em'] = function ($container) {
 
 /**
  * Azure Blob Storage Client
- * 
+ *
  * @link https://github.com/Azure/azure-storage-php/tree/master/azure-storage-blob
  * @return \MicrosoftAzure\Storage\Blob\BlobRestProxy
  */
@@ -134,7 +134,8 @@ $container['bc'] = function ($container) {
         'DefaultEndpointsProtocol=%s;AccountName=%s;AccountKey=%s',
         $protocol,
         $settings['account']['name'],
-        $settings['account']['key']);
+        $settings['account']['key']
+    );
     
     return \MicrosoftAzure\Storage\Blob\BlobRestProxy::createBlobService($connectionString);
 };

@@ -1,7 +1,7 @@
 <?php
 /**
  * Theater.php
- * 
+ *
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Theater entity class
- * 
+ *
  * @ORM\Entity(readOnly=true, repositoryClass="Cinemasunshine\Portal\ORM\Repository\TheaterRepository")
  * @ORM\Table(name="theater", options={"collate"="utf8mb4_general_ci"})
  * @ORM\HasLifecycleCallbacks
@@ -41,7 +41,7 @@ class Theater extends AbstractEntity
     
     /**
      * id
-     * 
+     *
      * @var int
      * @ORM\Id
      * @ORM\Column(type="smallint", options={"unsigned"=true})
@@ -51,15 +51,15 @@ class Theater extends AbstractEntity
     
     /**
      * name
-     * 
+     *
      * @var string
      * @ORM\Column(type="string", unique=true)
      */
     protected $name;
     
-    /** 
+    /**
      * name_ja
-     * 
+     *
      * @var string
      * @ORM\Column(type="string", name="name_ja")
      */
@@ -67,7 +67,7 @@ class Theater extends AbstractEntity
     
     /**
      * area
-     * 
+     *
      * @var int
      * @ORM\Column(type="smallint", options={"unsigned"=true})
      */
@@ -127,7 +127,7 @@ class Theater extends AbstractEntity
     
     /**
      * admin_users
-     * 
+     *
      * @var ArrayCollection
      * @ORM\OneToMany(targetEntity="AdminUser", mappedBy="theater")
      */
@@ -172,7 +172,7 @@ class Theater extends AbstractEntity
     
     /**
      * construct
-     * 
+     *
      * @throws \LogicException
      */
     public function __construct()

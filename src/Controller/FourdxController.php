@@ -1,7 +1,7 @@
 <?php
 /**
  * FourdxController.php
- * 
+ *
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
@@ -13,7 +13,7 @@ use Cinemasunshine\Portal\ORM\Entity;
 
 /**
  * Fourdx controller
- * 
+ *
  * 4DX特設サイト
  */
 class FourdxController extends SpecialSiteController
@@ -22,7 +22,7 @@ class FourdxController extends SpecialSiteController
     
     /**
      * index action
-     * 
+     *
      * @param \Slim\Http\Request  $request
      * @param \Slim\Http\Response $response
      * @param array               $args
@@ -147,7 +147,7 @@ class FourdxController extends SpecialSiteController
     
     /**
      * about action
-     * 
+     *
      * @param \Slim\Http\Request  $request
      * @param \Slim\Http\Response $response
      * @param array               $args
@@ -159,7 +159,7 @@ class FourdxController extends SpecialSiteController
     
     /**
      * schedule list action
-     * 
+     *
      * @param \Slim\Http\Request  $request
      * @param \Slim\Http\Response $response
      * @param array               $args
@@ -176,7 +176,7 @@ class FourdxController extends SpecialSiteController
     
     /**
      * schedule show action
-     * 
+     *
      * @param \Slim\Http\Request  $request
      * @param \Slim\Http\Response $response
      * @param array               $args
@@ -201,7 +201,7 @@ class FourdxController extends SpecialSiteController
     
     /**
      * news list action
-     * 
+     *
      * @param \Slim\Http\Request  $request
      * @param \Slim\Http\Response $response
      * @param array               $args
@@ -216,7 +216,7 @@ class FourdxController extends SpecialSiteController
     
     /**
      * news show action
-     * 
+     *
      * @param \Slim\Http\Request  $request
      * @param \Slim\Http\Response $response
      * @param array               $args
@@ -239,7 +239,7 @@ class FourdxController extends SpecialSiteController
     
     /**
      * theater action
-     * 
+     *
      * @param \Slim\Http\Request  $request
      * @param \Slim\Http\Response $response
      * @param array               $args

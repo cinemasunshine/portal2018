@@ -1,7 +1,7 @@
 <?php
 /**
  * TheaterListResponder.php
- * 
+ *
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 

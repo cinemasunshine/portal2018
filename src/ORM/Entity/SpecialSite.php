@@ -1,7 +1,7 @@
 <?php
 /**
  * SpecialSite.php
- * 
+ *
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * SpecialSite entity class
- * 
+ *
  * @ORM\Entity(readOnly=true)
  * @ORM\Table(name="special_site", options={"collate"="utf8mb4_general_ci"})
  * @ORM\HasLifecycleCallbacks
@@ -25,7 +25,7 @@ class SpecialSite extends AbstractEntity
     
     /**
      * id
-     * 
+     *
      * @var int
      * @ORM\Id
      * @ORM\Column(type="smallint", options={"unsigned"=true})
@@ -35,15 +35,15 @@ class SpecialSite extends AbstractEntity
     
     /**
      * name
-     * 
+     *
      * @var string
      * @ORM\Column(type="string", unique=true)
      */
     protected $name;
     
-    /** 
+    /**
      * name_ja
-     * 
+     *
      * @var string
      * @ORM\Column(type="string", name="name_ja")
      */
@@ -87,7 +87,7 @@ class SpecialSite extends AbstractEntity
     
     /**
      * construct
-     * 
+     *
      * @throws \LogicException
      */
     public function __construct()

@@ -1,7 +1,7 @@
 <?php
 /**
  * routes.php
- * 
+ *
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
@@ -37,7 +37,7 @@ $app->group('/news', function () {
     $this->get('/{id:[0-9]+}.php', NewsController::class . ':show')->setName('news_show');
 });
 
-$app->group('/movie', function() {
+$app->group('/movie', function () {
     $this->get('/', ScheduleController::class . ':list')->setName('schedule_list');
     $this->get('/{schedule:[0-9]+}.php', ScheduleController::class . ':show')->setName('schedule_show');
 });
@@ -62,7 +62,7 @@ $app->group('/theater/{name}', function () {
 # ムービーウォーカー様広告として展開しているのでURLはそのまま。タイミングがあえば直す SASAKI-315
 $app->get('/trailer', TrailerController::class . ':show')->setName('trailer');
 
-$app->group('/imax', function() {
+$app->group('/imax', function () {
     $this->get('/', ImaxController::class . ':index')->setName('imax');
     $this->get('/about/', ImaxController::class . ':about')->setName('imax_about');
     $this->get('/movie/', ImaxController::class . ':scheduleList')->setName('imax_schedule_list');
@@ -72,7 +72,7 @@ $app->group('/imax', function() {
     $this->get('/theater/', ImaxController::class . ':theater')->setName('imax_theater');
 });
 
-$app->group('/4dx', function() {
+$app->group('/4dx', function () {
     $this->get('/', FourdxController::class . ':index')->setName('4dx');
     $this->get('/about/', FourdxController::class . ':about')->setName('4dx_about');
     $this->get('/movie/', FourdxController::class . ':scheduleList')->setName('4dx_schedule_list');
@@ -82,19 +82,20 @@ $app->group('/4dx', function() {
     $this->get('/theater/', FourdxController::class . ':theater')->setName('4dx_theater');
 });
 
-$app->group('/screen-x', function() {
+$app->group('/screen-x', function () {
     $this->get('/', ScreenXController::class . ':index')->setName('screenx');
     $this->get('/about/', ScreenXController::class . ':about')->setName('screenx_about');
     $this->get('/movie/', ScreenXController::class . ':scheduleList')->setName('screenx_schedule_list');
-    $this->get('/movie/{schedule:[0-9]+}.php', ScreenXController::class . ':scheduleShow')->setName('screenx_schedule_show');
+    $this->get('/movie/{schedule:[0-9]+}.php', ScreenXController::class . ':scheduleShow')
+        ->setName('screenx_schedule_show');
     $this->get('/news/', ScreenXController::class . ':newsList')->setName('screenx_news_list');
     $this->get('/news/{id:[0-9]+}.php', ScreenXController::class . ':newsShow')->setName('screenx_news_show');
     $this->get('/theater/', ScreenXController::class . ':theater')->setName('screenx_theater');
 });
 
 # APIのURL設計はひとまずそのまま SASAKI-315
-$app->group('/api', function() {
-    $this->group('/schedule/{name}', function() {
+$app->group('/api', function () {
+    $this->group('/schedule/{name}', function () {
         $this->get('', ScheduleApiController::class . ':index');
         $this->get('/{date:[\d]{4}-[\d]{2}-[\d]{2}}', ScheduleApiController::class . ':date');
     });

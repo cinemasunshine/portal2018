@@ -1,7 +1,7 @@
 <?php
 /**
  * ScheduleController.php
- * 
+ *
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
@@ -18,7 +18,7 @@ class ScheduleController extends GeneralController
 {
     /**
      * list action
-     * 
+     *
      * @param \Slim\Http\Request  $request
      * @param \Slim\Http\Response $response
      * @param array               $args
@@ -59,7 +59,7 @@ class ScheduleController extends GeneralController
     
     /**
      * show action
-     * 
+     *
      * @param \Slim\Http\Request  $request
      * @param \Slim\Http\Response $response
      * @param array               $args
