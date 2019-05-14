@@ -5,6 +5,7 @@
 # application
 /cache
 /public/.htaccess
+/report/*
 /src/ORM/proxy
 .env
 
@@ -12,3 +13,6 @@
 composer.phar
 composer.bat
 /vendor/
+
+# git
+!.gitkeep

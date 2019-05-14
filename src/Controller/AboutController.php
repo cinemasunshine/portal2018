@@ -1,7 +1,7 @@
 <?php
 /**
  * AboutController.php
- * 
+ *
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
@@ -14,7 +14,7 @@ class AboutController extends GeneralController
 {
     /**
      * company action
-     * 
+     *
      * @param \Slim\Http\Request  $request
      * @param \Slim\Http\Response $response
      * @param array               $args
@@ -26,7 +26,7 @@ class AboutController extends GeneralController
     
     /**
      * mail magazine action
-     * 
+     *
      * @param \Slim\Http\Request  $request
      * @param \Slim\Http\Response $response
      * @param array               $args
@@ -38,7 +38,7 @@ class AboutController extends GeneralController
     
     /**
      * mvtk action
-     * 
+     *
      * @param \Slim\Http\Request  $request
      * @param \Slim\Http\Response $response
      * @param array               $args
@@ -50,7 +50,7 @@ class AboutController extends GeneralController
     
     /**
      * official app action
-     * 
+     *
      * @param \Slim\Http\Request  $request
      * @param \Slim\Http\Response $response
      * @param array               $args
@@ -62,7 +62,7 @@ class AboutController extends GeneralController
     
     /**
      * online ticket action
-     * 
+     *
      * @param \Slim\Http\Request  $request
      * @param \Slim\Http\Response $response
      * @param array               $args
@@ -74,7 +74,7 @@ class AboutController extends GeneralController
     
     /**
      * privacy action
-     * 
+     *
      * @param \Slim\Http\Request  $request
      * @param \Slim\Http\Response $response
      * @param array               $args
@@ -86,7 +86,7 @@ class AboutController extends GeneralController
     
     /**
      * question action
-     * 
+     *
      * @param \Slim\Http\Request  $request
      * @param \Slim\Http\Response $response
      * @param array               $args
@@ -98,7 +98,7 @@ class AboutController extends GeneralController
     
     /**
      * sitemap action
-     * 
+     *
      * @param \Slim\Http\Request  $request
      * @param \Slim\Http\Response $response
      * @param array               $args
@@ -111,7 +111,7 @@ class AboutController extends GeneralController
     
     /**
      * special ticket action
-     * 
+     *
      * @param \Slim\Http\Request  $request
      * @param \Slim\Http\Response $response
      * @param array               $args
@@ -123,7 +123,7 @@ class AboutController extends GeneralController
     
     /**
      * specific quotient action
-     * 
+     *
      * @param \Slim\Http\Request  $request
      * @param \Slim\Http\Response $response
      * @param array               $args
@@ -135,7 +135,7 @@ class AboutController extends GeneralController
     
     /**
      * terms of service action
-     * 
+     *
      * @param \Slim\Http\Request  $request
      * @param \Slim\Http\Response $response
      * @param array               $args

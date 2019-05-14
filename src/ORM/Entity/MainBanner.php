@@ -1,7 +1,7 @@
 <?php
 /**
  * MainBanner.php
- * 
+ *
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * MainBanner entity class
- * 
+ *
  * @ORM\Entity(readOnly=true, repositoryClass="Cinemasunshine\Portal\ORM\Repository\MainBannerRepository")
  * @ORM\Table(name="main_banner", options={"collate"="utf8mb4_general_ci"})
  * @ORM\HasLifecycleCallbacks
@@ -35,7 +35,7 @@ class MainBanner extends AbstractEntity
     
     /**
      * id
-     * 
+     *
      * @var int
      * @ORM\Id
      * @ORM\Column(type="integer", options={"unsigned"=true})
@@ -54,7 +54,7 @@ class MainBanner extends AbstractEntity
     
     /**
      * name
-     * 
+     *
      * @var string
      * @ORM\Column(type="string")
      */
@@ -78,7 +78,7 @@ class MainBanner extends AbstractEntity
     
     /**
      * pages
-     * 
+     *
      * @var Collection
      * @ORM\OneToMany(targetEntity="PageMainBanner", mappedBy="mainBanner")
      */
@@ -113,7 +113,7 @@ class MainBanner extends AbstractEntity
     
     /**
      * construct
-     * 
+     *
      * @throws \LogicException
      */
     public function __construct()

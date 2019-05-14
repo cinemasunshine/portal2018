@@ -1,7 +1,7 @@
 <?php
 /**
  * ShowingTheater.php
- * 
+ *
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * ShowingTheater entity class
- * 
+ *
  * @ORM\Entity(readOnly=true)
  * @ORM\Table(name="showing_theater", options={"collate"="utf8mb4_general_ci"})
  * @ORM\HasLifecycleCallbacks
@@ -22,7 +22,7 @@ class ShowingTheater extends AbstractEntity
     
     /**
      * id
-     * 
+     *
      * @var int
      * @ORM\Id
      * @ORM\Column(type="integer", options={"unsigned"=true})
@@ -41,7 +41,7 @@ class ShowingTheater extends AbstractEntity
     
     /**
      * theater
-     * 
+     *
      * @var Theater
      * @ORM\ManyToOne(targetEntity="Theater")
      * @ORM\JoinColumn(name="theater_id", referencedColumnName="id", nullable=false, onDelete="CASCADE")
@@ -51,7 +51,7 @@ class ShowingTheater extends AbstractEntity
     
     /**
      * construct
-     * 
+     *
      * @throws \LogicException
      */
     public function __construct()

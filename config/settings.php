@@ -1,9 +1,9 @@
 <?php
 /**
  * settings.php
- * 
+ *
  * @author Atsushi Okui <okui@motionpicture.jp>
- * 
+ *
  * @return array
  */
 
@@ -24,7 +24,7 @@ $settings['view'] = [
 ];
 
 // logger
-$getLoggerSetting = function($isDebug) {
+$getLoggerSetting = function ($isDebug) {
     $settings = [
         'name' => 'app',
     ];
@@ -51,7 +51,7 @@ $getLoggerSetting = function($isDebug) {
 $settings['logger'] = $getLoggerSetting($isDebug);
 
 // doctrine
-$getDoctrineSetting = function() {
+$getDoctrineSetting = function () {
     $settings = [
         'dev_mode' => (APP_ENV === 'dev'),
         'metadata_dirs' => [APP_ROOT . '/src/ORM/Entity'],
@@ -92,7 +92,7 @@ $settings['storage'] = [
 ];
 
 // movie walker ad
-$getMovieWalakerAdSetting = function() {
+$getMovieWalakerAdSetting = function () {
     $settings = [
         'support' => (getenv('APPSETTING_MV_AD') === 'true'),
         'page' => [],
@@ -200,14 +200,14 @@ $getMovieWalakerAdSetting = function() {
 $settings['mw_ad'] = $getMovieWalakerAdSetting();
 
 // Motionpicture Online Ticket
-$getMpOnlineTicketSetting = function() {
+$getMpOnlineTicketSetting = function () {
     $settings = [];
     $env = getenv('APPSETTING_MP_TICKET');
     
     if ($env === 'prod') {
         $settings['url'] = 'https://ticket-cinemasunshine.com';
         $settings['entrance_url'] = 'https://entrance.ticket-cinemasunshine.com';
-    } else if ($env === 'test') {
+    } elseif ($env === 'test') {
         $settings['url'] = 'https://sskts-frontend-test.azurewebsites.net';
         $settings['entrance_url'] = 'https://d24x7394fq3aqi.cloudfront.net';
     } else {

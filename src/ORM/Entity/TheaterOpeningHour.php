@@ -1,7 +1,7 @@
 <?php
 /**
  * TheaterOpeningHour.php
- * 
+ *
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
@@ -9,7 +9,7 @@ namespace Cinemasunshine\Portal\ORM\Entity;
 
 /**
  * TheaterOpeningHour entity class
- * 
+ *
  * 現時点ではDoctrineのEntityとはしない。
  * DBへはjsonデータへ変換して文字列カラムへセットする。
  */
@@ -34,7 +34,7 @@ class TheaterOpeningHour extends AbstractEntity
     
     /**
      * to_date
-     * 
+     *
      * @var \DateTime|null
      */
     protected $toDate;

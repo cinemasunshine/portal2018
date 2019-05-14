@@ -55,7 +55,7 @@ class Schedule extends Base
 
     /**
      * キーでソート（昇順）
-     * 
+     *
      * @return bool
      * @link http://php.net/manual/ja/function.ksort.php
      */

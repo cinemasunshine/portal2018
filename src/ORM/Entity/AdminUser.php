@@ -1,7 +1,7 @@
 <?php
 /**
  * AdminUser.php
- * 
+ *
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * AdminUser entity class
- * 
+ *
  * @ORM\Entity(readOnly=true)
  * @ORM\Table(name="admin_user", options={"collate"="utf8mb4_general_ci"})
  * @ORM\HasLifecycleCallbacks
@@ -23,7 +23,7 @@ class AdminUser extends AbstractEntity
     
     /**
      * id
-     * 
+     *
      * @var int
      * @ORM\Id
      * @ORM\Column(type="smallint", options={"unsigned"=true})
@@ -33,15 +33,15 @@ class AdminUser extends AbstractEntity
     
     /**
      * name
-     * 
+     *
      * @var string
      * @ORM\Column(type="string", unique=true)
      */
     protected $name;
     
-    /** 
+    /**
      * display_name
-     * 
+     *
      * @var string
      * @ORM\Column(type="string", name="display_name")
      */
@@ -74,7 +74,7 @@ class AdminUser extends AbstractEntity
     
     /**
      * construct
-     * 
+     *
      * @throws \LogicException
      */
     public function __construct()
@@ -182,7 +182,7 @@ class AdminUser extends AbstractEntity
     
     /**
      * get theater
-     * 
+     *
      * @return Theater
      */
     public function getTheater()

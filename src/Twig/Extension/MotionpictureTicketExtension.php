@@ -1,7 +1,7 @@
 <?php
 /**
  * MotionpictureTicketExtension.php
- * 
+ *
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
@@ -19,7 +19,7 @@ class MotionpictureTicketExtension extends \Twig_Extension
     
     /**
      * construct
-     * 
+     *
      * @param array $settings
      */
     public function __construct(array $settings)

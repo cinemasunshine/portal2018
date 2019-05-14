@@ -1,7 +1,7 @@
 <?php
 /**
  * FourdxResponder.php
- * 
+ *
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
@@ -13,7 +13,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 
 /**
  * Fourdx responder
- * 
+ *
  * 4DX
  */
 class FourdxResponder extends BaseResponder

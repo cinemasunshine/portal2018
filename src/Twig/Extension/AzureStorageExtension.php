@@ -1,7 +1,7 @@
 <?php
 /**
  * AzureStorageExtension.php
- * 
+ *
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
@@ -21,7 +21,7 @@ class AzureStorageExtension extends \Twig_Extension
     
     /**
      * construct
-     * 
+     *
      * @param ContainerInterface $container
      */
     public function __construct(ContainerInterface $container)
@@ -44,7 +44,7 @@ class AzureStorageExtension extends \Twig_Extension
     
     /**
      * Blob URL
-     * 
+     *
      * Blobへのpublicアクセスを許可する必要があります。
      *
      * @param string $container Blob container name
@@ -61,7 +61,8 @@ class AzureStorageExtension extends \Twig_Extension
             $protocol,
             $settings['account']['name'],
             $container,
-            $blob);
+            $blob
+        );
     }
     
     /**

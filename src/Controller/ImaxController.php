@@ -1,7 +1,7 @@
 <?php
 /**
  * ImaxController.php
- * 
+ *
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
@@ -20,7 +20,7 @@ class ImaxController extends SpecialSiteController
     
     /**
      * index action
-     * 
+     *
      * @param \Slim\Http\Request  $request
      * @param \Slim\Http\Response $response
      * @param array               $args
@@ -145,7 +145,7 @@ class ImaxController extends SpecialSiteController
     
     /**
      * about action
-     * 
+     *
      * @param \Slim\Http\Request  $request
      * @param \Slim\Http\Response $response
      * @param array               $args
@@ -157,7 +157,7 @@ class ImaxController extends SpecialSiteController
     
     /**
      * schedule list action
-     * 
+     *
      * @param \Slim\Http\Request  $request
      * @param \Slim\Http\Response $response
      * @param array               $args
@@ -174,7 +174,7 @@ class ImaxController extends SpecialSiteController
     
     /**
      * schedule show action
-     * 
+     *
      * @param \Slim\Http\Request  $request
      * @param \Slim\Http\Response $response
      * @param array               $args
@@ -199,7 +199,7 @@ class ImaxController extends SpecialSiteController
     
     /**
      * news list action
-     * 
+     *
      * @param \Slim\Http\Request  $request
      * @param \Slim\Http\Response $response
      * @param array               $args
@@ -214,7 +214,7 @@ class ImaxController extends SpecialSiteController
     
     /**
      * news show action
-     * 
+     *
      * @param \Slim\Http\Request  $request
      * @param \Slim\Http\Response $response
      * @param array               $args
@@ -237,7 +237,7 @@ class ImaxController extends SpecialSiteController
     
     /**
      * theater action
-     * 
+     *
      * @param \Slim\Http\Request  $request
      * @param \Slim\Http\Response $response
      * @param array               $args
