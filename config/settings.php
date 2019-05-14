@@ -201,19 +201,10 @@ $settings['mw_ad'] = $getMovieWalakerAdSetting();
 
 // Motionpicture Online Ticket
 $getMpOnlineTicketSetting = function () {
-    $settings = [];
-    $env = getenv('APPSETTING_MP_TICKET');
-    
-    if ($env === 'prod') {
-        $settings['url'] = 'https://ticket-cinemasunshine.com';
-        $settings['entrance_url'] = 'https://entrance.ticket-cinemasunshine.com';
-    } elseif ($env === 'test') {
-        $settings['url'] = 'https://sskts-frontend-test.azurewebsites.net';
-        $settings['entrance_url'] = 'https://d24x7394fq3aqi.cloudfront.net';
-    } else {
-        $settings['url'] = 'https://sskts-frontend-development.azurewebsites.net';
-        $settings['entrance_url'] = 'https://d2n1h4enbzumbc.cloudfront.net';
-    }
+    $settings = [
+        'url'          => getenv('APPSETTING_MP_TICKET_URL'),
+        'entrance_url' => getenv('APPSETTING_MP_TICKET_ENTRANCE_URL'),
+    ];
     
     return $settings;
 };
