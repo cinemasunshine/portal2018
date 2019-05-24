@@ -15,7 +15,7 @@
     }
     /*--main--*/
     #gdcs_main_vis{
-        background-image: url(../img/main_bg.jpg);
+        background-image: url(../img/main_bg.jpg?190521);
         height:780px;
         background-size: cover;
         text-align: center;
@@ -470,7 +470,7 @@
         }
         /*--main--*/
         #gdcs_main_vis{
-            background-image: url(../img/main_bg_sp.jpg);
+            background-image: url(../img/main_bg_sp.jpg?1905211);
             height:780px;
             background-size: cover;
             background-position: center ;
@@ -513,15 +513,17 @@
         .gdcs_intro_inner{
             margin: 40px 0px;
             overflow: hidden;
+            text-align: center;
+            
         }
         #gdcs_intro .intro_copy{
-            text-align: center;
             color: #000;
             font-size:15px;
             line-height: 1.6;
             margin-bottom: 40px;
         }
         #gdcs_intro .intro_logo_list{
+            display: inline-block;
         }
         #gdcs_intro .intro_logo_list li{
             float: left;
