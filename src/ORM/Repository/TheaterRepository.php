@@ -28,6 +28,14 @@ class TheaterRepository extends EntityRepository
         $qb
             ->where('t.isDeleted = false');
         
+        $statusList = [
+            Theater::STATUS_OPEN,
+            Theater::STATUS_CLOSED,
+        ];
+        $qb
+            ->andWhere('t.status IN (:status)')
+            ->setParameter('status', $statusList);
+        
         return $qb;
     }
     
