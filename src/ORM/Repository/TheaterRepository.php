@@ -81,7 +81,8 @@ class TheaterRepository extends EntityRepository
         $qb
             ->join('t.specialSites', 's')
             ->andWhere('s.id = :special_site_id')
-            ->setParameter('special_site_id', $specialSiteId);
+            ->setParameter('special_site_id', $specialSiteId)
+            ->orderBy('t.displayOrder', 'ASC');
         
         return $qb->getQuery()->getResult();
     }
