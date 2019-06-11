@@ -34,6 +34,8 @@ Azure Storageについてです。次のBlob Containerを作成します。
 
 composerコマンドで依存ライブラリをインストールします。
 
+※ Backlog(m-p.backlog.jp)の認証が必要な場合があります。
+
 ※ composerがインストールされている必要があります。
 
 [Download Composer](https://getcomposer.org/download/)
