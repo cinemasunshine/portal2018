@@ -5,18 +5,22 @@
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
-use Cinemasunshine\Portal\Controller\AboutController;
-use Cinemasunshine\Portal\Controller\FourdxController;
-use Cinemasunshine\Portal\Controller\ImaxController;
-use Cinemasunshine\Portal\Controller\IndexController;
-use Cinemasunshine\Portal\Controller\NewsController;
-use Cinemasunshine\Portal\Controller\ScheduleController;
-use Cinemasunshine\Portal\Controller\ScreenXController;
-use Cinemasunshine\Portal\Controller\TheaterController;
-use Cinemasunshine\Portal\Controller\TheaterListController;
-use Cinemasunshine\Portal\Controller\TrailerController;
+use Cinemasunshine\Portal\Controller\{
+    AboutController,
+    FourdxController,
+    ImaxController,
+    IndexController,
+    NewsController,
+    ScheduleController,
+    ScreenXController,
+    TheaterController,
+    TheaterListController,
+    TrailerController
+};
 
-use Cinemasunshine\Portal\Controller\API\ScheduleController as ScheduleApiController;
+use Cinemasunshine\Portal\Controller\API\{
+    ScheduleController as ScheduleApiController
+};
 
 $app->get('/', IndexController::class . ':index')->setName('homepage');
 
