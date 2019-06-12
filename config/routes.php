@@ -8,6 +8,7 @@
 use Cinemasunshine\Portal\Controller\{
     AboutController,
     FourdxController,
+    FourdxWithScreenXController,
     ImaxController,
     IndexController,
     NewsController,
@@ -95,6 +96,10 @@ $app->group('/screen-x', function () {
     $this->get('/news/', ScreenXController::class . ':newsList')->setName('screenx_news_list');
     $this->get('/news/{id:[0-9]+}.php', ScreenXController::class . ':newsShow')->setName('screenx_news_show');
     $this->get('/theater/', ScreenXController::class . ':theater')->setName('screenx_theater');
+});
+
+$app->group('/4dx-with-screen-x', function() {
+    $this->get('/', FourdxWithScreenXController::class . ':index')->setName('4dx_with_screenx');
 });
 
 # APIのURL設計はひとまずそのまま SASAKI-315
