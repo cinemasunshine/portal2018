@@ -1,15 +1,16 @@
-# cinemasunshine/portal2018-frontend
+# cinemasunshine/portal2018
 
-シネマサンシャイン ポータルサイト2018 フロントエンド
+シネマサンシャイン ポータルサイト2018
 
 ## 概要
 
-ポータルサイト2018のフロントエンドです。
+2018年リリースのポータルサイトです。
 
 ## システム要件
 
 - PHP: 7.2
 - MySQL: 5.7
+- Azure App Service (Windows)
 
 ## Docker
 
@@ -17,11 +18,11 @@
 
 ※ [Docker](https://www.docker.com/)をインストールしてください。
 
-※ 現状では開発環境としての利用のみを想定すてます。
+※ 現状では開発環境としての利用のみを想定してます。
 
 ※ AzureはWindowsサーバですが、こちらはLinuxサーバです。
 
-※ StorageはAzureプラットフォームで別途作成してください。
+※ データベース、ストレージについてはCMSアプリケーションのドキュメントを参照してください。
 
 web: http://localhost:8010/
 
