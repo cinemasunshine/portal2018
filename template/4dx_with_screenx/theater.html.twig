@@ -1,0 +1,29 @@
+{% extends "4dx_with_screenx/layout.html.twig" %}
+
+{% block title %}劇場情報 | {{ parent() }}4DX with ScreenX特設サイト{% endblock %}
+
+{% block description %}TODO{% endblock %}
+
+{% block keywords %}TODO{% endblock %}
+
+{% block css %}
+{% endblock %}
+
+{% block javascript %}
+{% endblock %}
+
+{% block navbar %}
+{% include '4dx_with_screenx/include/navbar.html.twig' with {
+    active: 'theater'
+} only %}
+{% endblock %}
+
+{% block sp_navbar %}
+{% include '4dx_with_screenx/include/sp_navbar.html.twig' with {
+    active: 'theater'
+} only %}
+{% endblock %}
+
+{% block contents %}
+劇場情報
+{% endblock %}

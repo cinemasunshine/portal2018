@@ -103,6 +103,7 @@ $app->group('/4dx-with-screen-x', function() {
     $this->get('/about/', FourdxWithScreenXController::class . ':about')->setName('4dx_with_screenx_about');
     $this->get('/movie/', FourdxWithScreenXController::class . ':scheduleList')->setName('4dx_with_screenx_schedule_list');
     $this->get('/news/', FourdxWithScreenXController::class . ':newsList')->setName('4dx_with_screenx_news_list');
+    $this->get('/theater/', FourdxWithScreenXController::class . ':theater')->setName('4dx_with_screenx_theater');
 });
 
 # APIのURL設計はひとまずそのまま SASAKI-315
