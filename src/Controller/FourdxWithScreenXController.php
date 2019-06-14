@@ -27,4 +27,16 @@ class FourdxWithScreenXController extends SpecialSiteController
     public function executeIndex($request, $response, $args)
     {
     }
+    
+    /**
+     * about action
+     *
+     * @param \Slim\Http\Request  $request
+     * @param \Slim\Http\Response $response
+     * @param array               $args
+     * @return string|void
+     */
+    public function executeAbout($request, $response, $args)
+    {
+    }
 }

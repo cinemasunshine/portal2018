@@ -29,4 +29,16 @@ class FourdxWithScreenXResponder extends BaseResponder
     {
         return $this->view->render($response, '4dx_with_screenx/index.html.twig', $data->all());
     }
+    
+    /**
+     * about
+     *
+     * @param Response   $response
+     * @param Collection $data
+     * @return Response
+     */
+    public function about(Response $response, Collection $data)
+    {
+        return $this->view->render($response, '4dx_with_screenx/about.html.twig', $data->all());
+    }
 }

@@ -100,6 +100,7 @@ $app->group('/screen-x', function () {
 
 $app->group('/4dx-with-screen-x', function() {
     $this->get('/', FourdxWithScreenXController::class . ':index')->setName('4dx_with_screenx');
+    $this->get('/about/', FourdxWithScreenXController::class . ':about')->setName('4dx_with_screenx_about');
 });
 
 # APIのURL設計はひとまずそのまま SASAKI-315

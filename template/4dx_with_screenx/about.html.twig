@@ -1,0 +1,25 @@
+{% extends "4dx_with_screenx/layout.html.twig" %}
+{% block title %}4DX with ScreenXとは? | {{ parent() }}4DX with ScreenX特設サイト{% endblock %}
+
+{% block description %}TODO{% endblock %}
+
+{% block keywords %}TODO{% endblock %}
+
+{% block css %}
+{% endblock %}
+
+{% block navbar %}
+{% include '4dx_with_screenx/include/navbar.html.twig' with {
+    active: 'about'
+} only %}
+{% endblock %}
+
+{% block sp_navbar %}
+{% include '4dx_with_screenx/include/sp_navbar.html.twig' with {
+    active: 'about'
+} only %}
+{% endblock %}
+
+{% block contents %}
+4DX with ScreenXとは?
+{% endblock %}
