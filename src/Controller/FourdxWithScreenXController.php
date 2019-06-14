@@ -39,4 +39,16 @@ class FourdxWithScreenXController extends SpecialSiteController
     public function executeAbout($request, $response, $args)
     {
     }
+    
+    /**
+     * schedule list action
+     *
+     * @param \Slim\Http\Request  $request
+     * @param \Slim\Http\Response $response
+     * @param array               $args
+     * @return string|void
+     */
+    public function executeScheduleList($request, $response, $args)
+    {
+    }
 }
