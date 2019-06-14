@@ -6,7 +6,7 @@
     "repositories": [
         {
             "type": "git",
-            "url":  "https://composer:M0P!Xmopix@m-p.backlog.jp/git/SASAKI/schedule.git"
+            "url":  "https://m-p.backlog.jp/git/SASAKI/schedule.git"
         }
     ],
     "autoload": {
