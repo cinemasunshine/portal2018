@@ -7,6 +7,8 @@
 
 namespace Cinemasunshine\Portal\Controller;
 
+use Cinemasunshine\Portal\ORM\Entity;
+
 /**
  * FourdxWithScreenX controller
  *
@@ -15,6 +17,18 @@ namespace Cinemasunshine\Portal\Controller;
 class FourdxWithScreenXController extends SpecialSiteController
 {
     const SPECIAL_SITE_ID = 4;
+    
+    /**
+     * return Special Site theaters
+     *
+     * @return Entity\Theater[]
+     */
+    protected function getSpecialSiteTheaters()
+    {
+        return $this->em
+            ->getRepository(Entity\Theater::class)
+            ->findBySpecialSite(self::SPECIAL_SITE_ID);
+    }
     
     /**
      * index action
@@ -74,5 +88,6 @@ class FourdxWithScreenXController extends SpecialSiteController
      */
     public function executeTheater($request, $response, $args)
     {
+        $this->data->set('theaters', $this->getSpecialSiteTheaters());
     }
 }
