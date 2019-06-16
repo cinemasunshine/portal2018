@@ -25,5 +25,44 @@
 {% endblock %}
 
 {% block contents %}
-4DX with ScreenX特設サイト
+<div class="breadcrumb-list d-none d-md-block small width mx-auto mb-3 px-2 text-white">
+    <a class="text-white" href="{{ path_for('homepage') }}">ホーム</a>
+    <span class="font-weight-bold mx-2"> | </span>
+    <span>4DX with ScreenX<span>
+</div>
+
+<div class="mb-3">
+    {% include '4dx_with_screenx/include/index/slider.html.twig' with {
+        mainBanners: mainBanners
+    } only %}
+</div>
+
+<div class="pt-3 pb-5 text-white">
+    <div class="width mx-auto px-3 film">
+        <div class="d-md-flex">
+            {% include '4dx_with_screenx/include/index/about.html.twig' only %}
+            
+        {% set trailer = trailers[0] %}
+        {% if trailer %}
+            {% include '4dx_with_screenx/include/index/trailer.html.twig' with {
+                trailer: trailer
+            } only %}
+        {% endif %}
+        </div>
+    </div>
+</div>
+
+{# TODO: ニュース #}
+
+{# TODO: 作品 #}
+
+{% if campaigns|length > 0 %}
+<div class="py-5 text-white bg-black">
+    {% include '4dx_with_screenx/include/campaign.html.twig' with {
+        campaigns: campaigns
+    } only %}
+</div>
+{% endif %}
+
+{# TODO: インフォメーション #}
 {% endblock %}

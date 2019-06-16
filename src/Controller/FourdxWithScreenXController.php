@@ -40,6 +40,47 @@ class FourdxWithScreenXController extends SpecialSiteController
      */
     public function executeIndex($request, $response, $args)
     {
+        $this->data->set('mainBanners', $this->getMainBanners());
+        
+        $this->data->set('trailers', $this->getTrailers());
+        
+        $this->data->set('campaigns', $this->getCampaigns());
+    }
+    
+    /**
+     * return main_banners
+     *
+     * @return Entity\MainBanner[]
+     */
+    protected function getMainBanners()
+    {
+        return $this->em
+            ->getRepository(Entity\MainBanner::class)
+            ->findBySpecialSiteId(self::SPECIAL_SITE_ID);
+    }
+    
+    /**
+     * return trailers
+     *
+     * @return Entity\Trailer[]
+     */
+    protected function getTrailers()
+    {
+        return $this->em
+            ->getRepository(Entity\Trailer::class)
+            ->findBySpecialSite(self::SPECIAL_SITE_ID);
+    }
+    
+    /**
+     * return campaigns
+     *
+     * @return Entity\Campaign[]
+     */
+    protected function getCampaigns()
+    {
+        return $this->em
+            ->getRepository(Entity\Campaign::class)
+            ->findBySpecialSite(self::SPECIAL_SITE_ID);
     }
     
     /**
