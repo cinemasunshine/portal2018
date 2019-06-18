@@ -1,0 +1,57 @@
+{% extends "4dx_with_screenx/layout.html.twig" %}
+
+{% set title = schedule.getTitle() %}
+
+{% block title %}{{ title.getName() }} | {{ parent() }}4DX with ScreenX特設サイト{% endblock %}
+
+{% block description %}シネマサンシャイン4DX with ScreenX特設サイトの作品紹介ページです。「{{ title.getName() }}」の作品情報の詳細はこちら{% endblock %}
+
+{% block keywords %}{{ parent()}},{{ title.getName() }},{{ title.getDirector()|replace({'、': ','}) }},{{ title.getCast()|replace({'、': ','}) }},4DX with ScreenX{% endblock %}
+
+{% block css %}
+<link href="/css/movie/details.css" rel="stylesheet">
+{% endblock %}
+
+{% block navbar %}
+{% include '4dx_with_screenx/include/navbar.html.twig' with {
+    active: 'title'
+} only %}
+{% endblock %}
+
+{% block sp_navbar %}
+{% include '4dx_with_screenx/include/sp_navbar.html.twig' with {
+    active: 'title'
+} only %}
+{% endblock %}
+
+{% block contents %}
+<div class="breadcrumb-list d-none d-md-block small width mx-auto mb-5 px-2 text-white">
+    <a class="text-white" href="{{ path_for('homepage') }}">ホーム</a>
+    <span class="font-weight-bold mx-2"> | </span>
+    <a class="text-white" href="{{ path_for('4dx_with_screenx') }}">4DX with ScreenX</a>
+    <span class="font-weight-bold mx-2"> | </span>
+    <a class="text-white" href="{{ path_for('4dx_with_screenx_schedule_list') }}">作品一覧</a>
+    <span class="font-weight-bold mx-2"> | </span>
+    <span>{{ title.getName() }}<span>
+</div>
+
+{% include '4dx_with_screenx/schedule/include/show_detail.html.twig' with {
+    schedule: schedule,
+    theaters: theaters,
+} only %}
+
+{% set campaigns = schedule.getTitle().getCampaigns() %}
+{% if campaigns|length > 0 %}
+<div class="mb-5 py-5 text-white bg-black">
+    {% include '4dx_with_screenx/include/campaign.html.twig' with {
+        campaigns: campaigns
+    } only %}
+</div>
+{% endif %}
+
+<div class="px-3">
+    <div class="back-list button-01 shadow-01 mx-auto mb-5">
+        <a href="{{ path_for('4dx_with_screenx_schedule_list') }}" class="text-white">一覧へ戻る</a>
+    </div>
+</div>
+{% endblock %}

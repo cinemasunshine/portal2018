@@ -55,6 +55,18 @@ class FourdxWithScreenXResponder extends BaseResponder
     }
     
     /**
+     * schedule show
+     *
+     * @param Response   $response
+     * @param Collection $data
+     * @return Response
+     */
+    public function scheduleShow(Response $response, Collection $data)
+    {
+        return $this->view->render($response, '4dx_with_screenx/schedule/show.html.twig', $data->all());
+    }
+    
+    /**
      * news list
      *
      * @param Response   $response
