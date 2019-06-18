@@ -92,6 +92,11 @@ specialSites: specialSites
     {# % include 'include/pagejack/animation_file.html.twig' only % #}
 {# % endif % #}
 
+{% if theater.getId() == 20 %}
+{# 仮のimgタグです #}
+<img class="img-fluid mx-auto d-block" src="https://placehold.jp/3d4070/ffffff/700x70.png?text=GDCS%E6%96%BD%E8%A8%AD%E7%B4%B9%E4%BB%8B%E7%89%B9%E8%A8%AD%E3%82%B5%E3%82%A4%E3%83%88%E3%83%90%E3%83%8A%E3%83%BC">
+{% endif %}
+
 {% if theater.getMasterVersion() == 2 %}
 {% include 'theater/index/include/online_ticket.html.twig' with {
 masterCode: theater.getMasterCode()
