@@ -105,6 +105,35 @@ class FourdxWithScreenXController extends SpecialSiteController
      */
     public function executeScheduleList($request, $response, $args)
     {
+        $this->data->set('theaters', $this->getSpecialSiteTheaters());
+        
+        $this->data->set('screeningSchedules', $this->getScreeningSchedules());
+        
+        $this->data->set('soonSchedules', $this->getSoonSchedules());
+    }
+    
+    /**
+     * return screening schedules
+     *
+     * @return Entity\Schedule[]
+     */
+    protected function getScreeningSchedules()
+    {
+        return $this->em
+            ->getRepository(Entity\Schedule::class)
+            ->findScreeningFor4dxWithScreenX();
+    }
+    
+    /**
+     * return soon schedules
+     *
+     * @return Entity\Schedule[]
+     */
+    protected function getSoonSchedules()
+    {
+        return $this->em
+            ->getRepository(Entity\Schedule::class)
+            ->findSoonFor4dxWithScreenX();
     }
     
     /**
