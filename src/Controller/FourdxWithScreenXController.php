@@ -46,6 +46,12 @@ class FourdxWithScreenXController extends SpecialSiteController
         
         $this->data->set('trailers', $this->getTrailers());
         
+        $this->data->set('theaters', $this->getSpecialSiteTheaters());
+        
+        $this->data->set('screeningSchedules', $this->getScreeningSchedules());
+        
+        $this->data->set('soonSchedules', $this->getSoonSchedules());
+        
         $this->data->set('campaigns', $this->getCampaigns());
     }
     

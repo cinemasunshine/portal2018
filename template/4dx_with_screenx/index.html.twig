@@ -10,6 +10,7 @@
 {% endblock %}
 
 {% block javascript %}
+<script src="/js/4dx-with-screen-x/top.js"></script>
 {% endblock %}
 
 {% block navbar %}
@@ -54,7 +55,13 @@
 
 {# TODO: ニュース #}
 
-{# TODO: 作品 #}
+<div class="py-5 text-white">
+    {% include '4dx_with_screenx/include/index/title.html.twig' with {
+        theaters: theaters,
+        screeningSchedules: screeningSchedules,
+        soonSchedules: soonSchedules,
+    } only %}
+</div>
 
 {% if campaigns|length > 0 %}
 <div class="py-5 text-white bg-black">
