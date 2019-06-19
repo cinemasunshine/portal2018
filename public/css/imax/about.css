@@ -1,3 +1,34 @@
+/* IMAX aboutページ Tab */
+.imax_about_tab{
+    background: #232835;
+    width: 100%;
+    position: fixed;
+    z-index: 20;
+}
+.imax_about_tab a{
+    color: #444;
+}
+.imax_about_tab_inner .nav-item{
+    margin: 20px 20px;
+}
+.imax_about_tab .active{
+    color: #0090d4;
+    font-weight: bolder;
+}
+.sub-header{
+    margin-bottom: 0!important;
+}
+#laser_gt .introduction h5{
+    color: #0090d4;
+} 
+#laser_gt .introduction .gt_pic{
+    width: 40%;
+}
+#laser_gt .introduction .gt_txt{
+    width: 60%;
+    padding: 1rem;
+}
+
 .introduction-video {
     max-width: 600px;
 }
@@ -30,7 +61,15 @@
 .note dd {
     line-height: 1.6;
 }
+.comment ul li{
+    border:solid 1px;
+}
 @media (max-width: 767.98px) {
+    /* IMAX aboutページ Tab（SP） */
+    .imax_about_tab_inner .nav-item{
+        margin: 20px 10px;
+    }
+
     .function ul {
         margin: 0;
     }
@@ -49,5 +88,12 @@
     }
     .add-prices li .description {
         width: 50%;
+    }
+    #laser_gt .introduction .gt_pic{
+        width: 100%;
+    }
+    #laser_gt .introduction .gt_txt{
+        width: 100%;
+        padding: .8rem;
     }
 }

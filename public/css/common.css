@@ -234,7 +234,7 @@ header .position-fixed {
 
 /* サブヘッダー */
 .sub-header {
-    height: 59px;
+    height: 62px;
 }
 .sub-header-inner {
     background-color: #FFF;
@@ -279,6 +279,7 @@ header .position-fixed {
 .type-imax .sub-header ul .active a {
     border-bottom: 4px solid #FFF;
 }
+
 
 /* 4dxヘッダー */
 .type-4dx header,
