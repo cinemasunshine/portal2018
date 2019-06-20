@@ -57,12 +57,9 @@ active: 'top',
 <img class="img-fluid mx-auto d-block" src="https://placehold.jp/3d4070/ffffff/700x70.png?text=grand%20cinema%20sunshine">
 {% endif %}
 
-{% set specialSites = theater.getSpecialSites() %}
-{% if specialSites|length > 0 %}
 {% include 'theater/index/include/special_site.html.twig' with {
-specialSites: specialSites
+    theater: theater
 } only %}
-{% endif %}
 
 {# % if theater.getName() not in ['ikebukuro', 'okaido'] % #}
     {# SASAKI-399 #}

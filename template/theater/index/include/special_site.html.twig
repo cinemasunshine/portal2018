@@ -1,4 +1,7 @@
+{% set specialSites = theater.getSpecialSites() %}
+{% if specialSites|length > 0 %}
 <div class="imax-4dx d-flex text-center justify-content-center mb-3">
+
 {% for specialSite in specialSites %}
     <div class="align-self-center pr-md-5 pr-3">
     {% if specialSite.getId() == 1 %}
@@ -24,4 +27,16 @@
     {% endif %}
     </div>
 {% endfor %}
+
+{# 他の特設サイトが無いと表示されないが、GDCSと姶良は問題ないのでひとまずこれで SASAKI-456 #}
+{% if theater.getName() in ['aira', 'gdcs'] %}
+    <div class="align-self-center pr-md-5 pr-3">
+        <a href="/bestia/" class="d-block">
+            <div class="fourdx mb-1"><img src="/images/top/bestia_logo.svg"></div>
+            <p class="mb-0">特設サイトはこちら</p>
+        </a>
+    </div>
+{% endif %}
+
 </div>
+{% endif %}
