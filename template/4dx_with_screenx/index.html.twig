@@ -73,5 +73,7 @@
 </div>
 {% endif %}
 
-{# TODO: インフォメーション #}
+{% include '4dx_with_screenx/include/index/infomation.html.twig' with {
+    newsList: infoNewsList
+} only %}
 {% endblock %}

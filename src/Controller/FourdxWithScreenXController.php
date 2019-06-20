@@ -55,6 +55,8 @@ class FourdxWithScreenXController extends SpecialSiteController
         $this->data->set('soonSchedules', $this->getSoonSchedules());
         
         $this->data->set('campaigns', $this->getCampaigns());
+        
+        $this->data->set('infoNewsList', $this->getInfoNewsList(4));
     }
     
     /**
