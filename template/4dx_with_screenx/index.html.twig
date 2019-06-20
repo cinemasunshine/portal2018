@@ -53,7 +53,9 @@
     </div>
 </div>
 
-{# TODO: ニュース #}
+{% include '4dx_with_screenx/include/index/news.html.twig' with {
+    newsList: newsList
+} only %}
 
 <div class="py-5 text-white">
     {% include '4dx_with_screenx/include/index/title.html.twig' with {
