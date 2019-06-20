@@ -79,6 +79,18 @@ class FourdxWithScreenXResponder extends BaseResponder
     }
     
     /**
+     * news show
+     *
+     * @param Response   $response
+     * @param Collection $data
+     * @return Response
+     */
+    public function newsShow(Response $response, Collection $data)
+    {
+        return $this->view->render($response, '4dx_with_screenx/news/show.html.twig', $data->all());
+    }
+    
+    /**
      * theater
      *
      * @param Response   $response
