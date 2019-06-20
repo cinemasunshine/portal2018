@@ -179,6 +179,35 @@ class FourdxWithScreenXController extends SpecialSiteController
      */
     public function executeNewsList($request, $response, $args)
     {
+        $this->data->set('newsList', $this->getNewsList());
+        
+        $this->data->set('infoNewsList', $this->getInfoNewsList());
+    }
+    
+    /**
+     * return news list
+     *
+     * @param int|null $limit
+     * @return Entity\News[]
+     */
+    protected function getNewsList(?int $limit = null)
+    {
+        return $this->em
+            ->getRepository(Entity\News::class)
+            ->findBy4DXWithScreenX($limit);
+    }
+    
+    /**
+     * return information news list
+     *
+     * @param int|null $limit
+     * @return Entity\News[]
+     */
+    protected function getInfoNewsList(?int $limit = null)
+    {
+        return $this->em
+            ->getRepository(Entity\News::class)
+            ->findBySpecialSite(self::SPECIAL_SITE_ID, Entity\News::CATEGORY_INFO, $limit);
     }
     
     /**

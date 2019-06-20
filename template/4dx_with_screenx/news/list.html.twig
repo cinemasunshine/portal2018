@@ -7,6 +7,7 @@
 {% block keywords %}TODO{% endblock %}
 
 {% block css %}
+<link href="/css/news/list.css" rel="stylesheet">
 {% endblock %}
 
 {% block javascript %}
@@ -25,5 +26,31 @@
 {% endblock %}
 
 {% block contents %}
-News&Info一覧
+<div class="breadcrumb-list d-none d-md-block small width mx-auto mb-5 px-2 text-white">
+    <a class="text-white" href="{{ path_for('homepage') }}">ホーム</a>
+    <span class="font-weight-bold mx-2"> | </span>
+    <a class="text-white" href="{{ path_for('4dx_with_screenx') }}">4DX with ScreenX</a>
+    <span class="font-weight-bold mx-2"> | </span>
+    <span>NEWS & INFO<span>
+</div>
+
+<div class="width mx-auto mb-3 px-2 text-white">
+    <div class="news">
+        <h2 class="font-weight-bold large text-center text-md-left py-4">ニュース・インフォメーション一覧</h2>
+        <div class="container w-100 mw-100 m-0 mb-4 px-1">
+            <ul class="row">
+            {% for news in newsList %}
+                {% include "4dx_with_screenx/news/include/list_row.html.twig" with {
+                    news: news
+                } only %}
+            {% endfor %}
+            {% for news in infoNewsList %}
+                {% include "4dx_with_screenx/news/include/list_row.html.twig" with {
+                    news: news
+                } only %}
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
 {% endblock %}
