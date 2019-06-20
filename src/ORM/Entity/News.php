@@ -30,7 +30,7 @@ class News extends AbstractEntity
     const CATEGORY_4DX              = 4;
     const CATEGORY_EVENT            = 5;
     const CATEGORY_SCREENX          = 6; // SASAKI-351
-    const cATEGORY_4DX_WITH_SCREENX = 7; // SASAKI-432
+    const CATEGORY_4DX_WITH_SCREENX = 7; // SASAKI-432
     
     /**
      * id
