@@ -24,12 +24,13 @@ class News extends AbstractEntity
     use SoftDeleteTrait;
     use TimestampableTrait;
     
-    const CATEGORY_NEWS    = 1;
-    const CATEGORY_INFO    = 2;
-    const CATEGORY_IMAX    = 3;
-    const CATEGORY_4DX     = 4;
-    const CATEGORY_EVENT   = 5;
-    const CATEGORY_SCREENX = 6; // SASAKI-351
+    const CATEGORY_NEWS             = 1;
+    const CATEGORY_INFO             = 2;
+    const CATEGORY_IMAX             = 3;
+    const CATEGORY_4DX              = 4;
+    const CATEGORY_EVENT            = 5;
+    const CATEGORY_SCREENX          = 6; // SASAKI-351
+    const cATEGORY_4DX_WITH_SCREENX = 7; // SASAKI-432
     
     /**
      * id
