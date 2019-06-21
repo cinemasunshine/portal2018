@@ -55,8 +55,7 @@ active: 'top',
     } only %}
 </div>
 
-{% if theater.getId() == 20 %}
-{# 仮のimgタグです #}
+{% if theater.getName() == 'gdcs' %}
 <img class="img-fluid mx-auto d-block my-4 top_logo" src="/images/tmp/theater/top/gdcs_logo.svg"></a>
 {% endif %}
 
@@ -92,8 +91,7 @@ active: 'top',
     {# % include 'include/pagejack/animation_file.html.twig' only % #}
 {# % endif % #}
 
-{% if theater.getId() == 20 %}
-{# 仮のimgタグです #}
+{% if theater.getName() == 'gdcs' %}
 <a href="/gdcs/"><img class="img-fluid mx-auto d-block mb-5" src="/images/tmp/theater/top/gdcs_bnr.jpg"></a>
 {% endif %}
 
