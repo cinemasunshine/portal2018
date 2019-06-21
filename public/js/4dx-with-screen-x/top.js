@@ -10,7 +10,7 @@ function selectTheater(event) {
     event.preventDefault();
     $('.not-select').addClass('d-none');
     $('.titles').addClass('d-block');
-    var activeClass = 'text-red border-red';
+    var activeClass = 'text-r-yellow border-r-yellow';
     var defaultClass = 'text-gray border-gray';
     $('.theater-select .active')
         .removeClass('active')

@@ -2,11 +2,12 @@
 
 {% block title %}4DX with ScreenX特設サイト | {{ parent() }}{% endblock %}
 
-{% block description %}TODO{% endblock %}
+{% block description %}シネマサンシャインの4DX with ScreenX特設サイトです。4DXの設備に関する情報や作品情報、鑑賞料金、上映劇場・キャンペーンのご案内など{% endblock %}
 
-{% block keywords %}TODO{% endblock %}
+{% block keywords %}{{ parent() }},予約,オンライン,上映,キャンペーン,4DX with ScreenX,作品情報{% endblock %}
 
 {% block css %}
+<link href="/css/4dxwscx/top.css" rel="stylesheet">
 {% endblock %}
 
 {% block javascript %}
@@ -41,7 +42,18 @@
 <div class="pt-3 pb-5 text-white">
     <div class="width mx-auto px-3 film">
         <div class="d-md-flex">
-            {% include '4dx_with_screenx/include/index/about.html.twig' only %}
+                <div class="about mb-5 mb-md-0">
+                    <div class="mr-md-4">
+                        <h3 class="font-weight-bold large mb-4 text-center text-md-left line-height-1">
+                            <div class="mb-2">今までにないダナミックな映画体験</div>
+                            <div class="small">ABOUT 4DX WITH SCREENX</div>
+                        </h3>
+                        <div class="mb-3"><img class="w-100" src="/images/4dxwscx/about/4dxwscx_about_main.jpg"></div>
+                        <div class="button-01 mx-auto px-3 px-md-5">
+                            <a class="bg-r-yellow text-black" href="{{ path_for('4dx_about') }}">4DX with ScreenXとは？</a>
+                        </div>
+                    </div>
+                </div>
             
         {% set trailer = trailers[0] %}
         {% if trailer %}
@@ -52,6 +64,7 @@
         </div>
     </div>
 </div>
+{% include '4dx/include/adsense/top.html.twig' only %}
 
 {% include '4dx_with_screenx/include/index/news.html.twig' with {
     newsList: newsList

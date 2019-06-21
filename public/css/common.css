@@ -11,6 +11,9 @@ body {
 .type-imax {
     background-color: #040a1a;
 }
+.type-4dxwscx{
+    background-color: #141414;
+}
 select {
     appearance: none;
     -moz-appearance: none;
@@ -83,6 +86,9 @@ a:hover {
 .text-dark-red {
     color: #950c0c !important;
 }
+.text-r-yellow {
+    color: #fec80c !important;
+}
 
 /* 背景色 */
 .bg-black {
@@ -112,6 +118,9 @@ a:hover {
 .bg-yellow {
     background-color: #ffbc00 !important;
 }
+.bg-r-yellow{
+    background-color: #fec80c !important;
+}
 .bg-red {
     background-color: rgb(219, 6, 6) !important;
 }
@@ -130,6 +139,9 @@ a:hover {
 /* ボーダー */
 .border-black {
     border-color: #333 !important;
+}
+.border-white {
+    border-color: #fff !important;
 }
 .border-light-blue {
     border-color: #0190d4 !important;
@@ -163,6 +175,9 @@ a:hover {
 }
 .border-orange {
     border-color:rgb(254, 114, 0) !important;
+}
+.border-r-yellow{
+    border-color: #fec80c !important;
 }
 /* フォントサイズ */
 .x-small {
@@ -290,6 +305,7 @@ header .position-fixed {
     width: 250px;
 }
 
+
 /* 4dxサブヘッダー */
 .type-4dx .sub-header-inner {
     background: #ce0000;
@@ -328,6 +344,29 @@ header .position-fixed {
 }
 .type-scx .sub-header ul .active a {
     border-bottom: 4px solid #FFF;
+}
+/* 4DX with ScreenX ヘッダー*/
+.type-4dxwscx header,
+.type-4dxwscx .header {
+    height: 90px;
+}
+.type-4dxwscx .header .logo {
+    width: 250px;
+}
+/* 4DX with ScreenX サブヘッダー */
+.type-4dxwscx .sub-header-inner {
+    background: #fec20d;
+    background: linear-gradient(to right, #fec20d, #f19b06);
+    top: 90px;
+}
+.type-4dxwscx .sub-header ul li {
+    width: 20%;
+}
+.type-4dxwscx .sub-header .active a {
+    color: #e83903 !important;
+}
+.type-4dxwscx .sub-header ul .active a {
+    border-bottom: 4px solid #e83903;
 }
 
 /* スライダー */
@@ -425,12 +464,14 @@ header .position-fixed {
 /* 特設サイトキャンペーン */
 .type-imax .campaign .swiper-button-next,
 .type-scx .campaign .swiper-button-next,
-.type-4dx .campaign .swiper-button-next {
+.type-4dx .campaign .swiper-button-next,
+.type-4dxwscx .campaign .swiper-button-next {
     background-image: url(/images/common/cp_arrow_wht_right.svg);
 }
 .type-imax .campaign .swiper-button-prev,
 .type-scx .campaign .swiper-button-prev,
-.type-4dx .campaign .swiper-button-prev {
+.type-4dx .campaign .swiper-button-prev,
+.type-4dxwscx .campaign .swiper-button-prev {
     background-image: url(/images/common/cp_arrow_wht_left.svg);
 }
 /* ニュース */
@@ -471,6 +512,13 @@ header .position-fixed {
 .type-scx .news li a {
     color: #FFF;
 }
+/* 4DXwithScreenXニュース */
+.type-4dxwscx .news li {
+    border-color: rgba(255, 255, 255, 0.2) !important;
+}
+.type-4dxwscx .news li a {
+    color: #FFF;
+}
 
 /* インフォメーション */
 .infomation-date {
@@ -509,6 +557,15 @@ header .position-fixed {
     border-color: rgba(255, 255, 255, 0.2) !important;
 }
 .type-scx .infomation li a { 
+    background-image: url(/images/common/info_arrow_wht.svg); 
+    color: #FFF;
+}
+/* 4dxwithScreenXインフォメーション */
+.type-4dxwscx .infomation ul,
+.type-4dxwscx .infomation li { 
+    border-color: rgba(255, 255, 255, 0.2) !important;
+}
+.type-4dxwscx .infomation li a { 
     background-image: url(/images/common/info_arrow_wht.svg); 
     color: #FFF;
 }

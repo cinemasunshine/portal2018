@@ -5,7 +5,7 @@
     <title>{% block title %}シネマサンシャイン{% endblock %}</title>
     <meta charset="utf-8">
     <meta name="description" content="{% block description %}{% endblock %}">
-    <meta name="keywords" content="{% block keywords %}シネマサンシャイン,映画館,映画,シネマ,劇場{% endblock %}">
+    <meta name="keywords" content="{% block keywords %}4DXwithScreenX,グランドシネマサンシャイン,映画館,映画,シネマ,池袋{% endblock %}">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="robots" content="index,follow">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
@@ -13,6 +13,17 @@
     <link href="/css/reset.css" rel="stylesheet">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.5/css/swiper.min.css">
+    <style>
+        @media (max-width: 767px){
+        .cs_portal_rpad{display:inline-block;width:320px!important;height:50px;margin: 0 auto;}
+        }
+        @media (min-width:768px)and(max-width: 979px) {
+            .cs_portal_rpad{display:inline-block;max-width:728px!important;height:90px;margin: 0 auto;}
+        }
+        @media (min-width:980px) {
+            .cs_portal_rpad{display:inline-block;width:970px!important;height:90px!important;margin: 0 auto;}
+        }
+    </style>
     <link href="/css/common.css" rel="stylesheet">
     {% block css %}{% endblock %}
     
@@ -28,10 +39,21 @@
     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script src="/js/polyfill.js"></script>
     <script src="/js/common.js?v=20190320"></script>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-K3ZKSHZ');</script>
+    <!-- End Google Tag Manager -->
     {% block javascript %}{% endblock %}
 </head>
 
-<body>
+<body class="type-4dxwscx">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K3ZKSHZ"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     
     {% include '4dx_with_screenx/include/header.html.twig' only %}
     
@@ -41,10 +63,9 @@
         {% block contents %}{% endblock %}
     </div>
     
+    {% include '4dx_with_screenx/include/adsense/footer.html.twig' only %}
     {% include '4dx_with_screenx/include/footer_navbar.html.twig' only %}
-    
     {% include '4dx_with_screenx/include/footer.html.twig' only %}
-    
     {% block sp_navbar %}{% endblock %}
 </body>
 

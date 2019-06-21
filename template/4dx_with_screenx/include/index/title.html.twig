@@ -23,14 +23,14 @@
                     {% if showingTheater.getTheater().getId() == theater.getId() %}
                     {% set title = schedule.getTitle() %}
             <li class="mx-2 mb-2">
-                <a class="d-block text-white" href="{{ path_for('4dx_schedule_show', { schedule: schedule.getId() }) }}">
+                <a class="d-block text-white" href="{{ path_for('4dx_with_screenxschedule_show', { schedule: schedule.getId() }) }}">
                     <div class="mb-2">
                         {% if title.getImage() %}
                         <img class="w-100" src="{{ file_url(title.getImage()) }}">
                         {% endif %}
                     </div>
                     <div class="small mb-1">{{ title.getName() }}</div>
-                    <div class="type-default"><img class="d-block h-100" src="/images/4dx/4dx_logo.svg"></div>
+                    <!--<div class="type-default"><img class="d-block h-100" src="/images/4dx/4dx_logo.svg"></div>-->
                 </a>
             </li>
                     {% endif %}

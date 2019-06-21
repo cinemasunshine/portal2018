@@ -40,7 +40,7 @@
     border-radius: 5px;
 }
 
-.icon-2d, .icon-3d, .icon-imax, .icon-4dx, .icon-4dx3d, .icon-scx {
+.icon-2d, .icon-3d, .icon-imax, .icon-4dx, .icon-4dx3d, .icon-scx,.icon-4dxwscx {
     width: 70px;
 }
 .icon-imax3d {
@@ -69,6 +69,9 @@
 }
 .icon-scx img {
     width: 60px;
+}
+.icon-4dxwscx img {
+    width: 20px;
 }
 .icon-r {
     width: 35px;
