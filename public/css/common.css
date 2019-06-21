@@ -228,9 +228,13 @@ header .position-fixed {
 .header-company-logo a {
     width: 200px;
 }
+.gdcs-header-company-logo a{
+    width: auto;
+}
 .theater .header-company-logo {
     width: 120px;
 }
+
 .header-imax {
     width: 50px;
 }
@@ -242,6 +246,9 @@ header .position-fixed {
 }
 .header-screen-x {
     width: 65px;
+}
+.header-4dx-with-screen-x {
+    width: 25px;
 }
 .theater-name {
     font-size: 20px;
