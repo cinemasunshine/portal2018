@@ -1,5 +1,19 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+
+
 .gdcs{
   background-color: #f9f9f9!important;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+.gdcs_eng_font{
+  font-family: 'Lato', sans-serif;
+}
+.gdcs header .border-gray{
+  border-color: #a57a43!important;
+}
+.gdcs .sub-header .border-gray{
+  border-color: #a57a43!important;
 }
 .gdcs .sub-header-inner{
   background-color: #ceba87!important;
@@ -10,6 +24,42 @@
 }
 .gdcs .imax-4dx{
   background-color: #e1e1e1!important;
+}
+.gdcs .pickup .bg-black,
+.gdcs .pickup h3{
+  background-color: #ceba87!important;
+  color:#fff!important;
+}
+.gdcs .button-01 a,
+.gdcs .online-ticket-button a,
+.gdcs .online-mvtk-button .button-03 a{
+  background-color: #fff!important;
+  border: solid 1px #a57a43!important;
+  color: #a57a43!important;
+}
+.gdcs .shadow-01{
+  box-shadow:none!important;
+}
+.gdcs .contents .bg-light-gray{
+  background-color: #eae1d1!important;
+}
+.gdcs .campaign .shadow-01{
+  box-shadow: 0 0 8px rgba(0,0,0,0.35)!important;
+}
+.gdcs .news .container .row li .image,
+.gdcs .event-information .container .row li .image{
+  background-color: #fff!important;
+}
+.gdcs .schedule-title h3{
+  color:#a57a43!important;
+}
+.gdcs h2,
+.gdcs h4,
+.gdcs h3{
+  color:#a57a43!important;
+}
+.gdcs .schedule-title .border-blue{
+  border-color: #a57a43 !important;
 }
 @media (max-width: 767.98px) {
 
