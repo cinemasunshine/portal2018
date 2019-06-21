@@ -21,6 +21,9 @@
 
 {% block css %}
 <link href="/css/theater/top.css" rel="stylesheet">
+    {% if theater.getName() == 'gdcs' %}
+    <link href="/css/theater/gdcs.css" rel="stylesheet">
+    {% endif %}
 {% endblock %}
 
 {% block javascript %}
@@ -54,7 +57,7 @@ active: 'top',
 
 {% if theater.getId() == 20 %}
 {# 仮のimgタグです #}
-<img class="img-fluid mx-auto d-block" src="https://placehold.jp/3d4070/ffffff/700x70.png?text=grand%20cinema%20sunshine">
+<img class="img-fluid mx-auto d-block my-4 top_logo" src="/images/tmp/theater/top/gdcs_logo.svg"></a>
 {% endif %}
 
 {% include 'theater/index/include/special_site.html.twig' with {
@@ -91,7 +94,7 @@ active: 'top',
 
 {% if theater.getId() == 20 %}
 {# 仮のimgタグです #}
-<img class="img-fluid mx-auto d-block" src="https://placehold.jp/3d4070/ffffff/700x70.png?text=GDCS%E6%96%BD%E8%A8%AD%E7%B4%B9%E4%BB%8B%E7%89%B9%E8%A8%AD%E3%82%B5%E3%82%A4%E3%83%88%E3%83%90%E3%83%8A%E3%83%BC">
+<a href="/gdcs/"><img class="img-fluid mx-auto d-block mb-5" src="/images/tmp/theater/top/gdcs_bnr.jpg"></a>
 {% endif %}
 
 {% if theater.getMasterVersion() == 2 %}

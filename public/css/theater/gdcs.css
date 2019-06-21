@@ -1,0 +1,16 @@
+.gdcs{
+  background-color: #f9f9f9!important;
+}
+.gdcs .sub-header-inner{
+  background-color: #ceba87!important;
+}
+.gdcs .top_logo{
+  max-width:400px;
+  width: 100%;
+}
+.gdcs .imax-4dx{
+  background-color: #e1e1e1!important;
+}
+@media (max-width: 767.98px) {
+
+}
