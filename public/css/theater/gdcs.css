@@ -61,6 +61,12 @@
 .gdcs .schedule-title .border-blue{
   border-color: #a57a43 !important;
 }
+.gdcs .campaign .swiper-button-next {
+  background-image: url(/images/common/gdcs_arrow_r.svg);
+}
+.gdcs .campaign .swiper-button-prev {
+  background-image: url(/images/common/gdcs_arrow_l.svg);
+}
 @media (max-width: 767.98px) {
 
 }

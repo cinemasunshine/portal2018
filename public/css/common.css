@@ -592,6 +592,10 @@ header .position-fixed {
 .special-sites .container {
     max-width: 1200px;
 }
+.link_bnr_4dxwscx{
+    max-width: 900px;
+    width: 100%;
+}
 
 /* ナビゲーション */
 .navigation {
