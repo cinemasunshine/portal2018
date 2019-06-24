@@ -72,14 +72,14 @@ class ImaxController extends SpecialSiteController
     /**
      * return news list
      *
-     * @param int|null $limt
+     * @param int|null $limit
      * @return Entity\News[]
      */
-    protected function getNewsList(?int $limt = null)
+    protected function getNewsList(?int $limit = null)
     {
         return $this->em
             ->getRepository(Entity\News::class)
-            ->findByImax();
+            ->findByImax($limit);
     }
     
     /**
