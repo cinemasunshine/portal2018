@@ -67,6 +67,13 @@
 .gdcs .campaign .swiper-button-prev {
   background-image: url(/images/common/gdcs_arrow_l.svg);
 }
+.gdcs .table td, .gdcs .table th{
+  word-break: break-all;
+}
+.gdcs .facility-other ul li .facility_linkbtn{
+  border: solid 1px #333;
+  padding: 
+}
 @media (max-width: 767.98px) {
 
 }
