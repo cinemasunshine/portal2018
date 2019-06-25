@@ -9,6 +9,10 @@
     text-decoration: underline; 
     color: rgb(3, 80, 162);
 }
+.facility-other a {
+    text-decoration: underline; 
+    color: rgb(3, 80, 162);
+}
 .facility-seat ul li{
     width: 50%;
     margin-bottom: 1rem;
