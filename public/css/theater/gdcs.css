@@ -1,13 +1,29 @@
-@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
 
 
+
+
+/* webフォント*/
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,500,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700,900&display=swap');
+
+/*--英語--*/
+.gdcs_eng_font_r{
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+}
+.gdcs_eng_font_b{
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+}
+.gdcs_eng_font_blk{
+  font-family: 'Lato', sans-serif;
+  font-weight: 900;
+}
+
+/* GDCS用色味指定*/
 .gdcs{
   background-color: #f9f9f9!important;
   font-family: 'Noto Sans JP', sans-serif;
-}
-.gdcs_eng_font{
-  font-family: 'Lato', sans-serif;
 }
 .gdcs header .border-gray{
   border-color: #a57a43!important;
@@ -17,10 +33,6 @@
 }
 .gdcs .sub-header-inner{
   background-color: #ceba87!important;
-}
-.gdcs .top_logo{
-  max-width:400px;
-  width: 100%;
 }
 .gdcs .imax-4dx{
   background-color: #e1e1e1!important;
@@ -37,19 +49,14 @@
   border: solid 1px #a57a43!important;
   color: #a57a43!important;
 }
-.gdcs .shadow-01{
-  box-shadow:none!important;
-}
 .gdcs .contents .bg-light-gray{
   background-color: #eae1d1!important;
-}
-.gdcs .campaign .shadow-01{
-  box-shadow: 0 0 8px rgba(0,0,0,0.35)!important;
 }
 .gdcs .news .container .row li .image,
 .gdcs .event-information .container .row li .image{
   background-color: #fff!important;
 }
+/*--見出し要素--*/
 .gdcs .schedule-title h3{
   color:#a57a43!important;
 }
@@ -58,21 +65,40 @@
 .gdcs h3{
   color:#a57a43!important;
 }
+
+/*画像サイズ指定*/
+.gdcs .top_logo{
+  max-width:400px;
+  width: 100%;
+}
+
+/*影*/
+.gdcs .shadow-01{
+  box-shadow:none!important;
+}
+.gdcs .campaign .shadow-01{
+  box-shadow: 0 0 8px rgba(0,0,0,0.35)!important;
+}
+
+
+/*TOPスケジュール部分*/
 .gdcs .schedule-title .border-blue{
   border-color: #a57a43 !important;
 }
+/*キャンペーン部分*/
+
 .gdcs .campaign .swiper-button-next {
   background-image: url(/images/common/gdcs_arrow_r.svg);
 }
 .gdcs .campaign .swiper-button-prev {
   background-image: url(/images/common/gdcs_arrow_l.svg);
 }
+/*GDCS劇場設備ペー*/
 .gdcs .table td, .gdcs .table th{
   word-break: break-all;
 }
 .gdcs .facility-other ul li .facility_linkbtn{
   border: solid 1px #333;
-  padding: 
 }
 @media (max-width: 767.98px) {
 
