@@ -79,7 +79,14 @@
 .gdcs .campaign .shadow-01{
   box-shadow: 0 0 8px rgba(0,0,0,0.35)!important;
 }
-
+/* TOP開場時間*/
+.gdcs .time-icon {
+  width: 14px;
+  height: 14px;
+  display: inline-block;
+  background-image: url(/images/theater/top/date_gold.svg);
+  background-size: contain;
+}
 
 /*TOPスケジュール部分*/
 .gdcs .schedule-title .border-blue{
