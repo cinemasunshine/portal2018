@@ -589,6 +589,9 @@ header .position-fixed {
 .special-sites-parts img {
     width: 62%;
 }
+.special-sites-parts .ft_sp_link_img_4dxwscx {
+    max-height: 65px;
+}
 .special-sites .container {
     max-width: 1200px;
 }
@@ -784,7 +787,9 @@ footer {
     color: #fff;
     background-color: rgb(234, 85, 20);
 }
-
+.list-type-4dxwscx {
+    background-color:rgb(241, 198, 41);
+}
 /* 劇場SNSアカウント */
 
 .theater-sns a {

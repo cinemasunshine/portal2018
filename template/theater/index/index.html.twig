@@ -21,7 +21,6 @@
 
 {% block css %}
 <link href="/css/theater/top.css" rel="stylesheet">
-<link href="/css/theater/gdcs.css" rel="stylesheet">
     {% if theater.getName() == 'gdcs' %}
     <link href="/css/theater/gdcs.css" rel="stylesheet">
     {% endif %}
@@ -93,7 +92,7 @@ active: 'top',
 {# % endif % #}
 
 {% if theater.getName() == 'gdcs' %}
-<a href="/gdcs/"><img class="img-fluid mx-auto d-block mb-5" src="/images/tmp/theater/top/gdcs_bnr.jpg"></a>
+<a href="/gdcs/"><img class="img-fluid mx-auto d-block mb-5 px-3" src="/images/tmp/theater/top/gdcs_bnr.jpg"></a>
 {% endif %}
 
 {# グランドシネマサンシャインはオンライン販売開始まで非表示にする #}
@@ -111,7 +110,9 @@ active: 'top',
 
 {# グランドシネマサンシャインはオンライン販売開始まで非表示にする #}
 {% if theater.getName() == 'gdcs' %}
-    オンラインチケットの販売は7/5からの予定となります。
+<div class="mb-5 px-3">
+    <p class="width text-center p-4 mx-auto" style="background-color:#ececec;">オンラインチケットは7/5からの販売開始予定となります。</p>
+</div>
 {% else %}
     {# scheduleテンプレートのincludeをトリガーとしてjavascriptの処理を実行する #}
     {% include 'theater/index/include/schedule.html.twig' only %}

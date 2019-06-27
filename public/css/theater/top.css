@@ -2,7 +2,7 @@
 /* IMAX 4dx */
 .imax-4dx {
     background-color: rgb(247, 247, 247);
-    height: 90px;
+    flex-wrap: wrap;
 }
 .imax img, .fourdx img {
     height: 35px;
@@ -10,7 +10,9 @@
 .imax img {
     padding: 8px;
 }
-
+.link_bestia_logo{
+    max-width: 120px;
+}
 /* ピックアップ */
 .pickup {
     max-height:280px;

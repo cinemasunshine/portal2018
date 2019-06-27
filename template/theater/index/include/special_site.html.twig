@@ -1,28 +1,28 @@
 {% set specialSites = theater.getSpecialSites() %}
 {% if specialSites|length > 0 %}
-<div class="imax-4dx d-flex text-center justify-content-center mb-3">
+<div class="imax-4dx d-flex text-center justify-content-md-center justify-content-start mb-3">
 
 {% for specialSite in specialSites %}
-    <div class="align-self-center pr-md-5 pr-3">
+    <div class="align-self-center p-3 col-6 col-md-2">
     {% if specialSite.getId() == 1 %}
         <a href="{{ path_for('imax') }}" class="d-block">
             <div class="imax mb-1"><img src="/images/common/imax_logo.svg"></div>
-            <p class="mb-0">特設サイトはこちら</p>
+            <p class="mb-0 small">特設サイトはこちら</p>
         </a>
     {% elseif specialSite.getId() == 2 %}
         <a href="{{ path_for('4dx') }}" class="d-block">
             <div class="fourdx mb-1"><img src="/images/common/4dx_logo.svg"></div>
-            <p class="mb-0">特設サイトはこちら</p>
+            <p class="mb-0 small">特設サイトはこちら</p>
         </a>
     {% elseif specialSite.getId() == 3 %}
         <a href="{{ path_for('screenx') }}" class="d-block">
             <div class="fourdx mb-1"><img src="/images/common/screen-x_logo.svg"></div>
-            <p class="mb-0">特設サイトはこちら</p>
+            <p class="mb-0 small">特設サイトはこちら</p>
         </a>
     {% elseif specialSite.getId() == 4 %}
         <a href="{{ path_for('4dx_with_screenx') }}" class="d-block">
             <div class="fourdx mb-1"><img src="/images/common/4dx-with-screen-x_logo.svg"></div>
-            <p class="mb-0">特設サイトはこちら</p>
+            <p class="mb-0 small">特設サイトはこちら</p>
         </a>
     {% endif %}
     </div>
@@ -30,10 +30,10 @@
 
 {# 他の特設サイトが無いと表示されないが、GDCSと姶良は問題ないのでひとまずこれで SASAKI-456 #}
 {% if theater.getName() in ['aira', 'gdcs'] %}
-    <div class="align-self-center pr-md-5 pr-3">
+    <div class="align-self-center p-3 col-6 col-md-2">
         <a href="/bestia/" class="d-block">
-            <div class="fourdx mb-1"><img src="/images/top/bestia_logo.svg"></div>
-            <p class="mb-0">特設サイトはこちら</p>
+            <div class="fourdx mb-1"><img src="/images/top/bestia_logo.svg" class="link_bestia_logo"></div>
+            <p class="mb-0 small">特設サイトはこちら</p>
         </a>
     </div>
 {% endif %}
