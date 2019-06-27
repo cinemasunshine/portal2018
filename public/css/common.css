@@ -413,6 +413,7 @@ header .position-fixed {
 }
 .type-scx .slider .pagination .swiper-pagination-bullet,
 .type-4dx .slider .pagination .swiper-pagination-bullet,
+.type-4dxwscx .slider .pagination .swiper-pagination-bullet,
 .type-imax .slider .pagination .swiper-pagination-bullet {
     background: #565656;
     opacity: 1;
@@ -425,6 +426,9 @@ header .position-fixed {
 }
 .type-scx .slider .pagination .swiper-pagination-bullet-active {
     background: #f66e00;
+}
+.type-4dxwscx .slider .pagination .swiper-pagination-bullet-active {
+    background: #fec80c;
 }
 .thumbs li {
     width: 100px;
