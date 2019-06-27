@@ -89,8 +89,35 @@
 }
 
 /*TOPスケジュール部分*/
+.gdcs .schedule-scroll .bg-super-light-gray{
+  background-color: #4b4b4b!important;
+}
 .gdcs .schedule-title .border-blue{
   border-color: #a57a43 !important;
+}
+.schedule-slider .swiper-container .swiper-wrapper .swiper-slide-active a{
+  color:#fff!important;
+}
+.schedule-slider .swiper-container .swiper-wrapper .swiper-slide a{
+  color:#c9c9c9!important;
+}
+.schedule-slider .swiper-container .swiper-wrapper .swiper-slide-active .bg-blue{
+  background-color:#a78d54!important;
+}
+.schedule-slider .swiper-container .swiper-wrapper .swiper-slide .border-light-blue{
+  border-color:#9b7d4d!important;
+}
+.schedule-slider .swiper-container .swiper-wrapper .swiper-slide .border-light-blue{
+  border-color:#9b7d4d!important;
+}
+.schedule-sort-film .performances li .bg-light-gray{
+  background-color: #c4c4c4 !important;
+}
+.schedule-sort-film .performances li .bg-blue{
+  background-color: #a57a43 !important;
+}
+.schedule-sort-film .performances li .bg-yellow{
+  background-color: #ddb30b !important;
 }
 /*キャンペーン部分*/
 
