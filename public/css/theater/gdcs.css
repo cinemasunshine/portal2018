@@ -19,6 +19,10 @@
   font-family: 'Lato', sans-serif;
   font-weight: 900;
 }
+/* スライダー*/
+.slider .pagination .swiper-pagination-bullet{
+  background-color: #a57a43!important;
+}
 
 /* GDCS用色味指定*/
 .gdcs{
@@ -43,6 +47,7 @@
   color:#fff!important;
 }
 .gdcs .button-01 a,
+.gdcs .button-02 a,
 .gdcs .online-ticket-button a,
 .gdcs .online-mvtk-button .button-03 a{
   background-color: #fff!important;
