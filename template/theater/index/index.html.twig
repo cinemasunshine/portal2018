@@ -110,7 +110,9 @@ active: 'top',
 } only %}
 
 {# グランドシネマサンシャインはオンライン販売開始まで非表示にする #}
-{% if theater.getName() != 'gdcs' %}
+{% if theater.getName() == 'gdcs' %}
+    オンラインチケットの販売は7/5からの予定となります。
+{% else %}
     {# scheduleテンプレートのincludeをトリガーとしてjavascriptの処理を実行する #}
     {% include 'theater/index/include/schedule.html.twig' only %}
 {% endif %}
