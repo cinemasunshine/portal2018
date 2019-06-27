@@ -634,6 +634,9 @@ header .position-fixed {
 .type-scx .navigation .active p {
     color:#fe7200;
 }
+.type-4dxwscx .navigation .active p {
+    color:#fec80c;
+}
 .disabled {
     display: none;
 }
