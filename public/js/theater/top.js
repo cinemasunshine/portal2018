@@ -48,6 +48,7 @@ function isAppCompatibleTheater() {
         'shigenobu',
         'masaki',
         'aira'
+        'gdcs'
     ];
     var theater = $('body').attr('data-theater');
     var findResult = compatibleTheaters.find(function (compatibleTheater) { return (compatibleTheater === theater); });
