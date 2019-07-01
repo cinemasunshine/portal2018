@@ -47,7 +47,7 @@ function isAppCompatibleTheater() {
         'kinuyama',
         'shigenobu',
         'masaki',
-        'aira'
+        'aira',
         'gdcs'
     ];
     var theater = $('body').attr('data-theater');
