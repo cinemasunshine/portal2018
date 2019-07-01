@@ -61,7 +61,7 @@
                     {% if isShowing %}
                         <a class="d-flex align-items-center justify-content-center text-white border-orange bg-orange" href="{{ path_for('theater', { name: theater.getName() }) }}">{{ theater.getNameJa() }}</a>
                     {% else %}
-                        <span class="d-flex align-items-center justify-content-center text-white border-orange bg-transparent">{{ theater.getNameJa() }}</span>
+                        <span class="d-flex align-items-center justify-content-center text-gray border-gray bg-transparent">{{ theater.getNameJa() }}</span>
                     {% endif %}
                     </div>
                 {% endfor %}

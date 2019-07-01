@@ -20,6 +20,9 @@
 .logo-screen-x {
     width: 72px;
 }
+.logo-4dx-with-screen-x {
+    width: 30px;
+}
 
 
 @media (max-width: 767.98px) {

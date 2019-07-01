@@ -1,15 +1,26 @@
 {% set activeClass = 'active' %}
+{% set disnoneClass = 'disabled' %}
 
 {% if active == 'top' %}
 {% set topClass = activeClass %}
+{% set tabClass = disnoneClass %}
+
 {% elseif active == 'about' %}
 {% set aboutClass = activeClass %}
+{% set tabClass = activeClass %}
+
 {% elseif active == 'title' %}
 {% set titleClass = activeClass %}
+{% set tabClass = disnoneClass %}
+
 {% elseif active == 'news' %}
 {% set newsClass = activeClass %}
+{% set tabClass = disnoneClass %}
+
 {% elseif active == 'theater' %}
 {% set theaterClass = activeClass %}
+{% set tabClass = disnoneClass %}
+
 {% endif %}
 
 <div class="sub-header mb-3 d-md-block d-none">
@@ -56,5 +67,20 @@
                 </a>
             </li>
         </ul>
+    </div>
+</div>
+
+<div style="height:56px;" class="mb-3 {{ tabClass }}">
+    <div class="imax_about_tab" role="tablist" >
+        <div class="imax_about_tab_inner">
+            <ul class="tab-group d-flex justify-content-center text-center mb-0 mx-auto nav small">
+                <li class="nav-item">
+                    <a href="#dg_teater" data-toggle="tab" role="tab" class="active" aria-controls="dg_teater">IMAX®デジタルシアター</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#laser_gt" data-toggle="tab" role="tab" aria-controls="laser_gt">IMAX®レーザー/GTテクノロジー</a>
+                </li>
+            </ul>
+        </div>
     </div>
 </div>

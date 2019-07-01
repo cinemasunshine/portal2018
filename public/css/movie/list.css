@@ -41,7 +41,7 @@ form .form-control {
 .title a {
     text-decoration: underline;
 }
-.icon-2d, .icon-3d, .icon-imax, .icon-4dx, .icon-4dx3d, .icon-scx {
+.icon-2d, .icon-3d, .icon-imax, .icon-4dx, .icon-4dx3d, .icon-scx,.icon-4dxwscx {
     width: 70px;
 }
 .icon-imax3d {
@@ -70,6 +70,9 @@ form .form-control {
 }
 .icon-scx img {
     width: 55px;
+}
+.icon-4dxwscx img {
+    width: 20px;
 }
 .icon-r {
     width: 35px;
@@ -122,12 +125,13 @@ form .form-control {
     }
     .movie-area {
         margin: -0.5rem;
-        background-color: #ececec;;
+        background-color: #ececec;
         padding: 0.5rem 0.25rem;
     }
     .type-scx .movie-area,
     .type-4dx .movie-area,
-    .type-imax .movie-area {
+    .type-imax .movie-area,
+    .type-4dxwscx .movie-area {
         background-color: #1f1f1f;
     }
     .icon-2d img {

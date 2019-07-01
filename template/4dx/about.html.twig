@@ -23,9 +23,9 @@
 {% block contents %}
 <div class="breadcrumb-list d-none d-md-block small width mx-auto mb-5 px-2 text-white">
     <a class="text-white" href="{{ path_for('homepage') }}">ホーム</a>
-    <span class="font-weight-bold bg-black mx-md-3 h-100"> | </span>
+    <span class="font-weight-bold mx-md-3 h-100"> | </span>
     <a class="text-white" href="{{ path_for('4dx') }}">4DX</a>
-    <span class="font-weight-bold bg-black mx-md-3 h-100"> | </span>
+    <span class="font-weight-bold mx-md-3 h-100"> | </span>
     <span>4DXとは？<span>
 </div>
 
@@ -199,10 +199,24 @@
         </div>
     </div>
     <div class="mb-5 viewing-fee">
-        <h2 class="font-weight-bold large text-center text-md-left mb-4">鑑賞料金</h2>
-        <div class="mb-5 text-center">
-            <div class="mb-4 large">4DX&reg;鑑賞料金</div>
-            <div class="bg-red py-4 px-5 x-large d-inline-block price">通常料金<span class="mx-3">+</span>￥1,000</div>
+        <h2 class="font-weight-bold large text-center text-md-left mb-4">4DX&reg;鑑賞料金</h2>
+        <div class="mb-5 prices">
+            <ul class="mb-4">
+                <li class="d-md-flex align-items-center mb-4 text-center text-md-left">
+                    <div class="title font-weight-bold mb-3 mb-md-0">平和島・沼津・大和郡山・北島・<br class="d-md-block">エミフルMASAKI・姶良</div>
+                    <div class="description">
+                        <div class="bg-red py-4 px-5 x-large d-inline-block price">通常料金<span class="mx-3">+</span>￥1,000
+                        </div>
+                    </div>
+                </li>
+                <li class="d-md-flex align-items-center text-center text-md-left">
+                    <div class="title font-weight-bold mb-3 mb-md-0">グランドシネマサンシャイン</div>
+                    <div class="description">
+                        <div class="bg-red py-4 px-5 x-large d-inline-block price">通常料金<span class="mx-3">+</span>￥1,100
+                        </div>
+                    </div>
+                </li>
+            </ul>
         </div>
         <ul class="border-top border-light-gray mb-4">
             <li class="d-flex align-items-center border-bottom border-light-gray p-4">

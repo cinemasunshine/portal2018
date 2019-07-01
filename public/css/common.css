@@ -11,6 +11,9 @@ body {
 .type-imax {
     background-color: #040a1a;
 }
+.type-4dxwscx{
+    background-color: #141414;
+}
 select {
     appearance: none;
     -moz-appearance: none;
@@ -83,6 +86,9 @@ a:hover {
 .text-dark-red {
     color: #950c0c !important;
 }
+.text-r-yellow {
+    color: #fec80c !important;
+}
 
 /* 背景色 */
 .bg-black {
@@ -112,6 +118,9 @@ a:hover {
 .bg-yellow {
     background-color: #ffbc00 !important;
 }
+.bg-r-yellow{
+    background-color: #fec80c !important;
+}
 .bg-red {
     background-color: rgb(219, 6, 6) !important;
 }
@@ -130,6 +139,9 @@ a:hover {
 /* ボーダー */
 .border-black {
     border-color: #333 !important;
+}
+.border-white {
+    border-color: #fff !important;
 }
 .border-light-blue {
     border-color: #0190d4 !important;
@@ -163,6 +175,9 @@ a:hover {
 }
 .border-orange {
     border-color:rgb(254, 114, 0) !important;
+}
+.border-r-yellow{
+    border-color: #fec80c !important;
 }
 /* フォントサイズ */
 .x-small {
@@ -213,9 +228,13 @@ header .position-fixed {
 .header-company-logo a {
     width: 200px;
 }
+.gdcs-header-company-logo a{
+    width: auto;
+}
 .theater .header-company-logo {
     width: 120px;
 }
+
 .header-imax {
     width: 50px;
 }
@@ -228,13 +247,16 @@ header .position-fixed {
 .header-screen-x {
     width: 65px;
 }
+.header-4dx-with-screen-x {
+    width: 25px;
+}
 .theater-name {
     font-size: 20px;
 }
 
 /* サブヘッダー */
 .sub-header {
-    height: 59px;
+    height: 62px;
 }
 .sub-header-inner {
     background-color: #FFF;
@@ -280,6 +302,7 @@ header .position-fixed {
     border-bottom: 4px solid #FFF;
 }
 
+
 /* 4dxヘッダー */
 .type-4dx header,
 .type-4dx .header {
@@ -288,6 +311,7 @@ header .position-fixed {
 .type-4dx .header .logo {
     width: 250px;
 }
+
 
 /* 4dxサブヘッダー */
 .type-4dx .sub-header-inner {
@@ -328,6 +352,29 @@ header .position-fixed {
 .type-scx .sub-header ul .active a {
     border-bottom: 4px solid #FFF;
 }
+/* 4DX with ScreenX ヘッダー*/
+.type-4dxwscx header,
+.type-4dxwscx .header {
+    height: 90px;
+}
+.type-4dxwscx .header .logo {
+    width: 250px;
+}
+/* 4DX with ScreenX サブヘッダー */
+.type-4dxwscx .sub-header-inner {
+    background: #fec20d;
+    background: linear-gradient(to right, #fec20d, #f19b06);
+    top: 90px;
+}
+.type-4dxwscx .sub-header ul li {
+    width: 20%;
+}
+.type-4dxwscx .sub-header .active a {
+    color: #e83903 !important;
+}
+.type-4dxwscx .sub-header ul .active a {
+    border-bottom: 4px solid #e83903;
+}
 
 /* スライダー */
 .slider {
@@ -366,6 +413,7 @@ header .position-fixed {
 }
 .type-scx .slider .pagination .swiper-pagination-bullet,
 .type-4dx .slider .pagination .swiper-pagination-bullet,
+.type-4dxwscx .slider .pagination .swiper-pagination-bullet,
 .type-imax .slider .pagination .swiper-pagination-bullet {
     background: #565656;
     opacity: 1;
@@ -378,6 +426,9 @@ header .position-fixed {
 }
 .type-scx .slider .pagination .swiper-pagination-bullet-active {
     background: #f66e00;
+}
+.type-4dxwscx .slider .pagination .swiper-pagination-bullet-active {
+    background: #fec80c;
 }
 .thumbs li {
     width: 100px;
@@ -424,12 +475,14 @@ header .position-fixed {
 /* 特設サイトキャンペーン */
 .type-imax .campaign .swiper-button-next,
 .type-scx .campaign .swiper-button-next,
-.type-4dx .campaign .swiper-button-next {
+.type-4dx .campaign .swiper-button-next,
+.type-4dxwscx .campaign .swiper-button-next {
     background-image: url(/images/common/cp_arrow_wht_right.svg);
 }
 .type-imax .campaign .swiper-button-prev,
 .type-scx .campaign .swiper-button-prev,
-.type-4dx .campaign .swiper-button-prev {
+.type-4dx .campaign .swiper-button-prev,
+.type-4dxwscx .campaign .swiper-button-prev {
     background-image: url(/images/common/cp_arrow_wht_left.svg);
 }
 /* ニュース */
@@ -468,6 +521,13 @@ header .position-fixed {
     border-color: rgba(255, 255, 255, 0.2) !important;
 }
 .type-scx .news li a {
+    color: #FFF;
+}
+/* 4DXwithScreenXニュース */
+.type-4dxwscx .news li {
+    border-color: rgba(255, 255, 255, 0.2) !important;
+}
+.type-4dxwscx .news li a {
     color: #FFF;
 }
 
@@ -511,6 +571,15 @@ header .position-fixed {
     background-image: url(/images/common/info_arrow_wht.svg); 
     color: #FFF;
 }
+/* 4dxwithScreenXインフォメーション */
+.type-4dxwscx .infomation ul,
+.type-4dxwscx .infomation li { 
+    border-color: rgba(255, 255, 255, 0.2) !important;
+}
+.type-4dxwscx .infomation li a { 
+    background-image: url(/images/common/info_arrow_wht.svg); 
+    color: #FFF;
+}
   
 /* 特設サイト */
 .width2 {
@@ -524,8 +593,15 @@ header .position-fixed {
 .special-sites-parts img {
     width: 62%;
 }
+.special-sites-parts .ft_sp_link_img_4dxwscx {
+    max-height: 65px;
+}
 .special-sites .container {
     max-width: 1200px;
+}
+.link_bnr_4dxwscx{
+    max-width: 900px;
+    width: 100%;
 }
 
 /* ナビゲーション */
@@ -561,6 +637,9 @@ header .position-fixed {
 }
 .type-scx .navigation .active p {
     color:#fe7200;
+}
+.type-4dxwscx .navigation .active p {
+    color:#fec80c;
 }
 .disabled {
     display: none;
@@ -715,7 +794,9 @@ footer {
     color: #fff;
     background-color: rgb(234, 85, 20);
 }
-
+.list-type-4dxwscx {
+    background-color:rgb(241, 198, 41);
+}
 /* 劇場SNSアカウント */
 
 .theater-sns a {

@@ -9,6 +9,9 @@
 
 {% block css %}
 <link href="/css/theater/facility.css" rel="stylesheet">
+    {% if theater.getName() == 'gdcs' %}
+    <link href="/css/theater/gdcs.css" rel="stylesheet">
+    {% endif %}
 {% endblock %}
 
 {% block navbar %}

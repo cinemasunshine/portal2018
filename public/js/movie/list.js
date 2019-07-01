@@ -1,6 +1,6 @@
 $(function () {
     $(document).on('click', '.tabs a', selectTab);
-    $(document).on('change', '.region-selection', function(){
+    $(document).on('change', '.region-selection', function () {
         var theater = $(this).val();
         changeTheater(theater);
     });
@@ -52,7 +52,9 @@ function selectTab(event) {
         ? 'text-red border-red'
         : ($('body').hasClass('type-scx'))
             ? 'text-orange border-orange'
-            : 'text-blue border-blue';
+            : ($('body').hasClass('type-4dxwscx'))
+                ? 'text-r-yellow border-r-yellow'
+                : 'text-blue border-blue';
     $('.tabs .active')
         .removeClass('active')
         .find('a')

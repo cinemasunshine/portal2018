@@ -49,14 +49,21 @@
     {% block javascript %}{% endblock %}
 </head>
 
-<body class="theater" data-theater="{{ theater.getName() }}">
+<body class="theater gdcs" data-theater="{{ theater.getName() }}">
     <!-- Google Tag Manager (noscript) -->
         <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K3ZKSHZ"
         height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
+    
+{% if theater.getId() == 20 %}
+    {% include 'theater/include/header_gdcs.html.twig' with {
+        theater: theater
+    } only %}
+{% else %}
     {% include 'theater/include/header.html.twig' with {
         theater: theater
     } only %}
+{% endif %}
     
     {% include 'theater/include/sp_menu.html.twig' with {
         theater: theater
