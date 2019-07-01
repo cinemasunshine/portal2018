@@ -17,7 +17,7 @@
     border-radius: 3rem;
 }
 .viewing-fee li .title {
-    width: 320px;
+    width: 360px;
 }
 .viewing-fee li .description {
     width: calc(100% - 200px);
