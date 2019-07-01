@@ -203,4 +203,25 @@ class NewsRepository extends EntityRepository
         
         return $qb->getQuery()->getResult();
     }
+    
+    /**
+     * find by 4DX with ScreenX
+     *
+     * @param int|null $limit
+     * @return News[]
+     */
+    public function findBy4DXWithScreenX(?int $limit = null)
+    {
+        $qb = $this->getActiveQuery();
+        $qb
+            ->andWhere('n.category = :category')
+            ->setParameter('category', News::CATEGORY_4DX_WITH_SCREENX)
+            ->orderBy('n.createdAt', 'DESC');
+        
+        if ($limit) {
+            $qb->setMaxResults($limit);
+        }
+        
+        return $qb->getQuery()->getResult();
+    }
 }

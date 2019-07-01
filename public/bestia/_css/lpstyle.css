@@ -66,8 +66,8 @@ body {
 }
 
 html {
-    font-size: 16px;
-    line-height: 1.5;
+    font-size: 1rem;
+    line-height: 1.8;
 }
 
 header,
@@ -107,7 +107,7 @@ article >h1 {
 
 article >p {
     margin: 0;
-    font-size: 1.15rem;
+    font-size: 1rem;
 }
 
 
@@ -195,12 +195,25 @@ footer >p {
     max-width: 500px;
     margin: 30px auto;
 }
+.pc_none{
+    display: none;
+}
 @media screen and (max-width: 800px) {
     html {
         font-size: 14px;
     }
     article >h1 {
-        margin: 30px 0;
+        margin: 50px 0;
+    }
+    header{
+        text-align: center;
+    }
+    header .cs_logo{
+        max-width: 150px;
+        display: inline-block;
+    }
+    header .cs_logo img{
+        width: 100%;
     }
 
     section {
@@ -223,5 +236,14 @@ footer >p {
 
     footer >p {
         padding: 15px 20px;
+    }
+    .sp_none{
+        display: none;
+    }
+    .pc_none{
+        display: block;
+    }
+    .smp_text{
+        text-align: left!important;
     }
 }

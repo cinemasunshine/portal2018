@@ -1,0 +1,71 @@
+{% extends "4dx_with_screenx/layout.html.twig" %}
+
+{% block title %}作品一覧 | {{ parent() }}4DX with ScreenX特設サイト{% endblock %}
+
+{% block description %}シネマサンシャイン4DX with ScreenX特設サイトの作品一覧ページです。上映中・上映予定の映画作品のご案内{% endblock %}
+
+{% block keywords %}{{ parent() }},キャンペーン,上映中,上映予定,公開,作品情報,4DX with ScreenX{% endblock %}
+
+{% block css %}
+<link href="/css/movie/list.css" rel="stylesheet">
+{% endblock %}
+
+{% block javascript %}
+<script src="/js/movie/list.js"></script>
+{% endblock %}
+
+{% block navbar %}
+{% include '4dx_with_screenx/include/navbar.html.twig' with {
+    active: 'title'
+} only %}
+{% endblock %}
+
+{% block sp_navbar %}
+{% include '4dx_with_screenx/include/sp_navbar.html.twig' with {
+    active: 'title'
+} only %}
+{% endblock %}
+
+{% block contents %}
+<div class="breadcrumb-list d-none d-md-block small width mx-auto mb-5 px-2 text-white">
+    <a class="text-white" href="{{ path_for('homepage') }}">ホーム</a>
+    <span class="font-weight-bold mx-2"> | </span>
+    <a class="text-white" href="{{ path_for('4dx_with_screenx') }}">4DX with ScreenX</a>
+    <span class="font-weight-bold mx-2"> | </span>
+    <span>作品一覧<span>
+</div>
+
+<div class="width mx-auto mb-5 px-2 text-white">
+
+    <div class="tabs mx-auto d-flex py-4">
+        <div class="w-50 text-center active">
+            <a class="py-2 d-block border-r-yellow text-r-yellow" href="#"
+                data-type="screening">上映中</a>
+        </div>
+        <div class="w-50 text-center">
+            <a class="py-2 d-block border-gray text-dark-gray" href="#" data-type="scheduled">上映予定</a>
+        </div>
+    </div>
+    
+    <div class="screening d-block">
+    
+    {% for schedule in screeningSchedules %}
+        {% include '4dx_with_screenx/schedule/include/list_row.html.twig' with {
+        schedule: schedule,
+        theaters: theaters
+        } only %}
+    {% endfor %}
+        
+    </div>
+    <div class="scheduled d-none">
+        
+    {% for schedule in soonSchedules %}
+        {% include '4dx_with_screenx/schedule/include/list_row.html.twig' with {
+            schedule: schedule,
+            theaters: theaters
+        } only %}
+    {% endfor %}
+        
+    </div>
+</div>
+{% endblock %}

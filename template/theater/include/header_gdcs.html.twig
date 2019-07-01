@@ -1,0 +1,30 @@
+{% extends "theater/include/header.html.twig" %}
+
+{% block logo %}
+<div class="gdcs-header-company-logo mr-3 mb-1">
+    <a href="{{ path_for('homepage') }}" class="d-none">
+        <img src="/images/common/header_logo.svg" class="w-100" alt="CINEMA SUNSHINE">
+        </a>
+        <div class="theater-name font-weight-bold mr-md-4 mr-3 line-height-1">
+                <a class="d-block" href="{{ path_for('theater', { name: theater.getName() }) }}">{{ theater.getNameJa() }}</a>
+            </div>
+    </div>
+
+    <div class="align-items-center d-flex">
+        <!--<div class="theater-name font-weight-bold mr-md-4 mr-3 line-height-1">
+            <a class="d-block" href="{{ path_for('theater', { name: theater.getName() }) }}">{{ theater.getNameJa() }}</a>
+        </div>-->
+        
+    {% for specialSite in theater.getSpecialSites() %}
+        {% if specialSite.getId() == 1 %}
+            <div class="header-imax mr-md-2 mr-2 line-height-1"><img src="/images/common/imax_logo.svg" class="w-100" alt="IMAX"></div>
+        {% elseif specialSite.getId() == 2 %}
+            <div class="header-4dx line-height-1 d-none"><img src="/images/common/4dx_logo.svg" class="w-100" alt="4DX"></div>
+        {% elseif specialSite.getId() == 3 %}
+            <div class="header-screen-x line-height-1 d-none"><img src="/images/common/screen-x_logo.svg" class="w-100" alt="ScreenX"></div>
+        {% elseif specialSite.getId() == 4 %}
+            <div class="header-4dx-with-screen-x line-height-1"><img src="/images/common/4dx-with-screen-x_logo.svg" class="w-100" alt="4DX with ScreenX"></div>
+        {% endif %}
+    {% endfor %}
+</div>
+{% endblock %}

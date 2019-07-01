@@ -47,7 +47,8 @@ function isAppCompatibleTheater() {
         'kinuyama',
         'shigenobu',
         'masaki',
-        'aira'
+        'aira',
+        'gdcs'
     ];
     var theater = $('body').attr('data-theater');
     var findResult = compatibleTheaters.find(function (compatibleTheater) { return (compatibleTheater === theater); });
@@ -170,7 +171,7 @@ function createScheduleDate() {
             var dom = '<div class="swiper-slide text-center">\
                 <a href="#" class="d-block line-height-1 pt-3 pb-2 ' + className + '" data-date="' + date + '">\
                     <div class="mb-2">\
-                        <strong class="large mr-1">' + month + ' / ' + day + '</strong>\
+                        <strong class="large mr-1 gdcs_eng_font_b">' + month + ' / ' + day + '</strong>\
                         <strong class="small">(' + ddd + ')</strong>\
                     </div>\
                     <div class="x-small mb-1">' + service + '</div>\
@@ -445,7 +446,7 @@ function createScheduleFilmPerformanceDom(performance, film) {
                     : '予約不可';
     var pcDom = $('<li class="mb-3">\
 <a class="d-block position-relative py-2 mx-2 '+ lateClass + ' ' + pcAvailableColorClass + '" href="' + data.url + '" target="' + target + '">\
-    <div class="mb-2"><strong class="large">'+ data.startTime + '</strong><span>～' + data.endTime + '</span></div>\
+    <div class="mb-2"><strong class="large gdcs_eng_font_b">'+ data.startTime + '</strong><span class="gdcs_eng_font_r">～' + data.endTime + '</span></div>\
     <div class="small mb-2">'+ data.screenName + '</div>\
     <div class="d-flex align-items-center justify-content-center">' + pcAvailable + '</div>\
 </a>\
