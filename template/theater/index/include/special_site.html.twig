@@ -11,7 +11,12 @@
 <div class="imax-4dx d-flex text-center justify-content-md-center justify-content-start mb-3">
 
 {% for specialSite in specialSites %}
+    {% if count == 1 %}
+    <div class="align-self-center p-3 col-md-2">
+    {% else %}
     <div class="align-self-center p-3 col-6 col-md-2">
+    {% endif %}
+    
     {% if specialSite.getId() == 1 %}
         <a href="{{ path_for('imax') }}" class="d-block">
             <div class="imax mb-1"><img src="/images/common/imax_logo.svg"></div>
@@ -33,11 +38,17 @@
             <p class="mb-0 small">特設サイトはこちら</p>
         </a>
     {% endif %}
+    
     </div>
 {% endfor %}
 
 {% if hasBestia %}
+    {% if count == 1 %}
+    <div class="align-self-center p-3 col-md-2">
+    {% else %}
     <div class="align-self-center p-3 col-6 col-md-2">
+    {% endif %}
+    
         <a href="/bestia/" class="d-block">
             <div class="fourdx mb-1"><img src="/images/top/bestia_logo.svg" class="link_bestia_logo"></div>
             <p class="mb-0 small">特設サイトはこちら</p>
