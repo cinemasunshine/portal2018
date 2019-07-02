@@ -41,3 +41,9 @@ $ docker-compose up
 ```sh
 $ vendor/bin/phpcs
 ```
+
+## PHPStan
+
+```sh
+$ composer phpstan
+```
