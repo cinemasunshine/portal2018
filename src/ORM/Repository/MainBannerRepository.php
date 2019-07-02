@@ -8,6 +8,7 @@
 namespace Cinemasunshine\Portal\ORM\Repository;
 
 use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\QueryBuilder;
 
 use Cinemasunshine\Portal\ORM\Entity\MainBanner;
 
