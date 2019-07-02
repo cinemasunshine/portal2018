@@ -36,8 +36,7 @@ $ docker-compose up
 
 # その他
 ## PHP CodeSniffer
-### コードチェック
 
 ```sh
-$ vendor/bin/phpcs
+$ composer phpcs
 ```
