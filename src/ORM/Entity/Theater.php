@@ -28,7 +28,7 @@ class Theater extends AbstractEntity
     
     /**
      * 劇場ステータス
-     * 
+     *
      * 実際の劇場ではなく、システムにおける劇場のステータス。
      */
     const STATUS_PRIVATE  = 1; // 非公開。オープン準備中などポータルサイトには公開しないケース。

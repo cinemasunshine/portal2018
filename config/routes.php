@@ -98,14 +98,16 @@ $app->group('/screen-x', function () {
     $this->get('/theater/', ScreenXController::class . ':theater')->setName('screenx_theater');
 });
 
-$app->group('/4dx-with-screen-x', function() {
+$app->group('/4dx-with-screen-x', function () {
     $this->get('/', FourdxWithScreenXController::class . ':index')->setName('4dx_with_screenx');
     $this->get('/about/', FourdxWithScreenXController::class . ':about')->setName('4dx_with_screenx_about');
-    $this->get('/movie/', FourdxWithScreenXController::class . ':scheduleList')->setName('4dx_with_screenx_schedule_list');
+    $this->get('/movie/', FourdxWithScreenXController::class . ':scheduleList')
+        ->setName('4dx_with_screenx_schedule_list');
     $this->get('/movie/{schedule:[0-9]+}.php', FourdxWithScreenXController::class . ':scheduleShow')
         ->setName('4dx_with_screenxschedule_show');
     $this->get('/news/', FourdxWithScreenXController::class . ':newsList')->setName('4dx_with_screenx_news_list');
-    $this->get('/news/{id:[0-9]+}.php', FourdxWithScreenXController::class . ':newsShow')->setName('4dx_with_screenx_news_show');
+    $this->get('/news/{id:[0-9]+}.php', FourdxWithScreenXController::class . ':newsShow')
+        ->setName('4dx_with_screenx_news_show');
     $this->get('/theater/', FourdxWithScreenXController::class . ':theater')->setName('4dx_with_screenx_theater');
 });
 
