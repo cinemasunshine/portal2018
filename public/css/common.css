@@ -431,7 +431,7 @@ header .position-fixed {
     background: #fec80c;
 }
 .thumbs li {
-    width: 100px;
+    width: 80px;
     opacity: 0.4;
 }
 .thumbs .active {
