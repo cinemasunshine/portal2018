@@ -1,15 +1,7 @@
-# Webサーバ用Dockerfile
+# PHP用Dockerfile
 
 # https://hub.docker.com/_/php/
-FROM php:7.2-apache
-
-# mod_rewrite
-RUN a2enmod rewrite
-
-# DocumentRoot変更
-ENV APACHE_DOCUMENT_ROOT /var/www/html/public
-RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
-RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
+FROM php:7.2-fpm
 
 # apt-getをupdate（installできなかったので）
 # install

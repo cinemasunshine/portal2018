@@ -1,9 +1,17 @@
 version: '3'
 
 services:
-  web:
-    build: ./docker/web
+  portal-nginx:
+    build: ./docker/nginx
     ports:
       - "8010:80"
+    depends_on:
+      - portal-php
+    volumes:
+      - .:/var/www/html
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+
+  portal-php:
+    build: ./docker/php
     volumes:
       - .:/var/www/html

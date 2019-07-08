@@ -34,7 +34,7 @@ class Theater extends Base
     /** @var string[] API endpoint */
     protected $endpoint;
 
-    /** @var Cinemasunshine\Schedule\Client client */
+    /** @var HttpClient client */
     protected $client;
     
     

@@ -14,7 +14,7 @@ use Cinemasunshine\Portal\Schedule\Entity\V1\Movie as MovieEntity;
 use Cinemasunshine\Portal\Schedule\Entity\V1\Schedule as ScheduleEntity;
 use Cinemasunshine\Portal\Schedule\Entity\V1\Schedules as SchedulesEntity;
 use Cinemasunshine\Portal\Schedule\Entity\V1\Screen as ScreenEntity;
-use Cinemasunshine\Portal\Schedule\Entity\V1\TIme as TimeEntity;
+use Cinemasunshine\Portal\Schedule\Entity\V1\Time as TimeEntity;
 
 /**
  * Schedule builder
