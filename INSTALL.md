@@ -101,8 +101,9 @@ $ vendor/bin/doctrine orm:generate-proxies
 
 ### ７．その他
 
-#### .htaccess または Web.config
-ドキュメントルートに *.htaccess* もしくは *Web.config* を設置します。
+#### Webサーバ設定（Windowsサーバの場合）
+
+ドキュメントルートに *Web.config* を設置します。
 
 内容はサンプルを参考にしてください。
 
