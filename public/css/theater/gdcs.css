@@ -117,6 +117,7 @@
 .schedule-slider .swiper-container .swiper-wrapper .swiper-slide .border-light-blue{
   border-color:#9b7d4d!important;
 }
+
 .schedule-sort-film .performances li .bg-light-gray{
   background-color: #c4c4c4 !important;
 }
@@ -142,9 +143,16 @@
   border: solid 1px #333;
 }
 @media (max-width: 767.98px) {
-/*スライダー下ロゴサイズ指定*/
-.gdcs .top_logo{
-  max-width:300px;
-  width: 100%;
-}
+  /*スライダー下ロゴサイズ指定*/
+  .gdcs .top_logo{
+    max-width:300px;
+    width: 100%;
+  }
+  /*TOPスケジュール部分*/
+  .gdcs .contents #schedule .schedule-sort-film-sp .show .performances li .bg-light-gray{
+    background-color: #ddd !important;
+  }
+  .gdcs .contents #schedule .schedule-sort-film-sp .rounded {
+    border: 1px solid #dee2e6!important;
+  }
 }
