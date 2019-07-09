@@ -155,4 +155,11 @@
   .gdcs .contents #schedule .schedule-sort-film-sp .rounded {
     border: 1px solid #dee2e6!important;
   }
+  .schedule-sort-film-sp .performances li .purchase-button .bg-blue{
+    background-color: #a57a43 !important;
+  }
+  .schedule-sort-film-sp .performances li .purchase-button .bg-yellow{
+    background-color: #ddb30b !important;
+  }
+
 }
