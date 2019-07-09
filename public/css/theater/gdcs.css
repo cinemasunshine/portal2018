@@ -149,7 +149,7 @@
     width: 100%;
   }
   /*TOPスケジュール部分*/
-  .gdcs .contents #schedule .schedule-sort-film-sp .show .performances .bg-light-gray{
+  .gdcs .contents #schedule .schedule-sort-film-sp .performances .bg-light-gray{
     background-color: #ddd !important;
   }
   .gdcs .contents #schedule .schedule-sort-film-sp .rounded {
