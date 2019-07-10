@@ -12,7 +12,8 @@ RUN apt-get update \
         git \
         zip \
         unzip \
-    && apt-get clean
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
 # install PHP extensions
 RUN docker-php-ext-install \
