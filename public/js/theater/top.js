@@ -34,7 +34,6 @@ $(function () {
  */
 function isAppCompatibleTheater() {
     var compatibleTheaters = [
-        'ikebukuro',
         'heiwajima',
         'yukarigaoka',
         'tsuchiura',
