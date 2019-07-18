@@ -1,0 +1,1580 @@
+    @charset "utf-8";
+
+
+    /* webフォント*/
+        @import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,500,700&display=swap');
+        @import url('https://fonts.googleapis.com/css?family=Lato:400,700,900&display=swap');
+
+
+    html{
+        font-family: 'Noto Sans JP', sans-serif;
+        color: #494949;
+        font-weight: 100;
+    }
+    .content_inner .content_txt{
+        line-height: 1.6;
+    }
+    h5 sup{
+        font-size: 10px;
+        vertical-align: top;
+    }
+    p sup{
+        font-size: 10px;
+        vertical-align: top;
+    }
+    body{
+        background-image: url(../img/common/bg_whit_texture.png)!important;
+        min-height: 100vh;
+        background-attachment: fixed!important;
+        background-size: cover!important;
+        background-position: center!important;
+    }
+    a{
+        text-decoration: none;
+    }
+    /*--main--*/
+    #main_vis_gdcs{
+        background: rgb(204,210,232);
+        background: -moz-linear-gradient(148deg, rgba(204,210,232,1) 0%, rgba(255,255,255,1) 60%);
+        background: -webkit-linear-gradient(148deg, rgba(204,210,232,1) 0%, rgba(255,255,255,1) 60%);
+        background: linear-gradient(148deg, rgba(204,210,232,1) 0%, rgba(255,255,255,1) 60%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ccd2e8",endColorstr="#ffffff",GradientType=1);
+        display: block;
+    }
+    /*--文字色--*/
+    .gold{
+        color: #a57a44!important;
+    }
+    /*--txt--*/
+    .title_eng_t{
+        font-family: 'Lato', sans-serif;
+        font-weight: 100;
+    }
+    .title_eng_l{
+        font-family: 'Lato', sans-serif;
+        font-weight: 300;
+    }
+    .title_eng_r{
+        font-family: 'Lato', sans-serif;
+        font-weight: 400;
+    }
+    .title_eng_b{
+        font-family: 'Lato', sans-serif;
+        font-weight: 700;
+    }
+    .title_eng_blk{
+        font-family: 'Lato', sans-serif;
+        font-weight: 900;
+    }
+    a{
+        text-decoration: none;
+    }
+    /*--footer--*/
+    .footer_inner{
+        overflow: hidden;
+        padding: 100px;
+        text-align: center;
+    }
+    .footer_logo{
+        width: 150px;
+        margin: 0px auto 40px;
+    }
+    .footer_logo img{
+        width: 100%;
+    }
+    .res_width{
+        width: 90%;
+        margin: 20px auto;
+        display: block;
+        line-height: 1.3;
+    }
+    .footer_inner .note{
+        font-size: .7rem;
+        color: #d6c2aa;
+    }
+
+    @media (min-width: 768px) {
+        .pc_br{
+            display: block;
+        }
+        .sp_br{
+            display: none;
+        }
+        .pc_length_split{
+            flex-wrap: wrap;
+        }
+        /*--ボタン--*/
+        .gdcs_link_btn{
+            background: #a57a44;
+            padding: 20px 100px;
+            color: #fff;
+            display: inline-block;
+        }
+        .modal_close{
+            font-size: 2rem;
+            padding: 10px 16px;
+            border:solid 1px #a57a44;
+            border-radius: 30px;
+            display: inline-block;
+        }
+        /*--文字サイズ--*/
+        html{
+            font-size:.9rem!important;
+        }
+        h3{
+            font-size:1.8rem!important;
+        }
+        /*--余白調整--*/
+        .content_wrap article{
+            max-width:960px;
+            margin: 50px auto!important;
+        }
+        /*--tittleエリア--*/
+        .title_area{
+            display: block;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .title_area h3{
+            margin-bottom: 20px;
+        }
+        /*--main--*/
+        #main_vis_gdcs .parent{
+            padding-top: 100px;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-flex-direction: row;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            height: 100%;
+        }
+        .main_intro{
+            text-align: center;
+            padding-top: 10%;
+            width:50%;
+        }
+        .main_intro h2{
+            margin-top: 50px;
+            font-size: 1.5rem;
+            color: #494949;
+            font-weight: 100;
+        }
+        .main_facade{
+            width: 45%;
+        }
+        .main_facade img{
+            width: 100%;
+        }
+        /*--concept--*/
+        #gdcs_concept{
+            padding-top: 70px;
+        }
+        #gdcs_concept .parent{
+            display: -webkit-flex;
+            display: flex;
+            -webkit-flex-direction: row;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            max-width:960px;
+            margin: 0 auto;
+        }
+        .concept_txt{
+            width: 50%;
+        }
+        .concept_txt p{
+            padding-top:5%;
+            line-height: 2;
+        }
+        .concept_pic{
+            background-image: url(../img/common/concept_img1.jpg)!important;
+            background-repeat: no-repeat;
+            width: 45%;
+            min-height: 380px;
+            max-height: 400px;
+            background-size: 220%;
+            background-position-x: 47%;
+            background-position-y: 50%;
+            box-shadow: 4px 6px 6px rgba(137,120,86,.45);
+    
+        }
+        /*--CINEMA--*/
+        #gdcs_cinema{
+            padding: 70px 20px 0px;
+        }
+        #gdcs_cinema .parent{
+            display: -webkit-flex;
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            max-width:960px;
+        }
+        #gdcs_cinema .parent a{
+            text-decoration: none!important;
+            display: block;
+        }
+        .tumb{
+            width:20% ;
+            padding: 0 .5%;
+        }
+        .tumb .tumb_txt{
+            margin-top: 10px;
+            line-height: 1.3;
+        }
+
+        .tumb .cinema_01{
+            background-image: url(../img/common/cinema01.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-x: 50%;
+            background-position-y: 50%;
+            min-height: 400px;
+            max-height: 400px;
+        }
+        .tumb .cinema_02{
+            background-image: url(../img/common/cinema02.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-x: 50%;
+            background-position-y: 50%;
+            min-height: 400px;
+            max-height: 400px;
+        }
+        .tumb .cinema_03{
+            background-image: url(../img/common/cinema03.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-x: 60%;
+            background-position-y: 50%;
+            min-height: 400px;
+            max-height: 400px;
+        }
+        .tumb .cinema_04{
+            background-image: url(../img/common/cinema04.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-x: 45%;
+            background-position-y: 35%;
+            min-height: 400px;
+            max-height: 400px;
+        }
+        .tumb .cinema_05{
+            background-image: url(../img/common/cinema05.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-x: 10%;
+            background-position-y: 50%;
+            min-height: 400px;
+            max-height: 400px;
+        }
+        /*--INTERIOR--*/
+        #gdcs_interior{
+            padding: 70px 20px 0px;
+        }
+        #gdcs_interior .parent{
+            display: -webkit-flex;
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            max-width:960px;
+        }
+        #gdcs_interior .parent a{
+            text-decoration: none!important;
+            display: block;
+        }
+        .tumb{
+            width:20% ;
+            padding: 0 .5%;
+        }
+        .tumb .tumb_txt{
+            margin-top: 10px;
+            line-height: 1.3;
+        }
+
+        .tumb .interior_01{
+            background-image: url(../img/common/interior01.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-x: 80%;
+            background-position-y: 50%;
+            min-height: 400px;
+            max-height: 400px;
+        }
+        .tumb .interior_02{
+            background-image: url(../img/common/interior02.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-x: 100%;
+            background-position-y: 50%;
+            min-height: 400px;
+            max-height: 400px;
+        }
+        .tumb .interior_03{
+            background-image: url(../img/common/interior03.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-x: 40%;
+            background-position-y: 50%;
+            min-height: 400px;
+            max-height: 400px;
+        }
+        .tumb .interior_04{
+            background-image: url(../img/common/interior04.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-x: 65%;
+            background-position-y: 35%;
+            min-height: 400px;
+            max-height: 400px;
+        }
+        .tumb .interior_05{
+            background-image: url(../img/common/interior05.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-x: 100%;
+            background-position-y: 50%;
+            min-height: 400px;
+            max-height: 400px;
+        }
+        /*--FOOD--*/
+        #gdcs_food{
+            padding: 70px 20px 0px;
+        }
+        #gdcs_food .parent{
+            display: -webkit-flex;
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            max-width:960px;
+        }
+        #gdcs_food .parent a{
+            text-decoration: none!important;
+            display: block;
+        }
+        .tumb{
+            width:24% ;
+            padding: 0 .5%;
+        }
+        .tumb .tumb_txt{
+            margin-top: 10px;
+            line-height: 1.3;
+        }
+
+        .tumb .food_01{
+            background-image: url(../img/common/food01.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-x: 15%;
+            background-position-y: 50%;
+            min-height: 400px;
+            max-height: 400px;
+        }
+        .tumb .food_02{
+            background-image: url(../img/common/food02.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-x: 60%;
+            background-position-y: 50%;
+            min-height: 400px;
+            max-height: 400px;
+        }
+        .tumb .food_03{
+            background-image: url(../img/common/food03.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: 300% auto;
+            background-position-x: 60%;
+            background-position-y: 25%;
+            min-height: 400px;
+            max-height: 400px;
+        }
+        .tumb .food_04{
+            background-image: url(../img/common/food04.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-x: 45%;
+            background-position-y: 35%;
+            min-height: 400px;
+            max-height: 400px;
+        }
+        /*--Link--*/
+        #gdcs_link{
+            padding-top: 70px;
+        }
+        #gdcs_link .parent{
+            display: -webkit-flex;
+            display: flex;
+            -webkit-flex-direction: row;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            max-width:960px;
+            margin: 0 auto;
+        }
+        .link_txt{
+            width: 50%;
+            text-align: center;
+            padding-top: 8%;
+        }
+        .link_txt h4{
+            font-size: 1.5rem;
+        }
+        .link_txt p{
+            padding:5% 0;
+            line-height: 2;
+
+        }
+        .link_pic{
+            background-image: url(../img/common/link_img1.jpg)!important;
+            background-repeat: no-repeat;
+            width: 45%;
+            min-height: 380px;
+            max-height: 400px;
+            background-size: 150% auto;
+            background-position-x: 60%;
+            background-position-y: 35%;
+            box-shadow: -4px 6px 6px rgba(137,120,86,.45);
+    
+        }
+
+        /*------Modal------*/
+
+        .modal__content{
+            text-align: center;
+            padding: 3%;
+        }
+        /*--タイトル--*/
+        .modal_tit{
+            margin-bottom: 2%;
+        }
+        .modal_tit h3{
+            margin-bottom:10px;
+            font-size: 1.5rem;
+            color: #a57a44;
+            font-weight: 100;
+        }
+        .modal_tit p{
+            font-size: .8rem;
+            color: #a57a44;
+        }
+        .modal_tit img{
+            width:100%;
+        }
+        /*--モーダルタイトル--*/
+        .imaxgt_logo{
+            width:150px;
+            display: inline-block;
+        }
+        .fordxwscx_logo{
+            width:100px;
+            display: inline-block;
+        }
+        .bestia_logo{
+            width:180px;
+            display: inline-block;
+        }
+        .cd_logo{
+            width:120px;
+            display: inline-block;
+        }
+        .bp_logo{
+            width:160px;
+            display: inline-block;
+        }
+        /*--モーダルメイン画像--*/
+        .modal_vis{
+            width: 100%;
+            margin-bottom:2%; 
+        }
+        /*.mod_main_vis{
+            width: calc(70% - 10px);
+        }*/
+        .mod_main_vis_full{
+            width:100%;
+        }
+        .mod_sub_vis{
+            width: 30%;
+        }
+        .modal_vis .parent{
+            padding-top: 0px;
+            display: -webkit-flex;
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            height: 100%;
+        }
+        .cinema_modalvis01{
+            background-image: url(../img/common/cinema01.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-x: 50%;
+            background-position-y: 60%;
+            min-height:300px;
+            max-height: 350px;
+            width: calc(70% - 10px);
+        }
+        .cinema_modalvis02{
+            background-image: url(../img/common/modal02.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-x: 50%;
+            background-position-y: 60%;
+            min-height:150px;
+            max-height: 150px; 
+            margin-bottom: 10px;
+        }
+        .cinema_modalvis03{
+            background-image: url(../img/common/modal03.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-x: 50%;
+            background-position-y: 60%;
+            min-height:150px;
+            max-height: 150px;
+        }
+        .cinema_modalvis04{
+            background-image: url(../img/common/cinema02.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-x: 50%;
+            background-position-y: 60%;
+            min-height:300px;
+            max-height: 350px;
+        }
+        .cinema_modalvis05{
+            background-image: url(../img/common/cinema03.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-x: 50%;
+            background-position-y: 60%;
+            min-height:300px;
+            max-height: 350px;
+        }
+        .cinema_modalvis06{
+            background-image: url(../img/common/cinema04.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position-x: 50%;
+            background-position-y: 60%;
+            min-height:300px;
+            max-height: 350px;
+            width: 24%;
+            background-color: #fff;
+        }
+        .cinema_modalvis07{
+            background-image: url(../img/common/modal04.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position-x: 50%;
+            background-position-y: 60%;
+            min-height:300px;
+            max-height: 350px;
+            width: 24%;
+            background-color: #fff;
+        }
+        .cinema_modalvis08{
+            background-image: url(../img/common/modal05.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position-x: 50%;
+            background-position-y: 60%;
+            min-height:300px;
+            max-height: 350px;
+            width: 24%;
+            background-color: #fff;
+        }
+        .cinema_modalvis09{
+            background-image: url(../img/common/modal06.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position-x: 50%;
+            background-position-y: 60%;
+            min-height:300px;
+            max-height: 350px;
+            width: 24%;
+            background-color: #fff;
+        }
+        .cinema_modalvis10{
+            background-image: url(../img/common/modal07.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: 180% auto;
+            background-position-x: 54%;
+            background-position-y: 46%;
+            min-height:300px;
+            max-height: 350px;
+        }
+        .interior_modalvis01{
+            background-image: url(../img/common/interior01.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-x: 50%;
+            background-position-y: 60%;
+            min-height:300px;
+            max-height: 350px;
+            width: calc(70% - 10px);
+        }
+        .interior_modalvis02{
+            background-image: url(../img/common/modal08.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-x: 50%;
+            background-position-y: 60%;
+            min-height:150px;
+            max-height: 150px; 
+            margin-bottom: 10px;
+        }
+        .interior_modalvis03{
+            background-image: url(../img/common/cinema01.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-x: 50%;
+            background-position-y: 60%;
+            min-height:150px;
+            max-height: 150px;
+        }
+        .interior_modalvis04{
+            background-image: url(../img/common/interior02.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-x: 50%;
+            background-position-y: 60%;
+            min-height:300px;
+            max-height: 350px;
+        }
+        .interior_modalvis05{
+            background-image: url(../img/common/interior03.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-x: 50%;
+            background-position-y: 60%;
+            min-height:300px;
+            max-height: 350px;
+        }
+        .interior_modalvis06{
+            background-image: url(../img/common/interior04.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-x: 50%;
+            background-position-y: 60%;
+            min-height:300px;
+            max-height: 350px;
+        }
+        .interior_modalvis07{
+            background-image: url(../img/common/interior05.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-x: 50%;
+            background-position-y: 60%;
+            min-height:300px;
+            max-height: 350px;
+        }
+        .food_modalvis01{
+            background-image: url(../img/common/modal09.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: 160% auto;
+            background-position-x: 35%;
+            background-position-y: 60%;
+            min-height:300px;
+            max-height: 350px;
+            width: calc(70% - 10px);
+        }
+        .food_modalvis02{
+            background-image: url(../img/common/food01.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-x: 50%;
+            background-position-y: 60%;
+            min-height:150px;
+            max-height: 150px; 
+            margin-bottom: 10px;
+        }
+        .food_modalvis03{
+            background-image: url(../img/common/modal11.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-x: 50%;
+            background-position-y: 60%;
+            min-height:150px;
+            max-height: 150px;
+        }
+        .food_modalvis04{
+            background-image: url(../img/common/modal10.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: 160% auto;
+            background-position-x: 70%;
+            background-position-y: 70%;
+            min-height:300px;
+            max-height: 350px;
+            width: calc(70% - 10px);
+        }
+        .food_modalvis05{
+            background-image: url(../img/common/food02.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-x: 50%;
+            background-position-y: 60%;
+            min-height:150px;
+            max-height: 150px; 
+            margin-bottom: 10px;
+        }
+        .food_modalvis06{
+            background-image: url(../img/common/modal12.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-x: 50%;
+            background-position-y: 60%;
+            min-height:150px;
+            max-height: 150px;
+        }
+        .food_modalvis07{
+            background-image: url(../img/common/modal13.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: 250% auto;
+            background-position-x: 37%;
+            background-position-y: 43%;
+            min-height:300px;
+            max-height: 350px;
+            width: 30%;
+            background-color: #fff;
+        }
+        .food_modalvis08{
+            background-image: url(../img/common/food03.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: 310% auto;
+            background-position-x: 50%;
+            background-position-y: 20%;
+            min-height:300px;
+            max-height: 350px;
+            width: 30%;
+            background-color: #fff;
+        }
+        .food_modalvis09{
+            background-image: url(../img/common/modal14.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: 260% auto;
+            background-position-x: 35%;
+            background-position-y: 36%;
+            min-height:300px;
+            max-height: 350px;
+            width: 30%;
+            background-color: #fff;
+        }
+        .food_modalvis10{
+            background-image: url(../img/common/food04.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: 320% auto;
+            background-position-x: 45%;
+            background-position-y: 80%;
+            min-height:300px;
+            max-height: 350px;
+            width: 24%;
+            background-color: #fff;
+        }
+        .food_modalvis11{
+            background-image: url(../img/common/modal16.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: 250% auto;
+            background-position-x: 34%;
+            background-position-y: 40%;
+            min-height:300px;
+            max-height: 350px;
+            width: 24%;
+            background-color: #fff;
+        }
+        .food_modalvis12{
+            background-image: url(../img/common/modal15.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: 350% auto;
+            background-position-x: 31%;
+            background-position-y: 35%;
+            min-height:300px;
+            max-height: 350px;
+            width: 24%;
+            background-color: #fff;
+        }
+        .food_modalvis13{
+            background-image: url(../img/common/modal17.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: 310% auto;
+            background-position-x: 20%;
+            background-position-y: 10%;
+            min-height:300px;
+            max-height: 350px;
+            width: 24%;
+            background-color: #fff;
+        }
+        /*--モーダルテキスト--*/
+        .modal_txt{
+            margin-bottom: 3%;
+        }
+        .modal_txt .modal_sub_tit{
+            font-size: 1.5rem;
+            margin-bottom: 2%;
+        }
+        .modal_txt .modal_inner_txt{
+            font-size: .9rem;
+            line-height: 2;
+            margin-bottom: 2%;
+        }
+        .modal_txt .note{
+            font-size: .5rem;
+            text-align: left;
+            line-height: 1.5;
+        }
+        
+    }
+    @media (max-width: 767px) {
+        .pc_br{
+            display: none;
+        }
+        .sp_br{
+            display: block;
+        }
+        /*--ボタン--*/
+        .gdcs_link_btn{
+            background: #a57a44;
+            padding: 25px;
+            color: #fff;
+            display: inline-block;
+            width: 100%;
+        }
+        .modal_close{
+            font-size: 2rem;
+            padding: 10px 16px;
+            border:solid 1px #a57a44;
+            border-radius: 30px;
+            display: inline-block;
+        }
+        /*--文字サイズ--*/
+        html{
+            font-size:.85rem!important;
+        }
+        h3{
+            font-size:1.7rem!important;
+        }
+        /*--tittleエリア--*/
+        .title_area{
+            display: block;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .title_area h3{
+            margin-bottom: 20px;
+        }
+        /*--余白調整--*/
+        .content_wrap article{
+            width:90%;
+            margin: 50px auto!important;
+        }
+        /*--SP_main--*/
+        #main_vis_gdcs .parent{
+            padding-top: 0px;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-flex-direction: column;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            justify-content: center;
+            height: 100%;
+        }
+        .main_intro{
+            text-align: center;
+            padding: 15% 0;
+            width:100%;
+        }
+        .main_intro h2{
+            margin-top: 50px;
+            font-size: 1.5rem;
+            font-weight: 100;
+        }
+        .main_facade{
+            width: 100%;
+        }
+        .main_facade img{
+            width: 100%;
+        }
+        /*--SP_Concept--*/
+        #gdcs_concept{
+            padding-top: 20px;
+        }
+        #gdcs_concept .parent{
+            display: -webkit-flex;
+            display: flex;
+            -webkit-flex-direction: column;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            justify-content: center;
+        }
+        .concept_txt{
+            width: 100%;
+            text-align: left;
+            margin-bottom: 10%;
+        }
+        .concept_txt p{
+            padding-top:0;
+            line-height: 2;
+        }
+        .concept_pic{
+            background-image: url(../img/common/concept_img1.jpg)!important;
+            background-repeat: no-repeat;
+            width: 100%;
+            min-height: 200px;
+            max-height: 300px;
+            background-size: 180%;
+            background-position-x: 50%;
+            background-position-y: 70%;
+            box-shadow: 0px 4px 6px rgba(137,120,86,.45);
+
+        }
+        /*--SP_CINEMA--*/
+        #gdcs_cinema{
+            padding-top: 20px; 
+        }
+        #gdcs_cinema .parent{
+            display: -webkit-flex;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            width:100%;
+        }
+        #gdcs_cinema .parent a{
+            text-decoration: none!important;
+            display: block;
+        }
+        .tumb{
+            width:47% ;
+            padding: 3% .5%;
+        }
+        .tumb .tumb_txt{
+            margin-top: 10px;
+            line-height: 1.3;
+        }
+
+        .tumb .cinema_01{
+            background-image: url(../img/common/cinema01.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-x: 50%;
+            background-position-y: 50%;
+            min-height: 250px;
+            max-height: 250px;
+        }
+        .tumb .cinema_02{
+            background-image: url(../img/common/cinema02.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-x: 50%;
+            background-position-y: 50%;
+            min-height: 250px;
+            max-height: 250px;
+        }
+        .tumb .cinema_03{
+            background-image: url(../img/common/cinema03.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-x: 60%;
+            background-position-y: 50%;
+            min-height: 250px;
+            max-height: 250px;
+        }
+        .tumb .cinema_04{
+            background-image: url(../img/common/cinema04.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: 210% auto;
+            background-position-x: 50%;
+            background-position-y: 17%;
+            min-height: 250px;
+            max-height: 250px;
+        }
+        .tumb .cinema_05{
+            background-image: url(../img/common/cinema05.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-x: 10%;
+            background-position-y: 50%;
+            min-height: 250px;
+            max-height: 250px;
+        }
+        /*--SP_INTERIOR--*/
+        #gdcs_interior{
+            padding-top: 20px; 
+        }
+        #gdcs_interior .parent{
+            display: -webkit-flex;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            width:100%;
+        }
+        #gdcs_interior .parent a{
+            text-decoration: none!important;
+            display: block;
+        }
+        .tumb{
+            width:47% ;
+            padding: 3% .5%;
+        }
+        .tumb .tumb_txt{
+            margin-top: 10px;
+            line-height: 1.3;
+        }
+
+        .tumb .interior_01{
+            background-image: url(../img/common/interior01.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-x: 55%;
+            background-position-y: 50%;
+            min-height: 250px;
+            max-height: 250px;
+        }
+        .tumb .interior_02{
+            background-image: url(../img/common/interior02.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-x: 90%;
+            background-position-y: 50%;
+            min-height: 250px;
+            max-height: 250px;
+        }
+        .tumb .interior_03{
+            background-image: url(../img/common/interior03.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-x: 50%;
+            background-position-y: 50%;
+            min-height: 250px;
+            max-height: 250px;
+        }
+        .tumb .interior_04{
+            background-image: url(../img/common/interior04.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-x: 70%;
+            background-position-y: 35%;
+            min-height: 250px;
+            max-height: 250px;
+        }
+        .tumb .interior_05{
+            background-image: url(../img/common/interior05.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-x: 100%;
+            background-position-y: 50%;
+            min-height: 250px;
+            max-height: 250px;
+        }
+        /*--SP_FOOD--*/
+        #gdcs_food{
+            padding-top: 20px; 
+        }
+        #gdcs_food .parent{
+            display: -webkit-flex;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            width:100%;
+        }
+        #gdcs_food .parent a{
+            text-decoration: none!important;
+            display: block;
+        }
+        .tumb{
+            width:47% ;
+            padding: 3% .5%;
+        }
+        .tumb .tumb_txt{
+            margin-top: 10px;
+            line-height: 1.3;
+        }
+
+        .tumb .food_01{
+            background-image: url(../img/common/food01.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-x: 22%;
+            background-position-y: 50%;
+            min-height: 250px;
+            max-height: 250px;
+        }
+        .tumb .food_02{
+            background-image: url(../img/common/food02.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-x: 65%;
+            background-position-y: 50%;
+            min-height: 250px;
+            max-height: 250px;
+        }
+        .tumb .food_03{
+            background-image: url(../img/common/food03.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: 300% auto;
+            background-position-x: 50%;
+            background-position-y: 10%;
+            min-height: 250px;
+            max-height: 250px;
+        }
+        .tumb .food_04{
+            background-image: url(../img/common/food04.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-x: 50%;
+            background-position-y: 35%;
+            min-height: 250px;
+            max-height: 250px;
+        }
+        /*--SP_Link--*/
+        #gdcs_link{
+            padding-top: 20px;
+        }
+        #gdcs_link .parent{
+            display: -webkit-flex;
+            display: flex;
+            -webkit-flex-direction: column;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            justify-content: center;
+        }
+        .link_txt{
+            width: 100%;
+            text-align: center;
+            margin: 10% 0;
+        }
+        .link_txt h4{
+            font-size: 1.5rem;
+        }
+        .link_txt p{
+            padding:5% 0;
+            line-height: 2;
+        }
+        .link_pic{
+            background-image: url(../img/common/link_img1.jpg)!important;
+            background-repeat: no-repeat;
+            width: 100%;
+            min-height: 260px;
+            max-height: 300px;
+            background-size: 150%;
+            background-position-x: 50%;
+            background-position-y: 35%;
+            box-shadow: 0px 4px 6px rgba(137,120,86,.45);
+
+        }
+        /*------Modal------*/
+
+        .modal__content{
+            text-align: center;
+            padding: 3%;
+        }
+        /*--タイトル--*/
+        .modal_tit{
+            margin-bottom: 3%;
+        }
+        .modal_tit h3{
+            margin-bottom:10px;
+            font-size: 1.5rem;
+            color: #a57a44;
+            font-weight: 100;
+            line-height: 1.5;
+        }
+        .modal_tit p{
+            font-size: .8rem;
+            color: #a57a44;
+        }
+        .modal_tit img{
+            width:100%;
+        }
+        /*--モーダルタイトル--*/
+        .imaxgt_logo{
+            width:120px;
+            display: inline-block;
+        }
+        .fordxwscx_logo{
+            width:80px;
+            display: inline-block;
+        }
+        .bestia_logo{
+            width:150px;
+            display: inline-block;
+        }
+        .cd_logo{
+            width:100px;
+            display: inline-block;
+        }
+        .bp_logo{
+            width:140px;
+            display: inline-block;
+        }
+        /*--モーダルメイン画像--*/
+        .modal_vis{
+            width: 100%;
+            margin-bottom:10%; 
+        }
+        .mod_main_vis{
+            width: 100%;
+        }
+        .mod_sub_vis{
+            width: 100%;
+            display: -webkit-flex;
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            height: 100%;
+
+        }
+        .modal_vis .parent{
+            padding-top: 0px;
+            /*display: -webkit-flex;
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: space-between;*/
+            height: 100%;
+        }
+        #cinema04 .modal_vis .parent{
+            display: -webkit-flex;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            height: 100%;
+        }
+        #food03 .modal_vis .parent{
+            display: -webkit-flex;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            height: 100%;
+        }
+        #food04 .modal_vis .parent{
+            display: -webkit-flex;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            height: 100%;
+        }
+        .cinema_modalvis01{
+            background-image: url(../img/common/cinema01.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-x: 50%;
+            background-position-y: 60%;
+            min-height:180px;
+            max-height: 200px;
+            margin-bottom: 10px;
+        }
+        .cinema_modalvis02{
+            background-image: url(../img/common/modal02.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-x: 50%;
+            background-position-y: 60%;
+            min-height:100px;
+            max-height: 100px; 
+            width: calc(50% - 5px);
+        }
+        .cinema_modalvis03{
+            background-image: url(../img/common/modal03.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-x: 50%;
+            background-position-y: 10%;
+            min-height:100px;
+            max-height: 100px;
+            width: calc(50% - 5px);
+        }
+        .cinema_modalvis04{
+            background-image: url(../img/common/cinema02.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-x: 50%;
+            background-position-y: 60%;
+            min-height:180px;
+            max-height: 200px;
+        }
+        .cinema_modalvis05{
+            background-image: url(../img/common/cinema03.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-x: 50%;
+            background-position-y: 60%;
+            min-height:180px;
+            max-height: 200px;
+        }
+        .cinema_modalvis06{
+            background-image: url(../img/common/cinema04.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position-x: 50%;
+            background-position-y: 60%;
+            min-height:180px;
+            max-height: 200px;
+            width: calc(50% - 5px);
+            background-color: #fff;
+            margin-bottom: 10px;
+        }
+        .cinema_modalvis07{
+            background-image: url(../img/common/modal04.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position-x: 50%;
+            background-position-y: 60%;
+            min-height:180px;
+            max-height: 200px;
+            width: calc(50% - 5px);
+            background-color: #fff;
+            margin-bottom: 10px;
+        }
+        .cinema_modalvis08{
+            background-image: url(../img/common/modal05.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position-x: 50%;
+            background-position-y: 60%;
+            min-height:180px;
+            max-height: 200px;
+            width: calc(50% - 5px);
+            background-color: #fff;
+        }
+        .cinema_modalvis09{
+            background-image: url(../img/common/modal06.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position-x: 50%;
+            background-position-y: 60%;
+            min-height:180px;
+            max-height: 200px;
+            width: calc(50% - 5px);
+            background-color: #fff;
+        }
+        .cinema_modalvis10{
+            background-image: url(../img/common/modal07.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: 315% auto;
+            background-position-x: 60%;
+            background-position-y: 51%;
+            min-height:180px;
+            max-height: 200px;
+        }
+        .food_modalvis01{
+            background-image: url(../img/common/modal09.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: 160% auto;
+            background-position-x: 40%;
+            background-position-y: 60%;
+            min-height:180px;
+            max-height: 200px;
+            margin-bottom: 10px;
+        }
+        .food_modalvis02{
+            background-image: url(../img/common/food01.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-x: 50%;
+            background-position-y: 60%;
+            min-height:100px;
+            max-height: 100px; 
+            width: calc(50% - 5px);
+        }
+        .food_modalvis03{
+            background-image: url(../img/common/modal11.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-x: 50%;
+            background-position-y: 10%;
+            min-height:100px;
+            max-height: 100px;
+            width: calc(50% - 5px);
+        }
+        .food_modalvis04{
+            background-image: url(../img/common/modal10.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: 190% auto;
+            background-position-x: 78%;
+            background-position-y: 70%;
+            min-height:180px;
+            max-height: 200px;
+            margin-bottom: 10px;
+        }
+        .food_modalvis05{
+            background-image: url(../img/common/food02.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-x: 50%;
+            background-position-y: 60%;
+            min-height:100px;
+            max-height: 100px; 
+            width: calc(50% - 5px);
+        }
+        .food_modalvis06{
+            background-image: url(../img/common/modal12.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-x: 50%;
+            background-position-y: 10%;
+            min-height:100px;
+            max-height: 100px;
+            width: calc(50% - 5px);
+        }
+        .food_modalvis07{
+            background-image: url(../img/common/modal13.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: 290% auto;
+            background-position-x: 65%;
+            background-position-y: 50%;
+            min-height:180px;
+            max-height: 200px;
+            width: 32%;
+        }
+        .food_modalvis08{
+            background-image: url(../img/common/food03.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: 320% auto;
+            background-position-x: 50%;
+            background-position-y: 20%;
+            min-height:180px;
+            max-height: 200px; 
+            width: 32%;
+        }
+        .food_modalvis09{
+            background-image: url(../img/common/modal14.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: 290% auto;
+            background-position-x: 32%;
+            background-position-y: 39%;
+            min-height:180px;
+            max-height: 200px;
+            width: 32%;
+        }
+        .food_modalvis10{
+            background-image: url(../img/common/food04.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: 280% auto;
+            background-position-x: 48%;
+            background-position-y: 60%;
+            min-height:180px;
+            max-height: 200px;
+            width: calc(50% - 5px);
+            background-color: #fff;
+            margin-bottom: 10px;
+        }
+        .food_modalvis11{
+            background-image: url(../img/common/modal16.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: 200% auto;
+            background-position-x: 45%;
+            background-position-y: 35%;
+            min-height:180px;
+            max-height: 200px;
+            width: calc(50% - 5px);
+            background-color: #fff;
+            margin-bottom: 10px;
+        }
+        .food_modalvis12{
+            background-image: url(../img/common/modal15.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: 300% auto;
+            background-position-x: 26%;
+            background-position-y: 40%;
+            min-height:180px;
+            max-height: 200px;
+            width: calc(50% - 5px);
+            background-color: #fff;
+        }
+        .food_modalvis13{
+            background-image: url(../img/common/modal17.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: 300% auto;
+            background-position-x: 29%;
+            background-position-y: 14%;
+            min-height:180px;
+            max-height: 200px;
+            width: calc(50% - 5px);
+            background-color: #fff;
+        }
+        .interior_modalvis01{
+            background-image: url(../img/common/interior01.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-x: 50%;
+            background-position-y: 60%;
+            min-height:180px;
+            max-height: 200px;
+            margin-bottom: 10px;
+        }
+        .interior_modalvis02{
+            background-image: url(../img/common/modal08.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-x: 50%;
+            background-position-y: 60%;
+            min-height:100px;
+            max-height: 100px; 
+            width: calc(50% - 5px);
+        }
+        .interior_modalvis03{
+            background-image: url(../img/common/cinema01.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-x: 50%;
+            background-position-y: 60%;
+            min-height:100px;
+            max-height: 100px;
+            width: calc(50% - 5px);
+        }
+        .interior_modalvis04{
+            background-image: url(../img/common/interior02.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-x: 50%;
+            background-position-y: 60%;
+            min-height:180px;
+            max-height: 200px;
+        }
+        .interior_modalvis05{
+            background-image: url(../img/common/interior03.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-x: 50%;
+            background-position-y: 60%;
+            min-height:180px;
+            max-height: 200px;
+        }
+        .interior_modalvis06{
+            background-image: url(../img/common/interior04.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-x: 50%;
+            background-position-y: 60%;
+            min-height:180px;
+            max-height: 200px;
+        }
+        .interior_modalvis07{
+            background-image: url(../img/common/interior05.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-x: 50%;
+            background-position-y: 60%;
+            min-height:180px;
+            max-height: 200px;
+        }
+        /*--モーダルテキスト--*/
+        .modal_txt{
+            margin-bottom: 10%;
+        }
+        .modal_txt .modal_sub_tit{
+            font-size: 1.5rem;
+            margin-bottom: 5%;
+            line-height: 1.5;
+        }
+        .modal_txt .modal_inner_txt{
+            font-size: .9rem;
+            line-height: 1.8;
+            text-align: left;
+            margin-bottom: 5%;
+            word-break: break-all;
+        }
+        .modal_txt .note{
+            font-size: .5rem;
+            text-align: left;
+            line-height: 1.5;
+        }
+    }
