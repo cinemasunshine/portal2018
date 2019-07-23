@@ -148,16 +148,15 @@
         #shop_clapper .shop_main{
             background-image: url(../img/common/clappers.jpg);
             background-size: cover;
-            background-position-x: 47%;
-            background-position-y: 60%;
+            background-position: center;
             width: 100%;
             height: 300px;
         }
         #shop_panorama .shop_main{
             background-image: url(../img/common/panorama.jpg);
             background-size: cover;
-            background-position-x: 70%;
-            background-position-y: 70%;
+            background-position: center;
+            background-position-y: 60%;
             width: 100%;
             height: 300px;
         }
@@ -289,12 +288,14 @@
         #shop_clapper .shop_main{
             background-image: url(../img/common/clappers.jpg);
             background-size: cover;
+            background-position: center;
             width: 100%;
             height: 180px;
         }
         #shop_panorama .shop_main{
             background-image: url(../img/common/panorama.jpg);
             background-size: cover;
+            background-position: center;
             width: 100%;
             height: 180px;
         }
