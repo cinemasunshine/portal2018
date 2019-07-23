@@ -1,0 +1,331 @@
+    @charset "utf-8";
+
+
+    /* webフォント*/
+        @import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,500,700&display=swap');
+        @import url('https://fonts.googleapis.com/css?family=Lato:400,700,900&display=swap');
+
+
+    html{
+        font-family: 'Noto Sans JP', sans-serif;
+        color: #494949;
+        font-weight: 100;
+    }
+    .gold{
+        color: #a57a44;
+    }
+    /*--txt--*/
+    .title_eng_t{
+        font-family: 'Lato', sans-serif;
+        font-weight: 100;
+    }
+    .title_eng_l{
+        font-family: 'Lato', sans-serif;
+        font-weight: 300;
+    }
+    .title_eng_r{
+        font-family: 'Lato', sans-serif;
+        font-weight: 400;
+    }
+    .title_eng_b{
+        font-family: 'Lato', sans-serif;
+        font-weight: 700;
+    }
+    .title_eng_blk{
+        font-family: 'Lato', sans-serif;
+        font-weight: 900;
+    }
+    .content_inner .content_txt{
+        line-height: 1.6;
+    }
+    h5 sup{
+        font-size: 10px;
+        vertical-align: top;
+    }
+    p sup{
+        font-size: 10px;
+        vertical-align: top;
+    }
+    /*--main--*/
+
+    #main_vis .content_wrap h1{
+        margin-bottom: 60px;
+    }
+    #main_vis .content_wrap{
+        text-align: center;
+    }
+    .content_wrap{
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 100px 0px;
+    }
+    .content_wrap h3 img{
+        width: 100%;
+    }
+    #shop_clapper{
+        width: 100%;
+        background-color: #f6f4ed;
+        position: relative;
+    }
+    #shop_panorama{
+        width: 100%;
+        background-color: #000;
+        position: relative;
+    }
+    #footer_wrap{
+        width: 100%;
+        background-color:#181b1c;
+        text-align: center;
+    }
+    .floor_num{
+        background-color: #a57a44;
+        color: #fff;
+        width: 100px;
+        text-align: center;
+        padding: 30px 0px;
+        display: inline-block;
+        font-size: 30px;
+        position: absolute;
+        top:0;
+    }
+    .shop_main{
+        margin-bottom: 20px;
+    }
+    .note{
+        color:#5f5f5f;
+        display: block;
+        font-size: 11px;
+    }
+    /*--Flex制御--*/
+    @media (min-width: 768px) {
+        .pc_br{
+            display: block;
+        }
+        .sp_br{
+            display: none;
+        }
+        /*--Flex制御--*/
+        .pc_flex_nowrp_row_mdno{
+            display: -webkit-flex;
+            display: flex;
+            -webkit-flex-direction: row;
+            flex-direction: row;
+            -webkit-flex-wrap: nowrap;
+            flex-wrap: nowrap;
+            justify-content: center;
+        }
+        .pc_flex_nowrp_row_mdno_sb{
+            display: -webkit-flex;
+            display: flex;
+            -webkit-flex-direction: row;
+            flex-direction: row;
+            -webkit-flex-wrap: nowrap;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+        }
+        /*--title--*/
+        .content_wrap h3{
+            margin-right:20px; 
+        }
+        .shop_name{
+            margin: 20px 0; 
+        }
+        #shop_clapper .shop_name p{
+            display: inline-block;
+            padding-top:25px;
+        }
+        #shop_panorama .shop_name p{
+            display: inline-block;
+            padding-top:10px;
+        }
+        #shop_clapper h3{
+            width: 100px;
+        }
+        #shop_panorama h3{
+            width: 140px;
+        }
+        /*--main--*/
+        #shop_clapper .shop_main{
+            background-image: url(../img/common/clappers.jpg);
+            background-size: cover;
+            background-position-x: 47%;
+            background-position-y: 60%;
+            width: 100%;
+            height: 300px;
+        }
+        #shop_panorama .shop_main{
+            background-image: url(../img/common/panorama.jpg);
+            background-size: cover;
+            background-position-x: 70%;
+            background-position-y: 70%;
+            width: 100%;
+            height: 300px;
+        }
+        /*--intro--*/
+        .intro_txt{
+            width: 70%;
+            line-height: 1.7;
+            padding-top: 60px;
+        }
+        #shop_clapper .intro_pic{
+            background-image: url(../img/common/clappers_1.jpg);
+            background-size: cover;
+            background-position-x: 70%;
+            background-position-y: 0%;
+            height: 180px;
+            width: 30%;
+        }
+        #shop_panorama .intro_pic{
+            background-image: url(../img/common/panorama1.jpg);
+            background-size: cover;
+            background-position-x: 70%;
+            background-position-y: 0%;
+            height: 180px;
+            width: 30%;
+        }
+        .meal_link_btn{
+            background-color: #a57a44;
+            padding: 20px;
+            width: 300px;
+            margin: 50px 0px 100px;
+            color: #fff;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .meal_link_btn:hover{
+            opacity: 0.5;
+        }
+
+    }
+    @media (max-width: 767px) {
+        #main_vis .content_wrap h1{
+            width: 120px;
+            margin: 0px auto 60px;
+        }
+        #main_vis .content_wrap h1 img{
+            width: 100%;
+        }
+        .copy{
+            font-size: 15px;
+            line-height: 1.9;
+        }
+        .pc_br{
+            display: none;
+        }
+        .sp_br{
+            display: block;
+        }
+        .floor_num{
+            background-color: #a57a44;
+            color: #fff;
+            width: 80px;
+            text-align: center;
+            padding: 20px 0px;
+            display: inline-block;
+            font-size: 20px;
+            position: absolute;
+            top:0;
+            left: 0;
+        }
+        #main_vis .content_wrap{
+            text-align: center;
+        }
+        .content_wrap{
+            max-width: 90%;
+            margin: 0 auto;
+            padding: 60px 0px;
+            text-align: center;
+
+        }
+        /*--title--*/
+        .content_wrap h3{
+            margin-right:20px; 
+        }
+        .shop_name{
+            margin: 20px 0; 
+            display: inline-block;
+        }
+        #shop_clapper .shop_name p{
+            display: inline-block;
+            padding-top:25px;
+        }
+        #shop_panorama .shop_name p{
+            display: inline-block;
+            padding-top:10px;
+        }
+        #shop_clapper h3{
+            width: 100px;
+            display: inline-block;
+            margin: 0 auto;
+        }
+        #shop_panorama h3{
+            width: 140px;
+            display: inline-block;
+            margin: 0 auto;
+        }
+        /*--Flex制御--*/
+        .pc_flex_nowrp_row_mdno{
+            display: -webkit-flex;
+            display: flex;
+            -webkit-flex-direction: column;
+            flex-direction: column;
+            -webkit-flex-wrap: wrap;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .pc_flex_nowrp_row_mdno_sb{
+            display: -webkit-flex;
+            display: flex;
+            -webkit-flex-direction: column;
+            flex-direction: column;
+            -webkit-flex-wrap: wrap;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        /*--main--*/
+        .shop_main{
+            margin-bottom: 0px;
+        }
+        #shop_clapper .shop_main{
+            background-image: url(../img/common/clappers.jpg);
+            background-size: cover;
+            width: 100%;
+            height: 180px;
+        }
+        #shop_panorama .shop_main{
+            background-image: url(../img/common/panorama.jpg);
+            background-size: cover;
+            width: 100%;
+            height: 180px;
+        }
+        /*--intro--*/
+        .intro_txt{
+            width: 100%;
+            line-height: 1.7;
+            padding:20px 0px 30px;
+            text-align: left;
+        }
+        #shop_clapper .intro_pic{
+            background-image: url(../img/common/clappers_1.jpg);
+            background-size: cover;
+            background-position-y: 50%;
+            height: 150px;
+            width: 80%;
+        }
+        #shop_panorama .intro_pic{
+            background-image: url(../img/common/panorama1.jpg);
+            background-size: cover;
+            background-position-y: 50%;
+            height: 150px;
+            width: 80%;
+        }
+        .meal_link_btn{
+            background-color: #a57a44;
+            padding: 20px;
+            width: 80%;
+            margin: 50px 0px 100px;
+            color: #fff;
+            text-decoration: none;
+            display: inline-block;
+        }
+    }
