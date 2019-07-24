@@ -40,11 +40,8 @@
 
     }
     /*--intro--*/
-    #gdcs_intro{
-        
-    }
     .gdcs_intro_inner{
-        margin: 80px 0px;
+        margin: 80px 0px 40px;
     }
     .intro_copy{
         letter-spacing: 2px;
@@ -176,7 +173,36 @@
         background-image: url(../img/allow_next.svg)!important;
     }
     @media (min-width: 768px) {
-        
+        /*--linkarea--*/
+        #gdcs_intro .link_area{
+            text-align: center;
+            margin-bottom: 80px;
+        }
+        #sns_wrap .link_area{
+            text-align: center;
+            margin: 80px 0 0px;
+        }
+        .link_btn{
+            background-color: #a57a44;
+            color: #fff;
+            text-decoration: none;
+            padding: 20px 40px;
+            display: inline-block;
+        }
+        .foot_link .link_btn{
+            background-color: #a57a44;
+            color: #fff;
+            text-decoration: none;
+            padding: 20px 100px;
+            display: inline-block;
+        }
+        .map_info .link_btn{
+            background-color: #a57a44;
+            color: #fff;
+            text-decoration: none;
+            padding: 20px 40px;
+            display: inline-block;
+        }
         .note{
             font-size: 10px;
         }
@@ -196,11 +222,11 @@
         }
         /*--main--*/
         #gdcs_main_vis .main_inner{
-            width: 250px;
+            width: 350px;
             height: 440px;
             position: absolute;
             left: 50%;
-            margin-left: -125px;
+            margin-left: -175px;
             top: 50%;
             margin-top: -220px;
         }
@@ -409,7 +435,7 @@
         }
         
         .map_info_detail{
-            margin-top: 10px;
+            margin: 10px 0px 20px;
         }
         .map_image{
             max-width: 1018px;
@@ -450,6 +476,40 @@
 
     }
     @media (max-width: 767px) {
+        /*--linkarea--*/
+        #gdcs_intro .link_area{
+            text-align: center;
+            margin-bottom: 80px;
+        }
+        #map_wrap .link_area{
+            text-align: center;
+            margin-top: 40px;
+        }
+        #sns_wrap .link_area{
+            text-align: center;
+            margin: 80px 0 0px;
+        }
+        .link_btn{
+            background-color: #a57a44;
+            color: #fff;
+            text-decoration: none;
+            padding: 20px 40px;
+            display: inline-block;
+        }
+        .foot_link .link_btn{
+            background-color: #a57a44;
+            color: #fff;
+            text-decoration: none;
+            padding: 20px 100px;
+            display: inline-block;
+        }
+        .map_info .link_btn{
+            background-color: #a57a44;
+            color: #fff;
+            text-decoration: none;
+            padding: 20px 40px;
+            display: inline-block;
+        }     
         .mb_40{
           margin-bottom: 40px;  
         }
@@ -476,11 +536,11 @@
             background-position: center ;
         }
         #gdcs_main_vis .main_inner{
-            width: 250px;
+            width: 320px;
             height: 440px;
             position: absolute;
             left: 50%;
-            margin-left: -125px;
+            margin-left: -160px;
             top: 50%;
             margin-top: -220px;
             
