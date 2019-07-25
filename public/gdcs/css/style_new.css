@@ -79,7 +79,7 @@
     /*--footer--*/
     .footer_inner{
         overflow: hidden;
-        padding: 100px;
+        padding:160px 100px;
         text-align: center;
     }
     .footer_logo{
