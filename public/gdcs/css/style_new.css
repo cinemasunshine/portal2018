@@ -953,7 +953,7 @@
         }
         /*--SP_Concept--*/
         #gdcs_concept{
-            padding-top: 20px;
+            padding-top: 0px;
         }
         #gdcs_concept .parent{
             display: -webkit-flex;
