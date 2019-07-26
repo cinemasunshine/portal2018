@@ -79,7 +79,7 @@
     /*--footer--*/
     .footer_inner{
         overflow: hidden;
-        padding: 100px;
+        padding:160px 100px;
         text-align: center;
     }
     .footer_logo{
@@ -200,9 +200,9 @@
             width: 45%;
             min-height: 380px;
             max-height: 400px;
-            background-size: 220%;
-            background-position-x: 47%;
-            background-position-y: 50%;
+            background-size: 180%;
+            background-position-x: 54%;
+            background-position-y: 45%;
             box-shadow: 4px 6px 6px rgba(137,120,86,.45);
     
         }
@@ -240,7 +240,7 @@
             max-height: 400px;
         }
         .tumb .cinema_02{
-            background-image: url(../img/common/cinema02.jpg)!important;
+            background-image: url(../img/common/modal18.jpg)!important;
             background-repeat: no-repeat;
             background-size: cover;
             background-position-x: 50%;
@@ -249,10 +249,10 @@
             max-height: 400px;
         }
         .tumb .cinema_03{
-            background-image: url(../img/common/cinema03.jpg)!important;
+            background-image: url(../img/common/modal22.jpg)!important;
             background-repeat: no-repeat;
             background-size: cover;
-            background-position-x: 60%;
+            background-position-x: 25%;
             background-position-y: 50%;
             min-height: 400px;
             max-height: 400px;
@@ -300,46 +300,46 @@
         }
 
         .tumb .interior_01{
-            background-image: url(../img/common/interior01.jpg)!important;
+            background-image: url(../img/common/modal25.jpg)!important;
             background-repeat: no-repeat;
             background-size: cover;
-            background-position-x: 80%;
+            background-position-x: 58%;
             background-position-y: 50%;
             min-height: 400px;
             max-height: 400px;
         }
         .tumb .interior_02{
-            background-image: url(../img/common/interior02.jpg)!important;
+            background-image: url(../img/common/modal26.jpg)!important;
             background-repeat: no-repeat;
             background-size: cover;
-            background-position-x: 100%;
+            background-position-x: 64%;
             background-position-y: 50%;
             min-height: 400px;
             max-height: 400px;
         }
         .tumb .interior_03{
-            background-image: url(../img/common/interior03.jpg)!important;
+            background-image: url(../img/common/modal27.jpg)!important;
             background-repeat: no-repeat;
             background-size: cover;
-            background-position-x: 40%;
+            background-position-x: 38%;
             background-position-y: 50%;
             min-height: 400px;
             max-height: 400px;
         }
         .tumb .interior_04{
-            background-image: url(../img/common/interior04.jpg)!important;
+            background-image: url(../img/common/modal28.jpg)!important;
             background-repeat: no-repeat;
             background-size: cover;
-            background-position-x: 65%;
+            background-position-x: 77%;
             background-position-y: 35%;
             min-height: 400px;
             max-height: 400px;
         }
         .tumb .interior_05{
-            background-image: url(../img/common/interior05.jpg)!important;
+            background-image: url(../img/common/modal29.jpg)!important;
             background-repeat: no-repeat;
             background-size: cover;
-            background-position-x: 100%;
+            background-position-x: 38%;
             background-position-y: 50%;
             min-height: 400px;
             max-height: 400px;
@@ -523,9 +523,9 @@
         .cinema_modalvis02{
             background-image: url(../img/common/modal02.jpg)!important;
             background-repeat: no-repeat;
-            background-size: cover;
-            background-position-x: 50%;
-            background-position-y: 60%;
+            background-size: 120%;
+            background-position-x: 20%;
+            background-position-y: 70%;
             min-height:150px;
             max-height: 150px; 
             margin-bottom: 10px;
@@ -533,29 +533,31 @@
         .cinema_modalvis03{
             background-image: url(../img/common/modal03.jpg)!important;
             background-repeat: no-repeat;
-            background-size: cover;
-            background-position-x: 50%;
-            background-position-y: 60%;
+            background-size: 130%;
+            background-position-x: 40%;
+            background-position-y: 45%;
             min-height:150px;
             max-height: 150px;
         }
         .cinema_modalvis04{
-            background-image: url(../img/common/cinema02.jpg)!important;
+            background-image: url(../img/common/modal18.jpg)!important;
             background-repeat: no-repeat;
             background-size: cover;
             background-position-x: 50%;
             background-position-y: 60%;
             min-height:300px;
             max-height: 350px;
+            width: calc(70% - 10px);
         }
         .cinema_modalvis05{
-            background-image: url(../img/common/cinema03.jpg)!important;
+            background-image: url(../img/common/modal22.jpg)!important;
             background-repeat: no-repeat;
             background-size: cover;
             background-position-x: 50%;
             background-position-y: 60%;
             min-height:300px;
             max-height: 350px;
+            width: calc(50% - 5px);
         }
         .cinema_modalvis06{
             background-image: url(../img/common/cinema04.jpg)!important;
@@ -610,18 +612,47 @@
             min-height:300px;
             max-height: 350px;
         }
-        .interior_modalvis01{
-            background-image: url(../img/common/interior01.jpg)!important;
+        .cinema_modalvis11{
+            background-image: url(../img/common/modal19.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: 110% auto;
+            background-position-x: 80%;
+            background-position-y: 80%;
+            min-height:150px;
+            max-height: 150px; 
+            margin-bottom: 10px;
+        }
+        .cinema_modalvis12{
+            background-image: url(../img/common/modal20.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: 100% auto;
+            background-position-x: 54%;
+            background-position-y: 77%;
+            min-height:150px;
+            max-height: 150px;
+        }
+        .cinema_modalvis13{
+            background-image: url(../img/common/modal21.jpg)!important;
             background-repeat: no-repeat;
             background-size: cover;
             background-position-x: 50%;
             background-position-y: 60%;
             min-height:300px;
             max-height: 350px;
+            width: calc(50% - 5px);
+        }
+        .interior_modalvis01{
+            background-image: url(../img/common/modal23.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-x: 50%;
+            background-position-y: 70%;
+            min-height:300px;
+            max-height: 350px;
             width: calc(70% - 10px);
         }
         .interior_modalvis02{
-            background-image: url(../img/common/modal08.jpg)!important;
+            background-image: url(../img/common/modal24.jpg)!important;
             background-repeat: no-repeat;
             background-size: cover;
             background-position-x: 50%;
@@ -631,34 +662,34 @@
             margin-bottom: 10px;
         }
         .interior_modalvis03{
-            background-image: url(../img/common/cinema01.jpg)!important;
+            background-image: url(../img/common/modal25.jpg)!important;
             background-repeat: no-repeat;
             background-size: cover;
             background-position-x: 50%;
-            background-position-y: 60%;
+            background-position-y: 10%;
             min-height:150px;
             max-height: 150px;
         }
         .interior_modalvis04{
-            background-image: url(../img/common/interior02.jpg)!important;
+            background-image: url(../img/common/modal26.jpg)!important;
             background-repeat: no-repeat;
             background-size: cover;
             background-position-x: 50%;
-            background-position-y: 60%;
+            background-position-y: 35%;
             min-height:300px;
             max-height: 350px;
         }
         .interior_modalvis05{
-            background-image: url(../img/common/interior03.jpg)!important;
+            background-image: url(../img/common/modal27.jpg)!important;
             background-repeat: no-repeat;
             background-size: cover;
             background-position-x: 50%;
-            background-position-y: 60%;
+            background-position-y: 15%;
             min-height:300px;
             max-height: 350px;
         }
         .interior_modalvis06{
-            background-image: url(../img/common/interior04.jpg)!important;
+            background-image: url(../img/common/modal28.jpg)!important;
             background-repeat: no-repeat;
             background-size: cover;
             background-position-x: 50%;
@@ -667,20 +698,40 @@
             max-height: 350px;
         }
         .interior_modalvis07{
-            background-image: url(../img/common/interior05.jpg)!important;
+            background-image: url(../img/common/modal29.jpg)!important;
             background-repeat: no-repeat;
             background-size: cover;
             background-position-x: 50%;
-            background-position-y: 60%;
+            background-position-y: 35%;
             min-height:300px;
             max-height: 350px;
+            width: calc(70% - 10px);
+        }
+        .interior_modalvis08{
+            background-image: url(../img/common/modal30.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-x: 50%;
+            background-position-y: 25%;
+            min-height:150px;
+            max-height: 150px; 
+            margin-bottom: 10px;
+        }
+        .interior_modalvis09{
+            background-image: url(../img/common/modal31.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-x: 50%;
+            background-position-y: 15%;
+            min-height:150px;
+            max-height: 150px;
         }
         .food_modalvis01{
             background-image: url(../img/common/modal09.jpg)!important;
             background-repeat: no-repeat;
-            background-size: 160% auto;
-            background-position-x: 35%;
-            background-position-y: 60%;
+            background-size: 130% auto;
+            background-position-x: 42%;
+            background-position-y: 30%;
             min-height:300px;
             max-height: 350px;
             width: calc(70% - 10px);
@@ -707,9 +758,9 @@
         .food_modalvis04{
             background-image: url(../img/common/modal10.jpg)!important;
             background-repeat: no-repeat;
-            background-size: 160% auto;
-            background-position-x: 70%;
-            background-position-y: 70%;
+            background-size: 125% auto;
+            background-position-x: 50%;
+            background-position-y: 36%;
             min-height:300px;
             max-height: 350px;
             width: calc(70% - 10px);
@@ -902,7 +953,7 @@
         }
         /*--SP_Concept--*/
         #gdcs_concept{
-            padding-top: 20px;
+            padding-top: 0px;
         }
         #gdcs_concept .parent{
             display: -webkit-flex;
@@ -925,11 +976,11 @@
             background-image: url(../img/common/concept_img1.jpg)!important;
             background-repeat: no-repeat;
             width: 100%;
-            min-height: 200px;
+            min-height: 220px;
             max-height: 300px;
-            background-size: 180%;
+            background-size: 155%;
             background-position-x: 50%;
-            background-position-y: 70%;
+            background-position-y: 30%;
             box-shadow: 0px 4px 6px rgba(137,120,86,.45);
 
         }
@@ -967,7 +1018,7 @@
             max-height: 250px;
         }
         .tumb .cinema_02{
-            background-image: url(../img/common/cinema02.jpg)!important;
+            background-image: url(../img/common/modal18.jpg)!important;
             background-repeat: no-repeat;
             background-size: cover;
             background-position-x: 50%;
@@ -976,10 +1027,10 @@
             max-height: 250px;
         }
         .tumb .cinema_03{
-            background-image: url(../img/common/cinema03.jpg)!important;
+            background-image: url(../img/common/modal22.jpg)!important;
             background-repeat: no-repeat;
             background-size: cover;
-            background-position-x: 60%;
+            background-position-x: 35%;
             background-position-y: 50%;
             min-height: 250px;
             max-height: 250px;
@@ -1027,25 +1078,25 @@
         }
 
         .tumb .interior_01{
-            background-image: url(../img/common/interior01.jpg)!important;
+            background-image: url(../img/common/modal25.jpg)!important;
             background-repeat: no-repeat;
             background-size: cover;
-            background-position-x: 55%;
+            background-position-x: 40%;
             background-position-y: 50%;
             min-height: 250px;
             max-height: 250px;
         }
         .tumb .interior_02{
-            background-image: url(../img/common/interior02.jpg)!important;
+            background-image: url(../img/common/modal26.jpg)!important;
             background-repeat: no-repeat;
             background-size: cover;
-            background-position-x: 90%;
+            background-position-x: 85%;
             background-position-y: 50%;
             min-height: 250px;
             max-height: 250px;
         }
         .tumb .interior_03{
-            background-image: url(../img/common/interior03.jpg)!important;
+            background-image: url(../img/common/modal27.jpg)!important;
             background-repeat: no-repeat;
             background-size: cover;
             background-position-x: 50%;
@@ -1054,7 +1105,7 @@
             max-height: 250px;
         }
         .tumb .interior_04{
-            background-image: url(../img/common/interior04.jpg)!important;
+            background-image: url(../img/common/modal28.jpg)!important;
             background-repeat: no-repeat;
             background-size: cover;
             background-position-x: 70%;
@@ -1063,10 +1114,10 @@
             max-height: 250px;
         }
         .tumb .interior_05{
-            background-image: url(../img/common/interior05.jpg)!important;
+            background-image: url(../img/common/modal29.jpg)!important;
             background-repeat: no-repeat;
             background-size: cover;
-            background-position-x: 100%;
+            background-position-x: 47%;
             background-position-y: 50%;
             min-height: 250px;
             max-height: 250px;
@@ -1237,6 +1288,13 @@
             justify-content: space-between;*/
             height: 100%;
         }
+        #cinema03 .modal_vis .parent{
+            display: -webkit-flex;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            height: 100%;
+        }
         #cinema04 .modal_vis .parent{
             display: -webkit-flex;
             display: flex;
@@ -1271,9 +1329,9 @@
         .cinema_modalvis02{
             background-image: url(../img/common/modal02.jpg)!important;
             background-repeat: no-repeat;
-            background-size: cover;
+            background-size: 120%;
             background-position-x: 50%;
-            background-position-y: 60%;
+            background-position-y: 50%;
             min-height:100px;
             max-height: 100px; 
             width: calc(50% - 5px);
@@ -1281,30 +1339,32 @@
         .cinema_modalvis03{
             background-image: url(../img/common/modal03.jpg)!important;
             background-repeat: no-repeat;
-            background-size: cover;
+            background-size: 140%;
             background-position-x: 50%;
-            background-position-y: 10%;
+            background-position-y: 40%;
             min-height:100px;
             max-height: 100px;
             width: calc(50% - 5px);
         }
         .cinema_modalvis04{
-            background-image: url(../img/common/cinema02.jpg)!important;
+            background-image: url(../img/common/modal18.jpg)!important;
             background-repeat: no-repeat;
             background-size: cover;
             background-position-x: 50%;
             background-position-y: 60%;
             min-height:180px;
             max-height: 200px;
+            margin-bottom: 10px;
         }
         .cinema_modalvis05{
-            background-image: url(../img/common/cinema03.jpg)!important;
+            background-image: url(../img/common/modal22.jpg)!important;
             background-repeat: no-repeat;
             background-size: cover;
             background-position-x: 50%;
             background-position-y: 60%;
             min-height:180px;
             max-height: 200px;
+            width: calc(50% - 5px);
         }
         .cinema_modalvis06{
             background-image: url(../img/common/cinema04.jpg)!important;
@@ -1361,12 +1421,42 @@
             min-height:180px;
             max-height: 200px;
         }
+        .cinema_modalvis11{
+            background-image: url(../img/common/modal19.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: 120%;
+            background-position-x: 64%;
+            background-position-y: 80%;
+            min-height:100px;
+            max-height: 100px; 
+            width: calc(50% - 5px);
+        }
+        .cinema_modalvis12{
+            background-image: url(../img/common/modal20.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-x: 20%;
+            background-position-y: 55%;
+            min-height:100px;
+            max-height: 100px;
+            width: calc(50% - 5px);
+        }
+        .cinema_modalvis13{
+            background-image: url(../img/common/modal21.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-x: 15%;
+            background-position-y: 60%;
+            min-height:180px;
+            max-height: 200px;
+            width: calc(50% - 5px);
+        }
         .food_modalvis01{
             background-image: url(../img/common/modal09.jpg)!important;
             background-repeat: no-repeat;
-            background-size: 160% auto;
-            background-position-x: 40%;
-            background-position-y: 60%;
+            background-size: 145% auto;
+            background-position-x: 30%;
+            background-position-y: 30%;
             min-height:180px;
             max-height: 200px;
             margin-bottom: 10px;
@@ -1394,9 +1484,9 @@
         .food_modalvis04{
             background-image: url(../img/common/modal10.jpg)!important;
             background-repeat: no-repeat;
-            background-size: 190% auto;
-            background-position-x: 78%;
-            background-position-y: 70%;
+            background-size: 127% auto;
+            background-position-x: 50%;
+            background-position-y: 37%;
             min-height:180px;
             max-height: 200px;
             margin-bottom: 10px;
@@ -1498,7 +1588,7 @@
             background-color: #fff;
         }
         .interior_modalvis01{
-            background-image: url(../img/common/interior01.jpg)!important;
+            background-image: url(../img/common/modal23.jpg)!important;
             background-repeat: no-repeat;
             background-size: cover;
             background-position-x: 50%;
@@ -1508,7 +1598,7 @@
             margin-bottom: 10px;
         }
         .interior_modalvis02{
-            background-image: url(../img/common/modal08.jpg)!important;
+            background-image: url(../img/common/modal24.jpg)!important;
             background-repeat: no-repeat;
             background-size: cover;
             background-position-x: 50%;
@@ -1518,7 +1608,7 @@
             width: calc(50% - 5px);
         }
         .interior_modalvis03{
-            background-image: url(../img/common/cinema01.jpg)!important;
+            background-image: url(../img/common/modal25.jpg)!important;
             background-repeat: no-repeat;
             background-size: cover;
             background-position-x: 50%;
@@ -1528,40 +1618,61 @@
             width: calc(50% - 5px);
         }
         .interior_modalvis04{
-            background-image: url(../img/common/interior02.jpg)!important;
+            background-image: url(../img/common/modal26.jpg)!important;
             background-repeat: no-repeat;
             background-size: cover;
             background-position-x: 50%;
-            background-position-y: 60%;
+            background-position-y: 0%;
             min-height:180px;
             max-height: 200px;
         }
         .interior_modalvis05{
-            background-image: url(../img/common/interior03.jpg)!important;
+            background-image: url(../img/common/modal27.jpg)!important;
             background-repeat: no-repeat;
             background-size: cover;
             background-position-x: 50%;
-            background-position-y: 60%;
+            background-position-y: 0%;
             min-height:180px;
             max-height: 200px;
         }
         .interior_modalvis06{
-            background-image: url(../img/common/interior04.jpg)!important;
+            background-image: url(../img/common/modal28.jpg)!important;
             background-repeat: no-repeat;
             background-size: cover;
             background-position-x: 50%;
-            background-position-y: 60%;
+            background-position-y: 35%;
             min-height:180px;
             max-height: 200px;
         }
         .interior_modalvis07{
-            background-image: url(../img/common/interior05.jpg)!important;
+            background-image: url(../img/common/modal29.jpg)!important;
             background-repeat: no-repeat;
             background-size: cover;
             background-position-x: 50%;
-            background-position-y: 60%;
+            background-position-y: 30%;
             min-height:180px;
             max-height: 200px;
+            margin-bottom: 10px;
+        }
+        .interior_modalvis08{
+            background-image: url(../img/common/modal30.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-x: 50%;
+            background-position-y: 35%;
+            min-height:100px;
+            max-height: 100px;
+            width: calc(50% - 5px);
+        }
+        .interior_modalvis09{
+            background-image: url(../img/common/modal31.jpg)!important;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-x: 50%;
+            background-position-y: 0%;
+            min-height:100px;
+            max-height: 100px;
+            width: calc(50% - 5px);
         }
         /*--モーダルテキスト--*/
         .modal_txt{
