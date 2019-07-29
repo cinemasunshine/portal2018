@@ -20,16 +20,15 @@
             var modal = document.getElementById(target);
             $(modal).fadeIn();
             $('body').addClass('wrap_fix');
-            $('body').bind('touchmove', function(e){e.preventDefault()});
             return false;
         });
     });
     $('.js-modal-close').on('click',function(){
         $('.js-modal').fadeOut();
         $('body').removeClass('wrap_fix');
-        $('body').unbind('touchmove');
         return false;
     }); 
+    $(document).on('touchmove', '.wrap_fix', function(e){e.preventDefault()});
     });
 </script>
 <script>
