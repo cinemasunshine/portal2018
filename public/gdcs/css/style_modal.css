@@ -29,6 +29,7 @@
     }
     .wrap_fix{
         overflow: hidden;
+        height: 100%;
     }
     @media (min-width: 768px) {
         .modal__content{
