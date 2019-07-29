@@ -9,23 +9,45 @@
   <link rel="stylesheet" type="text/css" href="css/style_new.css?190719">
   <link rel="stylesheet" type="text/css" href="css/style_modal.css?190719">
   <link rel="stylesheet" type="text/css" href="css/reset.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-        $(function(){
-        $('.js-modal-open').each(function(){
-            $(this).on('click',function(){
-                var target = $(this).data('target');
-                var modal = document.getElementById(target);
-                $(modal).fadeIn();
-                return false;
-            });
-        });
-        $('.js-modal-close').on('click',function(){
-            $('.js-modal').fadeOut();
+    $(function(){
+    $('.js-modal-open').each(function(){
+        $(this).on('click',function(){
+            var target = $(this).data('target');
+            var modal = document.getElementById(target);
+            $(modal).fadeIn();
             return false;
-        }); 
         });
-    </script>
+    });
+    $('.js-modal-close').on('click',function(){
+        $('.js-modal').fadeOut();
+        return false;
+    }); 
+    });
+</script>
+<script>
+        window.onload = function() {
+    scroll_effect();
+  
+    $(window).scroll(function(){
+     scroll_effect();
+    });
+  
+    function scroll_effect(){
+     $('.effect-fade').each(function(){
+      var elemPos = $(this).offset().top;
+      var scroll = $(window).scrollTop();
+      var windowHeight = $(window).height();
+      if (scroll > elemPos - windowHeight){
+       $(this).addClass('effect-scroll');
+      }
+     });
+    }
+  };
+</script>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
         new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -43,11 +65,11 @@
     <div id="body_wrap">
         <article id="main_vis_gdcs">
         <section class="main_inner parent">
-            <div class="main_intro">
+            <div class="main_intro effect-fade">
                 <h1><img src="img/common/gdcs_logo_color.svg" alt="grand cinemasunshine"></h1>
                 <h2>映画の殿堂へ、ようこそ。</h2>
             </div>
-            <div class="main_facade">
+            <div class="main_facade effect-fade">
                 <img src="img/common/exteria_pars.png">
             </div>
         </section>
@@ -55,7 +77,7 @@
 
         <div class="content_wrap">
             <article id="gdcs_concept">
-                <div class="parent"> 
+                <div class="parent" data-aos="fade-up" data-aos-duration="1000" data-aos-easing="ease-in-out" data-aos-once="false" data-aos-mirror="true"> 
                     <div class="concept_txt">
                         <p>たいせつな友人を招くように、<br>
                             心を込めたおもてなしで映画ファンをお迎えしたい。<br>
@@ -82,31 +104,31 @@
                     <p>世界の最先端を感じるシネマ体験</p>
                 </div>
                 <div class="parent">
-                    <div class="tumb">
+                    <div class="tumb" data-aos="fade-up" data-aos-duration="600" data-aos-easing="ease-in-out" data-aos-once="false" data-aos-mirror="true">
                         <a href="#"  class="js-modal-open" data-target="cinema01">
                             <div class="tumb_img cinema_01"></div>
                             <p class="tumb_txt gold">IMAX&reg;レーザー/<br>GTテクノロジー</p>
                         </a>
                     </div>
-                    <div class="tumb">
+                    <div class="tumb" data-aos="fade-up" data-aos-delay="150" data-aos-duration="600" data-aos-easing="ease-in-out" data-aos-once="false" data-aos-mirror="true">
                         <a href=""  class="js-modal-open" data-target="cinema02">
                             <div class="tumb_img cinema_02"></div>
                             <p class="tumb_txt gold">4DX with ScreenX</p>
                         </a>
                     </div>
-                    <div class="tumb">
+                    <div class="tumb" data-aos="fade-up" data-aos-delay="300" data-aos-duration="600" data-aos-easing="ease-in-out" data-aos-once="false" data-aos-mirror="true">
                         <a href=""  class="js-modal-open" data-target="cinema03">
                             <div class="tumb_img cinema_03"></div>
                             <p class="tumb_txt gold">BESTIA</p>
                         </a>
                     </div>
-                    <div class="tumb">
+                    <div class="tumb" data-aos="fade-up" data-aos-delay="450" data-aos-duration="600" data-aos-easing="ease-in-out" data-aos-once="false" data-aos-mirror="true">
                     <a href="" class="js-modal-open" data-target="cinema04">
                             <div class="tumb_img cinema_04"></div>
                             <p class="tumb_txt gold">シート</p>
                     </a>
                     </div>
-                    <div class="tumb">
+                    <div class="tumb" data-aos="fade-up" data-aos-delay="600" data-aos-duration="600" data-aos-easing="ease-in-out" data-aos-once="false" data-aos-mirror="true">
                         <a href="" class="js-modal-open" data-target="cinema05">
                                 <div class="tumb_img cinema_05"></div>
                             <p class="tumb_txt gold">RGBレーザー<br>プロジェクター</p>
@@ -121,31 +143,31 @@
                     <p>映画をめぐるアートな空間体験</p>
                 </div>
                 <div class="parent">
-                    <div class="tumb">
+                    <div class="tumb" data-aos="fade-up" data-aos-duration="600" data-aos-easing="ease-in-out" data-aos-once="false" data-aos-mirror="true">
                         <a href="" class="js-modal-open" data-target="interior01">
                             <div class="tumb_img interior_01"></div>
                             <p class="tumb_txt gold">シアターデザイン &<br>フロアーデザイン</p>
                         </a>
                     </div>
-                    <div class="tumb">
+                    <div class="tumb" data-aos="fade-up" data-aos-delay="150" data-aos-duration="600" data-aos-easing="ease-in-out" data-aos-once="false" data-aos-mirror="true">
                         <a href="" class="js-modal-open" data-target="interior02">
                             <div class="tumb_img interior_02"></div>
                             <p class="tumb_txt gold">12F<br>スカイラウンジ</p>
                         </a>
                     </div>
-                    <div class="tumb">
+                    <div class="tumb" data-aos="fade-up" data-aos-delay="300" data-aos-duration="600" data-aos-easing="ease-in-out" data-aos-once="false" data-aos-mirror="true">
                         <a href="" class="js-modal-open" data-target="interior03">
                             <div class="tumb_img interior_03"></div>
-                            <p class="tumb_txt gold">4F・5F<br>デジタルシャンデリア</p>
+                            <p class="tumb_txt gold">4F<br>Lumi&#x113;re</p>
                         </a>
                     </div>
-                    <div class="tumb">
+                    <div class="tumb" data-aos="fade-up" data-aos-delay="450" data-aos-duration="600" data-aos-easing="ease-in-out" data-aos-once="false" data-aos-mirror="true">
                         <a href="" class="js-modal-open" data-target="interior04">
                             <div class="tumb_img interior_04"></div>
-                            <p class="tumb_txt gold">12F<br>天井LEDパネル</p>
+                            <p class="tumb_txt gold">12F<br>Motion Ceiling</p>
                         </a>
                     </div>
-                    <div class="tumb">
+                    <div class="tumb" data-aos="fade-up" data-aos-delay="600" data-aos-duration="600" data-aos-easing="ease-in-out" data-aos-once="false" data-aos-mirror="true">
                         <a href="" class="js-modal-open" data-target="interior05">
                                 <div class="tumb_img interior_05"></div>
                             <p class="tumb_txt gold">名画ポスターギャラリー</p>
@@ -160,25 +182,25 @@
                     <p>映画の楽しさがひろがる食体験</p>
                 </div>
                 <div class="parent">
-                    <div class="tumb">
+                    <div class="tumb" data-aos="fade-up" data-aos-duration="600" data-aos-easing="ease-in-out" data-aos-once="false" data-aos-mirror="true">
                         <a href="" class="js-modal-open" data-target="food01">
                             <div class="tumb_img food_01"></div>
                             <p class="tumb_txt gold">5F Cafe<br>クラッパーズダイナー</p>
                         </a>
                     </div>
-                    <div class="tumb">
+                    <div class="tumb" data-aos="fade-up" data-aos-delay="150" data-aos-duration="600" data-aos-easing="ease-in-out" data-aos-once="false" data-aos-mirror="true">
                         <a href="" class="js-modal-open" data-target="food02">
                             <div class="tumb_img food_02"></div>
                             <p class="tumb_txt gold">12F Italian bar<br>バールパノーラマ</p>
                         </a>
                     </div>
-                    <div class="tumb">
+                    <div class="tumb" data-aos="fade-up" data-aos-delay="300" data-aos-duration="600" data-aos-easing="ease-in-out" data-aos-once="false" data-aos-mirror="true">
                         <a href="" class="js-modal-open" data-target="food03">
                             <div class="tumb_img food_03"></div>
                             <p class="tumb_txt gold">Theater Concession<br>コンセッション</p>
                         </a>
                     </div>
-                    <div class="tumb">
+                    <div class="tumb" data-aos="fade-up" data-aos-delay="450" data-aos-duration="600" data-aos-easing="ease-in-out" data-aos-once="false" data-aos-mirror="true">
                     <a href="" class="js-modal-open" data-target="food04">
                             <div class="tumb_img food_04"></div>
                             <p class="tumb_txt gold">Eating and drinking<br>シアター内の飲食について</p>
@@ -188,7 +210,7 @@
             </article>
 
             <article id="gdcs_link">
-                <div class="parent"> 
+                <div class="parent" data-aos="fade-up" data-aos-duration="1000" data-aos-easing="ease-in-out" data-aos-once="false" data-aos-mirror="true"> 
                     <div class="link_pic"></div>
                     <div class="link_txt">
                         <h4 class="title_eng_r gold">映画の殿堂へ、ようこそ。</h4>
@@ -406,7 +428,7 @@
             <div class="modal__bg js-modal-close"></div>
             <div class="modal__content">
                 <div class="modal_tit">
-                    <h3>4F・5F<br class="sp_br">デジタルシャンデリア</h3>
+                    <h3>4F<br class="sp_br">Lumi&#x113;re</h3>
                 </div>
                 <div class="modal_vis">
                     <div class="parent">
@@ -430,7 +452,7 @@
             <div class="modal__bg js-modal-close"></div>
             <div class="modal__content">
                 <div class="modal_tit">
-                    <h3>12F<br class="sp_br">天井LEDパネル</h3>
+                    <h3>12F<br class="sp_br">Motion Ceiling</h3>
                 </div>
                 <div class="modal_vis">
                     <div class="parent">
@@ -591,6 +613,9 @@
                 <a class="js-modal-close title_eng_t modal_close gold" href="">×</a>
             </div><!--modal__inner-->
         </div><!--modal-->
+        <script>
+            AOS.init();
+        </script>
      </body>
  </body>
  </html>
