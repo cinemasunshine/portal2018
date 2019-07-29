@@ -27,8 +27,9 @@
         position: absolute;
         width: 100%;
     }
-    
-
+    .wrap_fix{
+        overflow: hidden;
+    }
     @media (min-width: 768px) {
         .modal__content{
             background: #f8f5ec;
