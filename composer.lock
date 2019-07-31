@@ -4,15 +4,15 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "70ff77920fa4689ecccb7d77f4d500de",
+    "content-hash": "b3afeae963e2da72842af48ec09c7359",
     "packages": [
         {
             "name": "cinemasunshine/schedule",
-            "version": "v2.1.9",
+            "version": "v2.1.11",
             "source": {
                 "type": "git",
                 "url": "https://m-p.backlog.jp/git/SASAKI/schedule.git",
-                "reference": "02dd6206677b85c6d9a2cc3ee23dd9b2c00fa646"
+                "reference": "c70e29b959841ac4e6a92433c03c3ce2c6e53537"
             },
             "require": {
                 "guzzlehttp/guzzle": "6.3.*",
@@ -49,7 +49,7 @@
                 ]
             },
             "description": "Cinemasunshine schedule client",
-            "time": "2019-07-05T05:05:24+00:00"
+            "time": "2019-07-23T07:18:44+00:00"
         },
         {
             "name": "container-interop/container-interop",
