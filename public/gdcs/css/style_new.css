@@ -327,10 +327,10 @@
             max-height: 400px;
         }
         .tumb .interior_02{
-            background-image: url(../img/common/modal26.jpg)!important;
+            background-image: url(../img/common/modal32.jpg)!important;
             background-repeat: no-repeat;
             background-size: cover;
-            background-position-x: 64%;
+            background-position-x: 59%;
             background-position-y: 50%;
             min-height: 400px;
             max-height: 400px;
@@ -348,7 +348,7 @@
             background-image: url(../img/common/modal28.jpg)!important;
             background-repeat: no-repeat;
             background-size: cover;
-            background-position-x: 77%;
+            background-position-x: 35%;
             background-position-y: 35%;
             min-height: 400px;
             max-height: 400px;
@@ -689,11 +689,11 @@
             max-height: 150px;
         }
         .interior_modalvis04{
-            background-image: url(../img/common/modal26.jpg)!important;
+            background-image: url(../img/common/modal32.jpg)!important;
             background-repeat: no-repeat;
             background-size: cover;
             background-position-x: 50%;
-            background-position-y: 35%;
+            background-position-y: 70%;
             min-height:300px;
             max-height: 350px;
         }
@@ -711,7 +711,7 @@
             background-repeat: no-repeat;
             background-size: cover;
             background-position-x: 50%;
-            background-position-y: 60%;
+            background-position-y: 50%;
             min-height:300px;
             max-height: 350px;
         }
@@ -1105,10 +1105,10 @@
             max-height: 250px;
         }
         .tumb .interior_02{
-            background-image: url(../img/common/modal26.jpg)!important;
+            background-image: url(../img/common/modal32.jpg)!important;
             background-repeat: no-repeat;
             background-size: cover;
-            background-position-x: 85%;
+            background-position-x: 70%;
             background-position-y: 50%;
             min-height: 250px;
             max-height: 250px;
@@ -1126,7 +1126,7 @@
             background-image: url(../img/common/modal28.jpg)!important;
             background-repeat: no-repeat;
             background-size: cover;
-            background-position-x: 70%;
+            background-position-x: 50%;
             background-position-y: 35%;
             min-height: 250px;
             max-height: 250px;
@@ -1504,7 +1504,7 @@
             background-repeat: no-repeat;
             background-size: 127% auto;
             background-position-x: 50%;
-            background-position-y: 37%;
+            background-position-y: 40%;
             min-height:180px;
             max-height: 200px;
             margin-bottom: 10px;
@@ -1636,11 +1636,11 @@
             width: calc(50% - 5px);
         }
         .interior_modalvis04{
-            background-image: url(../img/common/modal26.jpg)!important;
+            background-image: url(../img/common/modal32.jpg)!important;
             background-repeat: no-repeat;
             background-size: cover;
             background-position-x: 50%;
-            background-position-y: 0%;
+            background-position-y: 85%;
             min-height:180px;
             max-height: 200px;
         }
@@ -1649,7 +1649,7 @@
             background-repeat: no-repeat;
             background-size: cover;
             background-position-x: 50%;
-            background-position-y: 0%;
+            background-position-y: 1%;
             min-height:180px;
             max-height: 200px;
         }
@@ -1658,7 +1658,7 @@
             background-repeat: no-repeat;
             background-size: cover;
             background-position-x: 50%;
-            background-position-y: 35%;
+            background-position-y: 30%;
             min-height:180px;
             max-height: 200px;
         }
