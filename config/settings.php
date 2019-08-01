@@ -32,6 +32,8 @@ $settings['view'] = [
  */
 $settings['session'] = [
     'name' => 'csportal',
+    'php_save_handler' => 'redis',
+    'save_path' => getenv('CUSTOMCONNSTR_REDIS_HOST') . '?prefix=session:',
 ];
 
 // logger

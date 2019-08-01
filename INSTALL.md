@@ -78,6 +78,7 @@ Azure Web Appsのアプリケーション設定で設定する場合は **MYSQLC
 |MYSQLCONNSTR_SSL|'true' or 'false'|MySQLにSSL接続するか|
 |CUSTOMCONNSTR_STORAGE_NAME|[storage name]|Azure Storage名|
 |CUSTOMCONNSTR_STORAGE_KEY|[storage access key]|Azure Sotrageのアクセスキー|
+|CUSTOMCONNSTR_REDIS_HOST|[redis host]|Redisのホスト名|
 
 ### ５．Doctrine
 
