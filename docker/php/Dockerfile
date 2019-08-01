@@ -19,6 +19,12 @@ RUN apt-get update \
 RUN docker-php-ext-install \
         pdo_mysql
 
+# redisはdocker-php-ext-installで対応出来ないので別途インストール
+# https://github.com/phpredis/phpredis
+RUN pecl install -o -f redis \
+    &&  rm -rf /tmp/pear \
+    &&  docker-php-ext-enable redis
+
 # composerインストール
 RUN curl -sS https://getcomposer.org/installer | php
 RUN mv composer.phar /usr/local/bin/composer
