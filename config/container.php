@@ -122,6 +122,17 @@ $container['em'] = function ($container) {
 };
 
 /**
+ * session manager
+ *
+ * @return \Cinemasunshine\Portal\Session\SessionManager
+ */
+$container['sm'] = function ($container) {
+    $settings = $container->get('settings')['session'];
+    
+    return new \Cinemasunshine\Portal\Session\SessionManager($settings);
+};
+
+/**
  * Azure Blob Storage Client
  *
  * @link https://github.com/Azure/azure-storage-php/tree/master/azure-storage-blob
