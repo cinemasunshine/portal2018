@@ -25,6 +25,7 @@
 ※ データベース、ストレージについてはCMSアプリケーションのドキュメントを参照してください。
 
 web: http://localhost:8010/
+phpRedisAdmin: http://localhost:8081/
 
 ### コマンド例
 
