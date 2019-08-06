@@ -28,8 +28,7 @@ services:
   redis-webui:
       image: erikdubbelboer/phpredisadmin
       environment:
-        - ADMIN_USER=root
-        - ADMIN_PASS=root
+        - REDIS_1_NAME=local
         - REDIS_1_HOST=portal-redis
         - REDIS_1_PORT=6379
       ports:
