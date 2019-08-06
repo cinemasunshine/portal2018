@@ -29,12 +29,41 @@ $settings['view'] = [
  * Zend-Session Configのオプションとして使用。
  *
  * @link https://docs.zendframework.com/zend-session/config/
+ * @link https://github.com/phpredis/phpredis#php-session-handler
  */
-$settings['session'] = [
-    'name' => 'csportal',
-    'php_save_handler' => 'redis',
-    'save_path' => getenv('CUSTOMCONNSTR_REDIS_HOST') . '?prefix=session:',
-];
+$getSessionSetting = function() {
+    $settings = [
+        'name' => 'csportal',
+        'php_save_handler' => 'redis',
+    ];
+    
+    $savePathParams = [
+        // 別の用途ができた時は改めて考える
+        'prefix' => 'session:',
+        
+        /**
+         * 「Azure Cache for Redis のベスト プラクティス」を参考にひとまず15秒とする
+         * https://docs.microsoft.com/ja-jp/azure/azure-cache-for-redis/cache-best-practices
+         */
+        'timeout' => 15,
+    ];
+    
+    if (getenv('CUSTOMCONNSTR_REDIS_AUTH')) {
+        $savePathParams['auth'] = getenv('CUSTOMCONNSTR_REDIS_AUTH');
+    }
+    
+    $savePath = 'tcp://'
+              . getenv('CUSTOMCONNSTR_REDIS_HOST')
+              . ':'
+              . getenv('CUSTOMCONNSTR_REDIS_PORT');
+    $savePath .= '?' . http_build_query($savePathParams, '', '&');
+    
+    $settings['save_path'] = $savePath;
+    
+    return $settings;
+};
+
+$settings['session'] = $getSessionSetting();
 
 // logger
 $getLoggerSetting = function ($isDebug) {

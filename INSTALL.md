@@ -68,17 +68,19 @@ Azure Web Appsのアプリケーション設定で設定する場合は **APPSET
 
 Azure Web Appsのアプリケーション設定で設定する場合は **MYSQLCONNSTR_** 等を省略します。
 
-|名前|値|説明|
-|:--|:--|:--|
-|MYSQLCONNSTR_HOST|[host name]|MySQLのホスト名|
-|MYSQLCONNSTR_PORT|[port]|MySQLのポート番号|
-|MYSQLCONNSTR_NAME|[database name]|MySQLのデータベース名|
-|MYSQLCONNSTR_USER|[user name]|MySQLのユーザ名|
-|MYSQLCONNSTR_PASSWORD|[user password]|MySQLのユーザパスワード|
-|MYSQLCONNSTR_SSL|'true' or 'false'|MySQLにSSL接続するか|
-|CUSTOMCONNSTR_STORAGE_NAME|[storage name]|Azure Storage名|
-|CUSTOMCONNSTR_STORAGE_KEY|[storage access key]|Azure Sotrageのアクセスキー|
-|CUSTOMCONNSTR_REDIS_HOST|[redis host]|Redisのホスト名|
+|名前|値|必須|説明|
+|:--|:--|:--|:--|
+|MYSQLCONNSTR_HOST|[string]|○|MySQLのホスト名|
+|MYSQLCONNSTR_PORT|[int]|○|MySQLのポート番号|
+|MYSQLCONNSTR_NAME|[string]|○|MySQLのデータベース名|
+|MYSQLCONNSTR_USER|[string]|○|MySQLのユーザ名|
+|MYSQLCONNSTR_PASSWORD|[string]|○|MySQLのユーザパスワード|
+|MYSQLCONNSTR_SSL|[bool]|○|MySQLにSSL接続するか|
+|CUSTOMCONNSTR_STORAGE_NAME|[string]|○|Azure Storage名|
+|CUSTOMCONNSTR_STORAGE_KEY|[string]|○|Azure Sotrageのアクセスキー|
+|CUSTOMCONNSTR_REDIS_HOST|[string]|○|Redisのホスト名|
+|CUSTOMCONNSTR_REDIS_PORT|[int]|○|Redisのポート番号|
+|CUSTOMCONNSTR_REDIS_AUTH|[string]|ー|Redisの認証文字列|
 
 ### ５．Doctrine
 
