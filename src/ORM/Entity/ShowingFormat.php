@@ -26,12 +26,18 @@ class ShowingFormat extends AbstractEntity
     const SYSTEM_4DX3D            = 4;
     const SYSTEM_IMAX             = 5;
     const SYSTEM_IMAX3D           = 6;
-    const SYSTEM_BESTIA           = 7;
-    const SYSTEM_BESTIA3D         = 8;
-    const SYSTEM_BTSX             = 9;
+    // const SYSTEM_BESTIA           = 7; 削除 SASAKI-449
+    // const SYSTEM_BESTIA3D         = 8; 削除 SASAKI-449
+    // const SYSTEM_BTSX             = 9; 削除 SASAKI-449
     const SYSTEM_SCREENX          = 10; // SASAKI-351
     const SYSTEM_4DX_WITH_SCREENX = 11; // SASAKI-428
     const SYSTEM_NONE             = 99;
+    
+    const SOUND_BESTIA        = 1;
+    const SOUND_DTSX          = 2;
+    const SOUND_DOLBY_ATMOS   = 3;
+    const SOUND_GDC_IMMERSIVE = 4;
+    const SOUND_NONE          = 99;
     
     const VOICE_SUBTITLE = 1;
     const VOICE_DUB = 2;
@@ -63,6 +69,14 @@ class ShowingFormat extends AbstractEntity
      * @ORM\Column(type="smallint", nullable=false, options={"unsigned"=true})
      */
     protected $system;
+    
+    /**
+     * sound
+     *
+     * @var int
+     * @ORM\Column(type="smallint", nullable=false, options={"unsigned"=true})
+     */
+    protected $sound;
     
     /**
      * voice
@@ -132,6 +146,28 @@ class ShowingFormat extends AbstractEntity
      * @throws \LogicException
      */
     public function setSystem(int $system)
+    {
+        throw new \LogicException('Not allowed.');
+    }
+    
+    /**
+     * get sound
+     *
+     * @return int
+     */
+    public function getSound()
+    {
+        return $this->sound;
+    }
+    
+    /**
+     * set sound
+     *
+     * @param int $sound
+     * @return void
+     * @throws \LogicException
+     */
+    public function setSound(int $sound)
     {
         throw new \LogicException('Not allowed.');
     }

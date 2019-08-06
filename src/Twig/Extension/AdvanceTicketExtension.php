@@ -42,7 +42,7 @@ class AdvanceTicketExtension extends \Twig_Extension
     public function getTypeLabel(int $type)
     {
         if ($type === AdvanceTicket::TYPE_MVTK) {
-            return 'ムビチケ';
+            return 'ムビチケカード';
         } elseif ($type === AdvanceTicket::TYPE_PAPER) {
             return '紙券';
         }
