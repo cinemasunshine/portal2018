@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3b15b54c193b8182240f48fe04e9a76d",
+    "content-hash": "a4e2db1d120c4256935eac62995d2fb4",
     "packages": [
         {
             "name": "cinemasunshine/schedule",
@@ -3239,7 +3239,8 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": "~7.2"
+        "php": "~7.2",
+        "ext-redis": "*"
     },
     "platform-dev": []
 }
