@@ -100,6 +100,13 @@ $container['em'] = function ($container) {
     $settings = $container->get('settings')['doctrine'];
     
     /**
+     * cacheは明示的に指定する。
+     * 拡張機能(apc,memcached,redis)が有効だとそちらが使用されるので。
+     * @see \Doctrine\ORM\Tools\Setup::createCacheInstance()
+     */
+    $cache = new \Doctrine\Common\Cache\ArrayCache();
+    
+    /**
      * 第５引数について、他のアノテーションとの競合を避けるためSimpleAnnotationReaderは使用しない。
      * @Entity => @ORM\Entity などとしておく。
      */
@@ -107,7 +114,7 @@ $container['em'] = function ($container) {
         $settings['metadata_dirs'],
         $settings['dev_mode'],
         null,
-        null,
+        $cache,
         false
     );
     
