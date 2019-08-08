@@ -31,7 +31,7 @@ $settings['view'] = [
  * @link https://docs.zendframework.com/zend-session/config/
  * @link https://github.com/phpredis/phpredis#php-session-handler
  */
-$getSessionSetting = function() {
+$getSessionSetting = function () {
     $settings = [
         'name' => 'csportal',
         'php_save_handler' => 'redis',
