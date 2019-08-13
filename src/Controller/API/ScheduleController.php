@@ -29,7 +29,7 @@ use Cinemasunshine\Portal\Schedule\Theater as TheaterSchedule;
 class ScheduleController extends BaseController
 {
     const API_ENV_PROD = 'prod';
-    const API_ENV_PROD_AND_TEST = 'prod_and_test'; // テストが無い劇場もある
+    const API_ENV_TEST = 'test';
     
     /** @var string */
     protected $apiEnv;
@@ -62,7 +62,7 @@ class ScheduleController extends BaseController
     {
         $hasTestApi = TheaterSchedule::hasTestApi($theater);
         
-        return ($this->apiEnv === self::API_ENV_PROD_AND_TEST && $hasTestApi);
+        return ($this->apiEnv === self::API_ENV_TEST && $hasTestApi);
     }
     
     /**
