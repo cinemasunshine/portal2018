@@ -16,6 +16,7 @@
     },
     "require": {
         "php": "~7.2",
+        "ext-redis": "*",
         "slim/slim" : "^3.0",
         "slim/twig-view": "^2.4",
         "twig/extensions": "^1.5",
@@ -23,7 +24,8 @@
         "monolog/monolog": "^1.23",
         "doctrine/orm": "2.6.*",
         "cinemasunshine/schedule": "2.1.11",
-        "microsoft/azure-storage-blob": "^1.2"
+        "microsoft/azure-storage-blob": "^1.2",
+        "zendframework/zend-session": "^2.8"
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "^3.4",

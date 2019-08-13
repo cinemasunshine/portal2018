@@ -13,5 +13,25 @@ services:
 
   portal-php:
     build: ./docker/php
+    depends_on:
+      - portal-redis
     volumes:
       - .:/var/www/html
+
+  portal-redis:
+    build: ./docker/redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./docker/redis/data:/data
+
+  redis-webui:
+      image: erikdubbelboer/phpredisadmin
+      environment:
+        - REDIS_1_NAME=local
+        - REDIS_1_HOST=portal-redis
+        - REDIS_1_PORT=6379
+      ports:
+        - "8081:80"
+      depends_on:
+        - portal-redis
