@@ -14,12 +14,6 @@ use Cinemasunshine\Schedule\Builder\ScheduleInterface as ScheduleBuilder;
 use Cinemasunshine\Schedule\Client\Http as HttpClient;
 use Cinemasunshine\Schedule\Config;
 
-use Cinemasunshine\Portal\Schedule\Builder\V1\PreSchedule as V1PreScheduleBuilder;
-use Cinemasunshine\Portal\Schedule\Builder\V1\Schedule as V1ScheduleBuilder;
-
-use Cinemasunshine\Portal\Schedule\Builder\V2\PreSchedule as V2PreScheduleBuilder;
-use Cinemasunshine\Portal\Schedule\Builder\V2\Schedule as V2ScheduleBuilder;
-
 /**
  * Theater class
  */
