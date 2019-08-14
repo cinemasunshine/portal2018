@@ -108,14 +108,4 @@ class Theater extends Base
     {
         return $this->client->get($this->endpoint['pre_schedule'], $builder);
     }
-    
-    /**
-     * return is version2
-     *
-     * @return boolean
-     */
-    public function isVersion2()
-    {
-        return $this->config['version'] === '2';
-    }
 }
