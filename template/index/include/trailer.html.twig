@@ -1,9 +1,6 @@
 <div class="trailer mx-auto mx-md-0">
     <div class="trailer-inner">
-    {% if is_mw_ad_support() %}
-        {{ mw_ad(page) }}
-    {% else %}
+        {# @todo iframeをやめて直接表示。広告が廃止されたのでiframeである必要はない #}
         <iframe type="text/html" src="{{ path_for('trailer', {}, { p: page.getId() }) }}" frameborder="0" width="336" height="280"></iframe>
-    {% endif %}
     </div>
 </div>
