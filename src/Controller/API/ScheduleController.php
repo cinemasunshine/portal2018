@@ -53,14 +53,11 @@ class ScheduleController extends BaseController
     /**
      * テストAPIを使用するか
      *
-     * @param string $theater
      * @return boolean
      */
-    protected function useTestApi(string $theater)
+    protected function useTestApi()
     {
-        $hasTestApi = TheaterSchedule::hasTestApi($theater);
-        
-        return ($this->apiEnv === self::API_ENV_TEST && $hasTestApi);
+        return $this->apiEnv === self::API_ENV_TEST;
     }
     
     /**
@@ -82,7 +79,7 @@ class ScheduleController extends BaseController
             throw new NotFoundException($request, $response);
         }
         
-        $useTestApi = $this->useTestApi($theaterName);
+        $useTestApi = $this->useTestApi();
         $theaterSchedule = new TheaterSchedule($theaterName, $useTestApi);
         
         $builer = new V2ScheduleBuilder($this->purchaseBaseUrl);
@@ -201,7 +198,7 @@ class ScheduleController extends BaseController
             throw new NotFoundException($request, $response);
         }
         
-        $useTestApi = $this->useTestApi($theaterName);
+        $useTestApi = $this->useTestApi();
         $theaterSchedule = new TheaterSchedule($theaterName, $useTestApi);
         
         $builer = new V2ScheduleBuilder($this->purchaseBaseUrl);

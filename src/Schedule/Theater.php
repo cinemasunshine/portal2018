@@ -46,19 +46,6 @@ class Theater extends Base
     }
     
     /**
-     * has test API
-     *
-     * @param string $theater
-     * @return boolean
-     */
-    public static function hasTestApi(string $theater)
-    {
-        $config = self::getConfig($theater);
-        
-        return isset($config['test_endpoint']);
-    }
-
-    /**
      * constructor
      *
      * @param string $name
@@ -73,14 +60,7 @@ class Theater extends Base
             );
         }
 
-        $this->config = self::getConfig($name);
-
-        if ($useTestApi && !isset($this->config['test_endpoint'])) {
-            throw new \InvalidArgumentException(
-                sprintf('theater "%s" is cannot use test endpoint.', $name)
-            );
-        }
-
+        $this->config   = self::getConfig($name);
         $this->name     = $name;
         $this->endpoint = ($useTestApi)
                         ? $this->config['test_endpoint'] : $this->config['endpoint'];
