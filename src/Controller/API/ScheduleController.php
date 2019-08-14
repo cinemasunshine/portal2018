@@ -9,14 +9,12 @@ namespace Cinemasunshine\Portal\Controller\API;
 
 use Slim\Exception\NotFoundException;
 
-use Cinemasunshine\Schedule\Entity\V1\Schedules as V1Schedules;
+use Cinemasunshine\Schedule\Entity\V2\Schedules as V2Schedules;
 use Cinemasunshine\Schedule\Entity\ScheduleInterface;
 use Cinemasunshine\Schedule\Entity\SchedulesInterface;
 use Cinemasunshine\Schedule\Exception\RequestException;
 use Cinemasunshine\Schedule\Response\Http as HttpResponse;
 
-use Cinemasunshine\Portal\Schedule\Builder\V1\PreSchedule as V1PreScheduleBuilder;
-use Cinemasunshine\Portal\Schedule\Builder\V1\Schedule as V1ScheduleBuilder;
 use Cinemasunshine\Portal\Schedule\Builder\V2\PreSchedule as V2PreScheduleBuilder;
 use Cinemasunshine\Portal\Schedule\Builder\V2\Schedule as V2ScheduleBuilder;
 use Cinemasunshine\Portal\Schedule\Collection\Movie as MovieCollection;
@@ -87,13 +85,8 @@ class ScheduleController extends BaseController
         $useTestApi = $this->useTestApi($theaterName);
         $theaterSchedule = new TheaterSchedule($theaterName, $useTestApi);
         
-        if ($theaterSchedule->isVersion2()) {
-            $builer = new V2ScheduleBuilder($this->purchaseBaseUrl);
-            $preBuiler = new V2PreScheduleBuilder($this->purchaseBaseUrl);
-        } else {
-            $builer = new V1ScheduleBuilder();
-            $preBuiler = new V1PreScheduleBuilder();
-        }
+        $builer = new V2ScheduleBuilder($this->purchaseBaseUrl);
+        $preBuiler = new V2PreScheduleBuilder($this->purchaseBaseUrl);
         
         $scheduleResponse = $theaterSchedule->fetchSchedule($builer);
         
@@ -114,21 +107,21 @@ class ScheduleController extends BaseController
         $meta = array();
         $data = array();
 
-        if ($schedules->getError() === V1Schedules::ERROR_OTHER
-            || $preSchedules->getError() === V1Schedules::ERROR_OTHER
+        if ($schedules->getError() === V2Schedules::ERROR_OTHER
+            || $preSchedules->getError() === V2Schedules::ERROR_OTHER
         ) {
             throw new \RuntimeException('schedule unknown error');
-        } elseif ($schedules->getError() === V1Schedules::ERROR_NO_CONTENT
-            && $preSchedules->getError() === V1Schedules::ERROR_NO_CONTENT
+        } elseif ($schedules->getError() === V2Schedules::ERROR_NO_CONTENT
+            && $preSchedules->getError() === V2Schedules::ERROR_NO_CONTENT
         ) {
-            $meta['error'] = V1Schedules::ERROR_NO_CONTENT;
+            $meta['error'] = V2Schedules::ERROR_NO_CONTENT;
             $this->data->set('meta', $meta);
             $this->data->set('data', $data);
             
             return;
         }
         
-        $meta['error']     = V1Schedules::ERROR_NOT;
+        $meta['error']     = V2Schedules::ERROR_NOT;
         $meta['attention'] = $schedules->getAttention(); // 通常、先行で同じ想定
         
         $allSchedules = $this->mergeSchedule($schedules, $preSchedules);
@@ -211,13 +204,8 @@ class ScheduleController extends BaseController
         $useTestApi = $this->useTestApi($theaterName);
         $theaterSchedule = new TheaterSchedule($theaterName, $useTestApi);
         
-        if ($theaterSchedule->isVersion2()) {
-            $builer = new V2ScheduleBuilder($this->purchaseBaseUrl);
-            $preBuiler = new V2PreScheduleBuilder($this->purchaseBaseUrl);
-        } else {
-            $builer = new V1ScheduleBuilder();
-            $preBuiler = new V1PreScheduleBuilder();
-        }
+        $builer = new V2ScheduleBuilder($this->purchaseBaseUrl);
+        $preBuiler = new V2PreScheduleBuilder($this->purchaseBaseUrl);
         
         $scheduleResponse = $theaterSchedule->fetchSchedule($builer);
         
@@ -238,21 +226,21 @@ class ScheduleController extends BaseController
         $meta = array();
         $data = array();
 
-        if ($schedules->getError() === V1Schedules::ERROR_OTHER
-            || $preSchedules->getError() === V1Schedules::ERROR_OTHER
+        if ($schedules->getError() === V2Schedules::ERROR_OTHER
+            || $preSchedules->getError() === V2Schedules::ERROR_OTHER
         ) {
             throw new \RuntimeException('schedule unknown error');
-        } elseif ($schedules->getError() === V1Schedules::ERROR_NO_CONTENT
-            && $preSchedules->getError() === V1Schedules::ERROR_NO_CONTENT
+        } elseif ($schedules->getError() === V2Schedules::ERROR_NO_CONTENT
+            && $preSchedules->getError() === V2Schedules::ERROR_NO_CONTENT
         ) {
-            $meta['error'] = V1Schedules::ERROR_NO_CONTENT;
+            $meta['error'] = V2Schedules::ERROR_NO_CONTENT;
             $this->data->set('meta', $meta);
             $this->data->set('data', $data);
             
             return;
         }
         
-        $meta['error']     = V1Schedules::ERROR_NOT;
+        $meta['error']     = V2Schedules::ERROR_NOT;
         $meta['attention'] = $schedules->getAttention(); // 通常、先行で同じ想定
         
         $params = [
