@@ -128,20 +128,6 @@ class ScheduleController extends BaseController
             return;
         }
         
-        if ($schedules->getError() === V1Schedules::ERROR_OTHER
-            || $preSchedules->getError() === V1Schedules::ERROR_OTHER
-        ) {
-            throw new \RuntimeException('schedule unknown error');
-        } elseif ($schedules->getError() === V1Schedules::ERROR_NO_CONTENT
-            && $preSchedules->getError() === V1Schedules::ERROR_NO_CONTENT
-        ) {
-            $meta['error'] = V1Schedules::ERROR_NO_CONTENT;
-            $this->data->set('meta', $meta);
-            $this->data->set('data', $data);
-            
-            return;
-        }
-
         $meta['error']     = V1Schedules::ERROR_NOT;
         $meta['attention'] = $schedules->getAttention(); // 通常、先行で同じ想定
         
@@ -266,20 +252,6 @@ class ScheduleController extends BaseController
             return;
         }
         
-        if ($schedules->getError() === V1Schedules::ERROR_OTHER
-            || $preSchedules->getError() === V1Schedules::ERROR_OTHER
-        ) {
-            throw new \RuntimeException('schedule unknown error');
-        } elseif ($schedules->getError() === V1Schedules::ERROR_NO_CONTENT
-            && $preSchedules->getError() === V1Schedules::ERROR_NO_CONTENT
-        ) {
-            $meta['error'] = V1Schedules::ERROR_NO_CONTENT;
-            $this->data->set('meta', $meta);
-            $this->data->set('data', $data);
-            
-            return;
-        }
-
         $meta['error']     = V1Schedules::ERROR_NOT;
         $meta['attention'] = $schedules->getAttention(); // 通常、先行で同じ想定
         
