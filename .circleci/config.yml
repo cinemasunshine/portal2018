@@ -36,7 +36,9 @@ jobs:
 
       - run:
           name: Composer install (with require-dev)
-          command: composer install --dev -n --prefer-dist
+          command: |
+            composer config http-basic.m-p.backlog.jp $BACKLOG_USER $BACKLOG_PASSWORD
+            composer install --dev -n --prefer-dist
 
       - save_cache:
           key: composer-dev-{{ checksum "composer.lock" }}
