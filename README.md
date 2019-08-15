@@ -22,6 +22,12 @@
 
 [Download a Plugin](https://editorconfig.org/#download)
 
+## CircleCI
+
+CIツールとして [CircleCI](https://circleci.com) を導入してます。
+
+※ 現在はコード解析だけですが、将来的にデプロイなども実施する予定です。
+
 ## Docker
 
 ローカル環境としてDockerが利用できます。
@@ -45,14 +51,14 @@ phpRedisAdmin: http://localhost:8081/
 $ docker-compose up
 ```
 
-# その他
-## PHP CodeSniffer
+## その他
+### PHP CodeSniffer
 
 ```sh
 $ composer phpcs
 ```
 
-## PHPStan
+### PHPStan
 
 ```sh
 $ composer phpstan
