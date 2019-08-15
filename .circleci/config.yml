@@ -7,6 +7,18 @@ executors:
     docker:
       - image: circleci/php:7.2
 
+commands:
+  update_php:
+    description: "DockerイメージのPHPアップデート"
+    steps:
+      - setup_remote_docker
+      - run:
+          name: install redis extension
+          command: |
+            sudo pecl install -o -f redis
+            sudo rm -rf /tmp/pear
+            sudo docker-php-ext-enable redis
+
 jobs:
   build_dev:
     working_directory: ~/workspace
@@ -15,6 +27,7 @@ jobs:
 
     steps:
       - checkout
+      - update_php
 
       - restore_cache:
           keys:
