@@ -60,7 +60,6 @@ Azure Web Appsのアプリケーション設定で設定する場合は **APPSET
 |:--|:--|:--|
 |APPSETTING_ENV|'prod' or 'dev'|アプリケーションの実行環境|
 |APPSETTING_COA_SCHEDULE|'prod' or 'prod_and_test'|コアシステムズ様スケジュールの接続環境|
-|APPSETTING_MV_AD|'true' or 'false'|ムービーウォーカー様広告のサポート|
 |APPSETTING_MP_TICKET_URL|[ site URL ]|MPオンラインチケットのURL|
 |APPSETTING_MP_TICKET_ENTRANCE_URL|[ entrance site URL ]|MPオンラインチケットのエントランスURL|
 
