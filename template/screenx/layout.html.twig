@@ -28,7 +28,7 @@
         }
     </style>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
         crossorigin="anonymous"></script>
@@ -43,7 +43,7 @@
     <script src="/js/polyfill.js"></script>
     <script src="/js/common.js?v=20190320"></script>
     {% block javascript %}{% endblock %}
-    
+
     <!-- Google Tag Manager -->
         <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
             new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -51,7 +51,7 @@
             'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
             })(window,document,'script','dataLayer','GTM-K3ZKSHZ');</script>
     <!-- End Google Tag Manager -->
-    
+
 </head>
 
 <body class="type-scx">
@@ -59,15 +59,15 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K3ZKSHZ"
         height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-    
+
     {% include 'screenx/include/header.html.twig' only %}
-    
+
     {% block navbar %}{% endblock %}
-    
+
     <div class="contents">
         {% block contents %}{% endblock %}
     </div>
-    
+
     {% include 'include/adsense/footer.html.twig' only %}
     {% include 'screenx/include/footer_navbar.html.twig' only %}
     {% include 'screenx/include/footer.html.twig' only %}

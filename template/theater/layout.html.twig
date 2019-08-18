@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
         crossorigin="anonymous">
     <link href="/css/reset.css" rel="stylesheet">
-    
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.5/css/swiper.min.css">
     <style>
         @media (max-width: 767px){
@@ -26,8 +26,8 @@
     </style>
     <link href="/css/common.css" rel="stylesheet">
     {% block css %}{% endblock %}
-    
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
         crossorigin="anonymous"></script>
@@ -54,7 +54,7 @@
         <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K3ZKSHZ"
         height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-    
+
 {% if theater.getId() == 20 %}
     {% include 'theater/include/header_gdcs.html.twig' with {
         theater: theater
@@ -64,29 +64,29 @@
         theater: theater
     } only %}
 {% endif %}
-    
+
     {% include 'theater/include/sp_menu.html.twig' with {
         theater: theater
     } only %}
-    
+
     {% block navbar %}{% endblock %}
-    
+
     <div class="contents">
         {% block contents %}{% endblock %}
     </div>
-    
+
     {% include 'theater/include/sns.html.twig' with {
         meta: theater.getMeta()
     } only %}
-    
+
     {% include 'include/adsense/footer.html.twig' only %}
-    
+
     {% block sp_navbar %}
     {% include 'theater/include/sp_navbar.html.twig' with {
         theater: theater
     } only %}
     {% endblock %}
-    
+
     {% include 'include/footer_navbar.html.twig' only %}
     {% include 'theater/include/footer_banner.html.twig' with {
         theater: theater
