@@ -16,10 +16,6 @@
     <arg value="sp"/>
 
     <!-- rule -->
-    <rule ref="PSR2"/>
+    <rule ref="PSR12"/>
 
-    <!-- use宣言のグループ化を許可する -->
-    <rule ref="PSR2.Namespaces.UseDeclaration.MultipleDeclarations">
-        <exclude-pattern>*</exclude-pattern>
-    </rule>
 </ruleset>
