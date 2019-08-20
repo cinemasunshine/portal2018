@@ -14,12 +14,6 @@ use Cinemasunshine\Schedule\Builder\ScheduleInterface as ScheduleBuilder;
 use Cinemasunshine\Schedule\Client\Http as HttpClient;
 use Cinemasunshine\Schedule\Config;
 
-use Cinemasunshine\Portal\Schedule\Builder\V1\PreSchedule as V1PreScheduleBuilder;
-use Cinemasunshine\Portal\Schedule\Builder\V1\Schedule as V1ScheduleBuilder;
-
-use Cinemasunshine\Portal\Schedule\Builder\V2\PreSchedule as V2PreScheduleBuilder;
-use Cinemasunshine\Portal\Schedule\Builder\V2\Schedule as V2ScheduleBuilder;
-
 /**
  * Theater class
  */
@@ -52,19 +46,6 @@ class Theater extends Base
     }
     
     /**
-     * has test API
-     *
-     * @param string $theater
-     * @return boolean
-     */
-    public static function hasTestApi(string $theater)
-    {
-        $config = self::getConfig($theater);
-        
-        return isset($config['test_endpoint']);
-    }
-
-    /**
      * constructor
      *
      * @param string $name
@@ -79,14 +60,7 @@ class Theater extends Base
             );
         }
 
-        $this->config = self::getConfig($name);
-
-        if ($useTestApi && !isset($this->config['test_endpoint'])) {
-            throw new \InvalidArgumentException(
-                sprintf('theater "%s" is cannot use test endpoint.', $name)
-            );
-        }
-
+        $this->config   = self::getConfig($name);
         $this->name     = $name;
         $this->endpoint = ($useTestApi)
                         ? $this->config['test_endpoint'] : $this->config['endpoint'];
@@ -113,15 +87,5 @@ class Theater extends Base
     public function fetchPreSchedule(PreScheduleBuilder $builder = null)
     {
         return $this->client->get($this->endpoint['pre_schedule'], $builder);
-    }
-    
-    /**
-     * return is version2
-     *
-     * @return boolean
-     */
-    public function isVersion2()
-    {
-        return $this->config['version'] === '2';
     }
 }
