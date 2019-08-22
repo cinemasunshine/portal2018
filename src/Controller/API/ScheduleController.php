@@ -28,13 +28,13 @@ class ScheduleController extends BaseController
 {
     const API_ENV_PROD = 'prod';
     const API_ENV_TEST = 'test';
-    
+
     /** @var string */
     protected $apiEnv;
-    
+
     /** @var string */
     protected $purchaseBaseUrl;
-    
+
     /**
      * pre execute
      *
@@ -46,10 +46,10 @@ class ScheduleController extends BaseController
     {
         $settings = $this->settings['coa_schedule'];
         $this->apiEnv = $settings['env'];
-        
-        $this->purchaseBaseUrl = $this->settings['mp_ticket']['entrance_url'];
+
+        $this->purchaseBaseUrl = $this->settings['mp_service']['ticket_entrance_url'];
     }
-    
+
     /**
      * テストAPIを使用するか
      *
@@ -59,7 +59,7 @@ class ScheduleController extends BaseController
     {
         return $this->apiEnv === self::API_ENV_TEST;
     }
-    
+
     /**
      * index action
      *
@@ -73,26 +73,26 @@ class ScheduleController extends BaseController
     public function executeIndex($request, $response, $args)
     {
         $theaterName = $args['name'];
-        
+
         if (!TheaterSchedule::validate($theaterName)) {
             // ひとまずNotFoundとする SASAKI-338
             throw new NotFoundException($request, $response);
         }
-        
+
         $useTestApi = $this->useTestApi();
         $theaterSchedule = new TheaterSchedule($theaterName, $useTestApi);
-        
+
         $builer = new V2ScheduleBuilder($this->purchaseBaseUrl);
         $preBuiler = new V2PreScheduleBuilder($this->purchaseBaseUrl);
-        
+
         $scheduleResponse = $theaterSchedule->fetchSchedule($builer);
-        
+
         if ($scheduleResponse instanceof HttpResponse) {
             $schedules = $scheduleResponse->getContents();
         } else {
             $schedules = $scheduleResponse;
         }
-        
+
         $preScheduleResponse = $theaterSchedule->fetchPreSchedule($preBuiler);
 
         if ($preScheduleResponse instanceof HttpResponse) {
@@ -100,7 +100,7 @@ class ScheduleController extends BaseController
         } else {
             $preSchedules = $preScheduleResponse;
         }
-        
+
         $meta = array();
         $data = array();
 
@@ -114,23 +114,23 @@ class ScheduleController extends BaseController
             $meta['error'] = V2Schedules::ERROR_NO_CONTENT;
             $this->data->set('meta', $meta);
             $this->data->set('data', $data);
-            
+
             return;
         }
-        
+
         $meta['error']     = V2Schedules::ERROR_NOT;
         $meta['attention'] = $schedules->getAttention(); // 通常、先行で同じ想定
-        
+
         $allSchedules = $this->mergeSchedule($schedules, $preSchedules);
 
         foreach ($allSchedules as $schedule) {
             $data[] = $schedule->toArray(false);
         }
-        
+
         $this->data->set('meta', $meta);
         $this->data->set('data', $data);
     }
-    
+
     /**
      * スケジュールをマージ
      *
@@ -163,7 +163,7 @@ class ScheduleController extends BaseController
             // 日付重複判定
             if ($allSchedules->has($schedule->getDate())) {
                 $allSchedules->get($schedule->getDate())->setHasPreSale(true);
-                
+
                 if ($schedule->getUsable()) {
                     $allSchedules->get($schedule->getDate())->setUsable(true); // true優先
                 }
@@ -177,7 +177,7 @@ class ScheduleController extends BaseController
 
         return $allSchedules;
     }
-    
+
     /**
      * date action
      *
@@ -192,20 +192,20 @@ class ScheduleController extends BaseController
     {
         $theaterName = $args['name'];
         $date = $args['date'];
-        
+
         if (!TheaterSchedule::validate($theaterName)) {
             // ひとまずNotFoundとする SASAKI-338
             throw new NotFoundException($request, $response);
         }
-        
+
         $useTestApi = $this->useTestApi();
         $theaterSchedule = new TheaterSchedule($theaterName, $useTestApi);
-        
+
         $builer = new V2ScheduleBuilder($this->purchaseBaseUrl);
         $preBuiler = new V2PreScheduleBuilder($this->purchaseBaseUrl);
-        
+
         $scheduleResponse = $theaterSchedule->fetchSchedule($builer);
-        
+
         if ($scheduleResponse instanceof HttpResponse) {
             $schedules = $scheduleResponse->getContents();
         } else {
@@ -213,13 +213,13 @@ class ScheduleController extends BaseController
         }
 
         $preScheduleResponse = $theaterSchedule->fetchPreSchedule($preBuiler);
-        
+
         if ($preScheduleResponse instanceof HttpResponse) {
             $preSchedules = $preScheduleResponse->getContents();
         } else {
             $preSchedules = $preScheduleResponse;
         }
-        
+
         $meta = array();
         $data = array();
 
@@ -233,13 +233,13 @@ class ScheduleController extends BaseController
             $meta['error'] = V2Schedules::ERROR_NO_CONTENT;
             $this->data->set('meta', $meta);
             $this->data->set('data', $data);
-            
+
             return;
         }
-        
+
         $meta['error']     = V2Schedules::ERROR_NOT;
         $meta['attention'] = $schedules->getAttention(); // 通常、先行で同じ想定
-        
+
         $params = [
             'date' => $date,
         ];
@@ -248,11 +248,11 @@ class ScheduleController extends BaseController
         foreach ($movieCollection as $movie) {
             $data[] = $movie->toArray();
         }
-        
+
         $this->data->set('meta', $meta);
         $this->data->set('data', $data);
     }
-    
+
     /**
      * スケジュール検索
      *
@@ -275,8 +275,8 @@ class ScheduleController extends BaseController
 
         return $movieCollection;
     }
-    
-    
+
+
     /**
      * 作品検索
      *
