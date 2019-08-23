@@ -23,6 +23,13 @@
                     .logo{width: 150px;margin-bottom: 1.5rem;}
                 }
             </style>
+        <script>
+            (function(){
+                setTimeout(function(){
+                    document.getElementById('link').click();
+                }, 10 * 1000);
+            })();
+        </script>
     </head>
 
     <body>
@@ -33,7 +40,7 @@
             </div>
             <div class="note_area">
                 <p class="note">グランドシネマサンシャインの<br class="sp_br">劇場トップページへ自動で遷移します。<br>自動遷移しない場合は下記ボタンを押してください。</p>
-                <a href="/theater/gdcs/">グランドシネマサンシャイン<br class="sp_br">劇場ページ</a>
+                <a id="link" href="/theater/gdcs/">グランドシネマサンシャイン<br class="sp_br">劇場ページ</a>
             </div>
         </div>
     </body>
