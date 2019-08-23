@@ -12,6 +12,17 @@
 $container = $app->getContainer();
 
 /**
+ * auth
+ *
+ * @return \Cinemasunshine\Portal\Auth
+ */
+$container['auth'] = function ($container) {
+    return new \Cinemasunshine\Portal\Auth(
+        $container->get('settings')['mp_service'],
+        $container->get('sm')->getContainer('auth'));
+};
+
+/**
  * view
  *
  * @link https://www.slimframework.com/docs/v3/features/templates.html
@@ -24,8 +35,9 @@ $container['view'] = function ($container) {
     $view = new \Slim\Views\Twig($settings['template_path'], $settings['settings']);
 
     // Instantiate and add Slim specific extension
-    $basePath = rtrim(str_ireplace('index.php', '', $container->get('request')->getUri()->getBasePath()), '/');
-    $view->addExtension(new Slim\Views\TwigExtension($container->get('router'), $basePath));
+    $router = $container->get('router');
+    $uri = \Slim\Http\Uri::createFromEnvironment(new \Slim\Http\Environment($_SERVER));
+    $view->addExtension(new \Slim\Views\TwigExtension($router, $uri));
 
     // add Extension
     $view->addExtension(new \Twig_Extension_Debug());
@@ -39,7 +51,8 @@ $container['view'] = function ($container) {
     $view->addExtension(new \Cinemasunshine\Portal\Twig\Extension\TheaterExtension());
 
     $view->addExtension(new \Cinemasunshine\Portal\Twig\Extension\MotionpictureServiceExtension(
-        $container->get('settings')['mp_service']
+        $container->get('settings')['mp_service'],
+        $container->get('auth')
     ));
 
     return $view;
