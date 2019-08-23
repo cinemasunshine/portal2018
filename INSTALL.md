@@ -60,6 +60,10 @@ Azure Web Appsのアプリケーション設定で設定する場合は **APPSET
 |:--|:--|:--|
 |APPSETTING_ENV|'prod' or 'dev'|アプリケーションの実行環境|
 |APPSETTING_COA_SCHEDULE|'prod' or 'test'|コアシステムズ様スケジュールの接続環境|
+|APPSETTING_MP_API_HOST|[ API host name ]|APIホスト名|
+|APPSETTING_MP_AUTH_HOST|[ Authorization host name ]|認証ホスト名|
+|APPSETTING_MP_AUTH_CLIENT_ID|[ Authorization client ID ]|認証クライアントID|
+|APPSETTING_MP_AUTH_CLIENT_SECRET|[ Authorization client secret ]|認証クライアント シークレット|
 |APPSETTING_MP_TICKET_URL|[ site URL ]|MPオンラインチケットのURL|
 |APPSETTING_MP_TICKET_ENTRANCE_URL|[ entrance site URL ]|MPオンラインチケットのエントランスURL|
 
