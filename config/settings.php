@@ -136,10 +136,15 @@ $settings['storage'] = [
 // Motionpicture Service
 $getMpServiceSetting = function () {
     $settings = [
-        'api_host'            => getenv('APPSETTING_MP_API_HOST'),
-        'auth_host'           => getenv('APPSETTING_MP_AUTH_HOST'),
-        'auth_client_id'      => getenv('APPSETTING_MP_AUTH_CLIENT_ID'),
-        'auth_client_secret'  => getenv('APPSETTING_MP_AUTH_CLIENT_SECRET'),
+        // API
+        'api_host' => getenv('APPSETTING_MP_API_HOST'),
+
+        // Authorization Code Grant
+        'authorization_code_host'          => getenv('APPSETTING_MP_AUTHORIZATION_CODE_HOST'),
+        'authorization_code_client_id'     => getenv('APPSETTING_MP_AUTHORIZATION_CODE_CLIENT_ID'),
+        'authorization_code_client_secret' => getenv('APPSETTING_MP_AUTHORIZATION_CODE_CLIENT_SECRET'),
+
+        // Ticket
         'ticket_url'          => getenv('APPSETTING_MP_TICKET_URL'),
         'ticket_entrance_url' => getenv('APPSETTING_MP_TICKET_ENTRANCE_URL'),
     ];
