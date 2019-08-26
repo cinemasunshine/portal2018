@@ -14,13 +14,17 @@ use Cinemasunshine\Portal\ORM\Entity\Theater;
  */
 class CommonExtension extends \Twig_Extension
 {
+    /** @var string */
+    protected $appEnv;
+
     /**
      * construct
      */
     public function __construct()
     {
+        $this->appEnv = APP_ENV;
     }
-    
+
     /**
      * get functions
      *
@@ -29,11 +33,38 @@ class CommonExtension extends \Twig_Extension
     public function getFunctions()
     {
         return [
+            new \Twig_Function('app_env', [$this, 'getAppEnv']),
+            new \Twig_Function('is_app_env', [$this, 'isAppEnv']),
             new \Twig_Function('facebook', [$this, 'getFacebookUrl']),
             new \Twig_Function('twitter', [$this, 'getTwitterUrl']),
         ];
     }
-    
+
+    /**
+     * return application environment
+     *
+     * @return string
+     */
+    public function getAppEnv(): string
+    {
+        return $this->appEnv;
+    }
+
+    /**
+     * Is the specific application environment?
+     *
+     * @param string|array $env
+     * @return boolean
+     */
+    public function isAppEnv($env): bool
+    {
+        if (is_string($env)) {
+            $env = [ $env ];
+        }
+
+        return in_array($this->appEnv, $env);
+    }
+
     /**
      * retrun facebook URL
      *
@@ -44,7 +75,7 @@ class CommonExtension extends \Twig_Extension
     {
         return sprintf('https://www.facebook.com/%s', $name);
     }
-    
+
     /**
      * return twitter URL
      *
@@ -55,7 +86,7 @@ class CommonExtension extends \Twig_Extension
     {
         return sprintf('https://twitter.com/%s', $name);
     }
-    
+
     /**
      * get filters
      *
@@ -67,7 +98,7 @@ class CommonExtension extends \Twig_Extension
             new \Twig_SimpleFilter('weekday', [$this, 'weekdayFilter']),
         );
     }
-    
+
     /**
      * return weekday
      *
@@ -77,7 +108,7 @@ class CommonExtension extends \Twig_Extension
     public function weekdayFilter(\DateTime $datetime)
     {
         $weekdays = ['日', '月', '火', '水', '木', '金', '土'];
-        
+
         return $weekdays[$datetime->format('w')];
     }
 }
