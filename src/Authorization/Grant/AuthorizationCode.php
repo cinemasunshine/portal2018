@@ -59,7 +59,7 @@ class AuthorizationCode extends AbstractGrant
         $codeChallengeMethod = $this->codeChallengeMethod;
         $codeChallenge = $this->generateCodeChallenge($codeVerifier, $codeChallengeMethod);
 
-        $scope = $this->createScopeStr($scope);
+        $scope = $this->generateScopeStr($scope);
         $params = [
             'response_type'         => 'code',
             'client_id'             => $this->clientId,
@@ -113,12 +113,12 @@ class AuthorizationCode extends AbstractGrant
     }
 
     /**
-     * craete scope string
+     * generate scope string
      *
      * @param array $scopeList
      * @return string
      */
-    protected function createScopeStr(array $scopeList): string
+    protected function generateScopeStr(array $scopeList): string
     {
         return implode(' ', $scopeList);
     }
