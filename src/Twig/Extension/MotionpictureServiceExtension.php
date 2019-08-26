@@ -9,15 +9,15 @@ declare(strict_types=1);
 
 namespace Cinemasunshine\Portal\Twig\Extension;
 
-use Cinemasunshine\Portal\Auth;
+use Cinemasunshine\Portal\Authorization\Manager as AuthorizationManager;
 
 /**
  * Motionpicture Service twig extension class
  */
 class MotionpictureServiceExtension extends \Twig_Extension
 {
-    /** @var Auth */
-    protected $auth;
+    /** @var AuthorizationManager */
+    protected $authorizationManager;
 
     /** @var array */
     protected $settings;
@@ -28,10 +28,10 @@ class MotionpictureServiceExtension extends \Twig_Extension
      * @param array $settings
      * @param Auth $auth
      */
-    public function __construct(array $settings, Auth $auth)
+    public function __construct(array $settings, AuthorizationManager $authorizationManager)
     {
         $this->settings = $settings;
-        $this->auth = $auth;
+        $this->authorizationManager = $authorizationManager;
     }
 
     /**
@@ -52,27 +52,10 @@ class MotionpictureServiceExtension extends \Twig_Extension
      *
      * @param string $redirectUri
      * @return string
-     * @link https://m-p.backlog.jp/view/SASAKI-485
      */
     public function getLoginUrl(string $redirectUri): string
     {
-        $auth = $this->auth;
-        $auth->initCodeVerifier();
-
-        $scope = $this->createScopeStr($auth->getScopeList());
-        $params = [
-            'response_type'         => 'code',
-            'client_id'             => $this->settings['auth_client_id'],
-            'redirect_uri'          => $redirectUri,
-            'scope'                 => $scope,
-            'state'                 => 'todo', // TODO
-            'code_challenge_method' => $auth->getCodeChallengeMethod(),
-            'code_challenge'        => $auth->getCodeChallenge(),
-        ];
-
-        $base = 'https://' . $this->settings['auth_host'] . '/authorize';
-
-        return $base . '?' . http_build_query($params);
+        return $this->authorizationManager->getAuthorizationUrl($redirectUri);
     }
 
     /**

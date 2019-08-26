@@ -149,6 +149,23 @@ $getMpServiceSetting = function () {
         'ticket_entrance_url' => getenv('APPSETTING_MP_TICKET_ENTRANCE_URL'),
     ];
 
+    // @see \Cinemasunshine\Portal\Authorization\Manager::buildAuthorizeScopeList()
+    $settings['authorization_code_scope'] = [
+        'phone',
+        'openid',
+        'email',
+        'aws.cognito.signin.user.admin',
+        'profile',
+        '<API_URL>/transactions',
+        '<API_URL>/events.read-only',
+        '<API_URL>/organizations.read-only',
+        '<API_URL>/orders.read-only',
+        '<API_URL>/places.read-only',
+        '<API_URL>/people.contacts',
+        '<API_URL>/people.creditCards',
+        '<API_URL>/people.ownershipInfos.read-only',
+    ];
+
     return $settings;
 };
 

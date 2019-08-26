@@ -12,14 +12,15 @@
 $container = $app->getContainer();
 
 /**
- * auth
+ * Authorization Manager
  *
- * @return \Cinemasunshine\Portal\Auth
+ * @return \Cinemasunshine\Portal\Authorization\Manager
  */
-$container['auth'] = function ($container) {
-    return new \Cinemasunshine\Portal\Auth(
+$container['am'] = function ($container) {
+    return new \Cinemasunshine\Portal\Authorization\Manager(
         $container->get('settings')['mp_service'],
-        $container->get('sm')->getContainer('auth'));
+        $container->get('sm')->getContainer('auth')
+    );
 };
 
 /**
@@ -52,7 +53,7 @@ $container['view'] = function ($container) {
 
     $view->addExtension(new \Cinemasunshine\Portal\Twig\Extension\MotionpictureServiceExtension(
         $container->get('settings')['mp_service'],
-        $container->get('auth')
+        $container->get('am')
     ));
 
     return $view;
