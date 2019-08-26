@@ -74,7 +74,7 @@ class Manager
      */
     protected function initCodeVerifier(): void
     {
-        $this->session['code_verifier'] = $this->authorizationCodeGrunt->generateCodeVerifier();
+        $this->session['code_verifier'] = $this->authorizationCodeGrunt->createCodeVerifier();
     }
 
     /**

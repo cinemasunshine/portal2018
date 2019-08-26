@@ -79,11 +79,11 @@ class AuthorizationCode extends AbstractGrant
     }
 
     /**
-     * generate code_verifier
+     * create code_verifier
      *
      * @return string
      */
-    public function generateCodeVerifier(): string
+    public function createCodeVerifier(): string
     {
         return $this->createUniqueStr('code_verifier');
     }
