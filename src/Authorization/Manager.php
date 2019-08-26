@@ -68,29 +68,29 @@ class Manager
     }
 
     /**
-     * Initialize code_verifiery
+     * Initialize code_verifier
      *
      * @return void
      */
     protected function initCodeVerifier(): void
     {
-        $this->session['code_verifiery'] = $this->authorizationCodeGrunt->generateCodeVerifier('code_verifiery');
+        $this->session['code_verifier'] = $this->authorizationCodeGrunt->generateCodeVerifier('code_verifier');
     }
 
     /**
-     * return code_verifiery
+     * return code_verifier
      *
-     * 新たに認証を開始する時は code_verifiery を初期化してください。
+     * 新たに認証を開始する時は code_verifier を初期化してください。
      *
      * @return string
      */
     protected function getCodeVerifier(): string
     {
-        if (!isset($this->session['code_verifiery'])) {
+        if (!isset($this->session['code_verifier'])) {
             $this->initCodeVerifier();
         }
 
-        return $this->session['code_verifiery'];
+        return $this->session['code_verifier'];
     }
 
     /**

@@ -79,29 +79,29 @@ class AuthorizationCode extends AbstractGrant
     }
 
     /**
-     * generate code_verifiery
+     * generate code_verifier
      *
      * @return string
      */
     public function generateCodeVerifier(): string
     {
-        return $this->generateHash('code_verifiery');
+        return $this->generateHash('code_verifier');
     }
 
     /**
      * generate code_challenge
      *
-     * @param string $codeVerifiery
+     * @param string $codeVerifier
      * @return string
      * @throws \LogicException
      */
-    protected function generateCodeChallenge(string $codeVerifiery, string $codeChallengeMethod): string
+    protected function generateCodeChallenge(string $codeVerifier, string $codeChallengeMethod): string
     {
         $codeChallenge = '';
 
         switch ($codeChallengeMethod) {
             case 'S256':
-                $codeChallenge = base64_encode(hash('sha256', $codeVerifiery));
+                $codeChallenge = base64_encode(hash('sha256', $codeVerifier));
                 break;
 
             default:
