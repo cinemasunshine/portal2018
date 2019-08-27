@@ -51,8 +51,11 @@ $container['view'] = function ($container) {
     $view->addExtension(new \Cinemasunshine\Portal\Twig\Extension\NewsExtension());
     $view->addExtension(new \Cinemasunshine\Portal\Twig\Extension\TheaterExtension());
 
-    $view->addExtension(new \Cinemasunshine\Portal\Twig\Extension\MotionpictureServiceExtension(
-        $container->get('settings')['mp_service'],
+    $view->addExtension(new \Cinemasunshine\Portal\Twig\Extension\MotionpictureTicketExtension(
+        $container->get('settings')['mp_service']
+    ));
+
+    $view->addExtension(new \Cinemasunshine\Portal\Twig\Extension\AuthorizationExtension(
         $container->get('am')
     ));
 
