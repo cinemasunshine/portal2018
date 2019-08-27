@@ -40,7 +40,8 @@ CIツールとして [CircleCI](https://circleci.com) を導入してます。
 
 ※ データベース、ストレージについてはCMSアプリケーションのドキュメントを参照してください。
 
-web: http://localhost:8010/
+web: https://localhost:8010/
+
 phpRedisAdmin: http://localhost:8081/
 
 ### コマンド例
