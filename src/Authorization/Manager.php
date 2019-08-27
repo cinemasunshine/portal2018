@@ -127,4 +127,15 @@ class Manager
     {
         return isset($this->session['access_token']);
     }
+
+    /**
+     * return logout URL
+     *
+     * @param string $redirectUri
+     * @return string
+     */
+    public function getLogoutUrl(string $redirectUri): string
+    {
+        return $this->authorizationCodeGrunt->getLogoutUrl($redirectUri);
+    }
 }

@@ -1,5 +1,5 @@
 {% if is_login() %}
-    ログイン中
+    <a href="{{ logout_url(full_url_for('logout')) }}">logout</a>
 {% else %}
     <a href="{{ login_url(full_url_for('login')) }}">login</a>
 {% endif %}

@@ -203,4 +203,22 @@ class AuthorizationCode extends AbstractGrant
 
         return $headers;
     }
+
+    /**
+     * return logout URL
+     *
+     * @param string $redirectUri
+     * @return string
+     */
+    public function getLogoutUrl(string $redirectUri): string
+    {
+        $params = [
+            'client_id'  => $this->clientId,
+            'logout_uri' => $redirectUri,
+        ];
+
+        $base = 'https://' . $this->host . '/logout';
+
+        return $base . '?' . http_build_query($params);
+    }
 }
