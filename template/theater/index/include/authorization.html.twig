@@ -1,5 +1,7 @@
 {% if is_login() %}
-    ログイン中
+    ログイン中<br>
+    {% set accessToken = access_token() %}
+    アクセストークン: {{ accessToken.getToken() }}
 {% else %}
     <a href="{{ login_url(full_url_for('login')) }}">login</a>
 {% endif %}

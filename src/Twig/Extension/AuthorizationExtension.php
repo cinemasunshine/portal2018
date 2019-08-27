@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace Cinemasunshine\Portal\Twig\Extension;
 
 use Cinemasunshine\Portal\Authorization\Manager as AuthorizationManager;
+use Cinemasunshine\Portal\Authorization\Token\AccessToken;
 
 /**
  * Authorization twig extension class
@@ -39,6 +40,7 @@ class AuthorizationExtension extends \Twig_Extension
         return [
             new \Twig_Function('login_url', [$this, 'getLoginUrl'], [ 'is_safe' => ['all'] ]),
             new \Twig_Function('is_login', [$this, 'isLogin'], [ 'is_safe' => ['all'] ]),
+            new \Twig_Function('access_token', [$this, 'getAccessToken'], [ 'is_safe' => ['all'] ]),
         ];
     }
 
@@ -61,5 +63,15 @@ class AuthorizationExtension extends \Twig_Extension
     public function isLogin(): bool
     {
         return $this->authorizationManager->isLogin();
+    }
+
+    /**
+     * return access token
+     *
+     * @return AccessToken|null
+     */
+    public function getAccessToken(): ?AccessToken
+    {
+        return $this->authorizationManager->getAccessToken();
     }
 }

@@ -127,4 +127,14 @@ class Manager
     {
         return isset($this->session['access_token']);
     }
+
+    /**
+     * return access token
+     *
+     * @return AccessToken|null
+     */
+    public function getAccessToken(): ?AccessToken
+    {
+        return $this->session['access_token'];
+    }
 }
