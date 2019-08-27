@@ -117,4 +117,14 @@ class Manager
     {
         $this->session['access_token'] = $accessToken;
     }
+
+    /**
+     * ログイン判定
+     *
+     * @return boolean
+     */
+    public function isLogin(): bool
+    {
+        return isset($this->session['access_token']);
+    }
 }

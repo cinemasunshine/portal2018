@@ -38,6 +38,7 @@ class AuthorizationExtension extends \Twig_Extension
     {
         return [
             new \Twig_Function('login_url', [$this, 'getLoginUrl'], [ 'is_safe' => ['html'] ]),
+            new \Twig_Function('is_login', [$this, 'isLogin'], [ 'is_safe' => ['all'] ]),
         ];
     }
 
@@ -50,5 +51,15 @@ class AuthorizationExtension extends \Twig_Extension
     public function getLoginUrl(string $redirectUri): string
     {
         return $this->authorizationManager->getAuthorizationUrl($redirectUri);
+    }
+
+    /**
+     * ログイン判定
+     *
+     * @return boolean
+     */
+    public function isLogin(): bool
+    {
+        return $this->authorizationManager->isLogin();
     }
 }

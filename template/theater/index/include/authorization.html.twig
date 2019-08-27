@@ -1,1 +1,6 @@
-<a href="{{ login_url(full_url_for('login')) }}">login</a>
+{% if is_login() %}
+    ログイン中
+{% else %}
+    <a href="{{ login_url(full_url_for('login')) }}">login</a>
+{% endif %}
+
