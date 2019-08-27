@@ -90,4 +90,20 @@ class Manager
 
         return $this->session['code_verifier'];
     }
+
+    /**
+     * request access token
+     *
+     * @param string $code
+     * @param string $redirectUri
+     * @return AccessToken
+     */
+    public function requestAccessToken(string $code, string $redirectUri): AccessToken
+    {
+        return $this->authorizationCodeGrunt->requestAccessToken(
+            $code,
+            $redirectUri,
+            $this->getCodeVerifier()
+        );
+    }
 }

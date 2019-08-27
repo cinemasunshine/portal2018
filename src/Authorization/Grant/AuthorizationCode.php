@@ -9,11 +9,18 @@ declare(strict_types=1);
 
 namespace Cinemasunshine\Portal\Authorization\Grant;
 
+use GuzzleHttp\Client as HttpClient;
+
+use Cinemasunshine\Portal\Authorization\Token\AccessToken;
+
 /**
  * Authorization Code Grant class
  */
 class AuthorizationCode extends AbstractGrant
 {
+    /** @var string */
+    protected $name = 'authorization_code';
+
     /** @var string */
     protected $host;
 
@@ -22,6 +29,9 @@ class AuthorizationCode extends AbstractGrant
 
     /** @var string */
     protected $clientSecret;
+
+    /** @var HttpClient */
+    protected $httpClient;
 
     /** @var string */
     protected $codeChallengeMethod = 'S256';
@@ -38,6 +48,27 @@ class AuthorizationCode extends AbstractGrant
         $this->host = $host;
         $this->clientId = $clientId;
         $this->clientSecret = $clientSecret;
+
+        $baseUri = 'https://' . $this->host;
+        $this->httpClient = $this->createHttpClient($baseUri);
+    }
+
+    /**
+     * create HTTP client
+     *
+     * @param string $baseUri
+     * @return HttpClient
+     */
+    protected function createHttpClient(string $baseUri): HttpClient
+    {
+        $config = [
+            'base_uri' => $baseUri,
+            'timeout' => 5, // ひとまず5秒
+            'connect_timeout' => 5, // ひとまず5秒
+            'http_errors' => true,
+        ];
+
+        return new HttpClient($config);
     }
 
     /**
@@ -121,5 +152,55 @@ class AuthorizationCode extends AbstractGrant
     protected function generateScopeStr(array $scopeList): string
     {
         return implode(' ', $scopeList);
+    }
+
+    /**
+     * Request access token
+     *
+     * @param string $code
+     * @param string $redirectUri
+     * @param string $codeVerifie
+     * @return AccessToken
+     */
+    public function requestAccessToken(string $code, string $redirectUri, string $codeVerifie): AccessToken
+    {
+        $endpoint = '/token';
+        $headers = $this->getRequestHeaders($this->clientId, $this->clientSecret);
+        $params = [
+            'grant_type'   => $this->name,
+            'client_id'    => $this->clientId,
+            'code'         => $code,
+            'redirect_uri' => $redirectUri,
+            'code_verifie' => $codeVerifie,
+        ];
+
+        $response = $this->httpClient->post($endpoint, [
+            'headers' => $headers,
+            'form_params' => $params,
+        ]);
+
+        $rawContents = $response->getBody()->getContents();
+        $token = new AccessToken(json_decode($rawContents, true));
+
+        return $token;
+    }
+
+    /**
+     * return request headers
+     *
+     * @param string $clientId
+     * @param string $clientSecret
+     * @return array
+     */
+    protected function getRequestHeaders(string $clientId, string $clientSecret): array
+    {
+        $encodedCredentials = base64_encode(sprintf('%s:%s', $clientId, $clientSecret));
+
+        $headers = [
+            'Authorization' => 'Basic ' . $encodedCredentials,
+            'Content-Type' => 'application/x-www-form-urlencoded',
+        ];
+
+        return $headers;
     }
 }
