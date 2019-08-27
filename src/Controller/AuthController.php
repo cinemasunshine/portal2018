@@ -63,9 +63,10 @@ class AuthController extends BaseController
             throw $e;
         }
 
-        // todo
-        var_dump($accessToken);
-        exit;
+        $this->am->login($accessToken);
+
+        // TODO: 劇場ページへ
+        $this->redirect($this->router->pathFor('homepage'));
     }
 
     /**

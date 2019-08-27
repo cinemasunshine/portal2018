@@ -106,4 +106,15 @@ class Manager
             $this->getCodeVerifier()
         );
     }
+
+    /**
+     * login
+     *
+     * @param AccessToken $accessToken
+     * @return void
+     */
+    public function login(AccessToken $accessToken)
+    {
+        $this->session['access_token'] = $accessToken;
+    }
 }
