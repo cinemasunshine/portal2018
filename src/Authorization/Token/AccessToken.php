@@ -1,6 +1,6 @@
 <?php
 /**
- * Token.php
+ * AccessToken.php
  *
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
