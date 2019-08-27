@@ -79,9 +79,9 @@ class AuthController extends BaseController
      */
     public function executeLogout($request, $response, $args)
     {
-        // todo
-        echo 'loout';
-        var_dump($request->getParams());
-        exit;
+        $this->am->logout();
+
+        // TODO: 劇場ページへ
+        $this->redirect($this->router->pathFor('homepage'));
     }
 }

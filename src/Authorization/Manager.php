@@ -110,6 +110,8 @@ class Manager
     /**
      * login
      *
+     * logoutも適宜更新してください。
+     *
      * @param AccessToken $accessToken
      * @return void
      */
@@ -137,5 +139,15 @@ class Manager
     public function getLogoutUrl(string $redirectUri): string
     {
         return $this->authorizationCodeGrunt->getLogoutUrl($redirectUri);
+    }
+
+    /**
+     * logout
+     *
+     * @return void
+     */
+    public function logout()
+    {
+        unset($this->session['access_token']);
     }
 }
