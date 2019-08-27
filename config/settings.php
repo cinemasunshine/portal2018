@@ -149,8 +149,7 @@ $getMpServiceSetting = function () {
         'ticket_entrance_url' => getenv('APPSETTING_MP_TICKET_ENTRANCE_URL'),
     ];
 
-    // @see \Cinemasunshine\Portal\Authorization\Manager::buildAuthorizeScopeList()
-    $settings['authorization_code_scope'] = [
+    $baseScopeList = [
         'phone',
         'openid',
         'email',
@@ -165,6 +164,10 @@ $getMpServiceSetting = function () {
         '<API_URL>/people.creditCards',
         '<API_URL>/people.ownershipInfos.read-only',
     ];
+
+    $apiUrl = 'https://' . $settings['api_host'];
+    $scopeList = str_replace('<API_URL>', $apiUrl, $baseScopeList);
+    $settings['authorization_code_scope'] = $scopeList;
 
     return $settings;
 };

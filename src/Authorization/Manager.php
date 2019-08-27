@@ -12,6 +12,7 @@ namespace Cinemasunshine\Portal\Authorization;
 use Zend\Session\Container as SessionContainer;
 
 use Cinemasunshine\Portal\Authorization\Grant\AuthorizationCode as AuthorizationCodeGrant;
+use Cinemasunshine\Portal\Authorization\Token\AccessToken;
 
 /**
  * Authorization Manager class
@@ -37,10 +38,7 @@ class Manager
      */
     public function __construct(array $settings, SessionContainer $session)
     {
-        $this->authorizeScopeList = $this->buildAuthorizeScopeList(
-            $settings['authorization_code_scope'],
-            $settings['api_host']
-        );
+        $this->authorizeScopeList = $settings['authorization_code_scope'];
 
         $this->authorizationCodeGrunt = new AuthorizationCodeGrant(
             $settings['authorization_code_host'],
@@ -91,18 +89,5 @@ class Manager
         }
 
         return $this->session['code_verifier'];
-    }
-
-    /**
-     * build authorize scope list
-     *
-     * @return array
-     */
-    protected function buildAuthorizeScopeList(array $baseScopeList, string $apiHost): array
-    {
-        $apiUrl = 'https://' . $apiHost;
-        $scopeList = str_replace('<API_URL>', $apiUrl, $baseScopeList);
-
-        return $scopeList;
     }
 }
