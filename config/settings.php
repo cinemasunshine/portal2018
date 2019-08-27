@@ -35,6 +35,7 @@ $getSessionSetting = function () {
     $settings = [
         'name' => 'csportal',
         'php_save_handler' => 'redis',
+        'gc_maxlifetime' => 60 * 60 * 1, // SASAKI-485
     ];
 
     $savePathParams = [
