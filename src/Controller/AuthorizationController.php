@@ -1,6 +1,6 @@
 <?php
 /**
- * AuthController.php
+ * AuthorizationController.php
  *
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
@@ -14,9 +14,9 @@ use Slim\Http\Uri as HttpUri;
 use GuzzleHttp\Exception\ClientException;
 
 /**
- * Auth controller
+ * Authorization controller
  */
-class AuthController extends BaseController
+class AuthorizationController extends BaseController
 {
     /**
      * login action

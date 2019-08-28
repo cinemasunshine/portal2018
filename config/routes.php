@@ -7,7 +7,7 @@
 
 use Cinemasunshine\Portal\Controller\{
     AboutController,
-    AuthController,
+    AuthorizationController,
     FourdxController,
     FourdxWithScreenXController,
     ImaxController,
@@ -26,8 +26,8 @@ use Cinemasunshine\Portal\Controller\API\{
 
 $app->get('/', IndexController::class . ':index')->setName('homepage');
 
-$app->get('/login/', AuthController::class . ':login')->setName('login');
-$app->get('/logout/', AuthController::class . ':logout')->setName('logout');
+$app->get('/login/', AuthorizationController::class . ':login')->setName('login');
+$app->get('/logout/', AuthorizationController::class . ':logout')->setName('logout');
 
 $app->get('/company/', AboutController::class . ':company')->setName('company');
 $app->get('/magazine/', AboutController::class . ':mailMagazine')->setName('mail_magazine');
