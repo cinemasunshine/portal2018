@@ -149,7 +149,6 @@ class Manager
      */
     public function logout()
     {
-        unset($this->session['access_token']);
-        unset($this->session['authorized']);
+        $this->session->clear();
     }
 }
