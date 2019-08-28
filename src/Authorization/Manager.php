@@ -118,16 +118,17 @@ class Manager
     public function login(AccessToken $accessToken)
     {
         $this->session['access_token'] = $accessToken;
+        $this->session['authorized'] = true;
     }
 
     /**
-     * ログイン判定
+     * 認可判定
      *
      * @return boolean
      */
-    public function isLogin(): bool
+    public function isAuthorized(): bool
     {
-        return isset($this->session['access_token']);
+        return isset($this->session['authorized']) && $this->session['authorized'] === true;
     }
 
     /**
@@ -149,5 +150,6 @@ class Manager
     public function logout()
     {
         unset($this->session['access_token']);
+        unset($this->session['authorized']);
     }
 }

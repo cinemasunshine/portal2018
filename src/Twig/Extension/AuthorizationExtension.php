@@ -61,7 +61,7 @@ class AuthorizationExtension extends \Twig_Extension
      */
     public function isLogin(): bool
     {
-        return $this->authorizationManager->isLogin();
+        return $this->authorizationManager->isAuthorized();
     }
 
     /**
