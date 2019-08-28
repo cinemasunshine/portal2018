@@ -71,6 +71,16 @@ class AccessToken
     }
 
     /**
+     * decode access_token
+     *
+     * @return DecodedAccessToken
+     */
+    public function decodeToken(): DecodedAccessToken
+    {
+        return DecodedAccessToken::decodeJWT($this->token);
+    }
+
+    /**
      * return token_type
      *
      * @return string|null
