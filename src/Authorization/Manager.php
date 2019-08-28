@@ -118,6 +118,17 @@ class Manager
     public function login(AccessToken $accessToken)
     {
         $this->session['access_token'] = $accessToken;
+
+        /**
+         * ユーザ情報
+         * 情報が増えてきたらオブジェクト化など考える。
+         */
+        $claims = $accessToken->decodeToken()->getClaims();
+        $user = [
+            'name' => $claims['username'],
+        ];
+        $this->session['user'] = $user;
+
         $this->session['authorized'] = true;
     }
 
