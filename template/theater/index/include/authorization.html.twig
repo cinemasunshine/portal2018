@@ -1,4 +1,6 @@
 {% if is_login() %}
+    {% set user = login_user() %}
+    name: {{ user.name }}<br>
     <a href="{{ logout_url(full_url_for('logout')) }}">logout</a>
 {% else %}
     <a href="{{ login_url(full_url_for('login')) }}">login</a>

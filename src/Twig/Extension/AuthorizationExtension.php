@@ -39,6 +39,7 @@ class AuthorizationExtension extends \Twig_Extension
         return [
             new \Twig_Function('login_url', [$this, 'getLoginUrl'], [ 'is_safe' => ['all'] ]),
             new \Twig_Function('is_login', [$this, 'isLogin'], [ 'is_safe' => ['all'] ]),
+            new \Twig_Function('login_user', [$this, 'getUser'], [ 'is_safe' => ['all'] ]),
             new \Twig_Function('logout_url', [$this, 'getLogoutUrl'], [ 'is_safe' => ['all'] ]),
         ];
     }
@@ -62,6 +63,16 @@ class AuthorizationExtension extends \Twig_Extension
     public function isLogin(): bool
     {
         return $this->authorizationManager->isAuthorized();
+    }
+
+    /**
+     * return authorized user
+     *
+     * @return array|null
+     */
+    public function getUser(): ?array
+    {
+        return $this->authorizationManager->getUser();
     }
 
     /**
