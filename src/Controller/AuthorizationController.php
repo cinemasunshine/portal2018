@@ -45,8 +45,8 @@ class AuthorizationController extends BaseController
         if (empty($state)
             || $state !== $this->am->getAuthorizationState()
         ) {
-            // TODO: エラーページ
-            throw new \RuntimeException('Invalid state.');
+            $this->logger->info('Invalid state.');
+            return 'error';
         }
 
         $this->am->clearAuthorizationState();
@@ -57,8 +57,8 @@ class AuthorizationController extends BaseController
         try {
             $accessToken = $this->am->requestAccessToken($code, $redirectUri);
         } catch (ClientException $e) {
-            // TODO: エラーページ
-            throw $e;
+            $this->logger->error($e->getMessage());
+            return 'error';
         }
 
         $this->am->login($accessToken);
