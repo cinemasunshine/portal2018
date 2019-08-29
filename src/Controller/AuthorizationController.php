@@ -70,7 +70,8 @@ class AuthorizationController extends BaseController
         if (isset($session['viewed_theater'])) {
             $redirectPath = $this->router->pathFor(
                 'theater',
-                [ 'name' => $session['viewed_theater'] ]);
+                [ 'name' => $session['viewed_theater'] ]
+            );
         }
 
         $this->redirect($redirectPath);
@@ -95,7 +96,8 @@ class AuthorizationController extends BaseController
         if (isset($session['viewed_theater'])) {
             $redirectPath = $this->router->pathFor(
                 'theater',
-                [ 'name' => $session['viewed_theater'] ]);
+                [ 'name' => $session['viewed_theater'] ]
+            );
         }
 
         $this->redirect($redirectPath);
