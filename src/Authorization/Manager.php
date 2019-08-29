@@ -73,8 +73,46 @@ class Manager
             $this->getCodeVerifier(),
             $redirectUri,
             $this->authorizeScopeList,
-            'todo'
+            $this->getAuthorizationState()
         );
+    }
+
+    /**
+     * Initialize authorization state
+     *
+     * slim/flashのような一時的なストレージのほうが安全ではあるが
+     * このアプリケーション設計では使用できない。
+     * （APIやiframeなどのリクエストで消えてしまう）
+     *
+     * @return void
+     */
+    protected function initAuthorizationState()
+    {
+        $this->session['authorization_state'] = self::createUniqueStr('authorization_state');
+    }
+
+    /**
+     * return authorization state
+     *
+     * @return string
+     */
+    public function getAuthorizationState(): string
+    {
+        if (!isset($this->session['authorization_state'])) {
+            $this->initAuthorizationState();
+        }
+
+        return $this->session['authorization_state'];
+    }
+
+    /**
+     * clear authorization state
+     *
+     * @return void
+     */
+    public function clearAuthorizationState()
+    {
+        unset($this->session['authorization_state']);
     }
 
     /**
