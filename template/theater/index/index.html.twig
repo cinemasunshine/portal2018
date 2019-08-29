@@ -129,4 +129,8 @@ newsList: infoNewsList,
 } only %}
 
 {% include 'theater/index/include/app_modal.html.twig' only %}
+
+{% if is_app_env('dev') %}
+    {% include "theater/index/include/authorization.html.twig" only %}
+{% endif %}
 {% endblock %}

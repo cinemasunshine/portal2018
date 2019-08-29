@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "21a9b6b59ceaad3979e88dc0a4dc53de",
+    "content-hash": "9b4b11bb3e79c557316615041bf01d88",
     "packages": [
         {
             "name": "cinemasunshine/schedule",

@@ -5,9 +5,9 @@
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
-namespace Cinemasunshine\Portal\Twig\Extension;
+declare(strict_types=1);
 
-use Cinemasunshine\Portal\ORM\Entity\Page;
+namespace Cinemasunshine\Portal\Twig\Extension;
 
 /**
  * Motionpicture Ticket twig extension class
@@ -16,7 +16,7 @@ class MotionpictureTicketExtension extends \Twig_Extension
 {
     /** @var array */
     protected $settings;
-    
+
     /**
      * construct
      *
@@ -26,7 +26,7 @@ class MotionpictureTicketExtension extends \Twig_Extension
     {
         $this->settings = $settings;
     }
-    
+
     /**
      * get functions
      *
@@ -35,20 +35,20 @@ class MotionpictureTicketExtension extends \Twig_Extension
     public function getFunctions()
     {
         return [
-            new \Twig_Function('mp_ticket_inquiry', [$this, 'getInquiryUrl'], [ 'is_safe' => ['html'] ]),
+            new \Twig_Function('mp_ticket_inquiry', [$this, 'getTicketInquiryUrl'], [ 'is_safe' => ['html'] ]),
         ];
     }
-    
+
     /**
-     * return inquiry URL
+     * return ticket inquiry URL
      *
      * @param string $theaterCode
      * @return string
      */
-    public function getInquiryUrl(string $theaterCode)
+    public function getTicketInquiryUrl(string $theaterCode): string
     {
         $path = sprintf('/inquiry/login?theater=%s', $theaterCode);
-        
-        return $this->settings['url'] . $path;
+
+        return $this->settings['ticket_url'] . $path;
     }
 }

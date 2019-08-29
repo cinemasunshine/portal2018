@@ -7,6 +7,7 @@
 
 use Cinemasunshine\Portal\Controller\{
     AboutController,
+    AuthorizationController,
     FourdxController,
     FourdxWithScreenXController,
     ImaxController,
@@ -24,6 +25,9 @@ use Cinemasunshine\Portal\Controller\API\{
 };
 
 $app->get('/', IndexController::class . ':index')->setName('homepage');
+
+$app->get('/login/', AuthorizationController::class . ':login')->setName('login');
+$app->get('/logout/', AuthorizationController::class . ':logout')->setName('logout');
 
 $app->get('/company/', AboutController::class . ':company')->setName('company');
 $app->get('/magazine/', AboutController::class . ':mailMagazine')->setName('mail_magazine');
@@ -57,7 +61,7 @@ $app->group('/theater/{name}', function () {
     $this->get('/advance_ticket/', TheaterController::class . ':advanceTicket')->setName('theater_advance_ticket');
     $this->get('/concession/', TheaterController::class . ':concession')->setName('theater_concession');
     $this->get('/floor_guide/', TheaterController::class . ':floorGuide')->setName('theater_floor_guide');
-    
+
     $this->group('/news', function () {
         $this->get('/', TheaterController::class . ':newsList')->setName('theater_news_list');
         $this->get('/{id:[0-9]+}.php', TheaterController::class . ':newsShow')->setName('theater_news_show');

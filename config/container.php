@@ -12,6 +12,21 @@
 $container = $app->getContainer();
 
 /**
+ * Authorization Manager
+ *
+ * @return \Cinemasunshine\Portal\Authorization\Manager
+ */
+$container['am'] = function ($container) {
+    // container名変更によるclearを想定しておく。（仕様変更などがあった場合）
+    $containerName = 'authorization';
+
+    return new \Cinemasunshine\Portal\Authorization\Manager(
+        $container->get('settings')['mp_service'],
+        $container->get('sm')->getContainer($containerName)
+    );
+};
+
+/**
  * view
  *
  * @link https://www.slimframework.com/docs/v3/features/templates.html
@@ -40,7 +55,11 @@ $container['view'] = function ($container) {
     $view->addExtension(new \Cinemasunshine\Portal\Twig\Extension\TheaterExtension());
 
     $view->addExtension(new \Cinemasunshine\Portal\Twig\Extension\MotionpictureTicketExtension(
-        $container->get('settings')['mp_ticket']
+        $container->get('settings')['mp_service']
+    ));
+
+    $view->addExtension(new \Cinemasunshine\Portal\Twig\Extension\AuthorizationExtension(
+        $container->get('am')
     ));
 
     return $view;
