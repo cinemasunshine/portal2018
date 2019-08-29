@@ -155,6 +155,16 @@ class Manager
     }
 
     /**
+     * return authorized user
+     *
+     * @return array|null
+     */
+    public function getUser(): ?array
+    {
+        return $this->session['user'];
+    }
+
+    /**
      * return logout URL
      *
      * @param string $redirectUri
