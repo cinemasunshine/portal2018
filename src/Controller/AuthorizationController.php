@@ -34,24 +34,22 @@ class AuthorizationController extends BaseController
         $this->logger->info('Login params', $request->getParams());
 
         $state = $request->getParam('state');
+        $code = $request->getParam('code');
 
-        /**
-         * stateの検証
-         * リクエストエラーからの戻りのケースもここに含めておく（適宜変更すること）
-         * TODO: stateの一致検証。セッション（もしくはフラッシュ）に入れた値と一致確認。
-         */
-        if (empty($state)) {
-            $this->logger->info('Invalid state');
+        // Authorization URLエラーページからの戻りはパラメータ無し
+        if (empty($state) && empty($code)) {
+            $this->logger->info('Authorization URL error.');
             $this->redirect($this->router->pathFor('homepage'));
         }
 
-        /**
-         * リクエストエラーからの戻りはstateの検証で対応。
-         * codeのみ空は想定しない。
-         * （仮にあってもアクセストークン取得でエラーになるはずなので、ひとまずそれで良しとする）
-         */
-        $code = $request->getParam('code');
+        if (empty($state)
+            || $state !== $this->am->getAuthorizationState()
+        ) {
+            // TODO: エラーページ
+            throw new \RuntimeException('Invalid state.');
+        }
 
+        $this->am->clearAuthorizationState();
 
         $uri = HttpUri::createFromEnvironment($this->environment);
         $redirectUri = $this->router->fullUrlFor($uri, 'login');
