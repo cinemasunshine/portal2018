@@ -32,6 +32,18 @@ class Manager
     protected $authorizationCodeGrunt;
 
     /**
+     * create unique string
+     *
+     * @param string $name
+     * @param string $salt
+     * @return string
+     */
+    protected static function createUniqueStr(string $name, string $salt = 'salt'): string
+    {
+        return md5($salt . uniqid((string) random_int(1, 99999), true) . $name);
+    }
+
+    /**
      * construct
      *
      * @param array $settings
@@ -72,7 +84,7 @@ class Manager
      */
     protected function initCodeVerifier(): void
     {
-        $this->session['code_verifier'] = $this->authorizationCodeGrunt->createCodeVerifier();
+        $this->session['code_verifier'] = self::createUniqueStr('code_verifier');
     }
 
     /**
