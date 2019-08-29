@@ -16,6 +16,25 @@ use Cinemasunshine\Portal\ORM\Entity;
  */
 class TheaterController extends BaseController
 {
+    /** @var Entity\Theater */
+    protected $theater;
+
+    /**
+     * {@inheritDoc}
+     */
+    protected function preExecute($request, $response, $args): void
+    {
+        $theater = $this->getTheater($args['name']);
+
+        if (is_null($theater)) {
+            throw new NotFoundException($request, $response);
+        }
+
+        /**@var Entity\Theater $theater */
+
+        $this->theater = $theater;
+    }
+
     /**
      * find by entity
      *
@@ -28,28 +47,7 @@ class TheaterController extends BaseController
             ->getRepository(Entity\Theater::class)
             ->findOneByName($name);
     }
-    
-    /**
-     * thteater exists
-     *
-     * @param string $name
-     * @param \Slim\Http\Request $request
-     * @param \Slim\Http\Response $response
-     * @return Entity\Theater
-     */
-    protected function theaterExists(string $name, $request, $response)
-    {
-        $theater = $this->getTheater($name);
-        
-        if (is_null($theater)) {
-            throw new NotFoundException($request, $response);
-        }
-        
-        /**@var Entity\Theater $theater */
-        
-        return $theater;
-    }
-    
+
     /**
      * index action
      *
@@ -60,28 +58,28 @@ class TheaterController extends BaseController
      */
     public function executeIndex($request, $response, $args)
     {
-        $theater = $this->theaterExists($args['name'], $request, $response);
-        
+        $theater = $this->theater;
+
         $this->data->set('theater', $theater);
-        
+
         $this->data->set('mainBanners', $this->getMainBanners($theater));
-        
+
         $this->data->set('infoNewsList', $this->getNewsList(
             $theater,
             Entity\News::CATEGORY_INFO,
             8
         ));
-        
+
         if ($theater->isStatusClosed()) {
             return 'closed';
         }
-        
+
         $this->data->set('eventNewsList', $this->getNewsList(
             $theater,
             Entity\News::CATEGORY_EVENT,
             8
         ));
-        
+
         $this->data->set('newsList', $this->getNewsList(
             $theater,
             [
@@ -93,10 +91,10 @@ class TheaterController extends BaseController
             ],
             8
         ));
-        
+
         $this->data->set('campaigns', $this->getCampaigns($theater));
     }
-    
+
     /**
      * return main_banners
      *
@@ -109,7 +107,7 @@ class TheaterController extends BaseController
             ->getRepository(Entity\MainBanner::class)
             ->findByTheaterId($theater->getId());
     }
-    
+
     /**
      * return campaigns
      *
@@ -122,7 +120,7 @@ class TheaterController extends BaseController
             ->getRepository(Entity\Campaign::class)
             ->findByTheater($theater->getId());
     }
-    
+
     /**
      * access action
      *
@@ -133,17 +131,17 @@ class TheaterController extends BaseController
      */
     public function executeAccess($request, $response, $args)
     {
-        $theater = $this->theaterExists($args['name'], $request, $response);
-        
+        $theater = $this->theater;
+
         $this->data->set('theater', $theater);
-        
+
         $this->data->set('infoNewsList', $this->getNewsList(
             $theater,
             Entity\News::CATEGORY_INFO,
             8
         ));
     }
-    
+
     /**
      * admission action
      *
@@ -154,13 +152,13 @@ class TheaterController extends BaseController
      */
     public function executeAdmission($request, $response, $args)
     {
-        $theater = $this->theaterExists($args['name'], $request, $response);
-        
+        $theater = $this->theater;
+
         $this->data->set('theater', $theater);
-        
+
         $this->data->set('campaigns', $this->getCampaigns($theater));
     }
-    
+
     /**
      * advance ticket action
      *
@@ -171,21 +169,21 @@ class TheaterController extends BaseController
      */
     public function executeAdvanceTicket($request, $response, $args)
     {
-        $theater = $this->theaterExists($args['name'], $request, $response);
-        
+        $theater = $this->theater;
+
         $this->data->set('theater', $theater);
-        
+
         $this->data->set('advanceTickets', $this->getAdvanceTickets($theater->getId()));
-        
+
         $this->data->set('campaigns', $this->getCampaigns($theater));
-        
+
         $this->data->set('infoNewsList', $this->getNewsList(
             $theater,
             Entity\News::CATEGORY_INFO,
             8
         ));
     }
-    
+
     /**
      * return advance tickets
      *
@@ -198,7 +196,7 @@ class TheaterController extends BaseController
             ->getRepository(Entity\AdvanceTicket::class)
             ->findByTheater($theaterId);
     }
-    
+
     /**
      * concession action
      *
@@ -209,19 +207,19 @@ class TheaterController extends BaseController
      */
     public function executeConcession($request, $response, $args)
     {
-        $theater = $this->theaterExists($args['name'], $request, $response);
-        
+        $theater = $this->theater;
+
         $this->data->set('theater', $theater);
-        
+
         $this->data->set('campaigns', $this->getCampaigns($theater));
-        
+
         $this->data->set('infoNewsList', $this->getNewsList(
             $theater,
             Entity\News::CATEGORY_INFO,
             8
         ));
     }
-    
+
     /**
      * floor guide action
      *
@@ -232,17 +230,17 @@ class TheaterController extends BaseController
      */
     public function executeFloorGuide($request, $response, $args)
     {
-        $theater = $this->theaterExists($args['name'], $request, $response);
-        
+        $theater = $this->theater;
+
         $this->data->set('theater', $theater);
-        
+
         $this->data->set('infoNewsList', $this->getNewsList(
             $theater,
             Entity\News::CATEGORY_INFO,
             8
         ));
     }
-    
+
     /**
      * news list action
      *
@@ -253,15 +251,15 @@ class TheaterController extends BaseController
      */
     public function executeNewsList($request, $response, $args)
     {
-        $theater = $this->theaterExists($args['name'], $request, $response);
-        
+        $theater = $this->theater;
+
         $this->data->set('theater', $theater);
-        
+
         $this->data->set('newsList', $this->getNewsList($theater));
-        
+
         $this->data->set('campaigns', $this->getCampaigns($theater));
     }
-    
+
     /**
      * return news list
      *
@@ -275,12 +273,12 @@ class TheaterController extends BaseController
         if (!is_array($category)) {
             $category = [ $category ];
         }
-        
+
         return $this->em
             ->getRepository(Entity\News::class)
             ->findByTheater($theater->getId(), $category, $limit);
     }
-    
+
     /**
      * news show action
      *
@@ -291,20 +289,20 @@ class TheaterController extends BaseController
      */
     public function executeNewsShow($request, $response, $args)
     {
-        $theater = $this->theaterExists($args['name'], $request, $response);
-        
+        $theater = $this->theater;
+
         $this->data->set('theater', $theater);
-        
+
         $news = $this->em
             ->getRepository(Entity\News::class)
             ->findOneById($args['id']);
-        
+
         if (is_null($news)) {
             throw new NotFoundException($request, $response);
         }
-        
+
         /**@var Entity\News $news */
-        
+
         $this->data->set('news', $news);
     }
 }
