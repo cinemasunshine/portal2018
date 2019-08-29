@@ -11,7 +11,7 @@ namespace Cinemasunshine\Portal\Controller;
 
 use Slim\Http\Uri as HttpUri;
 
-use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\Exception\BadResponseException;
 
 /**
  * Authorization controller
@@ -45,8 +45,8 @@ class AuthorizationController extends BaseController
         if (empty($state)
             || $state !== $this->am->getAuthorizationState()
         ) {
-            // TODO: エラーページ
-            throw new \RuntimeException('Invalid state.');
+            $this->logger->info('Invalid state.');
+            return 'error';
         }
 
         $this->am->clearAuthorizationState();
@@ -56,15 +56,25 @@ class AuthorizationController extends BaseController
 
         try {
             $accessToken = $this->am->requestAccessToken($code, $redirectUri);
-        } catch (ClientException $e) {
-            // TODO: エラーページ
-            throw $e;
+        } catch (BadResponseException $e) {
+            $this->logger->error($e->getMessage());
+            return 'error';
         }
 
         $this->am->login($accessToken);
 
-        // TODO: 劇場ページへ
-        $this->redirect($this->router->pathFor('homepage'));
+        // redirect
+        $redirectPath = $this->router->pathFor('homepage');
+        $session = $this->sm->getContainer();
+
+        if (isset($session['viewed_theater'])) {
+            $redirectPath = $this->router->pathFor(
+                'theater',
+                [ 'name' => $session['viewed_theater'] ]
+            );
+        }
+
+        $this->redirect($redirectPath);
     }
 
     /**
@@ -79,7 +89,17 @@ class AuthorizationController extends BaseController
     {
         $this->am->logout();
 
-        // TODO: 劇場ページへ
-        $this->redirect($this->router->pathFor('homepage'));
+        // redirect
+        $redirectPath = $this->router->pathFor('homepage');
+        $session = $this->sm->getContainer();
+
+        if (isset($session['viewed_theater'])) {
+            $redirectPath = $this->router->pathFor(
+                'theater',
+                [ 'name' => $session['viewed_theater'] ]
+            );
+        }
+
+        $this->redirect($redirectPath);
     }
 }

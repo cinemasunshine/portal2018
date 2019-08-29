@@ -18,27 +18,19 @@ use Cinemasunshine\Portal\Responder;
 abstract class BaseController extends AbstractController
 {
     /**
-     * pre execute
-     *
-     * @param \Slim\Http\Request  $request
-     * @param \Slim\Http\Response $response
-     * @return void
+     * {@inheritDoc}
      */
-    protected function preExecute($request, $response): void
+    protected function preExecute($request, $response, $args): void
     {
     }
-    
+
     /**
-     * post execute
-     *
-     * @param \Slim\Http\Request  $request
-     * @param \Slim\Http\Response $response
-     * @return void
+     * {@inheritDoc}
      */
-    protected function postExecute($request, $response): void
+    protected function postExecute($request, $response, $args): void
     {
     }
-    
+
     /**
      * get responder
      *
@@ -49,7 +41,7 @@ abstract class BaseController extends AbstractController
         $path = explode('\\', get_class($this));
         $container = str_replace('Controller', '', array_pop($path));
         $responder = Responder::class . '\\' . $container . 'Responder';
-        
+
         return new $responder($this->view);
     }
 }
