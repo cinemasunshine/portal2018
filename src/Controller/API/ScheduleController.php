@@ -36,13 +36,9 @@ class ScheduleController extends BaseController
     protected $purchaseBaseUrl;
 
     /**
-     * pre execute
-     *
-     * @param \Slim\Http\Request  $request
-     * @param \Slim\Http\Response $response
-     * @return void
+     * {@inheritDoc}
      */
-    protected function preExecute($request, $response) : void
+    protected function preExecute($request, $response, $args) : void
     {
         $settings = $this->settings['coa_schedule'];
         $this->apiEnv = $settings['env'];
