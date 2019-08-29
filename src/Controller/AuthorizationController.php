@@ -11,7 +11,7 @@ namespace Cinemasunshine\Portal\Controller;
 
 use Slim\Http\Uri as HttpUri;
 
-use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\Exception\BadResponseException;
 
 /**
  * Authorization controller
@@ -56,7 +56,7 @@ class AuthorizationController extends BaseController
 
         try {
             $accessToken = $this->am->requestAccessToken($code, $redirectUri);
-        } catch (ClientException $e) {
+        } catch (BadResponseException $e) {
             $this->logger->error($e->getMessage());
             return 'error';
         }
