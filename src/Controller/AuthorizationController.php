@@ -63,8 +63,17 @@ class AuthorizationController extends BaseController
 
         $this->am->login($accessToken);
 
-        // TODO: 劇場ページへ
-        $this->redirect($this->router->pathFor('homepage'));
+        // redirect
+        $redirectPath = $this->router->pathFor('homepage');
+        $session = $this->sm->getContainer();
+
+        if (isset($session['viewed_theater'])) {
+            $redirectPath = $this->router->pathFor(
+                'theater',
+                [ 'name' => $session['viewed_theater'] ]);
+        }
+
+        $this->redirect($redirectPath);
     }
 
     /**
@@ -79,7 +88,16 @@ class AuthorizationController extends BaseController
     {
         $this->am->logout();
 
-        // TODO: 劇場ページへ
-        $this->redirect($this->router->pathFor('homepage'));
+        // redirect
+        $redirectPath = $this->router->pathFor('homepage');
+        $session = $this->sm->getContainer();
+
+        if (isset($session['viewed_theater'])) {
+            $redirectPath = $this->router->pathFor(
+                'theater',
+                [ 'name' => $session['viewed_theater'] ]);
+        }
+
+        $this->redirect($redirectPath);
     }
 }

@@ -36,6 +36,20 @@ class TheaterController extends BaseController
     }
 
     /**
+     * {@inheritDoc}
+     */
+    protected function postExecute($request, $response, $args): void
+    {
+        $session = $this->sm->getContainer();
+
+        /**
+         * 閲覧した劇場ページ
+         * ログイン、ログアウトのリダイレクト先として保存
+         */
+        $session['viewed_theater'] = $this->theater->getName();
+    }
+
+    /**
      * find by entity
      *
      * @param string $name
