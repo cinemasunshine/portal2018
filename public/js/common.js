@@ -1,4 +1,63 @@
 $(function () {
+    createSliders();
+    $(document).ready(scrollToTop);
+    $(document).on('click', '.see-more a', seeMore);
+    $(document).on('click', 'a[data-scroll-target]', scrollPageLink);
+    $(document).on('click', '.header-menu', headerMenuToggle);
+    $(document).on('click', '#signOutButton, #signInButton', authProcess);
+});
+
+/**
+ * 認証処理
+ * @param {Event} event 
+ */
+function authProcess(event) {
+    if ($(this).hasClass('disabled')) {
+        event.preventDefault();
+        return;
+    }
+    $(this).addClass('disabled');
+}
+
+/**
+ * もっと見る
+ * @param {Event} event 
+ */
+function seeMore(event) {
+    event.preventDefault();
+    var contents = $(this).attr('data-target-contents');
+    var button = $(this).attr('data-target-button');
+    var speed = 200;
+    $('*[data-contents=' + contents + ']')
+        .removeClass('d-none')
+        .css('display', 'none')
+        .slideDown(speed);
+    $('*[data-button=' + button + ']').removeClass('d-none');
+    $(this).parent().addClass('d-none');
+}
+
+/**
+ * トップへのスクロール
+ */
+function scrollToTop() {
+    var pagetop = $('.footer-top');
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 100) {
+            pagetop.fadeIn();
+        } else {
+            pagetop.fadeOut();
+        }
+    });
+    pagetop.click(function () {
+        $('body, html').animate({ scrollTop: 0 }, 500);
+        return false;
+    });
+}
+
+/**
+ * Slider一覧作成
+ */
+function createSliders() {
     // 大きいスライダーの作成
     var galleryTop = new Swiper('.gallery-top', {
         effect: ($('.gallery-top .swiper-slide').length > 1) ? 'slide' : 'fade',
@@ -15,7 +74,7 @@ $(function () {
         pagination: {
             el: '.slider .pagination',
         }
-        
+
     });
     // サムネイルの連動
     galleryTop.on('slideChangeTransitionEnd', function () {
@@ -61,40 +120,7 @@ $(function () {
         freeMode: true,
         spaceBetween: 20,
     });
-
-    $(document).on('click', '.see-more a', function (event) {
-        event.preventDefault();
-        var contents = $(this).attr('data-target-contents');
-        var button = $(this).attr('data-target-button');
-        var speed = 200;
-        $('*[data-contents=' + contents + ']')
-            .removeClass('d-none')
-            .css('display', 'none')
-            .slideDown(speed);
-        $('*[data-button=' + button + ']').removeClass('d-none');
-        $(this).parent().addClass('d-none');
-    });
-
-    // トップへのスクロール
-    $(document).ready(function () {
-        var pagetop = $('.footer-top');
-        $(window).scroll(function () {
-            if ($(this).scrollTop() > 100) {
-                pagetop.fadeIn();
-            } else {
-                pagetop.fadeOut();
-            }
-        });
-        pagetop.click(function () {
-            $('body, html').animate({ scrollTop: 0 }, 500);
-            return false;
-        });
-    });
-
-    $(document).on('click', 'a[data-scroll-target]', scrollPageLink);
-    $(document).on('click', '.header-menu', headerMenuToggle);
-
-});
+}
 
 /**
  * ハンバーガーメニュー開閉
@@ -133,11 +159,12 @@ function scrollPageLink(event) {
 }
 
 
-function getParam(name, url) { 
-    if (!url) url = window.location.href; 
-    name = name.replace(/[\[\]]/g, "\\$&"); 
-    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"), results = regex.exec(url); 
-    if (!results) return null; 
-    if (!results[2]) return ''; 
+function getParam(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"), results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
     return decodeURIComponent(results[2].replace(/\+/g, " "));
- }
+}
+
