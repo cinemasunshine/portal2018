@@ -1,4 +1,5 @@
 <div class="sp-menu d-md-none d-none position-fixed">
+    {% include 'include/sp_member_menu.html.twig' only %}
     <ul>
         <li>
             <a class="d-block text-white p-3 border-bottom border-dark-gray bg-dark-gray">共通メニュー</a>
@@ -19,6 +20,5 @@
             <a href="{{ path_for('question') }}"
                 class="d-block text-white p-3 border-bottom border-dark-gray">よくあるご質問(Q＆A)</a>
         </li>
-        {% include 'include/sp_member_menu.html.twig' only %}
     </ul>
 </div>

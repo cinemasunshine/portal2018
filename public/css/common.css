@@ -857,6 +857,20 @@ footer {
     line-height: 1.5;
 }
 
+.username {
+    overflow-x: hidden;
+    white-space: nowrap;
+    max-width: 4rem;
+    text-overflow: ellipsis;
+    display: inline-block;
+    vertical-align: bottom;
+}
+
+.sp-signin {
+    width: 34px;
+}
+
+
 @media (max-width: 767.98px) {
     body {
         font-size: 14px;
