@@ -1000,4 +1000,7 @@ footer {
     .type-scx footer {
         padding-bottom: 60px;
     }
+    .gdcs-header-company-logo a {
+        font-size: 13px;
+    }
 }

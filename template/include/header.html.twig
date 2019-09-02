@@ -27,7 +27,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="pr-2 d-none d-md-flex">
+                <div class="pr-2 d-flex">
                     {% if is_login() %}
                     {% set user = login_user() %}
                     <div>
@@ -48,11 +48,11 @@
                     </div>
                     {% endif %}
                 </div>
-                <div class="mr-2 d-block d-md-none sp-signin">
+                <!-- <div class="mr-2 d-block d-md-none sp-signin">
                     {% if is_login() %}
                     <img class="w-100" src="/images/common/account.svg">
                     {% endif %}
-                </div>
+                </div> -->
             </div>
 
             <div class="btn-group d-md-none">
