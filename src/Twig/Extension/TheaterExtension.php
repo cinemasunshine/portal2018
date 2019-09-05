@@ -9,10 +9,13 @@ namespace Cinemasunshine\Portal\Twig\Extension;
 
 use Cinemasunshine\Portal\ORM\Entity\Theater;
 
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFunction;
+
 /**
  * Theater twig extension class
  */
-class TheaterExtension extends \Twig_Extension
+class TheaterExtension extends AbstractExtension
 {
     /**
      * metaタグkeywords
@@ -37,14 +40,14 @@ class TheaterExtension extends \Twig_Extension
         18 => '鹿児島,姶良,イオン,4DX',
         19 => '千葉,ユーカリが丘,ユーカリプラザ',
     ];
-    
+
     /**
      * construct
      */
     public function __construct()
     {
     }
-    
+
     /**
      * get functions
      *
@@ -53,11 +56,11 @@ class TheaterExtension extends \Twig_Extension
     public function getFunctions()
     {
         return [
-            new \Twig_Function('theater_area', [$this, 'theaterArea']),
-            new \Twig_Function('theater_meta_keywords', [$this, 'getMetaKeywords']),
+            new TwigFunction('theater_area', [$this, 'theaterArea']),
+            new TwigFunction('theater_meta_keywords', [$this, 'getMetaKeywords']),
         ];
     }
-    
+
     /**
      * return theater area label
      *
@@ -67,10 +70,10 @@ class TheaterExtension extends \Twig_Extension
     public function theaterArea(int $area)
     {
         $areas = Theater::getAreas();
-        
+
         return $areas[$area] ?? null;
     }
-    
+
     /**
      * metaタグkeywordを取得
      *

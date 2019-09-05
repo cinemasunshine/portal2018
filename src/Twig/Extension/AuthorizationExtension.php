@@ -9,12 +9,15 @@ declare(strict_types=1);
 
 namespace Cinemasunshine\Portal\Twig\Extension;
 
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFunction;
+
 use Cinemasunshine\Portal\Authorization\Manager as AuthorizationManager;
 
 /**
  * Authorization twig extension class
  */
-class AuthorizationExtension extends \Twig_Extension
+class AuthorizationExtension extends AbstractExtension
 {
     /** @var AuthorizationManager */
     protected $authorizationManager;
@@ -37,10 +40,10 @@ class AuthorizationExtension extends \Twig_Extension
     public function getFunctions()
     {
         return [
-            new \Twig_Function('login_url', [$this, 'getLoginUrl'], [ 'is_safe' => ['all'] ]),
-            new \Twig_Function('is_login', [$this, 'isLogin'], [ 'is_safe' => ['all'] ]),
-            new \Twig_Function('login_user', [$this, 'getUser'], [ 'is_safe' => ['all'] ]),
-            new \Twig_Function('logout_url', [$this, 'getLogoutUrl'], [ 'is_safe' => ['all'] ]),
+            new TwigFunction('login_url', [$this, 'getLoginUrl'], [ 'is_safe' => ['all'] ]),
+            new TwigFunction('is_login', [$this, 'isLogin'], [ 'is_safe' => ['all'] ]),
+            new TwigFunction('login_user', [$this, 'getUser'], [ 'is_safe' => ['all'] ]),
+            new TwigFunction('logout_url', [$this, 'getLogoutUrl'], [ 'is_safe' => ['all'] ]),
         ];
     }
 

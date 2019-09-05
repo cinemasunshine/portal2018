@@ -7,12 +7,15 @@
 
 namespace Cinemasunshine\Portal\Twig\Extension;
 
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFunction;
+
 use Cinemasunshine\Portal\ORM\Entity\AdvanceTicket;
 
 /**
  * AdvanceTicket twig extension class
  */
-class AdvanceTicketExtension extends \Twig_Extension
+class AdvanceTicketExtension extends AbstractExtension
 {
     /**
      * construct
@@ -20,7 +23,7 @@ class AdvanceTicketExtension extends \Twig_Extension
     public function __construct()
     {
     }
-    
+
     /**
      * get functions
      *
@@ -29,10 +32,10 @@ class AdvanceTicketExtension extends \Twig_Extension
     public function getFunctions()
     {
         return [
-            new \Twig_Function('advance_ticket_type_label', [$this, 'getTypeLabel']),
+            new TwigFunction('advance_ticket_type_label', [$this, 'getTypeLabel']),
         ];
     }
-    
+
     /**
      * return type label
      *
@@ -46,7 +49,7 @@ class AdvanceTicketExtension extends \Twig_Extension
         } elseif ($type === AdvanceTicket::TYPE_PAPER) {
             return '紙券';
         }
-        
+
         throw null;
     }
 }
