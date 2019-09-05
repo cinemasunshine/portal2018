@@ -9,10 +9,13 @@ namespace Cinemasunshine\Portal\Twig\Extension;
 
 use Cinemasunshine\Portal\ORM\Entity\News;
 
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFunction;
+
 /**
  * News twig extension class
  */
-class NewsExtension extends \Twig_Extension
+class NewsExtension extends AbstractExtension
 {
     /** @var array */
     protected $categoryLabels = [
@@ -24,7 +27,7 @@ class NewsExtension extends \Twig_Extension
         News::CATEGORY_EVENT            => 'ライブビューイング・イベント',
         News::CATEGORY_4DX_WITH_SCREENX => '4DX with ScreenX',
     ];
-    
+
     /** @var array */
     protected $categoryLabelClasses = [
         News::CATEGORY_NEWS             => 'list-type-news',
@@ -35,14 +38,14 @@ class NewsExtension extends \Twig_Extension
         News::CATEGORY_EVENT            => 'list-type-event',
         News::CATEGORY_4DX_WITH_SCREENX => 'list-type-4dxwscx',
     ];
-    
+
     /**
      * construct
      */
     public function __construct()
     {
     }
-    
+
     /**
      * get functions
      *
@@ -51,11 +54,11 @@ class NewsExtension extends \Twig_Extension
     public function getFunctions()
     {
         return [
-            new \Twig_Function('news_category_label', [$this, 'getCategoryLabel']),
-            new \Twig_Function('news_category_label_class', [$this, 'getCategoryLabelClass']),
+            new TwigFunction('news_category_label', [$this, 'getCategoryLabel']),
+            new TwigFunction('news_category_label_class', [$this, 'getCategoryLabelClass']),
         ];
     }
-    
+
     /**
      * return category label
      *
@@ -66,7 +69,7 @@ class NewsExtension extends \Twig_Extension
     {
         return $this->categoryLabels[$category] ?? null;
     }
-    
+
     /**
      * return category label class
      *

@@ -44,8 +44,8 @@ $container['view'] = function ($container) {
     $view->addExtension(new \Slim\Views\TwigExtension($router, $uri));
 
     // add Extension
-    $view->addExtension(new \Twig_Extension_Debug());
-    $view->addExtension(new \Twig_Extensions_Extension_Text());
+    $view->addExtension(new \Twig\Extension\DebugExtension());
+    $view->addExtension(new \Twig\Extensions\TextExtension());
 
     $view->addExtension(new \Cinemasunshine\Portal\Twig\Extension\AzureStorageExtension($container));
     $view->addExtension(new \Cinemasunshine\Portal\Twig\Extension\CommonExtension());

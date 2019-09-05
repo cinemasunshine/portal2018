@@ -7,6 +7,9 @@
 
 namespace Cinemasunshine\Portal\Twig\Extension;
 
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFunction;
+
 use Psr\Container\ContainerInterface;
 
 use Cinemasunshine\Portal\ORM\Entity\File;
@@ -14,11 +17,11 @@ use Cinemasunshine\Portal\ORM\Entity\File;
 /**
  * Azure Storage twig extension class
  */
-class AzureStorageExtension extends \Twig_Extension
+class AzureStorageExtension extends AbstractExtension
 {
     /** @var ContainerInterface container */
     protected $container;
-    
+
     /**
      * construct
      *
@@ -28,7 +31,7 @@ class AzureStorageExtension extends \Twig_Extension
     {
         $this->container = $container;
     }
-    
+
     /**
      * get functions
      *
@@ -37,11 +40,11 @@ class AzureStorageExtension extends \Twig_Extension
     public function getFunctions()
     {
         return [
-            new \Twig_Function('blob_url', [$this, 'blobUrl']),
-            new \Twig_Function('file_url', [$this, 'fileUrl']),
+            new TwigFunction('blob_url', [$this, 'blobUrl']),
+            new TwigFunction('file_url', [$this, 'fileUrl']),
         ];
     }
-    
+
     /**
      * Blob URL
      *
@@ -55,7 +58,7 @@ class AzureStorageExtension extends \Twig_Extension
     {
         $settings = $this->container->get('settings')['storage'];
         $protocol = $settings['secure'] ? 'https' : 'http';
-        
+
         return sprintf(
             '%s://%s.blob.core.windows.net/%s/%s',
             $protocol,
@@ -64,7 +67,7 @@ class AzureStorageExtension extends \Twig_Extension
             $blob
         );
     }
-    
+
     /**
      * return file URL
      *

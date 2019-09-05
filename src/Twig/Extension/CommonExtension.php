@@ -7,12 +7,15 @@
 
 namespace Cinemasunshine\Portal\Twig\Extension;
 
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFunction;
+
 use Cinemasunshine\Portal\ORM\Entity\Theater;
 
 /**
  * Common twig extension class
  */
-class CommonExtension extends \Twig_Extension
+class CommonExtension extends AbstractExtension
 {
     /** @var string */
     protected $appEnv;
@@ -33,10 +36,10 @@ class CommonExtension extends \Twig_Extension
     public function getFunctions()
     {
         return [
-            new \Twig_Function('app_env', [$this, 'getAppEnv']),
-            new \Twig_Function('is_app_env', [$this, 'isAppEnv']),
-            new \Twig_Function('facebook', [$this, 'getFacebookUrl']),
-            new \Twig_Function('twitter', [$this, 'getTwitterUrl']),
+            new TwigFunction('app_env', [$this, 'getAppEnv']),
+            new TwigFunction('is_app_env', [$this, 'isAppEnv']),
+            new TwigFunction('facebook', [$this, 'getFacebookUrl']),
+            new TwigFunction('twitter', [$this, 'getTwitterUrl']),
         ];
     }
 

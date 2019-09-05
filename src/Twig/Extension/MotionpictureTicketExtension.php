@@ -9,10 +9,13 @@ declare(strict_types=1);
 
 namespace Cinemasunshine\Portal\Twig\Extension;
 
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFunction;
+
 /**
  * Motionpicture Ticket twig extension class
  */
-class MotionpictureTicketExtension extends \Twig_Extension
+class MotionpictureTicketExtension extends AbstractExtension
 {
     /** @var array */
     protected $settings;
@@ -35,7 +38,7 @@ class MotionpictureTicketExtension extends \Twig_Extension
     public function getFunctions()
     {
         return [
-            new \Twig_Function('mp_ticket_inquiry', [$this, 'getTicketInquiryUrl'], [ 'is_safe' => ['html'] ]),
+            new TwigFunction('mp_ticket_inquiry', [$this, 'getTicketInquiryUrl'], [ 'is_safe' => ['html'] ]),
         ];
     }
 

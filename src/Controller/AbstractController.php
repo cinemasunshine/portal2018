@@ -14,7 +14,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
 use Cinemasunshine\Portal\Exception\RedirectException;
-use Cinemasunshine\Portal\Responder\AbstractResponder as Responder;
+use Cinemasunshine\Portal\Responder\AbstractResponder;
 
 /**
  * Abstract controller
@@ -153,7 +153,7 @@ abstract class AbstractController
         return $responder->$method($response, $this->data);
     }
 
-    abstract protected function getResponder() : Responder;
+    abstract protected function getResponder() : AbstractResponder;
 
     /**
      * call
