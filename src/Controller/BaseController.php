@@ -10,7 +10,8 @@ namespace Cinemasunshine\Portal\Controller;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface as Response;
 
-use Cinemasunshine\Portal\Responder;
+use Cinemasunshine\Portal\Responder\ResponderFactory;
+use Cinemasunshine\Portal\Responder\AbstractResponder;
 
 /**
  * Base controller
@@ -34,14 +35,13 @@ abstract class BaseController extends AbstractController
     /**
      * get responder
      *
-     * @return Responder\AbstractResponder
+     * @return AbstractResponder
      */
-    protected function getResponder(): Responder\AbstractResponder
+    protected function getResponder(): AbstractResponder
     {
         $path = explode('\\', get_class($this));
-        $container = str_replace('Controller', '', array_pop($path));
-        $responder = Responder::class . '\\' . $container . 'Responder';
+        $name = str_replace('Controller', '', array_pop($path));
 
-        return new $responder($this->view);
+        return ResponderFactory::factory($name, $this->view);
     }
 }

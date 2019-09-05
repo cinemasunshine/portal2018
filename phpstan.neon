@@ -11,10 +11,3 @@ parameters:
 		-
 			message: '#::__construct\(\) does not call parent constructor from#'
 			path: %currentWorkingDirectory%/src/Schedule/Entity/*
-		
-		# この対応が本番環境でエラーが発生したので、いったん除外する
-		-
-			message: '#Class Cinemasunshine\\Portal\\Responder(.*) not found#'
-			paths:
-				-  %currentWorkingDirectory%/src/Controller/BaseController.php
-				-  %currentWorkingDirectory%/src/Controller/API/BaseController.php
