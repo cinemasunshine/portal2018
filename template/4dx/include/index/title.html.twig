@@ -7,11 +7,11 @@
         {% for theater in theaters %}
         <li>
             <a href="#" class="m-2 d-block py-3 rounded border text-gray border-gray" data-theaterCode="{{ theater.getId() }}">{{
-                theater.getNameJa() }}</a>
+                theater.getNameJa()|theater_name_ja2 }}</a>
         </li>
         {% endfor %}
     </ul>
-    
+
     <p class="text-center not-select">劇場を選択してください</p>
     <div class="titles d-none">
         <p class="font-weight-bold large mb-4 text-center text-md-left">-上映中作品-</p>
