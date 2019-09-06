@@ -6,12 +6,12 @@
         {% else %}
         <div class="d-md-flex d-block align-items-center border-bottom">
         {% endif %}
-        
-        
+
+
             <div class="district text-md-center mr-4 mb-2 mt-2">{{ theater_area(area) }}地区</div>
             <div class="font-weight-bold d-flex flex-wrap areas">
             {% for theater in theaters %}
-                <div class="area-button my-md-2 mx-md-1 mb-2"><a href="{{ path_for('theater', { name: theater.getName() }) }}">{{ theater.getNameJa() }}</a></div>
+                <div class="area-button my-md-2 mx-md-1 mb-2"><a href="{{ path_for('theater', { name: theater.getName() }) }}">{{ theater.getNameJa()|theater_name_ja }}</a></div>
             {% endfor %}
             </div>
         </div>

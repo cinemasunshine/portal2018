@@ -16,7 +16,7 @@
         <a href="{{ path_for('homepage') }}">ホーム　|　</a>
         <span class="font-weight-bold">劇場一覧</span>
     </div>
-    
+
     <div class="line-height-1">
         <h2 class="font-weight-bold large text-center text-md-left mb-4 mt-2">劇場一覧</h2>
     {% for area, theaters in areaToTheaters %}
@@ -26,7 +26,7 @@
             {% for theater in theaters %}
                 <li class="mb-3">
                     <a href="{{ path_for('theater', { name: theater.getName() }) }}" class="font-weight-bold p-3 border border-gray d-flex align-items-center  mx-0 mx-md-3">
-                        <div class="mr-auto">{{ theater.getNameJa() }}</div>
+                        <div class="mr-auto">{{ theater.getNameJa()|theater_name_ja }}</div>
                     {% if theater.isStatusClosed() %}
                         <div class="mx-2 text-gray font-weight-normal">※閉館</div>
                     {% endif %}

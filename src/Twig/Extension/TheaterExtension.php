@@ -10,6 +10,7 @@ namespace Cinemasunshine\Portal\Twig\Extension;
 use Cinemasunshine\Portal\ORM\Entity\Theater;
 
 use Twig\Extension\AbstractExtension;
+use Twig\TwigFilter;
 use Twig\TwigFunction;
 
 /**
@@ -46,6 +47,53 @@ class TheaterExtension extends AbstractExtension
      */
     public function __construct()
     {
+    }
+
+    /**
+     * get filters
+     *
+     * @return array
+     */
+    public function getFilters()
+    {
+        return [
+            new TwigFilter('theater_name_ja', [$this, 'nameJaFilter'], [ 'is_safe' => ['all'] ]),
+            new TwigFilter('theater_name_ja2', [$this, 'nameJaFilter2'], [ 'is_safe' => ['all'] ]),
+        ];
+    }
+
+    /**
+     * filter name_ja
+     *
+     * @param string $nameJa
+     * @return string
+     */
+    public function nameJaFilter(string $nameJa): string
+    {
+        if ($nameJa === 'グランドシネマサンシャイン') {
+            $filtered = 'グランド<br>シネマサンシャイン';
+        } else {
+            $filtered = $nameJa;
+        }
+
+        return $filtered;
+    }
+
+    /**
+     * filter name_ja
+     *
+     * @param string $nameJa
+     * @return string
+     */
+    public function nameJaFilter2(string $nameJa): string
+    {
+        if ($nameJa === 'グランドシネマサンシャイン') {
+            $filtered = 'グランド<br>シネマ<br>サンシャイン';
+        } else {
+            $filtered = $nameJa;
+        }
+
+        return $filtered;
     }
 
     /**

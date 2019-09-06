@@ -1,6 +1,6 @@
 <div class="movie d-md-flex mb-4">
     {% set title = schedule.getTitle() %}
-    
+
     <div class="movie-image py-3 py-md-0 mb-3">
     {% if title.getImage() %}
         <img src="{{ file_url(title.getImage()) }}" class="w-100" alt="{{ title.getName() }}">
@@ -10,18 +10,18 @@
     </div>
         <div class="movie-info pt-md-2 pl-md-3 px-3 px-md-0">
             <div class="movie-detail mb-3">
-            
+
             {% if schedule.getStartDate() > date() %}
                 <p class="text-gray release_date mb-1">{{ schedule.getStartDate()|date('Y/m/d') }}公開</p>
             {% endif %}
-                
+
                 <h2 class="title x-large font-weight-bold mb-3">{{ title.getName() }}</a></h2>
                 <div class="d-flex mb-3">
                 {% set systems = [] %}
                 {% for showingFormat in schedule.getShowingFormats() %}
                     {% set systems = systems|merge([ showingFormat.getSystem() ]) %}
                 {% endfor %}
-                
+
                 {% if 1 in systems %}
                     <div class="icon-2d py-1 bg-dark-gray text-center mr-2"><img src="/images/common/2d_logo_wht.svg" alt="2D"></div>
                 {% endif %}
@@ -46,9 +46,9 @@
                 {% if 11 in systems %}
                     <div class="icon-4dxwscx py-1 bg-dark-gray text-center mr-2"><img src="/images/common/4dxwscx_logo_wht.svg" alt="4DX with ScreenX"></div>
                 {% endif %}
-                
+
                 </div>
-                
+
                 <div class="d-flex">
                 {% if title.getRating() == 1 %}
                     <div class="icon-r mr-2"><img src="/images/movie/g.svg" alt="G：どなたでもご覧になれます"></div>
@@ -59,7 +59,7 @@
                 {% elseif title.getRating() == 4 %}
                     <div class="icon-r mr-2"><img src="/images/movie/r_18.svg" alt="R18：18歳未満は観覧禁止"></div>
                 {% endif %}
-                    
+
                 {% if 1 in title.getUniversal() %}
                     <div class="icon-onsei mr-2"><img src="/images/movie/ud_onsei.svg" alt="UDCast：音声ガイド対応"></div>
                 {% endif %}
@@ -72,18 +72,18 @@
                 <div class="d-flex flex-wrap">
                 {% for theater in theaters %}
                     {% set isShowing = false %}{# ループ前に宣言する #}
-                    
+
                     {% for showingTehater in schedule.getShowingTheaters %}
                         {% if showingTehater.getTheater().getId() == theater.getId() %}
                             {% set isShowing = true %}
                         {% endif %}
                     {% endfor %}
-                    
+
                     <div class="area-button mb-md-2 pr-md-2 mb-2 px-1 px-md-0 small font-weight-bold">
                     {% if isShowing %}
-                        <a href="{{ path_for('theater', { name: theater.getName() }) }}" data-theaterCode="{{ theater.getId() }}" class="d-flex align-items-center justify-content-center bg-white text-blue border-blue">{{ theater.getNameJa() }}</a>
+                        <a href="{{ path_for('theater', { name: theater.getName() }) }}" data-theaterCode="{{ theater.getId() }}" class="d-flex align-items-center justify-content-center bg-white text-blue border-blue">{{ theater.getNameJa()|theater_name_ja2 }}</a>
                     {% else %}
-                        <span class="d-flex align-items-center justify-content-center text-light-gray border-light-gray bg-white">{{ theater.getNameJa() }}</span>
+                        <span class="d-flex align-items-center justify-content-center text-light-gray border-light-gray bg-white">{{ theater.getNameJa()|theater_name_ja2 }}</span>
                     {% endif %}
                     </div>
                 {% endfor %}
@@ -120,5 +120,5 @@
         </div>
     </div>
 {% endif %}
-    
+
 </div>
