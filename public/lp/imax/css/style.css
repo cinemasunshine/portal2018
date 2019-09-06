@@ -50,7 +50,7 @@ body{
 }
 
 .comic img{
-    margin: 0 0 50px; 
+    margin: 0 0 50px;
 }
 
 .recommend{
@@ -60,7 +60,7 @@ body{
 }
 
 .recommend-inner{
-    padding: 29px 30px 26px 35px;
+    padding: 29px 25px 26px;
     position: relative;
 }
 
@@ -130,7 +130,6 @@ body{
 
 .recommend ul{
     overflow: hidden;
-    width: 708px;
     margin: 0 auto;
 }
 
@@ -141,7 +140,7 @@ body{
 }
 
 .recommend .last{
-    margin: 0; 
+    margin: 0;
 }
 
 .recommend li a:hover{
