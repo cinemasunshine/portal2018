@@ -71,7 +71,8 @@ class TheaterExtension extends AbstractExtension
     public function nameJaFilter(string $nameJa): string
     {
         if ($nameJa === 'グランドシネマサンシャイン') {
-            $filtered = 'グランド<br>シネマサンシャイン';
+            $br = '<br class="tn_br_gdcs">';
+            $filtered = 'グランド' . $br .'シネマサンシャイン';
         } else {
             $filtered = $nameJa;
         }
@@ -88,7 +89,8 @@ class TheaterExtension extends AbstractExtension
     public function nameJaFilter2(string $nameJa): string
     {
         if ($nameJa === 'グランドシネマサンシャイン') {
-            $filtered = 'グランド<br>シネマ<br>サンシャイン';
+            $br = '<br class="tn_br_gdcs">';
+            $filtered = 'グランド' . $br . 'シネマ' . $br . 'サンシャイン';
         } else {
             $filtered = $nameJa;
         }
