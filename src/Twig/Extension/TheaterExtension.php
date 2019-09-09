@@ -72,7 +72,7 @@ class TheaterExtension extends AbstractExtension
     {
         if ($nameJa === 'グランドシネマサンシャイン') {
             $br = '<br class="tn_br_gdcs">';
-            $filtered = 'グランド' . $br .'シネマサンシャイン';
+            $filtered = 'グランド' . $br . 'シネマサンシャイン';
         } else {
             $filtered = $nameJa;
         }
