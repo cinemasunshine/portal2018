@@ -89,16 +89,22 @@ active: 'top',
 <a href="/gdcs/"><img class="img-fluid mx-auto d-block mb-5 px-3" src="/images/tmp/theater/top/gdcs_bnr.jpg"></a>
 {% endif %}
 
+{# ららぽーと沼津はオンライン販売開始まで非表示 SASAKI-488 #}
+{% if theater.getName() != 'lalaportnumazu' %}
 {% include 'theater/index/include/online_ticket.html.twig' with {
     masterCode: theater.getMasterCode()
 } only %}
+{% endif %}
 
 {% include 'theater/index/include/opening_hour.html.twig' with {
     openingHours: theater.getMeta().getOpeningHours()
 } only %}
 
+{# ららぽーと沼津はオンライン販売開始まで非表示 SASAKI-488 #}
+{% if theater.getName() != 'lalaportnumazu' %}
 {# scheduleテンプレートのincludeをトリガーとしてjavascriptの処理を実行する #}
 {% include 'theater/index/include/schedule.html.twig' only %}
+{% endif %}
 
 {% include 'theater/index/include/event.html.twig' with {
 theater: theater,
