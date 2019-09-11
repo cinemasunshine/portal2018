@@ -26,7 +26,6 @@ class TheaterExtension extends AbstractExtension
      * @var array
      */
     protected $metaKeywords = [
-        1  => '東京,池袋',
         2  => '東京,平和島',
         6  => '静岡,沼津,4DX,bivi',
         7  => '徳島,北島,フジグラン',
