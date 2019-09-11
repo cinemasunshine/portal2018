@@ -26,7 +26,6 @@ class TheaterExtension extends AbstractExtension
      * @var array
      */
     protected $metaKeywords = [
-        1  => '東京,池袋',
         2  => '東京,平和島',
         6  => '静岡,沼津,4DX,bivi',
         7  => '徳島,北島,フジグラン',
@@ -71,7 +70,8 @@ class TheaterExtension extends AbstractExtension
     public function nameJaFilter(string $nameJa): string
     {
         if ($nameJa === 'グランドシネマサンシャイン') {
-            $filtered = 'グランド<br>シネマサンシャイン';
+            $br = '<br class="tn_br_gdcs">';
+            $filtered = 'グランド' . $br . 'シネマサンシャイン';
         } else {
             $filtered = $nameJa;
         }
@@ -88,7 +88,8 @@ class TheaterExtension extends AbstractExtension
     public function nameJaFilter2(string $nameJa): string
     {
         if ($nameJa === 'グランドシネマサンシャイン') {
-            $filtered = 'グランド<br>シネマ<br>サンシャイン';
+            $br = '<br class="tn_br_gdcs">';
+            $filtered = 'グランド' . $br . 'シネマ' . $br . 'サンシャイン';
         } else {
             $filtered = $nameJa;
         }

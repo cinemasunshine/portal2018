@@ -8,10 +8,7 @@
 
 {% set keywords = theater_meta_keywords(theater) %}
 
-{% if theater.getId() == 1 %}
-{# 池袋トップページのみ #}
-{% set keywords = keywords ~ ',応援上映' %}
-{% elseif theater.getId() == 2 %}
+{% if theater.getName() == 'heiwajima' %}
 {# 平和島トップページのみ #}
 {% set keywords = keywords ~ ',4DX' %}
 {% endif %}

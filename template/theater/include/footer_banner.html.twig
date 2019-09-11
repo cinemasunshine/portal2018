@@ -1,70 +1,69 @@
 <div class="width mx-auto footer-bnr mb-5">
     <ul class="d-md-flex justify-content-center">
-    {% if theater.getId() == 1 %}{# 池袋 #}
-    {% elseif theater.getId() == 2 %}{# 平和島 #}
+    {% if theater.getName() == 'heiwajima' %}{# 平和島 #}
     <li class="mb-3 mb-md-0"><a href="http://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3005179&amp;pid=881385431&amp;vc_url=http%3A%2F%2Fwww" target="_blank" class="d-block mx-4"><img src="/images/common/mvtk_foot.jpg" class="w-100" alt="インターネットで座席指定ができる電子前売り券：ムビチケサイトはこちら"></a></li>
     <li class="mb-3 mb-md-0"><a href="{{ path_for('mail_magazine') }}" class="d-block mx-4"><img src="/images/common/mm_foot.jpg" class="w-100" alt="シネマサンシャインメールマガジン"></a></li>
     <li class="mb-3 mb-md-0"><a href="http://www.myokosunshine.co.jp/index.php" target="_blank" class="d-block mx-4"><img src="/images/common/myoko_foot.jpg" class="w-100" alt="妙高サンシャインホテル"></a></li>
     <!--<li class="mb-3 mb-md-0"><a href="https://job-gear.net/cinemasunshine2/A70822423129/MDkyujin_d.htm" target="_blank" class="d-block mx-4"><img src="/images/common/recruit_foot.jpg" class="w-100" alt="アルバイト募集中"></a></li>-->
-    {% elseif theater.getId() == 6 %}{# 沼津 #}
+    {% elseif theater.getName() == 'numazu' %}{# 沼津 #}
     <li class="mb-3 mb-md-0"><a href="http://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3005179&amp;pid=881385431&amp;vc_url=http%3A%2F%2Fwww" target="_blank" class="d-block mx-4"><img src="/images/common/mvtk_foot.jpg" class="w-100" alt="インターネットで座席指定ができる電子前売り券：ムビチケサイトはこちら"></a></li>
     <li class="mb-3 mb-md-0"><a href="{{ path_for('mail_magazine') }}" class="d-block mx-4"><img src="/images/common/mm_foot.jpg" class="w-100" alt="シネマサンシャインメールマガジン"></a></li>
     <li class="mb-3 mb-md-0"><a href="http://www.myokosunshine.co.jp/index.php" target="_blank" class="d-block mx-4"><img src="/images/common/myoko_foot.jpg" class="w-100" alt="妙高サンシャインホテル"></a></li>
     <li class="mb-3 mb-md-0"><a href="https://job-gear.net/cinemasunshine2/A70822423133/MDkyujin_d.htm" target="_blank" class="d-block mx-4"><img src="/images/common/recruit_foot.jpg" class="w-100" alt="アルバイト募集中"></a></li>
-    {% elseif theater.getId() == 7 %}{# 北島 #}
+    {% elseif theater.getName() == 'kitajima' %}{# 北島 #}
     <li class="mb-3 mb-md-0"><a href="http://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3005179&amp;pid=881385431&amp;vc_url=http%3A%2F%2Fwww" target="_blank" class="d-block mx-4"><img src="/images/common/mvtk_foot.jpg" class="w-100" alt="インターネットで座席指定ができる電子前売り券：ムビチケサイトはこちら"></a></li>
     <li class="mb-3 mb-md-0"><a href="{{ path_for('mail_magazine') }}" class="d-block mx-4"><img src="/images/common/mm_foot.jpg" class="w-100" alt="シネマサンシャインメールマガジン"></a></li>
     <li class="mb-3 mb-md-0"><a href="http://www.myokosunshine.co.jp/index.php" target="_blank" class="d-block mx-4"><img src="/images/common/myoko_foot.jpg" class="w-100" alt="妙高サンシャインホテル"></a></li>
     <li class="mb-3 mb-md-0"><a href="https://job-gear.net/cinemasunshine2/A70822423194/MDkyujin_d.htm" target="_blank" class="d-block mx-4"><img src="/images/common/recruit_foot.jpg" class="w-100" alt="アルバイト募集中"></a></li>
-    {% elseif theater.getId() == 8 %}{# 衣山 #}
+    {% elseif theater.getName() == 'kinuyama' %}{# 衣山 #}
     <li class="mb-3 mb-md-0"><a href="http://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3005179&amp;pid=881385431&amp;vc_url=http%3A%2F%2Fwww" target="_blank" class="d-block mx-4"><img src="/images/common/mvtk_foot.jpg" class="w-100" alt="インターネットで座席指定ができる電子前売り券：ムビチケサイトはこちら"></a></li>
     <li class="mb-3 mb-md-0"><a href="{{ path_for('mail_magazine') }}" class="d-block mx-4"><img src="/images/common/mm_foot.jpg" class="w-100" alt="シネマサンシャインメールマガジン"></a></li>
     <li class="mb-3 mb-md-0"><a href="http://www.myokosunshine.co.jp/index.php" target="_blank" class="d-block mx-4"><img src="/images/common/myoko_foot.jpg" class="w-100" alt="妙高サンシャインホテル"></a></li>
     <li class="mb-3 mb-md-0"><a href="https://job-gear.net/cinemasunshine2/A70822423182/MDkyujin_d.htm?from=top" target="_blank" class="d-block mx-4"><img src="/images/common/recruit_foot.jpg" class="w-100" alt="アルバイト募集中"></a></li>
-    {% elseif theater.getId() == 9 %}{# 大街道 #}
+    {% elseif theater.getName() == 'okaido' %}{# 大街道 #}
     <li class="mb-3 mb-md-0"><a href="http://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3005179&amp;pid=881385431&amp;vc_url=http%3A%2F%2Fwww" target="_blank" class="d-block mx-4"><img src="/images/common/mvtk_foot.jpg" class="w-100" alt="インターネットで座席指定ができる電子前売り券：ムビチケサイトはこちら"></a></li>
     <li class="mb-3 mb-md-0"><a href="{{ path_for('mail_magazine') }}" class="d-block mx-4"><img src="/images/common/mm_foot.jpg" class="w-100" alt="シネマサンシャインメールマガジン"></a></li>
     <li class="mb-3 mb-md-0"><a href="http://www.myokosunshine.co.jp/index.php" target="_blank" class="d-block mx-4"><img src="/images/common/myoko_foot.jpg" class="w-100" alt="妙高サンシャインホテル"></a></li>
-    {% elseif theater.getId() == 12 %}{# 重信 #}
+    {% elseif theater.getName() == 'shigenobu' %}{# 重信 #}
     <li class="mb-3 mb-md-0"><a href="http://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3005179&amp;pid=881385431&amp;vc_url=http%3A%2F%2Fwww" target="_blank" class="d-block mx-4"><img src="/images/common/mvtk_foot.jpg" class="w-100" alt="インターネットで座席指定ができる電子前売り券：ムビチケサイトはこちら"></a></li>
     <li class="mb-3 mb-md-0"><a href="{{ path_for('mail_magazine') }}" class="d-block mx-4"><img src="/images/common/mm_foot.jpg" class="w-100" alt="シネマサンシャインメールマガジン"></a></li>
     <li class="mb-3 mb-md-0"><a href="http://www.myokosunshine.co.jp/index.php" target="_blank" class="d-block mx-4"><img src="/images/common/myoko_foot.jpg" class="w-100" alt="妙高サンシャインホテル"></a></li>
-    {% elseif theater.getId() == 13 %}{# 土浦 #}
+    {% elseif theater.getName() == 'tsuchiura' %}{# 土浦 #}
     <li class="mb-3 mb-md-0"><a href="http://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3005179&amp;pid=881385431&amp;vc_url=http%3A%2F%2Fwww" target="_blank" class="d-block mx-4"><img src="/images/common/mvtk_foot.jpg" class="w-100" alt="インターネットで座席指定ができる電子前売り券：ムビチケサイトはこちら"></a></li>
     <li class="mb-3 mb-md-0"><a href="{{ path_for('mail_magazine') }}" class="d-block mx-4"><img src="/images/common/mm_foot.jpg" class="w-100" alt="シネマサンシャインメールマガジン"></a></li>
     <li class="mb-3 mb-md-0"><a href="http://www.myokosunshine.co.jp/index.php" target="_blank" class="d-block mx-4"><img src="/images/common/myoko_foot.jpg" class="w-100" alt="妙高サンシャインホテル"></a></li>
     <li class="mb-3 mb-md-0"><a href="https://job-gear.net/cinemasunshine2/A70822423112/MDkyujin_d.htm" target="_blank" class="d-block mx-4"><img src="/images/common/recruit_foot.jpg" class="w-100" alt="アルバイト募集中"></a></li>
-    {% elseif theater.getId() == 14 %}{# かほく #}
+    {% elseif theater.getName() == 'kahoku' %}{# かほく #}
     <li class="mb-3 mb-md-0"><a href="http://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3005179&amp;pid=881385431&amp;vc_url=http%3A%2F%2Fwww" target="_blank" class="d-block mx-4"><img src="/images/common/mvtk_foot.jpg" class="w-100" alt="インターネットで座席指定ができる電子前売り券：ムビチケサイトはこちら"></a></li>
     <li class="mb-3 mb-md-0"><a href="{{ path_for('mail_magazine') }}" class="d-block mx-4"><img src="/images/common/mm_foot.jpg" class="w-100" alt="シネマサンシャインメールマガジン"></a></li>
     <li class="mb-3 mb-md-0"><a href="http://www.myokosunshine.co.jp/index.php" target="_blank" class="d-block mx-4"><img src="/images/common/myoko_foot.jpg" class="w-100" alt="妙高サンシャインホテル"></a></li>
     <li class="mb-3 mb-md-0"><a href="https://job-gear.net/cinemasunshine2/A70822423137/MDkyujin_d.htm" target="_blank" class="d-block mx-4"><img src="/images/common/recruit_foot.jpg" class="w-100" alt="アルバイト募集中"></a></li>
-    {% elseif theater.getId() == 15 %}{# エミフルMASAKI #}
+    {% elseif theater.getName() == 'masaki' %}{# エミフルMASAKI #}
     <li class="mb-3 mb-md-0"><a href="http://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3005179&amp;pid=881385431&amp;vc_url=http%3A%2F%2Fwww" target="_blank" class="d-block mx-4"><img src="/images/common/mvtk_foot.jpg" class="w-100" alt="インターネットで座席指定ができる電子前売り券：ムビチケサイトはこちら"></a></li>
     <li class="mb-3 mb-md-0"><a href="{{ path_for('mail_magazine') }}" class="d-block mx-4"><img src="/images/common/mm_foot.jpg" class="w-100" alt="シネマサンシャインメールマガジン"></a></li>
     <li class="mb-3 mb-md-0"><a href="http://www.myokosunshine.co.jp/index.php" target="_blank" class="d-block mx-4"><img src="/images/common/myoko_foot.jpg" class="w-100" alt="妙高サンシャインホテル"></a></li>
     <li class="mb-3 mb-md-0"><a href="https://job-gear.net/cinemasunshine2/A70822423192/MDkyujin_d.htm" target="_blank" class="d-block mx-4"><img src="/images/common/recruit_foot.jpg" class="w-100" alt="アルバイト募集中"></a></li>
-    {% elseif theater.getId() == 16 %}{# 大和郡山 #}
+    {% elseif theater.getName() == 'yamatokoriyama' %}{# 大和郡山 #}
     <li class="mb-3 mb-md-0"><a href="http://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3005179&amp;pid=881385431&amp;vc_url=http%3A%2F%2Fwww" target="_blank" class="d-block mx-4"><img src="/images/common/mvtk_foot.jpg" class="w-100" alt="インターネットで座席指定ができる電子前売り券：ムビチケサイトはこちら"></a></li>
     <li class="mb-3 mb-md-0"><a href="{{ path_for('mail_magazine') }}" class="d-block mx-4"><img src="/images/common/mm_foot.jpg" class="w-100" alt="シネマサンシャインメールマガジン"></a></li>
     <li class="mb-3 mb-md-0"><a href="http://www.myokosunshine.co.jp/index.php" target="_blank" class="d-block mx-4"><img src="/images/common/myoko_foot.jpg" class="w-100" alt="妙高サンシャインホテル"></a></li>
     <li class="mb-3 mb-md-0"><a href="https://job-gear.net/cinemasunshine2/A70822423177/MDkyujin_d.htm" target="_blank" class="d-block mx-4"><img src="/images/common/recruit_foot.jpg" class="w-100" alt="アルバイト募集中"></a></li>
-    {% elseif theater.getId() == 17 %}{# 下関 #}
+    {% elseif theater.getName() == 'shimonoseki' %}{# 下関 #}
     <li class="mb-3 mb-md-0"><a href="http://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3005179&amp;pid=881385431&amp;vc_url=http%3A%2F%2Fwww" target="_blank" class="d-block mx-4"><img src="/images/common/mvtk_foot.jpg" class="w-100" alt="インターネットで座席指定ができる電子前売り券：ムビチケサイトはこちら"></a></li>
     <li class="mb-3 mb-md-0"><a href="{{ path_for('mail_magazine') }}" class="d-block mx-4"><img src="/images/common/mm_foot.jpg" class="w-100" alt="シネマサンシャインメールマガジン"></a></li>
     <li class="mb-3 mb-md-0"><a href="http://www.myokosunshine.co.jp/index.php" target="_blank" class="d-block mx-4"><img src="/images/common/myoko_foot.jpg" class="w-100" alt="妙高サンシャインホテル"></a></li>
     <li class="mb-3 mb-md-0"><a href="https://job-gear.net/cinemasunshine2/A70822423170/MDkyujin_d.htm" target="_blank" class="d-block mx-4"><img src="/images/common/recruit_foot.jpg" class="w-100" alt="アルバイト募集中"></a></li>
-    {% elseif theater.getId() == 18 %}{# 姶良 #}
+    {% elseif theater.getName() == 'aira' %}{# 姶良 #}
     <li class="mb-3 mb-md-0"><a href="http://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3005179&amp;pid=881385431&amp;vc_url=http%3A%2F%2Fwww" target="_blank" class="d-block mx-4"><img src="/images/common/mvtk_foot.jpg" class="w-100" alt="インターネットで座席指定ができる電子前売り券：ムビチケサイトはこちら"></a></li>
     <li class="mb-3 mb-md-0"><a href="{{ path_for('mail_magazine') }}" class="d-block mx-4"><img src="/images/common/mm_foot.jpg" class="w-100" alt="シネマサンシャインメールマガジン"></a></li>
     <li class="mb-3 mb-md-0"><a href="http://www.myokosunshine.co.jp/index.php" target="_blank" class="d-block mx-4"><img src="/images/common/myoko_foot.jpg" class="w-100" alt="妙高サンシャインホテル"></a></li>
     <li class="mb-3 mb-md-0"><a href="https://job-gear.net/cinemasunshine2/A70818410786/MDkyujin_d.htm" target="_blank" class="d-block mx-4"><img src="/images/common/recruit_foot.jpg" class="w-100" alt="アルバイト募集中"></a></li>
-    {% elseif theater.getId() == 19 %}{# ユーカリが丘 #}
+    {% elseif theater.getName() == 'yukarigaoka' %}{# ユーカリが丘 #}
     <li class="mb-3 mb-md-0"><a href="https://job-gear.net/cinemasunshine2/A80626422567/MDkyujin_d.htm?from=top" target="_blank" class="d-block mx-4"><img src="/images/common/recruit_foot.jpg" class="w-100" alt="アルバイト募集中"></a></li>
     <li class="mb-3 mb-md-0"><a href="http://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3005179&amp;pid=881385431&amp;vc_url=http%3A%2F%2Fwww" target="_blank" class="d-block mx-4"><img src="/images/common/mvtk_foot.jpg" class="w-100" alt="インターネットで座席指定ができる電子前売り券：ムビチケサイトはこちら"></a></li>
     <li class="mb-3 mb-md-0"><a href="{{ path_for('mail_magazine') }}" class="d-block mx-4"><img src="/images/common/mm_foot.jpg" class="w-100" alt="シネマサンシャインメールマガジン"></a></li>
     <li class="mb-3 mb-md-0"><a href="http://www.myokosunshine.co.jp/index.php" target="_blank" class="d-block mx-4"><img src="/images/common/myoko_foot.jpg" class="w-100" alt="妙高サンシャインホテル"></a></li>
-    {% elseif theater.getId() == 20 %}{# グランドシネマサンシャイン #}
+    {% elseif theater.getName() == 'gdcs' %}{# グランドシネマサンシャイン #}
     <li class="mb-3 mb-md-0"><a href="http://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3005179&amp;pid=881385431&amp;vc_url=http%3A%2F%2Fwww" target="_blank" class="d-block mx-4"><img src="/images/common/mvtk_foot.jpg" class="w-100" alt="インターネットで座席指定ができる電子前売り券：ムビチケサイトはこちら"></a></li>
     <li class="mb-3 mb-md-0"><a href="{{ path_for('mail_magazine') }}" class="d-block mx-4"><img src="/images/common/mm_foot.jpg" class="w-100" alt="シネマサンシャインメールマガジン"></a></li>
     <li class="mb-3 mb-md-0"><a href="http://www.myokosunshine.co.jp/index.php" target="_blank" class="d-block mx-4"><img src="/images/common/myoko_foot.jpg" class="w-100" alt="妙高サンシャインホテル"></a></li>

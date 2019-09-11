@@ -19,9 +19,14 @@ use Cinemasunshine\Portal\Responder\AbstractResponder;
 /**
  * Abstract controller
  *
- * @property \Doctrine\ORM\EntityManager $em
- * @property \Monolog\Logger $logger
- * @property \Slim\Views\Twig $view
+ * @property-read \Cinemasunshine\Portal\Authorization\Manager $am
+ * @property-read \Doctrine\ORM\EntityManager $em
+ * @property-read \Slim\Http\Environment $environment
+ * @property-read \Monolog\Logger $logger
+ * @property-read \Slim\Router $router
+ * @property-read array $settings
+ * @property-read \Cinemasunshine\Portal\Session\SessionManager $sm
+ * @property-read \Slim\Views\Twig $view
  */
 abstract class AbstractController
 {
