@@ -56,8 +56,8 @@ class TheaterExtension extends AbstractExtension
     public function getFilters()
     {
         return [
-            new TwigFilter('theater_name_ja', [$this, 'nameJaFilter'], [ 'is_safe' => ['all'] ]),
-            new TwigFilter('theater_name_ja2', [$this, 'nameJaFilter2'], [ 'is_safe' => ['all'] ]),
+            new TwigFilter('theater_name_ja', [$this, 'filterNameJa'], [ 'is_safe' => ['all'] ]),
+            new TwigFilter('theater_name_ja2', [$this, 'filterNameJa2'], [ 'is_safe' => ['all'] ]),
         ];
     }
 
@@ -67,7 +67,7 @@ class TheaterExtension extends AbstractExtension
      * @param string $nameJa
      * @return string
      */
-    public function nameJaFilter(string $nameJa): string
+    public function filterNameJa(string $nameJa): string
     {
         if ($nameJa === 'グランドシネマサンシャイン') {
             $br = '<br class="tn_br_gdcs">';
@@ -85,7 +85,7 @@ class TheaterExtension extends AbstractExtension
      * @param string $nameJa
      * @return string
      */
-    public function nameJaFilter2(string $nameJa): string
+    public function filterNameJa2(string $nameJa): string
     {
         if ($nameJa === 'グランドシネマサンシャイン') {
             $br = '<br class="tn_br_gdcs">';
