@@ -8,7 +8,7 @@
 
 {% set keywords = theater_meta_keywords(theater) %}
 
-{% if theater.getId() == 2 %}
+{% if theater.getName() == 'heiwajima' %}
 {# 平和島トップページのみ #}
 {% set keywords = keywords ~ ',4DX' %}
 {% endif %}
