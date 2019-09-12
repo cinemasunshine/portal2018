@@ -211,7 +211,7 @@ header {
     position: relative;
     z-index: 1300;
 }
-header, 
+header,
 .header {
     height: 70px;
 }
@@ -533,59 +533,59 @@ header .position-fixed {
 
 /* インフォメーション */
 .infomation-date {
-    max-width:110px; 
+    max-width:110px;
     width: 100%;
 }
-.infomation li a { 
-    background-image: url(/images/common/info_arrow.svg); 
-    background-repeat: no-repeat; 
+.infomation li a {
+    background-image: url(/images/common/info_arrow.svg);
+    background-repeat: no-repeat;
     background-position: 98%;
     background-size: 15px;
 }
 
 /* IMAXインフォメーション */
 .type-imax .infomation ul,
-.type-imax .infomation li { 
+.type-imax .infomation li {
     border-color: rgba(255, 255, 255, 0.2) !important;
 }
-.type-imax .infomation li a { 
-    background-image: url(/images/common/info_arrow_wht.svg); 
+.type-imax .infomation li a {
+    background-image: url(/images/common/info_arrow_wht.svg);
     color: #FFF;
 }
 
 /* 4dxインフォメーション */
 .type-4dx .infomation ul,
-.type-4dx .infomation li { 
+.type-4dx .infomation li {
     border-color: rgba(255, 255, 255, 0.2) !important;
 }
-.type-4dx .infomation li a { 
-    background-image: url(/images/common/info_arrow_wht.svg); 
+.type-4dx .infomation li a {
+    background-image: url(/images/common/info_arrow_wht.svg);
     color: #FFF;
 }
 /* screen-xインフォメーション */
 .type-scx .infomation ul,
-.type-scx .infomation li { 
+.type-scx .infomation li {
     border-color: rgba(255, 255, 255, 0.2) !important;
 }
-.type-scx .infomation li a { 
-    background-image: url(/images/common/info_arrow_wht.svg); 
+.type-scx .infomation li a {
+    background-image: url(/images/common/info_arrow_wht.svg);
     color: #FFF;
 }
 /* 4dxwithScreenXインフォメーション */
 .type-4dxwscx .infomation ul,
-.type-4dxwscx .infomation li { 
+.type-4dxwscx .infomation li {
     border-color: rgba(255, 255, 255, 0.2) !important;
 }
-.type-4dxwscx .infomation li a { 
-    background-image: url(/images/common/info_arrow_wht.svg); 
+.type-4dxwscx .infomation li a {
+    background-image: url(/images/common/info_arrow_wht.svg);
     color: #FFF;
 }
-  
+
 /* 特設サイト */
 .width2 {
     max-width: 760px;
 }
-  
+
 .special-sites-parts {
     height: 80px;
     line-height: 80px;
@@ -647,7 +647,7 @@ header .position-fixed {
 
 /* フッター */
 footer {
-    padding-top: 50px;    
+    padding-top: 50px;
 }
 .footer-logo a {
     width: 200px;
@@ -697,7 +697,7 @@ footer {
     text-align: center;
     background-color: #f1f1f1;
     color: #333;
-} 
+}
 .button-02 {
     overflow: hidden;
 }
@@ -706,7 +706,7 @@ footer {
     padding: 15px 0;
     text-align: center;
     color: #333;
-    background-color: #fff;  
+    background-color: #fff;
     border: 1px solid #999;
     border-radius:4px;
 }
@@ -721,7 +721,7 @@ footer {
     text-align: center;
     background-color: #f1f1f1;
     color: #333;
-} 
+}
 
 .plus-button {
     overflow: hidden;
@@ -856,7 +856,10 @@ footer {
 .specific_note{
     line-height: 1.5;
 }
-
+/*劇場名改行*/
+.tn_br_gdcs{
+    display: none;
+}
 @media (max-width: 767.98px) {
     body {
         font-size: 14px;
@@ -867,19 +870,19 @@ footer {
     .x-large {
         font-size: 20px;
     }
-    header, 
+    header,
     .header {
         height: 60px;
     }
-    .type-imax header, 
+    .type-imax header,
     .type-imax .header {
         height: 60px;
     }
-    .type-4dx header, 
+    .type-4dx header,
     .type-4dx .header {
         height: 60px;
     }
-    .type-scx header, 
+    .type-scx header,
     .type-scx .header {
         height: 60px;
     }
@@ -979,11 +982,15 @@ footer {
         width: auto;
     }
     footer {
-        padding-top: 0;    
+        padding-top: 0;
     }
     .type-imax footer,
     .type-4dx footer,
     .type-scx footer {
         padding-bottom: 60px;
+    }
+    /*劇場名改行*/
+    .tn_br_gdcs{
+        display: block;
     }
 }
