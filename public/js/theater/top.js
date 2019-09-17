@@ -2,12 +2,12 @@ $(function () {
     // スケジュール
     if ($('#schedule').length) {
         createScheduleDate();
-        
+
         $(document).on('click', '.schedule-slider .swiper-slide a', selectSchedule);
         $(window).on('scroll', scrollProcess);
         $(window).on('resize', resizeProcess);
     }
-    
+
     // 開場時間
     var openingTimeSwiper = new Swiper('.opening-time .swiper-container', {
         spaceBetween: 20,
@@ -23,9 +23,9 @@ $(function () {
     openingTimeSwiper.on('resize', function () {
         openingTimeSwiper.slideTo(0, 0, false);
     });
-    
+
     var scrollTimer = null;
-    
+
     initInformations();
 });
 
@@ -344,14 +344,14 @@ function createScheduleFilmDom(film) {
         cmTime: film.cm_time,
         code: film.code
     };
-    
+
     var commen = film.comment;
-    
+
     if (data.ename) {
         if (commen) {
             commen += '<span class="ml-1 mr-1">/</span>';
         }
-        
+
         commen += data.ename; // SASAKI-373
     }
 
@@ -410,7 +410,7 @@ function createScheduleFilmPerformanceDom(performance, film) {
         endTime: performance.time.end,
         screenName: performance.screen.name,
         available: performance.time.available,
-        url: performance.time.url,
+        url: (isSignIn()) ? performance.time.url + '&member=1' : performance.time.url,
         late: performance.time.late
     };
 
@@ -488,4 +488,11 @@ function createScheduleFilmPerformanceDom(performance, film) {
         pc: pcDom,
         sp: spDom
     };
+}
+
+/**
+ * サインイン判定
+ */
+function isSignIn() {
+    return $('#signIn').length > 0;
 }
