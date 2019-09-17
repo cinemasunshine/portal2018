@@ -10,21 +10,49 @@
                 </div>
                 {% endblock %}
             </div>
-            
+
             <div class="d-flex align-items-center">
-                {% block sns %}{% endblock %}
-            
-                <ul class="nav justify-content-end small d-none d-md-flex">
-                    <li class="nav-item px-1 border-right border-dark-gray">
-                        <a class="px-2 py-2 d-block text-dark" href="{{ path_for('theater_list') }}">劇場一覧</a>
-                    </li>
-                    <li class="nav-item px-1 border-right border-dark-gray">
-                        <a class="px-2 py-2 d-block text-dark" href="{{ path_for('schedule_list') }}">作品一覧</a>
-                    </li>
-                    <li class="nav-item px-1">
-                        <a class="px-2 py-2 d-block text-dark" href="{{ path_for('question') }}">よくあるご質問(Q&A)</a>
-                    </li>
-                </ul>
+                <!-- {% block sns %}{% endblock %} -->
+                <div>
+                    <ul class="nav justify-content-end small d-none d-md-flex">
+                        <li class="nav-item px-1 border-right border-dark-gray d-flex align-items-center">
+                            <a class="px-2 py-2 d-block text-dark" href="{{ path_for('theater_list') }}">劇場一覧</a>
+                        </li>
+                        <li class="nav-item px-1 border-right border-dark-gray d-flex align-items-center">
+                            <a class="px-2 py-2 d-block text-dark" href="{{ path_for('schedule_list') }}">作品一覧</a>
+                        </li>
+                        <li class="nav-item px-1 d-flex align-items-center">
+                            <a class="px-2 py-2 d-block text-dark"
+                                href="{{ path_for('question') }}">よくあるご質問<br>(Q&A)</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="pr-2 d-flex">
+                    {% if is_login() %}
+                    {% set user = login_user() %}
+                    <div>
+                        <p class="mb-0 small"><span class="username">{{ user.name }}</span>さん</p>
+                        <div>
+                            <a id="signOutButton" class="btn btn-danger btn-sm d-inline-block"
+                                href="{{ logout_url(full_url_for('logout')) }}" role="button">ログアウト</a>
+                        </div>
+                    </div>
+                    <input type="hidden" name="signIn" id="signIn">
+                    {% else %}
+                    <!-- <div class="mr-2">
+                            <a class="btn btn-outline-primary btn-sm" href="#" role="button">会員登録</a>
+                        </div> -->
+                    <div>
+                        <a id="signInButton" class="btn btn-sm bg-blue text-white d-inline-block"
+                            href="{{ login_url(full_url_for('login')) }}" role="button">ログイン</a>
+                    </div>
+                    {% endif %}
+                </div>
+                <!-- <div class="mr-2 d-block d-md-none sp-signin">
+                    {% if is_login() %}
+                    <img class="w-100" src="/images/common/account.svg">
+                    {% endif %}
+                </div> -->
             </div>
 
             <div class="btn-group d-md-none">

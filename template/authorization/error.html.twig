@@ -3,5 +3,19 @@
 {% block title %}エラー | {{ parent() }}{% endblock %}
 
 {% block contents %}
-エラー
+<style>
+    .logo {
+        width: 180px;
+    }
+</style>
+<div class="py-5">
+    <div class="mb-3">
+        <h3 class="logo mx-auto mb-3"><img src="/images/common/header_logo.svg" width="100%"></h3>
+        <p class="text-center font-weight-bold">エラーが発生しました。</p>
+    </div>
+    <div class="">
+        <p class="text-center">お手数をおかけいたしますが、<br>もう一度最初から操作をお願いいたします。</p>
+        <div class="text-center"><a class="btn bg-blue text-white px-4" href="/">TOPへ戻る</a></div>
+    </div>
+</div>
 {% endblock %}

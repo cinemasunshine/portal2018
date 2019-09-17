@@ -860,6 +860,21 @@ footer {
 .tn_br_gdcs{
     display: none;
 }
+
+.username {
+    overflow-x: hidden;
+    white-space: nowrap;
+    max-width: 4rem;
+    text-overflow: ellipsis;
+    display: inline-block;
+    vertical-align: bottom;
+}
+
+.sp-signin {
+    width: 34px;
+}
+
+
 @media (max-width: 767.98px) {
     body {
         font-size: 14px;
@@ -992,5 +1007,8 @@ footer {
     /*劇場名改行*/
     .tn_br_gdcs{
         display: block;
+    }
+    .gdcs-header-company-logo a {
+        font-size: 13px;
     }
 }
