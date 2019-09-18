@@ -18,13 +18,13 @@
 .sub-header{
     margin-bottom: 0!important;
 }
-#laser_gt .introduction h5{
+#laser_gt .introduction h5,#laser .introduction h5{
     color: #0090d4;
-} 
-#laser_gt .introduction .gt_pic{
+}
+#laser_gt .introduction .gt_pic,#laser .introduction .gt_pic{
     width: 40%;
 }
-#laser_gt .introduction .gt_txt{
+#laser_gt .introduction .gt_txt,#laser .introduction .gt_txt{
     width: 60%;
     padding: 1rem;
 }
@@ -89,10 +89,10 @@
     .add-prices li .description {
         width: 50%;
     }
-    #laser_gt .introduction .gt_pic{
+    #laser_gt .introduction .gt_pic,#laser .introduction .gt_pic{
         width: 100%;
     }
-    #laser_gt .introduction .gt_txt{
+    #laser_gt .introduction .gt_txt,#laser .introduction .gt_txt{
         width: 100%;
         padding: .8rem;
     }
