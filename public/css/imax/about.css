@@ -8,9 +8,7 @@
 .imax_about_tab a{
     color: #fff;
 }
-.imax_about_tab_inner .nav-item{
-    margin: 20px 20px;
-}
+
 .imax_about_tab .active{
     color: #0090d4;
     font-weight: bolder;
@@ -64,10 +62,23 @@
 .comment ul li{
     border:solid 1px;
 }
+.about_theater_name{
+    padding: 10px 25px;
+    border: solid 1px #fff;
+    border-radius: 25px;
+}
+@media (min-width: 768px) {
+    .imax_about_tab_inner .nav-item{
+        padding: 20px 40px;
+    }
+}
 @media (max-width: 767.98px) {
     /* IMAX aboutページ Tab（SP） */
     .imax_about_tab_inner .nav-item{
-        margin: 20px 10px;
+        padding: 10px 0px;
+        width: 33%;
+        line-height: 1.5;
+        text-align: center;
     }
 
     .function ul {
