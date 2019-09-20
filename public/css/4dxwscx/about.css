@@ -11,7 +11,8 @@
     border-radius: 3rem;
 }
 .viewing-fee li .title {
-    width: 200px;
+    width: 360px;
+    line-height: 1.6;
 }
 .viewing-fee li .description {
     width: calc(100% - 200px);
@@ -146,5 +147,12 @@
         background-position: center;
         position: relative;
         top: 1.5rem;
+    }
+    /*鑑賞料金*/
+    .viewing-fee li .title {
+        width: 100%;
+    }
+    .viewing-fee li .description {
+        width: 100%;
     }
 }

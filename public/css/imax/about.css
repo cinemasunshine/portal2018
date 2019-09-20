@@ -8,9 +8,7 @@
 .imax_about_tab a{
     color: #fff;
 }
-.imax_about_tab_inner .nav-item{
-    margin: 20px 20px;
-}
+
 .imax_about_tab .active{
     color: #0090d4;
     font-weight: bolder;
@@ -18,13 +16,13 @@
 .sub-header{
     margin-bottom: 0!important;
 }
-#laser_gt .introduction h5{
+#laser_gt .introduction h5,#laser .introduction h5{
     color: #0090d4;
-} 
-#laser_gt .introduction .gt_pic{
+}
+#laser_gt .introduction .gt_pic,#laser .introduction .gt_pic{
     width: 40%;
 }
-#laser_gt .introduction .gt_txt{
+#laser_gt .introduction .gt_txt,#laser .introduction .gt_txt{
     width: 60%;
     padding: 1rem;
 }
@@ -64,10 +62,23 @@
 .comment ul li{
     border:solid 1px;
 }
+.about_theater_name{
+    padding: 10px 25px;
+    border: solid 1px #fff;
+    border-radius: 25px;
+}
+@media (min-width: 768px) {
+    .imax_about_tab_inner .nav-item{
+        padding: 20px 40px;
+    }
+}
 @media (max-width: 767.98px) {
     /* IMAX aboutページ Tab（SP） */
     .imax_about_tab_inner .nav-item{
-        margin: 20px 10px;
+        padding: 10px 0px;
+        width: 33%;
+        line-height: 1.5;
+        text-align: center;
     }
 
     .function ul {
@@ -89,10 +100,10 @@
     .add-prices li .description {
         width: 50%;
     }
-    #laser_gt .introduction .gt_pic{
+    #laser_gt .introduction .gt_pic,#laser .introduction .gt_pic{
         width: 100%;
     }
-    #laser_gt .introduction .gt_txt{
+    #laser_gt .introduction .gt_txt,#laser .introduction .gt_txt{
         width: 100%;
         padding: .8rem;
     }
