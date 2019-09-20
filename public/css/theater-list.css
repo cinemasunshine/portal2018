@@ -32,4 +32,19 @@
     .area-select li {
         width: 100%;
     }
+    .thlist_name_area{
+        width:80%;
+    }
+    .logo-imax {
+        width: 45px;
+    }
+    .logo-4dx {
+        width: 40px;
+    }
+    .logo-screen-x {
+        width: 45px;
+    }
+    .logo-4dx-with-screen-x {
+        width: 35px;
+    }
 }
