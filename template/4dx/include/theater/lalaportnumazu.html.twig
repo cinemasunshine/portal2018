@@ -1,0 +1,30 @@
+<li class="bg-black px-2 py-3 mb-3">
+    <h3 class="text-center text-md-left mb-3">シネマサンシャイン{{ theater.getNameJa() }}</h3>
+    <div class="mb-3">
+        <img class="w-100" src="/images/4dxwscx/theater/coming_img.jpg">
+    </div>
+    <table class="mb-3 w-100 theater-table small">
+        <tbody>
+            <tr>
+                <th class="border border-black p-2 bg-dark-gray">劇場名</th>
+                <td class="border border-black p-2 bg-light-gray text-black">シネマサンシャイン{{ theater.getNameJa() }}</td>
+            </tr>
+            <tr>
+                <th class="border border-black p-2 bg-dark-gray">住所</th>
+                <td class="border border-black p-2 bg-light-gray text-black">静岡県沼津市東椎路字東荒301番地3他 ららぽーと沼津3階</td>
+            </tr>
+            <tr>
+                <th class="border border-black p-2 bg-dark-gray">TEL</th>
+                <td class="border border-black p-2 bg-light-gray text-black">055-955-5544</td>
+            </tr>
+            <tr>
+                <th class="border border-black p-2 bg-dark-gray">スクリーン数</th>
+                <td class="border border-black p-2 bg-light-gray text-black">10スクリーン</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="theater-button mx-auto">
+        <a href="{{ path_for('theater', { name: theater.getName() }) }}" class="d-block text-center bg-dark-red text-white py-3">{{ theater.getNameJa() }}劇場TOP</a>
+    </div>
+</li>

@@ -1,7 +1,8 @@
 {% set specialSites = theater.getSpecialSites() %}
 {% set count = specialSites|length %}
 
-{% set hasBestia = theater.getName() in ['aira', 'gdcs'] %}{# SASAKI-456 #}
+{# SASAKI-456、SASAKI-491 #}
+{% set hasBestia = theater.getName() in ['aira', 'gdcs', 'lalaportnumazu'] %}
 
 {% if hasBestia %}
     {% set count = count + 1 %}
@@ -16,7 +17,7 @@
     {% else %}
     <div class="align-self-center p-3 col-6 col-md-2">
     {% endif %}
-    
+
     {% if specialSite.getId() == 1 %}
         <a href="{{ path_for('imax') }}" class="d-block">
             <div class="imax mb-1"><img src="/images/common/imax_logo.svg"></div>
@@ -38,7 +39,7 @@
             <p class="mb-0 small">特設サイトはこちら</p>
         </a>
     {% endif %}
-    
+
     </div>
 {% endfor %}
 
@@ -48,7 +49,7 @@
     {% else %}
     <div class="align-self-center p-3 col-6 col-md-2">
     {% endif %}
-    
+
         <a href="/bestia/" class="d-block">
             <div class="fourdx mb-1"><img src="/images/top/bestia_logo.svg" class="link_bestia_logo"></div>
             <p class="mb-0 small">特設サイトはこちら</p>
