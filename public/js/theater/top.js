@@ -47,7 +47,8 @@ function isAppCompatibleTheater() {
         'shigenobu',
         'masaki',
         'aira',
-        'gdcs'
+        'gdcs',
+        'lalaportnumazu'
     ];
     var theater = $('body').attr('data-theater');
     var findResult = compatibleTheaters.find(function (compatibleTheater) { return (compatibleTheater === theater); });
@@ -266,23 +267,38 @@ function getSchedule() {
         var schedule = res.data;
         var pcDomList = [];
         var spDomList = [];
+        var now = moment().toISOString();
+        var today = moment(now).format('YYYYMMDD');
+        var nowTime = moment(now).format('HH:mm');
+        var nowTime30 = ('00' + String(Number(nowTime.split(':')[0]) + 24)).slice(-2) + ':' + nowTime.split(':')[1];
+        // console.log('nowTime30', nowTime30);
         schedule.forEach(function (film) {
             var parent = createScheduleFilmDom(film);
             var tmpPerformances = [];
             film.screen.forEach(function (screen) {
                 screen.time.forEach(function (time) {
-                    if (
-                        moment(date.replace(/-/g, '')).format('YYYYMMDD') === moment().format('YYYYMMDD')
-                        && time.end < moment().format('HH:mm')
-                        && time.start < time.end // 上映終了時間が翌日（例：23:00～01:00）
-                    ) {
-                        // 上映終了
+                    var selectDate = moment(date.replace(/-/g, '')).format('YYYYMMDD');
+                    if (selectDate === today
+                        && time.end < nowTime
+                        && time.start < time.end) {
+                        // 当日の上映終了
                         return;
                     }
-                    tmpPerformances.push({
-                        screen: screen,
-                        time: time
-                    });
+
+                    if (selectDate < today
+                        && time.start < time.end
+                        && time.end < nowTime30) {
+                        // 前日の上映終了
+                        return;
+                    }
+
+                    if (selectDate < today
+                        && time.start >= time.end
+                        && time.end < nowTime) {
+                        // 前日の上映分当日上映終了
+                        return;
+                    }
+                    tmpPerformances.push({ screen: screen, time: time });
                 });
             });
             var performances = tmpPerformances.sort(function (a, b) {
