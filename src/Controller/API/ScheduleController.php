@@ -19,6 +19,7 @@ use Cinemasunshine\Portal\Schedule\Builder\V2\PreSchedule as V2PreScheduleBuilde
 use Cinemasunshine\Portal\Schedule\Builder\V2\Schedule as V2ScheduleBuilder;
 use Cinemasunshine\Portal\Schedule\Collection\Movie as MovieCollection;
 use Cinemasunshine\Portal\Schedule\Collection\Schedule as ScheduleCollection;
+use Cinemasunshine\Portal\Schedule\Entity\V2\Time as TimeEntity;
 use Cinemasunshine\Portal\Schedule\Theater as TheaterSchedule;
 
 /**
@@ -241,6 +242,13 @@ class ScheduleController extends BaseController
         ];
         $movieCollection = $this->findSchedule($params, $schedules, $preSchedules);
 
+        $today = new \DateTime(date('Y-m-d'));
+        $target = new \DateTime($date);
+
+        if ($target < $today) {
+            $this->fixOvernight($movieCollection);
+        }
+
         foreach ($movieCollection as $movie) {
             $data[] = $movie->toArray();
         }
@@ -295,6 +303,35 @@ class ScheduleController extends BaseController
             }
 
             break; // 同じ日付は無い想定
+        }
+    }
+
+    /**
+     * fix overnight
+     *
+     * @link https://m-p.backlog.jp/view/SASAKI-506
+     * @param MovieCollection $movieCollection
+     */
+    protected function fixOvernight(MovieCollection $movieCollection)
+    {
+        foreach ($movieCollection as $movie) {
+            foreach ($movie->getScreen() as $screen) {
+                foreach ($screen->getTime() as $time) {
+                    $start = (int) str_replace(':', '', $time->getStart());
+
+                    // １時間前に予約終了することを考えると25時でも問題ないが、シンプルに24時で判定する
+                    if ($start >= 2400) {
+                        // 上映開始時刻が翌日
+
+                        // プロパティはintで定数がstringになっている・・・。
+                        if ($time->getAvailable() == TimeEntity::SEAT_AVAILABLE_CAN_RESERVATION) {
+                            $time->setAvailable((int) TimeEntity::SEAT_AVAILABLE_CANNOT_RESERVATION);
+                        } elseif ($time->getAvailable() == TimeEntity::SEAT_SLIGHTLY_CAN_RESERVATION) {
+                            $time->setAvailable((int) TimeEntity::SEAT_SLIGHTLY_CANNOT_RESERVATION);
+                        }
+                    }
+                }
+            }
         }
     }
 }
