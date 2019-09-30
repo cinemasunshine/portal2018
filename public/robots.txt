@@ -3,4 +3,4 @@ Disallow:/bin/
 Disallow:/js/
 Disallow:/screen-x/news/
 Disallow:/maintenance.php
-Sitemap:http://www.cinemasunshine.co.jp/sitemap.xml
+Sitemap:https://www.cinemasunshine.co.jp/sitemap.xml
