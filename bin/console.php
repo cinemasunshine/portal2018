@@ -1,6 +1,6 @@
 <?php
 /**
- * app.php
+ * console.php
  *
  * @author Atsushi Okui <okui@motionpicture.jp>
  * @link https://github.com/symfony/console
