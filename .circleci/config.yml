@@ -20,9 +20,10 @@ commands:
             sudo docker-php-ext-enable redis
 
 jobs:
-  build_dev:
+  build_development:
+    environment:
+      ZIP_FILE: development_app.zip
     working_directory: ~/workspace
-
     executor: my_executor
 
     steps:
@@ -44,6 +45,10 @@ jobs:
           key: composer-dev-{{ checksum "composer.lock" }}
           paths:
             - ./vendor
+
+      - run:
+          name: ZIP archive
+          command: zip -r $ZIP_FILE . -x \*.git\* \*.circleci\* \*docker\* \*report\* .gitignore composer.\* docker-compose.yml phpcs.xml phpstan.neon .editorconfig \*.env \*.user.ini public/sample.Web.config
 
       - persist_to_workspace:
           root: .
@@ -70,12 +75,49 @@ jobs:
       - store_artifacts:
           path: ./report
 
+  deploy_to_dev:
+    steps:
+      - run: echo todo
+
+  deploy_to_test:
+    environment:
+      ZIP_FILE: development_app.zip
+    working_directory: ~/workspace
+    executor: my_executor
+
+    steps:
+      - attach_workspace:
+          at: .
+
+      - run:
+          name: Deploy to Azure
+          command: curl -X POST https://$TEST_AAS_USER:$TEST_AAS_PASSWORD@$TEST_AAS.scm.azurewebsites.net/api/zipdeploy -T $ZIP_FILE
+
 workflows:
   version: 2
 
-  analysis:
+  deploy_development:
     jobs:
-      - build_dev
+      - build_development:
+          filters:
+            branches:
+              ignore: master
       - analysis:
           requires:
-            - build_dev
+            - build_development
+      - deploy_to_dev_approval:
+          type: approval
+          requires:
+            # - analysis
+            - build_development
+      - deploy_to_dev:
+          requires:
+            - deploy_to_dev_approval
+      - deploy_to_test_approval:
+          type: approval
+          requires:
+            # - analysis
+            - build_development
+      - deploy_to_test:
+          requires:
+            - deploy_to_test_approval
