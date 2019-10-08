@@ -50,6 +50,9 @@ jobs:
           name: ZIP archive
           command: zip -r $ZIP_FILE . -x \*.git\* \*.circleci\* \*docker\* \*report\* .gitignore composer.\* docker-compose.yml phpcs.xml phpstan.neon .editorconfig \*.env \*.user.ini public/sample.Web.config
 
+      - store_artifacts:
+          path: ./$ZIP_FILE
+
       - persist_to_workspace:
           root: .
           paths:
@@ -107,9 +110,11 @@ workflows:
           filters:
             branches:
               ignore: master
+
       - analysis:
           requires:
             - build_development
+
       - deploy_to_dev_approval:
           type: approval
           requires:
@@ -118,6 +123,7 @@ workflows:
       - deploy_to_dev:
           requires:
             - deploy_to_dev_approval
+
       - deploy_to_test_approval:
           type: approval
           requires:
