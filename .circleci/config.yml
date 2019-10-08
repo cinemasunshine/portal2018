@@ -76,6 +76,11 @@ jobs:
           path: ./report
 
   deploy_to_dev:
+    environment:
+      ZIP_FILE: development_app.zip
+    working_directory: ~/workspace
+    executor: my_executor
+
     steps:
       - run: echo todo
 
