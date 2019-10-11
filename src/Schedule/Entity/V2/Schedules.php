@@ -24,7 +24,7 @@ class Schedules extends BaseEntity implements PortalEntityInterface
     {
         $this->schedule = new ScheduleCollection();
     }
-    
+
     /**
      * to array
      *
@@ -32,10 +32,16 @@ class Schedules extends BaseEntity implements PortalEntityInterface
      */
     public function toArray()
     {
-        return array(
+        $data = array(
             'error'     => $this->getError(),
             'attention' => $this->getAttention(),
-            'schedule'  => $this->getSchedule()->toArray(),
+            'schedule'  => [],
         );
+
+        foreach ($this->getSchedule() as $schedule) {
+            $data['schedule'][] = $schedule->toArray();
+        }
+
+        return $data;
     }
 }
