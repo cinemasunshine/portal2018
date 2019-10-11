@@ -460,7 +460,7 @@ function createScheduleFilmPerformanceDom(performance, film) {
                     ? '窓口'
                     : (data.available === 5)
                         ? '満席'
-                        : '予約不可';
+                        : '販売期間外';
     var pcDom = $('<li class="mb-3">\
 <a class="d-block position-relative py-2 mx-2 '+ lateClass + ' ' + pcAvailableColorClass + '" href="' + data.url + '" target="' + target + '">\
     <div class="mb-2"><strong class="large gdcs_eng_font_b">'+ data.startTime + '</strong><span class="gdcs_eng_font_r">～' + data.endTime + '</span></div>\
@@ -491,7 +491,7 @@ function createScheduleFilmPerformanceDom(performance, film) {
                     ? '<span class="d-block">窓口</span>'
                     : (data.available === 5)
                         ? '<span class="d-block">満席</span>'
-                        : '<span class="d-block">予約不可</span>';
+                        : '<span class="d-block">販売期間外</span>';
     var spDom = $('<li class="border-bottom d-flex align-items-center justify-content-between py-3 pl-2 ' + lateClass + ' ' + spAvailableColorClass + '">\
     <div class="line-height-1">\
         <div><strong class="x-large">'+ data.startTime + '</strong></div>\
