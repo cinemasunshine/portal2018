@@ -44,7 +44,7 @@ web: https://localhost:8010/
 
 phpRedisAdmin: http://localhost:8081/
 
-### コマンド例
+### docker-compose コマンド例
 
 コンテナを作成し、起動する。
 
@@ -52,7 +52,19 @@ phpRedisAdmin: http://localhost:8081/
 $ docker-compose up
 ```
 
-## その他
+## アプリケーション コマンド
+
+```sh
+$ php bin/concole help
+```
+
+### viewキャッシュ削除
+
+```sh
+$ php bin/concole cache:clear:view
+```
+
+## その他 コマンド
 ### PHP CodeSniffer
 
 ```sh
