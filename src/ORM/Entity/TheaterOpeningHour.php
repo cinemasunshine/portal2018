@@ -110,7 +110,7 @@ class TheaterOpeningHour extends AbstractEntity
      */
     public function setFromDate($fromDate)
     {
-        if ($fromDate instanceof \Datetime) {
+        if ($fromDate instanceof \DateTime) {
             $this->fromDate = $fromDate;
         } else {
             $this->fromDate = new \DateTime($fromDate);
@@ -135,7 +135,7 @@ class TheaterOpeningHour extends AbstractEntity
      */
     public function setToDate($toDate)
     {
-        if (is_null($toDate) || $toDate instanceof \Datetime) {
+        if (is_null($toDate) || $toDate instanceof \DateTime) {
             $this->toDate = $toDate;
         } else {
             $this->toDate = new \DateTime($toDate);
@@ -160,7 +160,7 @@ class TheaterOpeningHour extends AbstractEntity
      */
     public function setTime($time)
     {
-        if ($time instanceof \Datetime) {
+        if ($time instanceof \DateTime) {
             $this->time = $time;
         } else {
             $this->time = new \DateTime($time);
