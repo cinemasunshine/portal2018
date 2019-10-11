@@ -8,8 +8,7 @@
 namespace Cinemasunshine\Portal\Responder;
 
 use Slim\Collection;
-
-use Psr\Http\Message\ResponseInterface as Response;
+use Slim\Http\Response;
 
 /**
  * About responder
@@ -27,7 +26,7 @@ class AboutResponder extends BaseResponder
     {
         return $this->view->render($response, 'about/company.html.twig', $data->all());
     }
-    
+
     /**
      * mail magazine
      *
@@ -39,7 +38,7 @@ class AboutResponder extends BaseResponder
     {
         return $this->view->render($response, 'about/mail_magazine.html.twig', $data->all());
     }
-    
+
     /**
      * mvtk
      *
@@ -51,7 +50,7 @@ class AboutResponder extends BaseResponder
     {
         return $this->view->render($response, 'about/mvtk.html.twig', $data->all());
     }
-    
+
     /**
      * official app
      *
@@ -63,7 +62,7 @@ class AboutResponder extends BaseResponder
     {
         return $this->view->render($response, 'about/official_app.html.twig', $data->all());
     }
-    
+
     /**
      * online ticket
      *
@@ -75,7 +74,7 @@ class AboutResponder extends BaseResponder
     {
         return $this->view->render($response, 'about/online_ticket.html.twig', $data->all());
     }
-    
+
     /**
      * privacy
      *
@@ -87,7 +86,7 @@ class AboutResponder extends BaseResponder
     {
         return $this->view->render($response, 'about/privacy.html.twig', $data->all());
     }
-    
+
     /**
      * question
      *
@@ -99,7 +98,7 @@ class AboutResponder extends BaseResponder
     {
         return $this->view->render($response, 'about/question.html.twig', $data->all());
     }
-    
+
     /**
      * sitemap
      *
@@ -111,7 +110,7 @@ class AboutResponder extends BaseResponder
     {
         return $this->view->render($response, 'about/sitemap.html.twig', $data->all());
     }
-    
+
     /**
      * special ticket
      *
@@ -123,7 +122,7 @@ class AboutResponder extends BaseResponder
     {
         return $this->view->render($response, 'about/special_ticket.html.twig', $data->all());
     }
-    
+
     /**
      * specific quotient
      *
@@ -135,7 +134,7 @@ class AboutResponder extends BaseResponder
     {
         return $this->view->render($response, 'about/specific_quotient.html.twig', $data->all());
     }
-    
+
     /**
      * terms of service
      *

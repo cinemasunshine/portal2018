@@ -8,8 +8,7 @@
 namespace Cinemasunshine\Portal\Responder;
 
 use Slim\Collection;
-
-use Psr\Http\Message\ResponseInterface as Response;
+use Slim\Http\Response;
 
 /**
  * FourdxWithScreenX responder
@@ -29,7 +28,7 @@ class FourdxWithScreenXResponder extends BaseResponder
     {
         return $this->view->render($response, '4dx_with_screenx/index.html.twig', $data->all());
     }
-    
+
     /**
      * about
      *
@@ -41,7 +40,7 @@ class FourdxWithScreenXResponder extends BaseResponder
     {
         return $this->view->render($response, '4dx_with_screenx/about.html.twig', $data->all());
     }
-    
+
     /**
      * schedule list
      *
@@ -53,7 +52,7 @@ class FourdxWithScreenXResponder extends BaseResponder
     {
         return $this->view->render($response, '4dx_with_screenx/schedule/list.html.twig', $data->all());
     }
-    
+
     /**
      * schedule show
      *
@@ -65,7 +64,7 @@ class FourdxWithScreenXResponder extends BaseResponder
     {
         return $this->view->render($response, '4dx_with_screenx/schedule/show.html.twig', $data->all());
     }
-    
+
     /**
      * news list
      *
@@ -77,7 +76,7 @@ class FourdxWithScreenXResponder extends BaseResponder
     {
         return $this->view->render($response, '4dx_with_screenx/news/list.html.twig', $data->all());
     }
-    
+
     /**
      * news show
      *
@@ -89,7 +88,7 @@ class FourdxWithScreenXResponder extends BaseResponder
     {
         return $this->view->render($response, '4dx_with_screenx/news/show.html.twig', $data->all());
     }
-    
+
     /**
      * theater
      *
