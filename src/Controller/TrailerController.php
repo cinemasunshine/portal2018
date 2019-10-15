@@ -19,6 +19,7 @@ class TrailerController extends BaseController
     /**
      * show action
      *
+     * @deprecated iframeによる表示は廃止されました(SASAKI-502)
      * @param \Slim\Http\Request  $request
      * @param \Slim\Http\Response $response
      * @param array               $args
@@ -27,7 +28,7 @@ class TrailerController extends BaseController
     public function executeShow($request, $response, $args)
     {
         $trailers = [];
-        
+
         if ($pageId = $request->getParam('p')) {
             $trailers = $this->em
                 ->getRepository(Entity\Trailer::class)
@@ -37,17 +38,17 @@ class TrailerController extends BaseController
                 ->getRepository(Entity\Trailer::class)
                 ->findByTheater((int) $theaterId);
         }
-        
+
         if (count($trailers) === 0) {
             throw new NotFoundException($request, $response);
         }
-        
+
         // シャッフルしてランダムに１件取得する
         shuffle($trailers);
-        
+
         /** @var Entity\Trailer $trailer */
         $trailer  = $trailers[0];
-        
+
         $this->data->set('trailer', $trailer);
     }
 }
