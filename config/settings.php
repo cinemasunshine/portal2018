@@ -94,9 +94,9 @@ $getLoggerSetting = function ($isDebug) {
 $settings['logger'] = $getLoggerSetting($isDebug);
 
 // doctrine
-$getDoctrineSetting = function () {
+$getDoctrineSetting = function ($isDebug) {
     $settings = [
-        'dev_mode' => (APP_ENV === 'dev'),
+        'dev_mode' => $isDebug,
         'metadata_dirs' => [APP_ROOT . '/src/ORM/Entity'],
 
         'connection' => [
@@ -123,7 +123,7 @@ $getDoctrineSetting = function () {
     return $settings;
 };
 
-$settings['doctrine'] = $getDoctrineSetting();
+$settings['doctrine'] = $getDoctrineSetting($isDebug);
 
 // storage
 $settings['storage'] = [
