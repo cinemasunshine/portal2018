@@ -62,19 +62,24 @@ jobs:
           name: create .env file
           command: echo $ANALYSIS_DOTENV | base64 --decode > .env
 
-      - store_artifacts:
-          path: ./.env
-
-      # - run:
-      #     name: PHP CodeSniffer
-      #     command: composer phpcs
-
-      # - run:
-      #     name: PHPStan
-      #     command: composer phpstan > ./report/phpstan_result.txt
-
+      # 確認用
       # - store_artifacts:
-      #     path: ./report
+      #     path: ./.env
+
+      - run:
+          name: PHP CodeSniffer
+          command: composer phpcs
+
+      - run:
+          name: PHPStan
+          command: composer phpstan > ./report/phpstan_result.txt
+
+      - store_artifacts:
+          path: ./report
+
+      - run:
+          name: remove .env file
+          command: rm .env
 
 workflows:
   version: 2
