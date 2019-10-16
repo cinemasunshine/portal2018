@@ -52,7 +52,6 @@ jobs:
 
   analysis:
     working_directory: ~/workspace
-
     executor: my_executor
 
     steps:
@@ -60,15 +59,22 @@ jobs:
           at: .
 
       - run:
-          name: PHP CodeSniffer
-          command: composer phpcs
-
-      - run:
-          name: PHPStan
-          command: composer phpstan > ./report/phpstan_result.txt
+          name: create .env file
+          command: echo $ANALYSIS_DOTENV | base64 --decode > .env
 
       - store_artifacts:
-          path: ./report
+          path: ./.env
+
+      # - run:
+      #     name: PHP CodeSniffer
+      #     command: composer phpcs
+
+      # - run:
+      #     name: PHPStan
+      #     command: composer phpstan > ./report/phpstan_result.txt
+
+      # - store_artifacts:
+      #     path: ./report
 
 workflows:
   version: 2
