@@ -8,8 +8,7 @@
 namespace Cinemasunshine\Portal\Responder;
 
 use Slim\Collection;
-
-use Psr\Http\Message\ResponseInterface as Response;
+use Slim\Http\Response;
 
 /**
  * Theater responder
@@ -27,7 +26,7 @@ class TheaterResponder extends BaseResponder
     {
         return $this->view->render($response, 'theater/index/index.html.twig', $data->all());
     }
-    
+
     /**
      * closed
      *
@@ -39,7 +38,7 @@ class TheaterResponder extends BaseResponder
     {
         return $this->view->render($response, 'theater/index/closed.html.twig', $data->all());
     }
-    
+
     /**
      * access
      *
@@ -51,7 +50,7 @@ class TheaterResponder extends BaseResponder
     {
         return $this->view->render($response, 'theater/access.html.twig', $data->all());
     }
-    
+
     /**
      * admission
      *
@@ -63,7 +62,7 @@ class TheaterResponder extends BaseResponder
     {
         return $this->view->render($response, 'theater/admission.html.twig', $data->all());
     }
-    
+
     /**
      * advance ticket
      *
@@ -75,7 +74,7 @@ class TheaterResponder extends BaseResponder
     {
         return $this->view->render($response, 'theater/advance_ticket.html.twig', $data->all());
     }
-    
+
     /**
      * concession
      *
@@ -87,7 +86,7 @@ class TheaterResponder extends BaseResponder
     {
         return $this->view->render($response, 'theater/concession.html.twig', $data->all());
     }
-    
+
     /**
      * floor guide
      *
@@ -99,7 +98,7 @@ class TheaterResponder extends BaseResponder
     {
         return $this->view->render($response, 'theater/floor_guide.html.twig', $data->all());
     }
-    
+
     /**
      * news list
      *
@@ -111,7 +110,7 @@ class TheaterResponder extends BaseResponder
     {
         return $this->view->render($response, 'theater/news/list.html.twig', $data->all());
     }
-    
+
     /**
      * news show
      *

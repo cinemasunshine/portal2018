@@ -8,8 +8,7 @@
 namespace Cinemasunshine\Portal\Responder;
 
 use Slim\Collection;
-
-use Psr\Http\Message\ResponseInterface as Response;
+use Slim\Http\Response;
 
 /**
  * Theater List responder
@@ -27,7 +26,7 @@ class TheaterListResponder extends BaseResponder
     {
         return $this->view->render($response, 'theater_list/index.html.twig', $data->all());
     }
-    
+
     /**
      * sns
      *

@@ -8,8 +8,7 @@
 namespace Cinemasunshine\Portal\Responder\API;
 
 use Slim\Collection;
-
-use Psr\Http\Message\ResponseInterface as Response;
+use Slim\Http\Response;
 
 /**
  * Schedule responder
@@ -27,7 +26,7 @@ class ScheduleResponder extends BaseResponder
     {
         return $response->withJson($data->all());
     }
-    
+
     /**
      * date
      *

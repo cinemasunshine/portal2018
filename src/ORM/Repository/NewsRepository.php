@@ -31,10 +31,10 @@ class NewsRepository extends EntityRepository
                 $qb->expr()->lte('n.startDt', 'CURRENT_TIMESTAMP()'),
                 $qb->expr()->gt('n.endDt', 'CURRENT_TIMESTAMP()')
             ));
-        
+
         return $qb;
     }
-    
+
     /**
      * find one by id
      *
@@ -47,10 +47,10 @@ class NewsRepository extends EntityRepository
         $qb
             ->andWhere('n.id = :id')
             ->setParameter('id', $id);
-            
+
         return $qb->getQuery()->getOneOrNullResult();
     }
-    
+
     /**
      * find by page
      *
@@ -67,20 +67,20 @@ class NewsRepository extends EntityRepository
             ->andWhere('pn.page = :page_id')
             ->setParameter('page_id', $pageId)
             ->orderBy('pn.displayOrder', 'ASC');
-        
+
         if ($category) {
             $qb
                 ->andWhere('n.category = :category')
                 ->setParameter('category', $category);
         }
-        
+
         if ($limit) {
             $qb->setMaxResults($limit);
         }
-        
+
         return $qb->getQuery()->getResult();
     }
-    
+
     /**
      * find by theater
      *
@@ -97,20 +97,20 @@ class NewsRepository extends EntityRepository
             ->andWhere('pt.theater = :theater_id')
             ->setParameter('theater_id', $theaterId)
             ->orderBy('pt.displayOrder', 'ASC');
-        
+
         if ($category) {
             $qb
                 ->andWhere('n.category IN (:category)')
                 ->setParameter('category', $category);
         }
-        
+
         if ($limit) {
             $qb->setMaxResults($limit);
         }
-        
+
         return $qb->getQuery()->getResult();
     }
-    
+
     /**
      * find by special_site
      *
@@ -127,24 +127,24 @@ class NewsRepository extends EntityRepository
             ->andWhere('sn.specialSite = :special_site_id')
             ->setParameter('special_site_id', $specialSiteId)
             ->orderBy('sn.displayOrder', 'ASC');
-        
+
         if ($category) {
             $qb
                 ->andWhere('n.category = :category')
                 ->setParameter('category', $category);
         }
-        
+
         if ($limit) {
             $qb->setMaxResults($limit);
         }
-        
+
         return $qb->getQuery()->getResult();
     }
-    
+
     /**
      * find by IMAX
      *
-     * @param int|null $limt
+     * @param int|null $limit
      * @return News[]
      */
     public function findByImax(?int $limit = null)
@@ -154,18 +154,18 @@ class NewsRepository extends EntityRepository
             ->andWhere('n.category = :category')
             ->setParameter('category', News::CATEGORY_IMAX)
             ->orderBy('n.createdAt', 'DESC');
-        
+
         if ($limit) {
             $qb->setMaxResults($limit);
         }
-        
+
         return $qb->getQuery()->getResult();
     }
-    
+
     /**
      * find by 4DX
      *
-     * @param int|null $limt
+     * @param int|null $limit
      * @return News[]
      */
     public function findBy4dx(?int $limit = null)
@@ -175,18 +175,18 @@ class NewsRepository extends EntityRepository
             ->andWhere('n.category = :category')
             ->setParameter('category', News::CATEGORY_4DX)
             ->orderBy('n.createdAt', 'DESC');
-        
+
         if ($limit) {
             $qb->setMaxResults($limit);
         }
-        
+
         return $qb->getQuery()->getResult();
     }
-    
+
     /**
      * find by ScreenX
      *
-     * @param int|null $limt
+     * @param int|null $limit
      * @return News[]
      */
     public function findByScreenX(?int $limit = null)
@@ -196,14 +196,14 @@ class NewsRepository extends EntityRepository
             ->andWhere('n.category = :category')
             ->setParameter('category', News::CATEGORY_SCREENX)
             ->orderBy('n.createdAt', 'DESC');
-        
+
         if ($limit) {
             $qb->setMaxResults($limit);
         }
-        
+
         return $qb->getQuery()->getResult();
     }
-    
+
     /**
      * find by 4DX with ScreenX
      *
@@ -217,11 +217,11 @@ class NewsRepository extends EntityRepository
             ->andWhere('n.category = :category')
             ->setParameter('category', News::CATEGORY_4DX_WITH_SCREENX)
             ->orderBy('n.createdAt', 'DESC');
-        
+
         if ($limit) {
             $qb->setMaxResults($limit);
         }
-        
+
         return $qb->getQuery()->getResult();
     }
 }

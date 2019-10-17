@@ -8,10 +8,10 @@
 namespace Cinemasunshine\Portal\Controller;
 
 use Slim\Collection;
+use Slim\Http\Response;
+use Slim\Http\Request;
 
 use Psr\Container\ContainerInterface;
-use Psr\Http\Message\ResponseInterface as Response;
-use Psr\Http\Message\ServerRequestInterface as Request;
 
 use Cinemasunshine\Portal\Exception\RedirectException;
 use Cinemasunshine\Portal\Responder\AbstractResponder;
