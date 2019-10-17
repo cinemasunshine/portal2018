@@ -8,8 +8,7 @@
 namespace Cinemasunshine\Portal\Responder;
 
 use Slim\Collection;
-
-use Psr\Http\Message\ResponseInterface as Response;
+use Slim\Http\Response;
 
 /**
  * ScreenX responder
@@ -27,7 +26,7 @@ class ScreenXResponder extends BaseResponder
     {
         return $this->view->render($response, 'screenx/index.html.twig', $data->all());
     }
-    
+
     /**
      * about
      *
@@ -39,7 +38,7 @@ class ScreenXResponder extends BaseResponder
     {
         return $this->view->render($response, 'screenx/about.html.twig', $data->all());
     }
-    
+
     /**
      * schedule list
      *
@@ -51,7 +50,7 @@ class ScreenXResponder extends BaseResponder
     {
         return $this->view->render($response, 'screenx/schedule/list.html.twig', $data->all());
     }
-    
+
     /**
      * schedule show
      *
@@ -63,7 +62,7 @@ class ScreenXResponder extends BaseResponder
     {
         return $this->view->render($response, 'screenx/schedule/show.html.twig', $data->all());
     }
-    
+
     /**
      * news list
      *
@@ -75,7 +74,7 @@ class ScreenXResponder extends BaseResponder
     {
         return $this->view->render($response, 'screenx/news/list.html.twig', $data->all());
     }
-    
+
     /**
      * news show
      *
@@ -87,7 +86,7 @@ class ScreenXResponder extends BaseResponder
     {
         return $this->view->render($response, 'screenx/news/show.html.twig', $data->all());
     }
-    
+
     /**
      * theater
      *

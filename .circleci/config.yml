@@ -58,12 +58,19 @@ jobs:
 
   analysis:
     working_directory: ~/workspace
-
     executor: my_executor
 
     steps:
       - attach_workspace:
           at: .
+
+      - run:
+          name: create .env file
+          command: echo $ANALYSIS_DOTENV | base64 --decode > .env
+
+      # 確認用
+      # - store_artifacts:
+      #     path: ./.env
 
       - run:
           name: PHP CodeSniffer
@@ -75,6 +82,10 @@ jobs:
 
       - store_artifacts:
           path: ./report
+
+      - run:
+          name: remove .env file
+          command: rm -v ./.env
 
   deploy_to_dev:
     working_directory: ~/workspace

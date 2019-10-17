@@ -1,13 +1,33 @@
+includes:
+	- vendor/phpstan/phpstan-doctrine/extension.neon
+	- vendor/phpstan/phpstan-doctrine/rules.neon
+
 parameters:
-	level: 1
+	level: 2
 	bootstrap: %currentWorkingDirectory%/src/bootstrap.php
 	paths:
 		- %currentWorkingDirectory%/src
 	excludes_analyse:
 		- %currentWorkingDirectory%/src/ORM/Proxy/*
+	doctrine:
+		objectManagerLoader: %currentWorkingDirectory%/analysis/entity-manager.php
 
 	ignoreErrors:
 		# ライブラリの改修が必要なので除外する
 		-
 			message: '#::__construct\(\) does not call parent constructor from#'
 			path: %currentWorkingDirectory%/src/Schedule/Entity/*
+		-
+			message: '#Call to an undefined method Cinemasunshine\\Schedule\\Entity\\SchedulesInterface::#'
+			path: %currentWorkingDirectory%/src/Controller/API/ScheduleController.php
+		-
+			message: '#Call to an undefined method Cinemasunshine\\Schedule\\Entity\\ScheduleInterface::#'
+			paths:
+				- %currentWorkingDirectory%/src/Controller/API/ScheduleController.php
+				- %currentWorkingDirectory%/src/Schedule/Collection/Schedule.php
+		-
+			message: '#Call to an undefined method Cinemasunshine\\Schedule\\Entity\\MovieInterface::#'
+			path: %currentWorkingDirectory%/src/Schedule/Collection/Movie.php
+		-
+			message: '#Call to an undefined method Cinemasunshine\\Schedule\\Entity\\ScreenInterface::#'
+			path: %currentWorkingDirectory%/src/Schedule/Entity/V2/Time.php

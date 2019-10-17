@@ -9,10 +9,9 @@ declare(strict_types=1);
 
 namespace Cinemasunshine\Portal\Authorization;
 
-use Zend\Session\Container as SessionContainer;
-
 use Cinemasunshine\Portal\Authorization\Grant\AuthorizationCode as AuthorizationCodeGrant;
 use Cinemasunshine\Portal\Authorization\Token\AccessToken;
+use Cinemasunshine\Portal\Session\Container as SessionContainer;
 
 /**
  * Authorization Manager class
