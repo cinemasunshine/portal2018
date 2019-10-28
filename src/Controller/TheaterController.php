@@ -88,6 +88,8 @@ class TheaterController extends BaseController
             return 'closed';
         }
 
+        $this->data->set('trailer', $this->getTrailer($theater));
+
         $this->data->set('eventNewsList', $this->getNewsList(
             $theater,
             Entity\News::CATEGORY_EVENT,
@@ -133,6 +135,28 @@ class TheaterController extends BaseController
         return $this->em
             ->getRepository(Entity\Campaign::class)
             ->findByTheater($theater->getId());
+    }
+
+    /**
+     * return trailer
+     *
+     * @param Entity\Theater $theater
+     * @return Entity\Trailer|null
+     */
+    protected function getTrailer(Entity\Theater $theater): ?Entity\Trailer
+    {
+        $trailers = $this->em
+                ->getRepository(Entity\Trailer::class)
+                ->findByTheater($theater->getId());
+
+        if (count($trailers) === 0) {
+            return null;
+        }
+
+        // シャッフルしてランダムに１件取得する
+        shuffle($trailers);
+
+        return $trailers[0];
     }
 
     /**

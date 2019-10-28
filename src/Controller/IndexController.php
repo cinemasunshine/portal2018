@@ -24,31 +24,31 @@ class IndexController extends GeneralController
      */
     public function executeIndex($request, $response, $args)
     {
-        $this->data->set('page', $this->getPage(self::PAGE_ID));
-        
         $this->data->set('mainBanners', $this->getMainBanners());
-        
+
         $this->data->set('areaToTheaters', $this->getTheaters());
-        
+
+        $this->data->set('trailer', $this->getTrailer());
+
         $this->data->set('titleRanking', $this->getTitleRanking());
-        
+
         $this->data->set('newsList', $this->getNewsList(Entity\News::CATEGORY_NEWS));
-        
+
         $this->data->set('imaxNewsList', $this->getNewsList(Entity\News::CATEGORY_IMAX));
-        
+
         // twigは数値から始まる変数が利用できない
         $this->data->set('fourdxNewsList', $this->getNewsList(Entity\News::CATEGORY_4DX));
-        
+
         $this->data->set('screenXNewsList', $this->getNewsList(Entity\News::CATEGORY_SCREENX));
-        
+
         // twigは数値から始まる変数が利用できない
         $this->data->set('fourdxWithScreenXNewsList', $this->getNewsList(Entity\News::CATEGORY_4DX_WITH_SCREENX));
-        
+
         $this->data->set('infoNewsList', $this->getNewsList(Entity\News::CATEGORY_INFO));
-        
+
         $this->data->set('campaigns', $this->getCampaigns(self::PAGE_ID));
     }
-    
+
     /**
      * return main_banners
      *
@@ -60,7 +60,7 @@ class IndexController extends GeneralController
             ->getRepository(Entity\MainBanner::class)
             ->findByPageId(self::PAGE_ID);
     }
-    
+
     /**
      * return theaters
      *
@@ -69,23 +69,44 @@ class IndexController extends GeneralController
     protected function getTheaters()
     {
         $theaters = parent::getTheaters();
-        
+
         $areaToTheaters = [];
-        
+
         foreach ($theaters as $theater) {
             /** @var Entity\Theater $theater */
             $area = $theater->getArea();
-            
+
             if (!isset($areaToTheaters[$area])) {
                 $areaToTheaters[$area] = [];
             }
-            
+
             $areaToTheaters[$area][] = $theater;
         }
-        
+
         return $areaToTheaters;
     }
-    
+
+    /**
+     * return trailer
+     *
+     * @return Entity\Trailer|null
+     */
+    protected function getTrailer(): ?Entity\Trailer
+    {
+        $trailers = $this->em
+                ->getRepository(Entity\Trailer::class)
+                ->findByPage(self::PAGE_ID);
+
+        if (count($trailers) === 0) {
+            return null;
+        }
+
+        // シャッフルしてランダムに１件取得する
+        shuffle($trailers);
+
+        return $trailers[0];
+    }
+
     /**
      * return title_raning
      *
@@ -95,7 +116,7 @@ class IndexController extends GeneralController
     {
         return $this->em->find(Entity\TitleRanking::class, 1);
     }
-    
+
     /**
      * return news list
      *

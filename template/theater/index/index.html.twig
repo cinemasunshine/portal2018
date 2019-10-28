@@ -74,9 +74,12 @@ active: 'top',
         } only %}
         {% endif %}
 
+    {% if trailer %}
         {% include 'theater/index/include/trailer.html.twig' with {
-        theater: theater
+            trailer: trailer
         } only %}
+    {% endif %}
+
     </div>
 </div>
 
