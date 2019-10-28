@@ -1,6 +1,16 @@
 <div class="trailer mx-auto mx-md-0">
     <div class="trailer-inner">
-        {# @todo iframeをやめて直接表示。広告が廃止されたのでiframeである必要はない #}
-        <iframe type="text/html" src="{{ path_for('trailer', {}, { p: page.getId() }) }}" frameborder="0" width="336" height="280"></iframe>
+        <div class="video-box">
+            <div class="video">
+                <iframe id="ytplayer" type="text/html" width="336" height="189"
+                    src="https://www.youtube.com/embed/{{ trailer.getYoutube() }}?rel=0&loop=1&playsinline=1&rel=0&mute=1&autoplay=1&showinfo=0&disablekb=1&modestbranding=1&fs=1&color=white"
+                    frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="banner">
+                <a href="{{ trailer.getBannerLinkUrl() }}" target="_blank">
+                    <img src="{{ file_url(trailer.getBannerImage()) }}">
+                </a>
+            </div>
+        </div>
     </div>
 </div>

@@ -16,8 +16,7 @@ use Cinemasunshine\Portal\Controller\{
     ScheduleController,
     ScreenXController,
     TheaterController,
-    TheaterListController,
-    TrailerController
+    TheaterListController
 };
 
 use Cinemasunshine\Portal\Controller\API\{
@@ -67,9 +66,6 @@ $app->group('/theater/{name}', function () {
         $this->get('/{id:[0-9]+}.php', TheaterController::class . ':newsShow')->setName('theater_news_show');
     });
 });
-
-# ムービーウォーカー様広告として展開しているのでURLはそのまま。タイミングがあえば直す SASAKI-315
-$app->get('/trailer', TrailerController::class . ':show')->setName('trailer');
 
 $app->group('/imax', function () {
     $this->get('/', ImaxController::class . ':index')->setName('imax');

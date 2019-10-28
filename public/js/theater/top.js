@@ -224,7 +224,7 @@ function createScheduleDate() {
 
 /**
  * スケジュール選択
- * @param {Event} event 
+ * @param {Event} event
  */
 function selectSchedule(event) {
     event.preventDefault();
@@ -403,7 +403,7 @@ function createScheduleFilmDom(film) {
 
 /**
  * create random
- * 
+ *
  * @param {Integer} min 最小値
  * @param {Integer} max 最大値
  */

@@ -1012,3 +1012,48 @@ footer {
         font-size: 13px;
     }
 }
+
+
+
+
+.video-box {
+    width: 336px;
+    height: 280px;
+}
+@media (max-width: 767.98px) {
+    .video-box {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+.video-box .video {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%;
+}
+
+.video-box .video iframe {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.video-box .banner a {
+    display: block;
+}
+
+.video-box .banner img {
+    width: 100%;
+    vertical-align: bottom;
+}
+.video-box .ytp-chrome-top-buttons{
+    display: none!important;
+}
+.video-box .ytp-title-enable-channel-logo .ytp-title{
+    display: none!important;
+}
