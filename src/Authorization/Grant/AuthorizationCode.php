@@ -11,7 +11,7 @@ namespace Cinemasunshine\Portal\Authorization\Grant;
 
 use GuzzleHttp\Client as HttpClient;
 
-use Cinemasunshine\Portal\Authorization\Token\AccessToken;
+use Cinemasunshine\Portal\Authorization\Token\AuthorizationCodeToken as Token;
 
 /**
  * Authorization Code Grant class
@@ -145,14 +145,14 @@ class AuthorizationCode extends AbstractGrant
     }
 
     /**
-     * Request access token
+     * Request token
      *
      * @param string $code
      * @param string $redirectUri
      * @param string $codeVerifie
-     * @return AccessToken
+     * @return Token
      */
-    public function requestAccessToken(string $code, string $redirectUri, string $codeVerifie): AccessToken
+    public function requestToken(string $code, string $redirectUri, string $codeVerifie): Token
     {
         $endpoint = '/token';
         $headers = $this->getRequestHeaders($this->clientId, $this->clientSecret);
@@ -170,9 +170,8 @@ class AuthorizationCode extends AbstractGrant
         ]);
 
         $rawContents = $response->getBody()->getContents();
-        $token = new AccessToken(json_decode($rawContents, true));
 
-        return $token;
+        return new Token(json_decode($rawContents, true));
     }
 
     /**

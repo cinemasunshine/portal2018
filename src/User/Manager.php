@@ -9,7 +9,7 @@ declare(strict_types=1);
 
 namespace Cinemasunshine\Portal\User;
 
-use Cinemasunshine\Portal\Authorization\Token\AccessToken;
+use Cinemasunshine\Portal\Authorization\Token\AuthorizationCodeToken as AuthorizationToken;
 use Cinemasunshine\Portal\Session\Container as SessionContainer;
 
 /**
@@ -35,18 +35,18 @@ class Manager
      *
      * logoutも適宜更新してください。
      *
-     * @param AccessToken $accessToken
+     * @param AuthorizationToken $authorizationToken
      * @return void
      */
-    public function login(AccessToken $accessToken)
+    public function login(AuthorizationToken $authorizationToken)
     {
-        $this->session['access_token'] = $accessToken;
+        $this->session['authorization_token'] = $authorizationToken;
 
         /**
          * ユーザ情報
          * 情報が増えてきたらオブジェクト化など考える。
          */
-        $claims = $accessToken->decodeToken()->getClaims();
+        $claims = $authorizationToken->decodeAccessToken()->getClaims();
         $user = [
             'name' => $claims['username'],
         ];

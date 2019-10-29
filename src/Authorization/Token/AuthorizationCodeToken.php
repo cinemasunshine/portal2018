@@ -1,6 +1,6 @@
 <?php
 /**
- * AccessToken.php
+ * AuthorizationCodeToken.php
  *
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
@@ -10,12 +10,12 @@ declare(strict_types=1);
 namespace Cinemasunshine\Portal\Authorization\Token;
 
 /**
- * Access Token class
+ * Authorization Code Token class
  */
-class AccessToken
+class AuthorizationCodeToken extends AbstractToken
 {
     /** @var string */
-    protected $token;
+    protected $accessToken;
 
     /** @var string|null */
     protected $tokenType;
@@ -41,7 +41,7 @@ class AccessToken
             throw new \InvalidArgumentException('Required "access_token".');
         }
 
-        $this->token = $response['access_token'];
+        $this->accessToken = $response['access_token'];
 
         if (!empty($response['token_type'])) {
             $this->tokenType = $response['token_type'];
@@ -65,9 +65,9 @@ class AccessToken
      *
      * @return string
      */
-    public function getToken(): string
+    public function getAccessToken(): string
     {
-        return $this->token;
+        return $this->accessToken;
     }
 
     /**
@@ -75,9 +75,9 @@ class AccessToken
      *
      * @return DecodedAccessToken
      */
-    public function decodeToken(): DecodedAccessToken
+    public function decodeAccessToken(): DecodedAccessToken
     {
-        return DecodedAccessToken::decodeJWT($this->token);
+        return DecodedAccessToken::decodeJWT($this->accessToken);
     }
 
     /**

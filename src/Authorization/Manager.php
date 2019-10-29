@@ -10,7 +10,7 @@ declare(strict_types=1);
 namespace Cinemasunshine\Portal\Authorization;
 
 use Cinemasunshine\Portal\Authorization\Grant\AuthorizationCode as AuthorizationCodeGrant;
-use Cinemasunshine\Portal\Authorization\Token\AccessToken;
+use Cinemasunshine\Portal\Authorization\Token\AuthorizationCodeToken as Token;
 use Cinemasunshine\Portal\Session\Container as SessionContainer;
 
 /**
@@ -141,15 +141,15 @@ class Manager
     }
 
     /**
-     * request access token
+     * request token
      *
      * @param string $code
      * @param string $redirectUri
-     * @return AccessToken
+     * @return Token
      */
-    public function requestAccessToken(string $code, string $redirectUri): AccessToken
+    public function requestToken(string $code, string $redirectUri): Token
     {
-        return $this->authorizationCodeGrunt->requestAccessToken(
+        return $this->authorizationCodeGrunt->requestToken(
             $code,
             $redirectUri,
             $this->getCodeVerifier()
