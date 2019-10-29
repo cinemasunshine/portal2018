@@ -61,7 +61,7 @@ class AuthorizationController extends BaseController
             return 'error';
         }
 
-        $this->am->login($accessToken);
+        $this->um->login($accessToken);
 
         // redirect
         $redirectPath = $this->router->pathFor('homepage');
@@ -87,7 +87,7 @@ class AuthorizationController extends BaseController
      */
     public function executeLogout($request, $response, $args)
     {
-        $this->am->logout();
+        $this->um->logout();
 
         // redirect
         $redirectPath = $this->router->pathFor('homepage');

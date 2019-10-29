@@ -157,51 +157,6 @@ class Manager
     }
 
     /**
-     * login
-     *
-     * logoutも適宜更新してください。
-     *
-     * @param AccessToken $accessToken
-     * @return void
-     */
-    public function login(AccessToken $accessToken)
-    {
-        $this->session['access_token'] = $accessToken;
-
-        /**
-         * ユーザ情報
-         * 情報が増えてきたらオブジェクト化など考える。
-         */
-        $claims = $accessToken->decodeToken()->getClaims();
-        $user = [
-            'name' => $claims['username'],
-        ];
-        $this->session['user'] = $user;
-
-        $this->session['authorized'] = true;
-    }
-
-    /**
-     * 認可判定
-     *
-     * @return boolean
-     */
-    public function isAuthorized(): bool
-    {
-        return isset($this->session['authorized']) && $this->session['authorized'] === true;
-    }
-
-    /**
-     * return authorized user
-     *
-     * @return array|null
-     */
-    public function getUser(): ?array
-    {
-        return $this->session['user'];
-    }
-
-    /**
      * return logout URL
      *
      * @param string $redirectUri
@@ -210,15 +165,5 @@ class Manager
     public function getLogoutUrl(string $redirectUri): string
     {
         return $this->authorizationCodeGrunt->getLogoutUrl($redirectUri);
-    }
-
-    /**
-     * logout
-     *
-     * @return void
-     */
-    public function logout()
-    {
-        $this->session->clear();
     }
 }
