@@ -171,7 +171,7 @@ class AuthorizationCode extends AbstractGrant
 
         $rawContents = $response->getBody()->getContents();
 
-        return new Token(json_decode($rawContents, true));
+        return Token::create($rawContents);
     }
 
     /**

@@ -17,47 +17,43 @@ class AuthorizationCodeToken extends AbstractToken
     /** @var string */
     protected $accessToken;
 
-    /** @var string|null */
+    /** @var string */
     protected $tokenType;
 
-    /** @var string|null */
+    /** @var string */
     protected $refreshToken;
 
-    /** @var int|null */
+    /** @var int */
     protected $expiresIn;
 
-    /** @var string|null */
+    /** @var string */
     protected $idToken;
 
     /**
-     * construct
+     * create token
      *
-     * @param array $response
-     * @throws \InvalidArgumentException
+     * @param string $json
+     * @return self
      */
-    public function __construct(array $response)
+    public static function create(string $json): self
     {
-        if (empty($response['access_token'])) {
-            throw new \InvalidArgumentException('Required "access_token".');
-        }
+        $data = json_decode($json, true);
 
-        $this->accessToken = $response['access_token'];
+        $token = new self();
+        $token->setAccessToken($data['access_token']);
+        $token->setTokenType($data['token_type']);
+        $token->setRefreshToken($data['refresh_token']);
+        $token->setExpiresIn((int) $data['expires_in']);
+        $token->setIdToken($data['id_token']);
 
-        if (!empty($response['token_type'])) {
-            $this->tokenType = $response['token_type'];
-        }
+        return $token;
+    }
 
-        if (!empty($response['refresh_token'])) {
-            $this->refreshToken = $response['refresh_token'];
-        }
-
-        if (!empty($response['expires_in'])) {
-            $this->expiresIn = $response['expires_in'];
-        }
-
-        if (!empty($response['id_token'])) {
-            $this->idToken = $response['id_token'];
-        }
+    /**
+     * construct
+     */
+    protected function __construct()
+    {
     }
 
     /**
@@ -68,6 +64,17 @@ class AuthorizationCodeToken extends AbstractToken
     public function getAccessToken(): string
     {
         return $this->accessToken;
+    }
+
+    /**
+     * set access_token
+     *
+     * @param string $accessToken
+     * @return void
+     */
+    protected function setAccessToken(string $accessToken)
+    {
+        $this->accessToken = $accessToken;
     }
 
     /**
@@ -83,40 +90,84 @@ class AuthorizationCodeToken extends AbstractToken
     /**
      * return token_type
      *
-     * @return string|null
+     * @return string
      */
-    public function getTokenType(): ?string
+    public function getTokenType(): string
     {
         return $this->getTokenType();
     }
 
     /**
+     * set token_type
+     *
+     * @param string $tokenType
+     * @return void
+     */
+    protected function setTokenType(string $tokenType)
+    {
+        $this->tokenType = $tokenType;
+    }
+
+    /**
      * return refresh_token
      *
-     * @return string|null
+     * @return string
      */
-    public function getRefreshToken(): ?string
+    public function getRefreshToken(): string
     {
         return $this->refreshToken;
     }
 
     /**
+     * set refresh_token
+     *
+     * @param string $refreshToken
+     * @return void
+     */
+    protected function setRefreshToken(string $refreshToken)
+    {
+        $this->refreshToken = $refreshToken;
+    }
+
+    /**
      * return expires_in
      *
-     * @return integer|null
+     * @return integer
      */
-    public function getExpiresIn(): ?int
+    public function getExpiresIn(): int
     {
         return $this->expiresIn;
     }
 
     /**
+     * set expires_in
+     *
+     * @param integer $expiresIn
+     * @return void
+     */
+    public function setExpiresIn(int $expiresIn)
+    {
+        $this->expiresIn = $expiresIn;
+    }
+
+    /**
      * return id_token
      *
-     * @return string|null
+     * @return string
      */
-    public function getIdToken(): ?string
+    public function getIdToken(): string
     {
         return $this->idToken;
+    }
+
+    /**
+     * set id_token
+     *
+     * @param string $idToken
+     * @return void
+     */
+    protected function setIdToken(string $idToken)
+    {
+        $this->idToken = $idToken;
     }
 }
