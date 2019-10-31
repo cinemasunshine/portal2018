@@ -26,6 +26,9 @@ class AuthorizationCodeToken extends AbstractToken
     /** @var int */
     protected $expiresIn;
 
+    /** @var int */
+    protected $expires;
+
     /** @var string */
     protected $idToken;
 
@@ -43,7 +46,13 @@ class AuthorizationCodeToken extends AbstractToken
         $token->setAccessToken($data['access_token']);
         $token->setTokenType($data['token_type']);
         $token->setRefreshToken($data['refresh_token']);
-        $token->setExpiresIn((int) $data['expires_in']);
+
+        $expiresIn = (int) $data['expires_in'];
+        $token->setExpiresIn($expiresIn);
+
+        $expires = time() + $expiresIn;
+        $token->setExpires($expires);
+
         $token->setIdToken($data['id_token']);
 
         return $token;
@@ -148,6 +157,27 @@ class AuthorizationCodeToken extends AbstractToken
     protected function setExpiresIn(int $expiresIn)
     {
         $this->expiresIn = $expiresIn;
+    }
+
+    /**
+     * return expires
+     *
+     * @return integer
+     */
+    public function getExpires(): int
+    {
+        return $this->expires;
+    }
+
+    /**
+     * set expires
+     *
+     * @param integer $expires
+     * @return void
+     */
+    protected function setExpires(int $expires)
+    {
+        $this->expires = $expires;
     }
 
     /**
