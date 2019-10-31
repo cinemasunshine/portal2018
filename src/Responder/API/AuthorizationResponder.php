@@ -26,4 +26,16 @@ class AuthorizationResponder extends BaseResponder
     {
         return $response->withJson($data->all());
     }
+
+    /**
+     * bad request
+     *
+     * @param Response   $response
+     * @param Collection $data
+     * @return void
+     */
+    public function badRequest(Response $response, Collection $data)
+    {
+        return $response->withJson($data->all(), 400);
+    }
 }
