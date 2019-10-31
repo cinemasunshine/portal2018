@@ -7,6 +7,8 @@
 
 namespace Cinemasunshine\Portal\Controller\API;
 
+use Cinemasunshine\Portal\Authorization\Grant\ClientCredentials;
+
 /**
  * Authorization controller
  */
@@ -31,7 +33,10 @@ class AuthorizationController extends BaseController
         $userType = $request->getParam('user_type');
 
         if ($userType === 'visitor') {
-            // request visitor token
+            $data = $this->executeVisitorToken();
+
+            $this->data->set('meta', $meta);
+            $this->data->set('data', $data);
             return;
         } elseif ($userType === 'member') {
             // request member token
@@ -48,5 +53,26 @@ class AuthorizationController extends BaseController
 
             return 'badRequest';
         }
+    }
+
+    /**
+     * execute visitor token
+     *
+     * @return array
+     */
+    protected function executeVisitorToken(): array
+    {
+        $settings = $this->settings['mp_service'];
+
+        $clientCredentialsGrant = new ClientCredentials(
+            $settings['cliennt_credentials_host'],
+            $settings['cliennt_credentials_client_id'],
+            $settings['cliennt_credentials_client_secret']);
+
+        $token = $clientCredentialsGrant->requestToken();
+
+        return [
+            'access_token' => $token->getAccessToken(),
+        ];
     }
 }

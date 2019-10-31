@@ -145,6 +145,11 @@ $getMpServiceSetting = function () {
         'authorization_code_client_id'     => getenv('APPSETTING_MP_AUTHORIZATION_CODE_CLIENT_ID'),
         'authorization_code_client_secret' => getenv('APPSETTING_MP_AUTHORIZATION_CODE_CLIENT_SECRET'),
 
+        // Client Credentials Grant
+        'cliennt_credentials_host'          => getenv('APPSETTING_MP_CLIENT_CREDENTIALS_HOST'),
+        'cliennt_credentials_client_id'     => getenv('APPSETTING_MP_CLIENT_CREDENTIALS_CLIENT_ID'),
+        'cliennt_credentials_client_secret' => getenv('APPSETTING_MP_CLIENT_CREDENTIALS_CLIENT_SECRET'),
+
         // Ticket
         'ticket_url'          => getenv('APPSETTING_MP_TICKET_URL'),
         'ticket_entrance_url' => getenv('APPSETTING_MP_TICKET_ENTRANCE_URL'),
