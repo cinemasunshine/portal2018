@@ -145,7 +145,7 @@ class AuthorizationCodeToken extends AbstractToken
      * @param integer $expiresIn
      * @return void
      */
-    public function setExpiresIn(int $expiresIn)
+    protected function setExpiresIn(int $expiresIn)
     {
         $this->expiresIn = $expiresIn;
     }
