@@ -35,13 +35,11 @@ class AuthorizationCodeToken extends AbstractToken
     /**
      * create token
      *
-     * @param string $json
+     * @param array $data
      * @return self
      */
-    public static function create(string $json): self
+    public static function create(array $data): self
     {
-        $data = json_decode($json, true);
-
         $token = new self();
         $token->setAccessToken($data['access_token']);
         $token->setTokenType($data['token_type']);
