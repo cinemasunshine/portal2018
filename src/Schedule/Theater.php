@@ -21,7 +21,7 @@ class Theater extends Base
 {
     /** @var string theater name */
     protected $name;
-    
+
     /** @var array */
     protected $config;
 
@@ -30,8 +30,7 @@ class Theater extends Base
 
     /** @var HttpClient client */
     protected $client;
-    
-    
+
     /**
      * return config
      *
@@ -41,10 +40,10 @@ class Theater extends Base
     protected static function getConfig(string $theater)
     {
         $configName = self::CONFIG_PREFIX . $theater;
-        
+
         return Config::get($configName);
     }
-    
+
     /**
      * constructor
      *
@@ -66,7 +65,7 @@ class Theater extends Base
                         ? $this->config['test_endpoint'] : $this->config['endpoint'];
         $this->client   = new HttpClient();
     }
-    
+
     /**
      * スケジュール取得
      *
@@ -77,7 +76,7 @@ class Theater extends Base
     {
         return $this->client->get($this->endpoint['schedule'], $builder);
     }
-    
+
     /**
      * 先行スケジュール取得
      *
@@ -87,5 +86,15 @@ class Theater extends Base
     public function fetchPreSchedule(PreScheduleBuilder $builder = null)
     {
         return $this->client->get($this->endpoint['pre_schedule'], $builder);
+    }
+
+    /**
+     * is version 3
+     *
+     * @return boolean
+     */
+    public function isVersion3(): bool
+    {
+        return $this->config['version'] === '3';
     }
 }

@@ -17,6 +17,8 @@ use Cinemasunshine\Schedule\Response\Http as HttpResponse;
 
 use Cinemasunshine\Portal\Schedule\Builder\V2\PreSchedule as V2PreScheduleBuilder;
 use Cinemasunshine\Portal\Schedule\Builder\V2\Schedule as V2ScheduleBuilder;
+use Cinemasunshine\Portal\Schedule\Builder\V3\PreSchedule as V3PreScheduleBuilder;
+use Cinemasunshine\Portal\Schedule\Builder\V3\Schedule as V3ScheduleBuilder;
 use Cinemasunshine\Portal\Schedule\Collection\Movie as MovieCollection;
 use Cinemasunshine\Portal\Schedule\Collection\Schedule as ScheduleCollection;
 use Cinemasunshine\Portal\Schedule\Entity\V2\Time as TimeEntity;
@@ -79,8 +81,13 @@ class ScheduleController extends BaseController
         $useTestApi = $this->useTestApi();
         $theaterSchedule = new TheaterSchedule($theaterName, $useTestApi);
 
-        $builer = new V2ScheduleBuilder($this->purchaseBaseUrl);
-        $preBuiler = new V2PreScheduleBuilder($this->purchaseBaseUrl);
+        if ($theaterSchedule->isVersion3()) {
+            $builer = new V3ScheduleBuilder($this->purchaseBaseUrl);
+            $preBuiler = new V3PreScheduleBuilder($this->purchaseBaseUrl);
+        } else {
+            $builer = new V2ScheduleBuilder($this->purchaseBaseUrl);
+            $preBuiler = new V2PreScheduleBuilder($this->purchaseBaseUrl);
+        }
 
         $scheduleResponse = $theaterSchedule->fetchSchedule($builer);
 
@@ -198,8 +205,13 @@ class ScheduleController extends BaseController
         $useTestApi = $this->useTestApi();
         $theaterSchedule = new TheaterSchedule($theaterName, $useTestApi);
 
-        $builer = new V2ScheduleBuilder($this->purchaseBaseUrl);
-        $preBuiler = new V2PreScheduleBuilder($this->purchaseBaseUrl);
+        if ($theaterSchedule->isVersion3()) {
+            $builer = new V3ScheduleBuilder($this->purchaseBaseUrl);
+            $preBuiler = new V3PreScheduleBuilder($this->purchaseBaseUrl);
+        } else {
+            $builer = new V2ScheduleBuilder($this->purchaseBaseUrl);
+            $preBuiler = new V2PreScheduleBuilder($this->purchaseBaseUrl);
+        }
 
         $scheduleResponse = $theaterSchedule->fetchSchedule($builer);
 
