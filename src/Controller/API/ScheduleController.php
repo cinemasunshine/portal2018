@@ -159,21 +159,19 @@ class ScheduleController extends BaseController
         };
 
         foreach ($schedules->getSchedule() as $schedule) {
-            $allSchedule = $shallowCopy($schedule);
-            $allSchedules->add($allSchedule);
+            $allSchedules->add($shallowCopy($schedule));
         }
 
-        foreach ($preSchedules->getSchedule() as $schedule) {
+        foreach ($preSchedules->getSchedule() as $preSchedule) {
             // 日付重複判定
-            if ($allSchedules->has($schedule->getDate())) {
-                $allSchedules->get($schedule->getDate())->setHasPreSale(true);
+            if ($allSchedules->has($preSchedule->getDate())) {
+                $allSchedules->get($preSchedule->getDate())->setHasPreSale(true);
 
-                if ($schedule->getUsable()) {
-                    $allSchedules->get($schedule->getDate())->setUsable(true); // true優先
+                if ($preSchedule->getUsable()) {
+                    $allSchedules->get($preSchedule->getDate())->setUsable(true); // true優先
                 }
             } else {
-                $allSchedule = $shallowCopy($schedule);
-                $allSchedules->add($allSchedule);
+                $allSchedules->add($shallowCopy($preSchedule));
             }
         }
 
