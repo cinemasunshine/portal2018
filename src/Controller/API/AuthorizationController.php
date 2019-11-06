@@ -81,7 +81,8 @@ class AuthorizationController extends BaseController
         $clientCredentialsGrant = new ClientCredentials(
             $settings['cliennt_credentials_host'],
             $settings['cliennt_credentials_client_id'],
-            $settings['cliennt_credentials_client_secret']);
+            $settings['cliennt_credentials_client_secret']
+        );
 
         $token = $clientCredentialsGrant->requestToken();
 
