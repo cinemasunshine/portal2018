@@ -31,15 +31,15 @@ class AuthorizationController extends BaseController
         $meta = [
             'name' => 'Authorization Token API',
         ];
+        $data = [];
         $userType = $request->getParam('user_type');
 
-        if ($userType === 'visitor') {
+        if ($userType === self::USER_TYPE_VISITOR) {
+            $meta['type'] = self::USER_TYPE_VISITOR;
             $data = $this->executeVisitorToken();
+        } elseif ($userType === self::USER_TYPE_MEMBER) {
+            $meta['type'] = self::USER_TYPE_MEMBER;
 
-            $this->data->set('meta', $meta);
-            $this->data->set('data', $data);
-            return;
-        } elseif ($userType === 'member') {
             try {
                 $data = $this->executeMemberToken();
             } catch (NotAuthenticatedException $e) {
@@ -52,10 +52,6 @@ class AuthorizationController extends BaseController
 
                 return 'badRequest';
             }
-
-            $this->data->set('meta', $meta);
-            $this->data->set('data', $data);
-            return;
         } else {
             // invalid user_type
             $this->data->set('meta', $meta);
@@ -68,6 +64,9 @@ class AuthorizationController extends BaseController
 
             return 'badRequest';
         }
+
+        $this->data->set('meta', $meta);
+        $this->data->set('data', $data);
     }
 
     /**
