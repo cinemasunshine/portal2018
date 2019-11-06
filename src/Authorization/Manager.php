@@ -220,7 +220,7 @@ class Manager
      * Refreshing a Token
      *
      * @param string $refreshToken
-     * @return void
+     * @return Token
      */
     public function refreshToken(string $refreshToken): Token
     {
