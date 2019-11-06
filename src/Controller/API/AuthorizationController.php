@@ -8,6 +8,7 @@
 namespace Cinemasunshine\Portal\Controller\API;
 
 use Cinemasunshine\Portal\Authorization\Grant\ClientCredentials;
+use Cinemasunshine\Portal\Exception\NotAuthenticatedException;
 
 /**
  * Authorization controller
@@ -39,7 +40,21 @@ class AuthorizationController extends BaseController
             $this->data->set('data', $data);
             return;
         } elseif ($userType === 'member') {
-            // request member token
+            try {
+                $data = $this->executeMemberToken();
+            } catch (NotAuthenticatedException $e) {
+                $this->data->set('meta', $meta);
+                $error = [
+                    'title' => 'Bad Request',
+                    'detail' => 'Not authenticated.'
+                ];
+                $this->data->set('error', $error);
+
+                return 'badRequest';
+            }
+
+            $this->data->set('meta', $meta);
+            $this->data->set('data', $data);
             return;
         } else {
             // invalid user_type
@@ -70,6 +85,24 @@ class AuthorizationController extends BaseController
             $settings['cliennt_credentials_client_secret']);
 
         $token = $clientCredentialsGrant->requestToken();
+
+        return [
+            'access_token' => $token->getAccessToken(),
+        ];
+    }
+
+    /**
+     * execute member token
+     *
+     * @return array
+     */
+    protected function executeMemberToken(): array
+    {
+        if (!$this->um->isAuthenticated()) {
+            throw new NotAuthenticatedException('Not authenticated');
+        }
+
+        $token = $this->um->getAuthorizationToken();
 
         return [
             'access_token' => $token->getAccessToken(),

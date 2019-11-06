@@ -84,4 +84,18 @@ class Manager
     {
         return $this->session['user'];
     }
+
+    /**
+     * return authorization token
+     *
+     * @return AuthorizationToken|null
+     */
+    public function getAuthorizationToken(): ?AuthorizationToken
+    {
+        if ($this->isAuthenticated()) {
+            return $this->session['authorization_token'];
+        }
+
+        return null;
+    }
 }
