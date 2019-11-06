@@ -98,4 +98,15 @@ class Manager
 
         return null;
     }
+
+    /**
+     * set authorization token
+     *
+     * @param AuthorizationToken $token
+     * @return void
+     */
+    public function setAuthorizationToken(AuthorizationToken $token)
+    {
+        $this->session['authorization_token'] = $token;
+    }
 }

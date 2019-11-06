@@ -104,6 +104,25 @@ class AuthorizationController extends BaseController
 
         $token = $this->um->getAuthorizationToken();
 
+        $settings = $this->settings['mp_service'];
+
+        $expirationBuffer = $settings['authorization_token_expiration_buffer'];
+        $expires = $token->getExpires() - $expirationBuffer;
+        $now = time();
+
+        $this->logger->debug(sprintf('Choeck token expires. (%s > %s)', $now, $expires));
+
+        if ($now > $expires) {
+            // トークン期限切れ
+
+            $this->logger->debug('Refreshing a Token');
+
+            $token = $this->am->refreshToken($token->getRefreshToken());
+
+            // ユーザのtokenを更新
+            $this->um->setAuthorizationToken($token);
+        }
+
         return [
             'access_token' => $token->getAccessToken(),
         ];
