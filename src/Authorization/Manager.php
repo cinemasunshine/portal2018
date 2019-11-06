@@ -15,20 +15,32 @@ use Cinemasunshine\Portal\Session\Container as SessionContainer;
 
 /**
  * Authorization Manager class
+ *
+ * Authorization Codeによる認可フローを実装します。
+ * 全ての認可処理を実装するものではありません。
  */
 class Manager
 {
-    /** @var SessionContainer */
-    protected $session;
+    /** @var AuthorizationCodeGrant */
+    protected $authorizationCodeGrunt;
+
+    /** @var string */
+    protected $clientId;
+
+    /** @var string */
+    protected $clientSecret;
 
     /** @var string */
     protected $codeChallengeMethod = 'S256';
 
-    /** @var array */
-    protected $authorizeScopeList;
+    /** @var string */
+    protected $host;
 
-    /** @var AuthorizationCodeGrant */
-    protected $authorizationCodeGrunt;
+    /** @var array */
+    protected $scopeList;
+
+    /** @var SessionContainer */
+    protected $session;
 
     /**
      * create unique string
@@ -49,15 +61,30 @@ class Manager
      */
     public function __construct(array $settings, SessionContainer $session)
     {
-        $this->authorizeScopeList = $settings['authorization_code_scope'];
-
-        $this->authorizationCodeGrunt = new AuthorizationCodeGrant(
-            $settings['authorization_code_host'],
-            $settings['authorization_code_client_id'],
-            $settings['authorization_code_client_secret']
-        );
+        $this->host = $settings['authorization_code_host'];
+        $this->clientId = $settings['authorization_code_client_id'];
+        $this->clientSecret = $settings['authorization_code_client_secret'];
+        $this->scopeList = $settings['authorization_code_scope'];
 
         $this->session = $session;
+    }
+
+    /**
+     * return Authorization Code Grunt
+     *
+     * @return AuthorizationCodeGrant
+     */
+    protected function getAuthorizationCodeGrunt(): AuthorizationCodeGrant
+    {
+        if (!$this->authorizationCodeGrunt) {
+            $this->authorizationCodeGrunt = new AuthorizationCodeGrant(
+                $this->host,
+                $this->clientId,
+                $this->clientSecret
+            );
+        }
+
+        return $this->authorizationCodeGrunt;
     }
 
     /**
@@ -68,10 +95,10 @@ class Manager
      */
     public function getAuthorizationUrl(string $redirectUri): string
     {
-        return $this->authorizationCodeGrunt->getAuthorizationUrl(
+        return $this->getAuthorizationCodeGrunt()->getAuthorizationUrl(
             $this->getCodeVerifier(),
             $redirectUri,
-            $this->authorizeScopeList,
+            $this->scopeList,
             $this->getAuthorizationState()
         );
     }
@@ -149,7 +176,7 @@ class Manager
      */
     public function requestToken(string $code, string $redirectUri): Token
     {
-        return $this->authorizationCodeGrunt->requestToken(
+        return $this->getAuthorizationCodeGrunt()->requestToken(
             $code,
             $redirectUri,
             $this->getCodeVerifier()
@@ -164,6 +191,6 @@ class Manager
      */
     public function getLogoutUrl(string $redirectUri): string
     {
-        return $this->authorizationCodeGrunt->getLogoutUrl($redirectUri);
+        return $this->getAuthorizationCodeGrunt()->getLogoutUrl($redirectUri);
     }
 }
