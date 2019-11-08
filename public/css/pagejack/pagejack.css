@@ -1,10 +1,13 @@
 body{
-    background-image: url(/images/pagejack/portal_bg/bg_test.jpg);
+    background-image: url(/images/pagejack/anayuki_2/bg.jpg);
     background-repeat: repeat;
 }
 
 .schedule .schedule-sort-film .performances{
     background-color: #fff!important;
+}
+.area-select li a{
+    background-color: #fff;
 }
 
 @media (max-width: 767.98px) {
