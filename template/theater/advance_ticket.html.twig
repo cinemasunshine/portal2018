@@ -33,12 +33,12 @@
 {% endblock %}
 
 {% block contents %}
-<div class="width mx-auto p-3 mb-5">
+<div class="width mx-auto p-3 mb-5 pjack-bg pj-mb-5">
     <div class="breadcrumb-list small mb-5 d-none d-md-block">
         <a href="{{ path_for('theater', { name: theater.getName() }) }}" class="mr-3">ホーム | {{ theater.getNameJa() }}</a>|
         <span class="font-weight-bold mx-3">前売券情報</span>
     </div>
-    
+
     <div class="mb-5">
         <h2 class="font-weight-bold large text-center text-md-left mb-4 mt-2">前売情報</h2>
         <ul class="ad_ticket_note">
@@ -48,9 +48,9 @@
             <li>前売特典が終了となっていない作品でも、ご来場時に終了している場合があります。予めご了承ください</li>
         </ul>
     </div>
-    
+
     <div class="advance-information  border-top border-gray">
-    
+
     {% for advanceTicket in advanceTickets %}
         {% set advanceSale = advanceTicket.getAdvanceSale() %}
         {% set title = advanceSale.getTitle() %}
@@ -108,7 +108,7 @@
                         {% if advanceTicket.isSpecialGiftStockFew() %}
                             {% set giftName = giftName ~ '（残り僅か）' %}
                         {% endif %}
-                        
+
                         {% if advanceTicket.getSpecialGiftImage() %}
                             <a class="text-blue" href="#" data-toggle="tooltip" data-html="true"
                                 data-title="<img class='w-100' src='{{ file_url(advanceTicket.getSpecialGiftImage()) }}'>"
@@ -122,11 +122,11 @@
             {% endif %}
                 <dl class="x-small ml-2 ml-md-0">{{ title.getCredit() }}</dl>
             </div>
-            
+
         </div>
-        
+
     {% endfor %}
-    
+
     </div>
 </div>
 

@@ -10,6 +10,13 @@ body{
     background-color: #fff;
 }
 
+.pjack-bg{
+    background: rgba(255,255,255,.7);
+    padding:15px;
+}
+.pj-mb-5{
+    margin-bottom: 3rem;
+}
 @media (max-width: 767.98px) {
     .schedule .schedule-sort-film-sp .collapse,.schedule .schedule-sort-film-sp .rounded{
         background-color: #fff!important;
