@@ -33,7 +33,7 @@
 {% endblock %}
 
 {% block contents %}
-<div class="details-width mx-auto p-3 mb-5">
+<div class="details-width mx-auto p-3 mb-5 pjack-bg">
     <div class="breadcrumb-list small mb-5 d-none d-md-block">
         <a href="{{ path_for('theater', { name: theater.getName() }) }}" class="mr-3">ホーム | {{ theater.getNameJa() }}</a>|
         <a href="{{ path_for('theater_news_list', { name: theater.getName() }) }}" class="mx-3">NEWS＆INFO</a>|
@@ -43,10 +43,10 @@
     <div class="d-flex align-items-center">
         {% set labelClass = news_category_label_class(news.getCategory()) %}
         <div class="{{ labelClass }} py-1 px-2 text-center small mr-3">{{ news_category_label(news.getCategory()) }}</div>
-        
+
         <div class="text-dark-gray">{{ news.getStartDt()|date('Y/n/j') }}</div>
     </div>
-    
+
     <h2 class="font-weight-bold x-large py-4" id="shareTitle">{{ news.getHeadline() }}</h2>
 
 {% if news.getImage() %}
