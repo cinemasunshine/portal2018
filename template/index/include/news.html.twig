@@ -1,6 +1,6 @@
 {% if newsList %}
 <div class="mb-5">
-    <div class="width mx-auto px-3 news">
+    <div class="width mx-auto px-3 news pjack-bg">
         <h3 class="font-weight-bold large mb-4 text-center text-md-left line-height-1">ニュース<br><span class="small">NEWS</span></h3>
         <div class="container w-100 mw-100 m-0 mb-4 px-1">
             <ul class="row mb-0">
@@ -10,7 +10,7 @@
                 } only %}
             {% endfor %}
             </ul>
-            
+
             <ul class="row d-none" data-contents="more-contents">
             {% for news in newsList|slice(4, 4) %}
                 {% include "index/include/news_row.html.twig" with {
@@ -19,7 +19,7 @@
             {% endfor %}
             </ul>
         </div>
-        
+
         <div class="button-01 shadow-01 mx-auto see-more">
             <a href="#" data-target-contents="more-contents" data-target-button="more-button">もっと見る</a>
         </div>

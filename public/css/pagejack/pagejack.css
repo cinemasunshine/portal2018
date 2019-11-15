@@ -1,12 +1,40 @@
 body{
-    background-image: url(/images/pagejack/portal_bg/bg_test.jpg);
-    background-repeat: repeat;
+    background-image: url(/images/pagejack/anayuki_2/body_bg_top.png),url(/images/pagejack/anayuki_2/bg.jpg);
+    background-repeat:repeat-x , repeat;
+    background-position: top left , top left;
 }
-
+/* 共通 */
 .schedule .schedule-sort-film .performances{
     background-color: #fff!important;
 }
+.area-select li a{
+    background-color: #fff;
+}
 
+.pjack-bg{
+    background: rgba(255,255,255,.7);
+    padding:10px;
+}
+.pjack-bg-color-only{
+    background: rgba(255,255,255,.7);
+}
+.pj-mb-5{
+    margin-bottom: 3rem;
+}
+/*作品一覧*/
+.screening .movie{
+    background: rgba(255,255,255,.7);
+}
+.scheduled .movie{
+    background: rgba(255,255,255,.7);
+}
+.movie_detail_pjcp{
+    background: rgba(255,255,255,.7);
+    padding:10px 0px;
+}
+.movie_list_prev_pjcp{
+    margin-top: 30px;
+}
 @media (max-width: 767.98px) {
     .schedule .schedule-sort-film-sp .collapse,.schedule .schedule-sort-film-sp .rounded{
         background-color: #fff!important;
