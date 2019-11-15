@@ -20,7 +20,7 @@
     </div>
 </div>
 
-<div class="width mx-auto px-md-3 px-0 pt-md-3">
+<div class="width mx-auto px-md-3 px-0 pt-md-3 movie_detail_pjcp">
     {% include 'schedule/include/show_detail.html.twig' with {
         schedule: schedule,
         theaters: theaters
@@ -29,8 +29,8 @@
     {% include 'include/campaign.html.twig' with {
         campaigns: title.getCampaigns()
     } only %}
-    
-    <div class="px-3">
+
+    <div class="px-3 movie_list_prev_pjcp">
         <div class="back-list button-01 shadow-01 mx-auto mb-5">
             <a href="{{ path_for('schedule_list') }}" class="text-white">一覧へ戻る</a>
         </div>

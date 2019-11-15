@@ -1,5 +1,5 @@
 {% if newsList %}
-<div class="width mx-auto mb-5 px-3 news news-imax">
+<div class="width mx-auto mb-5 px-3 news news-imax pjack-bg">
     <div class="d-md-flex mb-4 align-items-end">
         <h3 class="text-center text-md-left mb-3 mb-md-0">
             <div class="mr-md-2 d-inline-block"><img src="/images/common/imax_logo.svg"></div>
@@ -17,7 +17,7 @@
             } only %}
         {% endfor %}
         </ul>
-        
+
         <ul class="row d-none" data-contents="imax-more-contents">
         {% for news in newsList|slice(4, 4) %}
             {% include "index/include/news_row.html.twig" with {

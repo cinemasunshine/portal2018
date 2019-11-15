@@ -1,6 +1,6 @@
 {% if newsList %}
 <div class="mb-5">
-    <div class="width mx-auto px-3 infomation">
+    <div class="width mx-auto px-3 infomation pjack-bg">
         <h3 class="mb-4 font-weight-bold line-height-1">インフォメーション<br><span class="small">INFORMATION</span></h3>
         <div class="mb-5">
             <ul class="border-top border-light-gray">
@@ -13,7 +13,7 @@
                 </li>
             {% endfor %}
             </ul>
-            
+
             <ul class="border-gray d-none" data-contents="imax-more-contents">
             {% for news in newsList|slice(4, 4) %}
                 <li class="border-bottom border-gray">
@@ -25,14 +25,14 @@
             {% endfor %}
             </ul>
         </div>
-        
+
         <div class="button-01 shadow-01 mx-auto see-more">
             <a href="#" data-target-contents="imax-more-contents" data-target-button="imax-more-button">もっと見る</a>
         </div>
         <div class="button-01 shadow-01 mx-auto d-none list-display" data-button="imax-more-button">
             <a href="{{ path_for('news_list') }}">一覧表示</a>
         </div>
-        
+
     </div>
 </div>
 {% endif %}
