@@ -95,12 +95,13 @@ class Theater extends Base
     }
 
     /**
-     * is version 3
+     * is version
      *
+     * @param string $version
      * @return boolean
      */
-    public function isVersion3(): bool
+    public function isVersion(string $version): bool
     {
-        return $this->version === '3';
+        return $this->version === $version;
     }
 }

@@ -67,7 +67,7 @@ class ScheduleController extends BaseController
 
         $theaterSchedule = new TheaterSchedule($theaterName, $this->scheduleEnv);
 
-        if ($theaterSchedule->isVersion3()) {
+        if ($theaterSchedule->isVersion('3')) {
             $builer = new V3ScheduleBuilder($this->purchaseBaseUrl);
             $preBuiler = new V3PreScheduleBuilder($this->purchaseBaseUrl);
         } else {
@@ -188,7 +188,7 @@ class ScheduleController extends BaseController
 
         $theaterSchedule = new TheaterSchedule($theaterName, $this->scheduleEnv);
 
-        if ($theaterSchedule->isVersion3()) {
+        if ($theaterSchedule->isVersion('3')) {
             $builer = new V3ScheduleBuilder($this->purchaseBaseUrl);
             $preBuiler = new V3PreScheduleBuilder($this->purchaseBaseUrl);
         } else {
