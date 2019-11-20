@@ -175,9 +175,9 @@ $getMpServiceSetting = function () {
 
 $settings['mp_service'] = $getMpServiceSetting();
 
-// Coasystems Schedule
-$settings['coa_schedule'] = [
-    'env' => getenv('APPSETTING_COA_SCHEDULE'),
+// Schedule
+$settings['schedule'] = [
+    'env' => getenv('APPSETTING_SCHEDULE_ENV'),
 ];
 
 return $settings;

@@ -29,11 +29,8 @@ use Cinemasunshine\Portal\Schedule\Theater as TheaterSchedule;
  */
 class ScheduleController extends BaseController
 {
-    const API_ENV_PROD = 'prod';
-    const API_ENV_TEST = 'test';
-
     /** @var string */
-    protected $apiEnv;
+    protected $scheduleEnv;
 
     /** @var string */
     protected $purchaseBaseUrl;
@@ -43,20 +40,10 @@ class ScheduleController extends BaseController
      */
     protected function preExecute($request, $response, $args) : void
     {
-        $settings = $this->settings['coa_schedule'];
-        $this->apiEnv = $settings['env'];
+        $settings = $this->settings['schedule'];
+        $this->scheduleEnv = $settings['env'];
 
         $this->purchaseBaseUrl = $this->settings['mp_service']['ticket_entrance_url'];
-    }
-
-    /**
-     * テストAPIを使用するか
-     *
-     * @return boolean
-     */
-    protected function useTestApi()
-    {
-        return $this->apiEnv === self::API_ENV_TEST;
     }
 
     /**
@@ -78,8 +65,7 @@ class ScheduleController extends BaseController
             throw new NotFoundException($request, $response);
         }
 
-        $useTestApi = $this->useTestApi();
-        $theaterSchedule = new TheaterSchedule($theaterName, $useTestApi);
+        $theaterSchedule = new TheaterSchedule($theaterName, $this->scheduleEnv);
 
         if ($theaterSchedule->isVersion3()) {
             $builer = new V3ScheduleBuilder($this->purchaseBaseUrl);
@@ -200,8 +186,7 @@ class ScheduleController extends BaseController
             throw new NotFoundException($request, $response);
         }
 
-        $useTestApi = $this->useTestApi();
-        $theaterSchedule = new TheaterSchedule($theaterName, $useTestApi);
+        $theaterSchedule = new TheaterSchedule($theaterName, $this->scheduleEnv);
 
         if ($theaterSchedule->isVersion3()) {
             $builer = new V3ScheduleBuilder($this->purchaseBaseUrl);
