@@ -23,7 +23,7 @@
         "vlucas/phpdotenv": "^2.5",
         "monolog/monolog": "^1.23",
         "doctrine/orm": "2.6.*",
-        "cinemasunshine/schedule": "2.3.0",
+        "cinemasunshine/schedule": "2.4.0-beta",
         "microsoft/azure-storage-blob": "^1.2",
         "zendframework/zend-session": "^2.8",
         "guzzlehttp/guzzle": "^6.3",
