@@ -59,7 +59,8 @@ Azure Web Appsのアプリケーション設定で設定する場合は **APPSET
 |名前|値|説明|
 |:--|:--|:--|
 |APPSETTING_ENV|'prod' or 'dev'|アプリケーションの実行環境|
-|APPSETTING_COA_SCHEDULE|'prod' or 'test'|コアシステムズ様スケジュールの接続環境|
+|APPSETTING_COA_SCHEDULE|'prod' or 'test'|（廃止予定）コアシステムズ様スケジュールの接続環境|
+|APPSETTING_SCHEDULE_ENV|'production' or 'test' or 'development'|スケジュールの接続環境|
 |APPSETTING_MP_API_HOST|[ API host name ]|APIホスト名|
 |APPSETTING_MP_AUTHORIZATION_CODE_HOST|[ Host name ]|Authorization Code Grantのホスト名|
 |APPSETTING_MP_AUTHORIZATION_CODE_CLIENT_ID|[ Client ID ]|Authorization Code GrantのクライアントID|

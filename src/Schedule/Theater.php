@@ -13,6 +13,7 @@ use Cinemasunshine\Schedule\Builder\PreScheduleInterface as PreScheduleBuilder;
 use Cinemasunshine\Schedule\Builder\ScheduleInterface as ScheduleBuilder;
 use Cinemasunshine\Schedule\Client\Http as HttpClient;
 use Cinemasunshine\Schedule\Config;
+use Cinemasunshine\Schedule\Service;
 
 /**
  * Theater class
@@ -21,17 +22,16 @@ class Theater extends Base
 {
     /** @var string theater name */
     protected $name;
-    
-    /** @var array */
-    protected $config;
 
-    /** @var string[] API endpoint */
-    protected $endpoint;
+    /** @var string */
+    protected $version;
+
+    /** @var string[] */
+    protected $xml;
 
     /** @var HttpClient client */
     protected $client;
-    
-    
+
     /**
      * return config
      *
@@ -41,18 +41,18 @@ class Theater extends Base
     protected static function getConfig(string $theater)
     {
         $configName = self::CONFIG_PREFIX . $theater;
-        
+
         return Config::get($configName);
     }
-    
+
     /**
      * constructor
      *
      * @param string $name
-     * @param bool   $useTestApi
+     * @param string $environment
      * @throws \InvalidArgumentException
      */
-    public function __construct($name, $useTestApi = false)
+    public function __construct(string $name, string $environment)
     {
         if (!self::validate($name)) {
             throw new \InvalidArgumentException(
@@ -60,13 +60,18 @@ class Theater extends Base
             );
         }
 
-        $this->config   = self::getConfig($name);
-        $this->name     = $name;
-        $this->endpoint = ($useTestApi)
-                        ? $this->config['test_endpoint'] : $this->config['endpoint'];
-        $this->client   = new HttpClient();
+        $this->name = $name;
+
+        $config = self::getConfig($name);
+        $this->version = $config['version'];
+        $this->xml = $config['xml'];
+
+        $baseUrl = Service::getBaseUrl($environment);
+        $this->client   = new HttpClient([
+            'base_uri' => $baseUrl,
+        ]);
     }
-    
+
     /**
      * スケジュール取得
      *
@@ -75,9 +80,9 @@ class Theater extends Base
      */
     public function fetchSchedule(ScheduleBuilder $builder = null)
     {
-        return $this->client->get($this->endpoint['schedule'], $builder);
+        return $this->client->get($this->xml['schedule'], $builder);
     }
-    
+
     /**
      * 先行スケジュール取得
      *
@@ -86,6 +91,17 @@ class Theater extends Base
      */
     public function fetchPreSchedule(PreScheduleBuilder $builder = null)
     {
-        return $this->client->get($this->endpoint['pre_schedule'], $builder);
+        return $this->client->get($this->xml['pre_schedule'], $builder);
+    }
+
+    /**
+     * is version
+     *
+     * @param string $version
+     * @return boolean
+     */
+    public function isVersion(string $version): bool
+    {
+        return $this->version === $version;
     }
 }
