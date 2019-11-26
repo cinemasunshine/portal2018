@@ -17,6 +17,8 @@ use Cinemasunshine\Schedule\Response\Http as HttpResponse;
 
 use Cinemasunshine\Portal\Schedule\Builder\V2\PreSchedule as V2PreScheduleBuilder;
 use Cinemasunshine\Portal\Schedule\Builder\V2\Schedule as V2ScheduleBuilder;
+use Cinemasunshine\Portal\Schedule\Builder\V3\PreSchedule as V3PreScheduleBuilder;
+use Cinemasunshine\Portal\Schedule\Builder\V3\Schedule as V3ScheduleBuilder;
 use Cinemasunshine\Portal\Schedule\Collection\Movie as MovieCollection;
 use Cinemasunshine\Portal\Schedule\Collection\Schedule as ScheduleCollection;
 use Cinemasunshine\Portal\Schedule\Entity\V2\Time as TimeEntity;
@@ -27,11 +29,8 @@ use Cinemasunshine\Portal\Schedule\Theater as TheaterSchedule;
  */
 class ScheduleController extends BaseController
 {
-    const API_ENV_PROD = 'prod';
-    const API_ENV_TEST = 'test';
-
     /** @var string */
-    protected $apiEnv;
+    protected $scheduleEnv;
 
     /** @var string */
     protected $purchaseBaseUrl;
@@ -41,20 +40,10 @@ class ScheduleController extends BaseController
      */
     protected function preExecute($request, $response, $args) : void
     {
-        $settings = $this->settings['coa_schedule'];
-        $this->apiEnv = $settings['env'];
+        $settings = $this->settings['schedule'];
+        $this->scheduleEnv = $settings['env'];
 
         $this->purchaseBaseUrl = $this->settings['mp_service']['ticket_entrance_url'];
-    }
-
-    /**
-     * テストAPIを使用するか
-     *
-     * @return boolean
-     */
-    protected function useTestApi()
-    {
-        return $this->apiEnv === self::API_ENV_TEST;
     }
 
     /**
@@ -76,11 +65,15 @@ class ScheduleController extends BaseController
             throw new NotFoundException($request, $response);
         }
 
-        $useTestApi = $this->useTestApi();
-        $theaterSchedule = new TheaterSchedule($theaterName, $useTestApi);
+        $theaterSchedule = new TheaterSchedule($theaterName, $this->scheduleEnv);
 
-        $builer = new V2ScheduleBuilder($this->purchaseBaseUrl);
-        $preBuiler = new V2PreScheduleBuilder($this->purchaseBaseUrl);
+        if ($theaterSchedule->isVersion('3')) {
+            $builer = new V3ScheduleBuilder($this->purchaseBaseUrl);
+            $preBuiler = new V3PreScheduleBuilder($this->purchaseBaseUrl);
+        } else {
+            $builer = new V2ScheduleBuilder($this->purchaseBaseUrl);
+            $preBuiler = new V2PreScheduleBuilder($this->purchaseBaseUrl);
+        }
 
         $scheduleResponse = $theaterSchedule->fetchSchedule($builer);
 
@@ -152,21 +145,19 @@ class ScheduleController extends BaseController
         };
 
         foreach ($schedules->getSchedule() as $schedule) {
-            $allSchedule = $shallowCopy($schedule);
-            $allSchedules->add($allSchedule);
+            $allSchedules->add($shallowCopy($schedule));
         }
 
-        foreach ($preSchedules->getSchedule() as $schedule) {
+        foreach ($preSchedules->getSchedule() as $preSchedule) {
             // 日付重複判定
-            if ($allSchedules->has($schedule->getDate())) {
-                $allSchedules->get($schedule->getDate())->setHasPreSale(true);
+            if ($allSchedules->has($preSchedule->getDate())) {
+                $allSchedules->get($preSchedule->getDate())->setHasPreSale(true);
 
-                if ($schedule->getUsable()) {
-                    $allSchedules->get($schedule->getDate())->setUsable(true); // true優先
+                if ($preSchedule->getUsable()) {
+                    $allSchedules->get($preSchedule->getDate())->setUsable(true); // true優先
                 }
             } else {
-                $allSchedule = $shallowCopy($schedule);
-                $allSchedules->add($allSchedule);
+                $allSchedules->add($shallowCopy($preSchedule));
             }
         }
 
@@ -195,11 +186,15 @@ class ScheduleController extends BaseController
             throw new NotFoundException($request, $response);
         }
 
-        $useTestApi = $this->useTestApi();
-        $theaterSchedule = new TheaterSchedule($theaterName, $useTestApi);
+        $theaterSchedule = new TheaterSchedule($theaterName, $this->scheduleEnv);
 
-        $builer = new V2ScheduleBuilder($this->purchaseBaseUrl);
-        $preBuiler = new V2PreScheduleBuilder($this->purchaseBaseUrl);
+        if ($theaterSchedule->isVersion('3')) {
+            $builer = new V3ScheduleBuilder($this->purchaseBaseUrl);
+            $preBuiler = new V3PreScheduleBuilder($this->purchaseBaseUrl);
+        } else {
+            $builer = new V2ScheduleBuilder($this->purchaseBaseUrl);
+            $preBuiler = new V2PreScheduleBuilder($this->purchaseBaseUrl);
+        }
 
         $scheduleResponse = $theaterSchedule->fetchSchedule($builer);
 
