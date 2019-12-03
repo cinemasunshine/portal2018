@@ -50,6 +50,6 @@ class AdvanceTicketExtension extends AbstractExtension
             return '紙券';
         }
 
-        throw null;
+        return null;
     }
 }

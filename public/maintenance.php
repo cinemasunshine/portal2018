@@ -22,6 +22,6 @@ http_response_code(503);
     </style>
 </head>
 <body>
-    <img src="/images/maintenance_20191126.png" alt="只今、メンテナンス作業を行っております。">
+    <img src="/images/maintenance_20191204.png" alt="只今、メンテナンス作業を行っております。">
 </body>
 </html>
