@@ -88,6 +88,7 @@ class AuthorizationController extends BaseController
 
         return [
             'access_token' => $token->getAccessToken(),
+            'expires_in' => $token->getExpiresIn(),
         ];
     }
 
@@ -125,6 +126,7 @@ class AuthorizationController extends BaseController
 
         return [
             'access_token' => $token->getAccessToken(),
+            'expires_in' => $token->getExpiresIn(),
         ];
     }
 }
