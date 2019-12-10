@@ -8,12 +8,13 @@
 namespace Cinemasunshine\Portal\ORM\Entity;
 
 use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Criteria;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * OyakoCinemaTitle entity class
  *
- * @ORM\Entity
+ * @ORM\Entity(readOnly=true, repositoryClass="Cinemasunshine\Portal\ORM\Repository\OyakoCinemaTitleRepository")
  * @ORM\Table(name="oyako_cinema_title", options={"collate"="utf8mb4_general_ci"})
  * @ORM\HasLifecycleCallbacks
  */
@@ -129,6 +130,9 @@ class OyakoCinemaTitle extends AbstractEntity
      */
     public function getOyakoCinemaSchedules(): Collection
     {
-        return $this->oyakoCinemaSchedules;
+        $criteria = Criteria::create()
+            ->orderBy([ 'date' => Criteria::ASC ]);
+
+        return $this->oyakoCinemaSchedules->matching($criteria);
     }
 }
