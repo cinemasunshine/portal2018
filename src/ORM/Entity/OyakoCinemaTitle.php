@@ -38,7 +38,7 @@ class OyakoCinemaTitle extends AbstractEntity
      * title
      *
      * @var Title
-     * @ORM\ManyToOne(targetEntity="Title")
+     * @ORM\ManyToOne(targetEntity="Title", fetch="EAGER")
      * @ORM\JoinColumn(name="title_id", referencedColumnName="id", nullable=false, onDelete="RESTRICT")
      */
     protected $title;
@@ -55,7 +55,7 @@ class OyakoCinemaTitle extends AbstractEntity
      * oyako_cinema_schedules
      *
      * @var Collection
-     * @ORM\OneToMany(targetEntity="OyakoCinemaSchedule", mappedBy="oyakoCinemaTitle", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="OyakoCinemaSchedule", mappedBy="oyakoCinemaTitle", orphanRemoval=true, fetch="EAGER")
      */
     protected $oyakoCinemaSchedules;
 
