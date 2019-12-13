@@ -4,8 +4,11 @@
     background-color: rgb(247, 247, 247);
     flex-wrap: wrap;
 }
-.imax img, .fourdx img {
-    height: 35px;
+.imax img{
+    height: 30px;
+}
+.fourdx img {
+    height: 25px;
 }
 .imax img {
     padding: 8px;
@@ -46,7 +49,7 @@
     text-align: center;
     background-color: #f1f1f1;
     color: #333;
-} 
+}
 
 /* .reservation-contents-button {
     border-radius: 5px;
@@ -208,7 +211,7 @@
     .opening-time h4 {
         width: 20%;
         float:left;
-        padding-top:2.5%; 
+        padding-top:2.5%;
     }
     .opening-time .swiper-slide {
         width: 100% !important;
@@ -236,7 +239,7 @@
         height: auto;
         margin-top: -8px;
     }
-    .opening-time .swiper-button-next.swiper-button-disabled, 
+    .opening-time .swiper-button-next.swiper-button-disabled,
     .opening-time .swiper-button-prev.swiper-button-disabled {
         opacity: 0;
     }
