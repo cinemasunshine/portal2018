@@ -2,11 +2,11 @@
 
 {% set title = schedule.getTitle() %}
 
-{% block title %}{{ title.getName() }} | {{ parent() }}4DX with ScreenX特設サイト{% endblock %}
+{% block title %}{{ title.getName() }} | {{ parent() }}4DX SCREEN特設サイト{% endblock %}
 
-{% block description %}シネマサンシャイン4DX with ScreenX特設サイトの作品紹介ページです。「{{ title.getName() }}」の作品情報の詳細はこちら{% endblock %}
+{% block description %}シネマサンシャイン4DX SCREEN特設サイトの作品紹介ページです。「{{ title.getName() }}」の作品情報の詳細はこちら{% endblock %}
 
-{% block keywords %}{{ parent()}},{{ title.getName() }},{{ title.getDirector()|replace({'、': ','}) }},{{ title.getCast()|replace({'、': ','}) }},4DX with ScreenX{% endblock %}
+{% block keywords %}{{ parent()}},{{ title.getName() }},{{ title.getDirector()|replace({'、': ','}) }},{{ title.getCast()|replace({'、': ','}) }},4DX SCREEN{% endblock %}
 
 {% block css %}
 <link href="/css/movie/details.css" rel="stylesheet">
@@ -28,7 +28,7 @@
 <div class="breadcrumb-list d-none d-md-block small width mx-auto mb-5 px-2 text-white">
     <a class="text-white" href="{{ path_for('homepage') }}">ホーム</a>
     <span class="font-weight-bold mx-2"> | </span>
-    <a class="text-white" href="{{ path_for('4dx_with_screenx') }}">4DX with ScreenX</a>
+    <a class="text-white" href="{{ path_for('4dx_with_screenx') }}">4DX SCREEN</a>
     <span class="font-weight-bold mx-2"> | </span>
     <a class="text-white" href="{{ path_for('4dx_with_screenx_schedule_list') }}">作品一覧</a>
     <span class="font-weight-bold mx-2"> | </span>

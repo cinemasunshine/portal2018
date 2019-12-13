@@ -1,10 +1,10 @@
 {% extends "4dx_with_screenx/layout.html.twig" %}
 
-{% block title %}4DX with ScreenX特設サイト | {{ parent() }}{% endblock %}
+{% block title %}4DX SCREEN特設サイト | {{ parent() }}{% endblock %}
 
-{% block description %}シネマサンシャインの4DX with ScreenX特設サイトです。4DXの設備に関する情報や作品情報、鑑賞料金、上映劇場・キャンペーンのご案内など{% endblock %}
+{% block description %}シネマサンシャインの4DX SCREEN特設サイトです。4DXの設備に関する情報や作品情報、鑑賞料金、上映劇場・キャンペーンのご案内など{% endblock %}
 
-{% block keywords %}{{ parent() }},予約,オンライン,上映,キャンペーン,4DX with ScreenX,作品情報{% endblock %}
+{% block keywords %}{{ parent() }},予約,オンライン,上映,キャンペーン,4DX SCREEN,作品情報{% endblock %}
 
 {% block css %}
 <link href="/css/4dxwscx/top.css" rel="stylesheet">
@@ -30,7 +30,7 @@
 <div class="breadcrumb-list d-none d-md-block small width mx-auto mb-3 px-2 text-white">
     <a class="text-white" href="{{ path_for('homepage') }}">ホーム</a>
     <span class="font-weight-bold mx-2"> | </span>
-    <span>4DX with ScreenX<span>
+    <span>4DX SCREEN<span>
 </div>
 
 <div class="mb-3">
@@ -46,15 +46,15 @@
                     <div class="mr-md-4">
                         <h3 class="font-weight-bold large mb-4 text-center text-md-left line-height-1">
                             <div class="mb-2">今までにないダナミックな映画体験</div>
-                            <div class="small">ABOUT 4DX WITH SCREENX</div>
+                            <div class="small">ABOUT 4DX SCREEN</div>
                         </h3>
                         <div class="mb-3"><img class="w-100" src="/images/4dxwscx/about/4dxwscx_about_main.jpg"></div>
                         <div class="button-01 mx-auto px-3 px-md-5">
-                            <a class="bg-r-yellow text-black" href="{{ path_for('4dx_with_screenx_about') }}">4DX with ScreenXとは？</a>
+                            <a class="bg-r-yellow text-black" href="{{ path_for('4dx_with_screenx_about') }}">4DX SCREENとは？</a>
                         </div>
                     </div>
                 </div>
-            
+
         {% set trailer = trailers[0] %}
         {% if trailer %}
             {% include '4dx_with_screenx/include/index/trailer.html.twig' with {
