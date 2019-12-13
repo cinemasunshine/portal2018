@@ -71,7 +71,7 @@
     width: 60px;
 }
 .icon-4dxwscx img {
-    width: 20px;
+    width: 60px;
 }
 .icon-r {
     width: 35px;
@@ -103,7 +103,7 @@
     padding: 15px 0;
     text-align: center;
     background-color: rgb(84, 84, 84);
-} 
+}
 
 .details-movie {
     max-width: 600px;
@@ -150,7 +150,7 @@
     /* .movie-area {
         margin: 0 -0.25rem;
         background-color: #ddd;
-        
+
     } */
     .movie-area {
         margin: -0.5rem;

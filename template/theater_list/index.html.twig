@@ -28,10 +28,10 @@
                     <a href="{{ path_for('theater', { name: theater.getName() }) }}" class="font-weight-bold p-3 border border-gray d-flex align-items-center  mx-0 mx-md-3">
                         <div class="mr-auto thlist_name_area">{{ theater.getNameJa()|theater_name_ja }}</div>
                     {% if theater.isStatusClosed() %}
-                        <div class="mx-2 text-gray font-weight-normal">※閉館</div>
+                        <div class="mx-1 text-gray font-weight-normal">※閉館</div>
                     {% endif %}
                     {% for specialSite in theater.getSpecialSites() %}
-                        <div class="mx-2 logo-{{ specialSite.getName() }}"><img class="w-100" src="/images/common/{{ specialSite.getName() }}_logo.svg"></div>
+                        <div class="mx-1 logo-{{ specialSite.getName() }}"><img class="w-100" src="/images/common/{{ specialSite.getName() }}_logo.svg"></div>
                     {% endfor %}
                     </a>
                 </li>

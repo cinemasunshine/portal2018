@@ -248,7 +248,7 @@ header .position-fixed {
     width: 65px;
 }
 .header-4dx-with-screen-x {
-    width: 25px;
+    width: 50px;
 }
 .theater-name {
     font-size: 20px;
@@ -358,7 +358,7 @@ header .position-fixed {
     height: 90px;
 }
 .type-4dxwscx .header .logo {
-    width: 250px;
+    width: 300px;
 }
 /* 4DX with ScreenX サブヘッダー */
 .type-4dxwscx .sub-header-inner {
@@ -593,6 +593,16 @@ header .position-fixed {
 .special-sites-parts img {
     width: 62%;
 }
+.special-sites-parts .ft_sp_link_img_4dxwscx {
+    width: 85%;
+}
+.special-sites-parts .ft_sp_link_img_scx {
+    width: 80%;
+}
+.special-sites-parts .ft_sp_link_img_4dx {
+    width: 50%;
+}
+
 .special-sites-parts .ft_sp_link_img_4dxwscx {
     max-height: 65px;
 }
@@ -991,6 +1001,9 @@ footer {
         width: 200px;
     }
     .type-scx .header .logo {
+        width: 200px;
+    }
+    .type-4dxwscx .header .logo {
         width: 200px;
     }
     .footer-bnr li {
