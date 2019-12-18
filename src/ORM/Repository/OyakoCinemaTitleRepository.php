@@ -38,8 +38,15 @@ class OyakoCinemaTitleRepository extends EntityRepository
     public function findByActive()
     {
         $qb = $this->getActiveQuery();
+
+        /**
+         * あくまでOyakoCinemaTitleの条件
+         * OyakoCinemaScheduleのフィルタは下記を参照
+         * @see Cinemasunshine\Portal\ORM\Entity\OyakoCinemaTitle::getOyakoCinemaSchedules()
+         */
         $qb
             ->join('oct.oyakoCinemaSchedules', 'ocs')
+            ->where('ocs.date >= CURRENT_DATE()')
             ->orderBy('ocs.date', 'ASC');
 
         return $qb->getQuery()->getResult();

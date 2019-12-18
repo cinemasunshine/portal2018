@@ -58,8 +58,7 @@ class OyakoCinemaTitle extends AbstractEntity
      * @ORM\OneToMany(
      *     targetEntity="OyakoCinemaSchedule",
      *     mappedBy="oyakoCinemaTitle",
-     *     orphanRemoval=true,
-     *     fetch="EAGER"
+     *     orphanRemoval=true
      * )
      */
     protected $oyakoCinemaSchedules;
@@ -136,6 +135,7 @@ class OyakoCinemaTitle extends AbstractEntity
     public function getOyakoCinemaSchedules(): Collection
     {
         $criteria = Criteria::create()
+            ->where(Criteria::expr()->gte('date', new \DateTime('now')))
             ->orderBy([ 'date' => Criteria::ASC ]);
 
         return $this->oyakoCinemaSchedules->matching($criteria);
