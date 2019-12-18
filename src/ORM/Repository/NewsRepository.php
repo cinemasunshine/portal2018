@@ -215,7 +215,7 @@ class NewsRepository extends EntityRepository
         $qb = $this->getActiveQuery();
         $qb
             ->andWhere('n.category = :category')
-            ->setParameter('category', News::CATEGORY_4DX_WITH_SCREENX)
+            ->setParameter('category', News::CATEGORY_4DX_SCREEN)
             ->orderBy('n.createdAt', 'DESC');
 
         if ($limit) {
