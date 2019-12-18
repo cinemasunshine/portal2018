@@ -133,7 +133,7 @@ class FourdxScreenController extends SpecialSiteController
     {
         return $this->em
             ->getRepository(Entity\Schedule::class)
-            ->findScreeningFor4dxWithScreenX();
+            ->findScreeningFor4dxScreen();
     }
 
     /**
@@ -145,7 +145,7 @@ class FourdxScreenController extends SpecialSiteController
     {
         return $this->em
             ->getRepository(Entity\Schedule::class)
-            ->findSoonFor4dxWithScreenX();
+            ->findSoonFor4dxScreen();
     }
 
     /**

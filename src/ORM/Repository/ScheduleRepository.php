@@ -121,11 +121,11 @@ class ScheduleRepository extends EntityRepository
     }
 
     /**
-     * find screening for 4DX with ScreenX
+     * find screening for 4DX Screen
      *
      * @return Schedule[]
      */
-    public function findScreeningFor4dxWithScreenX()
+    public function findScreeningFor4dxScreen()
     {
         $qb = $this->getScreeningQuery();
         $qb
@@ -223,11 +223,11 @@ class ScheduleRepository extends EntityRepository
     }
 
     /**
-     * find soon for 4DX with ScreenX
+     * find soon for 4DX Screen
      *
      * @return Schedule[]
      */
-    public function findSoonFor4dxWithScreenX()
+    public function findSoonFor4dxScreen()
     {
         $qb = $this->getSoonQuery();
         $qb
