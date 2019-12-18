@@ -198,7 +198,7 @@ class FourdxScreenController extends SpecialSiteController
     {
         return $this->em
             ->getRepository(Entity\News::class)
-            ->findBy4DXWithScreenX($limit);
+            ->findBy4DXScreen($limit);
     }
 
     /**

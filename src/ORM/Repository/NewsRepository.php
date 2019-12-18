@@ -205,12 +205,12 @@ class NewsRepository extends EntityRepository
     }
 
     /**
-     * find by 4DX with ScreenX
+     * find by 4DX Screen
      *
      * @param int|null $limit
      * @return News[]
      */
-    public function findBy4DXWithScreenX(?int $limit = null)
+    public function findBy4DXScreen(?int $limit = null)
     {
         $qb = $this->getActiveQuery();
         $qb
