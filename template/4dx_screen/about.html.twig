@@ -1,4 +1,4 @@
-{% extends "4dx_with_screenx/layout.html.twig" %}
+{% extends '4dx_screen/layout.html.twig' %}
 {% block title %}4DX SCREENとは? | {{ parent() }}4DX SCREEN特設サイト{% endblock %}
 
 {% block description %}シネマサンシャイン4DX SCREEN特設サイトの4DX SCREEN説明ページです。4DX SCREENの設備・機能に関する情報をご案内{% endblock %}
@@ -10,13 +10,13 @@
 {% endblock %}
 
 {% block navbar %}
-{% include '4dx_with_screenx/include/navbar.html.twig' with {
+{% include '4dx_screen/include/navbar.html.twig' with {
     active: 'about'
 } only %}
 {% endblock %}
 
 {% block sp_navbar %}
-{% include '4dx_with_screenx/include/sp_navbar.html.twig' with {
+{% include '4dx_screen/include/sp_navbar.html.twig' with {
     active: 'about'
 } only %}
 {% endblock %}

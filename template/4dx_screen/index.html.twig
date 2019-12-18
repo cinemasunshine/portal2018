@@ -1,4 +1,4 @@
-{% extends "4dx_with_screenx/layout.html.twig" %}
+{% extends '4dx_screen/layout.html.twig' %}
 
 {% block title %}4DX SCREEN特設サイト | {{ parent() }}{% endblock %}
 
@@ -15,13 +15,13 @@
 {% endblock %}
 
 {% block navbar %}
-{% include '4dx_with_screenx/include/navbar.html.twig' with {
+{% include '4dx_screen/include/navbar.html.twig' with {
     active: 'top'
 } only %}
 {% endblock %}
 
 {% block sp_navbar %}
-{% include '4dx_with_screenx/include/sp_navbar.html.twig' with {
+{% include '4dx_screen/include/sp_navbar.html.twig' with {
     active: 'top'
 } only %}
 {% endblock %}
@@ -34,7 +34,7 @@
 </div>
 
 <div class="mb-3">
-    {% include '4dx_with_screenx/include/index/slider.html.twig' with {
+    {% include '4dx_screen/include/index/slider.html.twig' with {
         mainBanners: mainBanners
     } only %}
 </div>
@@ -57,7 +57,7 @@
 
         {% set trailer = trailers[0] %}
         {% if trailer %}
-            {% include '4dx_with_screenx/include/index/trailer.html.twig' with {
+            {% include '4dx_screen/include/index/trailer.html.twig' with {
                 trailer: trailer
             } only %}
         {% endif %}
@@ -66,12 +66,12 @@
 </div>
 {% include '4dx/include/adsense/top.html.twig' only %}
 
-{% include '4dx_with_screenx/include/index/news.html.twig' with {
+{% include '4dx_screen/include/index/news.html.twig' with {
     newsList: newsList
 } only %}
 
 <div class="py-5 text-white">
-    {% include '4dx_with_screenx/include/index/title.html.twig' with {
+    {% include '4dx_screen/include/index/title.html.twig' with {
         theaters: theaters,
         screeningSchedules: screeningSchedules,
         soonSchedules: soonSchedules,
@@ -80,13 +80,13 @@
 
 {% if campaigns|length > 0 %}
 <div class="py-5 text-white bg-black">
-    {% include '4dx_with_screenx/include/campaign.html.twig' with {
+    {% include '4dx_screen/include/campaign.html.twig' with {
         campaigns: campaigns
     } only %}
 </div>
 {% endif %}
 
-{% include '4dx_with_screenx/include/index/infomation.html.twig' with {
+{% include '4dx_screen/include/index/infomation.html.twig' with {
     newsList: infoNewsList
 } only %}
 {% endblock %}
