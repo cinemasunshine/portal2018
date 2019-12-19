@@ -98,17 +98,17 @@ $app->group('/screen-x', function () {
     $this->get('/theater/', ScreenXController::class . ':theater')->setName('screenx_theater');
 });
 
-$app->group('/4dx-with-screen-x', function () {
-    $this->get('/', FourdxScreenController::class . ':index')->setName('4dx_with_screenx');
-    $this->get('/about/', FourdxScreenController::class . ':about')->setName('4dx_with_screenx_about');
+$app->group('/4dx-screen', function () {
+    $this->get('/', FourdxScreenController::class . ':index')->setName('4dx_screen');
+    $this->get('/about/', FourdxScreenController::class . ':about')->setName('4dx_screen_about');
     $this->get('/movie/', FourdxScreenController::class . ':scheduleList')
-        ->setName('4dx_with_screenx_schedule_list');
+        ->setName('4dx_screen_schedule_list');
     $this->get('/movie/{schedule:[0-9]+}.php', FourdxScreenController::class . ':scheduleShow')
-        ->setName('4dx_with_screenxschedule_show');
-    $this->get('/news/', FourdxScreenController::class . ':newsList')->setName('4dx_with_screenx_news_list');
+        ->setName('4dx_screenschedule_show');
+    $this->get('/news/', FourdxScreenController::class . ':newsList')->setName('4dx_screen_news_list');
     $this->get('/news/{id:[0-9]+}.php', FourdxScreenController::class . ':newsShow')
-        ->setName('4dx_with_screenx_news_show');
-    $this->get('/theater/', FourdxScreenController::class . ':theater')->setName('4dx_with_screenx_theater');
+        ->setName('4dx_screen_news_show');
+    $this->get('/theater/', FourdxScreenController::class . ':theater')->setName('4dx_screen_theater');
 });
 
 # APIのURL設計はひとまずそのまま SASAKI-315

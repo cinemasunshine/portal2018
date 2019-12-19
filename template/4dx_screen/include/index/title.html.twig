@@ -23,7 +23,7 @@
                     {% if showingTheater.getTheater().getId() == theater.getId() %}
                     {% set title = schedule.getTitle() %}
             <li class="mx-2 mb-2">
-                <a class="d-block text-white" href="{{ path_for('4dx_with_screenxschedule_show', { schedule: schedule.getId() }) }}">
+                <a class="d-block text-white" href="{{ path_for('4dx_screenschedule_show', { schedule: schedule.getId() }) }}">
                     <div class="mb-2">
                         {% if title.getImage() %}
                         <img class="w-100" src="{{ file_url(title.getImage()) }}">
@@ -49,7 +49,7 @@
                 {% if showingTheater.getTheater().getId() == theater.getId() %}
                 {% set title = schedule.getTitle() %}
             <li class="mx-2 mb-2">
-                <a class="d-block text-white" href="{{ path_for('4dx_with_screenxschedule_show', { schedule: schedule.getId() }) }}">
+                <a class="d-block text-white" href="{{ path_for('4dx_screenschedule_show', { schedule: schedule.getId() }) }}">
                     <div class="mb-2">
                         {% if title.getImage() %}
                         <img class="w-100" src="{{ file_url(title.getImage()) }}">

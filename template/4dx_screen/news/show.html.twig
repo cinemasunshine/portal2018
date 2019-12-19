@@ -30,9 +30,9 @@
 <div class="breadcrumb-list d-none d-md-block small details-width mx-auto mb-5 px-2 text-white">
     <a class="text-white" href="{{ path_for('homepage') }}">ホーム</a>
     <span class="font-weight-bold mx-2"> | </span>
-    <a class="text-white" href="{{ path_for('4dx_with_screenx') }}">4DX SCREEN</a>
+    <a class="text-white" href="{{ path_for('4dx_screen') }}">4DX SCREEN</a>
     <span class="font-weight-bold mx-2"> | </span>
-    <a class="text-white" href="{{ path_for('4dx_with_screenx_news_list') }}">NEWS & INFO</a>
+    <a class="text-white" href="{{ path_for('4dx_screen_news_list') }}">NEWS & INFO</a>
     <span class="font-weight-bold mx-2"> | </span>
     <span>{{ news.getHeadline()|truncate(34, false, '…') }}<span>
 </div>
@@ -62,7 +62,7 @@
     </div>
 
     <div class="black-button shadow-01 mx-auto">
-        <a href="{{ path_for('4dx_with_screenx_news_list') }}">一覧に戻る</a>
+        <a href="{{ path_for('4dx_screen_news_list') }}">一覧に戻る</a>
     </div>
 
 </div>

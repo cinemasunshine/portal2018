@@ -15,7 +15,7 @@
                 <p class="text-gray release_date mb-1"><small>{{ schedule.getStartDate()|date('Y/m/d') }}公開</small></p>
             {% endif %}
 
-                <p class="title x-large"><a class="text-white" href="{{ path_for('4dx_with_screenxschedule_show', { schedule: schedule.getId() }) }}">{{ title.getName() }}</a></p>
+                <p class="title x-large"><a class="text-white" href="{{ path_for('4dx_screenschedule_show', { schedule: schedule.getId() }) }}">{{ title.getName() }}</a></p>
                 <p class="small mb-2 text-red pc_disp movie_notes"><small>{{ schedule.getRemark() }}</small></p>
                 <div class="d-flex mb-1">
                 {% set systems = [] %}
