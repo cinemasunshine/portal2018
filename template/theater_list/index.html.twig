@@ -31,7 +31,15 @@
                         <div class="mx-1 text-gray font-weight-normal">※閉館</div>
                     {% endif %}
                     {% for specialSite in theater.getSpecialSites() %}
-                        <div class="mx-1 logo-{{ specialSite.getName() }}"><img class="w-100" src="/images/common/{{ specialSite.getName() }}_logo.svg"></div>
+                        {% if specialSite.getId() == 1 %}
+                            <div class="mx-1 logo-imax"><img class="w-100" src="/images/common/imax_logo.svg"></div>
+                        {% elseif specialSite.getId() == 2 %}
+                            <div class="mx-1 logo-4dx"><img class="w-100" src="/images/common/4dx_logo.svg"></div>
+                        {% elseif specialSite.getId() == 3 %}
+                            <div class="mx-1 logo-screen-x"><img class="w-100" src="/images/common/screen-x_logo.svg"></div>
+                        {% elseif specialSite.getId() == 4 %}
+                            <div class="mx-1 logo-4dx-with-screen-x"><img class="w-100" src="/images/common/4dx-with-screen-x_logo.svg"></div>
+                        {% endif %}
                     {% endfor %}
                     </a>
                 </li>
