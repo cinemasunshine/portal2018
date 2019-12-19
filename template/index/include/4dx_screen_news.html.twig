@@ -15,7 +15,7 @@
             } only %}
         {% endfor %}
         </ul>
-        <ul class="row d-none" data-contents="4dx-with-screenx-more-contents">
+        <ul class="row d-none" data-contents="4dx-screen-more-contents">
         {% for news in newsList|slice(4, 4) %}
             {% include "index/include/news_row.html.twig" with {
                 news: news
@@ -24,9 +24,9 @@
         </ul>
     </div>
     <div class="button-01 shadow-01 mx-auto see-more">
-        <a href="#" data-target-contents="4dx-with-screenx-more-contents" data-target-button="4dx-with-screenx-more-more-button">もっと見る</a>
+        <a href="#" data-target-contents="4dx-screen-more-contents" data-target-button="4dx-screen-more-more-button">もっと見る</a>
     </div>
-    <div class="button-01 shadow-01 mx-auto d-none list-display" data-button="4dx-with-screenx-more-more-button">
+    <div class="button-01 shadow-01 mx-auto d-none list-display" data-button="4dx-screen-more-more-button">
         <a href="{{ path_for('news_list') }}">一覧表示</a>
     </div>
 </div>
