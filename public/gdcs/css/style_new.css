@@ -222,7 +222,7 @@
             background-position-x: 54%;
             background-position-y: 45%;
             box-shadow: 4px 6px 6px rgba(137,120,86,.45);
-    
+
         }
         /*--CINEMA--*/
         #gdcs_cinema{
@@ -459,7 +459,7 @@
             background-position-x: 60%;
             background-position-y: 35%;
             box-shadow: -4px 6px 6px rgba(137,120,86,.45);
-    
+
         }
 
         /*------Modal------*/
@@ -491,7 +491,7 @@
             display: inline-block;
         }
         .fordxwscx_logo{
-            width:100px;
+            width:160px;
             display: inline-block;
         }
         .bestia_logo{
@@ -509,7 +509,7 @@
         /*--モーダルメイン画像--*/
         .modal_vis{
             width: 100%;
-            margin-bottom:2%; 
+            margin-bottom:2%;
         }
         /*.mod_main_vis{
             width: calc(70% - 10px);
@@ -545,7 +545,7 @@
             background-position-x: 20%;
             background-position-y: 70%;
             min-height:150px;
-            max-height: 150px; 
+            max-height: 150px;
             margin-bottom: 10px;
         }
         .cinema_modalvis03{
@@ -637,7 +637,7 @@
             background-position-x: 80%;
             background-position-y: 80%;
             min-height:150px;
-            max-height: 150px; 
+            max-height: 150px;
             margin-bottom: 10px;
         }
         .cinema_modalvis12{
@@ -676,7 +676,7 @@
             background-position-x: 50%;
             background-position-y: 60%;
             min-height:150px;
-            max-height: 150px; 
+            max-height: 150px;
             margin-bottom: 10px;
         }
         .interior_modalvis03{
@@ -732,7 +732,7 @@
             background-position-x: 50%;
             background-position-y: 25%;
             min-height:150px;
-            max-height: 150px; 
+            max-height: 150px;
             margin-bottom: 10px;
         }
         .interior_modalvis09{
@@ -761,7 +761,7 @@
             background-position-x: 50%;
             background-position-y: 60%;
             min-height:150px;
-            max-height: 150px; 
+            max-height: 150px;
             margin-bottom: 10px;
         }
         .food_modalvis03{
@@ -790,7 +790,7 @@
             background-position-x: 50%;
             background-position-y: 60%;
             min-height:150px;
-            max-height: 150px; 
+            max-height: 150px;
             margin-bottom: 10px;
         }
         .food_modalvis06{
@@ -897,7 +897,7 @@
             text-align: left;
             line-height: 1.5;
         }
-        
+
     }
     @media (max-width: 767px) {
         .pc_br{
@@ -1004,7 +1004,7 @@
         }
         /*--SP_CINEMA--*/
         #gdcs_cinema{
-            padding-top: 20px; 
+            padding-top: 20px;
         }
         #gdcs_cinema .parent{
             display: -webkit-flex;
@@ -1073,7 +1073,7 @@
         }
         /*--SP_INTERIOR--*/
         #gdcs_interior{
-            padding-top: 20px; 
+            padding-top: 20px;
         }
         #gdcs_interior .parent{
             display: -webkit-flex;
@@ -1142,7 +1142,7 @@
         }
         /*--SP_FOOD--*/
         #gdcs_food{
-            padding-top: 20px; 
+            padding-top: 20px;
         }
         #gdcs_food .parent{
             display: -webkit-flex;
@@ -1266,7 +1266,7 @@
             display: inline-block;
         }
         .fordxwscx_logo{
-            width:80px;
+            width:120px;
             display: inline-block;
         }
         .bestia_logo{
@@ -1284,7 +1284,7 @@
         /*--モーダルメイン画像--*/
         .modal_vis{
             width: 100%;
-            margin-bottom:10%; 
+            margin-bottom:10%;
         }
         .mod_main_vis{
             width: 100%;
@@ -1351,7 +1351,7 @@
             background-position-x: 50%;
             background-position-y: 50%;
             min-height:100px;
-            max-height: 100px; 
+            max-height: 100px;
             width: calc(50% - 5px);
         }
         .cinema_modalvis03{
@@ -1446,7 +1446,7 @@
             background-position-x: 64%;
             background-position-y: 80%;
             min-height:100px;
-            max-height: 100px; 
+            max-height: 100px;
             width: calc(50% - 5px);
         }
         .cinema_modalvis12{
@@ -1486,7 +1486,7 @@
             background-position-x: 50%;
             background-position-y: 60%;
             min-height:100px;
-            max-height: 100px; 
+            max-height: 100px;
             width: calc(50% - 5px);
         }
         .food_modalvis03{
@@ -1516,7 +1516,7 @@
             background-position-x: 50%;
             background-position-y: 60%;
             min-height:100px;
-            max-height: 100px; 
+            max-height: 100px;
             width: calc(50% - 5px);
         }
         .food_modalvis06{
@@ -1546,7 +1546,7 @@
             background-position-x: 50%;
             background-position-y: 20%;
             min-height:180px;
-            max-height: 200px; 
+            max-height: 200px;
             width: 32%;
         }
         .food_modalvis09{
@@ -1622,7 +1622,7 @@
             background-position-x: 50%;
             background-position-y: 60%;
             min-height:100px;
-            max-height: 100px; 
+            max-height: 100px;
             width: calc(50% - 5px);
         }
         .interior_modalvis03{
