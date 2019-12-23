@@ -25,7 +25,7 @@ class NewsExtension extends AbstractExtension
         News::CATEGORY_4DX        => '4DX',
         News::CATEGORY_SCREENX    => 'ScreenX',
         News::CATEGORY_EVENT      => 'ライブビューイング・イベント',
-        News::CATEGORY_4DX_SCREEN => '4DX Screen',
+        News::CATEGORY_4DX_SCREEN => '4DX SCREEN',
     ];
 
     /** @var array */
