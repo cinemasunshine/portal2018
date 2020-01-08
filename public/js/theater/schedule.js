@@ -18,7 +18,7 @@ var Performance = (function () {
      * 予約ステータス情報取得
      */
     Performance.prototype.getAvailability = function () {
-        var value = this.time.seat_count.cntReserveMax / this.time.seat_count.countAllSeat * 100;
+        var value = this.time.seat_count.cnt_reserve_free / this.time.seat_count.cnt_reserve_max * 100;
         var availability = [
             { symbolText: '×', symbolClassName: 'status-03', icon: '/images/fixed/status_03.svg', className: 'bg-light-gray text-dark-gray', text: '満席' },
             { symbolText: '△', symbolClassName: 'status-02', icon: '/images/fixed/status_02.svg', className: 'bg-yellow text-white', text: '購入' },
@@ -35,7 +35,8 @@ var Performance = (function () {
     Performance.prototype.isSalse = function () {
         return !this.isBeforePeriod()
             && !this.isAfterPeriod()
-            && this.time.seat_count.cntReserveMax > 0;
+            && !this.isWindow()
+            && this.time.seat_count.cnt_reserve_free > 0;
     };
     /**
      * 予約期間前判定
@@ -54,14 +55,14 @@ var Performance = (function () {
         return moment(startDate).add(10, 'minutes') < moment();
     };
     /**
-     * 窓口判定（上映開始10分前から上映開始10分後）
+     * 窓口判定（上映開始60分前から上映開始0分後）
      */
     Performance.prototype.isWindow = function () {
         var startDate = moment(this.date + " " + this.time.start_time, 'YYYYMMDD HHmm');
         var now = moment();
-        return (this.time.seat_count.cntReserveMax > 0
-            && moment(startDate).add(-10, 'minutes') < now
-            && moment(startDate).add(10, 'minutes') > now);
+        return (this.time.seat_count.cnt_reserve_free > 0
+            && moment(startDate).add(-60, 'minutes') < now
+            && moment(startDate) > now);
     };
     /**
      * 上映時間取得
@@ -101,7 +102,7 @@ var Performance = (function () {
  */
 function schedule2Performance(schedule, member) {
     var performances = [];
-    var date = String(schedule.date);
+    var date = schedule.date;
     schedule.movie.forEach(function (movie) {
         movie.screen.forEach(function (screen) {
             screen.time.forEach(function (time) {
@@ -299,10 +300,10 @@ function scheduleRender() {
                         return;
                     }
                     else {
-                        var date = moment(String(schedule.date));
+                        var date = moment(schedule.date);
                         var day = date.format('DD')
                         result.push({
-                            value: String(schedule.date),
+                            value: schedule.date,
                             display: {
                                 month: date.format('MM'),
                                 week: date.format('ddd'),
@@ -374,7 +375,7 @@ function scheduleRender() {
                         ? today : _this.currentDate;
                     _this.currentDate = searchDate;
                     // 選択したスケジュールを抽出　上映終了は除外
-                    _this.schedule = _this.schedules.find(function (s) { return (String(s.date) === _this.currentDate); });
+                    _this.schedule = _this.schedules.find(function (s) { return (s.date === _this.currentDate); });
                 }, 0);
             },
             /**
