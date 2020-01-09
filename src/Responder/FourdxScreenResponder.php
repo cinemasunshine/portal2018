@@ -1,6 +1,6 @@
 <?php
 /**
- * FourdxWithScreenXResponder.php
+ * FourdxScreenResponder.php
  *
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
@@ -11,11 +11,11 @@ use Slim\Collection;
 use Slim\Http\Response;
 
 /**
- * FourdxWithScreenX responder
+ * FourdxScreen responder
  *
- * 4DX with ScreenX
+ * 4DX Screen
  */
-class FourdxWithScreenXResponder extends BaseResponder
+class FourdxScreenResponder extends BaseResponder
 {
     /**
      * index
@@ -26,7 +26,7 @@ class FourdxWithScreenXResponder extends BaseResponder
      */
     public function index(Response $response, Collection $data)
     {
-        return $this->view->render($response, '4dx_with_screenx/index.html.twig', $data->all());
+        return $this->view->render($response, '4dx_screen/index.html.twig', $data->all());
     }
 
     /**
@@ -38,7 +38,7 @@ class FourdxWithScreenXResponder extends BaseResponder
      */
     public function about(Response $response, Collection $data)
     {
-        return $this->view->render($response, '4dx_with_screenx/about.html.twig', $data->all());
+        return $this->view->render($response, '4dx_screen/about.html.twig', $data->all());
     }
 
     /**
@@ -50,7 +50,7 @@ class FourdxWithScreenXResponder extends BaseResponder
      */
     public function scheduleList(Response $response, Collection $data)
     {
-        return $this->view->render($response, '4dx_with_screenx/schedule/list.html.twig', $data->all());
+        return $this->view->render($response, '4dx_screen/schedule/list.html.twig', $data->all());
     }
 
     /**
@@ -62,7 +62,7 @@ class FourdxWithScreenXResponder extends BaseResponder
      */
     public function scheduleShow(Response $response, Collection $data)
     {
-        return $this->view->render($response, '4dx_with_screenx/schedule/show.html.twig', $data->all());
+        return $this->view->render($response, '4dx_screen/schedule/show.html.twig', $data->all());
     }
 
     /**
@@ -74,7 +74,7 @@ class FourdxWithScreenXResponder extends BaseResponder
      */
     public function newsList(Response $response, Collection $data)
     {
-        return $this->view->render($response, '4dx_with_screenx/news/list.html.twig', $data->all());
+        return $this->view->render($response, '4dx_screen/news/list.html.twig', $data->all());
     }
 
     /**
@@ -86,7 +86,7 @@ class FourdxWithScreenXResponder extends BaseResponder
      */
     public function newsShow(Response $response, Collection $data)
     {
-        return $this->view->render($response, '4dx_with_screenx/news/show.html.twig', $data->all());
+        return $this->view->render($response, '4dx_screen/news/show.html.twig', $data->all());
     }
 
     /**
@@ -98,6 +98,6 @@ class FourdxWithScreenXResponder extends BaseResponder
      */
     public function theater(Response $response, Collection $data)
     {
-        return $this->view->render($response, '4dx_with_screenx/theater.html.twig', $data->all());
+        return $this->view->render($response, '4dx_screen/theater.html.twig', $data->all());
     }
 }

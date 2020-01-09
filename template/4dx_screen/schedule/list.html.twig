@@ -1,4 +1,4 @@
-{% extends "4dx_with_screenx/layout.html.twig" %}
+{% extends '4dx_screen/layout.html.twig' %}
 
 {% block title %}作品一覧 | {{ parent() }}4DX SCREEN特設サイト{% endblock %}
 
@@ -15,13 +15,13 @@
 {% endblock %}
 
 {% block navbar %}
-{% include '4dx_with_screenx/include/navbar.html.twig' with {
+{% include '4dx_screen/include/navbar.html.twig' with {
     active: 'title'
 } only %}
 {% endblock %}
 
 {% block sp_navbar %}
-{% include '4dx_with_screenx/include/sp_navbar.html.twig' with {
+{% include '4dx_screen/include/sp_navbar.html.twig' with {
     active: 'title'
 } only %}
 {% endblock %}
@@ -30,7 +30,7 @@
 <div class="breadcrumb-list d-none d-md-block small width mx-auto mb-5 px-2 text-white">
     <a class="text-white" href="{{ path_for('homepage') }}">ホーム</a>
     <span class="font-weight-bold mx-2"> | </span>
-    <a class="text-white" href="{{ path_for('4dx_with_screenx') }}">4DX SCREEN</a>
+    <a class="text-white" href="{{ path_for('4dx_screen') }}">4DX SCREEN</a>
     <span class="font-weight-bold mx-2"> | </span>
     <span>作品一覧<span>
 </div>
@@ -50,7 +50,7 @@
     <div class="screening d-block">
 
     {% for schedule in screeningSchedules %}
-        {% include '4dx_with_screenx/schedule/include/list_row.html.twig' with {
+        {% include '4dx_screen/schedule/include/list_row.html.twig' with {
         schedule: schedule,
         theaters: theaters
         } only %}
@@ -60,7 +60,7 @@
     <div class="scheduled d-none">
 
     {% for schedule in soonSchedules %}
-        {% include '4dx_with_screenx/schedule/include/list_row.html.twig' with {
+        {% include '4dx_screen/schedule/include/list_row.html.twig' with {
             schedule: schedule,
             theaters: theaters
         } only %}

@@ -4,24 +4,24 @@
         <h3 class="mb-4 font-weight-bold line-height-1">インフォメーション<br><span class="small">INFORMATION</span></h3>
         <div class="mb-5">
             <ul class="border-top border-gray">
-            
+
             {% for news in newsList %}
                 <li class="border-bottom border-gray">
-                    <a href="{{ path_for('4dx_with_screenx_news_show', { id: news.getId() }) }}" class="d-md-flex d-block py-3 pl-3 pr-5">
+                    <a href="{{ path_for('4dx_screen_news_show', { id: news.getId() }) }}" class="d-md-flex d-block py-3 pl-3 pr-5">
                         <div class="mb-md-0 mb-2 infomation-date">{{ news.getStartDt()|date('Y/n/j') }}</div>
                         <div>{{ news.getHeadline() }}</div>
                     </a>
                 </li>
             {% endfor %}
-                
+
             </ul>
-            
+
         </div>
-        
+
         <div class="button-01 mx-auto">
-            <a class="bg-r-yellow text-black" href="{{ path_for('4dx_with_screenx_news_list') }}">一覧</a>
+            <a class="bg-r-yellow text-black" href="{{ path_for('4dx_screen_news_list') }}">一覧</a>
         </div>
-        
+
     </div>
 </div>
 {% endif %}

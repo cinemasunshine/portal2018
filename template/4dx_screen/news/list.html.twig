@@ -1,4 +1,4 @@
-{% extends "4dx_with_screenx/layout.html.twig" %}
+{% extends '4dx_screen/layout.html.twig' %}
 
 {% block title %}News&Info一覧 | {{ parent() }}4DX SCREEN特設サイト{% endblock %}
 
@@ -14,13 +14,13 @@
 {% endblock %}
 
 {% block navbar %}
-{% include '4dx_with_screenx/include/navbar.html.twig' with {
+{% include '4dx_screen/include/navbar.html.twig' with {
     active: 'news'
 } only %}
 {% endblock %}
 
 {% block sp_navbar %}
-{% include '4dx_with_screenx/include/sp_navbar.html.twig' with {
+{% include '4dx_screen/include/sp_navbar.html.twig' with {
     active: 'news'
 } only %}
 {% endblock %}
@@ -29,7 +29,7 @@
 <div class="breadcrumb-list d-none d-md-block small width mx-auto mb-5 px-2 text-white">
     <a class="text-white" href="{{ path_for('homepage') }}">ホーム</a>
     <span class="font-weight-bold mx-2"> | </span>
-    <a class="text-white" href="{{ path_for('4dx_with_screenx') }}">4DX SCREEN</a>
+    <a class="text-white" href="{{ path_for('4dx_screen') }}">4DX SCREEN</a>
     <span class="font-weight-bold mx-2"> | </span>
     <span>NEWS & INFO<span>
 </div>
@@ -40,12 +40,12 @@
         <div class="container w-100 mw-100 m-0 mb-4 px-1">
             <ul class="row">
             {% for news in newsList %}
-                {% include "4dx_with_screenx/news/include/list_row.html.twig" with {
+                {% include "4dx_screen/news/include/list_row.html.twig" with {
                     news: news
                 } only %}
             {% endfor %}
             {% for news in infoNewsList %}
-                {% include "4dx_with_screenx/news/include/list_row.html.twig" with {
+                {% include "4dx_screen/news/include/list_row.html.twig" with {
                     news: news
                 } only %}
             {% endfor %}

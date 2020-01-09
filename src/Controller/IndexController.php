@@ -42,7 +42,7 @@ class IndexController extends GeneralController
         $this->data->set('screenXNewsList', $this->getNewsList(Entity\News::CATEGORY_SCREENX));
 
         // twigは数値から始まる変数が利用できない
-        $this->data->set('fourdxWithScreenXNewsList', $this->getNewsList(Entity\News::CATEGORY_4DX_WITH_SCREENX));
+        $this->data->set('fourdxScreenNewsList', $this->getNewsList(Entity\News::CATEGORY_4DX_SCREEN));
 
         $this->data->set('infoNewsList', $this->getNewsList(Entity\News::CATEGORY_INFO));
 
