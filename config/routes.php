@@ -13,6 +13,7 @@ use Cinemasunshine\Portal\Controller\{
     ImaxController,
     IndexController,
     NewsController,
+    OyakoCinemaController,
     ScheduleController,
     ScreenXController,
     TheaterController,
@@ -39,6 +40,8 @@ $app->get('/sitemap/', AboutController::class . ':sitemap')->setName('sitemap');
 $app->get('/special_ticket/', AboutController::class . ':specialTicket')->setName('special_ticket');
 $app->get('/law/', AboutController::class . ':specificQuotient')->setName('specific_quotient');
 $app->get('/sitepolicy/', AboutController::class . ':termsOfService')->setName('terms_of_service');
+
+$app->get('/oyako_cinema/', OyakoCinemaController::class . ':index')->setName('oyako_cinema');
 
 $app->group('/news', function () {
     $this->get('/', NewsController::class . ':list')->setName('news_list');
