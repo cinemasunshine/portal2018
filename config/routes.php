@@ -9,10 +9,11 @@ use Cinemasunshine\Portal\Controller\{
     AboutController,
     AuthorizationController,
     FourdxController,
-    FourdxWithScreenXController,
+    FourdxScreenController,
     ImaxController,
     IndexController,
     NewsController,
+    OyakoCinemaController,
     ScheduleController,
     ScreenXController,
     TheaterController,
@@ -39,6 +40,8 @@ $app->get('/sitemap/', AboutController::class . ':sitemap')->setName('sitemap');
 $app->get('/special_ticket/', AboutController::class . ':specialTicket')->setName('special_ticket');
 $app->get('/law/', AboutController::class . ':specificQuotient')->setName('specific_quotient');
 $app->get('/sitepolicy/', AboutController::class . ':termsOfService')->setName('terms_of_service');
+
+$app->get('/oyako_cinema/', OyakoCinemaController::class . ':index')->setName('oyako_cinema');
 
 $app->group('/news', function () {
     $this->get('/', NewsController::class . ':list')->setName('news_list');
@@ -98,17 +101,17 @@ $app->group('/screen-x', function () {
     $this->get('/theater/', ScreenXController::class . ':theater')->setName('screenx_theater');
 });
 
-$app->group('/4dx-with-screen-x', function () {
-    $this->get('/', FourdxWithScreenXController::class . ':index')->setName('4dx_with_screenx');
-    $this->get('/about/', FourdxWithScreenXController::class . ':about')->setName('4dx_with_screenx_about');
-    $this->get('/movie/', FourdxWithScreenXController::class . ':scheduleList')
-        ->setName('4dx_with_screenx_schedule_list');
-    $this->get('/movie/{schedule:[0-9]+}.php', FourdxWithScreenXController::class . ':scheduleShow')
-        ->setName('4dx_with_screenxschedule_show');
-    $this->get('/news/', FourdxWithScreenXController::class . ':newsList')->setName('4dx_with_screenx_news_list');
-    $this->get('/news/{id:[0-9]+}.php', FourdxWithScreenXController::class . ':newsShow')
-        ->setName('4dx_with_screenx_news_show');
-    $this->get('/theater/', FourdxWithScreenXController::class . ':theater')->setName('4dx_with_screenx_theater');
+$app->group('/4dx-screen', function () {
+    $this->get('/', FourdxScreenController::class . ':index')->setName('4dx_screen');
+    $this->get('/about/', FourdxScreenController::class . ':about')->setName('4dx_screen_about');
+    $this->get('/movie/', FourdxScreenController::class . ':scheduleList')
+        ->setName('4dx_screen_schedule_list');
+    $this->get('/movie/{schedule:[0-9]+}.php', FourdxScreenController::class . ':scheduleShow')
+        ->setName('4dx_screenschedule_show');
+    $this->get('/news/', FourdxScreenController::class . ':newsList')->setName('4dx_screen_news_list');
+    $this->get('/news/{id:[0-9]+}.php', FourdxScreenController::class . ':newsShow')
+        ->setName('4dx_screen_news_show');
+    $this->get('/theater/', FourdxScreenController::class . ':theater')->setName('4dx_screen_theater');
 });
 
 # APIのURL設計はひとまずそのまま SASAKI-315

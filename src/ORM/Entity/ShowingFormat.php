@@ -19,30 +19,30 @@ use Doctrine\ORM\Mapping as ORM;
 class ShowingFormat extends AbstractEntity
 {
     use TimestampableTrait;
-    
-    const SYSTEM_2D               = 1;
-    const SYSTEM_3D               = 2;
-    const SYSTEM_4DX              = 3;
-    const SYSTEM_4DX3D            = 4;
-    const SYSTEM_IMAX             = 5;
-    const SYSTEM_IMAX3D           = 6;
+
+    const SYSTEM_2D         = 1;
+    const SYSTEM_3D         = 2;
+    const SYSTEM_4DX        = 3;
+    const SYSTEM_4DX3D      = 4;
+    const SYSTEM_IMAX       = 5;
+    const SYSTEM_IMAX3D     = 6;
     // const SYSTEM_BESTIA           = 7; 削除 SASAKI-449
     // const SYSTEM_BESTIA3D         = 8; 削除 SASAKI-449
     // const SYSTEM_BTSX             = 9; 削除 SASAKI-449
-    const SYSTEM_SCREENX          = 10; // SASAKI-351
-    const SYSTEM_4DX_WITH_SCREENX = 11; // SASAKI-428
-    const SYSTEM_NONE             = 99;
-    
+    const SYSTEM_SCREENX    = 10; // SASAKI-351
+    const SYSTEM_4DX_SCREEN = 11; // SASAKI-428、SASAKI-531
+    const SYSTEM_NONE       = 99;
+
     const SOUND_BESTIA        = 1;
     const SOUND_DTSX          = 2;
     const SOUND_DOLBY_ATMOS   = 3;
     const SOUND_GDC_IMMERSIVE = 4;
     const SOUND_NONE          = 99;
-    
+
     const VOICE_SUBTITLE = 1;
     const VOICE_DUB = 2;
     const VOICE_NONE = 3;
-    
+
     /**
      * id
      *
@@ -52,7 +52,7 @@ class ShowingFormat extends AbstractEntity
      * @ORM\GeneratedValue
      */
     protected $id;
-    
+
     /**
      * schedule
      *
@@ -61,7 +61,7 @@ class ShowingFormat extends AbstractEntity
      * @ORM\JoinColumn(name="schedule_id", referencedColumnName="id", nullable=false, onDelete="CASCADE")
      */
     protected $schedule;
-    
+
     /**
      * system
      *
@@ -69,7 +69,7 @@ class ShowingFormat extends AbstractEntity
      * @ORM\Column(type="smallint", nullable=false, options={"unsigned"=true})
      */
     protected $system;
-    
+
     /**
      * sound
      *
@@ -77,7 +77,7 @@ class ShowingFormat extends AbstractEntity
      * @ORM\Column(type="smallint", nullable=false, options={"unsigned"=true})
      */
     protected $sound;
-    
+
     /**
      * voice
      *
@@ -85,7 +85,7 @@ class ShowingFormat extends AbstractEntity
      * @ORM\Column(type="smallint", nullable=false, options={"unsigned"=true})
      */
     protected $voice;
-    
+
     /**
      * construct
      *
@@ -95,7 +95,7 @@ class ShowingFormat extends AbstractEntity
     {
         throw new \LogicException('Not allowed.');
     }
-    
+
     /**
      * get id
      *
@@ -105,7 +105,7 @@ class ShowingFormat extends AbstractEntity
     {
         return $this->id;
     }
-    
+
     /**
      * get schedule
      *
@@ -115,7 +115,7 @@ class ShowingFormat extends AbstractEntity
     {
         return $this->schedule;
     }
-    
+
     /**
      * schedule
      *
@@ -127,7 +127,7 @@ class ShowingFormat extends AbstractEntity
     {
         throw new \LogicException('Not allowed.');
     }
-    
+
     /**
      * get system
      *
@@ -137,7 +137,7 @@ class ShowingFormat extends AbstractEntity
     {
         return $this->system;
     }
-    
+
     /**
      * set system
      *
@@ -149,7 +149,7 @@ class ShowingFormat extends AbstractEntity
     {
         throw new \LogicException('Not allowed.');
     }
-    
+
     /**
      * get sound
      *
@@ -159,7 +159,7 @@ class ShowingFormat extends AbstractEntity
     {
         return $this->sound;
     }
-    
+
     /**
      * set sound
      *
@@ -171,7 +171,7 @@ class ShowingFormat extends AbstractEntity
     {
         throw new \LogicException('Not allowed.');
     }
-    
+
     /**
      * get voice
      *
@@ -181,7 +181,7 @@ class ShowingFormat extends AbstractEntity
     {
         return $this->voice;
     }
-    
+
     /**
      * set voice
      *

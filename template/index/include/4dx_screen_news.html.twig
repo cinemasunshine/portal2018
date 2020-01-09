@@ -1,0 +1,33 @@
+{% if newsList %}
+<div class="width mx-auto mb-5 px-3 news news-4dx-with-screen-x pjack-bg">
+    <div class="d-md-flex mb-4 align-items-center">
+        <h3 class="d-flex mb-3 mb-md-0 align-items-center justify-content-center">
+            <div class="mr-md-2"><img src="/images/common/4dx-with-screen-x_logo.svg"></div>
+            <div class="font-weight-bold large line-height-1">ニュース</div>
+        </h3>
+        <div class="ml-md-5 text-center"><a href="{{ path_for('4dx_screen') }}" class="border-bottom border-gray">4DX SCREEN特設サイトはこちら ></a></div>
+    </div>
+    <div class="container w-100 mw-100 m-0 mb-4 px-1">
+        <ul class="row mb-0">
+        {% for news in newsList|slice(0, 4) %}
+            {% include "index/include/news_row.html.twig" with {
+                news: news
+            } only %}
+        {% endfor %}
+        </ul>
+        <ul class="row d-none" data-contents="4dx-screen-more-contents">
+        {% for news in newsList|slice(4, 4) %}
+            {% include "index/include/news_row.html.twig" with {
+                news: news
+            } only %}
+        {% endfor %}
+        </ul>
+    </div>
+    <div class="button-01 shadow-01 mx-auto see-more">
+        <a href="#" data-target-contents="4dx-screen-more-contents" data-target-button="4dx-screen-more-more-button">もっと見る</a>
+    </div>
+    <div class="button-01 shadow-01 mx-auto d-none list-display" data-button="4dx-screen-more-more-button">
+        <a href="{{ path_for('news_list') }}">一覧表示</a>
+    </div>
+</div>
+{% endif %}

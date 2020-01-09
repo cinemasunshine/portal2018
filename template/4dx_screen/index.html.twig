@@ -1,0 +1,92 @@
+{% extends '4dx_screen/layout.html.twig' %}
+
+{% block title %}4DX SCREEN特設サイト | {{ parent() }}{% endblock %}
+
+{% block description %}シネマサンシャインの4DX SCREEN特設サイトです。4DXの設備に関する情報や作品情報、鑑賞料金、上映劇場・キャンペーンのご案内など{% endblock %}
+
+{% block keywords %}{{ parent() }},予約,オンライン,上映,キャンペーン,4DX SCREEN,作品情報{% endblock %}
+
+{% block css %}
+<link href="/css/4dxwscx/top.css" rel="stylesheet">
+{% endblock %}
+
+{% block javascript %}
+<script src="/js/4dx-with-screen-x/top.js"></script>
+{% endblock %}
+
+{% block navbar %}
+{% include '4dx_screen/include/navbar.html.twig' with {
+    active: 'top'
+} only %}
+{% endblock %}
+
+{% block sp_navbar %}
+{% include '4dx_screen/include/sp_navbar.html.twig' with {
+    active: 'top'
+} only %}
+{% endblock %}
+
+{% block contents %}
+<div class="breadcrumb-list d-none d-md-block small width mx-auto mb-3 px-2 text-white">
+    <a class="text-white" href="{{ path_for('homepage') }}">ホーム</a>
+    <span class="font-weight-bold mx-2"> | </span>
+    <span>4DX SCREEN<span>
+</div>
+
+<div class="mb-3">
+    {% include '4dx_screen/include/index/slider.html.twig' with {
+        mainBanners: mainBanners
+    } only %}
+</div>
+
+<div class="pt-3 pb-5 text-white">
+    <div class="width mx-auto px-3 film">
+        <div class="d-md-flex">
+                <div class="about mb-5 mb-md-0">
+                    <div class="mr-md-4">
+                        <h3 class="font-weight-bold large mb-4 text-center text-md-left line-height-1">
+                            <div class="mb-2">今までにないダナミックな映画体験</div>
+                            <div class="small">ABOUT 4DX SCREEN</div>
+                        </h3>
+                        <div class="mb-3"><img class="w-100" src="/images/4dxwscx/about/4dxwscx_about_main.jpg"></div>
+                        <div class="button-01 mx-auto px-3 px-md-5">
+                            <a class="bg-r-yellow text-black" href="{{ path_for('4dx_screen_about') }}">4DX SCREENとは？</a>
+                        </div>
+                    </div>
+                </div>
+
+        {% set trailer = trailers[0] %}
+        {% if trailer %}
+            {% include '4dx_screen/include/index/trailer.html.twig' with {
+                trailer: trailer
+            } only %}
+        {% endif %}
+        </div>
+    </div>
+</div>
+{% include '4dx/include/adsense/top.html.twig' only %}
+
+{% include '4dx_screen/include/index/news.html.twig' with {
+    newsList: newsList
+} only %}
+
+<div class="py-5 text-white">
+    {% include '4dx_screen/include/index/title.html.twig' with {
+        theaters: theaters,
+        screeningSchedules: screeningSchedules,
+        soonSchedules: soonSchedules,
+    } only %}
+</div>
+
+{% if campaigns|length > 0 %}
+<div class="py-5 text-white bg-black">
+    {% include '4dx_screen/include/campaign.html.twig' with {
+        campaigns: campaigns
+    } only %}
+</div>
+{% endif %}
+
+{% include '4dx_screen/include/index/infomation.html.twig' with {
+    newsList: infoNewsList
+} only %}
+{% endblock %}
