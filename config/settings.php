@@ -177,7 +177,8 @@ $settings['mp_service'] = $getMpServiceSetting();
 
 // Schedule
 $settings['schedule'] = [
-    'env' => getenv('APPSETTING_SCHEDULE_ENV'),
+    'env'     => getenv('APPSETTING_SCHEDULE_ENV'),
+    'api_url' => getenv('APPSETTING_SCHEDULE_API_URL'),
 ];
 
 return $settings;
