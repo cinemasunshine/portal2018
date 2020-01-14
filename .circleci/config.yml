@@ -62,6 +62,7 @@ jobs:
 
     steps:
       - checkout
+      - update_php
 
       - restore_cache:
           keys:
@@ -70,7 +71,9 @@ jobs:
 
       - run:
           name: Composer install
-          command: composer install --no-dev -n --prefer-dist
+          command: |
+            composer config http-basic.m-p.backlog.jp $BACKLOG_USER $BACKLOG_PASSWORD
+            composer install --no-dev -n --prefer-dist
 
       - save_cache:
           key: composer-{{ checksum "composer.lock" }}
