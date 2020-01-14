@@ -56,6 +56,51 @@ jobs:
           paths:
             - .
 
+  build_production:
+    working_directory: ~/production
+    executor: my_executor
+
+    steps:
+      - checkout
+
+      - restore_cache:
+          keys:
+            - composer-{{ checksum "composer.lock" }}
+            - composer-
+
+      - run:
+          name: Composer install
+          command: composer install --no-dev -n --prefer-dist
+
+      - save_cache:
+          key: composer-{{ checksum "composer.lock" }}
+          paths:
+            - ./vendor
+
+      - run:
+          name: Create .env file
+          command: echo $CI_DOTENV | base64 --decode > .env
+
+      - run:
+          name: Generate ORM proxies
+          command: vendor/bin/doctrine orm:generate-proxies
+
+      - run:
+          name: Remove .env file
+          command: rm -v ./.env
+
+      - run:
+          name: ZIP archive
+          command: zip -r production_app.zip . -x \*.git\* \*.circleci\* \*analysis\* \*docker\* \*report\* .gitignore composer.\* docker-compose.yml phpcs.xml phpstan.neon .editorconfig \*.env \*.user.ini public/sample.htaccess public/sample.Web.config
+
+      - store_artifacts:
+          path: ./production_app.zip
+
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .
+
   analysis:
     working_directory: ~/workspace
     executor: my_executor
@@ -66,7 +111,7 @@ jobs:
 
       - run:
           name: create .env file
-          command: echo $ANALYSIS_DOTENV | base64 --decode > .env
+          command: echo $CI_DOTENV | base64 --decode > .env
 
       # 確認用
       # - store_artifacts:
@@ -110,6 +155,19 @@ jobs:
           name: Deploy to Azure
           command: curl -X POST https://$TEST_AAS_USER:$TEST_AAS_PASSWORD@ssk-portal2018-frontend-win-test.scm.azurewebsites.net/api/zipdeploy -T development_app.zip
 
+  deploy_to_prod:
+    working_directory: ~/production
+    executor: my_executor
+
+    steps:
+      - attach_workspace:
+          at: .
+
+      - run:
+          name: Deploy to Azure
+          # command: curl -X POST https://$PROD_AAS_USER:$PROD_AAS_PASSWORD@ssk-portal2018-admin-win-prod.scm.azurewebsites.net/api/zipdeploy -T production_app.zip
+          command: curl -X POST https://$TMP_AAS_USER:$TMP_AAS_PASSWORD@ssk-portal2018-frontend-win-prod-citest.scm.azurewebsites.net/api/zipdeploy -T production_app.zip
+
 workflows:
   version: 2
 
@@ -141,3 +199,28 @@ workflows:
       - deploy_to_test:
           requires:
             - deploy_to_test_approval
+
+  deploy_production:
+    jobs:
+    - build_development:
+        filters:
+          branches:
+            # only: master
+            only: feature/SASAKI-513
+
+    - analysis:
+        requires:
+          - build_development
+
+    - build_production:
+        requires:
+          - analysis
+
+    - deploy_approval:
+        type: approval
+        requires:
+          - build_production
+
+    - deploy_to_prod:
+        requires:
+          - deploy_approval
