@@ -39,7 +39,7 @@ Settings > cinemasunshine > portal2018 > Environment Variables
 |:---|:---|
 |DEV_AAS_USER |開発環境デプロイユーザ |
 |DEV_AAS_PASSWORD |開発環境デプロイユーザのパスワード |
-|TEST_AAS_USER |開発環境デプロイユーザ |
-|TEST_AAS_PASSWORD |開発環境デプロイユーザのパスワード |
+|TEST_AAS_USER |テスト環境デプロイユーザ |
+|TEST_AAS_PASSWORD |テスト環境デプロイユーザのパスワード |
 
 デプロイユーザとパスワードはAzure App Serviceのプロパティ > デプロイの開始URL
