@@ -77,6 +77,10 @@ $container['view'] = function ($container) {
         $container->get('am')
     ));
 
+    $view->addExtension(new \Cinemasunshine\Portal\Twig\Extension\ScheduleExtension(
+        $container->get('settings')['schedule']
+    ));
+
     return $view;
 };
 
