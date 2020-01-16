@@ -17,8 +17,11 @@ $container = $app->getContainer();
  * @return \Cinemasunshine\Portal\Authorization\Manager
  */
 $container['am'] = function ($container) {
-    // 名称変更によるclearを想定しておく。（仕様変更などがあった場合）
-    $sessionContainerName = 'authorization';
+    /**
+     * 名称変更によるclearを想定しておく。（仕様変更などがあった場合）
+     * must consist of alphanumerics, backslashes and underscores only.
+     */
+    $sessionContainerName = 'authorization_20200116';
 
     return new \Cinemasunshine\Portal\Authorization\Manager(
         $container->get('settings')['mp_service'],
@@ -32,8 +35,11 @@ $container['am'] = function ($container) {
  * @return \Cinemasunshine\Portal\User\Manager
  */
 $container['um'] = function ($container) {
-    // 名称変更によるclearを想定しておく。（仕様変更などがあった場合）
-    $sessionContainerName = 'user';
+    /**
+     * 名称変更によるclearを想定しておく。（仕様変更などがあった場合）
+     * must consist of alphanumerics, backslashes and underscores only.
+     */
+    $sessionContainerName = 'user_20200116';
 
     return new \Cinemasunshine\Portal\User\Manager(
         $container->get('sm')->getContainer($sessionContainerName)
