@@ -10,25 +10,41 @@ declare(strict_types=1);
 namespace Cinemasunshine\Portal\Authorization;
 
 use Cinemasunshine\Portal\Authorization\Grant\AuthorizationCode as AuthorizationCodeGrant;
-use Cinemasunshine\Portal\Authorization\Token\AccessToken;
+use Cinemasunshine\Portal\Authorization\Grant\RefreshToken as RefreshTokenGrant;
+use Cinemasunshine\Portal\Authorization\Token\AuthorizationCodeToken as Token;
 use Cinemasunshine\Portal\Session\Container as SessionContainer;
 
 /**
  * Authorization Manager class
+ *
+ * Authorization Codeによる認可フローを実装します。
+ * 全ての認可処理を実装するものではありません。
  */
 class Manager
 {
-    /** @var SessionContainer */
-    protected $session;
+    /** @var AuthorizationCodeGrant */
+    protected $authorizationCodeGrunt;
+
+    /** @var string */
+    protected $clientId;
+
+    /** @var string */
+    protected $clientSecret;
 
     /** @var string */
     protected $codeChallengeMethod = 'S256';
 
-    /** @var array */
-    protected $authorizeScopeList;
+    /** @var string */
+    protected $host;
 
-    /** @var AuthorizationCodeGrant */
-    protected $authorizationCodeGrunt;
+    /** @var RefreshTokenGrant */
+    protected $refreshTokenGrant;
+
+    /** @var array */
+    protected $scopeList;
+
+    /** @var SessionContainer */
+    protected $session;
 
     /**
      * create unique string
@@ -49,15 +65,30 @@ class Manager
      */
     public function __construct(array $settings, SessionContainer $session)
     {
-        $this->authorizeScopeList = $settings['authorization_code_scope'];
-
-        $this->authorizationCodeGrunt = new AuthorizationCodeGrant(
-            $settings['authorization_code_host'],
-            $settings['authorization_code_client_id'],
-            $settings['authorization_code_client_secret']
-        );
+        $this->host = $settings['authorization_code_host'];
+        $this->clientId = $settings['authorization_code_client_id'];
+        $this->clientSecret = $settings['authorization_code_client_secret'];
+        $this->scopeList = $settings['authorization_code_scope'];
 
         $this->session = $session;
+    }
+
+    /**
+     * return Authorization Code Grunt
+     *
+     * @return AuthorizationCodeGrant
+     */
+    protected function getAuthorizationCodeGrunt(): AuthorizationCodeGrant
+    {
+        if (!$this->authorizationCodeGrunt) {
+            $this->authorizationCodeGrunt = new AuthorizationCodeGrant(
+                $this->host,
+                $this->clientId,
+                $this->clientSecret
+            );
+        }
+
+        return $this->authorizationCodeGrunt;
     }
 
     /**
@@ -68,10 +99,10 @@ class Manager
      */
     public function getAuthorizationUrl(string $redirectUri): string
     {
-        return $this->authorizationCodeGrunt->getAuthorizationUrl(
+        return $this->getAuthorizationCodeGrunt()->getAuthorizationUrl(
             $this->getCodeVerifier(),
             $redirectUri,
-            $this->authorizeScopeList,
+            $this->scopeList,
             $this->getAuthorizationState()
         );
     }
@@ -141,64 +172,19 @@ class Manager
     }
 
     /**
-     * request access token
+     * request token
      *
      * @param string $code
      * @param string $redirectUri
-     * @return AccessToken
+     * @return Token
      */
-    public function requestAccessToken(string $code, string $redirectUri): AccessToken
+    public function requestToken(string $code, string $redirectUri): Token
     {
-        return $this->authorizationCodeGrunt->requestAccessToken(
+        return $this->getAuthorizationCodeGrunt()->requestToken(
             $code,
             $redirectUri,
             $this->getCodeVerifier()
         );
-    }
-
-    /**
-     * login
-     *
-     * logoutも適宜更新してください。
-     *
-     * @param AccessToken $accessToken
-     * @return void
-     */
-    public function login(AccessToken $accessToken)
-    {
-        $this->session['access_token'] = $accessToken;
-
-        /**
-         * ユーザ情報
-         * 情報が増えてきたらオブジェクト化など考える。
-         */
-        $claims = $accessToken->decodeToken()->getClaims();
-        $user = [
-            'name' => $claims['username'],
-        ];
-        $this->session['user'] = $user;
-
-        $this->session['authorized'] = true;
-    }
-
-    /**
-     * 認可判定
-     *
-     * @return boolean
-     */
-    public function isAuthorized(): bool
-    {
-        return isset($this->session['authorized']) && $this->session['authorized'] === true;
-    }
-
-    /**
-     * return authorized user
-     *
-     * @return array|null
-     */
-    public function getUser(): ?array
-    {
-        return $this->session['user'];
     }
 
     /**
@@ -209,16 +195,35 @@ class Manager
      */
     public function getLogoutUrl(string $redirectUri): string
     {
-        return $this->authorizationCodeGrunt->getLogoutUrl($redirectUri);
+        return $this->getAuthorizationCodeGrunt()->getLogoutUrl($redirectUri);
     }
 
     /**
-     * logout
+     * return Refresh Token Grant
      *
-     * @return void
+     * @return RefreshTokenGrant
      */
-    public function logout()
+    protected function getRefreshTokenGrant(): RefreshTokenGrant
     {
-        $this->session->clear();
+        if (!$this->refreshTokenGrant) {
+            $this->refreshTokenGrant = new RefreshTokenGrant(
+                $this->host,
+                $this->clientId,
+                $this->clientSecret
+            );
+        }
+
+        return $this->refreshTokenGrant;
+    }
+
+    /**
+     * Refreshing a Token
+     *
+     * @param string $refreshToken
+     * @return Token
+     */
+    public function refreshToken(string $refreshToken): Token
+    {
+        return $this->getRefreshTokenGrant()->requestToken($refreshToken);
     }
 }

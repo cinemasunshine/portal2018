@@ -17,12 +17,26 @@ $container = $app->getContainer();
  * @return \Cinemasunshine\Portal\Authorization\Manager
  */
 $container['am'] = function ($container) {
-    // container名変更によるclearを想定しておく。（仕様変更などがあった場合）
-    $containerName = 'authorization';
+    // 名称変更によるclearを想定しておく。（仕様変更などがあった場合）
+    $sessionContainerName = 'authorization';
 
     return new \Cinemasunshine\Portal\Authorization\Manager(
         $container->get('settings')['mp_service'],
-        $container->get('sm')->getContainer($containerName)
+        $container->get('sm')->getContainer($sessionContainerName)
+    );
+};
+
+/**
+ * User Manager
+ *
+ * @return \Cinemasunshine\Portal\User\Manager
+ */
+$container['um'] = function ($container) {
+    // 名称変更によるclearを想定しておく。（仕様変更などがあった場合）
+    $sessionContainerName = 'user';
+
+    return new \Cinemasunshine\Portal\User\Manager(
+        $container->get('sm')->getContainer($sessionContainerName)
     );
 };
 
@@ -58,7 +72,8 @@ $container['view'] = function ($container) {
         $container->get('settings')['mp_service']
     ));
 
-    $view->addExtension(new \Cinemasunshine\Portal\Twig\Extension\AuthorizationExtension(
+    $view->addExtension(new \Cinemasunshine\Portal\Twig\Extension\UserExtension(
+        $container->get('um'),
         $container->get('am')
     ));
 

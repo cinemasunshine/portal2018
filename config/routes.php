@@ -21,6 +21,7 @@ use Cinemasunshine\Portal\Controller\{
 };
 
 use Cinemasunshine\Portal\Controller\API\{
+    AuthorizationController as AuthorizationAPIController,
     ScheduleController as ScheduleApiController
 };
 
@@ -116,6 +117,9 @@ $app->group('/4dx-screen', function () {
 
 # APIのURL設計はひとまずそのまま SASAKI-315
 $app->group('/api', function () {
+    $this->group('/auth', function () {
+        $this->get('/token', AuthorizationAPIController::class . ':token');
+    });
     $this->group('/schedule/{name}', function () {
         $this->get('', ScheduleApiController::class . ':index');
         $this->get('/{date:[\d]{4}-[\d]{2}-[\d]{2}}', ScheduleApiController::class . ':date');
