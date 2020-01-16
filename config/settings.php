@@ -140,10 +140,18 @@ $getMpServiceSetting = function () {
         // API
         'api_host' => getenv('APPSETTING_MP_API_HOST'),
 
+        // 認可トークンの期限バッファー（秒）
+        'authorization_token_expiration_buffer' => 60 * 5,
+
         // Authorization Code Grant
         'authorization_code_host'          => getenv('APPSETTING_MP_AUTHORIZATION_CODE_HOST'),
         'authorization_code_client_id'     => getenv('APPSETTING_MP_AUTHORIZATION_CODE_CLIENT_ID'),
         'authorization_code_client_secret' => getenv('APPSETTING_MP_AUTHORIZATION_CODE_CLIENT_SECRET'),
+
+        // Client Credentials Grant
+        'cliennt_credentials_host'          => getenv('APPSETTING_MP_CLIENT_CREDENTIALS_HOST'),
+        'cliennt_credentials_client_id'     => getenv('APPSETTING_MP_CLIENT_CREDENTIALS_CLIENT_ID'),
+        'cliennt_credentials_client_secret' => getenv('APPSETTING_MP_CLIENT_CREDENTIALS_CLIENT_SECRET'),
 
         // Ticket
         'ticket_url'          => getenv('APPSETTING_MP_TICKET_URL'),
@@ -177,7 +185,8 @@ $settings['mp_service'] = $getMpServiceSetting();
 
 // Schedule
 $settings['schedule'] = [
-    'env' => getenv('APPSETTING_SCHEDULE_ENV'),
+    'env'     => getenv('APPSETTING_SCHEDULE_ENV'),
+    'api_url' => getenv('APPSETTING_SCHEDULE_API_URL'),
 ];
 
 return $settings;

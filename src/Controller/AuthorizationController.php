@@ -55,13 +55,13 @@ class AuthorizationController extends BaseController
         $redirectUri = $this->router->fullUrlFor($uri, 'login');
 
         try {
-            $accessToken = $this->am->requestAccessToken($code, $redirectUri);
+            $token = $this->am->requestToken($code, $redirectUri);
         } catch (BadResponseException $e) {
             $this->logger->error($e->getMessage());
             return 'error';
         }
 
-        $this->am->login($accessToken);
+        $this->um->login($token);
 
         // redirect
         $redirectPath = $this->router->pathFor('homepage');
@@ -87,7 +87,7 @@ class AuthorizationController extends BaseController
      */
     public function executeLogout($request, $response, $args)
     {
-        $this->am->logout();
+        $this->um->logout();
 
         // redirect
         $redirectPath = $this->router->pathFor('homepage');

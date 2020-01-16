@@ -1,6 +1,6 @@
 <?php
 /**
- * AuthorizationExtension.php
+ * UserExtension.php
  *
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
@@ -13,12 +13,16 @@ use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 
 use Cinemasunshine\Portal\Authorization\Manager as AuthorizationManager;
+use Cinemasunshine\Portal\User\Manager as UserManager;
 
 /**
- * Authorization twig extension class
+ * User twig extension class
  */
-class AuthorizationExtension extends AbstractExtension
+class UserExtension extends AbstractExtension
 {
+    /** @var UserManager */
+    protected $userManager;
+
     /** @var AuthorizationManager */
     protected $authorizationManager;
 
@@ -26,9 +30,11 @@ class AuthorizationExtension extends AbstractExtension
      * construct
      *
      * @param AuthorizationManager $authorizationManager
+     * @param UserManager $userManager
      */
-    public function __construct(AuthorizationManager $authorizationManager)
+    public function __construct(UserManager $userManager, AuthorizationManager $authorizationManager)
     {
+        $this->userManager = $userManager;
         $this->authorizationManager = $authorizationManager;
     }
 
@@ -41,9 +47,9 @@ class AuthorizationExtension extends AbstractExtension
     {
         return [
             new TwigFunction('login_url', [$this, 'getLoginUrl'], [ 'is_safe' => ['all'] ]),
+            new TwigFunction('logout_url', [$this, 'getLogoutUrl'], [ 'is_safe' => ['all'] ]),
             new TwigFunction('is_login', [$this, 'isLogin'], [ 'is_safe' => ['all'] ]),
             new TwigFunction('login_user', [$this, 'getUser'], [ 'is_safe' => ['all'] ]),
-            new TwigFunction('logout_url', [$this, 'getLogoutUrl'], [ 'is_safe' => ['all'] ]),
         ];
     }
 
@@ -59,26 +65,6 @@ class AuthorizationExtension extends AbstractExtension
     }
 
     /**
-     * ログイン判定
-     *
-     * @return boolean
-     */
-    public function isLogin(): bool
-    {
-        return $this->authorizationManager->isAuthorized();
-    }
-
-    /**
-     * return authorized user
-     *
-     * @return array|null
-     */
-    public function getUser(): ?array
-    {
-        return $this->authorizationManager->getUser();
-    }
-
-    /**
      * return logout URL
      *
      * @param string $redirectUri
@@ -87,5 +73,25 @@ class AuthorizationExtension extends AbstractExtension
     public function getLogoutUrl(string $redirectUri): string
     {
         return $this->authorizationManager->getLogoutUrl($redirectUri);
+    }
+
+    /**
+     * return authorized user data
+     *
+     * @return array|null
+     */
+    public function getUser(): ?array
+    {
+        return $this->userManager->getUser();
+    }
+
+    /**
+     * ログイン判定
+     *
+     * @return boolean
+     */
+    public function isLogin(): bool
+    {
+        return $this->userManager->isAuthenticated();
     }
 }

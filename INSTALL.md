@@ -61,10 +61,14 @@ Azure Web Appsのアプリケーション設定で設定する場合は **APPSET
 |APPSETTING_ENV|'prod' or 'dev'|アプリケーションの実行環境|
 |APPSETTING_COA_SCHEDULE|'prod' or 'test'|（廃止予定）コアシステムズ様スケジュールの接続環境|
 |APPSETTING_SCHEDULE_ENV|'production' or 'test' or 'development'|スケジュールの接続環境|
+|APPSETTING_SCHEDULE_API_URL|[ schedule API URL ]|MPスケジュールAPIのURL|
 |APPSETTING_MP_API_HOST|[ API host name ]|APIホスト名|
 |APPSETTING_MP_AUTHORIZATION_CODE_HOST|[ Host name ]|Authorization Code Grantのホスト名|
 |APPSETTING_MP_AUTHORIZATION_CODE_CLIENT_ID|[ Client ID ]|Authorization Code GrantのクライアントID|
 |APPSETTING_MP_AUTHORIZATION_CODE_CLIENT_SECRET|[ Client secret ]|Authorization Code Grantのクライアント シークレット|
+|APPSETTING_MP_CLIENT_CREDENTIALS_HOST|[ Host name ]|Client Credentials Grantのホスト名|
+|APPSETTING_MP_CLIENT_CREDENTIALS_CLIENT_ID|[ Client ID ]|Client Credentials GrantのクライアントID|
+|APPSETTING_MP_CLIENT_CREDENTIALS_CLIENT_SECRET|[ Client secret ]|Client Credentials Grantのクライアント シークレット|
 |APPSETTING_MP_TICKET_URL|[ site URL ]|MPオンラインチケットのURL|
 |APPSETTING_MP_TICKET_ENTRANCE_URL|[ entrance site URL ]|MPオンラインチケットのエントランスURL|
 
