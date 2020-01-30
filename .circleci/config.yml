@@ -168,7 +168,7 @@ jobs:
 
       - run:
           name: Deploy to Azure
-          command: curl -X POST https://$PROD_AAS_USER:$PROD_AAS_PASSWORD@ssk-portal2018-admin-win-prod.scm.azurewebsites.net/api/zipdeploy -T production_app.zip
+          command: curl -X POST https://$PROD_AAS_USER:$PROD_AAS_PASSWORD@ssk-portal2018-frontend-win-prod.scm.azurewebsites.net/api/zipdeploy -T production_app.zip
 
 workflows:
   version: 2
