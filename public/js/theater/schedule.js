@@ -1,4 +1,6 @@
-var SCHEDULE_API_ENDPOINT = 'https://ssktsscheduletest.blob.core.windows.net';
+var SCHEDULE_API;
+var MP_TICKET_ENTRANCE;
+var APP_ENV;
 var API_TIMEOUT = 60 * 1000;
 var PRE_SALE_DIFFERENCE_DAY = 2;
 
@@ -88,10 +90,9 @@ var Performance = (function () {
         var theaterName = $('body').attr('data-theater');
         var theatreTable = getTheaterTable();
         var theatreTableFindResult = theatreTable.find(function (t) { return (theaterName === t.name); });
-        var env = 'dev';
-        var plefix = (env === 'production') ? '0' : '1';
+        var plefix = (APP_ENV === 'production' || APP_ENV === 'prod') ? '0' : '1';
         var id = plefix + theatreTableFindResult.code + this.movie.movie_short_code + this.movie.movie_branch_code + this.date + this.screen.screen_code + this.time.start_time;
-        var url = 'https://entrance.ticket-cinemasunshine.com/purchase/index.html?id=';
+        var url = MP_TICKET_ENTRANCE + '/purchase/index.html?id=';
         return url + id;
     };
     return Performance;
@@ -243,6 +244,11 @@ Vue.component('purchase-performance-film', {
  * スケジュールレンダリング
  */
 function scheduleRender() {
+
+    SCHEDULE_API = $('input[name=SCHEDULE_API]').val();
+    MP_TICKET_ENTRANCE = $('input[name=MP_TICKET_ENTRANCE]').val();
+    APP_ENV = $('input[name=APP_ENV]').val();
+
     var app = new Vue({
         el: '#schedule',
         data: {
@@ -253,7 +259,8 @@ function scheduleRender() {
             timer: undefined,
             schedules: [],
             schedule: undefined,
-            moment: moment
+            moment: moment,
+            scheduleSwiper: undefined
         },
 
         created: function () {
@@ -274,6 +281,7 @@ function scheduleRender() {
              * 選択日生成
              */
             createDate: function () {
+                var _this = this;
                 var now = moment();
                 var result = [];
                 var today = moment(now).format('YYYYMMDD');
@@ -311,10 +319,7 @@ function scheduleRender() {
                                 year: date.format('YYYY')
                             },
                             preSale: preSale !== undefined,
-                            serviceDay: (day === '01') ? 'ファーストデイ'
-                                : (day === '15') ? 'シネマサンシャインデイ'
-                                    : (date.format('ddd') === '水') ? 'レディースデイ'
-                                        : undefined
+                            serviceDay: (schedule.name_service_day === '') ? undefined : schedule.name_service_day
                         });
                     }
                 });
@@ -328,7 +333,7 @@ function scheduleRender() {
                     this.currentDate = (findResult === undefined) ? this.dateList[0].value : selected;
                 }
                 // スライダー生成
-                var scheduleSwiper = new Swiper('.schedule-slider .swiper-container', {
+                this.scheduleSwiper = new Swiper('.schedule-slider .swiper-container', {
                     spaceBetween: 0,
                     slidesPerView: 7,
                     breakpoints: {
@@ -337,11 +342,15 @@ function scheduleRender() {
                         1024: { slidesPerView: 6 }
                     }
                 });
-                scheduleSwiper.on('resize', function () {
+                this.scheduleSwiper.on('resize', function () {
                     var target = $('.schedule-slider .swiper-slide .active').parent();
                     var index = $('.schedule-slider .swiper-slide').index(target);
-                    scheduleSwiper.slideTo(index, 0, false);
+                    _this.scheduleSwiper.slideTo(index, 0, false);
                 });
+                setTimeout(function () {
+                    _this.scheduleSwiper.update();
+                }, 0);
+
             },
             /**
              * スケジュール取得
@@ -352,7 +361,7 @@ function scheduleRender() {
                 var theaterName = $('body').attr('data-theater');
                 var theatreTable = getTheaterTable();
                 var theatreTableFindResult = theatreTable.find(function (t) { return (theaterName === t.name); });
-                var url = SCHEDULE_API_ENDPOINT + '/' + theatreTableFindResult.name + '/schedule/json/schedule.json?date=' + now;
+                var url = SCHEDULE_API + '/' + theatreTableFindResult.name + '/schedule/json/schedule.json?date=' + now;
                 var options = {
                     dataType: 'json',
                     url: url,
