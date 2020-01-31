@@ -23,15 +23,15 @@ class News extends AbstractEntity
     use SavedUserTrait;
     use SoftDeleteTrait;
     use TimestampableTrait;
-    
-    const CATEGORY_NEWS             = 1;
-    const CATEGORY_INFO             = 2;
-    const CATEGORY_IMAX             = 3;
-    const CATEGORY_4DX              = 4;
-    const CATEGORY_EVENT            = 5;
-    const CATEGORY_SCREENX          = 6; // SASAKI-351
-    const CATEGORY_4DX_WITH_SCREENX = 7; // SASAKI-432
-    
+
+    const CATEGORY_NEWS       = 1;
+    const CATEGORY_INFO       = 2;
+    const CATEGORY_IMAX       = 3;
+    const CATEGORY_4DX        = 4;
+    const CATEGORY_EVENT      = 5;
+    const CATEGORY_SCREENX    = 6; // SASAKI-351
+    const CATEGORY_4DX_SCREEN = 7; // SASAKI-432
+
     /**
      * id
      *
@@ -41,7 +41,7 @@ class News extends AbstractEntity
      * @ORM\GeneratedValue
      */
     protected $id;
-    
+
     /**
      * title
      *
@@ -50,7 +50,7 @@ class News extends AbstractEntity
      * @ORM\JoinColumn(name="title_id", referencedColumnName="id", nullable=true, onDelete="RESTRICT")
      */
     protected $title;
-    
+
     /**
      * image
      *
@@ -59,7 +59,7 @@ class News extends AbstractEntity
      * @ORM\JoinColumn(name="image_file_id", referencedColumnName="id", nullable=true, onDelete="RESTRICT")
      */
     protected $image;
-    
+
     /**
      * category
      *
@@ -67,7 +67,7 @@ class News extends AbstractEntity
      * @ORM\Column(type="smallint", options={"unsigned"=true})
      */
     protected $category;
-    
+
     /**
      * headline
      *
@@ -75,7 +75,7 @@ class News extends AbstractEntity
      * @ORM\Column(type="string")
      */
     protected $headline;
-    
+
     /**
      * body
      *
@@ -83,7 +83,7 @@ class News extends AbstractEntity
      * @ORM\Column(type="text")
      */
     protected $body;
-    
+
     /**
      * start_dt
      *
@@ -91,7 +91,7 @@ class News extends AbstractEntity
      * @ORM\Column(type="datetime", name="start_dt")
      */
     protected $startDt;
-    
+
     /**
      * end_dt
      *
@@ -99,7 +99,7 @@ class News extends AbstractEntity
      * @ORM\Column(type="datetime", name="end_dt")
      */
     protected $endDt;
-    
+
     /**
      * pages
      *
@@ -107,7 +107,7 @@ class News extends AbstractEntity
      * @ORM\OneToMany(targetEntity="PageNews", mappedBy="news")
      */
     protected $pages;
-    
+
     /**
      * theaters
      *
@@ -115,7 +115,7 @@ class News extends AbstractEntity
      * @ORM\OneToMany(targetEntity="TheaterNews", mappedBy="news")
      */
     protected $theaters;
-    
+
     /**
      * special_sites
      *
@@ -123,8 +123,8 @@ class News extends AbstractEntity
      * @ORM\OneToMany(targetEntity="SpecialSiteNews", mappedBy="news")
      */
     protected $specialSites;
-    
-    
+
+
     /**
      * construct
      *
@@ -134,7 +134,7 @@ class News extends AbstractEntity
     {
         throw new \LogicException('Not allowed.');
     }
-    
+
     /**
      * get id
      *
@@ -144,7 +144,7 @@ class News extends AbstractEntity
     {
         return $this->id;
     }
-    
+
     /**
      * get title
      *
@@ -154,7 +154,7 @@ class News extends AbstractEntity
     {
         return $this->title;
     }
-    
+
     /**
      * set title
      *
@@ -166,7 +166,7 @@ class News extends AbstractEntity
     {
         throw new \LogicException('Not allowed.');
     }
-    
+
     /**
      * get image
      *
@@ -176,7 +176,7 @@ class News extends AbstractEntity
     {
         return $this->image;
     }
-    
+
     /**
      * set image
      *
@@ -188,7 +188,7 @@ class News extends AbstractEntity
     {
         throw new \LogicException('Not allowed.');
     }
-    
+
     /**
      * get category
      *
@@ -198,7 +198,7 @@ class News extends AbstractEntity
     {
         return $this->category;
     }
-    
+
     /**
      * set category
      *
@@ -210,7 +210,7 @@ class News extends AbstractEntity
     {
         throw new \LogicException('Not allowed.');
     }
-    
+
     /**
      * get headline
      *
@@ -220,7 +220,7 @@ class News extends AbstractEntity
     {
         return $this->headline;
     }
-    
+
     /**
      * set headline
      *
@@ -232,7 +232,7 @@ class News extends AbstractEntity
     {
         throw new \LogicException('Not allowed.');
     }
-    
+
     /**
      * get body
      *
@@ -242,7 +242,7 @@ class News extends AbstractEntity
     {
         return $this->body;
     }
-    
+
     /**
      * set body
      *
@@ -254,7 +254,7 @@ class News extends AbstractEntity
     {
         throw new \LogicException('Not allowed.');
     }
-    
+
     /**
      * get start_dt
      *
@@ -264,7 +264,7 @@ class News extends AbstractEntity
     {
         return $this->startDt;
     }
-    
+
     /**
      * set start_dt
      *
@@ -276,7 +276,7 @@ class News extends AbstractEntity
     {
         throw new \LogicException('Not allowed.');
     }
-    
+
     /**
      * get end_dt
      *
@@ -286,7 +286,7 @@ class News extends AbstractEntity
     {
         return $this->endDt;
     }
-    
+
     /**
      * set end_dt
      *
@@ -298,7 +298,7 @@ class News extends AbstractEntity
     {
         throw new \LogicException('Not allowed.');
     }
-    
+
     /**
      * get pages
      *
@@ -308,7 +308,7 @@ class News extends AbstractEntity
     {
         return $this->pages;
     }
-    
+
     /**
      * get theaters
      *
@@ -318,7 +318,7 @@ class News extends AbstractEntity
     {
         return $this->theaters;
     }
-    
+
     /**
      * get special_sites
      *

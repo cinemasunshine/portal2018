@@ -1,0 +1,150 @@
+{% extends '4dx_screen/layout.html.twig' %}
+{% block title %}4DX SCREENとは? | {{ parent() }}4DX SCREEN特設サイト{% endblock %}
+
+{% block description %}シネマサンシャイン4DX SCREEN特設サイトの4DX SCREEN説明ページです。4DX SCREENの設備・機能に関する情報をご案内{% endblock %}
+
+{% block keywords %}{{ parent() }},4DX SCREEN,料金{% endblock %}
+
+{% block css %}
+<link href="/css/4dxwscx/about.css" rel="stylesheet">
+{% endblock %}
+
+{% block navbar %}
+{% include '4dx_screen/include/navbar.html.twig' with {
+    active: 'about'
+} only %}
+{% endblock %}
+
+{% block sp_navbar %}
+{% include '4dx_screen/include/sp_navbar.html.twig' with {
+    active: 'about'
+} only %}
+{% endblock %}
+
+{% block contents %}
+<div class="breadcrumb-list d-none d-md-block small width mx-auto mb-5 px-2 text-white">
+    <a class="text-white" href="{{ path_for('homepage') }}">ホーム</a>
+    <span class="font-weight-bold mx-md-3 h-100"> | </span>
+    <a class="text-white" href="{{ path_for('4dx') }}">4DX SCREEN</a>
+    <span class="font-weight-bold mx-md-3 h-100"> | </span>
+    <span>4DX SCREENとは？<span>
+</div>
+
+<div class="width mx-auto mb-3 px-2 text-white">
+    <div class="mb-5">
+        <h2 class="font-weight-bold x-large text-center py-4">4DX SCREENとは？</h2>
+        <div class="mb-4"><img class="w-100" src="/images/4dxwscx/about/4dxwscx_about_main.jpg"></div>
+        <p>
+                「4DX SCREEN」シアターは、体感型アトラクションシアター「4DX」と、<br>
+                3面マルチプロジェクション上映システム「ScreenX」が融合した体感型シアターです。<br>
+                革新的なスペシャルエフェクトと、視野270度の3面マルチプロジェクション上映システムによって、<br>
+                今までにないダイナミックな映画体験をご提供します。
+        </p>
+    </div>
+    <div class="mb-5">
+        <h2 class="font-weight-bold large text-center text-md-left mb-4">機能紹介</h2>
+        <div class="introduction-video mx-auto mb-5">
+            <div class="video">
+                <iframe type="text/html" src="https://www.youtube.com/embed/wNIkz3RLXOg?rel=0&loop=1&playsinline=1&rel=0&mute=1&autoplay=1&showinfo=0&disablekb=1&modestbranding=1&color=white"
+                    frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+        <div class="function mx-auto">
+            <ul class="d-md-flex flex-wrap intro_4dx mb-5">
+                <li class="pic_area">
+                    <h4><img src="/images/4dxwscx/about/4dx_logo.svg" alt="4DX"></h4>
+                    <div class="about_pic_1"> </div>
+                </li>
+                <li class="txt_area">
+                    <div>
+                        <h5 class="font-weight-bold mb-3">絶対的な映画体験</h5>
+                        <p>4DXは、前後左右や上下に動くモーションシートや水や風、香り、フラッシュなどの革新的なスペシャルエフェクトによって映画の様々なシーンとリアルタイムかつダイナミックに連動します。
+                            3Dを遥かに超え、映画を「観る」から「体感する」ことに変え、これまでとは次元の違う映画体験を観客にもたらす4DXは、世界各国の映画館に次々と導入され、世界中から熱い注目を集めています。</p>
+                        <a href="{{ path_for('4dx') }}" class="border-white text-white py-3 px-5 rounded">4DX特設サイト</a>
+                    </div>
+                </li>
+            </ul>
+            <ul class="d-md-flex flex-row-reverse intro_scx">
+                <li class="pic_area">
+                    <h4><img src="/images/4dxwscx/about/scx_logo.svg" alt="4DX"></h4>
+                    <div class="about_pic_2"> </div>
+                </li>
+                <li class="txt_area">
+                    <div>
+                        <h5 class="font-weight-bold mb-3">圧倒的な没入感</h5>
+                        <p>ScreenXは従来の正面スクリーンに加え、左右の壁面にも映画のシーンが映し出される世界初のマルチプロジェクション映画上映システムです。
+                            目の前の視界いっぱいに270度まで広がる3面ワイドスクリーンはまるで映画に包み込まれるような感覚を与え、深い没入感を味わうことができます。映画の可能性をさらに広げる究極の映画体験をお楽しみください。</p>
+                        <a href="{{ path_for('screenx') }}" class="border-white text-white py-3 px-5 rounded">ScreenX特設サイト</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="mb-5 viewing-fee">
+        <h2 class="font-weight-bold large text-center text-md-left mb-4">4DX SCREEN鑑賞料金</h2>
+        <div class="mb-5 text-center">
+            <!--<div class="bg-r-yellow py-4 px-5 x-large d-inline-block price text-black">通常料金<span class="mx-3">+</span>￥1,500</div>-->
+            <ul class="mb-4">
+                <li class="d-md-flex align-items-center text-center text-md-left mb-4">
+                    <div class="title font-weight-bold mb-3 mb-md-0">ららぽーと沼津</div>
+                    <div class="description">
+                        <div class="bg-r-yellow py-4 px-5 x-large d-inline-block price text-black">通常料金<span class="mx-3">+</span>￥1,400
+                        </div>
+                    </div>
+                </li>
+                <li class="d-md-flex align-items-center text-center text-md-left">
+                    <div class="title font-weight-bold mb-3 mb-md-0">グランドシネマサンシャイン</div>
+                    <div class="description">
+                        <div class="bg-r-yellow py-4 px-5 x-large d-inline-block price text-black">通常料金<span class="mx-3">+</span>￥1,500
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <ul class="border-top border-dark-gray mb-4">
+            <li class="d-flex align-items-center border-bottom border-dark-gray p-4">
+                <div class="title font-weight-bold">2D作品の場合</div>
+                <div class="description large">通常料金 + 4DX SCREEN鑑賞料金</div>
+            </li>
+            <li class="d-flex align-items-center border-bottom border-dark-gray p-4">
+                <div class="title font-weight-bold">サービスデイの場合</div>
+                <div class="description large">サービスデイ料金 + 4DX SCREEN鑑賞料金</div>
+            </li>
+        </ul>
+        <p class="small text-gray">
+            ※&ensp;身長100cm未満の方、妊娠中の方、ご高齢の方、心臓・背中・腰・首などに障害のある方、特別な疾病のある方、乗り物酔いしやすい方、その他体調に不安のある方などは、４DXをご利用いただけません。また、身長120cm未満のお子様は保護者の方と一緒にご鑑賞ください。
+        </p>
+    </div>
+    <div class="note">
+        <h2 class="font-weight-bold large text-center text-md-left mb-4">4DXをより安全に快適に<br class="d-md-none">お楽しみいただくために</h2>
+
+        <dl>
+            <dt class="font-weight-bold mb-3">安全のためご利用いただけない方 </dt>
+            <dd class="mb-4">
+                ●&ensp;身長100cm未満の方、妊娠中の方、ご高齢の方、心臓・背中・腰・首などに障害のある方、特別な疾患のある方、乗り物酔いしやすい方、体調に不安のある方<br>
+                ●&ensp;身長120cm未満のお子様は保護者同伴でのご鑑賞となります。
+            </dd>
+            <dt class="font-weight-bold mb-3">スペシャルエフェクトについて </dt>
+            <dd class="mb-4">
+                ●&ensp;水や風などのスペシャルエフェクトは4DXシート肘掛にあるスイッチでON/OFFが可能です。
+            </dd>
+            <dt class="font-weight-bold mb-3">ご飲食について </dt>
+            <dd class="mb-4">
+                ●&ensp;ホットドリンク類、アルコール類、アイスクリーム類につきましては上映開始時刻までにお召し上がりください。残っている場合は劇場スタッフがお座席まで回収に伺います。コールドドリンク類とフード類につきましては本編中でもご飲食可能ですが、周りのお客様のご迷惑にならないようご注意ください。
+            </dd>
+            <dt class="font-weight-bold mb-3">貴重品について </dt>
+            <dd class="mb-4">
+                ●&ensp;装飾品や電子機器などの貴重品はシアター入口のロッカーにお預けください。
+            </dd>
+            <dt class="font-weight-bold mb-3">座席の共有について </dt>
+            <dd class="mb-4">
+                ●&ensp;チャイルドシートのご使用やお子様を膝の上に座らせてのご鑑賞などは禁止させていただきます。
+            </dd>
+            <dt class="font-weight-bold mb-3">上映中の行為について </dt>
+            <dd class="mb-4">
+                ●&ensp;上映中は、フットレストやシートの上に立ったり、シアター内を歩き回るなどの行為はお止めください。
+            </dd>
+        </dl>
+    </div>
+</div>
+{% endblock %}

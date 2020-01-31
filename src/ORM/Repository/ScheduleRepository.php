@@ -30,10 +30,10 @@ class ScheduleRepository extends EntityRepository
             ->where('s.isDeleted = false')
             ->andWhere('s.publicStartDt <= CURRENT_TIMESTAMP()')
             ->andWhere('s.publicEndDt > CURRENT_TIMESTAMP()');
-        
+
         return $qb;
     }
-    
+
     /**
      * return screening query
      *
@@ -42,14 +42,14 @@ class ScheduleRepository extends EntityRepository
     protected function getScreeningQuery()
     {
         $qb = $this->getActiveQuery();
-        
+
         $qb
             ->andWhere('s.startDate <= CURRENT_DATE()')
             ->orderBy('s.startDate', 'DESC');
-        
+
         return $qb;
     }
-    
+
     /**
      * find screening
      *
@@ -58,10 +58,10 @@ class ScheduleRepository extends EntityRepository
     public function findScreening()
     {
         $qb = $this->getScreeningQuery();
-        
+
         return $qb->getQuery()->getResult();
     }
-    
+
     /**
      * find screening for IMAX
      *
@@ -73,16 +73,16 @@ class ScheduleRepository extends EntityRepository
             ShowingFormat::SYSTEM_IMAX,
             ShowingFormat::SYSTEM_IMAX3D,
         ];
-        
+
         $qb = $this->getScreeningQuery();
         $qb
             ->join('s.showingFormats', 'sf')
             ->andWhere('sf.system IN (:systems)')
             ->setParameter('systems', $systems);
-        
+
         return $qb->getQuery()->getResult();
     }
-    
+
     /**
      * find screening for 4DX
      *
@@ -94,16 +94,16 @@ class ScheduleRepository extends EntityRepository
             ShowingFormat::SYSTEM_4DX,
             ShowingFormat::SYSTEM_4DX3D,
         ];
-        
+
         $qb = $this->getScreeningQuery();
         $qb
             ->join('s.showingFormats', 'sf')
             ->andWhere('sf.system IN (:systems)')
             ->setParameter('systems', $systems);
-        
+
         return $qb->getQuery()->getResult();
     }
-    
+
     /**
      * find screening for ScreenX
      *
@@ -116,26 +116,26 @@ class ScheduleRepository extends EntityRepository
             ->join('s.showingFormats', 'sf')
             ->andWhere('sf.system = :system')
             ->setParameter('system', ShowingFormat::SYSTEM_SCREENX);
-        
+
         return $qb->getQuery()->getResult();
     }
-    
+
     /**
-     * find screening for 4DX with ScreenX
+     * find screening for 4DX Screen
      *
      * @return Schedule[]
      */
-    public function findScreeningFor4dxWithScreenX()
+    public function findScreeningFor4dxScreen()
     {
         $qb = $this->getScreeningQuery();
         $qb
             ->join('s.showingFormats', 'sf')
             ->andWhere('sf.system = :system')
-            ->setParameter('system', ShowingFormat::SYSTEM_4DX_WITH_SCREENX);
-        
+            ->setParameter('system', ShowingFormat::SYSTEM_4DX_SCREEN);
+
         return $qb->getQuery()->getResult();
     }
-    
+
     /**
      * return soon query
      *
@@ -144,14 +144,14 @@ class ScheduleRepository extends EntityRepository
     protected function getSoonQuery()
     {
         $qb = $this->getActiveQuery();
-        
+
         $qb
             ->andWhere('s.startDate > CURRENT_DATE()')
             ->orderBy('s.startDate', 'ASC');
-        
+
         return $qb;
     }
-    
+
     /**
      * find soon
      *
@@ -160,10 +160,10 @@ class ScheduleRepository extends EntityRepository
     public function findSoon()
     {
         $qb = $this->getSoonQuery();
-        
+
         return $qb->getQuery()->getResult();
     }
-    
+
     /**
      * find soon for IMAX
      *
@@ -175,16 +175,16 @@ class ScheduleRepository extends EntityRepository
             ShowingFormat::SYSTEM_IMAX,
             ShowingFormat::SYSTEM_IMAX3D,
         ];
-        
+
         $qb = $this->getSoonQuery();
         $qb
             ->join('s.showingFormats', 'sf')
             ->andWhere('sf.system IN (:systems)')
             ->setParameter('systems', $systems);
-        
+
         return $qb->getQuery()->getResult();
     }
-    
+
     /**
      * find soon for 4DX
      *
@@ -196,16 +196,16 @@ class ScheduleRepository extends EntityRepository
             ShowingFormat::SYSTEM_4DX,
             ShowingFormat::SYSTEM_4DX3D,
         ];
-        
+
         $qb = $this->getSoonQuery();
         $qb
             ->join('s.showingFormats', 'sf')
             ->andWhere('sf.system IN (:systems)')
             ->setParameter('systems', $systems);
-        
+
         return $qb->getQuery()->getResult();
     }
-    
+
     /**
      * find soon for ScreenX
      *
@@ -218,26 +218,26 @@ class ScheduleRepository extends EntityRepository
             ->join('s.showingFormats', 'sf')
             ->andWhere('sf.system = :system')
             ->setParameter('system', ShowingFormat::SYSTEM_SCREENX);
-        
+
         return $qb->getQuery()->getResult();
     }
-    
+
     /**
-     * find soon for 4DX with ScreenX
+     * find soon for 4DX Screen
      *
      * @return Schedule[]
      */
-    public function findSoonFor4dxWithScreenX()
+    public function findSoonFor4dxScreen()
     {
         $qb = $this->getSoonQuery();
         $qb
             ->join('s.showingFormats', 'sf')
             ->andWhere('sf.system = :system')
-            ->setParameter('system', ShowingFormat::SYSTEM_4DX_WITH_SCREENX);
-        
+            ->setParameter('system', ShowingFormat::SYSTEM_4DX_SCREEN);
+
         return $qb->getQuery()->getResult();
     }
-    
+
     /**
      * find one by id
      *
@@ -250,7 +250,7 @@ class ScheduleRepository extends EntityRepository
         $qb
             ->andWhere('s.id = :id')
             ->setParameter('id', $id);
-            
+
         return $qb->getQuery()->getOneOrNullResult();
     }
 }

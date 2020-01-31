@@ -26,6 +26,7 @@ use Cinemasunshine\Portal\Responder\AbstractResponder;
  * @property-read \Slim\Router $router
  * @property-read array $settings
  * @property-read \Cinemasunshine\Portal\Session\SessionManager $sm
+ * @property-read \Cinemasunshine\Portal\User\Manager $um
  * @property-read \Slim\Views\Twig $view
  */
 abstract class AbstractController

@@ -11,7 +11,7 @@ namespace Cinemasunshine\Portal\Authorization\Grant;
 
 use GuzzleHttp\Client as HttpClient;
 
-use Cinemasunshine\Portal\Authorization\Token\AccessToken;
+use Cinemasunshine\Portal\Authorization\Token\AuthorizationCodeToken as Token;
 
 /**
  * Authorization Code Grant class
@@ -51,24 +51,6 @@ class AuthorizationCode extends AbstractGrant
 
         $baseUri = 'https://' . $this->host;
         $this->httpClient = $this->createHttpClient($baseUri);
-    }
-
-    /**
-     * create HTTP client
-     *
-     * @param string $baseUri
-     * @return HttpClient
-     */
-    protected function createHttpClient(string $baseUri): HttpClient
-    {
-        $config = [
-            'base_uri' => $baseUri,
-            'timeout' => 5, // ひとまず5秒
-            'connect_timeout' => 5, // ひとまず5秒
-            'http_errors' => true,
-        ];
-
-        return new HttpClient($config);
     }
 
     /**
@@ -145,14 +127,14 @@ class AuthorizationCode extends AbstractGrant
     }
 
     /**
-     * Request access token
+     * Request token
      *
      * @param string $code
      * @param string $redirectUri
      * @param string $codeVerifie
-     * @return AccessToken
+     * @return Token
      */
-    public function requestAccessToken(string $code, string $redirectUri, string $codeVerifie): AccessToken
+    public function requestToken(string $code, string $redirectUri, string $codeVerifie): Token
     {
         $endpoint = '/token';
         $headers = $this->getRequestHeaders($this->clientId, $this->clientSecret);
@@ -170,28 +152,8 @@ class AuthorizationCode extends AbstractGrant
         ]);
 
         $rawContents = $response->getBody()->getContents();
-        $token = new AccessToken(json_decode($rawContents, true));
 
-        return $token;
-    }
-
-    /**
-     * return request headers
-     *
-     * @param string $clientId
-     * @param string $clientSecret
-     * @return array
-     */
-    protected function getRequestHeaders(string $clientId, string $clientSecret): array
-    {
-        $encodedCredentials = base64_encode(sprintf('%s:%s', $clientId, $clientSecret));
-
-        $headers = [
-            'Authorization' => 'Basic ' . $encodedCredentials,
-            'Content-Type' => 'application/x-www-form-urlencoded',
-        ];
-
-        return $headers;
+        return Token::create(json_decode($rawContents, true));
     }
 
     /**
