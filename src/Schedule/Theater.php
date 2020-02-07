@@ -69,6 +69,7 @@ class Theater extends Base
         $baseUrl = Service::getBaseUrl($environment);
         $this->client   = new HttpClient([
             'base_uri' => $baseUrl,
+            'timeout'  => 10,
         ]);
     }
 
