@@ -50,6 +50,9 @@
 
 }
 /*--gdcs飲食--*/
+.ig-link{
+    display: block;
+}
 .ig_logo{
     width: 16px;
     display: inline-block;
@@ -85,6 +88,9 @@
         width: 50%;
     }
     /*--gdcs飲食--*/
+    .ig-link{
+        display: block;
+    }
     .ig_logo{
         width: 16px;
         display: inline-block;
