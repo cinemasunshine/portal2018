@@ -142,6 +142,17 @@ function filterPerformancebyMovie(performances, movie) {
 }
 
 /**
+ * 表示可能パフォーマンス判定
+ */
+function hasDisplayPerformance(performances, movie) {
+    var target = filterPerformancebyMovie(performances, movie);
+    var filterResult = target.filter(function(p) {
+        return p.isDisplay();
+    });
+    return filterResult.length > 0;
+}
+
+/**
  * 劇場一覧取得
  */
 function getTheaterTable() {
@@ -169,7 +180,8 @@ Vue.component('purchase-performance-film', {
     data: function () {
         return {
             performances: [],
-            filterPerformancebyMovie: filterPerformancebyMovie
+            filterPerformancebyMovie: filterPerformancebyMovie,
+            hasDisplayPerformance: hasDisplayPerformance
         };
     },
     created: function () {
@@ -177,14 +189,14 @@ Vue.component('purchase-performance-film', {
     },
     template: '<div>\
     <div class="schedule-sort-film d-none d-md-block">\
-        <div v-for="movie of schedule.movie" class="border mb-3">\
+        <div v-for="movie of schedule.movie" v-bind:class="{ \'d-none\': !hasDisplayPerformance(performances, movie) }" class="border mb-3">\
             <div class="border-bottom bg-light-gray p-3">\
-                <div class="mb-2"><strong>{{ movie.name }}</strong></div>\
+                <div class="font-weight-bold mb-2" v-html="movie.name"></div>\
                 <div class="small text-dark-gray mb-2 d-flex align-items-center">\
                     <i class="mr-2 time-icon"></i>\
                     <span class="mr-2">{{ movie.running_time }}分</span>\
                 </div>\
-                <div v-if="movie.comment" class="small text-dark-gray line-height-1">{{ movie.comment }}</div>\
+                <div v-if="movie.comment || movie.ename" class="small text-dark-gray line-height-1"><span v-if="movie.comment" v-html="movie.comment"></span><span v-if="movie.comment && movie.ename">&nbsp;/&nbsp;</span><span v-if="movie.ename" v-html="movie.ename"></span></div>\
             </div>\
             <ul class="performances d-flex flex-wrap mb-0 px-3 pt-3 pb-0 text-center">\
                 <li v-for="performance of filterPerformancebyMovie(performances, movie)" v-if="performance.isDisplay()" class="mb-3">\
@@ -211,7 +223,7 @@ Vue.component('purchase-performance-film', {
         </div>\
     </div>\
     <div class="schedule-sort-film-sp d-md-none">\
-        <div v-for="movie of schedule.movie" class="rounded mb-3 shadow-01">\
+        <div v-for="movie of schedule.movie" v-bind:class="{ \'d-none\': !hasDisplayPerformance(performances, movie) }" class="rounded mb-3 shadow-01">\
             <div class="border-bottom">\
                 <a class="bg-light-gray p-3 pr-5 d-block" href="#" data-toggle="collapse" v-bind:data-target="\'#collapse\' + movie.movie_code" aria-expanded="true">\
                     <div class="mb-2"><strong>{{ movie.name }}</strong></div>\
@@ -397,6 +409,15 @@ function scheduleRender() {
                     _this.currentDate = searchDate;
                     // 選択したスケジュールを抽出　上映終了は除外
                     _this.schedule = _this.schedules.find(function (s) { return (s.date === _this.currentDate); });
+                    // 作品順へソート
+                    _this.schedule.movie.sort(function (a, b) {
+                        if (a.sort_no < b.sort_no) {
+                            return -1;
+                        }
+                        else {
+                            return 1;
+                        }
+                    });
                 }, 0);
             },
             /**
