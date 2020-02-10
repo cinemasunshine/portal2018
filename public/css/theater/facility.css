@@ -6,11 +6,11 @@
 }
 
 .special-facility a {
-    text-decoration: underline; 
+    text-decoration: underline;
     color: rgb(3, 80, 162);
 }
 .facility-other a {
-    text-decoration: underline; 
+    text-decoration: underline;
     color: rgb(3, 80, 162);
 }
 .facility-seat ul li{
@@ -20,7 +20,7 @@
 }
 .facility-seat ul li .faci_sheat_pic{
     width: 25%;
-    margin-right:5%; 
+    margin-right:5%;
 }
 .facility-seat ul li .faci_sheat_txt strong{
     margin: 10px 0px;
@@ -40,7 +40,7 @@
 }
 .facility-other ul li .faci_oth_pic{
     width: 45%;
-    margin-right:5%; 
+    margin-right:5%;
 }
 .facility-other ul li .faci_oth_txt{
     width: 45%;
@@ -49,11 +49,18 @@
     width: 100%;
 
 }
-
+/*--gdcs飲食--*/
+.ig_logo{
+    width: 16px;
+    display: inline-block;
+}
+.ig_logo img{
+    width: 100%;
+}
 @media (max-width: 767.98px) {
     .special-facility img {
         width: 100%;
-    } 
+    }
     .facility-seat ul li .faci_sheat_txt strong{
         margin: 5px 0px;
         display: inline-block;
@@ -68,7 +75,7 @@
     }
     .facility-other ul li .faci_oth_pic{
         width: 45%;
-        margin-right:3%; 
+        margin-right:3%;
     }
     .facility-other ul li{
         width: 100%;
@@ -76,5 +83,13 @@
     }
     .facility-other ul li .faci_oth_txt{
         width: 50%;
+    }
+    /*--gdcs飲食--*/
+    .ig_logo{
+        width: 16px;
+        display: inline-block;
+    }
+    .ig_logo img{
+        width: 100%;
     }
 }

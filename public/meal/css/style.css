@@ -11,6 +11,13 @@
         color: #494949;
         font-weight: 100;
     }
+
+    .mb-10{margin-bottom: 10px;}
+    .mb-20{margin-bottom: 20px;}
+    .mb-30{margin-bottom: 30px;}
+    .mt-10{margin-top: 10px;}
+    .mt-20{margin-top: 20px;}
+    .mt-30{margin-top: 30px;}
     .gold{
         color: #a57a44;
     }
@@ -96,6 +103,7 @@
         display: block;
         font-size: 11px;
     }
+    .meal_menu img{width:100%;}
     /*--Flex制御--*/
     @media (min-width: 768px) {
         .pc_br{
@@ -125,10 +133,10 @@
         }
         /*--title--*/
         .content_wrap h3{
-            margin-right:20px; 
+            margin-right:20px;
         }
         .shop_name{
-            margin: 20px 0; 
+            margin: 20px 0;
         }
         #shop_clapper .shop_name p{
             display: inline-block;
@@ -156,7 +164,7 @@
             background-image: url(../img/common/panorama.jpg);
             background-size: cover;
             background-position: center;
-            background-position-y: 60%;
+            background-position-y: 36%;
             width: 100%;
             height: 300px;
         }
@@ -238,10 +246,10 @@
         }
         /*--title--*/
         .content_wrap h3{
-            margin-right:20px; 
+            margin-right:20px;
         }
         .shop_name{
-            margin: 20px 0; 
+            margin: 20px 0;
             display: inline-block;
         }
         #shop_clapper .shop_name p{
