@@ -284,7 +284,8 @@ function scheduleRender() {
             schedules: [],
             schedule: undefined,
             moment: moment,
-            scheduleSwiper: undefined
+            scheduleSwiper: undefined,
+            isPreSale: false
         },
 
         created: function () {
@@ -474,7 +475,7 @@ function scheduleRender() {
                 this.currentDate = value;
                 sessionStorage.setItem('selected', JSON.stringify({ date: this.currentDate }));
                 this.createSchedule();
-            },
+            }
         }
     });
 }

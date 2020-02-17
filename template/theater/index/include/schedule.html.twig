@@ -10,7 +10,7 @@
         <p class="my-2 text-red font-weight-bold">【ご購入時のご注意】<br>
             ご予約完了後(クレジット決済後)のチケットの払い戻し、及び、上映回、作品、座席の変更は一切できません。<br>
             また、お電話でのお座席のご予約はお受けできません。ご了承ください。</p>
-        <div class="small text-red font-weight-bold text-right pre-sales-text d-none">先行販売はカレンダーをスライドしてください >></div>
+        <div v-if="isPreSale" class="small text-red font-weight-bold text-right pre-sales-text">先行販売はカレンダーをスライドしてください >></div>
     </div>
 
     <div class="schedule-scroll mb-4">
@@ -42,8 +42,7 @@
         <div class="selected-date-scroll">
             <div class="selected-date d-md-flex align-items-center">
                 <div class="width mx-auto py-3 px-md-3">
-                    <div class="pre-sales d-none px-2 py-1 mb-2 mb-md-0 mr-md-3 border border-red text-red small">先行販売
-                    </div>
+                    <div v-if="isPreSale" class="pre-sales d-inline-block px-2 py-1 mb-2 mb-md-0 mr-md-3 border border-red text-red small">先行販売</div>
                     <div class="font-weight-bold line-height-1"><span v-if="currentDate" class="mr-2 date">{{ '{{ moment(currentDate).format(\'YYYY年MM月DD日(ddd)\') }}' }}</span>上映スケジュール</div>
                 </div>
             </div>
