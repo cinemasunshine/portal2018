@@ -147,7 +147,7 @@ function filterPerformancebyMovie(performances, movie) {
  */
 function hasDisplayPerformance(performances, movie) {
     var target = filterPerformancebyMovie(performances, movie);
-    var filterResult = target.filter(function(p) {
+    var filterResult = target.filter(function (p) {
         return p.isDisplay();
     });
     return filterResult.length > 0;
@@ -226,7 +226,7 @@ Vue.component('purchase-performance-film', {
     <div class="schedule-sort-film-sp d-md-none">\
         <div v-for="movie of schedule.movie" v-bind:class="{ \'d-none\': !hasDisplayPerformance(performances, movie) }" class="rounded mb-3 shadow-01">\
             <div class="border-bottom">\
-                <a class="bg-light-gray p-3 pr-5 d-block" href="#" data-toggle="collapse" v-bind:data-target="\'#collapse\' + movie.movie_code" aria-expanded="true">\
+                <a class="bg-light-gray p-3 pr-5 d-block" href="#" data-toggle="collapse" v-bind:data-target="\'#collapse\' + movie.movie_code" aria-expanded="false">\
                     <div class="mb-2"><strong>{{ movie.name }}</strong></div>\
                     <div class="small text-dark-gray d-flex align-items-center">\
                         <i class="mr-2 time-icon"></i>\
@@ -234,7 +234,7 @@ Vue.component('purchase-performance-film', {
                     </div>\
                 </a>\
             </div>\
-            <div class="collapse show" v-bind:id="\'collapse\' + movie.movie_code" style="">\
+            <div class="collapse" v-bind:id="\'collapse\' + movie.movie_code" style="">\
                 <div v-if="movie.comment" class="small text-dark-gray line-height-1 p-2 border-bottom">{{ movie.comment }}</div>\
                 <ul class="performances mb-0 p-2">\
                     <li v-for="performance of filterPerformancebyMovie(performances, movie)" v-if="performance.isDisplay()" \
@@ -420,7 +420,7 @@ function scheduleRender() {
                             return 1;
                         }
                     });
-                }, 0);
+                }, 500);
             },
             /**
              * 定期的にスケジュール更新
@@ -444,7 +444,8 @@ function scheduleRender() {
             changeDate: function (event, value) {
                 event.preventDefault();
                 this.currentDate = value;
-                sessionStorage.setItem('selected', JSON.stringify({ date: this.currentDate }));
+                var json = JSON.stringify({ date: this.currentDate });
+                sessionStorage.setItem('selected', json);
                 this.createSchedule();
             }
         }
