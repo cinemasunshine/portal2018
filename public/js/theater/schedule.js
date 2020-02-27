@@ -94,8 +94,9 @@ var Performance = (function () {
         var theatreTableFindResult = theatreTable.find(function (t) { return (theaterName === t.name); });
         var plefix = (APP_ENV === 'production' || APP_ENV === 'prod') ? '0' : '1';
         var id = plefix + theatreTableFindResult.code + this.movie.movie_short_code + this.movie.movie_branch_code + this.date + this.screen.screen_code + this.time.start_time;
-        var url = MP_TICKET_ENTRANCE + '/purchase/index.html?id=';
-        return url + id;
+        var member = (isSignIn()) ? '1' : '0';
+        var url = MP_TICKET_ENTRANCE + '/purchase/index.html';
+        return url + '?id=' + id + '&member=' + member;
     };
     return Performance;
 }());
@@ -436,36 +437,6 @@ function scheduleRender() {
                         console.error(error);
                     });
                 }, time);
-            },
-
-            /**
-             * パフォーマンス選択
-             */
-            selectPerformance: function (params) {
-                var event = params.event;
-                var performance = params.performance;
-                event.preventDefault();
-                // 残席なしなら遷移しない
-                if (!performance.isSalse()) {
-                    return;
-                };
-                var performances = schedule2Performance(this.schedule, false);
-                var filterResult = performances.filter(function (p) {
-                    return (p.movie.movie_short_code === performance.movie.movie_short_code
-                        && p.movie.movie_branch_code === performance.movie.movie_branch_code
-                        && p.isSalse());
-                });
-                var _this = this;
-                var data = filterResult.map(function (p) {
-                    return {
-                        id: _this.theaterCode + p.createId(),
-                        startTime: p.getTime('start')
-                    };
-                });
-                sessionStorage.setItem('performances', JSON.stringify(data));
-                var id = this.theaterCode + performance.createId();
-                var entrance = $('input[name=ENTRANCE_SERVER_URL]').val();
-                location.href = entrance + '/fixed/index.html?id=' + id;
             },
             /**
              * 日付変更

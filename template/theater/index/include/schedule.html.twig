@@ -48,7 +48,7 @@
             </div>
         </div>
         <div v-if="error" class="error p-3 border bg-light-gray text-dark-gray">{{ '{{ error }}' }}</div>
-        <purchase-performance-film v-if="!error && schedule" v-bind:schedule="schedule" v-on:select="selectPerformance"></purchase-performance-film>
+        <purchase-performance-film v-if="!error && schedule" v-bind:schedule="schedule"></purchase-performance-film>
     </div>
 </div>
 
