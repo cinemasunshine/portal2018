@@ -1,4 +1,4 @@
-<div id="schedule" class="schedule mb-5">
+<div id="schedule" class="schedule mb-5 d-none">
     <div class="width mx-auto px-3 mb-3">
         <div class="schedule-title">
             <h3 class="d-inline-block mb-4 px-3 border-left border-right border-blue text-blue">
@@ -10,15 +10,28 @@
         <p class="my-2 text-red font-weight-bold">【ご購入時のご注意】<br>
             ご予約完了後(クレジット決済後)のチケットの払い戻し、及び、上映回、作品、座席の変更は一切できません。<br>
             また、お電話でのお座席のご予約はお受けできません。ご了承ください。</p>
-        <div class="small text-red font-weight-bold text-right pre-sales-text d-none">先行販売はカレンダーをスライドしてください >></div>
+        <div v-if="isPreSale" class="small text-red font-weight-bold text-right pre-sales-text">先行販売はカレンダーをスライドしてください >></div>
     </div>
 
     <div class="schedule-scroll mb-4">
         <div class="schedule-slider bg-super-light-gray border-top border-bottom">
-            <div class="swiper-container mx-auto">
+            <div class="swiper-container mx-auto swiper-container-horizontal">
                 <div class="swiper-wrapper">
-                    {# 日付一覧 #}
+                    <div v-for="date in dateList" class="swiper-slide text-center"
+                    v-bind:class="{ 'swiper-slide-active': date.value === currentDate }" style="width: 150px;"> 
+                        <a href="#" class="d-block line-height-1 pt-3 pb-2"
+                        v-bind:class="{ 'active border-light-blue bg-blue text-white': date.value === currentDate,  'text-dark-gray': date.value !== currentDate}"
+                        v-on:click="changeDate($event, date.value)">
+                            <div class="mb-2"> 
+                                <strong class="large mr-1 gdcs_eng_font_b">{{ '{{ date.display.month }}' }} / {{ '{{ date.display.day }}' }}</strong>
+                                <strong class="small">({{ '{{ date.display.week }}' }})</strong> 
+                            </div>
+                            <div class="x-small mb-1">{{ '{{ (date.serviceDay) ? date.serviceDay : \'&nbsp;\' }}' }}</div>
+                            <div class="x-small pre-sales">{{ '{{ (date.preSale) ? \'先行販売\' : \'&nbsp;\' }}' }}</div>
+                        </a> 
+                    </div>
                 </div>
+                <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
             </div>
         </div>
     </div>
@@ -29,13 +42,16 @@
         <div class="selected-date-scroll">
             <div class="selected-date d-md-flex align-items-center">
                 <div class="width mx-auto py-3 px-md-3">
-                    <div class="pre-sales d-none px-2 py-1 mb-2 mb-md-0 mr-md-3 border border-red text-red small">先行販売</div>
-                    <div class="font-weight-bold line-height-1"><span class="mr-2 date"></span>上映スケジュール</div>
+                    <div v-if="isPreSale" class="pre-sales d-inline-block px-2 py-1 mb-2 mb-md-0 mr-md-3 border border-red text-red small">先行販売</div>
+                    <div class="font-weight-bold line-height-1"><span v-if="currentDate" class="mr-2 date">{{ '{{ moment(currentDate).format(\'YYYY年MM月DD日(ddd)\') }}' }}</span>上映スケジュール</div>
                 </div>
             </div>
         </div>
-        <div class="error p-3 border bg-light-gray text-dark-gray"></div>
-        <div class="schedule-sort-film d-none d-md-block"></div>
-        <div class="schedule-sort-film-sp d-md-none"></div>
+        <div v-if="error" class="error p-3 border bg-light-gray text-dark-gray">{{ '{{ error }}' }}</div>
+        <purchase-performance-film v-if="!error && schedule" v-bind:schedule="schedule"></purchase-performance-film>
     </div>
 </div>
+
+<input type="hidden" name="SCHEDULE_API" value="{{ schedule_api() }}">
+<input type="hidden" name="MP_TICKET_ENTRANCE" value="{{ mp_ticket_entrance() }}">
+<input type="hidden" name="APP_ENV" value="{{ app_env() }}">
