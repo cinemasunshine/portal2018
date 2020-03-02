@@ -24,8 +24,12 @@
 {% endblock %}
 
 {% block javascript %}
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+<script>window.Vue || document.write('<script src="\/js\/lib\/vue@2.6.11.js"><\/script>');</script>
 <script src="/js/api.js"></script>
-<script src="/js/theater/top.js?v=20190726"></script>
+
+<script src="/js/theater/schedule.js"></script>
+<script src="/js/theater/top.js"></script>
 {% endblock %}
 
 {% block navbar %}

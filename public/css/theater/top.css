@@ -252,7 +252,7 @@
     }
     .schedule-sort-film-sp a {
         background-repeat: no-repeat;
-        background-size: 15px;
+        background-size: 15px 15px;
         background-position: right 10px center;
     }
     .schedule-sort-film-sp a[aria-expanded=false] {
