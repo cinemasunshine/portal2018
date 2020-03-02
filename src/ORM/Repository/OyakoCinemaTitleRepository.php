@@ -46,7 +46,7 @@ class OyakoCinemaTitleRepository extends EntityRepository
          */
         $qb
             ->join('oct.oyakoCinemaSchedules', 'ocs')
-            ->where('ocs.date >= CURRENT_DATE()')
+            ->andWhere('ocs.date >= CURRENT_DATE()')
             ->orderBy('ocs.date', 'ASC');
 
         return $qb->getQuery()->getResult();
