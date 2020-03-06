@@ -9,7 +9,9 @@
         <p class="mb-0">カレンダーの日時を選択してください。</p>
         <p class="my-2 text-red font-weight-bold">【ご購入時のご注意】<br>
             ご予約完了後(クレジット決済後)のチケットの払い戻し、及び、上映回、作品、座席の変更は一切できません。<br>
-            また、お電話でのお座席のご予約はお受けできません。ご了承ください。</p>
+            また、お電話でのお座席のご予約はお受けできません。ご了承ください。<br>
+            ※新型コロナウィルスの影響による急な営業時間変更、上映作品の公開延期等に対応するため、<br>
+            現在、座席指定券の発売開始日時を上映日前日の21時00分からとさせていただいております。</p>
         <div v-if="isPreSale" class="small text-red font-weight-bold text-right pre-sales-text">先行販売はカレンダーをスライドしてください >></div>
     </div>
 
@@ -18,17 +20,17 @@
             <div class="swiper-container mx-auto swiper-container-horizontal">
                 <div class="swiper-wrapper">
                     <div v-for="date in dateList" class="swiper-slide text-center"
-                    v-bind:class="{ 'swiper-slide-active': date.value === currentDate }" style="width: 150px;"> 
+                    v-bind:class="{ 'swiper-slide-active': date.value === currentDate }" style="width: 150px;">
                         <a href="#" class="d-block line-height-1 pt-3 pb-2"
                         v-bind:class="{ 'active border-light-blue bg-blue text-white': date.value === currentDate,  'text-dark-gray': date.value !== currentDate}"
                         v-on:click="changeDate($event, date.value)">
-                            <div class="mb-2"> 
+                            <div class="mb-2">
                                 <strong class="large mr-1 gdcs_eng_font_b">{{ '{{ date.display.month }}' }} / {{ '{{ date.display.day }}' }}</strong>
-                                <strong class="small">({{ '{{ date.display.week }}' }})</strong> 
+                                <strong class="small">({{ '{{ date.display.week }}' }})</strong>
                             </div>
                             <div class="x-small mb-1">{{ '{{ (date.serviceDay) ? date.serviceDay : \'&nbsp;\' }}' }}</div>
                             <div class="x-small pre-sales">{{ '{{ (date.preSale) ? \'先行販売\' : \'&nbsp;\' }}' }}</div>
-                        </a> 
+                        </a>
                     </div>
                 </div>
                 <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
