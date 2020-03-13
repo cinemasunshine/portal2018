@@ -57,14 +57,14 @@ var Performance = (function () {
         return moment(startDate).add(10, 'minutes') < moment();
     };
     /**
-     * 窓口判定（上映開始60分前から上映開始0分後）
+     * 窓口判定（上映開始60分前から上映開始10分後）
      */
     Performance.prototype.isWindow = function () {
         var startDate = moment(this.date + " " + this.time.start_time, 'YYYYMMDD HHmm');
         var now = moment();
         return (this.time.seat_count.cnt_reserve_free > 0
             && moment(startDate).add(-60, 'minutes') < now
-            && moment(startDate) > now);
+            && moment(startDate).add(10, 'minutes') > now);
     };
     /**
      * 上映時間取得
