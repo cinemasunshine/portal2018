@@ -67,7 +67,11 @@ $container['view'] = function ($container) {
     $view->addExtension(new \Twig\Extension\DebugExtension());
     $view->addExtension(new \Twig\Extensions\TextExtension());
 
-    $view->addExtension(new \Cinemasunshine\Portal\Twig\Extension\AzureStorageExtension($container));
+    $view->addExtension(new \Cinemasunshine\Portal\Twig\Extension\AzureStorageExtension(
+        $container->get('bc'),
+        $container->get('settings')['storage']['public_endpoint']
+    ));
+
     $view->addExtension(new \Cinemasunshine\Portal\Twig\Extension\CommonExtension());
 
     $view->addExtension(new \Cinemasunshine\Portal\Twig\Extension\AdvanceTicketExtension());

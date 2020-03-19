@@ -7,29 +7,32 @@
 
 namespace Cinemasunshine\Portal\Twig\Extension;
 
+use Cinemasunshine\Portal\ORM\Entity\File;
+use MicrosoftAzure\Storage\Blob\BlobRestProxy;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
-
-use Psr\Container\ContainerInterface;
-
-use Cinemasunshine\Portal\ORM\Entity\File;
 
 /**
  * Azure Storage twig extension class
  */
 class AzureStorageExtension extends AbstractExtension
 {
-    /** @var ContainerInterface container */
-    protected $container;
+    /** @var BlobRestProxy $client */
+    protected $client;
+
+    /** @var string|null $publicEndpoint */
+    protected $publicEndpoint;
 
     /**
      * construct
      *
-     * @param ContainerInterface $container
+     * @param BlobRestProxy $client
+     * @param string|null $publicEndpoint
      */
-    public function __construct(ContainerInterface $container)
+    public function __construct(BlobRestProxy $client, $publicEndpoint = null)
     {
-        $this->container = $container;
+        $this->client = $client;
+        $this->publicEndpoint = $publicEndpoint;
     }
 
     /**
@@ -56,16 +59,11 @@ class AzureStorageExtension extends AbstractExtension
      */
     public function blobUrl(string $container, string $blob)
     {
-        $settings = $this->container->get('settings')['storage'];
-        $protocol = $settings['secure'] ? 'https' : 'http';
+        if ($this->publicEndpoint) {
+            return sprintf('%s/%s/%s', $this->publicEndpoint, $container, $blob);
+        }
 
-        return sprintf(
-            '%s://%s.blob.core.windows.net/%s/%s',
-            $protocol,
-            $settings['account']['name'],
-            $container,
-            $blob
-        );
+        return $this->client->getBlobUrl($container, $blob);
     }
 
     /**
