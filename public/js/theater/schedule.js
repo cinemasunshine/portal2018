@@ -215,9 +215,10 @@ Vue.component('purchase-performance-film', {
                             <span class="mr-2" v-bind:class="performance.getAvailability().symbolClassName">{{ performance.getAvailability().symbolText }}</span>\
                             <span>{{ performance.getAvailability().text }}</span>\
                         </div>\
-                        <div v-if="!performance.isSalse() && performance.isBeforePeriod()" class="d-flex align-items-center justify-content-center">販売期間外</div>\
-                        <div v-if="!performance.isSalse() && performance.isAfterPeriod()" class="d-flex align-items-center justify-content-center">販売期間外</div>\
-                        <div v-if="!performance.isSalse() && !performance.isBeforePeriod() && !performance.isAfterPeriod() && performance.isWindow()" class="d-flex align-items-center justify-content-center">窓口</div>\
+                        <div v-if="!performance.isSalse() && performance.time.seat_count.cnt_reserve_free > 0 && performance.isBeforePeriod()" class="d-flex align-items-center justify-content-center">販売期間外</div>\
+                        <div v-if="!performance.isSalse() && performance.time.seat_count.cnt_reserve_free > 0 && performance.isAfterPeriod()" class="d-flex align-items-center justify-content-center">販売期間外</div>\
+                        <div v-if="!performance.isSalse() && performance.time.seat_count.cnt_reserve_free > 0 && !performance.isBeforePeriod() && !performance.isAfterPeriod() && performance.isWindow()" class="d-flex align-items-center justify-content-center">窓口</div>\
+                        <div v-if="!performance.isSalse() && performance.time.seat_count.cnt_reserve_free === 0" class="d-flex align-items-center justify-content-center">満席</div>\
                     </a>\
                 </li>\
             </ul>\
@@ -254,9 +255,10 @@ Vue.component('purchase-performance-film', {
                                 <span class="mr-2" v-bind:class="performance.getAvailability().symbolClassName">{{ performance.getAvailability().symbolText }}</span>\
                                 <span>{{ performance.getAvailability().text }}</span>\
                             </a>\
-                            <span v-if="!performance.isSalse() && performance.isBeforePeriod()" class="d-block">販売期間外</span>\
-                            <span v-if="!performance.isSalse() && performance.isAfterPeriod()" class="d-block">販売期間外</span>\
-                            <span v-if="!performance.isSalse() && !performance.isBeforePeriod() && !performance.isAfterPeriod() && performance.isWindow()" class="d-block">窓口</span>\
+                            <span v-if="!performance.isSalse() && performance.time.seat_count.cnt_reserve_free > 0 && performance.isBeforePeriod()" class="d-block">販売期間外</span>\
+                            <span v-if="!performance.isSalse() && performance.time.seat_count.cnt_reserve_free > 0 && performance.isAfterPeriod()" class="d-block">販売期間外</span>\
+                            <span v-if="!performance.isSalse() && performance.time.seat_count.cnt_reserve_free > 0 && !performance.isBeforePeriod() && !performance.isAfterPeriod() && performance.isWindow()" class="d-block">窓口</span>\
+                            <span v-if="!performance.isSalse() && performance.time.seat_count.cnt_reserve_free === 0" class="d-block">満席</span>\
                         </div>\
                     </li>\
                 </ul>\
