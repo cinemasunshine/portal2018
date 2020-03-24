@@ -84,11 +84,14 @@ Azure Web Appsのアプリケーション設定で設定する場合は **MYSQLC
 |MYSQLCONNSTR_USER|[string]|○|MySQLのユーザ名|
 |MYSQLCONNSTR_PASSWORD|[string]|○|MySQLのユーザパスワード|
 |MYSQLCONNSTR_SSL|[bool]|○|MySQLにSSL接続するか|
+|CUSTOMCONNSTR_STORAGE_SECURE|[boolean]|-|HTTPS接続するか。デフォルト: true|
 |CUSTOMCONNSTR_STORAGE_NAME|[string]|○|Azure Storage名|
 |CUSTOMCONNSTR_STORAGE_KEY|[string]|○|Azure Sotrageのアクセスキー|
+|CUSTOMCONNSTR_STORAGE_BLOB_ENDPOINT|[string]]|-|Blob エンドポイント|
+|CUSTOMCONNSTR_STORAGE_PUBLIC_ENDOPOINT|[string]|-|パブリック アクセス エンドポイント|
 |CUSTOMCONNSTR_REDIS_HOST|[string]|○|Redisのホスト名|
 |CUSTOMCONNSTR_REDIS_PORT|[int]|○|Redisのポート番号|
-|CUSTOMCONNSTR_REDIS_AUTH|[string]|ー|Redisの認証文字列|
+|CUSTOMCONNSTR_REDIS_AUTH|[string]|-|Redisの認証文字列|
 
 ### ５．Doctrine
 
