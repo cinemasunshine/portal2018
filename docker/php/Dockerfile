@@ -25,9 +25,8 @@ RUN pecl install -o -f redis \
     &&  rm -rf /tmp/pear \
     &&  docker-php-ext-enable redis
 
-# composerインストール
-RUN curl -sS https://getcomposer.org/installer | php
-RUN mv composer.phar /usr/local/bin/composer
+# https://hub.docker.com/_/composer
+COPY --from=composer /usr/bin/composer /usr/bin/composer
 
 # サーバ証明書に関する一時的な対応
 RUN git config --global http.sslverify false
