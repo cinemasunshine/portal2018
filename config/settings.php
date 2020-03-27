@@ -39,8 +39,10 @@ $getSessionSetting = function () {
     ];
 
     $savePathParams = [
-        // 別の用途ができた時は改めて考える
-        'prefix' => 'session:',
+        /**
+         * セッションに関して変更があった場合に適宜変更する。
+         */
+        'prefix' => 'session_v20200327:',
 
         /**
          * 「Azure Cache for Redis のベスト プラクティス」を参考にひとまず15秒とする
