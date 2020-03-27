@@ -49,6 +49,13 @@ $getSessionSetting = function () {
          * https://docs.microsoft.com/ja-jp/azure/azure-cache-for-redis/cache-best-practices
          */
         'timeout' => 15,
+
+        /**
+         * セッションで使用するデータベース。
+         * 他の用途では別のデータベースを使用する予定。
+         * ただしprefixの変更で対応できない場合は別のデータベースに変更する可能性もある。
+         */
+        'database' => 0,
     ];
 
     if (getenv('CUSTOMCONNSTR_REDIS_AUTH')) {
