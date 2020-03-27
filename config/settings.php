@@ -26,9 +26,9 @@ $settings['view'] = [
 /**
  * session
  *
- * Zend-Session Configのオプションとして使用。
+ * laminas-session configのオプションとして使用。
  *
- * @link https://docs.zendframework.com/zend-session/config/
+ * @link https://docs.laminas.dev/laminas-session/config/
  * @link https://github.com/phpredis/phpredis#php-session-handler
  */
 $getSessionSetting = function () {

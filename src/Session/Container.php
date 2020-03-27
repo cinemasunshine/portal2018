@@ -7,7 +7,7 @@
 
 namespace Cinemasunshine\Portal\Session;
 
-use Zend\Session\Container as Base;
+use Laminas\Session\Container as Base;
 
 /**
  * Session Container class

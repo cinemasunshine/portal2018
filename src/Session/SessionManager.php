@@ -7,10 +7,9 @@
 
 namespace Cinemasunshine\Portal\Session;
 
-use Zend\Session\Config;
-use Zend\Session\SessionManager as Base;
-
 use Cinemasunshine\Portal\Session\Container;
+use Laminas\Session\Config\SessionConfig as Config;
+use Laminas\Session\SessionManager as Base;
 
 /**
  * SessionManager class
@@ -27,7 +26,7 @@ class SessionManager extends Base
      */
     public function __construct(array $settings)
     {
-        $config = new Config\SessionConfig();
+        $config = new Config();
         $config->setOptions($settings);
 
         parent::__construct($config);
