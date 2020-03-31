@@ -26,9 +26,9 @@ $settings['view'] = [
 /**
  * session
  *
- * Zend-Session Configのオプションとして使用。
+ * laminas-session configのオプションとして使用。
  *
- * @link https://docs.zendframework.com/zend-session/config/
+ * @link https://docs.laminas.dev/laminas-session/config/
  * @link https://github.com/phpredis/phpredis#php-session-handler
  */
 $getSessionSetting = function () {
@@ -39,14 +39,23 @@ $getSessionSetting = function () {
     ];
 
     $savePathParams = [
-        // 別の用途ができた時は改めて考える
-        'prefix' => 'session:',
+        /**
+         * セッションに関して変更があった場合に適宜変更する。
+         */
+        'prefix' => 'session_v20200327:',
 
         /**
          * 「Azure Cache for Redis のベスト プラクティス」を参考にひとまず15秒とする
          * https://docs.microsoft.com/ja-jp/azure/azure-cache-for-redis/cache-best-practices
          */
         'timeout' => 15,
+
+        /**
+         * セッションで使用するデータベース。
+         * 他の用途では別のデータベースを使用する予定。
+         * ただしprefixの変更で対応できない場合は別のデータベースに変更する可能性もある。
+         */
+        'database' => 0,
     ];
 
     if (getenv('CUSTOMCONNSTR_REDIS_AUTH')) {
