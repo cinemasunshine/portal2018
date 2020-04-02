@@ -288,13 +288,15 @@ function scheduleRender() {
             schedule: undefined,
             moment: moment,
             scheduleSwiper: undefined,
-            isPreSale: false
+            isPreSale: false,
+            maintenance: { message: undefined }
         },
 
         created: function () {
             var _this = this;
             this.getSchedule().done(function (data) {
-                _this.schedules = data;
+                _this.maintenance = data.maintenance;
+                _this.schedules = data.schedule;
                 _this.createDate();
                 _this.createSchedule();
                 _this.update();
@@ -389,7 +391,7 @@ function scheduleRender() {
                 var theaterName = $('body').attr('data-theater');
                 var theatreTable = getTheaterTable();
                 var theatreTableFindResult = theatreTable.find(function (t) { return (theaterName === t.name); });
-                var url = SCHEDULE_API + '/' + theatreTableFindResult.name + '/schedule/json/schedule.json?date=' + now;
+                var url = SCHEDULE_API + '/' + theatreTableFindResult.name + '/schedule.json?date=' + now;
                 var options = {
                     dataType: 'json',
                     url: url,
@@ -428,11 +430,12 @@ function scheduleRender() {
              * 定期的にスケジュール更新
              */
             update: function () {
-                var time = 1000 * 60 * 5;
+                var time = 1000 * 60 * 10;
                 var _this = this;
                 this.timer = setInterval(function () {
                     _this.getSchedule().done(function (data) {
-                        _this.schedules = data;
+                        _this.maintenance = data.maintenance;
+                        _this.schedules = data.schedule;
                         _this.createDate();
                         _this.createSchedule();
                     }).fail(function (error) {
