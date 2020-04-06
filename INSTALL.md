@@ -59,7 +59,6 @@ Azure Web Appsのアプリケーション設定で設定する場合は **APPSET
 |名前|値|説明|
 |:--|:--|:--|
 |APPSETTING_ENV|'prod' or 'dev'|アプリケーションの実行環境|
-|APPSETTING_COA_SCHEDULE|'prod' or 'test'|（廃止予定）コアシステムズ様スケジュールの接続環境|
 |APPSETTING_SCHEDULE_ENV|'production' or 'test' or 'development'|スケジュールの接続環境|
 |APPSETTING_SCHEDULE_API_URL|[ schedule API URL ]|MPスケジュールAPIのURL|
 |APPSETTING_MP_API_HOST|[ API host name ]|APIホスト名|
