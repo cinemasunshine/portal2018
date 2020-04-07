@@ -7,22 +7,14 @@
 
 namespace Cinemasunshine\Portal\Controller\API;
 
-use Slim\Exception\NotFoundException;
-
-use Cinemasunshine\Schedule\Entity\V2\Schedules as V2Schedules;
-use Cinemasunshine\Schedule\Entity\ScheduleInterface;
-use Cinemasunshine\Schedule\Entity\SchedulesInterface;
-use Cinemasunshine\Schedule\Exception\RequestException;
-use Cinemasunshine\Schedule\Response\Http as HttpResponse;
-
-use Cinemasunshine\Portal\Schedule\Builder\V2\PreSchedule as V2PreScheduleBuilder;
-use Cinemasunshine\Portal\Schedule\Builder\V2\Schedule as V2ScheduleBuilder;
-use Cinemasunshine\Portal\Schedule\Builder\V3\PreSchedule as V3PreScheduleBuilder;
 use Cinemasunshine\Portal\Schedule\Builder\V3\Schedule as V3ScheduleBuilder;
 use Cinemasunshine\Portal\Schedule\Collection\Movie as MovieCollection;
-use Cinemasunshine\Portal\Schedule\Collection\Schedule as ScheduleCollection;
-use Cinemasunshine\Portal\Schedule\Entity\V2\Time as TimeEntity;
+use Cinemasunshine\Portal\Schedule\Entity\V3\Time as TimeEntity;
 use Cinemasunshine\Portal\Schedule\Theater as TheaterSchedule;
+use Cinemasunshine\Schedule\Entity\V3\Schedules as V3Schedules;
+use Cinemasunshine\Schedule\Entity\SchedulesInterface;
+use Cinemasunshine\Schedule\Response\Http as HttpResponse;
+use Slim\Exception\NotFoundException;
 
 /**
  * Schedule controller
@@ -66,14 +58,7 @@ class ScheduleController extends BaseController
         }
 
         $theaterSchedule = new TheaterSchedule($theaterName, $this->scheduleEnv);
-
-        if ($theaterSchedule->isVersion('3')) {
-            $builer = new V3ScheduleBuilder($this->purchaseBaseUrl);
-            $preBuiler = new V3PreScheduleBuilder($this->purchaseBaseUrl);
-        } else {
-            $builer = new V2ScheduleBuilder($this->purchaseBaseUrl);
-            $preBuiler = new V2PreScheduleBuilder($this->purchaseBaseUrl);
-        }
+        $builer = new V3ScheduleBuilder($this->purchaseBaseUrl);
 
         $scheduleResponse = $theaterSchedule->fetchSchedule($builer);
 
@@ -83,87 +68,28 @@ class ScheduleController extends BaseController
             $schedules = $scheduleResponse;
         }
 
-        $preScheduleResponse = $theaterSchedule->fetchPreSchedule($preBuiler);
-
-        if ($preScheduleResponse instanceof HttpResponse) {
-            $preSchedules = $preScheduleResponse->getContents();
-        } else {
-            $preSchedules = $preScheduleResponse;
-        }
-
         $meta = array();
         $data = array();
 
-        if ($schedules->getError() === V2Schedules::ERROR_OTHER
-            || $preSchedules->getError() === V2Schedules::ERROR_OTHER
-        ) {
+        if ($schedules->getError() === V3Schedules::ERROR_OTHER) {
             throw new \RuntimeException('schedule unknown error');
-        } elseif ($schedules->getError() === V2Schedules::ERROR_NO_CONTENT
-            && $preSchedules->getError() === V2Schedules::ERROR_NO_CONTENT
-        ) {
-            $meta['error'] = V2Schedules::ERROR_NO_CONTENT;
+        } elseif ($schedules->getError() === V3Schedules::ERROR_NO_CONTENT) {
+            $meta['error'] = V3Schedules::ERROR_NO_CONTENT;
             $this->data->set('meta', $meta);
             $this->data->set('data', $data);
 
             return;
         }
 
-        $meta['error']     = V2Schedules::ERROR_NOT;
-        $meta['attention'] = $schedules->getAttention(); // 通常、先行で同じ想定
+        $meta['error'] = V3Schedules::ERROR_NOT;
+        $meta['attention'] = $schedules->getAttention();
 
-        $allSchedules = $this->mergeSchedule($schedules, $preSchedules);
-
-        foreach ($allSchedules as $schedule) {
+        foreach ($schedules->getSchedule() as $schedule) {
             $data[] = $schedule->toArray(false);
         }
 
         $this->data->set('meta', $meta);
         $this->data->set('data', $data);
-    }
-
-    /**
-     * スケジュールをマージ
-     *
-     * 通常、先行の日付が重複する可能性があることに注意する。
-     *
-     * @param SchedulesInterface $schedules
-     * @param SchedulesInterface $preSchedules
-     * @return ScheduleCollection
-     */
-    protected function mergeSchedule(SchedulesInterface $schedules, SchedulesInterface $preSchedules)
-    {
-        $allSchedules = new ScheduleCollection();
-
-        $shallowCopy = function (ScheduleInterface $schedule) {
-            $class = get_class($schedule);
-            $newSchedule = new $class($schedule);
-            $newSchedule->setDate($schedule->getDate());
-            $newSchedule->setUsable($schedule->getUsable());
-            $newSchedule->setHasPreSale($schedule->getHasPreSale());
-
-            return $newSchedule;
-        };
-
-        foreach ($schedules->getSchedule() as $schedule) {
-            $allSchedules->add($shallowCopy($schedule));
-        }
-
-        foreach ($preSchedules->getSchedule() as $preSchedule) {
-            // 日付重複判定
-            if ($allSchedules->has($preSchedule->getDate())) {
-                $allSchedules->get($preSchedule->getDate())->setHasPreSale(true);
-
-                if ($preSchedule->getUsable()) {
-                    $allSchedules->get($preSchedule->getDate())->setUsable(true); // true優先
-                }
-            } else {
-                $allSchedules->add($shallowCopy($preSchedule));
-            }
-        }
-
-        $allSchedules->ksort();
-
-        return $allSchedules;
     }
 
     /**
@@ -187,14 +113,7 @@ class ScheduleController extends BaseController
         }
 
         $theaterSchedule = new TheaterSchedule($theaterName, $this->scheduleEnv);
-
-        if ($theaterSchedule->isVersion('3')) {
-            $builer = new V3ScheduleBuilder($this->purchaseBaseUrl);
-            $preBuiler = new V3PreScheduleBuilder($this->purchaseBaseUrl);
-        } else {
-            $builer = new V2ScheduleBuilder($this->purchaseBaseUrl);
-            $preBuiler = new V2PreScheduleBuilder($this->purchaseBaseUrl);
-        }
+        $builer = new V3ScheduleBuilder($this->purchaseBaseUrl);
 
         $scheduleResponse = $theaterSchedule->fetchSchedule($builer);
 
@@ -204,38 +123,26 @@ class ScheduleController extends BaseController
             $schedules = $scheduleResponse;
         }
 
-        $preScheduleResponse = $theaterSchedule->fetchPreSchedule($preBuiler);
-
-        if ($preScheduleResponse instanceof HttpResponse) {
-            $preSchedules = $preScheduleResponse->getContents();
-        } else {
-            $preSchedules = $preScheduleResponse;
-        }
-
         $meta = array();
         $data = array();
 
-        if ($schedules->getError() === V2Schedules::ERROR_OTHER
-            || $preSchedules->getError() === V2Schedules::ERROR_OTHER
-        ) {
+        if ($schedules->getError() === V3Schedules::ERROR_OTHER) {
             throw new \RuntimeException('schedule unknown error');
-        } elseif ($schedules->getError() === V2Schedules::ERROR_NO_CONTENT
-            && $preSchedules->getError() === V2Schedules::ERROR_NO_CONTENT
-        ) {
-            $meta['error'] = V2Schedules::ERROR_NO_CONTENT;
+        } elseif ($schedules->getError() === V3Schedules::ERROR_NO_CONTENT) {
+            $meta['error'] = V3Schedules::ERROR_NO_CONTENT;
             $this->data->set('meta', $meta);
             $this->data->set('data', $data);
 
             return;
         }
 
-        $meta['error']     = V2Schedules::ERROR_NOT;
-        $meta['attention'] = $schedules->getAttention(); // 通常、先行で同じ想定
+        $meta['error'] = V3Schedules::ERROR_NOT;
+        $meta['attention'] = $schedules->getAttention();
 
         $params = [
             'date' => $date,
         ];
-        $movieCollection = $this->findSchedule($params, $schedules, $preSchedules);
+        $movieCollection = $this->findSchedule($params, $schedules);
 
         $today = new \DateTime(date('Y-m-d'));
         $target = new \DateTime($date);
@@ -257,20 +164,13 @@ class ScheduleController extends BaseController
      *
      * @param array              $params
      * @param SchedulesInterface $schedules
-     * @param SchedulesInterface $preSchedules
      * @return MovieCollection
      */
-    public function findSchedule(
-        array $params,
-        SchedulesInterface $schedules,
-        SchedulesInterface $preSchedules
-    ) {
+    public function findSchedule(array $params, SchedulesInterface $schedules)
+    {
         $movieCollection = new MovieCollection();
 
-        // 先行販売の作品を優先するため、通常のを先にcollectionに追加する SASAKI-375
         $this->findMovie($params, $schedules, $movieCollection);
-
-        $this->findMovie($params, $preSchedules, $movieCollection);
 
         return $movieCollection;
     }
