@@ -22,14 +22,10 @@ parameters:
 			path: %currentWorkingDirectory%/src/Controller/API/ScheduleController.php
 		-
 			message: '#Call to an undefined method Cinemasunshine\\Schedule\\Entity\\ScheduleInterface::#'
-			paths:
-				- %currentWorkingDirectory%/src/Controller/API/ScheduleController.php
-				- %currentWorkingDirectory%/src/Schedule/Collection/Schedule.php
+			path: %currentWorkingDirectory%/src/Schedule/Collection/Schedule.php
 		-
 			message: '#Call to an undefined method Cinemasunshine\\Schedule\\Entity\\MovieInterface::#'
 			path: %currentWorkingDirectory%/src/Schedule/Collection/Movie.php
 		-
 			message: '#Call to an undefined method Cinemasunshine\\Schedule\\Entity\\ScreenInterface::#'
-			paths:
-				- %currentWorkingDirectory%/src/Schedule/Entity/V2/Time.php
-				- %currentWorkingDirectory%/src/Schedule/Entity/V3/Time.php
+			path: %currentWorkingDirectory%/src/Schedule/Entity/V3/Time.php
