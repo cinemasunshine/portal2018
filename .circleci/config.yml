@@ -73,7 +73,7 @@ jobs:
           name: Composer install
           command: |
             composer config http-basic.m-p.backlog.jp $BACKLOG_USER $BACKLOG_PASSWORD
-            composer install --no-dev -n --prefer-dist
+            composer install --no-dev -n --prefer-dist --optimize-autoloader
 
       - save_cache:
           key: composer-{{ checksum "composer.lock" }}
