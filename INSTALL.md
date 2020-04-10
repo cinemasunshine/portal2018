@@ -50,7 +50,7 @@ $ php composer install [--no-dev] [-o|--optimize-autoloader]
 
 ### ４．環境変数
 
-ルートディレクトリに *.env* ファイルを作成し、 *sample.env* ファイルを参考に設定します。
+ルートディレクトリに *.env* ファイルを作成し、 *.env.example* ファイルを参考に設定します。
 
 ※ パフォーマンスを考慮するならば.envファイルは作成せず、サーバ等で設定します。
 
@@ -61,6 +61,7 @@ Azure Web Appsのアプリケーション設定で設定する場合はプレフ
 |名前|値|必須|説明|
 |:--|:--|:--|:--|
 |APPSETTING_ENV|*String*|○|アプリケーションの実行環境|
+|APPSETTING_DEBUG|*Boolean*|-|デバッグ設定（デフォルト： false）|
 |APPSETTING_COA_SCHEDULE|*String*|○|（廃止予定）コアシステムズ様スケジュールの接続環境|
 |APPSETTING_SCHEDULE_ENV|*String*|○|スケジュールの接続環境（cinemasunshine/schedule）|
 |APPSETTING_SCHEDULE_API_URL|*String*|○|MPスケジュールAPIのURL|
