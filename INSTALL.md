@@ -41,57 +41,59 @@ composerコマンドで依存ライブラリをインストールします。
 [Download Composer](https://getcomposer.org/download/)
 
 ```sh
-$ php composer install [--no-dev]
+$ php composer install [--no-dev] [-o|--optimize-autoloader]
 ```
 
 ※ リポジトリにcomposer.lockがあるのでupdateコマンドではなくinstallコマンドを使います。
 
+※ 運用環境ではno-dev、optimize-autoloaderオプションを推奨。
+
 ### ４．環境変数
 
-パフォーマンスを考慮するならばサーバ等で設定します。
+ルートディレクトリに *.env* ファイルを作成し、 *sample.env* ファイルを参考に設定します。
 
-ローカル環境などパフォーマンスを気にしないのでであればルートディレクトリに *.env* ファイルを作成し、 *sample.env* ファイルを参考に設定します。
+※ パフォーマンスを考慮するならば.envファイルは作成せず、サーバ等で設定します。
 
 #### アプリケーション設定
 
-Azure Web Appsのアプリケーション設定で設定する場合は **APPSETTING_** を省略します。
-
-|名前|値|説明|
-|:--|:--|:--|
-|APPSETTING_ENV|'prod' or 'dev'|アプリケーションの実行環境|
-|APPSETTING_COA_SCHEDULE|'prod' or 'test'|（廃止予定）コアシステムズ様スケジュールの接続環境|
-|APPSETTING_SCHEDULE_ENV|'production' or 'test' or 'development'|スケジュールの接続環境|
-|APPSETTING_SCHEDULE_API_URL|[ schedule API URL ]|MPスケジュールAPIのURL|
-|APPSETTING_MP_API_HOST|[ API host name ]|APIホスト名|
-|APPSETTING_MP_AUTHORIZATION_CODE_HOST|[ Host name ]|Authorization Code Grantのホスト名|
-|APPSETTING_MP_AUTHORIZATION_CODE_CLIENT_ID|[ Client ID ]|Authorization Code GrantのクライアントID|
-|APPSETTING_MP_AUTHORIZATION_CODE_CLIENT_SECRET|[ Client secret ]|Authorization Code Grantのクライアント シークレット|
-|APPSETTING_MP_CLIENT_CREDENTIALS_HOST|[ Host name ]|Client Credentials Grantのホスト名|
-|APPSETTING_MP_CLIENT_CREDENTIALS_CLIENT_ID|[ Client ID ]|Client Credentials GrantのクライアントID|
-|APPSETTING_MP_CLIENT_CREDENTIALS_CLIENT_SECRET|[ Client secret ]|Client Credentials Grantのクライアント シークレット|
-|APPSETTING_MP_TICKET_URL|[ site URL ]|MPオンラインチケットのURL|
-|APPSETTING_MP_TICKET_ENTRANCE_URL|[ entrance site URL ]|MPオンラインチケットのエントランスURL|
-
-#### 接続文字列
-
-Azure Web Appsのアプリケーション設定で設定する場合は **MYSQLCONNSTR_** 等を省略します。
+Azure Web Appsのアプリケーション設定で設定する場合はプレフィックス（ **APPSETTING_** ）を省略します。
 
 |名前|値|必須|説明|
 |:--|:--|:--|:--|
-|MYSQLCONNSTR_HOST|[string]|○|MySQLのホスト名|
-|MYSQLCONNSTR_PORT|[int]|○|MySQLのポート番号|
-|MYSQLCONNSTR_NAME|[string]|○|MySQLのデータベース名|
-|MYSQLCONNSTR_USER|[string]|○|MySQLのユーザ名|
-|MYSQLCONNSTR_PASSWORD|[string]|○|MySQLのユーザパスワード|
-|MYSQLCONNSTR_SSL|[bool]|○|MySQLにSSL接続するか|
-|CUSTOMCONNSTR_STORAGE_SECURE|[boolean]|-|HTTPS接続するか。デフォルト: true|
-|CUSTOMCONNSTR_STORAGE_NAME|[string]|○|Azure Storage名|
-|CUSTOMCONNSTR_STORAGE_KEY|[string]|○|Azure Sotrageのアクセスキー|
-|CUSTOMCONNSTR_STORAGE_BLOB_ENDPOINT|[string]]|-|Blob エンドポイント|
-|CUSTOMCONNSTR_STORAGE_PUBLIC_ENDOPOINT|[string]|-|パブリック アクセス エンドポイント|
-|CUSTOMCONNSTR_REDIS_HOST|[string]|○|Redisのホスト名|
-|CUSTOMCONNSTR_REDIS_PORT|[int]|○|Redisのポート番号|
-|CUSTOMCONNSTR_REDIS_AUTH|[string]|-|Redisの認証文字列|
+|APPSETTING_ENV|*String*|○|アプリケーションの実行環境|
+|APPSETTING_COA_SCHEDULE|*String*|○|（廃止予定）コアシステムズ様スケジュールの接続環境|
+|APPSETTING_SCHEDULE_ENV|*String*|○|スケジュールの接続環境（cinemasunshine/schedule）|
+|APPSETTING_SCHEDULE_API_URL|*String*|○|MPスケジュールAPIのURL|
+|APPSETTING_MP_API_HOST|*String*|○|APIホスト名|
+|APPSETTING_MP_AUTHORIZATION_CODE_HOST|*String*|○|Authorization Code Grantのホスト名|
+|APPSETTING_MP_AUTHORIZATION_CODE_CLIENT_ID|*String*|○|Authorization Code GrantのクライアントID|
+|APPSETTING_MP_AUTHORIZATION_CODE_CLIENT_SECRET|*String*|○|Authorization Code Grantのクライアント シークレット|
+|APPSETTING_MP_CLIENT_CREDENTIALS_HOST|*String*|○|Client Credentials Grantのホスト名|
+|APPSETTING_MP_CLIENT_CREDENTIALS_CLIENT_ID|*String*|○|Client Credentials GrantのクライアントID|
+|APPSETTING_MP_CLIENT_CREDENTIALS_CLIENT_SECRET|*String*|○|Client Credentials Grantのクライアント シークレット|
+|APPSETTING_MP_TICKET_URL|*String*|○|MPオンラインチケットのURL|
+|APPSETTING_MP_TICKET_ENTRANCE_URL|*String*|○|MPオンラインチケットのエントランスURL|
+
+#### 接続文字列
+
+Azure Web Appsのアプリケーション設定で設定する場合はプレフィックス（ **MYSQLCONNSTR_** 等）を省略します。
+
+|名前|値|必須|説明|
+|:--|:--|:--|:--|
+|MYSQLCONNSTR_HOST|*String*|○|MySQLのホスト名|
+|MYSQLCONNSTR_PORT|*Integer*|○|MySQLのポート番号|
+|MYSQLCONNSTR_NAME|*String*|○|MySQLのデータベース名|
+|MYSQLCONNSTR_USER|*String*|○|MySQLのユーザ名|
+|MYSQLCONNSTR_PASSWORD|*String*|○|MySQLのユーザパスワード|
+|MYSQLCONNSTR_SSL|*Boolean*|○|MySQLにSSL接続するか|
+|CUSTOMCONNSTR_STORAGE_SECURE|*Boolean*|-|HTTPS接続するか。デフォルト: true|
+|CUSTOMCONNSTR_STORAGE_NAME|*String*|○|Azure Storage名|
+|CUSTOMCONNSTR_STORAGE_KEY|*String*|○|Azure Sotrageのアクセスキー|
+|CUSTOMCONNSTR_STORAGE_BLOB_ENDPOINT|*String*|-|Blob エンドポイント|
+|CUSTOMCONNSTR_STORAGE_PUBLIC_ENDOPOINT|*String*|-|パブリック アクセス エンドポイント|
+|CUSTOMCONNSTR_REDIS_HOST|*String*|○|Redisのホスト名|
+|CUSTOMCONNSTR_REDIS_PORT|*String*|○|Redisのポート番号|
+|CUSTOMCONNSTR_REDIS_AUTH|*String*|-|Redisの認証文字列|
 
 ### ５．Doctrine
 
