@@ -897,6 +897,14 @@
             text-align: left;
             line-height: 1.5;
         }
+        /*--flooramp--*/
+        #gdcs_floormap{
+            padding: 70px 20px 0px;
+        }
+        #gdcs_floormap .map-img{
+            width: 100%;
+            margin-bottom: 10%;
+        }
 
     }
     @media (max-width: 767px) {
@@ -1199,6 +1207,14 @@
             background-position-y: 35%;
             min-height: 250px;
             max-height: 250px;
+        }
+        /*--SP-flooramp--*/
+        #gdcs_floormap{
+            padding-top: 20px;
+        }
+        #gdcs_floormap .map-img{
+            width: 100%;
+            margin-bottom: 10%;
         }
         /*--SP_Link--*/
         #gdcs_link{

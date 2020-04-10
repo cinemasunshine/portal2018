@@ -60,6 +60,17 @@
 .ig_logo img{
     width: 100%;
 }
+
+/*--floormap-*/
+.floormap-btn{
+    width: 25%;
+}
+.floormap-btn a{
+    border: 1px solid;
+    height: 60px;
+    text-align: center;
+    border-radius: 5px;
+}
 @media (max-width: 767.98px) {
     .special-facility img {
         width: 100%;
@@ -97,5 +108,9 @@
     }
     .ig_logo img{
         width: 100%;
+    }
+    /*--floormap-*/
+    .floormap-btn{
+        width: 50%;
     }
 }
