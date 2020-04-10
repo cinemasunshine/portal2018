@@ -61,6 +61,7 @@ Azure Web Appsのアプリケーション設定で設定する場合はプレフ
 |名前|値|必須|説明|
 |:--|:--|:--|:--|
 |APPSETTING_ENV|*String*|○|アプリケーションの実行環境|
+|APPSETTING_DEBUG|*Boolean*|-|デバッグ設定（デフォルト： false）|
 |APPSETTING_COA_SCHEDULE|*String*|○|（廃止予定）コアシステムズ様スケジュールの接続環境|
 |APPSETTING_SCHEDULE_ENV|*String*|○|スケジュールの接続環境（cinemasunshine/schedule）|
 |APPSETTING_SCHEDULE_API_URL|*String*|○|MPスケジュールAPIのURL|
