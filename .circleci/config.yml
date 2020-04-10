@@ -106,7 +106,7 @@ jobs:
 
       - run:
           name: ZIP archive
-          command: zip -r production_app.zip . -x \*.git\* \*.circleci\* \*analysis\* \*docker\* \*report\* .gitignore composer.\* auth.json docker-compose.yml phpcs.xml phpstan.neon .editorconfig \*.env \*.user.ini public/sample.htaccess public/sample.Web.config
+          command: zip -r production_app.zip . -x \*.git\* \*.circleci\* \*analysis\* \*docker\* \*report\* .gitignore composer.\* auth.json docker-compose.yml phpcs.xml phpstan.neon .editorconfig .env\* \*.user.ini public/sample.htaccess public/sample.Web.config
 
       - store_artifacts:
           path: ./production_app.zip
