@@ -143,6 +143,7 @@ $container['logger'] = function ($container) {
  */
 $container['em'] = function ($container) {
     $settings = $container->get('settings')['doctrine'];
+    $proxyDir = APP_ROOT . '/src/ORM/Proxy';
 
     /**
      * cacheは明示的に指定する。
@@ -158,12 +159,11 @@ $container['em'] = function ($container) {
     $config = \Doctrine\ORM\Tools\Setup::createAnnotationMetadataConfiguration(
         $settings['metadata_dirs'],
         $settings['dev_mode'],
-        null,
+        $proxyDir,
         $cache,
         false
     );
 
-    $config->setProxyDir(APP_ROOT . '/src/ORM/Proxy');
     $config->setProxyNamespace('Cinemasunshine\Portal\ORM\Proxy');
 
     $logger = new \Cinemasunshine\Portal\Logger\DbalLogger($container->get('logger'));
