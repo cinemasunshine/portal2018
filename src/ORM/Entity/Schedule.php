@@ -23,7 +23,7 @@ class Schedule extends AbstractEntity
     use SavedUserTrait;
     use SoftDeleteTrait;
     use TimestampableTrait;
-    
+
     /**
      * id
      *
@@ -33,7 +33,7 @@ class Schedule extends AbstractEntity
      * @ORM\GeneratedValue
      */
     protected $id;
-    
+
     /**
      * title
      *
@@ -42,39 +42,39 @@ class Schedule extends AbstractEntity
      * @ORM\JoinColumn(name="title_id", referencedColumnName="id", nullable=false, onDelete="RESTRICT")
      */
     protected $title;
-    
+
     /**
      * start_date
      *
      * @var \DateTime
-     * @ORM\Column(type="date", nullable=false, name="start_date")
+     * @ORM\Column(type="date", name="start_date")
      */
     protected $startDate;
-    
+
     /**
      * end_date
      *
      * @var \DateTime
-     * @ORM\Column(type="date", nullable=false, name="end_date")
+     * @ORM\Column(type="date", name="end_date")
      */
     protected $endDate;
-    
+
     /**
      * public_start_dt
      *
      * @var \DateTime
-     * @ORM\Column(type="datetime", nullable=false, name="public_start_dt")
+     * @ORM\Column(type="datetime", name="public_start_dt")
      */
     protected $publicStartDt;
-    
+
     /**
      * public_end_dt
      *
      * @var \DateTime
-     * @ORM\Column(type="datetime", nullable=false, name="public_end_dt")
+     * @ORM\Column(type="datetime", name="public_end_dt")
      */
     protected $publicEndDt;
-    
+
     /**
      * remark
      *
@@ -82,7 +82,7 @@ class Schedule extends AbstractEntity
      * @ORM\Column(type="text", nullable=true)
      */
     protected $remark;
-    
+
     /**
      * showing_formats
      *
@@ -90,7 +90,7 @@ class Schedule extends AbstractEntity
      * @ORM\OneToMany(targetEntity="ShowingFormat", mappedBy="schedule", orphanRemoval=true, fetch="EAGER")
      */
     protected $showingFormats;
-    
+
     /**
      * showing_theaters
      *
@@ -98,8 +98,8 @@ class Schedule extends AbstractEntity
      * @ORM\OneToMany(targetEntity="ShowingTheater", mappedBy="schedule", orphanRemoval=true, fetch="EAGER")
      */
     protected $showingTheaters;
-    
-    
+
+
     /**
      * construct
      *
@@ -109,7 +109,7 @@ class Schedule extends AbstractEntity
     {
         throw new \LogicException('Not allowed.');
     }
-    
+
     /**
      * get id
      *
@@ -119,7 +119,7 @@ class Schedule extends AbstractEntity
     {
         return $this->id;
     }
-    
+
     /**
      * get title
      *
@@ -129,7 +129,7 @@ class Schedule extends AbstractEntity
     {
         return $this->title;
     }
-    
+
     /**
      * set title
      *
@@ -141,7 +141,7 @@ class Schedule extends AbstractEntity
     {
         throw new \LogicException('Not allowed.');
     }
-    
+
     /**
      * get start_date
      *
@@ -151,7 +151,7 @@ class Schedule extends AbstractEntity
     {
         return $this->startDate;
     }
-    
+
     /**
      * set start_date
      *
@@ -163,7 +163,7 @@ class Schedule extends AbstractEntity
     {
         throw new \LogicException('Not allowed.');
     }
-    
+
     /**
      * get end_date
      *
@@ -173,7 +173,7 @@ class Schedule extends AbstractEntity
     {
         return $this->endDate;
     }
-    
+
     /**
      * set end_date
      *
@@ -185,7 +185,7 @@ class Schedule extends AbstractEntity
     {
         throw new \LogicException('Not allowed.');
     }
-    
+
     /**
      * get public_start_dt
      *
@@ -195,7 +195,7 @@ class Schedule extends AbstractEntity
     {
         return $this->publicStartDt;
     }
-    
+
     /**
      * set public_start_dt
      *
@@ -207,7 +207,7 @@ class Schedule extends AbstractEntity
     {
         throw new \LogicException('Not allowed.');
     }
-    
+
     /**
      * get public_end_dt
      *
@@ -217,7 +217,7 @@ class Schedule extends AbstractEntity
     {
         return $this->publicEndDt;
     }
-    
+
     /**
      * set public_end_dt
      *
@@ -229,7 +229,7 @@ class Schedule extends AbstractEntity
     {
         throw new \LogicException('Not allowed.');
     }
-    
+
     /**
      * get remark
      *
@@ -239,7 +239,7 @@ class Schedule extends AbstractEntity
     {
         return $this->remark;
     }
-    
+
     /**
      * set remark
      *
@@ -251,7 +251,7 @@ class Schedule extends AbstractEntity
     {
         throw new \LogicException('Not allowed.');
     }
-    
+
     /**
      * get showing_formats
      *
@@ -261,7 +261,7 @@ class Schedule extends AbstractEntity
     {
         return $this->showingFormats;
     }
-    
+
     /**
      * set showing_formats
      *
@@ -273,7 +273,7 @@ class Schedule extends AbstractEntity
     {
         throw new \LogicException('Not allowed.');
     }
-    
+
     /**
      * get showing_theaters
      *
@@ -283,7 +283,7 @@ class Schedule extends AbstractEntity
     {
         return $this->showingTheaters;
     }
-    
+
     /**
      * set showing_theaters
      *
