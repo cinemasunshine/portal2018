@@ -103,7 +103,11 @@ final class PhpErrorTest extends TestCase
             ->once()
             ->with($exception);
 
-        $phpErrorHandlerMock->writeToErrorLog($exception);
+        $writeToErrorLogRef = new \ReflectionMethod($phpErrorHandlerMock, 'writeToErrorLog');
+        $writeToErrorLogRef->setAccessible(true);
+
+        // execute
+        $writeToErrorLogRef->invoke($phpErrorHandlerMock, $exception);
     }
 
     /**

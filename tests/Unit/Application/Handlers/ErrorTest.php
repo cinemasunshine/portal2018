@@ -103,7 +103,11 @@ final class ErrorTest extends TestCase
             ->once()
             ->with($exception);
 
-        $errorHandlerMock->writeToErrorLog($exception);
+        $writeToErrorLogRef = new \ReflectionMethod($errorHandlerMock, 'writeToErrorLog');
+        $writeToErrorLogRef->setAccessible(true);
+
+        // execute
+        $writeToErrorLogRef->invoke($errorHandlerMock, $exception);
     }
 
     /**
