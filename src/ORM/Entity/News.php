@@ -103,7 +103,7 @@ class News extends AbstractEntity
     /**
      * pages
      *
-     * @var Collection
+     * @var Collection<PageNews>
      * @ORM\OneToMany(targetEntity="PageNews", mappedBy="news")
      */
     protected $pages;
@@ -111,7 +111,7 @@ class News extends AbstractEntity
     /**
      * theaters
      *
-     * @var Collection
+     * @var Collection<TheaterNews>
      * @ORM\OneToMany(targetEntity="TheaterNews", mappedBy="news")
      */
     protected $theaters;
@@ -119,7 +119,7 @@ class News extends AbstractEntity
     /**
      * special_sites
      *
-     * @var Collection
+     * @var Collection<SpecialSiteNews>
      * @ORM\OneToMany(targetEntity="SpecialSiteNews", mappedBy="news")
      */
     protected $specialSites;

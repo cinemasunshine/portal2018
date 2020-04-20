@@ -22,10 +22,10 @@ class Theater extends AbstractEntity
 {
     use SoftDeleteTrait;
     use TimestampableTrait;
-    
+
     const MASTER_VERSION_V1 = 1;
     const MASTER_VERSION_V2 = 2;
-    
+
     /**
      * 劇場ステータス
      *
@@ -34,7 +34,7 @@ class Theater extends AbstractEntity
     const STATUS_PRIVATE  = 1; // 非公開。オープン準備中などポータルサイトには公開しないケース。
     const STATUS_OPEN     = 2; // 劇場オープン。通常通り運用されてる状態。実際の劇場より先行して公開する期間も含める。
     const STATUS_CLOSED   = 3; // 劇場閉館。実際の劇場が閉館した状態。
-    
+
     /** @var array */
     protected static $areas = [
         1 => '関東',
@@ -43,7 +43,7 @@ class Theater extends AbstractEntity
         4 => '中国・四国',
         5 => '九州',
     ];
-    
+
     /**
      * id
      *
@@ -53,7 +53,7 @@ class Theater extends AbstractEntity
      * @ORM\GeneratedValue(strategy="NONE")
      */
     protected $id;
-    
+
     /**
      * name
      *
@@ -61,7 +61,7 @@ class Theater extends AbstractEntity
      * @ORM\Column(type="string", unique=true)
      */
     protected $name;
-    
+
     /**
      * name_ja
      *
@@ -69,7 +69,7 @@ class Theater extends AbstractEntity
      * @ORM\Column(type="string", name="name_ja")
      */
     protected $nameJa;
-    
+
     /**
      * area
      *
@@ -77,7 +77,7 @@ class Theater extends AbstractEntity
      * @ORM\Column(type="smallint", options={"unsigned"=true})
      */
     protected $area;
-    
+
     /**
      * master_version
      *
@@ -89,11 +89,11 @@ class Theater extends AbstractEntity
     /**
      * master_code
      *
-     * @var string
+     * @var string|null
      * @ORM\Column(type="string", name="master_code", length=3, nullable=true, options={"fixed":true})
      */
     protected $masterCode;
-    
+
     /**
      * display_order
      *
@@ -101,7 +101,7 @@ class Theater extends AbstractEntity
      * @ORM\Column(type="smallint", name="display_order", options={"unsigned"=true})
      */
     protected $displayOrder;
-    
+
     /**
      * status
      *
@@ -109,19 +109,21 @@ class Theater extends AbstractEntity
      * @ORM\Column(type="smallint", name="status", options={"unsigned"=true})
      */
     protected $status;
-    
+
     /**
      * meta
      *
-     * @var TheaterMeta
+     * 設計の問題でnullを許容する形になってしまったが、nullにならないようデータで調整する。
+     *
+     * @var TheaterMeta|null
      * @ORM\OneToOne(targetEntity="TheaterMeta", mappedBy="theater")
      */
     protected $meta;
-    
+
     /**
      * special_sites
      *
-     * @var Collection
+     * @var Collection<SpecialSite>
      * @ORM\ManyToMany(targetEntity="SpecialSite", inversedBy="theaters")
      * @ORM\JoinTable(name="theater_special_site",
      *      joinColumns={@ORM\JoinColumn(name="theater_id", referencedColumnName="id")},
@@ -129,42 +131,42 @@ class Theater extends AbstractEntity
      * )
      */
     protected $specialSites;
-    
+
     /**
      * admin_users
      *
-     * @var ArrayCollection
+     * @var Collection<AdminUser>
      * @ORM\OneToMany(targetEntity="AdminUser", mappedBy="theater")
      */
     protected $adminUsers;
-    
+
     /**
      * campaigns
      *
-     * @var Collection
+     * @var Collection<TheaterCampaign>
      * @ORM\OneToMany(targetEntity="TheaterCampaign", mappedBy="theater", orphanRemoval=true)
      * @ORM\OrderBy({"displayOrder" = "ASC"})
      */
     protected $campaigns;
-    
+
     /**
      * news_list
      *
-     * @var Collection
+     * @var Collection<TheaterNews>
      * @ORM\OneToMany(targetEntity="TheaterNews", mappedBy="theater", orphanRemoval=true)
      * @ORM\OrderBy({"displayOrder" = "ASC"})
      */
     protected $newsList;
-    
+
     /**
      * main_banners
      *
-     * @var Collection
+     * @var Collection<TheaterMainBanner>
      * @ORM\OneToMany(targetEntity="TheaterMainBanner", mappedBy="theater", orphanRemoval=true)
      * @ORM\OrderBy({"displayOrder" = "ASC"})
      */
     protected $mainBanners;
-    
+
     /**
      * return areas
      *
@@ -174,7 +176,7 @@ class Theater extends AbstractEntity
     {
         return self::$areas;
     }
-    
+
     /**
      * construct
      *
@@ -184,7 +186,7 @@ class Theater extends AbstractEntity
     {
         throw new \LogicException('Not allowed.');
     }
-    
+
     /**
      * get id
      *
@@ -194,7 +196,7 @@ class Theater extends AbstractEntity
     {
         return $this->id;
     }
-    
+
     /**
      * get name
      *
@@ -204,7 +206,7 @@ class Theater extends AbstractEntity
     {
         return $this->name;
     }
-    
+
     /**
      * set name
      *
@@ -216,7 +218,7 @@ class Theater extends AbstractEntity
     {
         throw new \LogicException('Not allowed.');
     }
-    
+
     /**
      * get name_ja
      *
@@ -226,7 +228,7 @@ class Theater extends AbstractEntity
     {
         return $this->nameJa;
     }
-    
+
     /**
      * set name_ja
      *
@@ -238,7 +240,7 @@ class Theater extends AbstractEntity
     {
         throw new \LogicException('Not allowed.');
     }
-    
+
     /**
      * get area
      *
@@ -248,7 +250,7 @@ class Theater extends AbstractEntity
     {
         return $this->area;
     }
-    
+
     /**
      * set area
      *
@@ -260,7 +262,7 @@ class Theater extends AbstractEntity
     {
         throw new \LogicException('Not allowed.');
     }
-    
+
     /**
      * get master_version
      *
@@ -270,7 +272,7 @@ class Theater extends AbstractEntity
     {
         return $this->masterVersion;
     }
-    
+
     /**
      * set master_version
      *
@@ -282,21 +284,21 @@ class Theater extends AbstractEntity
     {
         throw new \LogicException('Not allowed.');
     }
-    
+
     /**
      * get master_code
      *
-     * @return string
+     * @return string|null
      */
     public function getMasterCode()
     {
         return $this->masterCode;
     }
-    
+
     /**
      * set master_code
      *
-     * @param string $masterCode
+     * @param string|null $masterCode
      * @return void
      * @throws \LogicException
      */
@@ -304,7 +306,7 @@ class Theater extends AbstractEntity
     {
         throw new \LogicException('Not allowed.');
     }
-    
+
     /**
      * get display_order
      *
@@ -314,7 +316,7 @@ class Theater extends AbstractEntity
     {
         return $this->displayOrder;
     }
-    
+
     /**
      * set display_order
      *
@@ -326,7 +328,7 @@ class Theater extends AbstractEntity
     {
         throw new \LogicException('Not allowed.');
     }
-    
+
     /**
      * get status
      *
@@ -336,7 +338,7 @@ class Theater extends AbstractEntity
     {
         return $this->status;
     }
-    
+
     /**
      * set status
      *
@@ -348,7 +350,7 @@ class Theater extends AbstractEntity
     {
         throw new \LogicException('Not allowed.');
     }
-    
+
     /**
      * is status closed
      *
@@ -358,7 +360,7 @@ class Theater extends AbstractEntity
     {
         return $this->getStatus() === self::STATUS_CLOSED;
     }
-    
+
     /**
      * get meta
      *
@@ -368,7 +370,7 @@ class Theater extends AbstractEntity
     {
         return $this->meta;
     }
-    
+
     /**
      * get special_sites
      *
@@ -378,7 +380,7 @@ class Theater extends AbstractEntity
     {
         return $this->specialSites;
     }
-    
+
     /**
      * get admin_users
      *
@@ -388,7 +390,7 @@ class Theater extends AbstractEntity
     {
         return $this->adminUsers;
     }
-    
+
     /**
      * get campaigns
      *
@@ -398,7 +400,7 @@ class Theater extends AbstractEntity
     {
         return $this->campaigns;
     }
-    
+
     /**
      * get news_list
      *
@@ -408,7 +410,7 @@ class Theater extends AbstractEntity
     {
         return $this->newsList;
     }
-    
+
     /**
      * get main_banners
      *
