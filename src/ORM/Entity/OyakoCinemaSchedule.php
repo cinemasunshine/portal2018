@@ -14,7 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * OyakoCinemaSchedule entity class
  *
- * @ORM\Entity
+ * @ORM\Entity(readOnly=true)
  * @ORM\Table(name="oyako_cinema_schedule", options={"collate"="utf8mb4_general_ci"})
  * @ORM\HasLifecycleCallbacks
  */

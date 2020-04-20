@@ -12,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * OyakoCinemaTheater entity class
  *
- * @ORM\Entity
+ * @ORM\Entity(readOnly=true)
  * @ORM\Table(name="oyako_cinema_theater", options={"collate"="utf8mb4_general_ci"})
  * @ORM\HasLifecycleCallbacks
  */
