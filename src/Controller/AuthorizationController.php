@@ -1,4 +1,5 @@
 <?php
+
 /**
  * AuthorizationController.php
  *
@@ -10,7 +11,6 @@ declare(strict_types=1);
 namespace Cinemasunshine\Portal\Controller;
 
 use Slim\Http\Uri as HttpUri;
-
 use GuzzleHttp\Exception\BadResponseException;
 
 /**
@@ -42,7 +42,8 @@ class AuthorizationController extends BaseController
             $this->redirect($this->router->pathFor('homepage'));
         }
 
-        if (empty($state)
+        if (
+            empty($state)
             || $state !== $this->am->getAuthorizationState()
         ) {
             $this->logger->info('Invalid state.');

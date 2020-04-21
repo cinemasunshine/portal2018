@@ -1,4 +1,5 @@
 <?php
+
 /**
  * TheaterListResponder.php
  *

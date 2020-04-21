@@ -1,4 +1,5 @@
 <?php
+
 /**
  * AbstractController.php
  *
@@ -10,9 +11,7 @@ namespace Cinemasunshine\Portal\Controller;
 use Slim\Collection;
 use Slim\Http\Response;
 use Slim\Http\Request;
-
 use Psr\Container\ContainerInterface;
-
 use Cinemasunshine\Portal\Exception\RedirectException;
 use Cinemasunshine\Portal\Responder\AbstractResponder;
 
@@ -159,7 +158,7 @@ abstract class AbstractController
         return $responder->$method($response, $this->data);
     }
 
-    abstract protected function getResponder() : AbstractResponder;
+    abstract protected function getResponder(): AbstractResponder;
 
     /**
      * call

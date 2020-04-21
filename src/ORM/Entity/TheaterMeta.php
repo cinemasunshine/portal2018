@@ -1,4 +1,5 @@
 <?php
+
 /**
  * TheaterMeta.php
  *
@@ -42,7 +43,7 @@ class TheaterMeta extends AbstractEntity
     /**
      * opening_hours
      *
-     * @var array|null
+     * @var array
      * @ORM\Column(type="json", name="opening_hours")
      */
     protected $openingHours;

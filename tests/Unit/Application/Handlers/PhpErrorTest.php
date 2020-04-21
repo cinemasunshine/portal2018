@@ -1,4 +1,5 @@
 <?php
+
 /**
  * PhpErrorTest.php
  *
@@ -7,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Unit;
+namespace Tests\Unit\Application\Handlers;
 
 use Cinemasunshine\Portal\Application\Handlers\PhpError;
 use Mockery;
@@ -103,7 +104,11 @@ final class PhpErrorTest extends TestCase
             ->once()
             ->with($exception);
 
-        $phpErrorHandlerMock->writeToErrorLog($exception);
+        $writeToErrorLogRef = new \ReflectionMethod($phpErrorHandlerMock, 'writeToErrorLog');
+        $writeToErrorLogRef->setAccessible(true);
+
+        // execute
+        $writeToErrorLogRef->invoke($phpErrorHandlerMock, $exception);
     }
 
     /**

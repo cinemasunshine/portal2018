@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ErrorTest.php
  *
@@ -7,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Unit;
+namespace Tests\Unit\Application\Handlers;
 
 use Cinemasunshine\Portal\Application\Handlers\Error;
 use Mockery;
@@ -103,7 +104,11 @@ final class ErrorTest extends TestCase
             ->once()
             ->with($exception);
 
-        $errorHandlerMock->writeToErrorLog($exception);
+        $writeToErrorLogRef = new \ReflectionMethod($errorHandlerMock, 'writeToErrorLog');
+        $writeToErrorLogRef->setAccessible(true);
+
+        // execute
+        $writeToErrorLogRef->invoke($errorHandlerMock, $exception);
     }
 
     /**

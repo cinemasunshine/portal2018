@@ -1,4 +1,5 @@
 <?php
+
 /**
  * TheaterOpeningHour.php
  *
@@ -15,8 +16,8 @@ namespace Cinemasunshine\Portal\ORM\Entity;
  */
 class TheaterOpeningHour extends AbstractEntity
 {
-    const TYPE_DATE = 1;
-    const TYPE_TERM = 2;
+    public const TYPE_DATE = 1;
+    public const TYPE_TERM = 2;
 
     /**
      * type

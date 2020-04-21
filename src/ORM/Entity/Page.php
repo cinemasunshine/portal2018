@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Page.php
  *
@@ -22,7 +23,7 @@ class Page extends AbstractEntity
 {
     use SoftDeleteTrait;
     use TimestampableTrait;
-    
+
     /**
      * id
      *
@@ -32,7 +33,7 @@ class Page extends AbstractEntity
      * @ORM\GeneratedValue(strategy="NONE")
      */
     protected $id;
-    
+
     /**
      * name
      *
@@ -40,7 +41,7 @@ class Page extends AbstractEntity
      * @ORM\Column(type="string", unique=true)
      */
     protected $name;
-    
+
     /**
      * name_ja
      *
@@ -48,35 +49,35 @@ class Page extends AbstractEntity
      * @ORM\Column(type="string", name="name_ja")
      */
     protected $nameJa;
-    
+
     /**
      * campaigns
      *
-     * @var Collection
+     * @var Collection<PageCampaign>
      * @ORM\OneToMany(targetEntity="PageCampaign", mappedBy="page", orphanRemoval=true)
      * @ORM\OrderBy({"displayOrder" = "ASC"})
      */
     protected $campaigns;
-    
+
     /**
      * news_list
      *
-     * @var Collection
+     * @var Collection<PageNews>
      * @ORM\OneToMany(targetEntity="PageNews", mappedBy="page", orphanRemoval=true)
      * @ORM\OrderBy({"displayOrder" = "ASC"})
      */
     protected $newsList;
-    
+
     /**
      * main_banners
      *
-     * @var Collection
+     * @var Collection<PageMainBanner>
      * @ORM\OneToMany(targetEntity="PageMainBanner", mappedBy="page", orphanRemoval=true)
      * @ORM\OrderBy({"displayOrder" = "ASC"})
      */
     protected $mainBanners;
-    
-    
+
+
     /**
      * construct
      *
@@ -86,7 +87,7 @@ class Page extends AbstractEntity
     {
         throw new \LogicException('Not allowed.');
     }
-    
+
     /**
      * get id
      *
@@ -96,7 +97,7 @@ class Page extends AbstractEntity
     {
         return $this->id;
     }
-    
+
     /**
      * get name
      *
@@ -106,7 +107,7 @@ class Page extends AbstractEntity
     {
         return $this->name;
     }
-    
+
     /**
      * set name
      *
@@ -118,7 +119,7 @@ class Page extends AbstractEntity
     {
         throw new \LogicException('Not allowed.');
     }
-    
+
     /**
      * get name_ja
      *
@@ -128,7 +129,7 @@ class Page extends AbstractEntity
     {
         return $this->nameJa;
     }
-    
+
     /**
      * set name_ja
      *
@@ -140,17 +141,17 @@ class Page extends AbstractEntity
     {
         throw new \LogicException('Not allowed.');
     }
-    
+
     /**
      * get campaigns
      *
      * @return Collection
      */
-    public function getCampaigns() : Collection
+    public function getCampaigns(): Collection
     {
         return $this->campaigns;
     }
-    
+
     /**
      * get news_list
      *
@@ -160,7 +161,7 @@ class Page extends AbstractEntity
     {
         return $this->newsList;
     }
-    
+
     /**
      * get main_banners
      *

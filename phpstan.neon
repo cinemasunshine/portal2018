@@ -1,22 +1,24 @@
 includes:
 	- vendor/phpstan/phpstan-doctrine/extension.neon
 	- vendor/phpstan/phpstan-doctrine/rules.neon
+	- vendor/phpstan/phpstan-phpunit/extension.neon
+	- vendor/phpstan/phpstan-phpunit/rules.neon
+	- vendor/phpstan/phpstan-mockery/extension.neon
 
 parameters:
 	level: 2
 	bootstrap: %currentWorkingDirectory%/src/bootstrap.php
 	paths:
 		- %currentWorkingDirectory%/src
+		- %currentWorkingDirectory%/tests
 	excludes_analyse:
 		- %currentWorkingDirectory%/src/ORM/Proxy/*
+		- %currentWorkingDirectory%/tests/entity-manager.php
 	doctrine:
-		objectManagerLoader: %currentWorkingDirectory%/analysis/entity-manager.php
+		objectManagerLoader: %currentWorkingDirectory%/tests/entity-manager.php
 
 	ignoreErrors:
 		# ライブラリの改修が必要なので除外する
-		-
-			message: '#::__construct\(\) does not call parent constructor from#'
-			path: %currentWorkingDirectory%/src/Schedule/Entity/*
 		-
 			message: '#Call to an undefined method Cinemasunshine\\Schedule\\Entity\\SchedulesInterface::#'
 			path: %currentWorkingDirectory%/src/Controller/API/ScheduleController.php
@@ -33,6 +35,3 @@ parameters:
 			paths:
 				- %currentWorkingDirectory%/src/Schedule/Entity/V2/Time.php
 				- %currentWorkingDirectory%/src/Schedule/Entity/V3/Time.php
-
-		# phpstan/phpstan-doctrineをアップデートして確認するまで一時的に除外
-		- '#Call to an undefined method Doctrine\\Persistence\\ObjectRepository::#'

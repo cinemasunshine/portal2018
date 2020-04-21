@@ -1,4 +1,5 @@
 <?php
+
 /**
  * AuthorizationController.php
  *
@@ -15,8 +16,8 @@ use Cinemasunshine\Portal\Exception\NotAuthenticatedException;
  */
 class AuthorizationController extends BaseController
 {
-    const USER_TYPE_VISITOR = 'visitor';
-    const USER_TYPE_MEMBER = 'member';
+    public const USER_TYPE_VISITOR = 'visitor';
+    public const USER_TYPE_MEMBER = 'member';
 
     /**
      * token action

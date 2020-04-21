@@ -1,4 +1,5 @@
 <?php
+
 /**
  * TheaterExtension.php
  *
@@ -8,7 +9,6 @@
 namespace Cinemasunshine\Portal\Twig\Extension;
 
 use Cinemasunshine\Portal\ORM\Entity\Theater;
-
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 use Twig\TwigFunction;

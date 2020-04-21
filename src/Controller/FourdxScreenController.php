@@ -1,4 +1,5 @@
 <?php
+
 /**
  * FourdxScreenController.php
  *
@@ -8,7 +9,6 @@
 namespace Cinemasunshine\Portal\Controller;
 
 use Slim\Exception\NotFoundException;
-
 use Cinemasunshine\Portal\ORM\Entity;
 
 /**
@@ -18,7 +18,7 @@ use Cinemasunshine\Portal\ORM\Entity;
  */
 class FourdxScreenController extends SpecialSiteController
 {
-    const SPECIAL_SITE_ID = 4;
+    public const SPECIAL_SITE_ID = 4;
 
     /**
      * return Special Site theaters

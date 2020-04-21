@@ -1,4 +1,5 @@
 <?php
+
 /**
  * AdvanceTicketExtension.php
  *
@@ -9,7 +10,6 @@ namespace Cinemasunshine\Portal\Twig\Extension;
 
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
-
 use Cinemasunshine\Portal\ORM\Entity\AdvanceTicket;
 
 /**

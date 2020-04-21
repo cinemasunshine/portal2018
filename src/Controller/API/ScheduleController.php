@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ScheduleController.php
  *
@@ -8,13 +9,11 @@
 namespace Cinemasunshine\Portal\Controller\API;
 
 use Slim\Exception\NotFoundException;
-
 use Cinemasunshine\Schedule\Entity\V2\Schedules as V2Schedules;
 use Cinemasunshine\Schedule\Entity\ScheduleInterface;
 use Cinemasunshine\Schedule\Entity\SchedulesInterface;
 use Cinemasunshine\Schedule\Exception\RequestException;
 use Cinemasunshine\Schedule\Response\Http as HttpResponse;
-
 use Cinemasunshine\Portal\Schedule\Builder\V2\PreSchedule as V2PreScheduleBuilder;
 use Cinemasunshine\Portal\Schedule\Builder\V2\Schedule as V2ScheduleBuilder;
 use Cinemasunshine\Portal\Schedule\Builder\V3\PreSchedule as V3PreScheduleBuilder;
@@ -38,7 +37,7 @@ class ScheduleController extends BaseController
     /**
      * {@inheritDoc}
      */
-    protected function preExecute($request, $response, $args) : void
+    protected function preExecute($request, $response, $args): void
     {
         $settings = $this->settings['schedule'];
         $this->scheduleEnv = $settings['env'];
@@ -94,11 +93,13 @@ class ScheduleController extends BaseController
         $meta = array();
         $data = array();
 
-        if ($schedules->getError() === V2Schedules::ERROR_OTHER
+        if (
+            $schedules->getError() === V2Schedules::ERROR_OTHER
             || $preSchedules->getError() === V2Schedules::ERROR_OTHER
         ) {
             throw new \RuntimeException('schedule unknown error');
-        } elseif ($schedules->getError() === V2Schedules::ERROR_NO_CONTENT
+        } elseif (
+            $schedules->getError() === V2Schedules::ERROR_NO_CONTENT
             && $preSchedules->getError() === V2Schedules::ERROR_NO_CONTENT
         ) {
             $meta['error'] = V2Schedules::ERROR_NO_CONTENT;
@@ -215,11 +216,13 @@ class ScheduleController extends BaseController
         $meta = array();
         $data = array();
 
-        if ($schedules->getError() === V2Schedules::ERROR_OTHER
+        if (
+            $schedules->getError() === V2Schedules::ERROR_OTHER
             || $preSchedules->getError() === V2Schedules::ERROR_OTHER
         ) {
             throw new \RuntimeException('schedule unknown error');
-        } elseif ($schedules->getError() === V2Schedules::ERROR_NO_CONTENT
+        } elseif (
+            $schedules->getError() === V2Schedules::ERROR_NO_CONTENT
             && $preSchedules->getError() === V2Schedules::ERROR_NO_CONTENT
         ) {
             $meta['error'] = V2Schedules::ERROR_NO_CONTENT;

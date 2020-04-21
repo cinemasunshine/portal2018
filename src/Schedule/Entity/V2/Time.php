@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Time.php
  *
@@ -9,7 +10,6 @@ namespace Cinemasunshine\Portal\Schedule\Entity\V2;
 
 // extends
 use Cinemasunshine\Schedule\Entity\V2\Time as BaseEntity;
-
 // implements
 use Cinemasunshine\Portal\Schedule\Entity\PortalEntityInterface;
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * SpecialSite.php
  *
@@ -22,7 +23,7 @@ class SpecialSite extends AbstractEntity
 {
     use SoftDeleteTrait;
     use TimestampableTrait;
-    
+
     /**
      * id
      *
@@ -32,7 +33,7 @@ class SpecialSite extends AbstractEntity
      * @ORM\GeneratedValue(strategy="NONE")
      */
     protected $id;
-    
+
     /**
      * name
      *
@@ -40,7 +41,7 @@ class SpecialSite extends AbstractEntity
      * @ORM\Column(type="string", unique=true)
      */
     protected $name;
-    
+
     /**
      * name_ja
      *
@@ -48,43 +49,43 @@ class SpecialSite extends AbstractEntity
      * @ORM\Column(type="string", name="name_ja")
      */
     protected $nameJa;
-    
+
     /**
      * theaters
      *
-     * @var Collection
+     * @var Collection<Theater>
      * @ORM\ManyToMany(targetEntity="Theater", mappedBy="specialSites")
      */
     protected $theaters;
-    
+
     /**
      * campaigns
      *
-     * @var Collection
+     * @var Collection<SpecialSiteCampaign>
      * @ORM\OneToMany(targetEntity="SpecialSiteCampaign", mappedBy="specialSite", orphanRemoval=true)
      * @ORM\OrderBy({"displayOrder" = "ASC"})
      */
     protected $campaigns;
-    
+
     /**
      * news_list
      *
-     * @var Collection
+     * @var Collection<SpecialSiteNews>
      * @ORM\OneToMany(targetEntity="SpecialSiteNews", mappedBy="specialSite", orphanRemoval=true)
      * @ORM\OrderBy({"displayOrder" = "ASC"})
      */
     protected $newsList;
-    
+
     /**
      * main_banners
      *
-     * @var Collection
+     * @var Collection<SpecialSiteMainBanner>
      * @ORM\OneToMany(targetEntity="SpecialSiteMainBanner", mappedBy="specialSite", orphanRemoval=true)
      * @ORM\OrderBy({"displayOrder" = "ASC"})
      */
     protected $mainBanners;
-    
-    
+
+
     /**
      * construct
      *
@@ -94,7 +95,7 @@ class SpecialSite extends AbstractEntity
     {
         throw new \LogicException('Not allowed.');
     }
-    
+
     /**
      * get id
      *
@@ -104,7 +105,7 @@ class SpecialSite extends AbstractEntity
     {
         return $this->id;
     }
-    
+
     /**
      * get name
      *
@@ -114,7 +115,7 @@ class SpecialSite extends AbstractEntity
     {
         return $this->name;
     }
-    
+
     /**
      * set name
      *
@@ -126,7 +127,7 @@ class SpecialSite extends AbstractEntity
     {
         throw new \LogicException('Not allowed.');
     }
-    
+
     /**
      * get name_ja
      *
@@ -136,7 +137,7 @@ class SpecialSite extends AbstractEntity
     {
         return $this->nameJa;
     }
-    
+
     /**
      * set name_ja
      *
@@ -148,7 +149,7 @@ class SpecialSite extends AbstractEntity
     {
         throw new \LogicException('Not allowed.');
     }
-    
+
     /**
      * get theaters
      *
@@ -158,7 +159,7 @@ class SpecialSite extends AbstractEntity
     {
         return $this->theaters;
     }
-    
+
     /**
      * get campaigns
      *
@@ -168,7 +169,7 @@ class SpecialSite extends AbstractEntity
     {
         return $this->campaigns;
     }
-    
+
     /**
      * get news_list
      *
@@ -178,7 +179,7 @@ class SpecialSite extends AbstractEntity
     {
         return $this->newsList;
     }
-    
+
     /**
      * get main_banners
      *

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * NotFoundTest.php
  *
@@ -7,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Unit;
+namespace Tests\Unit\Application\Handlers;
 
 use Cinemasunshine\Portal\Application\Handlers\NotFound;
 use Mockery;
