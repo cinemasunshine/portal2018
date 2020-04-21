@@ -18,7 +18,7 @@ use Cinemasunshine\Portal\ORM\Entity;
  */
 class FourdxScreenController extends SpecialSiteController
 {
-    const SPECIAL_SITE_ID = 4;
+    public const SPECIAL_SITE_ID = 4;
 
     /**
      * return Special Site theaters

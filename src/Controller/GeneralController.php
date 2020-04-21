@@ -15,8 +15,8 @@ use Cinemasunshine\Portal\ORM\Entity;
  */
 abstract class GeneralController extends BaseController
 {
-    const PAGE_ID = 1;
-    
+    public const PAGE_ID = 1;
+
     /**
      * return page
      *
@@ -29,7 +29,7 @@ abstract class GeneralController extends BaseController
             ->getRepository(Entity\Page::class)
             ->findOneById($pageId);
     }
-    
+
     /**
      * return campaigns
      *
@@ -42,7 +42,7 @@ abstract class GeneralController extends BaseController
             ->getRepository(Entity\Campaign::class)
             ->findByPage($pageId);
     }
-    
+
     /**
      * return theaters
      *

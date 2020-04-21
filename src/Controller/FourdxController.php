@@ -18,8 +18,8 @@ use Cinemasunshine\Portal\ORM\Entity;
  */
 class FourdxController extends SpecialSiteController
 {
-    const SPECIAL_SITE_ID = 2;
-    
+    public const SPECIAL_SITE_ID = 2;
+
     /**
      * index action
      *
@@ -31,22 +31,22 @@ class FourdxController extends SpecialSiteController
     public function executeIndex($request, $response, $args)
     {
         $this->data->set('mainBanners', $this->getMainBanners());
-        
+
         $this->data->set('trailers', $this->getTrailers());
-        
+
         $this->data->set('newsList', $this->getNewsList(8));
-        
+
         $this->data->set('theaters', $this->get4dxTheaters());
-        
+
         $this->data->set('screeningSchedules', $this->getScreeningSchedules());
-        
+
         $this->data->set('soonSchedules', $this->getSoonSchedules());
-        
+
         $this->data->set('campaigns', $this->getCampaigns());
-        
+
         $this->data->set('infoNewsList', $this->getInfoNewsList(4));
     }
-    
+
     /**
      * return main_banners
      *
@@ -58,7 +58,7 @@ class FourdxController extends SpecialSiteController
             ->getRepository(Entity\MainBanner::class)
             ->findBySpecialSiteId(self::SPECIAL_SITE_ID);
     }
-    
+
     /**
      * return trailers
      *
@@ -70,7 +70,7 @@ class FourdxController extends SpecialSiteController
             ->getRepository(Entity\Trailer::class)
             ->findBySpecialSite(self::SPECIAL_SITE_ID);
     }
-    
+
     /**
      * return news list
      *
@@ -83,7 +83,7 @@ class FourdxController extends SpecialSiteController
             ->getRepository(Entity\News::class)
             ->findBy4dx($limit);
     }
-    
+
     /**
      * return 4DX theaters
      *
@@ -95,7 +95,7 @@ class FourdxController extends SpecialSiteController
             ->getRepository(Entity\Theater::class)
             ->findBySpecialSite(self::SPECIAL_SITE_ID);
     }
-    
+
     /**
      * return screening schedules
      *
@@ -107,7 +107,7 @@ class FourdxController extends SpecialSiteController
             ->getRepository(Entity\Schedule::class)
             ->findScreeningFor4dx();
     }
-    
+
     /**
      * return soon schedules
      *
@@ -119,7 +119,7 @@ class FourdxController extends SpecialSiteController
             ->getRepository(Entity\Schedule::class)
             ->findSoonFor4dx();
     }
-    
+
     /**
      * return campaigns
      *
@@ -131,7 +131,7 @@ class FourdxController extends SpecialSiteController
             ->getRepository(Entity\Campaign::class)
             ->findBySpecialSite(self::SPECIAL_SITE_ID);
     }
-    
+
     /**
      * return information news list
      *
@@ -144,7 +144,7 @@ class FourdxController extends SpecialSiteController
             ->getRepository(Entity\News::class)
             ->findBySpecialSite(self::SPECIAL_SITE_ID, Entity\News::CATEGORY_INFO, $limit);
     }
-    
+
     /**
      * about action
      *
@@ -156,7 +156,7 @@ class FourdxController extends SpecialSiteController
     public function executeAbout($request, $response, $args)
     {
     }
-    
+
     /**
      * schedule list action
      *
@@ -168,12 +168,12 @@ class FourdxController extends SpecialSiteController
     public function executeScheduleList($request, $response, $args)
     {
         $this->data->set('theaters', $this->get4dxTheaters());
-        
+
         $this->data->set('screeningSchedules', $this->getScreeningSchedules());
-        
+
         $this->data->set('soonSchedules', $this->getSoonSchedules());
     }
-    
+
     /**
      * schedule show action
      *
@@ -187,18 +187,18 @@ class FourdxController extends SpecialSiteController
         $schedule = $this->em
             ->getRepository(Entity\Schedule::class)
             ->findOneById($args['schedule']);
-        
+
         if (is_null($schedule)) {
             throw new NotFoundException($request, $response);
         }
-        
+
         /**@var Entity\Schedule $schedule */
-        
+
         $this->data->set('schedule', $schedule);
-        
+
         $this->data->set('theaters', $this->get4dxTheaters());
     }
-    
+
     /**
      * news list action
      *
@@ -210,10 +210,10 @@ class FourdxController extends SpecialSiteController
     public function executeNewsList($request, $response, $args)
     {
         $this->data->set('newsList', $this->getNewsList());
-        
+
         $this->data->set('infoNewsList', $this->getInfoNewsList());
     }
-    
+
     /**
      * news show action
      *
@@ -227,16 +227,16 @@ class FourdxController extends SpecialSiteController
         $news = $this->em
             ->getRepository(Entity\News::class)
             ->findOneById($args['id']);
-        
+
         if (is_null($news)) {
             throw new NotFoundException($request, $response);
         }
-        
+
         /**@var Entity\News $news */
-        
+
         $this->data->set('news', $news);
     }
-    
+
     /**
      * theater action
      *
