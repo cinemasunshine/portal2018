@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Schedule.php
  *
@@ -9,7 +10,6 @@ namespace Cinemasunshine\Portal\Schedule\Entity\V3;
 
 use Cinemasunshine\Schedule\Entity\V3\Schedule as BaseEntity;
 use Cinemasunshine\Portal\Schedule\Entity\PortalEntityInterface;
-
 use Cinemasunshine\Portal\Schedule\Collection\Movie as MovieCollection;
 
 /**

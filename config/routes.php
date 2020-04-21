@@ -1,4 +1,5 @@
 <?php
+
 /**
  * routes.php
  *
@@ -19,7 +20,6 @@ use Cinemasunshine\Portal\Controller\{
     TheaterController,
     TheaterListController
 };
-
 use Cinemasunshine\Portal\Controller\API\{
     AuthorizationController as AuthorizationAPIController,
     ScheduleController as ScheduleApiController

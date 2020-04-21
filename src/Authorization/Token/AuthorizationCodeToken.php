@@ -1,4 +1,5 @@
 <?php
+
 /**
  * AuthorizationCodeToken.php
  *

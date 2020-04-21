@@ -1,4 +1,5 @@
 <?php
+
 /**
  * AboutResponder.php
  *

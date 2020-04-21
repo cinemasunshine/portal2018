@@ -1,4 +1,5 @@
 <?php
+
 /**
  * PreSchedule.php
  *
@@ -9,7 +10,6 @@ namespace Cinemasunshine\Portal\Schedule\Builder\V2;
 
 // extends
 use Cinemasunshine\Schedule\Builder\V2\PreSchedule as BaseBuilder;
-
 use Cinemasunshine\Portal\Schedule\Entity\V2\Movie as MovieEntity;
 use Cinemasunshine\Portal\Schedule\Entity\V2\Schedule as ScheduleEntity;
 use Cinemasunshine\Portal\Schedule\Entity\V2\Schedules as SchedulesEntity;

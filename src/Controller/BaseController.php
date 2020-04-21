@@ -1,4 +1,5 @@
 <?php
+
 /**
  * BaseController.php
  *
@@ -9,7 +10,6 @@ namespace Cinemasunshine\Portal\Controller;
 
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface as Response;
-
 use Cinemasunshine\Portal\Responder\ResponderFactory;
 use Cinemasunshine\Portal\Responder\AbstractResponder;
 

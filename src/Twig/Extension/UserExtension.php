@@ -1,4 +1,5 @@
 <?php
+
 /**
  * UserExtension.php
  *
@@ -11,7 +12,6 @@ namespace Cinemasunshine\Portal\Twig\Extension;
 
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
-
 use Cinemasunshine\Portal\Authorization\Manager as AuthorizationManager;
 use Cinemasunshine\Portal\User\Manager as UserManager;
 

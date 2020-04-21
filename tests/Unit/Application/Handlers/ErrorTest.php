@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ErrorTest.php
  *

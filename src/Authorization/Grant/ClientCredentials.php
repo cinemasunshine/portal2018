@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ClientCredentials.php
  *
@@ -10,7 +11,6 @@ declare(strict_types=1);
 namespace Cinemasunshine\Portal\Authorization\Grant;
 
 use GuzzleHttp\Client as HttpClient;
-
 use Cinemasunshine\Portal\Authorization\Token\ClientCredentialsToken as Token;
 
 /**

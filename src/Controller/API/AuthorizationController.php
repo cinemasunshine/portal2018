@@ -1,4 +1,5 @@
 <?php
+
 /**
  * AuthorizationController.php
  *

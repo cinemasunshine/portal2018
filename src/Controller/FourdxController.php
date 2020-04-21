@@ -1,4 +1,5 @@
 <?php
+
 /**
  * FourdxController.php
  *
@@ -8,7 +9,6 @@
 namespace Cinemasunshine\Portal\Controller;
 
 use Slim\Exception\NotFoundException;
-
 use Cinemasunshine\Portal\ORM\Entity;
 
 /**

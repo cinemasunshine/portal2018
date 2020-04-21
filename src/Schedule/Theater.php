@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Theater.php
  *
@@ -8,7 +9,6 @@
 namespace Cinemasunshine\Portal\Schedule;
 
 use Cinemasunshine\Schedule\Theater as Base;
-
 use Cinemasunshine\Schedule\Builder\PreScheduleInterface as PreScheduleBuilder;
 use Cinemasunshine\Schedule\Builder\ScheduleInterface as ScheduleBuilder;
 use Cinemasunshine\Schedule\Client\Http as HttpClient;

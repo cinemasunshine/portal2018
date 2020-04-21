@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Page.php
  *
@@ -146,7 +147,7 @@ class Page extends AbstractEntity
      *
      * @return Collection
      */
-    public function getCampaigns() : Collection
+    public function getCampaigns(): Collection
     {
         return $this->campaigns;
     }

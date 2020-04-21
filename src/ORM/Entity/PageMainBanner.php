@@ -1,4 +1,5 @@
 <?php
+
 /**
  * PageMainBanner.php
  *

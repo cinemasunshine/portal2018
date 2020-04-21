@@ -1,4 +1,5 @@
 <?php
+
 /**
  * NewsExtension.php
  *
@@ -8,7 +9,6 @@
 namespace Cinemasunshine\Portal\Twig\Extension;
 
 use Cinemasunshine\Portal\ORM\Entity\News;
-
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 

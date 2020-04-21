@@ -1,4 +1,5 @@
 <?php
+
 /**
  * SpecialSiteMainBanner.php
  *

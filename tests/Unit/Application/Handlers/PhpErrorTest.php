@@ -1,4 +1,5 @@
 <?php
+
 /**
  * PhpErrorTest.php
  *

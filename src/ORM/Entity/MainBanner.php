@@ -1,4 +1,5 @@
 <?php
+
 /**
  * MainBanner.php
  *
@@ -244,7 +245,7 @@ class MainBanner extends AbstractEntity
      *
      * @return Collection
      */
-    public function getPages() : Collection
+    public function getPages(): Collection
     {
         return $this->pages;
     }
@@ -254,7 +255,7 @@ class MainBanner extends AbstractEntity
      *
      * @return Collection
      */
-    public function getTheaters() : Collection
+    public function getTheaters(): Collection
     {
         return $this->theaters;
     }

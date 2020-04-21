@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ViewCommand.php
  *
@@ -10,13 +11,10 @@ declare(strict_types=1);
 namespace Cinemasunshine\Portal\Console\Command\Cache\Clear;
 
 use Cinemasunshine\Portal\Console\Command\BaseCommand;
-
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Filesystem\Filesystem;
-
 use Slim\Views\Twig;
-
 use Twig\Cache\CacheInterface;
 use Twig\Cache\FilesystemCache;
 use Twig\Cache\NullCache;
