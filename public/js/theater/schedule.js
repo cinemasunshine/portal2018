@@ -45,22 +45,22 @@ var Performance = (function () {
      */
     Performance.prototype.isBeforePeriod = function () {
         var rsvStartDate = (this.member)
-            ? moment(this.time.member_rsv_start_day + " " + this.time.member_rsv_start_time, 'YYYYMMDD HHmm')
-            : moment(this.time.rsv_start_day + " " + this.time.rsv_start_time, 'YYYYMMDD HHmm');
+            ? moment(this.time.member_rsv_start_day + ' ' + this.time.member_rsv_start_time, 'YYYYMMDD HHmm')
+            : moment(this.time.rsv_start_day + ' ' + this.time.rsv_start_time, 'YYYYMMDD HHmm');
         return rsvStartDate > moment();
     };
     /**
      * 予約期間後判定（上映開始10分以降）
      */
     Performance.prototype.isAfterPeriod = function () {
-        var startDate = moment(this.date + " " + this.time.start_time, 'YYYYMMDD HHmm');
+        var startDate = moment(this.date + ' ' + this.time.start_time, 'YYYYMMDD HHmm');
         return moment(startDate).add(10, 'minutes') < moment();
     };
     /**
      * 窓口判定（上映開始60分前から上映開始10分後）
      */
     Performance.prototype.isWindow = function () {
-        var startDate = moment(this.date + " " + this.time.start_time, 'YYYYMMDD HHmm');
+        var startDate = moment(this.date + ' ' + this.time.start_time, 'YYYYMMDD HHmm');
         var now = moment();
         return (this.time.seat_count.cnt_reserve_free > 0
             && moment(startDate).add(-60, 'minutes') < now
@@ -81,8 +81,8 @@ var Performance = (function () {
         var now = moment();
         var displayStartDate = moment(this.time.online_display_start_day, 'YYYYMMDD');
         var endDate = (this.time.start_time < this.time.end_time)
-            ? moment(this.date + " " + this.time.end_time, 'YYYYMMDD HHmm')
-            : moment(this.date + " " + this.time.end_time, 'YYYYMMDD HHmm').add(1, 'days');
+            ? moment(this.date + ' ' + this.time.end_time, 'YYYYMMDD HHmm')
+            : moment(this.date + ' ' + this.time.end_time, 'YYYYMMDD HHmm').add(1, 'days');
         return (displayStartDate < now && endDate > now);
     };
     /**
@@ -319,16 +319,19 @@ function scheduleRender() {
                     var findResult = schedule.movie.find(function (m) {
                         return m.screen.find(function (s) {
                             return s.time.find(function (t) {
+                                var endDate = (t.start_time < t.end_time)
+                                    ? moment(schedule.date + ' ' + t.end_time, 'YYYYMMDD HHmm')
+                                    : moment(schedule.date + ' ' + t.end_time, 'YYYYMMDD HHmm').add(1, 'days');
                                 return (moment(t.online_display_start_day) <= moment(today)
-                                    && moment(schedule.date + " " + t.end_time, 'YYYYMMDD HHmm') > now);
+                                    && endDate > now);
                             }) !== undefined;
                         }) !== undefined;
                     });
                     var preSale = schedule.movie.find(function (m) {
                         return m.screen.find(function (s) {
                             return s.time.find(function (t) {
-                                var rsvStartDate = moment(t.rsv_start_day + " " + t.rsv_start_time, 'YYYYMMDD HHmm');
-                                var startDate = moment(schedule.date + " " + t.start_time, 'YYYYMMDD HHmm');
+                                var rsvStartDate = moment(t.rsv_start_day + ' ' + t.rsv_start_time, 'YYYYMMDD HHmm');
+                                var startDate = moment(schedule.date + ' ' + t.start_time, 'YYYYMMDD HHmm');
                                 var diff = PRE_SALE_DIFFERENCE_DAY;
                                 return startDate.diff(rsvStartDate, 'day') > diff;
                             }) !== undefined;
