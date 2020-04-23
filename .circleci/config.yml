@@ -25,7 +25,7 @@ commands:
 
 jobs:
   build_development:
-    working_directory: ~/workspace
+    working_directory: ~/development
     executor: build
 
     steps:
@@ -135,7 +135,7 @@ jobs:
             - .
 
   test:
-    working_directory: ~/workspace
+    working_directory: ~/development
     executor: build
 
     steps:
@@ -170,7 +170,7 @@ jobs:
           command: rm -v ./.env
 
   deploy_to_dev:
-    working_directory: ~/workspace
+    working_directory: ~/development
     executor: deployment
     steps:
       - attach_workspace:
@@ -181,7 +181,7 @@ jobs:
           command: curl -X POST https://$DEV_AAS_USER:$DEV_AAS_PASSWORD@ssk-portal2018-frontend-win-dev.scm.azurewebsites.net/api/zipdeploy -T development_app.zip
 
   deploy_to_test:
-    working_directory: ~/workspace
+    working_directory: ~/development
     executor: deployment
     steps:
       - attach_workspace:
