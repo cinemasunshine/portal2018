@@ -266,6 +266,31 @@ jobs:
 workflows:
   version: 2
 
+  # SASAKI-564確認用
+  sasaki564:
+    jobs:
+      - build_development:
+          filters:
+            branches:
+              only: feature/SASAKI-564
+
+      - test:
+          requires:
+            - build_development
+
+      - deploy_to_test_approval:
+          type: approval
+          requires:
+            - test
+
+      - deploy_to_test:
+          requires:
+            - deploy_to_test_approval
+
+      - build_production:
+          requires:
+            - test
+
   deploy_development:
     jobs:
       - build_development:
