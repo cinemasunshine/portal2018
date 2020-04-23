@@ -2,15 +2,6 @@
 
 version: 2.1
 
-executors:
-  build:
-    docker:
-      - image: circleci/php:7.2
-
-  deployment:
-    docker:
-      - image: cimg/base:stable
-
 commands:
   update_php:
     description: "DockerイメージのPHPアップデート"
@@ -22,6 +13,32 @@ commands:
             sudo pecl install -o -f redis
             sudo rm -rf /tmp/pear
             sudo docker-php-ext-enable redis
+
+  file_exists:
+    description: "Checks whether a file exists"
+    parameters:
+      file:
+        type: string
+    steps:
+      - run:
+          name: Checks whether "<< parameters.file >>" exists
+          command: |
+            if [ -e << parameters.file >> ]; then
+              echo "File exists."
+              exit 0
+            else
+              echo "File not exists."
+              exit 1
+            fi
+
+executors:
+  build:
+    docker:
+      - image: circleci/php:7.2
+
+  deployment:
+    docker:
+      - image: cimg/base:stable
 
 jobs:
   build_development:
@@ -176,6 +193,9 @@ jobs:
       - attach_workspace:
           at: .
 
+      - file_exists:
+          file: development_app.zip
+
       - run:
           name: Deploy to Azure
           command: curl -X POST https://$DEV_AAS_USER:$DEV_AAS_PASSWORD@ssk-portal2018-frontend-win-dev.scm.azurewebsites.net/api/zipdeploy -T development_app.zip
@@ -186,6 +206,9 @@ jobs:
     steps:
       - attach_workspace:
           at: .
+
+      - file_exists:
+          file: development_app.zip
 
       - run:
           name: Deploy to Azure
@@ -198,6 +221,9 @@ jobs:
     steps:
       - attach_workspace:
           at: .
+
+      - file_exists:
+          file: production_app.zip
 
       - run:
           name: Deploy to Azure
