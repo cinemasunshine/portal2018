@@ -3,9 +3,13 @@
 version: 2.1
 
 executors:
-  my_executor:
+  build:
     docker:
       - image: circleci/php:7.2
+
+  deployment:
+    docker:
+      - image: cimg/base:stable
 
 commands:
   update_php:
@@ -22,7 +26,7 @@ commands:
 jobs:
   build_development:
     working_directory: ~/workspace
-    executor: my_executor
+    executor: build
 
     steps:
       - checkout
@@ -70,7 +74,7 @@ jobs:
 
   build_production:
     working_directory: ~/production
-    executor: my_executor
+    executor: build
 
     steps:
       - checkout
@@ -118,7 +122,7 @@ jobs:
 
   test:
     working_directory: ~/workspace
-    executor: my_executor
+    executor: build
 
     steps:
       - attach_workspace:
@@ -153,7 +157,7 @@ jobs:
 
   deploy_to_dev:
     working_directory: ~/workspace
-    executor: my_executor
+    executor: deployment
     steps:
       - attach_workspace:
           at: .
@@ -164,7 +168,7 @@ jobs:
 
   deploy_to_test:
     working_directory: ~/workspace
-    executor: my_executor
+    executor: deployment
     steps:
       - attach_workspace:
           at: .
@@ -175,7 +179,7 @@ jobs:
 
   deploy_to_prod:
     working_directory: ~/production
-    executor: my_executor
+    executor: deployment
 
     steps:
       - attach_workspace:
