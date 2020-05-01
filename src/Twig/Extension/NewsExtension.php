@@ -74,7 +74,7 @@ class NewsExtension extends AbstractExtension
      * return category label class
      *
      * @param int $category
-     * @return void
+     * @return string|null
      */
     public function getCategoryLabelClass(int $category)
     {

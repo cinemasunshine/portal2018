@@ -9,6 +9,7 @@
 namespace Cinemasunshine\Portal\Twig\Extension;
 
 use Twig\Extension\AbstractExtension;
+use Twig\TwigFilter;
 use Twig\TwigFunction;
 use Cinemasunshine\Portal\ORM\Entity\Theater;
 
@@ -98,7 +99,7 @@ class CommonExtension extends AbstractExtension
     public function getFilters()
     {
         return array(
-            new \Twig_SimpleFilter('weekday', [$this, 'weekdayFilter']),
+            new TwigFilter('weekday', [$this, 'weekdayFilter']),
         );
     }
 
@@ -106,7 +107,7 @@ class CommonExtension extends AbstractExtension
      * return weekday
      *
      * @param \DateTime $datetime
-     * @return void
+     * @return string
      */
     public function weekdayFilter(\DateTime $datetime)
     {
