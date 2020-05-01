@@ -127,7 +127,7 @@ class TheaterExtension extends AbstractExtension
      * metaタグkeywordを取得
      *
      * @param Theater $theater
-     * @return void
+     * @return string|null
      */
     public function getMetaKeywords(Theater $theater)
     {

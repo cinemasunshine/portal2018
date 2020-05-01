@@ -107,7 +107,7 @@ class CommonExtension extends AbstractExtension
      * return weekday
      *
      * @param \DateTime $datetime
-     * @return void
+     * @return string
      */
     public function weekdayFilter(\DateTime $datetime)
     {
