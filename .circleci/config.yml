@@ -274,6 +274,22 @@ jobs:
 workflows:
   version: 2
 
+  # SASAKI-567確認用
+  sasaki567:
+    jobs:
+      - build_development:
+          filters:
+            branches:
+              only: feature/SASAKI-567
+
+      - test:
+          requires:
+            - build_development
+
+      - build_production:
+          requires:
+            - test
+
   deploy_development:
     jobs:
       - build_development:
