@@ -126,6 +126,6 @@ $ vendor/bin/doctrine orm:generate-proxies
 
 #### PHP設定
 
-sample.user.ini を参考に必要な設定を行います。
+user.ini.example を参考に必要な設定を行います。
 
 ※ 直接 php.ini を編集するなど方法は環境によって適宜選択してくだい。
