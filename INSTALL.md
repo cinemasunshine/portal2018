@@ -122,7 +122,7 @@ $ vendor/bin/doctrine orm:generate-proxies
 
 ドキュメントルートに *Web.config* を設置します。
 
-内容はサンプルを参考にしてください。
+内容はexampleを参考にしてください。
 
 #### PHP設定
 
