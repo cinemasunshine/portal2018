@@ -113,7 +113,7 @@ jobs:
           name: ZIP archive
           command: >-
             zip -r development_app.zip
-            bin cert config public src template vendor cli-config.php INSTALL.md README.md version.txt
+            azure bin cert config public src template vendor cli-config.php INSTALL.md README.md version.txt
             -x public/Web.config.example public/Web.config.prod
 
       - store_artifacts:
@@ -176,7 +176,7 @@ jobs:
           name: ZIP archive
           command: >-
             zip -r production_app.zip
-            bin cert config public src template vendor .user.ini cli-config.php INSTALL.md README.md version.txt
+            azure bin cert config public src template vendor .user.ini cli-config.php INSTALL.md README.md version.txt
             -x public/Web.config.example public/Web.config.prod
 
       - store_artifacts:
