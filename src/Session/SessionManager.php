@@ -9,7 +9,7 @@
 namespace Cinemasunshine\Portal\Session;
 
 use Cinemasunshine\Portal\Session\Container;
-use Laminas\Session\Config\SessionConfig as Config;
+use Laminas\Session\Config\ConfigInterface;
 use Laminas\Session\SessionManager as Base;
 
 /**
@@ -23,13 +23,10 @@ class SessionManager extends Base
     /**
      * construct
      *
-     * @param array $settings
+     * @param ConfigInterface $config
      */
-    public function __construct(array $settings)
+    public function __construct(ConfigInterface $config)
     {
-        $config = new Config();
-        $config->setOptions($settings);
-
         parent::__construct($config);
 
         Container::setDefaultManager($this);

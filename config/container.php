@@ -180,8 +180,9 @@ $container['em'] = function ($container) {
  */
 $container['sm'] = function ($container) {
     $settings = $container->get('settings')['session'];
+    $config = new Laminas\Session\Config\SessionConfig($settings);
 
-    return new \Cinemasunshine\Portal\Session\SessionManager($settings);
+    return new \Cinemasunshine\Portal\Session\SessionManager($config);
 };
 
 /**
