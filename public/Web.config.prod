@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <system.webServer>
+
+        <!-- スワップ前のカスタムウォームアップ SASAKI-567 -->
+        <applicationInitialization>
+            <add initializationPage="/" hostName="ssk-portal2018-frontend-win-prod.azurewebsites.net" />
+            <add initializationPage="/theater/gdcs/" hostName="ssk-portal2018-frontend-win-prod.azurewebsites.net" />
+        </applicationInitialization>
+
+        <rewrite>
+            <rules>
+                <!-- 4DX Screen特設サイト対応ルール SASAKI-525 -->
+                <rule name="4DX Screen Special Site Rule" patternSyntax="ECMAScript" stopProcessing="true">
+                    <match url="^4dx-with-screen-x/(.*)" />
+                    <action type="Redirect" url="4dx-screen/{R:1}" appendQueryString="true" redirectType="Permanent" />
+                </rule>
+                <!-- 池袋閉館用ルール SASAKI-489 -->
+                <rule name="Ikebukuro Close Rule" patternSyntax="ECMAScript" stopProcessing="true">
+                    <match url="^theater/ikebukuro/.*" />
+                    <action type="Redirect" url="theater/gdcs/" appendQueryString="false" redirectType="Permanent" />
+                </rule>
+                <!-- 旧サイト用ルール SASAKI-320 -->
+                <rule name="Old Site Rule" patternSyntax="ECMAScript" stopProcessing="true">
+                    <match url="^(.*)$" />
+                    <conditions logicalGrouping="MatchAny">
+                        <add input="{URL}" pattern="^/sp$" />
+                        <add input="{URL}" pattern="^/sp/.*$" />
+                    </conditions>
+                    <action type="Redirect" url="/" appendQueryString="false" redirectType="Permanent" />
+                </rule>
+                <rule name="Application Rule" patternSyntax="Wildcard" stopProcessing="true">
+                    <match url="*" />
+                    <conditions>
+                        <add input="{REQUEST_FILENAME}" matchType="IsFile" negate="true" />
+                        <add input="{REQUEST_FILENAME}" matchType="IsDirectory" negate="true" />
+                    </conditions>
+                    <action type="Rewrite" url="index.php" />
+                </rule>
+            </rules>
+        </rewrite>
+    </system.webServer>
+</configuration>
