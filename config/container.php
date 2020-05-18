@@ -151,7 +151,11 @@ $container['em'] = function ($container) {
      * 拡張機能(apc,memcached,redis)が有効だとそちらが使用されるので。
      * @see \Doctrine\ORM\Tools\Setup::createCacheInstance()
      */
-    $cache = new \Doctrine\Common\Cache\ArrayCache();
+    if ($settings['cache'] === 'wincache') {
+        $cache = new \Doctrine\Common\Cache\WinCacheCache();
+    } else {
+        $cache = new \Doctrine\Common\Cache\ArrayCache();
+    }
 
     /**
      * 第５引数について、他のアノテーションとの競合を避けるためSimpleAnnotationReaderは使用しない。

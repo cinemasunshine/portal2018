@@ -24,6 +24,7 @@ use Cinemasunshine\Portal\Controller\API\{
     AuthorizationController as AuthorizationAPIController,
     ScheduleController as ScheduleApiController
 };
+use Cinemasunshine\Portal\Controller\Development\CacheController;
 
 $app->get('/', IndexController::class . ':index')->setName('homepage');
 
@@ -123,5 +124,18 @@ $app->group('/api', function () {
     $this->group('/schedule/{name}', function () {
         $this->get('', ScheduleApiController::class . ':index');
         $this->get('/{date:[\d]{4}-[\d]{2}-[\d]{2}}', ScheduleApiController::class . ':date');
+    });
+});
+
+/**
+ * 開発用ルート設定
+ *
+ * IPアドレスなどでアクセス制限することを推奨します。
+ */
+$app->group('/dev', function () {
+    $this->group('/cache', function () {
+        $this->get('/stats', CacheController::class . ':stats');
+        $this->get('/clear/query', CacheController::class . ':clearQuery');
+        $this->get('/clear/metadata', CacheController::class . ':clearMetadata');
     });
 });
