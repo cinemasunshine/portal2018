@@ -9,7 +9,6 @@
 namespace Cinemasunshine\Portal\Schedule;
 
 use Cinemasunshine\Schedule\Theater as Base;
-use Cinemasunshine\Schedule\Builder\PreScheduleInterface as PreScheduleBuilder;
 use Cinemasunshine\Schedule\Builder\ScheduleInterface as ScheduleBuilder;
 use Cinemasunshine\Schedule\Client\Http as HttpClient;
 use Cinemasunshine\Schedule\Config;
@@ -26,7 +25,7 @@ class Theater extends Base
     /** @var string */
     protected $version;
 
-    /** @var string[] */
+    /** @var string */
     protected $xml;
 
     /** @var HttpClient client */
@@ -81,18 +80,7 @@ class Theater extends Base
      */
     public function fetchSchedule(ScheduleBuilder $builder = null)
     {
-        return $this->client->get($this->xml['schedule'], $builder);
-    }
-
-    /**
-     * 先行スケジュール取得
-     *
-     * @param PreScheduleBuilder $builder
-     * @return mixed
-     */
-    public function fetchPreSchedule(PreScheduleBuilder $builder = null)
-    {
-        return $this->client->get($this->xml['pre_schedule'], $builder);
+        return $this->client->get($this->xml, $builder);
     }
 
     /**
