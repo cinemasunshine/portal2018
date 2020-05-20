@@ -8,6 +8,7 @@
 
 namespace Cinemasunshine\Portal\Responder;
 
+use Psr\Http\Message\ResponseInterface;
 use Slim\Collection;
 use Slim\Http\Response;
 
@@ -19,9 +20,9 @@ class TheaterListResponder extends BaseResponder
     /**
      * index
      *
-     * @param Response   $response
+     * @param Response $response
      * @param Collection $data
-     * @return Response
+     * @return ResponseInterface
      */
     public function index(Response $response, Collection $data)
     {
@@ -31,9 +32,9 @@ class TheaterListResponder extends BaseResponder
     /**
      * sns
      *
-     * @param Response   $response
+     * @param Response $response
      * @param Collection $data
-     * @return Response
+     * @return ResponseInterface
      */
     public function sns(Response $response, Collection $data)
     {
