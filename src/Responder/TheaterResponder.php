@@ -8,6 +8,7 @@
 
 namespace Cinemasunshine\Portal\Responder;
 
+use Psr\Http\Message\ResponseInterface;
 use Slim\Collection;
 use Slim\Http\Response;
 
@@ -19,9 +20,9 @@ class TheaterResponder extends BaseResponder
     /**
      * index
      *
-     * @param Response   $response
+     * @param Response $response
      * @param Collection $data
-     * @return Response
+     * @return ResponseInterface
      */
     public function index(Response $response, Collection $data)
     {
@@ -31,9 +32,9 @@ class TheaterResponder extends BaseResponder
     /**
      * closed
      *
-     * @param Response   $response
+     * @param Response $response
      * @param Collection $data
-     * @return Response
+     * @return ResponseInterface
      */
     public function closed(Response $response, Collection $data)
     {
@@ -43,9 +44,9 @@ class TheaterResponder extends BaseResponder
     /**
      * access
      *
-     * @param Response   $response
+     * @param Response $response
      * @param Collection $data
-     * @return Response
+     * @return ResponseInterface
      */
     public function access(Response $response, Collection $data)
     {
@@ -55,9 +56,9 @@ class TheaterResponder extends BaseResponder
     /**
      * admission
      *
-     * @param Response   $response
+     * @param Response $response
      * @param Collection $data
-     * @return Response
+     * @return ResponseInterface
      */
     public function admission(Response $response, Collection $data)
     {
@@ -67,9 +68,9 @@ class TheaterResponder extends BaseResponder
     /**
      * advance ticket
      *
-     * @param Response   $response
+     * @param Response $response
      * @param Collection $data
-     * @return Response
+     * @return ResponseInterface
      */
     public function advanceTicket(Response $response, Collection $data)
     {
@@ -79,9 +80,9 @@ class TheaterResponder extends BaseResponder
     /**
      * concession
      *
-     * @param Response   $response
+     * @param Response $response
      * @param Collection $data
-     * @return Response
+     * @return ResponseInterface
      */
     public function concession(Response $response, Collection $data)
     {
@@ -91,9 +92,9 @@ class TheaterResponder extends BaseResponder
     /**
      * floor guide
      *
-     * @param Response   $response
+     * @param Response $response
      * @param Collection $data
-     * @return Response
+     * @return ResponseInterface
      */
     public function floorGuide(Response $response, Collection $data)
     {
@@ -103,9 +104,9 @@ class TheaterResponder extends BaseResponder
     /**
      * news list
      *
-     * @param Response   $response
+     * @param Response $response
      * @param Collection $data
-     * @return Response
+     * @return ResponseInterface
      */
     public function newsList(Response $response, Collection $data)
     {
@@ -115,9 +116,9 @@ class TheaterResponder extends BaseResponder
     /**
      * news show
      *
-     * @param Response   $response
+     * @param Response $response
      * @param Collection $data
-     * @return Response
+     * @return ResponseInterface
      */
     public function newsShow(Response $response, Collection $data)
     {

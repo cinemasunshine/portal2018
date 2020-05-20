@@ -8,6 +8,7 @@
 
 namespace Cinemasunshine\Portal\Responder;
 
+use Psr\Http\Message\ResponseInterface;
 use Slim\Collection;
 use Slim\Http\Response;
 
@@ -19,9 +20,9 @@ class AboutResponder extends BaseResponder
     /**
      * company
      *
-     * @param Response   $response
+     * @param Response $response
      * @param Collection $data
-     * @return Response
+     * @return ResponseInterface
      */
     public function company(Response $response, Collection $data)
     {
@@ -31,9 +32,9 @@ class AboutResponder extends BaseResponder
     /**
      * mail magazine
      *
-     * @param Response   $response
+     * @param Response $response
      * @param Collection $data
-     * @return Response
+     * @return ResponseInterface
      */
     public function mailMagazine(Response $response, Collection $data)
     {
@@ -43,9 +44,9 @@ class AboutResponder extends BaseResponder
     /**
      * mvtk
      *
-     * @param Response   $response
+     * @param Response $response
      * @param Collection $data
-     * @return Response
+     * @return ResponseInterface
      */
     public function mvtk(Response $response, Collection $data)
     {
@@ -55,9 +56,9 @@ class AboutResponder extends BaseResponder
     /**
      * official app
      *
-     * @param Response   $response
+     * @param Response $response
      * @param Collection $data
-     * @return Response
+     * @return ResponseInterface
      */
     public function officialApp(Response $response, Collection $data)
     {
@@ -67,9 +68,9 @@ class AboutResponder extends BaseResponder
     /**
      * online ticket
      *
-     * @param Response   $response
+     * @param Response $response
      * @param Collection $data
-     * @return Response
+     * @return ResponseInterface
      */
     public function onlineTicket(Response $response, Collection $data)
     {
@@ -79,9 +80,9 @@ class AboutResponder extends BaseResponder
     /**
      * privacy
      *
-     * @param Response   $response
+     * @param Response $response
      * @param Collection $data
-     * @return Response
+     * @return ResponseInterface
      */
     public function privacy(Response $response, Collection $data)
     {
@@ -91,9 +92,9 @@ class AboutResponder extends BaseResponder
     /**
      * question
      *
-     * @param Response   $response
+     * @param Response $response
      * @param Collection $data
-     * @return Response
+     * @return ResponseInterface
      */
     public function question(Response $response, Collection $data)
     {
@@ -103,9 +104,9 @@ class AboutResponder extends BaseResponder
     /**
      * sitemap
      *
-     * @param Response   $response
+     * @param Response $response
      * @param Collection $data
-     * @return Response
+     * @return ResponseInterface
      */
     public function sitemap(Response $response, Collection $data)
     {
@@ -115,9 +116,9 @@ class AboutResponder extends BaseResponder
     /**
      * special ticket
      *
-     * @param Response   $response
+     * @param Response $response
      * @param Collection $data
-     * @return Response
+     * @return ResponseInterface
      */
     public function specialTicket(Response $response, Collection $data)
     {
@@ -127,9 +128,9 @@ class AboutResponder extends BaseResponder
     /**
      * specific quotient
      *
-     * @param Response   $response
+     * @param Response $response
      * @param Collection $data
-     * @return Response
+     * @return ResponseInterface
      */
     public function specificQuotient(Response $response, Collection $data)
     {
@@ -139,9 +140,9 @@ class AboutResponder extends BaseResponder
     /**
      * terms of service
      *
-     * @param Response   $response
+     * @param Response $response
      * @param Collection $data
-     * @return Response
+     * @return ResponseInterface
      */
     public function termsOfService(Response $response, Collection $data)
     {

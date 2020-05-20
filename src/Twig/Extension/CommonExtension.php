@@ -113,6 +113,6 @@ class CommonExtension extends AbstractExtension
     {
         $weekdays = ['日', '月', '火', '水', '木', '金', '土'];
 
-        return $weekdays[$datetime->format('w')];
+        return $weekdays[(int) $datetime->format('w')];
     }
 }

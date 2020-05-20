@@ -8,6 +8,7 @@
 
 namespace Cinemasunshine\Portal\Responder;
 
+use Psr\Http\Message\ResponseInterface;
 use Slim\Collection;
 use Slim\Http\Response;
 
@@ -21,9 +22,9 @@ class FourdxScreenResponder extends BaseResponder
     /**
      * index
      *
-     * @param Response   $response
+     * @param Response $response
      * @param Collection $data
-     * @return Response
+     * @return ResponseInterface
      */
     public function index(Response $response, Collection $data)
     {
@@ -33,9 +34,9 @@ class FourdxScreenResponder extends BaseResponder
     /**
      * about
      *
-     * @param Response   $response
+     * @param Response $response
      * @param Collection $data
-     * @return Response
+     * @return ResponseInterface
      */
     public function about(Response $response, Collection $data)
     {
@@ -45,9 +46,9 @@ class FourdxScreenResponder extends BaseResponder
     /**
      * schedule list
      *
-     * @param Response   $response
+     * @param Response $response
      * @param Collection $data
-     * @return Response
+     * @return ResponseInterface
      */
     public function scheduleList(Response $response, Collection $data)
     {
@@ -57,9 +58,9 @@ class FourdxScreenResponder extends BaseResponder
     /**
      * schedule show
      *
-     * @param Response   $response
+     * @param Response $response
      * @param Collection $data
-     * @return Response
+     * @return ResponseInterface
      */
     public function scheduleShow(Response $response, Collection $data)
     {
@@ -69,9 +70,9 @@ class FourdxScreenResponder extends BaseResponder
     /**
      * news list
      *
-     * @param Response   $response
+     * @param Response $response
      * @param Collection $data
-     * @return Response
+     * @return ResponseInterface
      */
     public function newsList(Response $response, Collection $data)
     {
@@ -81,9 +82,9 @@ class FourdxScreenResponder extends BaseResponder
     /**
      * news show
      *
-     * @param Response   $response
+     * @param Response $response
      * @param Collection $data
-     * @return Response
+     * @return ResponseInterface
      */
     public function newsShow(Response $response, Collection $data)
     {
@@ -93,9 +94,9 @@ class FourdxScreenResponder extends BaseResponder
     /**
      * theater
      *
-     * @param Response   $response
+     * @param Response $response
      * @param Collection $data
-     * @return Response
+     * @return ResponseInterface
      */
     public function theater(Response $response, Collection $data)
     {

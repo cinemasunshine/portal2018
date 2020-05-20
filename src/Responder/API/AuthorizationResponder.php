@@ -33,7 +33,7 @@ class AuthorizationResponder extends BaseResponder
      *
      * @param Response   $response
      * @param Collection $data
-     * @return void
+     * @return Response
      */
     public function badRequest(Response $response, Collection $data)
     {
