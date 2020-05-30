@@ -63,6 +63,7 @@ class Manager
      * construct
      *
      * @param array $settings
+     * @param SessionContainer $session
      */
     public function __construct(array $settings, SessionContainer $session)
     {
