@@ -48,21 +48,10 @@ class Manager
     protected $session;
 
     /**
-     * create unique string
-     *
-     * @param string $name
-     * @param string $salt
-     * @return string
-     */
-    protected static function createUniqueStr(string $name, string $salt = 'salt'): string
-    {
-        return md5($salt . uniqid((string) random_int(1, 99999), true) . $name);
-    }
-
-    /**
      * construct
      *
      * @param array $settings
+     * @param SessionContainer $session
      */
     public function __construct(array $settings, SessionContainer $session)
     {
@@ -119,7 +108,19 @@ class Manager
      */
     protected function initAuthorizationState()
     {
-        $this->session['authorization_state'] = self::createUniqueStr('authorization_state');
+        $this->session['authorization_state'] = $this->createUniqueStr('authorization_state');
+    }
+
+    /**
+     * Create unique string
+     *
+     * @param string $name
+     * @param string $salt
+     * @return string
+     */
+    protected function createUniqueStr(string $name, string $salt = 'salt'): string
+    {
+        return md5($salt . uniqid((string) random_int(1, 99999), true) . $name);
     }
 
     /**
@@ -153,7 +154,7 @@ class Manager
      */
     protected function initCodeVerifier(): void
     {
-        $this->session['code_verifier'] = self::createUniqueStr('code_verifier');
+        $this->session['code_verifier'] = $this->createUniqueStr('code_verifier');
     }
 
     /**
