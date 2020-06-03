@@ -26,7 +26,7 @@
         "slim/twig-view": "^2.5",
         "twig/extensions": "^1.5",
         "vlucas/phpdotenv": "^3.6",
-        "monolog/monolog": "^1.23",
+        "monolog/monolog": "^2.1",
         "doctrine/orm": "2.6.*",
         "cinemasunshine/schedule": "2.5.0",
         "microsoft/azure-storage-blob": "^1.5",
