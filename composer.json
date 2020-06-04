@@ -33,7 +33,8 @@
         "laminas/laminas-session": "^2.9",
         "guzzlehttp/guzzle": "^6.3",
         "symfony/console": "^4.3",
-        "symfony/filesystem": "^4.3"
+        "symfony/filesystem": "^4.3",
+        "blue32a/monolog-azure-blob": "^0.2"
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "^3.5",
