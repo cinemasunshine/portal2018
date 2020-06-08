@@ -16,18 +16,3 @@ parameters:
 		- %currentWorkingDirectory%/tests/entity-manager.php
 	doctrine:
 		objectManagerLoader: %currentWorkingDirectory%/tests/entity-manager.php
-
-	ignoreErrors:
-		# ライブラリの改修が必要なので除外する
-		-
-			message: '#Call to an undefined method Cinemasunshine\\Schedule\\Entity\\SchedulesInterface::#'
-			path: %currentWorkingDirectory%/src/Controller/API/ScheduleController.php
-		-
-			message: '#Call to an undefined method Cinemasunshine\\Schedule\\Entity\\ScheduleInterface::#'
-			path: %currentWorkingDirectory%/src/Schedule/Collection/Schedule.php
-		-
-			message: '#Call to an undefined method Cinemasunshine\\Schedule\\Entity\\MovieInterface::#'
-			path: %currentWorkingDirectory%/src/Schedule/Collection/Movie.php
-		-
-			message: '#Call to an undefined method Cinemasunshine\\Schedule\\Entity\\ScreenInterface::#'
-			path: %currentWorkingDirectory%/src/Schedule/Entity/V3/Time.php

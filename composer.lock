@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "eaede8a59fa1ae86cc37fc4f622b6c0f",
+    "content-hash": "da69f7f2ac2632b75817df815056c5af",
     "packages": [
         {
             "name": "blue32a/monolog-azure-blob",
@@ -51,20 +51,20 @@
         },
         {
             "name": "cinemasunshine/schedule",
-            "version": "v2.5.0",
+            "version": "v2.6.0",
             "source": {
                 "type": "git",
                 "url": "https://m-p.backlog.jp/git/SASAKI/schedule.git",
-                "reference": "704c44fbedd56e296f68c0686feb208e72239771"
+                "reference": "480f181d4d55b3ecee5e7bf6be1aaa8265b7dbbc"
             },
             "require": {
-                "guzzlehttp/guzzle": "6.3.*",
+                "guzzlehttp/guzzle": ">=6.3 <7",
                 "php": "~7.2"
             },
             "require-dev": {
-                "phpmd/phpmd": "@stable",
-                "phpunit/phpunit": "6.*",
-                "squizlabs/php_codesniffer": "3.*"
+                "phpmd/phpmd": "^2.8",
+                "phpunit/phpunit": "^8.5",
+                "squizlabs/php_codesniffer": "^3.5"
             },
             "type": "library",
             "autoload": {
@@ -78,22 +78,26 @@
             },
             "autoload-dev": {
                 "psr-4": {
-                    "Cinemasunshine\\Schedule\\Test\\": "test/"
+                    "Test\\": "test/"
                 }
             },
             "scripts": {
                 "phpunit": [
-                    "bin/phpunit"
+                    "vendor/bin/phpunit"
                 ],
                 "phpcs": [
-                    "bin/phpcs --standard=phpcs.xml"
+                    "mkdir -p ./report/phpcs",
+                    "vendor/bin/phpcs --standard=phpcs.xml"
+                ],
+                "phpcbf": [
+                    "vendor/bin/phpcbf --standard=phpcs.xml"
                 ],
                 "phpmd": [
-                    "bin/phpmd ./src --reportfile ./report/phpmd.html html phpmd.xml"
+                    "vendor/bin/phpmd ./src --reportfile ./report/phpmd/index.html html phpmd.xml"
                 ]
             },
             "description": "Cinemasunshine schedule client",
-            "time": "2020-04-06T04:34:24+00:00"
+            "time": "2020-06-08T01:09:56+00:00"
         },
         {
             "name": "container-interop/container-interop",

@@ -6,11 +6,13 @@
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
+declare(strict_types=1);
+
 namespace Cinemasunshine\Portal\Schedule\Entity\V3;
 
-use Cinemasunshine\Schedule\Entity\V3\Schedules as BaseEntity;
 use Cinemasunshine\Portal\Schedule\Entity\PortalEntityInterface;
 use Cinemasunshine\Portal\Schedule\Collection\Schedule as ScheduleCollection;
+use Cinemasunshine\Schedule\Entity\V3\Schedules as BaseEntity;
 
 /**
  * Schedules entity
@@ -22,7 +24,7 @@ class Schedules extends BaseEntity implements PortalEntityInterface
      */
     public function __construct()
     {
-        $this->schedule = new ScheduleCollection();
+        $this->scheduleCollection = new ScheduleCollection();
     }
 
     /**
@@ -38,7 +40,7 @@ class Schedules extends BaseEntity implements PortalEntityInterface
             'schedule'  => [],
         );
 
-        foreach ($this->getSchedule() as $schedule) {
+        foreach ($this->getScheduleCollection() as $schedule) {
             $data['schedule'][] = $schedule->toArray();
         }
 
