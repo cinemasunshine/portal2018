@@ -6,10 +6,12 @@
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
+declare(strict_types=1);
+
 namespace Cinemasunshine\Portal\Schedule\Entity\V3;
 
-use Cinemasunshine\Schedule\Entity\V3\Movie as BaseEntity;
 use Cinemasunshine\Portal\Schedule\Entity\PortalEntityInterface;
+use Cinemasunshine\Schedule\Entity\V3\Movie as BaseEntity;
 
 /**
  * Movie entity
@@ -39,7 +41,7 @@ class Movie extends BaseEntity implements PortalEntityInterface
             'screen'        => array(),
         );
 
-        foreach ($this->getScreen() as $screen) {
+        foreach ($this->getScreenCollection() as $screen) {
             $data['screen'][] = $screen->toArray();
         }
 

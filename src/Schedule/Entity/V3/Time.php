@@ -6,12 +6,12 @@
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
+declare(strict_types=1);
+
 namespace Cinemasunshine\Portal\Schedule\Entity\V3;
 
-// extends
-use Cinemasunshine\Schedule\Entity\V3\Time as BaseEntity;
-// implements
 use Cinemasunshine\Portal\Schedule\Entity\PortalEntityInterface;
+use Cinemasunshine\Schedule\Entity\V3\Time as BaseEntity;
 
 /**
  * Time entity
@@ -38,7 +38,7 @@ class Time extends BaseEntity implements PortalEntityInterface
      * @link https://m-p.backlog.jp/view/SSKTS-635
      * @link https://m-p.backlog.jp/view/SSKTS-738
      */
-    public function getUrl()
+    public function getUrl(): string
     {
         $timeBegin = str_replace(':', '', $this->getStart());
 
