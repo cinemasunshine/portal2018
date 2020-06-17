@@ -26,8 +26,6 @@
 
 CIツールとして [CircleCI](https://circleci.com) を導入してます。
 
-※ 現在はコード解析だけですが、将来的にデプロイなども実施する予定です。
-
 ## Docker
 
 ローカル環境としてDockerが利用できます。
@@ -65,6 +63,13 @@ $ php bin/concole cache:clear:view
 ```
 
 ## その他 コマンド
+
+### PHP Lint
+
+```sh
+$ composer phplint
+```
+
 ### PHP CodeSniffer
 
 ```sh
@@ -75,4 +80,10 @@ $ composer phpcs
 
 ```sh
 $ composer phpstan
+```
+
+### PHPUnit
+
+```sh
+$ composer phpunit
 ```
