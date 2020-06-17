@@ -131,19 +131,19 @@ class AuthorizationCode extends AbstractGrant
      *
      * @param string $code
      * @param string $redirectUri
-     * @param string $codeVerifie
+     * @param string $codeVerifier
      * @return Token
      */
-    public function requestToken(string $code, string $redirectUri, string $codeVerifie): Token
+    public function requestToken(string $code, string $redirectUri, string $codeVerifier): Token
     {
         $endpoint = '/token';
         $headers = $this->getRequestHeaders($this->clientId, $this->clientSecret);
         $params = [
-            'grant_type'   => $this->name,
-            'client_id'    => $this->clientId,
-            'code'         => $code,
-            'redirect_uri' => $redirectUri,
-            'code_verifie' => $codeVerifie,
+            'grant_type'    => $this->name,
+            'client_id'     => $this->clientId,
+            'code'          => $code,
+            'redirect_uri'  => $redirectUri,
+            'code_verifier' => $codeVerifier,
         ];
 
         $response = $this->httpClient->post($endpoint, [
