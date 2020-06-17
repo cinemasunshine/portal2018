@@ -75,7 +75,7 @@ class ClientCredentialsToken extends AbstractToken
      */
     public function getTokenType(): string
     {
-        return $this->getTokenType();
+        return $this->tokenType;
     }
 
     /**
