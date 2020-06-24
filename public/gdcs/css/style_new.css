@@ -20,6 +20,8 @@
     }
     #body_wrap{
         position: relative;
+        overflow: hidden;
+        max-width: 100%;
     }
     body:before{
         content:'';
@@ -118,6 +120,7 @@
         -o-transition-delay:1600ms;
         -ms-transition-delay:1600ms;
         }
+    .mb-1{margin-bottom: 5%;}
     @media (min-width: 768px) {
         .pc_br{
             display: block;
@@ -176,7 +179,7 @@
         }
         .main_intro{
             text-align: center;
-            padding-top: 10%;
+            padding-top: 5%;
             width:50%;
         }
         .main_intro h2{
@@ -913,6 +916,10 @@
         }
         .sp_br{
             display: block;
+        }
+        .top-linkbtn-area{
+            width:90%;
+            margin: 0px auto;
         }
         /*--ボタン--*/
         .gdcs_link_btn{
