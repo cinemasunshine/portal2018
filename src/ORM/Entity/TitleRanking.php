@@ -17,7 +17,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * TitleRanking entity class
  *
- * @ORM\Entity(readOnly=true)
+ * @ORM\Entity(readOnly=true, repositoryClass="Cinemasunshine\Portal\ORM\Repository\TitleRankingRepository")
  * @ORM\Table(name="title_ranking", options={"collate"="utf8mb4_general_ci"})
  * @ORM\HasLifecycleCallbacks
  */
