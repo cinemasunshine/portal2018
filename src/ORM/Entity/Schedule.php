@@ -6,9 +6,12 @@
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
+declare(strict_types=1);
+
 namespace Cinemasunshine\Portal\ORM\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
+use Cinemasunshine\ORM\Entity\Schedule as BaseSchedule;
+use Cinemasunshine\ORM\Entity\Title as BaseTitle;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -19,90 +22,10 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="schedule", options={"collate"="utf8mb4_general_ci"})
  * @ORM\HasLifecycleCallbacks
  */
-class Schedule extends AbstractEntity
+class Schedule extends BaseSchedule
 {
-    use SavedUserTrait;
-    use SoftDeleteTrait;
-    use TimestampableTrait;
-
     /**
-     * id
-     *
-     * @var int
-     * @ORM\Id
-     * @ORM\Column(type="integer", options={"unsigned"=true})
-     * @ORM\GeneratedValue
-     */
-    protected $id;
-
-    /**
-     * title
-     *
-     * @var Title
-     * @ORM\ManyToOne(targetEntity="Title", fetch="EAGER")
-     * @ORM\JoinColumn(name="title_id", referencedColumnName="id", nullable=false, onDelete="RESTRICT")
-     */
-    protected $title;
-
-    /**
-     * start_date
-     *
-     * @var \DateTime
-     * @ORM\Column(type="date", name="start_date")
-     */
-    protected $startDate;
-
-    /**
-     * end_date
-     *
-     * @var \DateTime
-     * @ORM\Column(type="date", name="end_date")
-     */
-    protected $endDate;
-
-    /**
-     * public_start_dt
-     *
-     * @var \DateTime
-     * @ORM\Column(type="datetime", name="public_start_dt")
-     */
-    protected $publicStartDt;
-
-    /**
-     * public_end_dt
-     *
-     * @var \DateTime
-     * @ORM\Column(type="datetime", name="public_end_dt")
-     */
-    protected $publicEndDt;
-
-    /**
-     * remark
-     *
-     * @var string|null
-     * @ORM\Column(type="text", nullable=true)
-     */
-    protected $remark;
-
-    /**
-     * showing_formats
-     *
-     * @var Collection<ShowingFormat>
-     * @ORM\OneToMany(targetEntity="ShowingFormat", mappedBy="schedule", orphanRemoval=true, fetch="EAGER")
-     */
-    protected $showingFormats;
-
-    /**
-     * showing_theaters
-     *
-     * @var Collection<ShowingTheater>
-     * @ORM\OneToMany(targetEntity="ShowingTheater", mappedBy="schedule", orphanRemoval=true, fetch="EAGER")
-     */
-    protected $showingTheaters;
-
-
-    /**
-     * construct
+     * {@inheritDoc}
      *
      * @throws \LogicException
      */
@@ -112,52 +35,18 @@ class Schedule extends AbstractEntity
     }
 
     /**
-     * get id
+     * {@inheritDoc}
      *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * get title
-     *
-     * @return Title
-     */
-    public function getTitle()
-    {
-        return $this->title;
-    }
-
-    /**
-     * set title
-     *
-     * @param Title $title
-     * @return void
      * @throws \LogicException
      */
-    public function setTitle(Title $title)
+    public function setTitle(BaseTitle $title)
     {
         throw new \LogicException('Not allowed.');
     }
 
     /**
-     * get start_date
+     * {@inheritDoc}
      *
-     * @return \DateTime
-     */
-    public function getStartDate()
-    {
-        return $this->startDate;
-    }
-
-    /**
-     * set start_date
-     *
-     * @param \DateTime|string $startDate
-     * @return void
      * @throws \LogicException
      */
     public function setStartDate($startDate)
@@ -166,20 +55,8 @@ class Schedule extends AbstractEntity
     }
 
     /**
-     * get end_date
+     * {@inheritDoc}
      *
-     * @return \DateTime
-     */
-    public function getEndDate()
-    {
-        return $this->endDate;
-    }
-
-    /**
-     * set end_date
-     *
-     * @param \DateTime|string $endDate
-     * @return void
      * @throws \LogicException
      */
     public function setEndDate($endDate)
@@ -188,20 +65,8 @@ class Schedule extends AbstractEntity
     }
 
     /**
-     * get public_start_dt
+     * {@inheritDoc}
      *
-     * @return \DateTime
-     */
-    public function getPublicStartDt()
-    {
-        return $this->publicStartDt;
-    }
-
-    /**
-     * set public_start_dt
-     *
-     * @param \DateTime|string $publicStartDt
-     * @return void
      * @throws \LogicException
      */
     public function setPublicStartDt($publicStartDt)
@@ -210,20 +75,8 @@ class Schedule extends AbstractEntity
     }
 
     /**
-     * get public_end_dt
+     * {@inheritDoc}
      *
-     * @return \DateTime
-     */
-    public function getPublicEndDt()
-    {
-        return $this->publicEndDt;
-    }
-
-    /**
-     * set public_end_dt
-     *
-     * @param \DateTime|string $publicEndDt
-     * @return void
      * @throws \LogicException
      */
     public function setPublicEndDt($publicEndDt)
@@ -232,20 +85,8 @@ class Schedule extends AbstractEntity
     }
 
     /**
-     * get remark
+     * {@inheritDoc}
      *
-     * @return string|null
-     */
-    public function getRemark()
-    {
-        return $this->remark;
-    }
-
-    /**
-     * set remark
-     *
-     * @param string|null $remark
-     * @return void
      * @throws \LogicException
      */
     public function setRemark(?string $remark)
@@ -254,20 +95,8 @@ class Schedule extends AbstractEntity
     }
 
     /**
-     * get showing_formats
+     * {@inheritDoc}
      *
-     * @return Collection
-     */
-    public function getShowingFormats()
-    {
-        return $this->showingFormats;
-    }
-
-    /**
-     * set showing_formats
-     *
-     * @param Collection $showingFormats
-     * @return void
      * @throws \LogicException
      */
     public function setShowingFormats(Collection $showingFormats)
@@ -276,20 +105,8 @@ class Schedule extends AbstractEntity
     }
 
     /**
-     * get showing_theaters
+     * {@inheritDoc}
      *
-     * @return Collection
-     */
-    public function getShowingTheaters()
-    {
-        return $this->showingTheaters;
-    }
-
-    /**
-     * set showing_theaters
-     *
-     * @param Collection $showingTheaters
-     * @return void
      * @throws \LogicException
      */
     public function setShowingTheaters(Collection $showingTheaters)

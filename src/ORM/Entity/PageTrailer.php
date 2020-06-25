@@ -6,8 +6,13 @@
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
+declare(strict_types=1);
+
 namespace Cinemasunshine\Portal\ORM\Entity;
 
+use Cinemasunshine\ORM\Entity\Page as BasePage;
+use Cinemasunshine\ORM\Entity\PageTrailer as BasePageTrailer;
+use Cinemasunshine\ORM\Entity\Trailer as BaseTrailer;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -17,41 +22,10 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="page_trailer", options={"collate"="utf8mb4_general_ci"})
  * @ORM\HasLifecycleCallbacks
  */
-class PageTrailer extends AbstractEntity
+class PageTrailer extends BasePageTrailer
 {
-    use TimestampableTrait;
-    
     /**
-     * id
-     *
-     * @var int
-     * @ORM\Id
-     * @ORM\Column(type="integer", options={"unsigned"=true})
-     * @ORM\GeneratedValue
-     */
-    protected $id;
-    
-    /**
-     * trailer
-     *
-     * @var Trailer
-     * @ORM\ManyToOne(targetEntity="Trailer")
-     * @ORM\JoinColumn(name="trailer_id", referencedColumnName="id", nullable=false, onDelete="CASCADE")
-     */
-    protected $trailer;
-    
-    /**
-     * page
-     *
-     * @var Page
-     * @ORM\ManyToOne(targetEntity="Page", inversedBy="newsList")
-     * @ORM\JoinColumn(name="page_id", referencedColumnName="id", nullable=false, onDelete="CASCADE")
-     */
-    protected $page;
-    
-    
-    /**
-     * construct
+     * {@inheritDoc}
      *
      * @throws \LogicException
      */
@@ -59,57 +33,23 @@ class PageTrailer extends AbstractEntity
     {
         throw new \LogicException('Not allowed.');
     }
-    
+
     /**
-     * get id
+     * {@inheritDoc}
      *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-    
-    /**
-     * get trailer
-     *
-     * @return Trailer
-     */
-    public function getTrailer()
-    {
-        return $this->trailer;
-    }
-    
-    /**
-     * set trailer
-     *
-     * @param Trailer $trailer
-     * @return void
      * @throws \LogicException
      */
-    public function setTrailer(Trailer $trailer)
+    public function setTrailer(BaseTrailer $trailer)
     {
         throw new \LogicException('Not allowed.');
     }
-    
+
     /**
-     * page
+     * {@inheritDoc}
      *
-     * @return Page
-     */
-    public function getPage()
-    {
-        return $this->page;
-    }
-    
-    /**
-     * set page
-     *
-     * @param Page $page
-     * @return void
      * @throws \LogicException
      */
-    public function setPage(Page $page)
+    public function setPage(BasePage $page)
     {
         throw new \LogicException('Not allowed.');
     }
