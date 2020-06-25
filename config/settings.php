@@ -80,7 +80,7 @@ $getLoggerSetting = function () {
     ];
 
     if (APP_DEBUG) {
-        $settings['chrome_php'] = [
+        $settings['browser_console'] = [
             'level' => \Monolog\Logger::DEBUG,
         ];
     }
