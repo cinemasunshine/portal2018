@@ -115,7 +115,9 @@ class IndexController extends GeneralController
      */
     protected function getTitleRanking()
     {
-        return $this->em->find(Entity\TitleRanking::class, 1);
+        return $this->em
+            ->getRepository(Entity\TitleRanking::class)
+            ->findOneById(1);
     }
 
     /**

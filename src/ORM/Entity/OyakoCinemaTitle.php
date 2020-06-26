@@ -6,8 +6,12 @@
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
+declare(strict_types=1);
+
 namespace Cinemasunshine\Portal\ORM\Entity;
 
+use Cinemasunshine\ORM\Entity\OyakoCinemaTitle as BaseOyakoCinemaTitle;
+use Cinemasunshine\ORM\Entity\Title as BaseTitle;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 use Doctrine\ORM\Mapping as ORM;
@@ -19,53 +23,10 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="oyako_cinema_title", options={"collate"="utf8mb4_general_ci"})
  * @ORM\HasLifecycleCallbacks
  */
-class OyakoCinemaTitle extends AbstractEntity
+class OyakoCinemaTitle extends BaseOyakoCinemaTitle
 {
-    use SavedUserTrait;
-    use SoftDeleteTrait;
-    use TimestampableTrait;
-
     /**
-     * id
-     *
-     * @var int
-     * @ORM\Id
-     * @ORM\Column(type="integer", options={"unsigned"=true})
-     * @ORM\GeneratedValue
-     */
-    protected $id;
-
-    /**
-     * title
-     *
-     * @var Title
-     * @ORM\ManyToOne(targetEntity="Title", fetch="EAGER")
-     * @ORM\JoinColumn(name="title_id", referencedColumnName="id", nullable=false, onDelete="RESTRICT")
-     */
-    protected $title;
-
-    /**
-     * title_url
-     *
-     * @var string
-     * @ORM\Column(type="string", name="title_url")
-     */
-    protected $titleUrl;
-
-    /**
-     * oyako_cinema_schedules
-     *
-     * @var Collection<OyakoCinemaSchedule>
-     * @ORM\OneToMany(
-     *     targetEntity="OyakoCinemaSchedule",
-     *     mappedBy="oyakoCinemaTitle",
-     *     orphanRemoval=true
-     * )
-     */
-    protected $oyakoCinemaSchedules;
-
-    /**
-     * construct
+     * {@inheritDoc}
      *
      * @throws \LogicException
      */
@@ -75,52 +36,18 @@ class OyakoCinemaTitle extends AbstractEntity
     }
 
     /**
-     * get id
+     * {@inheritDoc}
      *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * get title
-     *
-     * @return Title
-     */
-    public function getTitle(): Title
-    {
-        return $this->title;
-    }
-
-    /**
-     * set title
-     *
-     * @param Title $title
-     * @return void
      * @throws \LogicException
      */
-    public function setTitle(Title $title)
+    public function setTitle(BaseTitle $title)
     {
         throw new \LogicException('Not allowed.');
     }
 
     /**
-     * get title_url
+     * {@inheritDoc}
      *
-     * @return string
-     */
-    public function getTitleUrl(): string
-    {
-        return $this->titleUrl;
-    }
-
-    /**
-     * set title_url
-     *
-     * @param string $titleUrl
-     * @return void
      * @throws \LogicException
      */
     public function setTitleUrl(string $titleUrl)
@@ -129,7 +56,7 @@ class OyakoCinemaTitle extends AbstractEntity
     }
 
     /**
-     * get oyako_cinema_schedules
+     * {@inheritDoc}
      *
      * @return Collection
      */

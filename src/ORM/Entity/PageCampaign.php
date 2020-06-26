@@ -6,8 +6,13 @@
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
+declare(strict_types=1);
+
 namespace Cinemasunshine\Portal\ORM\Entity;
 
+use Cinemasunshine\ORM\Entity\Campaign as BaseCampaign;
+use Cinemasunshine\ORM\Entity\Page as BasePage;
+use Cinemasunshine\ORM\Entity\PageCampaign as BasePageCampaign;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -17,49 +22,10 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="page_campaign", options={"collate"="utf8mb4_general_ci"})
  * @ORM\HasLifecycleCallbacks
  */
-class PageCampaign extends AbstractEntity
+class PageCampaign extends BasePageCampaign
 {
-    use TimestampableTrait;
-    
     /**
-     * id
-     *
-     * @var int
-     * @ORM\Id
-     * @ORM\Column(type="integer", options={"unsigned"=true})
-     * @ORM\GeneratedValue
-     */
-    protected $id;
-    
-    /**
-     * campaign
-     *
-     * @var Campaign
-     * @ORM\ManyToOne(targetEntity="Campaign", inversedBy="pages")
-     * @ORM\JoinColumn(name="campaign_id", referencedColumnName="id", nullable=false, onDelete="CASCADE")
-     */
-    protected $campaign;
-    
-    /**
-     * page
-     *
-     * @var Page
-     * @ORM\ManyToOne(targetEntity="Page", inversedBy="campaigns")
-     * @ORM\JoinColumn(name="page_id", referencedColumnName="id", nullable=false, onDelete="CASCADE")
-     */
-    protected $page;
-    
-    /**
-     * display_order
-     *
-     * @var int
-     * @ORM\Column(type="smallint", name="display_order", options={"unsigned"=true})
-     */
-    protected $displayOrder;
-    
-    
-    /**
-     * construct
+     * {@inheritDoc}
      *
      * @throws \LogicException
      */
@@ -67,76 +33,30 @@ class PageCampaign extends AbstractEntity
     {
         throw new \LogicException('Not allowed.');
     }
-    
+
     /**
-     * get id
+     * {@inheritDoc}
      *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-    
-    /**
-     * get campaign
-     *
-     * @return Campaign
-     */
-    public function getCampaign()
-    {
-        return $this->campaign;
-    }
-    
-    /**
-     * set campaign
-     *
-     * @param Campaign $campaign
-     * @return void
      * @throws \LogicException
      */
-    public function setCampaign(Campaign $campaign)
+    public function setCampaign(BaseCampaign $campaign)
     {
         throw new \LogicException('Not allowed.');
     }
-    
+
     /**
-     * page
+     * {@inheritDoc}
      *
-     * @return Page
-     */
-    public function getPage()
-    {
-        return $this->page;
-    }
-    
-    /**
-     * set page
-     *
-     * @param Page $page
-     * @return void
      * @throws \LogicException
      */
-    public function setPage(Page $page)
+    public function setPage(BasePage $page)
     {
         throw new \LogicException('Not allowed.');
     }
-    
+
     /**
-     * get display_order
+     * {@inheritDoc}
      *
-     * @return int
-     */
-    public function getDisplayOrder()
-    {
-        return $this->displayOrder;
-    }
-    
-    /**
-     * set display_order
-     *
-     * @param int $displayOrder
-     * @return void
      * @throws \LogicException
      */
     public function setDisplayOrder(int $displayOrder)

@@ -8,9 +8,10 @@
 
 namespace Cinemasunshine\Portal\ORM\Repository;
 
-use Doctrine\ORM\EntityRepository;
-use Doctrine\ORM\QueryBuilder;
 use Cinemasunshine\Portal\ORM\Entity\Campaign;
+use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\Mapping\ClassMetadata;
+use Doctrine\ORM\QueryBuilder;
 
 /**
  * Campaign repository class
@@ -31,10 +32,10 @@ class CampaignRepository extends EntityRepository
                 $qb->expr()->lte('c.startDt', 'CURRENT_TIMESTAMP()'),
                 $qb->expr()->gt('c.endDt', 'CURRENT_TIMESTAMP()')
             ));
-        
+
         return $qb;
     }
-    
+
     /**
      * find by page
      *
@@ -44,16 +45,19 @@ class CampaignRepository extends EntityRepository
     public function findByPage(int $pageId)
     {
         $qb = $this->getActiveQuery();
-        
+
         $qb
             ->join('c.pages', 'pc')
             ->andWhere('pc.page = :page_id')
             ->setParameter('page_id', $pageId)
             ->orderBy('pc.displayOrder', 'ASC');
-        
-        return $qb->getQuery()->getResult();
+
+        $query = $qb->getQuery();
+        $query->setFetchMode(Campaign::class, 'image', ClassMetadata::FETCH_EAGER);
+
+        return $query->getResult();
     }
-    
+
     /**
      * find by theater
      *
@@ -63,16 +67,19 @@ class CampaignRepository extends EntityRepository
     public function findByTheater(int $theaterId)
     {
         $qb = $this->getActiveQuery();
-        
+
         $qb
             ->join('c.theaters', 'tc')
             ->andWhere('tc.theater = :theater_id')
             ->setParameter('theater_id', $theaterId)
             ->orderBy('tc.displayOrder', 'ASC');
-        
-        return $qb->getQuery()->getResult();
+
+        $query = $qb->getQuery();
+        $query->setFetchMode(Campaign::class, 'image', ClassMetadata::FETCH_EAGER);
+
+        return $query->getResult();
     }
-    
+
     /**
      * find by special_site
      *
@@ -82,13 +89,16 @@ class CampaignRepository extends EntityRepository
     public function findBySpecialSite(int $specialSiteId)
     {
         $qb = $this->getActiveQuery();
-        
+
         $qb
             ->join('c.specialSites', 'sc')
             ->andWhere('sc.specialSite = :special_site_id')
             ->setParameter('special_site_id', $specialSiteId)
             ->orderBy('sc.displayOrder', 'ASC');
-        
-        return $qb->getQuery()->getResult();
+
+        $query = $qb->getQuery();
+        $query->setFetchMode(Campaign::class, 'image', ClassMetadata::FETCH_EAGER);
+
+        return $query->getResult();
     }
 }

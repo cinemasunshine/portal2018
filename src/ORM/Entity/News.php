@@ -6,10 +6,12 @@
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
+declare(strict_types=1);
+
 namespace Cinemasunshine\Portal\ORM\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use Cinemasunshine\ORM\Entity\File as BaseFile;
+use Cinemasunshine\ORM\Entity\News as BaseNews;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -19,115 +21,10 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="news", options={"collate"="utf8mb4_general_ci"})
  * @ORM\HasLifecycleCallbacks
  */
-class News extends AbstractEntity
+class News extends BaseNews
 {
-    use SavedUserTrait;
-    use SoftDeleteTrait;
-    use TimestampableTrait;
-
-    public const CATEGORY_NEWS       = 1;
-    public const CATEGORY_INFO       = 2;
-    public const CATEGORY_IMAX       = 3;
-    public const CATEGORY_4DX        = 4;
-    public const CATEGORY_EVENT      = 5;
-    public const CATEGORY_SCREENX    = 6; // SASAKI-351
-    public const CATEGORY_4DX_SCREEN = 7; // SASAKI-432
-
     /**
-     * id
-     *
-     * @var int
-     * @ORM\Id
-     * @ORM\Column(type="integer", options={"unsigned"=true})
-     * @ORM\GeneratedValue
-     */
-    protected $id;
-
-    /**
-     * title
-     *
-     * @var Title|null
-     * @ORM\ManyToOne(targetEntity="Title")
-     * @ORM\JoinColumn(name="title_id", referencedColumnName="id", nullable=true, onDelete="RESTRICT")
-     */
-    protected $title;
-
-    /**
-     * image
-     *
-     * @var File|null
-     * @ORM\OneToOne(targetEntity="File", fetch="EAGER")
-     * @ORM\JoinColumn(name="image_file_id", referencedColumnName="id", nullable=true, onDelete="RESTRICT")
-     */
-    protected $image;
-
-    /**
-     * category
-     *
-     * @var int
-     * @ORM\Column(type="smallint", options={"unsigned"=true})
-     */
-    protected $category;
-
-    /**
-     * headline
-     *
-     * @var string
-     * @ORM\Column(type="string")
-     */
-    protected $headline;
-
-    /**
-     * body
-     *
-     * @var string
-     * @ORM\Column(type="text")
-     */
-    protected $body;
-
-    /**
-     * start_dt
-     *
-     * @var \DateTime
-     * @ORM\Column(type="datetime", name="start_dt")
-     */
-    protected $startDt;
-
-    /**
-     * end_dt
-     *
-     * @var \DateTime
-     * @ORM\Column(type="datetime", name="end_dt")
-     */
-    protected $endDt;
-
-    /**
-     * pages
-     *
-     * @var Collection<PageNews>
-     * @ORM\OneToMany(targetEntity="PageNews", mappedBy="news")
-     */
-    protected $pages;
-
-    /**
-     * theaters
-     *
-     * @var Collection<TheaterNews>
-     * @ORM\OneToMany(targetEntity="TheaterNews", mappedBy="news")
-     */
-    protected $theaters;
-
-    /**
-     * special_sites
-     *
-     * @var Collection<SpecialSiteNews>
-     * @ORM\OneToMany(targetEntity="SpecialSiteNews", mappedBy="news")
-     */
-    protected $specialSites;
-
-
-    /**
-     * construct
+     * {@inheritDoc}
      *
      * @throws \LogicException
      */
@@ -137,30 +34,8 @@ class News extends AbstractEntity
     }
 
     /**
-     * get id
+     * {@inheritDoc}
      *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * get title
-     *
-     * @return Title|null
-     */
-    public function getTitle()
-    {
-        return $this->title;
-    }
-
-    /**
-     * set title
-     *
-     * @param Title|null $title
-     * @return void
      * @throws \LogicException
      */
     public function setTitle($title)
@@ -169,42 +44,18 @@ class News extends AbstractEntity
     }
 
     /**
-     * get image
+     * {@inheritDoc}
      *
-     * @return File|null
-     */
-    public function getImage()
-    {
-        return $this->image;
-    }
-
-    /**
-     * set image
-     *
-     * @param File|null $image
-     * @return void
      * @throws \LogicException
      */
-    public function setImage(?File $image)
+    public function setImage(?BaseFile $image)
     {
         throw new \LogicException('Not allowed.');
     }
 
     /**
-     * get category
+     * {@inheritDoc}
      *
-     * @return int
-     */
-    public function getCategory()
-    {
-        return $this->category;
-    }
-
-    /**
-     * set category
-     *
-     * @param int $category
-     * @return void
      * @throws \LogicException
      */
     public function setCategory(int $category)
@@ -213,20 +64,8 @@ class News extends AbstractEntity
     }
 
     /**
-     * get headline
+     * {@inheritDoc}
      *
-     * @return string
-     */
-    public function getHeadline()
-    {
-        return $this->headline;
-    }
-
-    /**
-     * set headline
-     *
-     * @param string $headline
-     * @return void
      * @throws \LogicException
      */
     public function setHeadline(string $headline)
@@ -235,20 +74,8 @@ class News extends AbstractEntity
     }
 
     /**
-     * get body
+     * {@inheritDoc}
      *
-     * @return string
-     */
-    public function getBody()
-    {
-        return $this->body;
-    }
-
-    /**
-     * set body
-     *
-     * @param string $body
-     * @return void
      * @throws \LogicException
      */
     public function setBody(string $body)
@@ -257,20 +84,8 @@ class News extends AbstractEntity
     }
 
     /**
-     * get start_dt
+     * {@inheritDoc}
      *
-     * @return \DateTime
-     */
-    public function getStartDt()
-    {
-        return $this->startDt;
-    }
-
-    /**
-     * set start_dt
-     *
-     * @param \DateTime|string $startDt
-     * @return void
      * @throws \LogicException
      */
     public function setStartDt($startDt)
@@ -279,54 +94,12 @@ class News extends AbstractEntity
     }
 
     /**
-     * get end_dt
+     * {@inheritDoc}
      *
-     * @return \DateTime
-     */
-    public function getEndDt()
-    {
-        return $this->endDt;
-    }
-
-    /**
-     * set end_dt
-     *
-     * @param \DateTime|string $endDt
-     * @return void
      * @throws \LogicException
      */
     public function setEndDt($endDt)
     {
         throw new \LogicException('Not allowed.');
-    }
-
-    /**
-     * get pages
-     *
-     * @return Collection
-     */
-    public function getPages(): Collection
-    {
-        return $this->pages;
-    }
-
-    /**
-     * get theaters
-     *
-     * @return Collection
-     */
-    public function getTheaters(): Collection
-    {
-        return $this->theaters;
-    }
-
-    /**
-     * get special_sites
-     *
-     * @return Collection
-     */
-    public function getSpecialSites(): Collection
-    {
-        return $this->specialSites;
     }
 }
