@@ -6,8 +6,13 @@
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
+declare(strict_types=1);
+
 namespace Cinemasunshine\Portal\ORM\Entity;
 
+use Cinemasunshine\ORM\Entity\Campaign as BaseCampaign;
+use Cinemasunshine\ORM\Entity\Theater as BaseTheater;
+use Cinemasunshine\ORM\Entity\TheaterCampaign as BaseTheaterCampaign;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -17,49 +22,10 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="theater_campaign", options={"collate"="utf8mb4_general_ci"})
  * @ORM\HasLifecycleCallbacks
  */
-class TheaterCampaign extends AbstractEntity
+class TheaterCampaign extends BaseTheaterCampaign
 {
-    use TimestampableTrait;
-    
     /**
-     * id
-     *
-     * @var int
-     * @ORM\Id
-     * @ORM\Column(type="integer", options={"unsigned"=true})
-     * @ORM\GeneratedValue
-     */
-    protected $id;
-    
-    /**
-     * campaign
-     *
-     * @var Campaign
-     * @ORM\ManyToOne(targetEntity="Campaign")
-     * @ORM\JoinColumn(name="campaign_id", referencedColumnName="id", nullable=false, onDelete="CASCADE")
-     */
-    protected $campaign;
-    
-    /**
-     * theater
-     *
-     * @var Theater
-     * @ORM\ManyToOne(targetEntity="Theater", inversedBy="theaters")
-     * @ORM\JoinColumn(name="theater_id", referencedColumnName="id", nullable=false, onDelete="CASCADE")
-     */
-    protected $theater;
-    
-    /**
-     * display_order
-     *
-     * @var int
-     * @ORM\Column(type="smallint", name="display_order", options={"unsigned"=true})
-     */
-    protected $displayOrder;
-    
-    
-    /**
-     * construct
+     * {@inheritDoc}
      *
      * @throws \LogicException
      */
@@ -67,76 +33,30 @@ class TheaterCampaign extends AbstractEntity
     {
         throw new \LogicException('Not allowed.');
     }
-    
+
     /**
-     * get id
+     * {@inheritDoc}
      *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-    
-    /**
-     * get campaign
-     *
-     * @return Campaign
-     */
-    public function getCampaign()
-    {
-        return $this->campaign;
-    }
-    
-    /**
-     * set campaign
-     *
-     * @param Campaign $campaign
-     * @return void
      * @throws \LogicException
      */
-    public function setCampaign(Campaign $campaign)
+    public function setCampaign(BaseCampaign $campaign)
     {
         throw new \LogicException('Not allowed.');
     }
-    
+
     /**
-     * get theater
+     * {@inheritDoc}
      *
-     * @return Theater
-     */
-    public function getTheater()
-    {
-        return $this->theater;
-    }
-    
-    /**
-     * set theater
-     *
-     * @param Theater $theater
-     * @return void
      * @throws \LogicException
      */
-    public function setTheater(Theater $theater)
+    public function setTheater(BaseTheater $theater)
     {
         throw new \LogicException('Not allowed.');
     }
-    
+
     /**
-     * get display_order
+     * {@inheritDoc}
      *
-     * @return int
-     */
-    public function getDisplayOrder()
-    {
-        return $this->displayOrder;
-    }
-    
-    /**
-     * set display_order
-     *
-     * @param int $displayOrder
-     * @return void
      * @throws \LogicException
      */
     public function setDisplayOrder(int $displayOrder)

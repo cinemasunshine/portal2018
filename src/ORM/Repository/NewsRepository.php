@@ -8,9 +8,10 @@
 
 namespace Cinemasunshine\Portal\ORM\Repository;
 
-use Doctrine\ORM\EntityRepository;
-use Doctrine\ORM\QueryBuilder;
 use Cinemasunshine\Portal\ORM\Entity\News;
+use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\Mapping\ClassMetadata;
+use Doctrine\ORM\QueryBuilder;
 
 /**
  * News repository class
@@ -78,7 +79,10 @@ class NewsRepository extends EntityRepository
             $qb->setMaxResults($limit);
         }
 
-        return $qb->getQuery()->getResult();
+        $query = $qb->getQuery();
+        $query->setFetchMode(News::class, 'image', ClassMetadata::FETCH_EAGER);
+
+        return $query->getResult();
     }
 
     /**
@@ -108,7 +112,10 @@ class NewsRepository extends EntityRepository
             $qb->setMaxResults($limit);
         }
 
-        return $qb->getQuery()->getResult();
+        $query = $qb->getQuery();
+        $query->setFetchMode(News::class, 'image', ClassMetadata::FETCH_EAGER);
+
+        return $query->getResult();
     }
 
     /**
@@ -138,7 +145,10 @@ class NewsRepository extends EntityRepository
             $qb->setMaxResults($limit);
         }
 
-        return $qb->getQuery()->getResult();
+        $query = $qb->getQuery();
+        $query->setFetchMode(News::class, 'image', ClassMetadata::FETCH_EAGER);
+
+        return $query->getResult();
     }
 
     /**
@@ -159,7 +169,10 @@ class NewsRepository extends EntityRepository
             $qb->setMaxResults($limit);
         }
 
-        return $qb->getQuery()->getResult();
+        $query = $qb->getQuery();
+        $query->setFetchMode(News::class, 'image', ClassMetadata::FETCH_EAGER);
+
+        return $query->getResult();
     }
 
     /**
@@ -180,7 +193,10 @@ class NewsRepository extends EntityRepository
             $qb->setMaxResults($limit);
         }
 
-        return $qb->getQuery()->getResult();
+        $query = $qb->getQuery();
+        $query->setFetchMode(News::class, 'image', ClassMetadata::FETCH_EAGER);
+
+        return $query->getResult();
     }
 
     /**
@@ -201,7 +217,10 @@ class NewsRepository extends EntityRepository
             $qb->setMaxResults($limit);
         }
 
-        return $qb->getQuery()->getResult();
+        $query = $qb->getQuery();
+        $query->setFetchMode(News::class, 'image', ClassMetadata::FETCH_EAGER);
+
+        return $query->getResult();
     }
 
     /**
@@ -222,6 +241,9 @@ class NewsRepository extends EntityRepository
             $qb->setMaxResults($limit);
         }
 
-        return $qb->getQuery()->getResult();
+        $query = $qb->getQuery();
+        $query->setFetchMode(News::class, 'image', ClassMetadata::FETCH_EAGER);
+
+        return $query->getResult();
     }
 }

@@ -6,8 +6,13 @@
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
+declare(strict_types=1);
+
 namespace Cinemasunshine\Portal\ORM\Entity;
 
+use Cinemasunshine\ORM\Entity\MainBanner as BaseMainBanner;
+use Cinemasunshine\ORM\Entity\Theater as BaseTheater;
+use Cinemasunshine\ORM\Entity\TheaterMainBanner as BaseTheaterMainBanner;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -17,49 +22,10 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="theater_main_banner", options={"collate"="utf8mb4_general_ci"})
  * @ORM\HasLifecycleCallbacks
  */
-class TheaterMainBanner extends AbstractEntity
+class TheaterMainBanner extends BaseTheaterMainBanner
 {
-    use TimestampableTrait;
-    
     /**
-     * id
-     *
-     * @var int
-     * @ORM\Id
-     * @ORM\Column(type="integer", options={"unsigned"=true})
-     * @ORM\GeneratedValue
-     */
-    protected $id;
-    
-    /**
-     * main_banner
-     *
-     * @var MainBanner
-     * @ORM\ManyToOne(targetEntity="MainBanner")
-     * @ORM\JoinColumn(name="main_banner_id", referencedColumnName="id", nullable=false, onDelete="CASCADE")
-     */
-    protected $mainBanner;
-    
-    /**
-     * theater
-     *
-     * @var Theater
-     * @ORM\ManyToOne(targetEntity="Theater", inversedBy="theaters")
-     * @ORM\JoinColumn(name="theater_id", referencedColumnName="id", nullable=false, onDelete="CASCADE")
-     */
-    protected $theater;
-    
-    /**
-     * display_order
-     *
-     * @var int
-     * @ORM\Column(type="smallint", name="display_order", options={"unsigned"=true})
-     */
-    protected $displayOrder;
-    
-    
-    /**
-     * construct
+     * {@inheritDoc}
      *
      * @throws \LogicException
      */
@@ -67,76 +33,30 @@ class TheaterMainBanner extends AbstractEntity
     {
         throw new \LogicException('Not allowed.');
     }
-    
+
     /**
-     * get id
+     * {@inheritDoc}
      *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-    
-    /**
-     * get main_banner
-     *
-     * @return MainBanner
-     */
-    public function getMainBanner()
-    {
-        return $this->mainBanner;
-    }
-    
-    /**
-     * set main_banner
-     *
-     * @param MainBanner $mainBanner
-     * @return void
      * @throws \LogicException
      */
-    public function setMainBanner(MainBanner $mainBanner)
+    public function setMainBanner(BaseMainBanner $mainBanner)
     {
         throw new \LogicException('Not allowed.');
     }
-    
+
     /**
-     * get theater
+     * {@inheritDoc}
      *
-     * @return Theater
-     */
-    public function getTheater()
-    {
-        return $this->theater;
-    }
-    
-    /**
-     * set theater
-     *
-     * @param Theater $theater
-     * @return void
      * @throws \LogicException
      */
-    public function setTheater(Theater $theater)
+    public function setTheater(BaseTheater $theater)
     {
         throw new \LogicException('Not allowed.');
     }
-    
+
     /**
-     * get display_order
+     * {@inheritDoc}
      *
-     * @return int
-     */
-    public function getDisplayOrder()
-    {
-        return $this->displayOrder;
-    }
-    
-    /**
-     * set display_order
-     *
-     * @param int $displayOrder
-     * @return void
      * @throws \LogicException
      */
     public function setDisplayOrder(int $displayOrder)

@@ -6,8 +6,13 @@
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
+declare(strict_types=1);
+
 namespace Cinemasunshine\Portal\ORM\Entity;
 
+use Cinemasunshine\ORM\Entity\Campaign as BaseCampaign;
+use Cinemasunshine\ORM\Entity\SpecialSite as BaseSpecialSite;
+use Cinemasunshine\ORM\Entity\SpecialSiteCampaign as BaseSpecialSiteCampaign;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -17,49 +22,10 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="special_site_campaign", options={"collate"="utf8mb4_general_ci"})
  * @ORM\HasLifecycleCallbacks
  */
-class SpecialSiteCampaign extends AbstractEntity
+class SpecialSiteCampaign extends BaseSpecialSiteCampaign
 {
-    use TimestampableTrait;
-    
     /**
-     * id
-     *
-     * @var int
-     * @ORM\Id
-     * @ORM\Column(type="integer", options={"unsigned"=true})
-     * @ORM\GeneratedValue
-     */
-    protected $id;
-    
-    /**
-     * campaign
-     *
-     * @var Campaign
-     * @ORM\ManyToOne(targetEntity="Campaign", inversedBy="specialSites")
-     * @ORM\JoinColumn(name="campaign_id", referencedColumnName="id", nullable=false, onDelete="CASCADE")
-     */
-    protected $campaign;
-    
-    /**
-     * special_site
-     *
-     * @var SpecialSite
-     * @ORM\ManyToOne(targetEntity="SpecialSite")
-     * @ORM\JoinColumn(name="special_site_id", referencedColumnName="id", nullable=false, onDelete="CASCADE")
-     */
-    protected $specialSite;
-    
-    /**
-     * display_order
-     *
-     * @var int
-     * @ORM\Column(type="smallint", name="display_order", options={"unsigned"=true})
-     */
-    protected $displayOrder;
-    
-    
-    /**
-     * construct
+     * {@inheritDoc}
      *
      * @throws \LogicException
      */
@@ -67,76 +33,30 @@ class SpecialSiteCampaign extends AbstractEntity
     {
         throw new \LogicException('Not allowed.');
     }
-    
+
     /**
-     * get id
+     * {@inheritDoc}
      *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-    
-    /**
-     * get campaign
-     *
-     * @return Campaign
-     */
-    public function getCampaign()
-    {
-        return $this->campaign;
-    }
-    
-    /**
-     * set campaign
-     *
-     * @param Campaign $campaign
-     * @return void
      * @throws \LogicException
      */
-    public function setCampaign(Campaign $campaign)
+    public function setCampaign(BaseCampaign $campaign)
     {
         throw new \LogicException('Not allowed.');
     }
-    
+
     /**
-     * get special_site
+     * {@inheritDoc}
      *
-     * @return SpecialSite
-     */
-    public function getSpecialSite()
-    {
-        return $this->specialSite;
-    }
-    
-    /**
-     * set special_site
-     *
-     * @param SpecialSite $specialSite
-     * @return void
      * @throws \LogicException
      */
-    public function setSpecialSite(SpecialSite $specialSite)
+    public function setSpecialSite(BaseSpecialSite $specialSite)
     {
         throw new \LogicException('Not allowed.');
     }
-    
+
     /**
-     * get display_order
+     * {@inheritDoc}
      *
-     * @return int
-     */
-    public function getDisplayOrder()
-    {
-        return $this->displayOrder;
-    }
-    
-    /**
-     * set display_order
-     *
-     * @param int $displayOrder
-     * @return void
      * @throws \LogicException
      */
     public function setDisplayOrder(int $displayOrder)

@@ -6,11 +6,13 @@
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
+declare(strict_types=1);
+
 namespace Cinemasunshine\Portal\ORM\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
-use Doctrine\Common\Collections\Criteria;
+use Cinemasunshine\ORM\Entity\AdvanceSale as BaseAdvanceSale;
+use Cinemasunshine\ORM\Entity\Theater as BaseTheater;
+use Cinemasunshine\ORM\Entity\Title as BaseTitle;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -20,67 +22,10 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="advance_sale", options={"collate"="utf8mb4_general_ci"})
  * @ORM\HasLifecycleCallbacks
  */
-class AdvanceSale extends AbstractEntity
+class AdvanceSale extends BaseAdvanceSale
 {
-    use SavedUserTrait;
-    use SoftDeleteTrait;
-    use TimestampableTrait;
-
     /**
-     * id
-     *
-     * @var int
-     * @ORM\Id
-     * @ORM\Column(type="integer", options={"unsigned"=true})
-     * @ORM\GeneratedValue
-     */
-    protected $id;
-
-    /**
-     * theater
-     *
-     * @var Theater
-     * @ORM\ManyToOne(targetEntity="Theater")
-     * @ORM\JoinColumn(name="theater_id", referencedColumnName="id", nullable=false, onDelete="RESTRICT")
-     */
-    protected $theater;
-
-    /**
-     * title
-     *
-     * @var Title
-     * @ORM\ManyToOne(targetEntity="Title")
-     * @ORM\JoinColumn(name="title_id", referencedColumnName="id", nullable=false, onDelete="RESTRICT")
-     */
-    protected $title;
-
-    /**
-     * publishing_expected_date
-     *
-     * @var \DateTime|null
-     * @ORM\Column(type="date", name="publishing_expected_date", nullable=true)
-     */
-    protected $publishingExpectedDate;
-
-    /**
-     * publishing_expected_date_text
-     *
-     * @var string|null
-     * @ORM\Column(type="string", name="publishing_expected_date_text", nullable=true)
-     */
-    protected $publishingExpectedDateText;
-
-    /**
-     * advance_tickets
-     *
-     * @var Collection<AdvanceTicket>
-     * @ORM\OneToMany(targetEntity="AdvanceTicket", mappedBy="advanceSale", indexBy="id")
-     */
-    protected $advanceTickets;
-
-
-    /**
-     * construct
+     * {@inheritDoc}
      *
      * @throws \LogicException
      */
@@ -90,74 +35,28 @@ class AdvanceSale extends AbstractEntity
     }
 
     /**
-     * get id
+     * {@inheritDoc}
      *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * get tehater
-     *
-     * @return Theater
-     */
-    public function getTheater()
-    {
-        return $this->theater;
-    }
-
-    /**
-     * set theater
-     *
-     * @param Theater $theater
-     * @return void
      * @throws \LogicException
      */
-    public function setTheater(Theater $theater)
+    public function setTheater(BaseTheater $theater)
     {
         throw new \LogicException('Not allowed.');
     }
 
     /**
-     * get title
+     * {@inheritDoc}
      *
-     * @return Title
-     */
-    public function getTitle()
-    {
-        return $this->title;
-    }
-
-    /**
-     * set title
-     *
-     * @param Title $title
-     * @return void
      * @throws \LogicException
      */
-    public function setTitle(Title $title)
+    public function setTitle(BaseTitle $title)
     {
         throw new \LogicException('Not allowed.');
     }
 
     /**
-     * get publishing_expected_date
+     * {@inheritDoc}
      *
-     * @return \DateTime|null
-     */
-    public function getPublishingExpectedDate()
-    {
-        return $this->publishingExpectedDate;
-    }
-
-    /**
-     * set publishing_dxpected_date
-     *
-     * @param \DateTime|string|null $publishingExpectedDate
-     * @return void
      * @throws \LogicException
      */
     public function setPublishingExpectedDate($publishingExpectedDate)
@@ -166,34 +65,12 @@ class AdvanceSale extends AbstractEntity
     }
 
     /**
-     * get publishing_expected_date_text
+     * {@inheritDoc}
      *
-     * @return string|null
-     */
-    public function getPublishingExpectedDateText()
-    {
-        return $this->publishingExpectedDateText;
-    }
-
-    /**
-     * set publishing_expected_date_text
-     *
-     * @param string|null $publishingExpectedDateText
-     * @return void
      * @throws \LogicException
      */
     public function setPublishingExpectedDateText(?string $publishingExpectedDateText)
     {
         throw new \LogicException('Not allowed.');
-    }
-
-    /**
-     * get advance_tickets
-     *
-     * @return Collection
-     */
-    public function getAdvanceTickets()
-    {
-        return $this->advanceTickets;
     }
 }

@@ -6,8 +6,13 @@
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
+declare(strict_types=1);
+
 namespace Cinemasunshine\Portal\ORM\Entity;
 
+use Cinemasunshine\ORM\Entity\Schedule as BaseSchedule;
+use Cinemasunshine\ORM\Entity\ShowingTheater as BaseShowingTheater;
+use Cinemasunshine\ORM\Entity\Theater as BaseTheater;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -17,41 +22,10 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="showing_theater", options={"collate"="utf8mb4_general_ci"})
  * @ORM\HasLifecycleCallbacks
  */
-class ShowingTheater extends AbstractEntity
+class ShowingTheater extends BaseShowingTheater
 {
-    use TimestampableTrait;
-    
     /**
-     * id
-     *
-     * @var int
-     * @ORM\Id
-     * @ORM\Column(type="integer", options={"unsigned"=true})
-     * @ORM\GeneratedValue
-     */
-    protected $id;
-    
-    /**
-     * schedule
-     *
-     * @var Schedule
-     * @ORM\ManyToOne(targetEntity="Schedule")
-     * @ORM\JoinColumn(name="schedule_id", referencedColumnName="id", nullable=false, onDelete="CASCADE")
-     */
-    protected $schedule;
-    
-    /**
-     * theater
-     *
-     * @var Theater
-     * @ORM\ManyToOne(targetEntity="Theater")
-     * @ORM\JoinColumn(name="theater_id", referencedColumnName="id", nullable=false, onDelete="CASCADE")
-     */
-    protected $theater;
-    
-    
-    /**
-     * construct
+     * {@inheritDoc}
      *
      * @throws \LogicException
      */
@@ -59,57 +33,23 @@ class ShowingTheater extends AbstractEntity
     {
         throw new \LogicException('Not allowed.');
     }
-    
+
     /**
-     * get id
+     * {@inheritDoc}
      *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-    
-    /**
-     * get schedule
-     *
-     * @return Schedule
-     */
-    public function getSchedule()
-    {
-        return $this->schedule;
-    }
-    
-    /**
-     * set schedule
-     *
-     * @param Schedule $schedule
-     * @return void
      * @throws \LogicException
      */
-    public function setSchedule(Schedule $schedule)
+    public function setSchedule(BaseSchedule $schedule)
     {
         throw new \LogicException('Not allowed.');
     }
-    
+
     /**
-     * get theater
+     * {@inheritDoc}
      *
-     * @return Theater
-     */
-    public function getTheater()
-    {
-        return $this->theater;
-    }
-    
-    /**
-     * set theater
-     *
-     * @param Theater $theater
-     * @return void
      * @throws \LogicException
      */
-    public function setTheater(Theater $theater)
+    public function setTheater(BaseTheater $theater)
     {
         throw new \LogicException('Not allowed.');
     }
