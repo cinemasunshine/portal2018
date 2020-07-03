@@ -1,20 +1,23 @@
 {% extends "theater/layout.html.twig" %}
 
+{% set title = '劇場トップ・上映スケジュール | シネマサンシャイン' ~ theater.getNameJa() %}
+{% set description = 'シネマサンシャイン' ~ theater.getNameJa() ~ 'の劇場サイトトップページです。上映スケジュール、ニュース、前売券情報、コンセッション、料金案内、劇場設備、アクセスのご案内など。' %}
+{% set keywords = 'シネマサンシャイン,映画館,映画,シネマ,劇場,座席指定,予約,オンライン,上映,スケジュール,キャンペーン,公式アプリ,ムビチケ,' ~ theater_meta_keywords(theater) %}
 
-{% block title %}劇場トップ・上映スケジュール | {{ parent() }}{% endblock %}
-
-{% block description %}シネマサンシャイン{{ theater.getNameJa()
-}}の劇場サイトトップページです。上映スケジュール、ニュース、前売券情報、コンセッション、料金案内、劇場設備、アクセスのご案内など。{% endblock %}
-
-{% set keywords = theater_meta_keywords(theater) %}
-
-{% if theater.getName() == 'heiwajima' %}
-{# 平和島トップページのみ #}
-{% set keywords = keywords ~ ',4DX' %}
+{% if theater.getName() == 'gdcs' %}
+    {# SASAKI-579 #}
+    {% set title = 'TODO'%}
+    {% set description = 'TODO' %}
+    {% set keywords = 'TODO' %}
+{% elseif theater.getName() == 'heiwajima' %}
+    {% set keywords = keywords ~ ',4DX' %}
 {% endif %}
 
-{% block keywords %}{{ parent()}},座席指定,予約,オンライン,上映,スケジュール,キャンペーン,公式アプリ,ムビチケ{% if keywords %},{{ keywords }}{% endif
-%}{% endblock %}
+{% block title %}{{ title }}{% endblock %}
+
+{% block description %}{{ description }}{% endblock %}
+
+{% block keywords %}{{ keywords }}{% endblock %}
 
 {% block css %}
 <link href="/css/theater/top.css" rel="stylesheet">
