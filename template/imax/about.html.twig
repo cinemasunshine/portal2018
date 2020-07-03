@@ -23,8 +23,220 @@
 {% block contents %}
 <!--tab-->
 <div class="tab-content">
+    <!--content_IMAXレーザー/GT-->
+    <div id="laser_gt" role="tabpanel" class="tab-pane fade show active">
+        <div class="breadcrumb-list d-none d-md-block small width mx-auto mb-5 px-2 text-white">
+            <a class="text-white" href="{{ path_for('homepage') }}">ホーム</a>
+            <span class="font-weight-bold mx-2"> | </span>
+            <a class="text-white" href="{{ path_for('imax') }}">IMAX</a>
+            <span class="font-weight-bold mx-2"> | </span>
+            <a class="text-white">IMAXとは？</a>
+            <span class="font-weight-bold mx-2"> | </span>
+            <span>IMAXレーザー&nbsp;/&nbsp;GTテクノロジー</span>
+        </div>
+
+        <div class="width mx-auto mb-3 px-2 text-white">
+            <div class="mb-5">
+                <h2 class="font-weight-bold x-large text-center pb-3">IMAX&reg;レーザー&nbsp;/&nbsp;GTテクノロジー</h2>
+                <div class="d-flex justify-content-center mb-3 mb-md-5">
+                    <div class="about_theater_name small">グランドシネマサンシャイン</div>
+                </div>
+                <div class="mb-4"><img class="w-100" src="/images/imax/about/imax_top_04.jpg"></div>
+                <p>
+                    革新的な4Kレーザー投影システムを採用し、より鮮やかで明るく、深みあるコントラストの超高解像度映像を実現。<br>
+                    音響面では12chサウンドシステムを採用。圧倒的な臨場感で客席を包みます。<br>
+                    最大で1.43:1の画角にまで拡張し、一般のスクリーンに比べ約40%広い映像をお届けします。
+                </p>
+            </div>
+            <div class="mb-5">
+                <div class="introduction-video mx-auto mb-5">
+                    <div class="video">
+                        <iframe type="text/html" src="https://www.youtube.com/embed/BwsXr6QrdmI?rel=0&loop=1&playsinline=1&rel=0&mute=1&autoplay=1&showinfo=0&disablekb=1&modestbranding=1&color=white"
+                            frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="mx-auto introduction mb-5">
+                    <ul class="d-md-flex flex-wrap">
+                        <li class="gt_pic">
+                            <div><img class="w-100" src="/images/imax/about/imax_top_13.jpg"></div>
+                        </li>
+                        <li class="gt_txt">
+                            <h5 class="font-weight-bold mb-3">客席を包み込む大型スクリーン</h5>
+                            <p>革新的な4Kレーザー投影システムを採用し、より鮮やかで明るく、深みあるコントラストの超高解像度映像を実現。<br>
+                                音響面では12chサウンドシステムを採用。圧倒的な臨場感で客席を包みます。<br>
+                                最大で1.43:1の画角にまで拡張し、一般のスクリーンに比べ約40%広い映像をお届けします。</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="mx-auto introduction mb-5">
+                    <ul class="d-md-flex flex-wrap">
+                        <li class="gt_pic">
+                            <div><img class="w-100" src="/images/imax/about/imax_top_14.jpg"></div>
+                        </li>
+                        <li class="gt_txt">
+                            <h5 class="font-weight-bold mb-3">最もシャープで明るい、4Kレーザープロジェクター</h5>
+                            <p>IMAXの画期的なデュアル4Kレーザー映像システムで、最もシャープで明るく、鮮明なデジタル映像を実現。<br>
+                                ゼロから構築されたこの新システムは、全く新しい光学エンジンと、独自の新IMAX技術を備えています。私たちが目にする映像を全く新しい次元へと高めます。</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="mx-auto introduction mb-5">
+                    <ul class="d-md-flex flex-wrap">
+                        <li class="gt_pic">
+                            <div><img class="w-100" src="/images/imax/about/imax_top_15.jpg"></div>
+                        </li>
+                        <li class="gt_txt">
+                            <h5 class="font-weight-bold mb-3">圧倒的なサウンドで包み込む12チャンネル・オーディオシステム</h5>
+                            <p>最大規模のIMAXシアター用に設計された分散型12チャンネル・オーディオシステム。<br>
+                                レーザー照準のデジタルサラウンド音響、自動チューニング、IMAX専用にリマスタリングされた非圧縮サウンドトラックを使用することで、高音から低音まで、素晴らしいサウンドを実現します。</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mb-5 viewing-fee">
+                <h2 class="font-weight-bold large text-center text-md-left mb-4">IMAX&reg;鑑賞料金</h2>
+                <p class="text-center text-md-left">対象劇場：グランドシネマサンシャイン</p>
+                <div class="mb-5 prices">
+                    <ul class="mb-4">
+                        <li class="d-md-flex align-items-center mb-4 text-center text-md-left">
+                            <div class="title large font-weight-bold mb-3 mb-md-0">IMAX</div>
+                            <div class="description">
+                                <div class="bg-light-blue py-4 px-5 x-large d-inline-block price">通常料金<span class="mx-3">+</span>￥700
+                                </div>
+                            </div>
+                        </li>
+                        <li class="d-md-flex align-items-center text-center text-md-left">
+                            <div class="title large font-weight-bold mb-3 mb-md-0">IMAX3D</div>
+                            <div class="description">
+                                <div class="bg-light-blue py-4 px-5 x-large d-inline-block price">通常料金<span class="mx-3">+</span>￥1,100<span class="mx-3">(IMAX3D専用メガネ代込み)</span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <p class="small">なおIMAX3D専用メガネはお持ち帰りできません、上映終了後に回収させていただきます。</p>
+                </div>
+                <ul class="border-top border-dark-gray mb-4 add-prices">
+                    <li class="d-flex align-items-center border-bottom border-dark-gray p-3 p-md-4">
+                        <div class="title font-weight-bold pr-3 pr-md-0">IMAX・一般の場合</div>
+                        <div class="description large">一般 ¥1,800 + IMAX鑑賞料金 ¥700 = ¥2,500</div>
+                    </li>
+                    <li class="d-flex align-items-center border-bottom border-dark-gray p-3 p-md-4">
+                        <div class="title font-weight-bold pr-3 pr-md-0">IMAX3D・ファーストデイの場合</div>
+                        <div class="description large">一般 ¥1,200 + IMAX鑑賞料金 ¥1,100 = ¥2,300</div>
+                    </li>
+                </ul>
+                <p class="small">
+                    ※&ensp;各種サービスデイはサービス料金＋IMAX鑑賞料金となります。<br>
+                    ※&ensp;前売券、シネマサンシャインCINEMATICKET（特別鑑賞券）、シネマサンシャインINVITATION
+                    TICKET（招待券）、アプリ会員のポイントによる無料鑑賞、各種割引券も＋IMAX鑑賞料金でご利用いただけます。<br>
+                    ※&ensp;ハンディキャップ料金は障がい者手帳をお持ちのご本人様と付き添いの方1名まで同じ料金になります。
+                </p>
+            </div>
+        </div>
+    </div>
+    <!--content_IMAXレーザー/GT-->
+    <!--content_IMAXレーザー-->
+    <div id="laser" role="tabpanel" class="tab-pane fade">
+        <div class="breadcrumb-list d-none d-md-block small width mx-auto mb-5 px-2 text-white">
+            <a class="text-white" href="{{ path_for('homepage') }}">ホーム</a>
+            <span class="font-weight-bold mx-2"> | </span>
+            <a class="text-white" href="{{ path_for('imax') }}">IMAX</a>
+            <span class="font-weight-bold mx-2"> | </span>
+            <a class="text-white">IMAXとは？</a>
+            <span class="font-weight-bold mx-2"> | </span>
+            <span>IMAXレーザー</span>
+        </div>
+
+        <div class="width mx-auto mb-3 px-2 text-white">
+            <div class="mb-5">
+                <h2 class="font-weight-bold x-large text-center pb-3">IMAX&reg;レーザー</h2>
+                <div class="d-flex justify-content-center mb-3 mb-md-5">
+                    <div class="about_theater_name small mr-3">ららぽーと沼津</div>
+                    <div class="about_theater_name small">大和郡山</div>
+                </div>
+                <div class="mb-4"><img class="w-100" src="/images/imax/about/imax_top_17.jpg"></div>
+                <p>
+                    IMAXレーザーは、IMAXシアター専用にゼロから設計されています。より鮮やかで明るく、深みあるコントラストの超高解像度映像の4Kレーザー投影システムと<br />
+                    リアルで圧倒的な臨場感のある音を再現する12chサウンドシステムで今までとは違う映画体験を体感してください。
+                </p>
+            </div>
+            <div class="mb-5">
+                <div class="introduction-video mx-auto mb-5">
+                    <div class="video">
+                        <iframe type="text/html" src="https://www.youtube.com/embed/lsRvHNKvSlI?rel=0&loop=1&playsinline=1&rel=0&mute=1&autoplay=1&showinfo=0&disablekb=1&modestbranding=1&color=white"
+                            frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="mx-auto introduction mb-5">
+                    <ul class="d-md-flex flex-wrap">
+                        <li class="gt_pic">
+                            <div><img class="w-100" src="/images/imax/about/imax_top_16.jpg"></div>
+                        </li>
+                        <li class="gt_txt">
+                            <h5 class="font-weight-bold mb-3">超高解像度映像で映し出すシャープで明るい、4Kレーザープロジェクター</h5>
+                            <p>新しい光学エンジンと独自のIMAXテクノロジーを搭載した4Kレーザープロジェクションシステムは、解像度を向上させ、より鮮やかで明るく、より深いコントラストの映像を映し出します。</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="mx-auto introduction mb-5">
+                    <ul class="d-md-flex flex-wrap">
+                        <li class="gt_pic">
+                            <div><img class="w-100" src="/images/imax/about/imax_top_15.jpg"></div>
+                        </li>
+                        <li class="gt_txt">
+                            <h5 class="font-weight-bold mb-3">パワフルで臨場感ある新しいサウンドシステム</h5>
+                            <p>最新の 12chサウンドシステムでは、サイドスピーカーとオーバーヘッドスピーカーを新たに設定。これまでの水準を超えるダイナミックレンジと精密度を実現し、臨場感あふれるサウンドでシアター空間全体を満たします。</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mb-5 viewing-fee">
+                <h2 class="font-weight-bold large text-center text-md-left mb-4">IMAX&reg;鑑賞料金</h2>
+                <p class="text-center text-md-left">対象劇場：ららぽーと沼津・大和郡山
+                </p>
+                <div class="mb-5 prices">
+                    <ul class="mb-4">
+                        <li class="d-md-flex align-items-center mb-4 text-center text-md-left">
+                            <div class="title large font-weight-bold mb-3 mb-md-0">IMAX</div>
+                            <div class="description">
+                                <div class="bg-light-blue py-4 px-5 x-large d-inline-block price">通常料金<span class="mx-3">+</span>￥600
+                                </div>
+                            </div>
+                        </li>
+                        <li class="d-md-flex align-items-center text-center text-md-left">
+                            <div class="title large font-weight-bold mb-3 mb-md-0">IMAX3D</div>
+                            <div class="description">
+                                <div class="bg-light-blue py-4 px-5 x-large d-inline-block price">通常料金<span class="mx-3">+</span>￥1,000<span class="mx-3">(IMAX3D専用メガネ代込み)</span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <p class="small">なおIMAX3D専用メガネはお客様がお持ち帰りいただくことが可能で、次回、IMAX3D作品をご鑑賞いただく際にご持参いただきましたらメガネ代100円はいただきません。</p>
+                </div>
+                <ul class="border-top border-dark-gray mb-4 add-prices">
+                    <li class="d-flex align-items-center border-bottom border-dark-gray p-3 p-md-4">
+                        <div class="title font-weight-bold pr-3 pr-md-0">IMAX・一般の場合</div>
+                        <div class="description large">一般 ¥1,800 + IMAX鑑賞料金 ¥600 = ¥2,400</div>
+                    </li>
+                    <li class="d-flex align-items-center border-bottom border-dark-gray p-3 p-md-4">
+                        <div class="title font-weight-bold pr-3 pr-md-0">IMAX3D・ファーストデイの場合</div>
+                        <div class="description large">一般 ¥1,200 + IMAX鑑賞料金 ¥1,000 = ¥2,200</div>
+                    </li>
+                </ul>
+                <p class="small">
+                    ※&ensp;各種サービスデイはサービス料金＋IMAX鑑賞料金となります。<br>
+                    ※&ensp;前売券、シネマサンシャインCINEMATICKET（特別鑑賞券）、シネマサンシャインINVITATION
+                    TICKET（招待券）、アプリ会員のポイントによる無料鑑賞、各種割引券も＋IMAX鑑賞料金でご利用いただけます。<br>
+                    ※&ensp;ハンディキャップ料金は障がい者手帳をお持ちのご本人様と付き添いの方1名まで同じ料金になります。
+                </p>
+            </div>
+        </div>
+    </div>
+    <!--content_IMAXレーザー-->
     <!--content_デジタルシアター-->
-    <div id="dg_teater" role="tabpanel" class="tab-pane fade show active">
+    <div id="dg_teater" role="tabpanel" class="tab-pane fade">
         <div class="breadcrumb-list d-none d-md-block small width mx-auto mb-5 px-2 text-white">
             <a class="text-white" href="{{ path_for('homepage') }}">ホーム</a>
             <span class="font-weight-bold mx-2"> | </span>
@@ -228,217 +440,5 @@
         </div>
     </div>
     <!--content_デジタルシアター-->
-     <!--content_IMAXレーザー-->
-     <div id="laser" role="tabpanel" class="tab-pane fade">
-        <div class="breadcrumb-list d-none d-md-block small width mx-auto mb-5 px-2 text-white">
-            <a class="text-white" href="{{ path_for('homepage') }}">ホーム</a>
-            <span class="font-weight-bold mx-2"> | </span>
-            <a class="text-white" href="{{ path_for('imax') }}">IMAX</a>
-            <span class="font-weight-bold mx-2"> | </span>
-            <a class="text-white">IMAXとは？</a>
-            <span class="font-weight-bold mx-2"> | </span>
-            <span>IMAXレーザー</span>
-        </div>
-
-        <div class="width mx-auto mb-3 px-2 text-white">
-            <div class="mb-5">
-                <h2 class="font-weight-bold x-large text-center pb-3">IMAX&reg;レーザー</h2>
-                <div class="d-flex justify-content-center mb-3 mb-md-5">
-                    <div class="about_theater_name small mr-3">ららぽーと沼津</div>
-                    <div class="about_theater_name small">大和郡山</div>
-                </div>
-                <div class="mb-4"><img class="w-100" src="/images/imax/about/imax_top_17.jpg"></div>
-                <p>
-                    IMAXレーザーは、IMAXシアター専用にゼロから設計されています。より鮮やかで明るく、深みあるコントラストの超高解像度映像の4Kレーザー投影システムと<br />
-                    リアルで圧倒的な臨場感のある音を再現する12chサウンドシステムで今までとは違う映画体験を体感してください。
-                </p>
-            </div>
-            <div class="mb-5">
-                <div class="introduction-video mx-auto mb-5">
-                    <div class="video">
-                        <iframe type="text/html" src="https://www.youtube.com/embed/lsRvHNKvSlI?rel=0&loop=1&playsinline=1&rel=0&mute=1&autoplay=1&showinfo=0&disablekb=1&modestbranding=1&color=white"
-                            frameborder="0" allowfullscreen></iframe>
-                    </div>
-                </div>
-                <div class="mx-auto introduction mb-5">
-                    <ul class="d-md-flex flex-wrap">
-                        <li class="gt_pic">
-                            <div><img class="w-100" src="/images/imax/about/imax_top_16.jpg"></div>
-                        </li>
-                        <li class="gt_txt">
-                            <h5 class="font-weight-bold mb-3">超高解像度映像で映し出すシャープで明るい、4Kレーザープロジェクター</h5>
-                            <p>新しい光学エンジンと独自のIMAXテクノロジーを搭載した4Kレーザープロジェクションシステムは、解像度を向上させ、より鮮やかで明るく、より深いコントラストの映像を映し出します。</p>
-                        </li>
-                    </ul>
-                </div>
-                <div class="mx-auto introduction mb-5">
-                    <ul class="d-md-flex flex-wrap">
-                        <li class="gt_pic">
-                            <div><img class="w-100" src="/images/imax/about/imax_top_15.jpg"></div>
-                        </li>
-                        <li class="gt_txt">
-                            <h5 class="font-weight-bold mb-3">パワフルで臨場感ある新しいサウンドシステム</h5>
-                            <p>最新の 12chサウンドシステムでは、サイドスピーカーとオーバーヘッドスピーカーを新たに設定。これまでの水準を超えるダイナミックレンジと精密度を実現し、臨場感あふれるサウンドでシアター空間全体を満たします。</p>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="mb-5 viewing-fee">
-                <h2 class="font-weight-bold large text-center text-md-left mb-4">IMAX&reg;鑑賞料金</h2>
-                <p class="text-center text-md-left">対象劇場：ららぽーと沼津・大和郡山
-                </p>
-                <div class="mb-5 prices">
-                    <ul class="mb-4">
-                        <li class="d-md-flex align-items-center mb-4 text-center text-md-left">
-                            <div class="title large font-weight-bold mb-3 mb-md-0">IMAX</div>
-                            <div class="description">
-                                <div class="bg-light-blue py-4 px-5 x-large d-inline-block price">通常料金<span class="mx-3">+</span>￥600
-                                </div>
-                            </div>
-                        </li>
-                        <li class="d-md-flex align-items-center text-center text-md-left">
-                            <div class="title large font-weight-bold mb-3 mb-md-0">IMAX3D</div>
-                            <div class="description">
-                                <div class="bg-light-blue py-4 px-5 x-large d-inline-block price">通常料金<span class="mx-3">+</span>￥1,000<span class="mx-3">(IMAX3D専用メガネ代込み)</span>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                    <p class="small">なおIMAX3D専用メガネはお客様がお持ち帰りいただくことが可能で、次回、IMAX3D作品をご鑑賞いただく際にご持参いただきましたらメガネ代100円はいただきません。</p>
-                </div>
-                <ul class="border-top border-dark-gray mb-4 add-prices">
-                    <li class="d-flex align-items-center border-bottom border-dark-gray p-3 p-md-4">
-                        <div class="title font-weight-bold pr-3 pr-md-0">IMAX・一般の場合</div>
-                        <div class="description large">一般 ¥1,800 + IMAX鑑賞料金 ¥600 = ¥2,400</div>
-                    </li>
-                    <li class="d-flex align-items-center border-bottom border-dark-gray p-3 p-md-4">
-                        <div class="title font-weight-bold pr-3 pr-md-0">IMAX3D・ファーストデイの場合</div>
-                        <div class="description large">一般 ¥1,200 + IMAX鑑賞料金 ¥1,000 = ¥2,200</div>
-                    </li>
-                </ul>
-                <p class="small">
-                    ※&ensp;各種サービスデイはサービス料金＋IMAX鑑賞料金となります。<br>
-                    ※&ensp;前売券、シネマサンシャインCINEMATICKET（特別鑑賞券）、シネマサンシャインINVITATION
-                    TICKET（招待券）、アプリ会員のポイントによる無料鑑賞、各種割引券も＋IMAX鑑賞料金でご利用いただけます。<br>
-                    ※&ensp;ハンディキャップ料金は障がい者手帳をお持ちのご本人様と付き添いの方1名まで同じ料金になります。
-                </p>
-            </div>
-        </div>
-    </div>
-    <!--content_IMAXレーザー-->
-    <!--content_IMAXレーザー/GT-->
-    <div id="laser_gt" role="tabpanel" class="tab-pane fade">
-        <div class="breadcrumb-list d-none d-md-block small width mx-auto mb-5 px-2 text-white">
-            <a class="text-white" href="{{ path_for('homepage') }}">ホーム</a>
-            <span class="font-weight-bold mx-2"> | </span>
-            <a class="text-white" href="{{ path_for('imax') }}">IMAX</a>
-            <span class="font-weight-bold mx-2"> | </span>
-            <a class="text-white">IMAXとは？</a>
-            <span class="font-weight-bold mx-2"> | </span>
-            <span>IMAXレーザー&nbsp;/&nbsp;GTテクノロジー</span>
-        </div>
-
-        <div class="width mx-auto mb-3 px-2 text-white">
-            <div class="mb-5">
-                <h2 class="font-weight-bold x-large text-center pb-3">IMAX&reg;レーザー&nbsp;/&nbsp;GTテクノロジー</h2>
-                <div class="d-flex justify-content-center mb-3 mb-md-5">
-                    <div class="about_theater_name small">グランドシネマサンシャイン</div>
-                </div>
-                <div class="mb-4"><img class="w-100" src="/images/imax/about/imax_top_04.jpg"></div>
-                <p>
-                    革新的な4Kレーザー投影システムを採用し、より鮮やかで明るく、深みあるコントラストの超高解像度映像を実現。<br>
-                    音響面では12chサウンドシステムを採用。圧倒的な臨場感で客席を包みます。<br>
-                    最大で1.43:1の画角にまで拡張し、一般のスクリーンに比べ約40%広い映像をお届けします。
-                </p>
-            </div>
-            <div class="mb-5">
-                <div class="introduction-video mx-auto mb-5">
-                    <div class="video">
-                        <iframe type="text/html" src="https://www.youtube.com/embed/BwsXr6QrdmI?rel=0&loop=1&playsinline=1&rel=0&mute=1&autoplay=1&showinfo=0&disablekb=1&modestbranding=1&color=white"
-                            frameborder="0" allowfullscreen></iframe>
-                    </div>
-                </div>
-                <div class="mx-auto introduction mb-5">
-                    <ul class="d-md-flex flex-wrap">
-                        <li class="gt_pic">
-                            <div><img class="w-100" src="/images/imax/about/imax_top_13.jpg"></div>
-                        </li>
-                        <li class="gt_txt">
-                            <h5 class="font-weight-bold mb-3">客席を包み込む大型スクリーン</h5>
-                            <p>革新的な4Kレーザー投影システムを採用し、より鮮やかで明るく、深みあるコントラストの超高解像度映像を実現。<br>
-                                音響面では12chサウンドシステムを採用。圧倒的な臨場感で客席を包みます。<br>
-                                最大で1.43:1の画角にまで拡張し、一般のスクリーンに比べ約40%広い映像をお届けします。</p>
-                        </li>
-                    </ul>
-                </div>
-                <div class="mx-auto introduction mb-5">
-                    <ul class="d-md-flex flex-wrap">
-                        <li class="gt_pic">
-                            <div><img class="w-100" src="/images/imax/about/imax_top_14.jpg"></div>
-                        </li>
-                        <li class="gt_txt">
-                            <h5 class="font-weight-bold mb-3">最もシャープで明るい、4Kレーザープロジェクター</h5>
-                            <p>IMAXの画期的なデュアル4Kレーザー映像システムで、最もシャープで明るく、鮮明なデジタル映像を実現。<br>
-                                ゼロから構築されたこの新システムは、全く新しい光学エンジンと、独自の新IMAX技術を備えています。私たちが目にする映像を全く新しい次元へと高めます。</p>
-                        </li>
-                    </ul>
-                </div>
-                <div class="mx-auto introduction mb-5">
-                    <ul class="d-md-flex flex-wrap">
-                        <li class="gt_pic">
-                            <div><img class="w-100" src="/images/imax/about/imax_top_15.jpg"></div>
-                        </li>
-                        <li class="gt_txt">
-                            <h5 class="font-weight-bold mb-3">圧倒的なサウンドで包み込む12チャンネル・オーディオシステム</h5>
-                            <p>最大規模のIMAXシアター用に設計された分散型12チャンネル・オーディオシステム。<br>
-                                レーザー照準のデジタルサラウンド音響、自動チューニング、IMAX専用にリマスタリングされた非圧縮サウンドトラックを使用することで、高音から低音まで、素晴らしいサウンドを実現します。</p>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="mb-5 viewing-fee">
-                <h2 class="font-weight-bold large text-center text-md-left mb-4">IMAX&reg;鑑賞料金</h2>
-                <p class="text-center text-md-left">対象劇場：グランドシネマサンシャイン</p>
-                <div class="mb-5 prices">
-                    <ul class="mb-4">
-                        <li class="d-md-flex align-items-center mb-4 text-center text-md-left">
-                            <div class="title large font-weight-bold mb-3 mb-md-0">IMAX</div>
-                            <div class="description">
-                                <div class="bg-light-blue py-4 px-5 x-large d-inline-block price">通常料金<span class="mx-3">+</span>￥700
-                                </div>
-                            </div>
-                        </li>
-                        <li class="d-md-flex align-items-center text-center text-md-left">
-                            <div class="title large font-weight-bold mb-3 mb-md-0">IMAX3D</div>
-                            <div class="description">
-                                <div class="bg-light-blue py-4 px-5 x-large d-inline-block price">通常料金<span class="mx-3">+</span>￥1,100<span class="mx-3">(IMAX3D専用メガネ代込み)</span>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                    <p class="small">なおIMAX3D専用メガネはお持ち帰りできません、上映終了後に回収させていただきます。</p>
-                </div>
-                <ul class="border-top border-dark-gray mb-4 add-prices">
-                    <li class="d-flex align-items-center border-bottom border-dark-gray p-3 p-md-4">
-                        <div class="title font-weight-bold pr-3 pr-md-0">IMAX・一般の場合</div>
-                        <div class="description large">一般 ¥1,800 + IMAX鑑賞料金 ¥700 = ¥2,500</div>
-                    </li>
-                    <li class="d-flex align-items-center border-bottom border-dark-gray p-3 p-md-4">
-                        <div class="title font-weight-bold pr-3 pr-md-0">IMAX3D・ファーストデイの場合</div>
-                        <div class="description large">一般 ¥1,200 + IMAX鑑賞料金 ¥1,100 = ¥2,300</div>
-                    </li>
-                </ul>
-                <p class="small">
-                    ※&ensp;各種サービスデイはサービス料金＋IMAX鑑賞料金となります。<br>
-                    ※&ensp;前売券、シネマサンシャインCINEMATICKET（特別鑑賞券）、シネマサンシャインINVITATION
-                    TICKET（招待券）、アプリ会員のポイントによる無料鑑賞、各種割引券も＋IMAX鑑賞料金でご利用いただけます。<br>
-                    ※&ensp;ハンディキャップ料金は障がい者手帳をお持ちのご本人様と付き添いの方1名まで同じ料金になります。
-                </p>
-            </div>
-        </div>
-    </div>
-    <!--content_IMAXレーザー/GT-->
 </div>
 {% endblock %}
