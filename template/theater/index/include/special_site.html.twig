@@ -20,22 +20,22 @@
 
     {% if specialSite.getId() == 1 %}
         <a href="{{ path_for('imax') }}" class="d-block">
-            <div class="imax mb-1"><img src="/images/common/imax_logo.svg"></div>
+            <div class="imax mb-1"><img src="/images/common/imax_logo.svg" alt="IMAX"></div>
             <p class="mb-0 small">特設サイトはこちら</p>
         </a>
     {% elseif specialSite.getId() == 2 %}
         <a href="{{ path_for('4dx') }}" class="d-block">
-            <div class="fourdx mb-1"><img src="/images/common/4dx_logo.svg"></div>
+            <div class="fourdx mb-1"><img src="/images/common/4dx_logo.svg" alt="４DX"></div>
             <p class="mb-0 small">特設サイトはこちら</p>
         </a>
     {% elseif specialSite.getId() == 3 %}
         <a href="{{ path_for('screenx') }}" class="d-block">
-            <div class="fourdx mb-1"><img src="/images/common/screen-x_logo.svg"></div>
+            <div class="fourdx mb-1"><img src="/images/common/screen-x_logo.svg" alt="SCREEN X(スクリーンX)"></div>
             <p class="mb-0 small">特設サイトはこちら</p>
         </a>
     {% elseif specialSite.getId() == 4 %}
         <a href="{{ path_for('4dx_screen') }}" class="d-block">
-            <div class="fourdx mb-1"><img src="/images/common/4dx-with-screen-x_logo.svg"></div>
+            <div class="fourdx mb-1"><img src="/images/common/4dx-with-screen-x_logo.svg" alt="4DX SCREEN(4DXスクリーン)"></div>
             <p class="mb-0 small">特設サイトはこちら</p>
         </a>
     {% endif %}
@@ -51,7 +51,7 @@
     {% endif %}
 
         <a href="/bestia/" class="d-block">
-            <div class="fourdx mb-1"><img src="/images/top/bestia_logo.svg" class="link_bestia_logo"></div>
+            <div class="fourdx mb-1"><img src="/images/top/bestia_logo.svg" class="link_bestia_logo"　alt="BESTIA(ベスティア)"></div>
             <p class="mb-0 small">特設サイトはこちら</p>
         </a>
     </div>

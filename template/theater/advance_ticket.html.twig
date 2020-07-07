@@ -1,11 +1,21 @@
 {% extends "theater/layout.html.twig" %}
 
-{% block title %}前売券情報 | {{ parent() }}{% endblock %}
+{% set title = '前売券情報 | シネマサンシャイン' ~ theater.getNameJa() %}
+{% set description = 'シネマサンシャイン' ~ theater.getNameJa() ~ 'の前売券情報ページです。映画作品の前売券に関する発売日情報や前売特典のご案内など' %}
+{% set keywords = 'シネマサンシャイン,映画館,映画,シネマ,劇場,前売券,ムビチケ,前売特典,先着限定,発売日,' ~ theater_meta_keywords(theater) %}
 
-{% block description %}シネサンシャイン{{ theater.getNameJa() }}の前売券情報ページです。映画作品の前売券に関する発売日情報や前売特典のご案内など{% endblock %}
+{% if theater.getName() == 'gdcs' %}
+    {# SASAKI-579 #}
+    {% set title = '前売券情報 | グランドシネマサンシャイン池袋'%}
+    {% set description = 'グランドシネサンシャイン池袋の前売券・ムビチケ情報ページです。映画作品の前売券・ムビチケに関する発売日情報や前売特典のご案内など' %}
+    {% set keywords = 'グランドシネマサンシャイン,映画館,映画,シネマ,劇場,前売券,ムビチケ,前売特典,先着限定, 発売日 ,東京,池袋' %}
+{% endif %}
 
-{% set keywords = theater_meta_keywords(theater) %}
-{% block keywords %}{{ parent()}},前売券,ムビチケ,前売特典,先着限定,発売日{% if keywords %},{{ keywords }}{% endif %}{% endblock %}
+{% block title %}{{ title }}{% endblock %}
+
+{% block description %}{{ description }}{% endblock %}
+
+{% block keywords %}{{ keywords }}{% endblock %}
 
 {% block css %}
 <link href="/css/theater/advance-tickets.css" rel="stylesheet">

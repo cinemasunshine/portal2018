@@ -1,11 +1,21 @@
 {% extends "theater/layout.html.twig" %}
 
-{% block title %}劇場設備 | {{ parent() }}{% endblock %}
+{% set title = '劇場設備 | シネマサンシャイン' ~ theater.getNameJa() %}
+{% set description = 'シネマサンシャイン' ~ theater.getNameJa() ~ 'の劇場設備ページです。スクリーン数や座席数、劇場設備に関するのご案内など' %}
+{% set keywords = 'シネマサンシャイン,映画館,映画,シネマ,劇場,設備,スクリーン,座席数,3D上映,' ~ theater_meta_keywords(theater) %}
 
-{% block description %}シネサンシャイン{{ theater.getNameJa() }}の劇場設備ページです。スクリーン数や座席数、劇場設備に関するのご案内など{% endblock %}
+{% if theater.getName() == 'gdcs' %}
+    {# SASAKI-579 #}
+    {% set title = '劇場設備 | グランドシネマサンシャイン池袋'%}
+    {% set description = 'グランドシネサンシャイン池袋の劇場設備ページです。スクリーン数や座席数、IMAXレーザー、４DX、SCREEN X(スクリーンX)、4DX SCREEN(4DXスクリーン)、BESTIA(ベスティア)など映画館設備に関するご案内など' %}
+    {% set keywords = 'グランドシネマサンシャイン,映画館,映画,シネマ,劇場,設備,スクリーン,座席数,3D上映,IMAXレーザー,４DX,SCREEN X(スクリーンX),4DX SCREEN(4DXスクリーン),BESTIA(ベスティア),東京,池袋' %}
+{% endif %}
 
-{% set keywords = theater_meta_keywords(theater) %}
-{% block keywords %}{{ parent()}},設備,スクリーン,座席数,3D上映{% if keywords %},{{ keywords }}{% endif %}{% endblock %}
+{% block title %}{{ title }}{% endblock %}
+
+{% block description %}{{ description }}{% endblock %}
+
+{% block keywords %}{{ keywords }}{% endblock %}
 
 {% block css %}
 <link href="/css/theater/facility.css" rel="stylesheet">
