@@ -1,6 +1,6 @@
 {% extends "theater/layout.html.twig" %}
 
-{% set title = '劇場トップ・上映スケジュール | シネマサンシャイン' ~ theater.getNameJa() %}
+{% set title = '映画館トップ・上映スケジュール | シネマサンシャイン' ~ theater.getNameJa() %}
 {% set description = 'シネマサンシャイン' ~ theater.getNameJa() ~ 'の劇場サイトトップページです。上映スケジュール、ニュース、前売券情報、コンセッション、料金案内、劇場設備、アクセスのご案内など。' %}
 {% set keywords = 'シネマサンシャイン,映画館,映画,シネマ,劇場,座席指定,予約,オンライン,上映,スケジュール,キャンペーン,公式アプリ,ムビチケ,' ~ theater_meta_keywords(theater) %}
 
@@ -57,7 +57,7 @@ active: 'top',
 </div>
 
 {% if theater.getName() == 'gdcs' %}
-<img class="img-fluid mx-auto d-block my-4 top_logo" src="/images/tmp/theater/top/gdcs_logo.svg">
+<img class="img-fluid mx-auto d-block my-4 top_logo" src="/images/tmp/theater/top/gdcs_logo.svg" alt="グランドシネマサンシャイン池袋">
 <!--ページジャック用-->
 <!--<img class="img-fluid mx-auto d-block my-4 top_logo" src="/images/pagejack/anayuki_2/CS_ice_logo2b.png">-->:
 <!--ページジャック用-->
@@ -99,7 +99,7 @@ active: 'top',
 {# % endif % #}
 
 {% if theater.getName() == 'gdcs' %}
-<a href="/gdcs/"><img class="img-fluid mx-auto d-block mb-5 px-3" src="/images/tmp/theater/top/gdcs_bnr.jpg"></a>
+<a href="/gdcs/"><img class="img-fluid mx-auto d-block mb-5 px-3" src="/images/tmp/theater/top/gdcs_bnr.jpg" alt="グランドシネマサンシャイン池袋　映画館施設紹介サイト"></a>
 {% endif %}
 
 {% include 'theater/index/include/online_ticket.html.twig' with {
