@@ -100,19 +100,11 @@ class AuthorizationCode extends AbstractGrant
      */
     protected function generateCodeChallenge(string $codeVerifier, string $codeChallengeMethod): string
     {
-        $codeChallenge = '';
-
-        switch ($codeChallengeMethod) {
-            case 'S256':
-                $codeChallenge = base64_encode(hash('sha256', $codeVerifier));
-                break;
-
-            default:
-                throw new \LogicException(sprintf('code_challenge_method does not support %s.', $codeChallengeMethod));
-                break;
+        if ($codeChallengeMethod === 'S256') {
+            return base64_encode(hash('sha256', $codeVerifier));
         }
 
-        return $codeChallenge;
+        throw new \LogicException(sprintf('code_challenge_method does not support %s.', $codeChallengeMethod));
     }
 
     /**
