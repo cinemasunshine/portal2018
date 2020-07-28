@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>お問合わせフォーム| シネマサンシャイン</title>
+        <meta name="description" content="シネマサンシャインリワード（アプリ）に関するお問い合わせフォームになります。アプリに関するお問い合わせはこちら">
+        <meta name="keywords" content="シネマサンシャイン,app,アプリ,リワード,お問い合わせ">
+        <link rel="stylesheet" href="reset.css">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <section class="intro-area">
+            <h1>お問合わせフォーム</h1>
+            <p class="intro-txt">シネマサンシャインリワード（アプリ）に関するお問合わせは下記のフォームよりお問い合わせください。<br>お問い合わせのご返信につきましては主にメールでのご連絡となります。</p>
+        </section>
+        <section id="form-area">
+            <form action="#" method="POST" class="inq-format">
+                <h2>ご連絡先</h2>
+                <ul>
+                    <li>
+                        <label for="user-mail" class="label-name">メールアドレス<span class="req-icon">必須</span></label>
+                        <input required type="email" id="user-mail" name="mail" placeholder="例）sample@sample.com" pattern=".*\S+.*">
+                        <p class="note">キャリアメールアドレス（docomo、au、softbankなど）の場合、メールが届かない可能性がございます。<br>yahooやGoogleなどのフリーメールアドレスをお持ちのお客様はそちらのアドレスをご入力ください。</p>
+                    </li>
+                    <li>
+                        <label for="user-tel" class="label-name">電話番号</label>
+                        <input type="tel" id="user-tel" name="tel" placeholder="例）08012345678" maxlength="12">
+                    </li>
+                </ul>
+                <h2>お問合わせ内容</h2>
+                <ul>
+                    <li>
+                        <label for="app-matter" class="label-name">お問合わせ内容<span class="req-icon">必須</span></label>
+                        <select required id="app-matter" name="app-matter">
+                            <option hidden>選択してください</option>
+                            <option value="1">ユーザーネームがわからない</option>
+                            <option value="2">登録済メールアドレスの変更希望</option>
+                            <option value="3">ワンタイムパスワードが届かない</option>
+                            <option value="4">パスワードがわからない</option>
+                            <option value="5">退会の代行手続希望</option>
+                        </select>
+                    </li>
+                    <li>
+                        <label for="app-name" class="label-name">氏名（全角カタカナ）<span class="req-icon">必須</span></label>
+                        <input required type="text" id="app-name" name="tel" placeholder="例）エイガタロウ" pattern="(?=.*?[\u30A1-\u30FC])[\u30A1-\u30FC\s]*">
+                    </li>
+                    <li>
+                        <label for="app-tel" class="label-name">ご登録済み電話番号<span class="req-icon">必須</span></label>
+                        <input required type="tel" id="app-tel" name="tel" placeholder="例）08012345678" maxlength="12" pattern=".*\S+.*">
+                    </li>
+                    <li>
+                        <label for="app-mail" class="label-name">ご登録済みメールアドレス<span class="req-icon">必須</span></label>
+                        <input required type="email" id="app-mail" name="mail" placeholder="例）sample@sample.com" pattern=".*\S+.*">
+                    </li>
+                    <li>
+                        <label for="question" class="label-name">お問合わせ内容詳細<span class="req-icon">必須</span></label>
+                        <textarea id="question" name="question" placeholder="例）ログインするためのユーザーネームがわからない。"></textarea>
+                    </li>
+                </ul>
+                <p class="btn-area">
+                    <input type="submit" value="入力内容を送信" class="submit-btn">
+                </p>
+            </form>
+        </section>
+    </body>
+</html>
