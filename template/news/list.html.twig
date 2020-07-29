@@ -1,10 +1,10 @@
 {% extends "layout.html.twig" %}
 
-{% block title %}News&Info一覧 | {{ parent() }}{% endblock %}
+{% block title %}{{ meta_title('news_list') }}{% endblock %}
 
-{% block description %}シネサンシャインのニュース一覧ページです。映画に関する最新情報やイベント情報、ライブビューイング情報、キャンペーン情報、舞台挨拶のご案内など{% endblock %}
+{% block description %}{{ meta_description('news_list') }}{% endblock %}
 
-{% block keywords %}{{ parent()}},キャンペーン,ニュース,news,最新情報,映画情報,イベント情報,ライブビューイング,舞台挨拶,IMAX,4DX{% endblock %}
+{% block keywords %}{{ meta_keywords('news_list') }}{% endblock %}
 
 {% block css %}
 <link href="/css/news/list.css" rel="stylesheet">
@@ -28,9 +28,9 @@
                     <a href="{{ path_for('news_show', { id: news.getId() }) }}" class="d-block">
                         {% set labelClass = news_category_label_class(news.getCategory()) %}
                         <div class="{{ labelClass }} text-center py-1 x-small">{{ news_category_label(news.getCategory()) }}</div>
-                        
+
                         <div class="text-dark-gray py-2">{{ news.getStartDt()|date('Y/n/j') }}</div>
-                        
+
                     {% if news.getImage() %}
                         <div class="border mb-2 image border-gray" style="background-image: url({{ file_url(news.getImage()) }})"></div>
                     {% endif %}

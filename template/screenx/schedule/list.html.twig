@@ -1,10 +1,10 @@
 {% extends "screenx/layout.html.twig" %}
 
-{% block title %}作品一覧 | {{ parent() }}SCREEN X特設サイト{% endblock %}
+{% block title %}{{ meta_title('screenx_schedule_list') }}{% endblock %}
 
-{% block description %}シネマサンシャインSCREEN X特設サイトの作品一覧ページです。上映中・上映予定の映画作品のご案内{% endblock %}
+{% block description %}{{ meta_description('screenx_schedule_list') }}{% endblock %}
 
-{% block keywords %}{{ parent() }},キャンペーン,上映中,上映予定,公開中,公開予定,作品情報,作品紹介,SCREEN X,下関,かほく,石川,山口{% endblock %}
+{% block keywords %}{{ meta_keywords('screenx_schedule_list') }}{% endblock %}
 
 {% block css %}
 <link href="/css/movie/list.css" rel="stylesheet">
@@ -47,25 +47,25 @@
     </div>
 
     <div class="screening d-block">
-    
+
     {% for schedule in screeningSchedules %}
         {% include 'screenx/schedule/include/list_row.html.twig' with {
             schedule: schedule,
             theaters: theaters
         } only %}
     {% endfor %}
-    
+
     </div>
-    
+
     <div class="scheduled d-none">
-    
+
     {% for schedule in soonSchedules %}
         {% include 'screenx/schedule/include/list_row.html.twig' with {
             schedule: schedule,
             theaters: theaters
         } only %}
     {% endfor %}
-    
+
     </div>
 </div>
 {% endblock %}

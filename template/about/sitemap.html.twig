@@ -1,10 +1,10 @@
 {% extends "layout.html.twig" %}
 
-{% block title %}サイトマップ | {{ parent() }}{% endblock %}
+{% block title %}{{ meta_title('about_sitemap') }}{% endblock %}
 
-{% block description %}サイトマップのご案内{% endblock %}
+{% block description %}{{ meta_description('about_sitemap') }}{% endblock %}
 
-{% block keywords %}{{ parent()}},サイトマップ{% endblock %}
+{% block keywords %}{{ meta_keywords('about_sitemap') }}{% endblock %}
 
 {% block css %}
 <link href="/css/sitemap.css" rel="stylesheet">

@@ -1,15 +1,11 @@
 {% extends "theater/layout.html.twig" %}
 
+{% set metasKey = 'theater_' ~ theater.getName() %}
+{% block title %}{{ meta_title(metasKey) }}{% endblock %}
 
-{% set title = '劇場トップ・上映スケジュール | シネマサンシャイン' ~ theater.getNameJa() %}
-{% set description = 'シネマサンシャイン' ~ theater.getNameJa() ~ 'の劇場サイトトップページです。上映スケジュール、ニュース、前売券情報、コンセッション、料金案内、劇場設備、アクセスのご案内など。' %}
-{% set keywords = 'シネマサンシャイン,映画館,映画,シネマ,劇場,座席指定,予約,オンライン,上映,スケジュール,キャンペーン,公式アプリ,ムビチケ,' ~ theater_meta_keywords(theater) %}
+{% block description %}{{ meta_description(metasKey) }}{% endblock %}
 
-{% block title %}{{ title }}{% endblock %}
-
-{% block description %}{{ description }}{% endblock %}
-
-{% block keywords %}{{ keywords }}{% endblock %}
+{% block keywords %}{{ meta_keywords(metasKey) }}{% endblock %}
 
 {% block css %}
 <link href="/css/theater/top.css" rel="stylesheet">

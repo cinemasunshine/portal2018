@@ -1,10 +1,10 @@
 {% extends "screenx/layout.html.twig" %}
 
-{% block title %}SCREEN X特設サイト | {{ parent() }}{% endblock %}
+{% block title %}{{ meta_title('screenx') }}{% endblock %}
 
-{% block description %}シネマサンシャインのSCREEN X特設サイトです。SCREEN Xの設備に関する情報や作品情報、鑑賞料金、上映劇場・キャンペーン情報のご案内など{% endblock %}
+{% block description %}{{ meta_description('screenx') }}{% endblock %}
 
-{% block keywords %}{{ parent() }},予約,オンライン,上映,キャンペーン,SCREEN X,スクリーンX,作品情報{% endblock %}
+{% block keywords %}{{ meta_keywords('screenx') }}{% endblock %}
 
 {% block css %}
 <link href="/css/screen-x/top.css" rel="stylesheet">

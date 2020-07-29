@@ -1,10 +1,10 @@
 {% extends "layout.html.twig" %}
 
-{% block title %}おやこシネマ | {{ parent() }}{% endblock %}
+{% block title %}{{ meta_title('oyako_cinema') }}{% endblock %}
 
-{% block description %}おやこシネマのご案内サイトです。こどもにやさしい環境で、おやこで一緒に映画館。{% endblock %}
+{% block description %}{{ meta_description('oyako_cinema') }}{% endblock %}
 
-{% block keywords %}映画館,子連れ,シネマサンシャイン,親子,ママ,幼児{% endblock %}
+{% block keywords %}{{ meta_keywords('oyako_cinema') }}{% endblock %}
 
 {% block css %}
 <link href="/css/oyako/oyako_cinema.css" rel="stylesheet">

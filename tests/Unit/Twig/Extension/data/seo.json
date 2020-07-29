@@ -1,0 +1,7 @@
+{
+    "test": {
+        "title": "example title",
+        "description": "example description",
+        "keywords": "hoge, fuge"
+    }
+}

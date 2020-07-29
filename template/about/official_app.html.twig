@@ -1,10 +1,10 @@
 {% extends "layout.html.twig" %}
 
-{% block title %}シネマサンシャイン公式アプリ | {{ parent() }}{% endblock %}
+{% block title %}{{ meta_title('about_official_app') }}{% endblock %}
 
-{% block description %}シネマサンシャインの公式アプリ紹介ページです。公式アプリの概要や会員サービスの概要・特典内容などのご案内{% endblock %}
+{% block description %}{{ meta_description('about_official_app') }}{% endblock %}
 
-{% block keywords %}{{ parent()}},アプリ,iPhone,Android,会員,無料,特典,ダウンロード{% endblock %}
+{% block keywords %}{{ meta_keywords('about_official_app') }}{% endblock %}
 
 {% block css %}
 <link href="/css/app.css" rel="stylesheet">

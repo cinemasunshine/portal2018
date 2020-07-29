@@ -1,10 +1,10 @@
 {% extends "layout.html.twig" %}
 
-{% block title %}オンライン購入のメリット | {{ parent() }}{% endblock %}
+{% block title %}{{ meta_title('about_online_ticket') }}{% endblock %}
 
-{% block description %}オンラインチケット購入の流れやメリットをご案内{% endblock %}
+{% block description %}{{ meta_description('about_online_ticket') }}{% endblock %}
 
-{% block keywords %}{{ parent()}},オンライン,予約,座席指定,ネット予約{% endblock %}
+{% block keywords %}{{ meta_keywords('about_online_ticket') }}{% endblock %}
 
 {% block css %}
 <link href="/css/online-ticket.css" rel="stylesheet">

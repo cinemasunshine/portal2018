@@ -1,10 +1,10 @@
 {% extends "layout.html.twig" %}
 
-{% block title %}{{ news.getHeadline() }} | {{ parent() }}{% endblock %}
+{% block title %}{{ news.getHeadline() }} | シネマサンシャイン{% endblock %}
 
 {% block description %}{{ news.getBody()|striptags }}{% endblock %}
 
-{% block keywords %}{{ parent()}},キャンペーン,ニュース,news,最新情報,映画情報,イベント情報,ライブビューイング,舞台挨拶,IMAX,4DX{% endblock %}
+{% block keywords %}シネマサンシャイン,映画館,映画,シネマ,劇場,キャンペーン,ニュース,news,最新情報,映画情報,イベント情報,ライブビューイング,舞台挨拶,IMAX,4DX{% endblock %}
 
 {% block css %}
 <link href="/css/news/details.css" rel="stylesheet">

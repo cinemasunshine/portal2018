@@ -1,9 +1,11 @@
 {% extends "screenx/layout.html.twig" %}
-{% block title %}SCREEN Xとは？ | {{ parent() }}SCREEN X特設サイト{% endblock %}
 
-{% block description %}シネマサンシャインSCREEN X特設サイトのSCREEN X説明ページです。SCREEN Xの設備・機能に関する情報をご案内{% endblock %}
+{% block title %}{{ meta_title('screenx_about') }}{% endblock %}
 
-{% block keywords %}{{ parent() }},予約,オンライン,SCREEN X,スクリーンX,下関,かほく,石川,山口{% endblock %}
+{% block description %}{{ meta_description('screenx_about') }}{% endblock %}
+
+{% block keywords %}{{ meta_keywords('screenx_about') }}{% endblock %}
+
 {% block css %}
 <link href="/css/screen-x/about.css" rel="stylesheet">
 {% endblock %}
