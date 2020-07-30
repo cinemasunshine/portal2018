@@ -58,9 +58,30 @@
                     </li>
                 </ul>
                 <p class="btn-area">
-                    <input type="submit" value="入力内容を送信" class="submit-btn">
+                    <input type="button" value="入力内容を送信" class="submit-btn" onclick="invoke();">
                 </p>
+                <input type="hidden" id="reCAPTCHA" name="reCAPTCHA">
             </form>
         </section>
+        <script src="https://www.google.com/recaptcha/api.js?render=6LdkALgZAAAAAGLW27GK72XP6Z91-EG-7xNWI9em"></script>
+        <script>
+            function invoke(){
+                grecaptcha.ready(function () {
+                    try {
+                        grecaptcha.execute('6LdkALgZAAAAAGLW27GK72XP6Z91-EG-7xNWI9em', { action: 'submit' })
+                            .then(function (token) {
+                                document.getElementById('reCAPTCHA').value = token;
+                                document.forms[0].submit();        
+                            }, function (reason) {
+                                console.error(reason);
+                                //no ops
+                            });
+                    } catch (e) {
+                        console.error(e);
+                        //no ops
+                    }
+                });
+            }
+        </script>
     </body>
 </html>
