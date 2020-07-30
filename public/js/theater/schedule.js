@@ -62,9 +62,13 @@ var Performance = (function () {
     Performance.prototype.isWindow = function () {
         var startDate = moment(this.date + ' ' + this.time.start_time, 'YYYYMMDD HHmm');
         var now = moment();
+        var WINDOW_TIME_FROM_VALUE = 0;
+        var WINDOW_TIME_FROM_UNIT = 'minutes';
+        var WINDOW_TIME_THROUGH_VALUE = 10;
+        var WINDOW_TIME_THROUGH_UNIT = 'minutes';
         return (this.time.seat_count.cnt_reserve_free > 0
-            && moment(startDate).add(-60, 'minutes') < now
-            && moment(startDate).add(10, 'minutes') > now);
+            && moment(startDate).add(WINDOW_TIME_FROM_VALUE, WINDOW_TIME_FROM_UNIT) < now
+            && moment(startDate).add(WINDOW_TIME_THROUGH_VALUE, WINDOW_TIME_THROUGH_UNIT) > now);
     };
     /**
      * 上映時間取得
