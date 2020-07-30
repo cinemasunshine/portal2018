@@ -23,7 +23,7 @@ use Cinemasunshine\Portal\Session\Container as SessionContainer;
  */
 class Manager
 {
-    /** @var AuthorizationCodeGrant */
+    /** @var AuthorizationCodeGrant|null */
     protected $authorizationCodeGrunt;
 
     /** @var string */
@@ -38,7 +38,7 @@ class Manager
     /** @var string */
     protected $host;
 
-    /** @var RefreshTokenGrant */
+    /** @var RefreshTokenGrant|null */
     protected $refreshTokenGrant;
 
     /** @var array */
