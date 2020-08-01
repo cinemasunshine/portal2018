@@ -10,9 +10,9 @@ declare(strict_types=1);
 
 namespace Cinemasunshine\Portal\ORM\Entity;
 
-use Cinemasunshine\ORM\Entity\Campaign as BaseCampaign;
-use Cinemasunshine\ORM\Entity\Page as BasePage;
-use Cinemasunshine\ORM\Entity\PageCampaign as BasePageCampaign;
+use Cinemasunshine\ORM\Entities\Campaign as BaseCampaign;
+use Cinemasunshine\ORM\Entities\Page as BasePage;
+use Cinemasunshine\ORM\Entities\PageCampaign as BasePageCampaign;
 use Doctrine\ORM\Mapping as ORM;
 
 /**

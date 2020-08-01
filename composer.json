@@ -32,7 +32,7 @@
         "vlucas/phpdotenv": "^3.6",
         "monolog/monolog": "^2.1",
         "doctrine/orm": "^2.7",
-        "cinemasunshine/portal2018-orm": "^1.0",
+        "cinemasunshine/portal2018-orm": "^1.1",
         "cinemasunshine/schedule": "2.6.0",
         "microsoft/azure-storage-blob": "^1.5",
         "laminas/laminas-session": "^2.9",

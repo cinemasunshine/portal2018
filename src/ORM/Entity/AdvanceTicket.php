@@ -10,8 +10,8 @@ declare(strict_types=1);
 
 namespace Cinemasunshine\Portal\ORM\Entity;
 
-use Cinemasunshine\ORM\Entity\AdvanceSale as BaseAdvanceSale;
-use Cinemasunshine\ORM\Entity\AdvanceTicket as BaseAdvanceTicket;
+use Cinemasunshine\ORM\Entities\AdvanceSale as BaseAdvanceSale;
+use Cinemasunshine\ORM\Entities\AdvanceTicket as BaseAdvanceTicket;
 use Doctrine\ORM\Mapping as ORM;
 
 /**

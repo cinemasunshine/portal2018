@@ -47,25 +47,25 @@
     </div>
 
     <div class="screening d-block">
-    
-    {% for schedule in screeningSchedules %}
+
+    {% for schedule in nowShowingSchedules %}
         {% include 'screenx/schedule/include/list_row.html.twig' with {
             schedule: schedule,
             theaters: theaters
         } only %}
     {% endfor %}
-    
+
     </div>
-    
+
     <div class="scheduled d-none">
-    
-    {% for schedule in soonSchedules %}
+
+    {% for schedule in commingSoonSchedules %}
         {% include 'screenx/schedule/include/list_row.html.twig' with {
             schedule: schedule,
             theaters: theaters
         } only %}
     {% endfor %}
-    
+
     </div>
 </div>
 {% endblock %}

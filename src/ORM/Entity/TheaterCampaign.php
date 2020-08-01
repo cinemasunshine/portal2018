@@ -10,9 +10,9 @@ declare(strict_types=1);
 
 namespace Cinemasunshine\Portal\ORM\Entity;
 
-use Cinemasunshine\ORM\Entity\Campaign as BaseCampaign;
-use Cinemasunshine\ORM\Entity\Theater as BaseTheater;
-use Cinemasunshine\ORM\Entity\TheaterCampaign as BaseTheaterCampaign;
+use Cinemasunshine\ORM\Entities\Campaign as BaseCampaign;
+use Cinemasunshine\ORM\Entities\Theater as BaseTheater;
+use Cinemasunshine\ORM\Entities\TheaterCampaign as BaseTheaterCampaign;
 use Doctrine\ORM\Mapping as ORM;
 
 /**

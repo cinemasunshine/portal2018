@@ -10,8 +10,8 @@ declare(strict_types=1);
 
 namespace Cinemasunshine\Portal\ORM\Entity;
 
-use Cinemasunshine\ORM\Entity\Campaign as BaseCampaign;
-use Cinemasunshine\ORM\Entity\File as BaseFile;
+use Cinemasunshine\ORM\Entities\Campaign as BaseCampaign;
+use Cinemasunshine\ORM\Entities\File as BaseFile;
 use Doctrine\ORM\Mapping as ORM;
 
 /**

@@ -10,8 +10,8 @@ declare(strict_types=1);
 
 namespace Cinemasunshine\Portal\ORM\Entity;
 
-use Cinemasunshine\ORM\Entity\Schedule as BaseSchedule;
-use Cinemasunshine\ORM\Entity\Title as BaseTitle;
+use Cinemasunshine\ORM\Entities\Schedule as BaseSchedule;
+use Cinemasunshine\ORM\Entities\Title as BaseTitle;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
