@@ -10,8 +10,8 @@ declare(strict_types=1);
 
 namespace Cinemasunshine\Portal\ORM\Entity;
 
-use Cinemasunshine\ORM\Entity\Theater as BaseTheater;
-use Cinemasunshine\ORM\Entity\TheaterMeta as BaseTheaterMeta;
+use Cinemasunshine\ORM\Entities\Theater as BaseTheater;
+use Cinemasunshine\ORM\Entities\TheaterMeta as BaseTheaterMeta;
 use Doctrine\ORM\Mapping as ORM;
 
 /**

@@ -10,9 +10,9 @@ declare(strict_types=1);
 
 namespace Cinemasunshine\Portal\ORM\Entity;
 
-use Cinemasunshine\ORM\Entity\Schedule as BaseSchedule;
-use Cinemasunshine\ORM\Entity\ShowingTheater as BaseShowingTheater;
-use Cinemasunshine\ORM\Entity\Theater as BaseTheater;
+use Cinemasunshine\ORM\Entities\Schedule as BaseSchedule;
+use Cinemasunshine\ORM\Entities\ShowingTheater as BaseShowingTheater;
+use Cinemasunshine\ORM\Entities\Theater as BaseTheater;
 use Doctrine\ORM\Mapping as ORM;
 
 /**

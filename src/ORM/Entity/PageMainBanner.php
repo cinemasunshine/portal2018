@@ -10,9 +10,9 @@ declare(strict_types=1);
 
 namespace Cinemasunshine\Portal\ORM\Entity;
 
-use Cinemasunshine\ORM\Entity\MainBanner as BaseMainBanner;
-use Cinemasunshine\ORM\Entity\Page as BasePage;
-use Cinemasunshine\ORM\Entity\PageMainBanner as BasePageMainBanner;
+use Cinemasunshine\ORM\Entities\MainBanner as BaseMainBanner;
+use Cinemasunshine\ORM\Entities\Page as BasePage;
+use Cinemasunshine\ORM\Entities\PageMainBanner as BasePageMainBanner;
 use Doctrine\ORM\Mapping as ORM;
 
 /**

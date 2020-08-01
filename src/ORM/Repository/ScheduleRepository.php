@@ -8,75 +8,45 @@
 
 namespace Cinemasunshine\Portal\ORM\Repository;
 
-use Doctrine\ORM\EntityRepository;
-use Doctrine\ORM\QueryBuilder;
+use Cinemasunshine\ORM\Repositories\ScheduleRepository as BaseRepository;
 use Cinemasunshine\Portal\ORM\Entity\Schedule;
 use Cinemasunshine\Portal\ORM\Entity\ShowingFormat;
 
 /**
  * Schedule repository class
  */
-class ScheduleRepository extends EntityRepository
+class ScheduleRepository extends BaseRepository
 {
     /**
-     * return active query
-     *
-     * @return QueryBuilder
-     */
-    protected function getActiveQuery()
-    {
-        $qb = $this->createQueryBuilder('s');
-        $qb
-            ->where('s.isDeleted = false')
-            ->andWhere('s.publicStartDt <= CURRENT_TIMESTAMP()')
-            ->andWhere('s.publicEndDt > CURRENT_TIMESTAMP()');
-
-        return $qb;
-    }
-
-    /**
-     * return screening query
-     *
-     * @return QueryBuilder
-     */
-    protected function getScreeningQuery()
-    {
-        $qb = $this->getActiveQuery();
-
-        $qb
-            ->andWhere('s.startDate <= CURRENT_DATE()')
-            ->orderBy('s.startDate', 'DESC');
-
-        return $qb;
-    }
-
-    /**
-     * find screening
-     *
      * @return Schedule[]
      */
-    public function findScreening()
+    public function findNowShowing(): array
     {
-        $qb = $this->getScreeningQuery();
+        $alias = 's';
+        $qb = $this->createQueryBuilder($alias);
+
+        $this->addNowShowingQuery($qb, $alias);
 
         return $qb->getQuery()->getResult();
     }
 
     /**
-     * find screening for IMAX
-     *
      * @return Schedule[]
      */
-    public function findScreeningForImax()
+    public function findNowShowingForImax(): array
     {
+        $alias = 's';
+        $qb = $this->createQueryBuilder($alias);
+
+        $this->addNowShowingQuery($qb, $alias);
+
         $systems = [
             ShowingFormat::SYSTEM_IMAX,
             ShowingFormat::SYSTEM_IMAX3D,
         ];
 
-        $qb = $this->getScreeningQuery();
         $qb
-            ->join('s.showingFormats', 'sf')
+            ->join(sprintf('%s.showingFormats', $alias), 'sf')
             ->andWhere('sf.system IN (:systems)')
             ->setParameter('systems', $systems);
 
@@ -84,20 +54,22 @@ class ScheduleRepository extends EntityRepository
     }
 
     /**
-     * find screening for 4DX
-     *
      * @return Schedule[]
      */
-    public function findScreeningFor4dx()
+    public function findNowShowingFor4dx(): array
     {
+        $alias = 's';
+        $qb = $this->createQueryBuilder($alias);
+
+        $this->addNowShowingQuery($qb, $alias);
+
         $systems = [
             ShowingFormat::SYSTEM_4DX,
             ShowingFormat::SYSTEM_4DX3D,
         ];
 
-        $qb = $this->getScreeningQuery();
         $qb
-            ->join('s.showingFormats', 'sf')
+            ->join(sprintf('%s.showingFormats', $alias), 'sf')
             ->andWhere('sf.system IN (:systems)')
             ->setParameter('systems', $systems);
 
@@ -105,15 +77,17 @@ class ScheduleRepository extends EntityRepository
     }
 
     /**
-     * find screening for ScreenX
-     *
      * @return Schedule[]
      */
-    public function findScreeningForScreenX()
+    public function findNowShowingForScreenX(): array
     {
-        $qb = $this->getScreeningQuery();
+        $alias = 's';
+        $qb = $this->createQueryBuilder($alias);
+
+        $this->addNowShowingQuery($qb, $alias);
+
         $qb
-            ->join('s.showingFormats', 'sf')
+            ->join(sprintf('%s.showingFormats', $alias), 'sf')
             ->andWhere('sf.system = :system')
             ->setParameter('system', ShowingFormat::SYSTEM_SCREENX);
 
@@ -121,15 +95,17 @@ class ScheduleRepository extends EntityRepository
     }
 
     /**
-     * find screening for 4DX Screen
-     *
      * @return Schedule[]
      */
-    public function findScreeningFor4dxScreen()
+    public function findNowShowingFor4dxScreen(): array
     {
-        $qb = $this->getScreeningQuery();
+        $alias = 's';
+        $qb = $this->createQueryBuilder($alias);
+
+        $this->addNowShowingQuery($qb, $alias);
+
         $qb
-            ->join('s.showingFormats', 'sf')
+            ->join(sprintf('%s.showingFormats', $alias), 'sf')
             ->andWhere('sf.system = :system')
             ->setParameter('system', ShowingFormat::SYSTEM_4DX_SCREEN);
 
@@ -137,48 +113,35 @@ class ScheduleRepository extends EntityRepository
     }
 
     /**
-     * return soon query
-     *
-     * @return QueryBuilder
-     */
-    protected function getSoonQuery()
-    {
-        $qb = $this->getActiveQuery();
-
-        $qb
-            ->andWhere('s.startDate > CURRENT_DATE()')
-            ->orderBy('s.startDate', 'ASC');
-
-        return $qb;
-    }
-
-    /**
-     * find soon
-     *
      * @return Schedule[]
      */
-    public function findSoon()
+    public function findCommingSoon(): array
     {
-        $qb = $this->getSoonQuery();
+        $alias = 's';
+        $qb = $this->createQueryBuilder($alias);
+
+        $this->addComingSoonQuery($qb, $alias);
 
         return $qb->getQuery()->getResult();
     }
 
     /**
-     * find soon for IMAX
-     *
      * @return Schedule[]
      */
-    public function findSoonForImax()
+    public function findCommingSoonForImax(): array
     {
+        $alias = 's';
+        $qb = $this->createQueryBuilder($alias);
+
+        $this->addComingSoonQuery($qb, $alias);
+
         $systems = [
             ShowingFormat::SYSTEM_IMAX,
             ShowingFormat::SYSTEM_IMAX3D,
         ];
 
-        $qb = $this->getSoonQuery();
         $qb
-            ->join('s.showingFormats', 'sf')
+            ->join(sprintf('%s.showingFormats', $alias), 'sf')
             ->andWhere('sf.system IN (:systems)')
             ->setParameter('systems', $systems);
 
@@ -186,20 +149,22 @@ class ScheduleRepository extends EntityRepository
     }
 
     /**
-     * find soon for 4DX
-     *
      * @return Schedule[]
      */
-    public function findSoonFor4dx()
+    public function findCommingSoonFor4dx(): array
     {
+        $alias = 's';
+        $qb = $this->createQueryBuilder($alias);
+
+        $this->addComingSoonQuery($qb, $alias);
+
         $systems = [
             ShowingFormat::SYSTEM_4DX,
             ShowingFormat::SYSTEM_4DX3D,
         ];
 
-        $qb = $this->getSoonQuery();
         $qb
-            ->join('s.showingFormats', 'sf')
+            ->join(sprintf('%s.showingFormats', $alias), 'sf')
             ->andWhere('sf.system IN (:systems)')
             ->setParameter('systems', $systems);
 
@@ -207,15 +172,17 @@ class ScheduleRepository extends EntityRepository
     }
 
     /**
-     * find soon for ScreenX
-     *
      * @return Schedule[]
      */
-    public function findSoonForScreenX()
+    public function findCommingSoonForScreenX(): array
     {
-        $qb = $this->getSoonQuery();
+        $alias = 's';
+        $qb = $this->createQueryBuilder($alias);
+
+        $this->addComingSoonQuery($qb, $alias);
+
         $qb
-            ->join('s.showingFormats', 'sf')
+            ->join(sprintf('%s.showingFormats', $alias), 'sf')
             ->andWhere('sf.system = :system')
             ->setParameter('system', ShowingFormat::SYSTEM_SCREENX);
 
@@ -223,15 +190,17 @@ class ScheduleRepository extends EntityRepository
     }
 
     /**
-     * find soon for 4DX Screen
-     *
      * @return Schedule[]
      */
-    public function findSoonFor4dxScreen()
+    public function findCommingSoonFor4dxScreen(): array
     {
-        $qb = $this->getSoonQuery();
+        $alias = 's';
+        $qb = $this->createQueryBuilder($alias);
+
+        $this->addComingSoonQuery($qb, $alias);
+
         $qb
-            ->join('s.showingFormats', 'sf')
+            ->join(sprintf('%s.showingFormats', $alias), 'sf')
             ->andWhere('sf.system = :system')
             ->setParameter('system', ShowingFormat::SYSTEM_4DX_SCREEN);
 
@@ -239,14 +208,16 @@ class ScheduleRepository extends EntityRepository
     }
 
     /**
-     * find one by id
-     *
      * @param int $id
      * @return Schedule|null
      */
-    public function findOneById(int $id)
+    public function findOneById(int $id): ?Schedule
     {
-        $qb = $this->getActiveQuery();
+        $alias = 's';
+        $qb = $this->createQueryBuilder($alias);
+
+        $this->addPublicQuery($qb, $alias);
+
         $qb
             ->andWhere('s.id = :id')
             ->setParameter('id', $id);

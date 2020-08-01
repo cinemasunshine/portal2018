@@ -18,7 +18,7 @@
 
         {% for theater in theaters %}
         <ul class="screening d-flex flex-wrap mb-3" data-theaterCode="{{ theater.getId() }}">
-            {% for schedule in screeningSchedules %}
+            {% for schedule in nowShowingSchedules %}
             {% for showingTheater in schedule.getShowingTheaters() %}
             {% if showingTheater.getTheater().getId() == theater.getId() %}
             {% set title = schedule.getTitle() %}
@@ -44,7 +44,7 @@
 
         {% for theater in theaters %}
         <ul class="scheduled d-flex flex-wrap" data-theaterCode="{{ theater.getId() }}">
-            {% for schedule in soonSchedules %}
+            {% for schedule in commingSoonSchedules %}
             {% for showingTheater in schedule.getShowingTheaters() %}
             {% if showingTheater.getTheater().getId() == theater.getId() %}
             {% set title = schedule.getTitle() %}

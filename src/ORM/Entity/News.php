@@ -10,8 +10,8 @@ declare(strict_types=1);
 
 namespace Cinemasunshine\Portal\ORM\Entity;
 
-use Cinemasunshine\ORM\Entity\File as BaseFile;
-use Cinemasunshine\ORM\Entity\News as BaseNews;
+use Cinemasunshine\ORM\Entities\File as BaseFile;
+use Cinemasunshine\ORM\Entities\News as BaseNews;
 use Doctrine\ORM\Mapping as ORM;
 
 /**

@@ -10,9 +10,9 @@ declare(strict_types=1);
 
 namespace Cinemasunshine\Portal\ORM\Entity;
 
-use Cinemasunshine\ORM\Entity\OyakoCinemaSchedule as BaseOyakoCinemaSchedule;
-use Cinemasunshine\ORM\Entity\OyakoCinemaTheater as BaseOyakoCinemaTheater;
-use Cinemasunshine\ORM\Entity\Theater as BaseTheater;
+use Cinemasunshine\ORM\Entities\OyakoCinemaSchedule as BaseOyakoCinemaSchedule;
+use Cinemasunshine\ORM\Entities\OyakoCinemaTheater as BaseOyakoCinemaTheater;
+use Cinemasunshine\ORM\Entities\Theater as BaseTheater;
 use Doctrine\ORM\Mapping as ORM;
 
 /**

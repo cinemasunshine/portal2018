@@ -46,26 +46,26 @@
             <a class="py-2 d-block border-gray text-dark-gray" href="#" data-type="scheduled">上映予定</a>
         </div>
     </div>
-    
+
     <div class="screening d-block">
-    
-    {% for schedule in screeningSchedules %}
+
+    {% for schedule in nowShowingSchedules %}
         {% include '4dx/schedule/include/list_row.html.twig' with {
         schedule: schedule,
         theaters: theaters
         } only %}
     {% endfor %}
-        
+
     </div>
     <div class="scheduled d-none">
-        
-    {% for schedule in soonSchedules %}
+
+    {% for schedule in commingSoonSchedules %}
         {% include '4dx/schedule/include/list_row.html.twig' with {
             schedule: schedule,
             theaters: theaters
         } only %}
     {% endfor %}
-        
+
     </div>
 </div>
 {% endblock %}

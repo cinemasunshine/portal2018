@@ -10,9 +10,9 @@ declare(strict_types=1);
 
 namespace Cinemasunshine\Portal\ORM\Entity;
 
-use Cinemasunshine\ORM\Entity\News as BaseNews;
-use Cinemasunshine\ORM\Entity\Page as BasePage;
-use Cinemasunshine\ORM\Entity\PageNews as BasePageNews;
+use Cinemasunshine\ORM\Entities\News as BaseNews;
+use Cinemasunshine\ORM\Entities\Page as BasePage;
+use Cinemasunshine\ORM\Entities\PageNews as BasePageNews;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
