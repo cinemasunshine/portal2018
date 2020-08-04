@@ -24,7 +24,7 @@ use Cinemasunshine\Portal\Controller\API\{
     AuthorizationController as AuthorizationAPIController,
     ScheduleController as ScheduleApiController
 };
-use Cinemasunshine\Portal\Controller\Development\CacheController;
+use Cinemasunshine\Portal\Controller\Development\DoctrineController;
 
 $app->get('/', IndexController::class . ':index')->setName('homepage');
 
@@ -133,9 +133,8 @@ $app->group('/api', function () {
  * IPアドレスなどでアクセス制限することを推奨します。
  */
 $app->group('/dev', function () {
-    $this->group('/cache', function () {
-        $this->get('/stats', CacheController::class . ':stats');
-        $this->get('/clear/query', CacheController::class . ':clearQuery');
-        $this->get('/clear/metadata', CacheController::class . ':clearMetadata');
+    $this->group('/doctrine', function () {
+        $this->get('/cache/stats', DoctrineController::class . ':cacheStats');
+        $this->get('/cache/{target:query|metadata}/clear', DoctrineController::class . ':cacheClear');
     });
 });
