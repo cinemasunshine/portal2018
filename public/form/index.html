@@ -63,15 +63,22 @@
                 <input type="hidden" id="reCAPTCHA" name="reCAPTCHA">
             </form>
         </section>
-        <script src="https://www.google.com/recaptcha/api.js?render=6LdkALgZAAAAAGLW27GK72XP6Z91-EG-7xNWI9em"></script>
+        <script src="https://www.google.com/recaptcha/api.js?render=6LeZLrsZAAAAAGLgm20s-wzhzpuQTEE3VT4DB8nB"></script>
         <script>
-            function invoke(){
+            function invoke() {
                 grecaptcha.ready(function () {
                     try {
-                        grecaptcha.execute('6LdkALgZAAAAAGLW27GK72XP6Z91-EG-7xNWI9em', { action: 'submit' })
+                        grecaptcha.execute('6LeZLrsZAAAAAGLgm20s-wzhzpuQTEE3VT4DB8nB', { action: 'submit' })
                             .then(function (token) {
                                 document.getElementById('reCAPTCHA').value = token;
-                                document.forms[0].submit();        
+                                var form = document.forms[0];
+                                var host = window.location.host;
+                                if (host.indexOf('cinemasunshine') > -1) {
+                                    form.action = 'https://sskts-inquiry-production.azurewebsites.net/inquiry';
+                                } else {
+                                    form.action = 'https://sskts-inquiry-test.azurewebsites.net/inquiry';
+                                }
+                                form.submit();
                             }, function (reason) {
                                 console.error(reason);
                                 //no ops
