@@ -24,7 +24,7 @@
         }
     },
     "require": {
-        "php": "~7.2",
+        "php": "~7.3",
         "ext-redis": "*",
         "slim/slim" : "^3.12",
         "slim/twig-view": "^2.5",
@@ -33,7 +33,7 @@
         "monolog/monolog": "^2.1",
         "doctrine/orm": "^2.7",
         "cinemasunshine/portal2018-orm": "^1.1",
-        "cinemasunshine/schedule": "2.6.0",
+        "cinemasunshine/schedule": "2.7.0",
         "microsoft/azure-storage-blob": "^1.5",
         "laminas/laminas-session": "^2.9",
         "guzzlehttp/guzzle": "^6.5",
