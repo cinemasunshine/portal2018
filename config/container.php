@@ -64,32 +64,31 @@ $container['view'] = function ($container) {
     $uri = \Slim\Http\Uri::createFromEnvironment(new \Slim\Http\Environment($_SERVER));
     $view->addExtension(new \Slim\Views\TwigExtension($router, $uri));
 
-    // add Extension
+    // vendor extension
     $view->addExtension(new \Twig\Extension\DebugExtension());
     $view->addExtension(new \Twig\Extensions\TextExtension());
 
+    // app extension
+    $view->addExtension(new \Cinemasunshine\Portal\Twig\Extension\AdvanceTicketExtension());
     $view->addExtension(new \Cinemasunshine\Portal\Twig\Extension\AzureStorageExtension(
         $container->get('bc'),
         $container->get('settings')['storage']['public_endpoint']
     ));
-
     $view->addExtension(new \Cinemasunshine\Portal\Twig\Extension\CommonExtension());
-
-    $view->addExtension(new \Cinemasunshine\Portal\Twig\Extension\AdvanceTicketExtension());
-    $view->addExtension(new \Cinemasunshine\Portal\Twig\Extension\NewsExtension());
-    $view->addExtension(new \Cinemasunshine\Portal\Twig\Extension\TheaterExtension());
-
     $view->addExtension(new \Cinemasunshine\Portal\Twig\Extension\MotionpictureTicketExtension(
         $container->get('settings')['mp_service']
     ));
-
+    $view->addExtension(new \Cinemasunshine\Portal\Twig\Extension\NewsExtension());
+    $view->addExtension(new \Cinemasunshine\Portal\Twig\Extension\SeoExtension(
+        APP_ROOT . '/data/metas.json'
+    ));
+    $view->addExtension(new \Cinemasunshine\Portal\Twig\Extension\ScheduleExtension(
+        $container->get('settings')['schedule']
+    ));
+    $view->addExtension(new \Cinemasunshine\Portal\Twig\Extension\TheaterExtension());
     $view->addExtension(new \Cinemasunshine\Portal\Twig\Extension\UserExtension(
         $container->get('um'),
         $container->get('am')
-    ));
-
-    $view->addExtension(new \Cinemasunshine\Portal\Twig\Extension\ScheduleExtension(
-        $container->get('settings')['schedule']
     ));
 
     return $view;

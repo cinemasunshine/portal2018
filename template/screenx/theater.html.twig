@@ -1,10 +1,10 @@
 {% extends "screenx/layout.html.twig" %}
 
-{% block title %}劇場情報 | {{ parent() }}SCREEN X特設サイト{% endblock %}
+{% block title %}{{ meta_title('screenx_theater') }}{% endblock %}
 
-{% block description %}シネマサンシャインのSCREEN X特設サイト劇場情報ページです。SCREEN Xを導入している劇場に関するご案内など{% endblock %}
+{% block description %}{{ meta_description('screenx_theater') }}{% endblock %}
 
-{% block keywords %}{{ parent() }},SCREEN X{% endblock %}
+{% block keywords %}{{ meta_keywords('screenx_theater') }}{% endblock %}
 
 {% block css %}
 <link href="/css/theaters.css" rel="stylesheet">

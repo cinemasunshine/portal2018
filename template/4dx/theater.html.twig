@@ -1,5 +1,11 @@
 {% extends "4dx/layout.html.twig" %}
 
+{% block title %}{{ meta_title('4dx') }}{% endblock %}
+
+{% block description %}{{ meta_description('4dx') }}{% endblock %}
+
+{% block keywords %}{{ meta_keywords('4dx') }}{% endblock %}
+
 {% block css %}
 <link href="/css/theaters.css" rel="stylesheet">
 {% endblock %}

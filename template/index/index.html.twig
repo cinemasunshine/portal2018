@@ -1,12 +1,10 @@
 {% extends "layout.html.twig" %}
 
-{% block title %}{{ parent() }} | 映画館情報、上映スケジュール、作品情報、オンライン予約など映画に関する総合サイト{% endblock %}
+{% block title %}{{ meta_title('index') }}{% endblock %}
 
-{#
-{% block description %}{% endblock %}
-#}
+{% block description %}{{ meta_description('index') }}{% endblock %}
 
-{% block keywords %}{{ parent()}},座席指定,予約,ランキング,キャンペーン,IMAX,4DX,BESTIA,{% endblock %}
+{% block keywords %}{{ meta_keywords('index') }}{% endblock %}
 
 {% block css %}
 <link href="/css/top.css" rel="stylesheet">

@@ -1,10 +1,10 @@
 {% extends "layout.html.twig" %}
 
-{% block title %}作品一覧 | {{ parent() }}{% endblock %}
+{% block title %}{{ meta_title('schedule_list') }}{% endblock %}
 
-{% block description %}シネマサンシャインの作品一覧ページです。上映中・上映予定の映画作品のご案内{% endblock %}
+{% block description %}{{ meta_description('schedule_list') }}{% endblock %}
 
-{% block keywords %}{{ parent()}},キャンペーン,上映中,上映予定,公開中,公開予定,作品情報,作品紹介{% endblock %}
+{% block keywords %}{{ meta_keywords('schedule_list') }}{% endblock %}
 
 {% block css %}
 <link href="/css/movie/list.css" rel="stylesheet">
@@ -47,7 +47,11 @@
 
     <div class="screening d-block">
 
+<<<<<<< HEAD
     {% for schedule in nowShowingSchedules %}
+=======
+    {% for schedule in screeningSchedules %}
+>>>>>>> feature/SASAKI-578
         {% include 'schedule/include/list_row.html.twig' with {
             schedule: schedule,
             theaters: theaters
@@ -58,7 +62,11 @@
 
     <div class="scheduled d-none">
 
+<<<<<<< HEAD
     {% for schedule in commingSoonSchedules %}
+=======
+    {% for schedule in soonSchedules %}
+>>>>>>> feature/SASAKI-578
         {% include 'schedule/include/list_row.html.twig' with {
             schedule: schedule,
             theaters: theaters

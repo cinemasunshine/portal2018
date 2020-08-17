@@ -1,10 +1,10 @@
 {% extends "layout.html.twig" %}
 
-{% block title %}よくあるご質問(Q&A) | {{ parent() }}{% endblock %}
+{% block title %}{{ meta_title('about_question') }}{% endblock %}
 
-{% block description %}シネサンシャインのよくあるご質問(Q&A)ページです。お客様からいただいたご質問などをご案内{% endblock %}
+{% block description %}{{ meta_description('about_question') }}{% endblock %}
 
-{% block keywords %}{{ parent()}},サイトマップ{% endblock %}
+{% block keywords %}{{ meta_keywords('about_question') }}{% endblock %}
 
 {% block css %}
 <link href="/css/question.css" rel="stylesheet">
@@ -80,7 +80,7 @@
             <div class="border-top border-bottom py-3">
                 <p class="pickup-button bg-light-gray mb-3 py-2 px-3"><span class="q font-weight-bold pr-1">Q</span>パソコンとスマートフォンからのチケット購入方法を教えて下さい。</p>
                 <p class="blue px-3 mb-0"><span class="font-weight-bold">A</span>：各劇場ホームページの「TOP/上映スケジュール」のページよりご購入いただけます。<br>
-                    上映スケジュールの購入ボタンをクリックしてください。上映日の2日前から上映開始の1時間前まで予約可能です。</p>
+                    上映スケジュールの購入ボタンをクリックしてください。上映日の2日前から上映開始時間まで予約可能です。</p>
             </div>
             <div class="border-top border-bottom py-3">
                 <p class="pickup-button bg-light-gray mb-3 py-2 px-3"><span class="q font-weight-bold pr-1">Q</span>支払い方法を教えてください。</p>

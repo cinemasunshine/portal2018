@@ -1,10 +1,10 @@
 {% extends "layout.html.twig" %}
 
-{% block title %}シネマサンシャイン公式アプリ | {{ parent() }}{% endblock %}
+{% block title %}{{ meta_title('about_official_app') }}{% endblock %}
 
-{% block description %}シネマサンシャインの公式アプリ紹介ページです。公式アプリの概要や会員サービスの概要・特典内容などのご案内{% endblock %}
+{% block description %}{{ meta_description('about_official_app') }}{% endblock %}
 
-{% block keywords %}{{ parent()}},アプリ,iPhone,Android,会員,無料,特典,ダウンロード{% endblock %}
+{% block keywords %}{{ meta_keywords('about_official_app') }}{% endblock %}
 
 {% block css %}
 <link href="/css/app.css" rel="stylesheet">
@@ -22,7 +22,7 @@
             <div class="py-lg-4">
                 <h3 class="py-2 font-weight-bold headline">シネマサンシャインの新しい会員サービス<br>「シネマサンシャインリワード」ついにスタート</h3>
                 <p class="sentence">シネマサンシャイン公式アプリ内から<br>今すぐご入会ご利用いただけます</p>
-                <p class="sentence">全劇場対応開始<br><img src="/images/app/mvtk_goriyou.svg" class="mvtk_goriyou pjack-bg-color-only" alt="ムビチケご利用可能です"><br><span class="small">※ アプリでの購入は上映開始10分前まで購入可能です。</span></p>
+                <p class="sentence">全劇場対応開始<br><img src="/images/app/mvtk_goriyou.svg" class="mvtk_goriyou pjack-bg-color-only" alt="ムビチケご利用可能です"><br><span class="small">※ アプリでの購入は上映開始時間まで購入可能です。</span></p>
             </div>
             <div class="smp-img ml-auto mr-lg-5">
                 <img src="/images/app/smp_img.png">
@@ -33,7 +33,7 @@
                 <p class="py-2 font-weight-bold headline mb-0"><span class="small font-weight-bold">シネマサンシャインの新しい会員サービス</span><br>「シネマサンシャインリワード」<br><span
                         class="small font-weight-bold">ついにスタート</span></p>
                 <p class="sentence">シネマサンシャイン公式アプリ内から<br>今すぐご入会ご利用いただけます</p>
-                <p class="sentence small">全劇場対応開始<br><img src="/images/app/mvtk_goriyou.svg" class="mvtk_goriyou" alt="ムビチケご利用可能です"><br><span class="small">※ アプリでの購入は上映開始10分前まで購入可能です。</span></p>
+                <p class="sentence small">全劇場対応開始<br><img src="/images/app/mvtk_goriyou.svg" class="mvtk_goriyou" alt="ムビチケご利用可能です"><br><span class="small">※ アプリでの購入は上映開始時間まで購入可能です。</span></p>
             </div>
             <div class="smp-img ml-auto mr-lg-5">
                 <img src="/images/app/smp_img.png">

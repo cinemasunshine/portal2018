@@ -1,10 +1,10 @@
 {% extends "imax/layout.html.twig" %}
 
-{% block title %}{{ news.getHeadline() }} | {{ parent() }}IMAX特設サイト{% endblock %}
+{% block title %}{{ news.getHeadline() }} | シネマサンシャインIMAX特設サイト{% endblock %}
 
 {% block description %}{{ news.getBody()|striptags }}{% endblock %}
 
-{% block keywords %}{{ parent() }},キャンペーン,ニュース,news,最新情報,映画情報,イベント情報,ライブビューイング,舞台挨拶,IMAX{% endblock %}
+{% block keywords %}シネマサンシャイン,映画館,映画,シネマ,劇場,キャンペーン,ニュース,news,最新情報,映画情報,イベント情報,ライブビューイング,舞台挨拶,IMAX{% endblock %}
 
 {% block css %}
 <link href="/css/news/details.css" rel="stylesheet">
@@ -41,15 +41,15 @@
     <div class="d-flex align-items-center">
         <div class="text-gray">{{ news.getStartDt()|date('Y/n/j') }}</div>
     </div>
-    
+
     <h2 class="font-weight-bold x-large py-4" id="shareTitle">{{ news.getHeadline() }}</h2>
-    
+
 {% if news.getImage() %}
     <div class="mb-5">
         <img id="shareImage" class="w-100" src="{{ file_url(news.getImage()) }}">
     </div>
 {% endif %}
-    
+
     <div class="mb-3 border-bottom border-gray ">
         {{ news.getBody()|raw }}
     </div>

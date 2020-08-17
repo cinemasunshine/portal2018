@@ -1,10 +1,10 @@
 {% extends "screenx/layout.html.twig" %}
 
-{% block title %}News&Info一覧 | {{ parent() }}SCREEN X特設サイト{% endblock %}
+{% block title %}{{ meta_title('screenx_news_list') }}{% endblock %}
 
-{% block description %}シネサンシャインSCREEN X特設サイトのニュース一覧ページです。映画に関する最新情報やイベント情報、ライブビューイング情報、キャンペーン情報、舞台挨拶のご案内など{% endblock %}
+{% block description %}{{ meta_description('screenx_news_list') }}{% endblock %}
 
-{% block keywords %}{{ parent() }},キャンペーン,ニュース,news,最新情報,映画情報,イベント情報,ライブビューイング,舞台挨拶,SCREEN X{% endblock %}
+{% block keywords %}{{ meta_keywords('screenx_news_list') }}{% endblock %}
 
 {% block css %}
 <link href="/css/news/list.css" rel="stylesheet">

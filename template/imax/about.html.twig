@@ -1,9 +1,11 @@
 {% extends "imax/layout.html.twig" %}
-{% block title %}IMAX&reg;とは? | {{ parent() }}IMAX特設サイト{% endblock %}
 
-{% block description %}シネマサンシャインIMAX特設サイトのIMAX&reg;説明ページです。IMAXの設備・機能に関する情報をご案内{% endblock %}
+{% block title %}{{ meta_title('imax_about') }}{% endblock %}
 
-{% block keywords %}{{ parent() }},IMAX,IMAX3D,料金{% endblock %}
+{% block description %}{{ meta_description('imax_about') }}{% endblock %}
+
+{% block keywords %}{{ meta_keywords('imax_about') }}{% endblock %}
+
 {% block css %}
 <link href="/css/imax/about.css" rel="stylesheet">
 {% endblock %}

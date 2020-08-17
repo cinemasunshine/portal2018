@@ -1,10 +1,10 @@
 {% extends '4dx_screen/layout.html.twig' %}
 
-{% block title %}{{ news.getHeadline() }} | {{ parent() }}4DX SCREEN特設サイト{% endblock %}
+{% block title %}{{ news.getHeadline() }} | シネマサンシャイン4DX SCREEN特設サイト{% endblock %}
 
 {% block description %}{{ news.getBody()|striptags }}{% endblock %}
 
-{% block keywords %}{{ parent() }},キャンペーン,ニュース,news,最新情報,映画情報,イベント情報,ライブビューイング,舞台挨拶,4DX{% endblock %}
+{% block keywords %}4DX SCREEN,グランドシネマサンシャイン,映画館,映画,シネマ,池袋,キャンペーン,ニュース,news,最新情報,映画情報,イベント情報,ライブビューイング,舞台挨拶,4DX{% endblock %}
 
 {% block css %}
 <link href="/css/news/details.css" rel="stylesheet">
