@@ -49,11 +49,7 @@
 
     <div class="screening d-block">
 
-<<<<<<< HEAD
     {% for schedule in nowShowingSchedules %}
-=======
-    {% for schedule in screeningSchedules %}
->>>>>>> feature/SASAKI-578
         {% include 'imax/schedule/include/list_row.html.twig' with {
         schedule: schedule,
         theaters: theaters
@@ -64,11 +60,7 @@
 
     <div class="scheduled d-none">
 
-<<<<<<< HEAD
     {% for schedule in commingSoonSchedules %}
-=======
-    {% for schedule in soonSchedules %}
->>>>>>> feature/SASAKI-578
         {% include 'imax/schedule/include/list_row.html.twig' with {
             schedule: schedule,
             theaters: theaters
