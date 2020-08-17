@@ -1,10 +1,10 @@
 {% extends "layout.html.twig" %}
 
-{% block title %}よくあるご質問(Q&A) | {{ parent() }}{% endblock %}
+{% block title %}{{ meta_title('about_question') }}{% endblock %}
 
-{% block description %}シネサンシャインのよくあるご質問(Q&A)ページです。お客様からいただいたご質問などをご案内{% endblock %}
+{% block description %}{{ meta_description('about_question') }}{% endblock %}
 
-{% block keywords %}{{ parent()}},サイトマップ{% endblock %}
+{% block keywords %}{{ meta_keywords('about_question') }}{% endblock %}
 
 {% block css %}
 <link href="/css/question.css" rel="stylesheet">
