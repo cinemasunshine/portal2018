@@ -35,14 +35,14 @@ class Schedule extends BaseEntity implements PortalEntityInterface
      */
     public function toArray($deep = true)
     {
-        $data = array(
+        $data = [
             'date'         => $this->getDate(),
             'usable'       => $this->getUsable(),
             'has_pre_sale' => $this->getHasPreSale(),
-        );
+        ];
 
         if ($deep) {
-            $data['movie'] = array();
+            $data['movie'] = [];
 
             foreach ($this->getMovieCollection() as $movie) {
                 $data['movie'][] = $movie->toArray();

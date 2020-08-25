@@ -98,9 +98,9 @@ class CommonExtension extends AbstractExtension
      */
     public function getFilters()
     {
-        return array(
+        return [
             new TwigFilter('weekday', [$this, 'weekdayFilter']),
-        );
+        ];
     }
 
     /**
