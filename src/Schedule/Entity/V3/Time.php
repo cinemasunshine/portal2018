@@ -69,12 +69,12 @@ class Time extends BaseEntity implements PortalEntityInterface
      */
     public function toArray()
     {
-        return array(
+        return [
             'start'     => $this->getStart(),
             'end'       => $this->getEnd(),
             'available' => $this->getAvailable(),
             'url'       => $this->getUrl(),
             'late'      => $this->getLate(),
-        );
+        ];
     }
 }

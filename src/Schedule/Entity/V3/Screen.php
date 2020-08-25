@@ -25,11 +25,11 @@ class Screen extends BaseEntity implements PortalEntityInterface
      */
     public function toArray()
     {
-        $data = array(
+        $data = [
             'name' => $this->getName(),
             'code' => $this->getCode(),
-            'time' => array(),
-        );
+            'time' => [],
+        ];
 
         foreach ($this->getTimeCollection() as $time) {
             $data['time'][] = $time->toArray();

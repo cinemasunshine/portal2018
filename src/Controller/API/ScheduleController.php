@@ -69,8 +69,8 @@ class ScheduleController extends BaseController
             $schedules = $scheduleResponse;
         }
 
-        $meta = array();
-        $data = array();
+        $meta = [];
+        $data = [];
 
         if ($schedules->getError() === V3Schedules::ERROR_OTHER) {
             throw new \RuntimeException('schedule unknown error');
@@ -124,8 +124,8 @@ class ScheduleController extends BaseController
             $schedules = $scheduleResponse;
         }
 
-        $meta = array();
-        $data = array();
+        $meta = [];
+        $data = [];
 
         if ($schedules->getError() === V3Schedules::ERROR_OTHER) {
             throw new \RuntimeException('schedule unknown error');
