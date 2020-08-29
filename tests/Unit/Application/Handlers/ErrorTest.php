@@ -24,6 +24,22 @@ final class ErrorTest extends TestCase
     use MockeryPHPUnitIntegration;
 
     /**
+     * @return \ReflectionClass
+     */
+    protected function createTargetReflection()
+    {
+        return new \ReflectionClass(Error::class);
+    }
+
+    /**
+     * @return \Mockery\MockInterface&\Mockery\LegacyMockInterface&Error
+     */
+    protected function createTargetMock()
+    {
+        return Mockery::mock(Error::class);
+    }
+
+    /**
      * @return \Mockery\MockInterface&\Mockery\LegacyMockInterface&Logger
      */
     protected function createLoggerMock()
@@ -43,24 +59,24 @@ final class ErrorTest extends TestCase
 
         $displayErrorDetails = true;
 
-        $errorHandlerMock = Mockery::mock(Error::class);
+        $targetMock = $this->createTargetMock();
 
         // execute constructor
-        $errorHandlerRef = new \ReflectionClass(Error::class);
-        $errorHandlerConstructor = $errorHandlerRef->getConstructor();
-        $errorHandlerConstructor->invoke($errorHandlerMock, $loggerMock, $displayErrorDetails);
+        $targetRef = $this->createTargetReflection();
+        $errorHandlerConstructor = $targetRef->getConstructor();
+        $errorHandlerConstructor->invoke($targetMock, $loggerMock, $displayErrorDetails);
 
         // test property "logger"
-        $loggerPropertyRef = $errorHandlerRef->getProperty('logger');
+        $loggerPropertyRef = $targetRef->getProperty('logger');
         $loggerPropertyRef->setAccessible(true);
-        $this->assertEquals($loggerMock, $loggerPropertyRef->getValue($errorHandlerMock));
+        $this->assertEquals($loggerMock, $loggerPropertyRef->getValue($targetMock));
 
         // test property "displayErrorDetails"
-        $displayErrorDetailsPropertyRef = $errorHandlerRef->getProperty('displayErrorDetails');
+        $displayErrorDetailsPropertyRef = $targetRef->getProperty('displayErrorDetails');
         $displayErrorDetailsPropertyRef->setAccessible(true);
         $this->assertEquals(
             $displayErrorDetails,
-            $displayErrorDetailsPropertyRef->getValue($errorHandlerMock)
+            $displayErrorDetailsPropertyRef->getValue($targetMock)
         );
     }
 
@@ -72,18 +88,23 @@ final class ErrorTest extends TestCase
     public function testWriteToErrorLog()
     {
         $exception = new \Exception();
-        $errorHandlerMock = Mockery::mock(Error::class)->makePartial();
-        $errorHandlerMock->shouldAllowMockingProtectedMethods();
-        $errorHandlerMock
+
+        $targetMock = $this->createTargetMock();
+        $targetMock
+            ->makePartial()
+            ->shouldAllowMockingProtectedMethods();
+        $targetMock
             ->shouldReceive('log')
             ->once()
             ->with($exception);
 
-        $writeToErrorLogRef = new \ReflectionMethod($errorHandlerMock, 'writeToErrorLog');
+        $targetRef = $this->createTargetReflection();
+
+        $writeToErrorLogRef = $targetRef->getMethod('writeToErrorLog');
         $writeToErrorLogRef->setAccessible(true);
 
         // execute
-        $writeToErrorLogRef->invoke($errorHandlerMock, $exception);
+        $writeToErrorLogRef->invoke($targetMock, $exception);
     }
 
     /**
@@ -105,19 +126,20 @@ final class ErrorTest extends TestCase
             ->once()
             ->with($message, Mockery::type('array'));
 
-        $errorHandlerMock = Mockery::mock(Error::class)->makePartial();
+        $targetMock = $this->createTargetMock();
+        $targetMock->makePartial();
 
-        $errorHandlerRef = new \ReflectionClass(Error::class);
+        $targetRef = $this->createTargetReflection();
 
         // test property "logger"
-        $loggerPropertyRef = $errorHandlerRef->getProperty('logger');
+        $loggerPropertyRef = $targetRef->getProperty('logger');
         $loggerPropertyRef->setAccessible(true);
-        $loggerPropertyRef->setValue($errorHandlerMock, $loggerMock);
+        $loggerPropertyRef->setValue($targetMock, $loggerMock);
 
-        $logMethodRef = $errorHandlerRef->getMethod('log');
+        $logMethodRef = $targetRef->getMethod('log');
         $logMethodRef->setAccessible(true);
 
         // execute
-        $logMethodRef->invoke($errorHandlerMock, $exception);
+        $logMethodRef->invoke($targetMock, $exception);
     }
 }
