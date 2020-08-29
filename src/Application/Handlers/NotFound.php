@@ -8,7 +8,6 @@
 
 namespace Cinemasunshine\Portal\Application\Handlers;
 
-use Slim\Container;
 use Slim\Handlers\NotFound as BaseHandler;
 
 /**
@@ -16,16 +15,4 @@ use Slim\Handlers\NotFound as BaseHandler;
  */
 class NotFound extends BaseHandler
 {
-    /** @var Container */
-    protected $container;
-    
-    /**
-     * construct
-     *
-     * @param Container $container
-     */
-    public function __construct(Container $container)
-    {
-        $this->container = $container;
-    }
 }
