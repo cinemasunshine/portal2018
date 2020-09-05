@@ -5,7 +5,7 @@
  *
  * AbstractControllerのphpdoc更新を推奨。
  *
- * @see Cinemasunshine\PortalAdmin\Controller\AbstractController\__call()
+ * @see AppAdmin\Controller\AbstractController\__call()
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
@@ -15,7 +15,7 @@ $container = $app->getContainer();
 /**
  * Authorization Manager
  *
- * @return \Cinemasunshine\Portal\Authorization\Manager
+ * @return \App\Authorization\Manager
  */
 $container['am'] = function ($container) {
     /**
@@ -24,7 +24,7 @@ $container['am'] = function ($container) {
      */
     $sessionContainerName = 'authorization_20200116';
 
-    return new \Cinemasunshine\Portal\Authorization\Manager(
+    return new \App\Authorization\Manager(
         $container->get('settings')['mp_service'],
         $container->get('sm')->getContainer($sessionContainerName)
     );
@@ -33,7 +33,7 @@ $container['am'] = function ($container) {
 /**
  * User Manager
  *
- * @return \Cinemasunshine\Portal\User\Manager
+ * @return \App\User\Manager
  */
 $container['um'] = function ($container) {
     /**
@@ -42,7 +42,7 @@ $container['um'] = function ($container) {
      */
     $sessionContainerName = 'user_20200116';
 
-    return new \Cinemasunshine\Portal\User\Manager(
+    return new \App\User\Manager(
         $container->get('sm')->getContainer($sessionContainerName)
     );
 };
@@ -69,24 +69,24 @@ $container['view'] = function ($container) {
     $view->addExtension(new \Twig\Extensions\TextExtension());
 
     // app extension
-    $view->addExtension(new \Cinemasunshine\Portal\Twig\Extension\AdvanceTicketExtension());
-    $view->addExtension(new \Cinemasunshine\Portal\Twig\Extension\AzureStorageExtension(
+    $view->addExtension(new \App\Twig\Extension\AdvanceTicketExtension());
+    $view->addExtension(new \App\Twig\Extension\AzureStorageExtension(
         $container->get('bc'),
         $container->get('settings')['storage']['public_endpoint']
     ));
-    $view->addExtension(new \Cinemasunshine\Portal\Twig\Extension\CommonExtension());
-    $view->addExtension(new \Cinemasunshine\Portal\Twig\Extension\MotionpictureTicketExtension(
+    $view->addExtension(new \App\Twig\Extension\CommonExtension());
+    $view->addExtension(new \App\Twig\Extension\MotionpictureTicketExtension(
         $container->get('settings')['mp_service']
     ));
-    $view->addExtension(new \Cinemasunshine\Portal\Twig\Extension\NewsExtension());
-    $view->addExtension(new \Cinemasunshine\Portal\Twig\Extension\SeoExtension(
+    $view->addExtension(new \App\Twig\Extension\NewsExtension());
+    $view->addExtension(new \App\Twig\Extension\SeoExtension(
         APP_ROOT . '/data/metas.json'
     ));
-    $view->addExtension(new \Cinemasunshine\Portal\Twig\Extension\ScheduleExtension(
+    $view->addExtension(new \App\Twig\Extension\ScheduleExtension(
         $container->get('settings')['schedule']
     ));
-    $view->addExtension(new \Cinemasunshine\Portal\Twig\Extension\TheaterExtension());
-    $view->addExtension(new \Cinemasunshine\Portal\Twig\Extension\UserExtension(
+    $view->addExtension(new \App\Twig\Extension\TheaterExtension());
+    $view->addExtension(new \App\Twig\Extension\UserExtension(
         $container->get('um'),
         $container->get('am')
     ));
@@ -121,7 +121,7 @@ $container['logger'] = function ($container) {
     }
 
     $azureBlobStorageSettings = $settings['azure_blob_storage'];
-    $azureBlobStorageHandler = new Cinemasunshine\Portal\Logger\Handler\AzureBlobStorageHandler(
+    $azureBlobStorageHandler = new App\Logger\Handler\AzureBlobStorageHandler(
         $container->get('bc'),
         $azureBlobStorageSettings['container'],
         $azureBlobStorageSettings['blob'],
@@ -169,9 +169,9 @@ $container['em'] = function ($container) {
         false
     );
 
-    $config->setProxyNamespace('Cinemasunshine\Portal\ORM\Proxy');
+    $config->setProxyNamespace('App\ORM\Proxy');
 
-    $logger = new \Cinemasunshine\Portal\Logger\DbalLogger($container->get('logger'));
+    $logger = new \App\Logger\DbalLogger($container->get('logger'));
     $config->setSQLLogger($logger);
 
     return \Doctrine\ORM\EntityManager::create($settings['connection'], $config);
@@ -180,14 +180,14 @@ $container['em'] = function ($container) {
 /**
  * session manager
  *
- * @return \Cinemasunshine\Portal\Session\SessionManager
+ * @return \App\Session\SessionManager
  */
 $container['sm'] = function ($container) {
     $settings = $container->get('settings')['session'];
     $config = new \Laminas\Session\Config\SessionConfig();
     $config->setOptions($settings);
 
-    return new \Cinemasunshine\Portal\Session\SessionManager($config);
+    return new \App\Session\SessionManager($config);
 };
 
 /**
@@ -214,23 +214,23 @@ $container['bc'] = function ($container) {
 };
 
 $container['errorHandler'] = function ($container) {
-    return new \Cinemasunshine\Portal\Application\Handlers\Error(
+    return new \App\Application\Handlers\Error(
         $container->get('logger'),
         $container->get('settings')['displayErrorDetails']
     );
 };
 
 $container['phpErrorHandler'] = function ($container) {
-    return new \Cinemasunshine\Portal\Application\Handlers\PhpError(
+    return new \App\Application\Handlers\PhpError(
         $container->get('logger'),
         $container->get('settings')['displayErrorDetails']
     );
 };
 
 $container['notFoundHandler'] = function ($container) {
-    return new \Cinemasunshine\Portal\Application\Handlers\NotFound();
+    return new \App\Application\Handlers\NotFound();
 };
 
 $container['notAllowedHandler'] = function ($container) {
-    return new \Cinemasunshine\Portal\Application\Handlers\NotAllowed();
+    return new \App\Application\Handlers\NotAllowed();
 };

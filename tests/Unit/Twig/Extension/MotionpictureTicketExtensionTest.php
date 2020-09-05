@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Twig\Extension;
 
-use Cinemasunshine\Portal\Twig\Extension\MotionpictureTicketExtension;
+use App\Twig\Extension\MotionpictureTicketExtension;
 use Mockery;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use PHPUnit\Framework\TestCase;

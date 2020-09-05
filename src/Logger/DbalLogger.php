@@ -6,7 +6,7 @@
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
-namespace Cinemasunshine\Portal\Logger;
+namespace App\Logger;
 
 use Doctrine\DBAL\Logging\SQLLogger;
 use Monolog\Logger;

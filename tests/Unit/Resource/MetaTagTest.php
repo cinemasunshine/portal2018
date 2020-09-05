@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Resource;
 
-use Cinemasunshine\Portal\Resource\MetaTag;
+use App\Resource\MetaTag;
 use Mockery;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use PHPUnit\Framework\TestCase;

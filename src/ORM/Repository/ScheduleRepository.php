@@ -6,11 +6,11 @@
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
-namespace Cinemasunshine\Portal\ORM\Repository;
+namespace App\ORM\Repository;
 
 use Cinemasunshine\ORM\Repositories\ScheduleRepository as BaseRepository;
-use Cinemasunshine\Portal\ORM\Entity\Schedule;
-use Cinemasunshine\Portal\ORM\Entity\ShowingFormat;
+use App\ORM\Entity\Schedule;
+use App\ORM\Entity\ShowingFormat;
 
 /**
  * Schedule repository class

@@ -6,10 +6,10 @@
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
-namespace Cinemasunshine\Portal\Controller\API;
+namespace App\Controller\API;
 
-use Cinemasunshine\Portal\Authorization\Grant\ClientCredentials;
-use Cinemasunshine\Portal\Exception\NotAuthenticatedException;
+use App\Authorization\Grant\ClientCredentials;
+use App\Exception\NotAuthenticatedException;
 
 /**
  * Authorization controller

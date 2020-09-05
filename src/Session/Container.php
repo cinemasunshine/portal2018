@@ -6,7 +6,7 @@
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
-namespace Cinemasunshine\Portal\Session;
+namespace App\Session;
 
 use Laminas\Session\Container as Base;
 

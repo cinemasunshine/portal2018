@@ -6,15 +6,15 @@
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
-namespace Cinemasunshine\Portal\Controller\API;
+namespace App\Controller\API;
 
 use Cinemasunshine\Schedule\Entity\V3\Schedules as V3Schedules;
 use Cinemasunshine\Schedule\Entity\SchedulesInterface;
 use Cinemasunshine\Schedule\Response\Http as HttpResponse;
-use Cinemasunshine\Portal\Schedule\Builder\V3\Schedule as V3ScheduleBuilder;
-use Cinemasunshine\Portal\Schedule\Collection\Movie as MovieCollection;
-use Cinemasunshine\Portal\Schedule\Entity\V3\Time as TimeEntity;
-use Cinemasunshine\Portal\Schedule\Theater as TheaterSchedule;
+use App\Schedule\Builder\V3\Schedule as V3ScheduleBuilder;
+use App\Schedule\Collection\Movie as MovieCollection;
+use App\Schedule\Entity\V3\Time as TimeEntity;
+use App\Schedule\Theater as TheaterSchedule;
 use Slim\Exception\NotFoundException;
 
 /**

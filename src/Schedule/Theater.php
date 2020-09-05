@@ -6,7 +6,7 @@
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
-namespace Cinemasunshine\Portal\Schedule;
+namespace App\Schedule;
 
 use Cinemasunshine\Schedule\Theater as Base;
 use Cinemasunshine\Schedule\Builder\ScheduleInterface as ScheduleBuilder;

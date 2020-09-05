@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace Cinemasunshine\Portal\ORM\Entity;
+namespace App\ORM\Entity;
 
 use Cinemasunshine\ORM\Entities\Schedule as BaseSchedule;
 use Cinemasunshine\ORM\Entities\ShowingFormat as BaseShowingFormat;

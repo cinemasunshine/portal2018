@@ -10,8 +10,8 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Twig\Extension;
 
-use Cinemasunshine\Portal\Resource\MetaTag;
-use Cinemasunshine\Portal\Twig\Extension\SeoExtension;
+use App\Resource\MetaTag;
+use App\Twig\Extension\SeoExtension;
 use Mockery;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use PHPUnit\Framework\TestCase;

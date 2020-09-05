@@ -10,8 +10,8 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Authorization\Grant;
 
-use Cinemasunshine\Portal\Authorization\Grant\RefreshToken;
-use Cinemasunshine\Portal\Authorization\Token\AuthorizationCodeToken;
+use App\Authorization\Grant\RefreshToken;
+use App\Authorization\Token\AuthorizationCodeToken;
 use GuzzleHttp\Client as HttpClient;
 use Mockery;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;

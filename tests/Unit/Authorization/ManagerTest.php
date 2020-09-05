@@ -10,11 +10,11 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Authorization;
 
-use Cinemasunshine\Portal\Authorization\Grant\AuthorizationCode as AuthorizationCodeGrant;
-use Cinemasunshine\Portal\Authorization\Grant\RefreshToken as RefreshTokenGrant;
-use Cinemasunshine\Portal\Authorization\Token\AuthorizationCodeToken;
-use Cinemasunshine\Portal\Authorization\Manager as AuthorizationManager;
-use Cinemasunshine\Portal\Session\Container as SessionContainer;
+use App\Authorization\Grant\AuthorizationCode as AuthorizationCodeGrant;
+use App\Authorization\Grant\RefreshToken as RefreshTokenGrant;
+use App\Authorization\Token\AuthorizationCodeToken;
+use App\Authorization\Manager as AuthorizationManager;
+use App\Session\Container as SessionContainer;
 use Laminas\Stdlib\ArrayObject;
 use Mockery;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;

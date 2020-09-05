@@ -6,10 +6,10 @@
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
-namespace Cinemasunshine\Portal\Controller;
+namespace App\Controller;
 
 use Slim\Exception\NotFoundException;
-use Cinemasunshine\Portal\ORM\Entity;
+use App\ORM\Entity;
 
 /**
  * Schedule controller

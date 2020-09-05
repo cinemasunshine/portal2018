@@ -10,8 +10,8 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Authorization\Grant;
 
-use Cinemasunshine\Portal\Authorization\Grant\ClientCredentials;
-use Cinemasunshine\Portal\Authorization\Token\ClientCredentialsToken;
+use App\Authorization\Grant\ClientCredentials;
+use App\Authorization\Token\ClientCredentialsToken;
 use GuzzleHttp\Client as HttpClient;
 use Mockery;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;

@@ -8,10 +8,10 @@
 
 declare(strict_types=1);
 
-namespace Cinemasunshine\Portal\Authorization\Grant;
+namespace App\Authorization\Grant;
 
 use GuzzleHttp\Client as HttpClient;
-use Cinemasunshine\Portal\Authorization\Token\ClientCredentialsToken as Token;
+use App\Authorization\Token\ClientCredentialsToken as Token;
 
 /**
  * Client Credentials Grant class

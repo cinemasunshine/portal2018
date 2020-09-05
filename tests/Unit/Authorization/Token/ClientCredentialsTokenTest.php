@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Authorization\Token;
 
-use Cinemasunshine\Portal\Authorization\Token\ClientCredentialsToken;
+use App\Authorization\Token\ClientCredentialsToken;
 use Mockery;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use PHPUnit\Framework\TestCase;

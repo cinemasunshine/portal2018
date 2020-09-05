@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace Cinemasunshine\Portal\ORM\Entity;
+namespace App\ORM\Entity;
 
 use Cinemasunshine\ORM\Entities\File as BaseFile;
 use Cinemasunshine\ORM\Entities\MainBanner as BaseMainBanner;
@@ -17,7 +17,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * MainBanner entity class
  *
- * @ORM\Entity(readOnly=true, repositoryClass="Cinemasunshine\Portal\ORM\Repository\MainBannerRepository")
+ * @ORM\Entity(readOnly=true, repositoryClass="App\ORM\Repository\MainBannerRepository")
  * @ORM\Table(name="main_banner", options={"collate"="utf8mb4_general_ci"})
  * @ORM\HasLifecycleCallbacks
  */

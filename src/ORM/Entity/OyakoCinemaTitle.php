@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace Cinemasunshine\Portal\ORM\Entity;
+namespace App\ORM\Entity;
 
 use Cinemasunshine\ORM\Entities\OyakoCinemaTitle as BaseOyakoCinemaTitle;
 use Cinemasunshine\ORM\Entities\Title as BaseTitle;
@@ -19,7 +19,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * OyakoCinemaTitle entity class
  *
- * @ORM\Entity(readOnly=true, repositoryClass="Cinemasunshine\Portal\ORM\Repository\OyakoCinemaTitleRepository")
+ * @ORM\Entity(readOnly=true, repositoryClass="App\ORM\Repository\OyakoCinemaTitleRepository")
  * @ORM\Table(name="oyako_cinema_title", options={"collate"="utf8mb4_general_ci"})
  * @ORM\HasLifecycleCallbacks
  */

@@ -8,10 +8,10 @@
 
 declare(strict_types=1);
 
-namespace Cinemasunshine\Portal\ORM\Repository;
+namespace App\ORM\Repository;
 
-use Cinemasunshine\Portal\ORM\Entity\Title;
-use Cinemasunshine\Portal\ORM\Entity\TitleRanking;
+use App\ORM\Entity\Title;
+use App\ORM\Entity\TitleRanking;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Mapping\ClassMetadata;
 

@@ -10,8 +10,8 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Twig\Extension;
 
-use Cinemasunshine\Portal\ORM\Entity\AdvanceTicket;
-use Cinemasunshine\Portal\Twig\Extension\AdvanceTicketExtension;
+use App\ORM\Entity\AdvanceTicket;
+use App\Twig\Extension\AdvanceTicketExtension;
 use Mockery;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use PHPUnit\Framework\TestCase;

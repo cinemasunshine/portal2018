@@ -6,7 +6,7 @@
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
-namespace Cinemasunshine\Portal\Exception;
+namespace App\Exception;
 
 /**
  * Not authenticated exception class

@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace Cinemasunshine\Portal\Authorization\Token;
+namespace App\Authorization\Token;
 
 /**
  * Decoded Access Token class

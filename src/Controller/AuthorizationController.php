@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace Cinemasunshine\Portal\Controller;
+namespace App\Controller;
 
 use Slim\Http\Uri as HttpUri;
 use GuzzleHttp\Exception\BadResponseException;

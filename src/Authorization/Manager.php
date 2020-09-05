@@ -8,12 +8,12 @@
 
 declare(strict_types=1);
 
-namespace Cinemasunshine\Portal\Authorization;
+namespace App\Authorization;
 
-use Cinemasunshine\Portal\Authorization\Grant\AuthorizationCode as AuthorizationCodeGrant;
-use Cinemasunshine\Portal\Authorization\Grant\RefreshToken as RefreshTokenGrant;
-use Cinemasunshine\Portal\Authorization\Token\AuthorizationCodeToken as Token;
-use Cinemasunshine\Portal\Session\Container as SessionContainer;
+use App\Authorization\Grant\AuthorizationCode as AuthorizationCodeGrant;
+use App\Authorization\Grant\RefreshToken as RefreshTokenGrant;
+use App\Authorization\Token\AuthorizationCodeToken as Token;
+use App\Session\Container as SessionContainer;
 
 /**
  * Authorization Manager class

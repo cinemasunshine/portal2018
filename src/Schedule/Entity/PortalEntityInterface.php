@@ -6,7 +6,7 @@
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
-namespace Cinemasunshine\Portal\Schedule\Entity;
+namespace App\Schedule\Entity;
 
 /**
  * EntityInterface

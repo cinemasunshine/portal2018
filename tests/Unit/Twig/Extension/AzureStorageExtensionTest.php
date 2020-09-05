@@ -10,8 +10,8 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Twig\Extension;
 
-use Cinemasunshine\Portal\ORM\Entity\File;
-use Cinemasunshine\Portal\Twig\Extension\AzureStorageExtension;
+use App\ORM\Entity\File;
+use App\Twig\Extension\AzureStorageExtension;
 use MicrosoftAzure\Storage\Blob\BlobRestProxy;
 use Mockery;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;

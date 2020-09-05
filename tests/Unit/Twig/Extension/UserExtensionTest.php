@@ -10,9 +10,9 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Twig\Extension;
 
-use Cinemasunshine\Portal\Authorization\Manager as AuthorizationManager;
-use Cinemasunshine\Portal\Twig\Extension\UserExtension;
-use Cinemasunshine\Portal\User\Manager as UserManager;
+use App\Authorization\Manager as AuthorizationManager;
+use App\Twig\Extension\UserExtension;
+use App\User\Manager as UserManager;
 use Mockery;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use PHPUnit\Framework\TestCase;

@@ -10,10 +10,10 @@ declare(strict_types=1);
 
 namespace Tests\Unit\User;
 
-use Cinemasunshine\Portal\Authorization\Token\AuthorizationCodeToken;
-use Cinemasunshine\Portal\Authorization\Token\DecodedAccessToken;
-use Cinemasunshine\Portal\Session\Container as SessionContainer;
-use Cinemasunshine\Portal\User\Manager as UserManager;
+use App\Authorization\Token\AuthorizationCodeToken;
+use App\Authorization\Token\DecodedAccessToken;
+use App\Session\Container as SessionContainer;
+use App\User\Manager as UserManager;
 use Laminas\Stdlib\ArrayObject;
 use Mockery;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;

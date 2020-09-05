@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace Cinemasunshine\Portal\Responder\API;
+namespace App\Responder\API;
 
 /**
  * Responder factory class
