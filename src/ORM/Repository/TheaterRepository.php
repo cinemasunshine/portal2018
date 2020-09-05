@@ -8,9 +8,9 @@
 
 namespace App\ORM\Repository;
 
+use App\ORM\Entity\Theater;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\QueryBuilder;
-use App\ORM\Entity\Theater;
 
 /**
  * Theater repository class

@@ -8,9 +8,9 @@
 
 namespace App\ORM\Repository;
 
-use Cinemasunshine\ORM\Repositories\ScheduleRepository as BaseRepository;
 use App\ORM\Entity\Schedule;
 use App\ORM\Entity\ShowingFormat;
+use Cinemasunshine\ORM\Repositories\ScheduleRepository as BaseRepository;
 
 /**
  * Schedule repository class

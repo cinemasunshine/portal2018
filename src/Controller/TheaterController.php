@@ -8,8 +8,8 @@
 
 namespace App\Controller;
 
-use Slim\Exception\NotFoundException;
 use App\ORM\Entity;
+use Slim\Exception\NotFoundException;
 
 /**
  * Theater controller

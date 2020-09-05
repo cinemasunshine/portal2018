@@ -8,9 +8,9 @@
 
 namespace App\ORM\Repository;
 
+use App\ORM\Entity\AdvanceTicket;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\QueryBuilder;
-use App\ORM\Entity\AdvanceTicket;
 
 /**
  * Advance Ticket repository class

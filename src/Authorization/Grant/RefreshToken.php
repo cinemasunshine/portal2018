@@ -10,8 +10,8 @@ declare(strict_types=1);
 
 namespace App\Authorization\Grant;
 
-use GuzzleHttp\Client as HttpClient;
 use App\Authorization\Token\AuthorizationCodeToken as Token;
+use GuzzleHttp\Client as HttpClient;
 
 /**
  * Refresh Token Grant class

@@ -8,13 +8,12 @@
 
 namespace App\Schedule\Builder\V3;
 
-// extends
-use Cinemasunshine\Schedule\Builder\V3\Schedule as BaseBuilder;
 use App\Schedule\Entity\V3\Movie as MovieEntity;
 use App\Schedule\Entity\V3\Schedule as ScheduleEntity;
 use App\Schedule\Entity\V3\Schedules as SchedulesEntity;
 use App\Schedule\Entity\V3\Screen as ScreenEntity;
 use App\Schedule\Entity\V3\Time as TimeEntity;
+use Cinemasunshine\Schedule\Builder\V3\Schedule as BaseBuilder;
 
 /**
  * Schedule builder

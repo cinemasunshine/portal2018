@@ -10,10 +10,10 @@ declare(strict_types=1);
 
 namespace App\Twig\Extension;
 
-use Twig\Extension\AbstractExtension;
-use Twig\TwigFunction;
 use App\Authorization\Manager as AuthorizationManager;
 use App\User\Manager as UserManager;
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFunction;
 
 /**
  * User twig extension class

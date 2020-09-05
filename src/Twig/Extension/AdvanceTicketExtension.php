@@ -8,9 +8,9 @@
 
 namespace App\Twig\Extension;
 
+use App\ORM\Entity\AdvanceTicket;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
-use App\ORM\Entity\AdvanceTicket;
 
 /**
  * AdvanceTicket twig extension class
