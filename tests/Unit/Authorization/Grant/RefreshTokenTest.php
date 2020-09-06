@@ -62,8 +62,8 @@ final class RefreshTokenTest extends TestCase
      */
     public function testConstruct()
     {
-        $host = 'example.com';
-        $clientId = 'client_id';
+        $host         = 'example.com';
+        $clientId     = 'client_id';
         $clientSecret = 'client_secret';
 
         $targetMock = $this->createTargetMock();
@@ -140,8 +140,9 @@ final class RefreshTokenTest extends TestCase
             ->with('/token', Mockery::type('array'))
             ->andReturn($responseMock);
 
-        $refreshToken = 'refresh_token';
+        $refreshToken    = 'refresh_token';
         $createTokenData = $contents;
+
         $createTokenData['refresh_token'] = $refreshToken;
 
         $tokenMock = $this->createTokenMock();
@@ -151,7 +152,7 @@ final class RefreshTokenTest extends TestCase
             ->with($createTokenData)
             ->andReturn($tokenMock);
 
-        $clientId = 'client_id';
+        $clientId     = 'client_id';
         $clientSecret = 'client_secret';
 
         $targetMock = $this->createTargetMock();
@@ -160,6 +161,7 @@ final class RefreshTokenTest extends TestCase
             ->makePartial();
 
         $targetRef = $this->createTargetReflection();
+
         $clientIdPropertyRef = $targetRef->getProperty('clientId');
         $clientIdPropertyRef->setAccessible(true);
         $clientIdPropertyRef->setValue($targetMock, $clientId);

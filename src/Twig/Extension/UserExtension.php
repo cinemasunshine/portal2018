@@ -34,7 +34,7 @@ class UserExtension extends AbstractExtension
      */
     public function __construct(UserManager $userManager, AuthorizationManager $authorizationManager)
     {
-        $this->userManager = $userManager;
+        $this->userManager          = $userManager;
         $this->authorizationManager = $authorizationManager;
     }
 

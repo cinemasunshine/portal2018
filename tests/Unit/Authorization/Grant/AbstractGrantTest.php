@@ -52,8 +52,9 @@ final class AbstractGrantTest extends TestCase
     public function testCreateHttpClient()
     {
         $baseUri = 'https://example.com';
+
         $targetMock = $this->createTargetMock();
-        $targetRef = $this->createTargetReflection();
+        $targetRef  = $this->createTargetReflection();
 
         $targetMethodRef = $targetRef->getMethod('createHttpClient');
         $targetMethodRef->setAccessible(true);
@@ -72,11 +73,11 @@ final class AbstractGrantTest extends TestCase
      */
     public function testGetRequestHeaders()
     {
-        $clientId = 'client_id';
+        $clientId     = 'client_id';
         $clientSecret = 'client_secret';
 
         $targetMock = $this->createTargetMock();
-        $targetRef = $this->createTargetReflection();
+        $targetRef  = $this->createTargetReflection();
 
         $targetMethodRef = $targetRef->getMethod('getRequestHeaders');
         $targetMethodRef->setAccessible(true);

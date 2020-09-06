@@ -127,10 +127,11 @@ final class ManagerTest extends TestCase
             'authorization_code_client_secret' => 'client_secret',
             'authorization_code_scope' => ['scope'],
         ];
+
         $sessionContainerMock = $this->createSessionContainerMock();
 
         $targetMock = $this->createTargetMock();
-        $targetRef = $this->createTargetReflection();
+        $targetRef  = $this->createTargetReflection();
 
         // execute constructor
         $constructorRef = $targetRef->getConstructor();
@@ -191,10 +192,11 @@ final class ManagerTest extends TestCase
             'authorization_code_client_secret' => 'client_secret',
             'authorization_code_scope' => ['scope'],
         ];
+
         $sessionContainerMock = $this->createSessionContainerMock();
 
         $targetMock = $this->createTargetMockWithArgs($settings, $sessionContainerMock);
-        $targetRef = $this->createTargetReflection();
+        $targetRef  = $this->createTargetReflection();
 
         $authorizationCodeGruntPropertyRef = $targetRef->getProperty('authorizationCodeGrunt');
         $authorizationCodeGruntPropertyRef->setAccessible(true);
@@ -221,8 +223,9 @@ final class ManagerTest extends TestCase
      */
     public function testGetAuthorizationUrl()
     {
-        $redirectUri = 'https://example.com/redirect';
+        $redirectUri      = 'https://example.com/redirect';
         $authorizationUrl = 'https://example.com/authorization';
+
         $authorizationCodeGruntMock = $this->createAuthorizationCodeGrantMock();
         $authorizationCodeGruntMock
             ->shouldReceive('getAuthorizationUrl')
@@ -256,6 +259,7 @@ final class ManagerTest extends TestCase
             ->andReturn('authorization_state');
 
         $targetRef = $this->createTargetReflection();
+
         $scopeListPropertyRef = $targetRef->getProperty('scopeList');
         $scopeListPropertyRef->setAccessible(true);
         $scopeListPropertyRef->setValue($targetMock, []);
@@ -284,6 +288,7 @@ final class ManagerTest extends TestCase
             ->andReturn($authorizationState);
 
         $targetRef = $this->createTargetReflection();
+
         $arrayObjectMock = $this->createArrayObjectMock()
             ->makePartial();
 
@@ -308,7 +313,8 @@ final class ManagerTest extends TestCase
     public function testCreateUniqueStr()
     {
         $targetMock = $this->createTargetMock();
-        $targetRef = $this->createTargetReflection();
+        $targetRef  = $this->createTargetReflection();
+
         $targetMethodRef = $targetRef->getMethod('createUniqueStr');
         $targetMethodRef->setAccessible(true);
 
@@ -341,6 +347,7 @@ final class ManagerTest extends TestCase
             ->passthru();
 
         $targetRef = $this->createTargetReflection();
+
         $arrayObjectMock = $this->createArrayObjectMock()
             ->makePartial();
 
@@ -374,6 +381,7 @@ final class ManagerTest extends TestCase
 
         $arrayObjectMock = $this->createArrayObjectMock()
             ->makePartial();
+
         $arrayObjectMock['authorization_state'] = 'example';
 
         $sessionPropertyRef = $targetRef->getProperty('session');
@@ -405,6 +413,7 @@ final class ManagerTest extends TestCase
             ->andReturn($codeVerifier);
 
         $targetRef = $this->createTargetReflection();
+
         $arrayObjectMock = $this->createArrayObjectMock()
             ->makePartial();
 
@@ -438,6 +447,7 @@ final class ManagerTest extends TestCase
             ->passthru();
 
         $targetRef = $this->createTargetReflection();
+
         $arrayObjectMock = $this->createArrayObjectMock()
             ->makePartial();
 
@@ -469,9 +479,10 @@ final class ManagerTest extends TestCase
     {
         $tokenMock = $this->createAuthorizationCodeTokenMock();
 
-        $code = 'example_code';
-        $redirectUri = 'http://example.com/redirect';
+        $code         = 'example_code';
+        $redirectUri  = 'http://example.com/redirect';
         $codeVerifier = 'unique_code_verifier';
+
         $authorizationCodeGruntMock = $this->createAuthorizationCodeGrantMock();
         $authorizationCodeGruntMock
             ->shouldReceive('requestToken')
@@ -509,7 +520,7 @@ final class ManagerTest extends TestCase
      */
     public function testGetLogoutUrl()
     {
-        $logoutUrl = 'https://example.com/logout';
+        $logoutUrl   = 'https://example.com/logout';
         $redirectUri = 'http://example.com/redirect';
 
         $authorizationCodeGruntMock = $this->createAuthorizationCodeGrantMock();
@@ -546,16 +557,19 @@ final class ManagerTest extends TestCase
         $targetRef = $this->createTargetReflection();
 
         $host = 'example.com';
+
         $hostPropertyRef = $targetRef->getProperty('host');
         $hostPropertyRef->setAccessible(true);
         $hostPropertyRef->setValue($targetMock, $host);
 
         $clientId = 'client_id';
+
         $clientIdPropertyRef = $targetRef->getProperty('clientId');
         $clientIdPropertyRef->setAccessible(true);
         $clientIdPropertyRef->setValue($targetMock, $clientId);
 
         $clientSecret = 'client_secret';
+
         $clientSecretPropertyRef = $targetRef->getProperty('clientSecret');
         $clientSecretPropertyRef->setAccessible(true);
         $clientSecretPropertyRef->setValue($targetMock, $clientSecret);
@@ -585,6 +599,7 @@ final class ManagerTest extends TestCase
         $tokenMock = $this->createAuthorizationCodeTokenMock();
 
         $refreshToken = 'refresh_token';
+
         $refreshTokenGrantMock = $this->createRefreshTokenGrantMock();
         $refreshTokenGrantMock
             ->shouldReceive('requestToken')

@@ -48,9 +48,11 @@ class Manager
          * 情報が増えてきたらオブジェクト化など考える。
          */
         $claims = $authorizationToken->decodeAccessToken()->getClaims();
+
         $user = [
             'name' => $claims['username'],
         ];
+
         $this->session['user'] = $user;
 
         $this->session['authenticated'] = true;

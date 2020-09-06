@@ -40,7 +40,7 @@ class SeoExtension extends AbstractExtension
      */
     protected function loadMetas(string $file): array
     {
-        $json = json_decode(file_get_contents($file), true);
+        $json  = json_decode(file_get_contents($file), true);
         $metas = [];
 
         foreach ($json as $key => $row) {

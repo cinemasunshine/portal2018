@@ -34,7 +34,7 @@ class AuthorizationController extends BaseController
         $this->logger->info('Login params', $request->getParams());
 
         $state = $request->getParam('state');
-        $code = $request->getParam('code');
+        $code  = $request->getParam('code');
 
         // Authorization URLエラーページからの戻りはパラメータ無し
         if (empty($state) && empty($code)) {
@@ -52,7 +52,7 @@ class AuthorizationController extends BaseController
 
         $this->am->clearAuthorizationState();
 
-        $uri = HttpUri::createFromEnvironment($this->environment);
+        $uri         = HttpUri::createFromEnvironment($this->environment);
         $redirectUri = $this->router->fullUrlFor($uri, 'login');
 
         try {
@@ -66,7 +66,7 @@ class AuthorizationController extends BaseController
 
         // redirect
         $redirectPath = $this->router->pathFor('homepage');
-        $session = $this->sm->getContainer();
+        $session      = $this->sm->getContainer();
 
         if (isset($session['viewed_theater'])) {
             $redirectPath = $this->router->pathFor(
@@ -92,7 +92,7 @@ class AuthorizationController extends BaseController
 
         // redirect
         $redirectPath = $this->router->pathFor('homepage');
-        $session = $this->sm->getContainer();
+        $session      = $this->sm->getContainer();
 
         if (isset($session['viewed_theater'])) {
             $redirectPath = $this->router->pathFor(

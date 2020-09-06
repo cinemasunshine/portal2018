@@ -33,7 +33,7 @@ class ScheduleController extends BaseController
      */
     protected function preExecute($request, $response, $args): void
     {
-        $settings = $this->settings['schedule'];
+        $settings          = $this->settings['schedule'];
         $this->scheduleEnv = $settings['env'];
 
         $this->purchaseBaseUrl = $this->settings['mp_service']['ticket_entrance_url'];
@@ -59,7 +59,7 @@ class ScheduleController extends BaseController
         }
 
         $theaterSchedule = new TheaterSchedule($theaterName, $this->scheduleEnv);
-        $builer = new V3ScheduleBuilder($this->purchaseBaseUrl);
+        $builer          = new V3ScheduleBuilder($this->purchaseBaseUrl);
 
         $scheduleResponse = $theaterSchedule->fetchSchedule($builer);
 
@@ -82,7 +82,7 @@ class ScheduleController extends BaseController
             return;
         }
 
-        $meta['error'] = V3Schedules::ERROR_NOT;
+        $meta['error']     = V3Schedules::ERROR_NOT;
         $meta['attention'] = $schedules->getAttention();
 
         foreach ($schedules->getScheduleCollection() as $schedule) {
@@ -106,7 +106,7 @@ class ScheduleController extends BaseController
     public function executeDate($request, $response, $args)
     {
         $theaterName = $args['name'];
-        $date = $args['date'];
+        $date        = $args['date'];
 
         if (!TheaterSchedule::validate($theaterName)) {
             // ひとまずNotFoundとする SASAKI-338
@@ -114,7 +114,7 @@ class ScheduleController extends BaseController
         }
 
         $theaterSchedule = new TheaterSchedule($theaterName, $this->scheduleEnv);
-        $builer = new V3ScheduleBuilder($this->purchaseBaseUrl);
+        $builer          = new V3ScheduleBuilder($this->purchaseBaseUrl);
 
         $scheduleResponse = $theaterSchedule->fetchSchedule($builer);
 
@@ -137,15 +137,15 @@ class ScheduleController extends BaseController
             return;
         }
 
-        $meta['error'] = V3Schedules::ERROR_NOT;
+        $meta['error']     = V3Schedules::ERROR_NOT;
         $meta['attention'] = $schedules->getAttention();
 
-        $params = [
+        $params          = [
             'date' => $date,
         ];
         $movieCollection = $this->findSchedule($params, $schedules);
 
-        $today = new \DateTime(date('Y-m-d'));
+        $today  = new \DateTime(date('Y-m-d'));
         $target = new \DateTime($date);
 
         if ($target < $today) {

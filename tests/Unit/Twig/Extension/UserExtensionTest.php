@@ -54,12 +54,13 @@ final class UserExtensionTest extends TestCase
      */
     public function testConstruct()
     {
-        $extensionMock = Mockery::mock(UserExtension::class);
-        $userManagerMock = $this->createUserManagerMock();
+        $extensionMock            = Mockery::mock(UserExtension::class);
+        $userManagerMock          = $this->createUserManagerMock();
         $authorizationManagerMock = $this->createAuthorizationManagerMock();
 
-        // execute constructor
         $extensionClassRef = new \ReflectionClass(UserExtension::class);
+
+        // execute constructor
         $constructorRef = $extensionClassRef->getConstructor();
         $constructorRef->invoke($extensionMock, $userManagerMock, $authorizationManagerMock);
 
@@ -112,7 +113,7 @@ final class UserExtensionTest extends TestCase
             ->makePartial();
 
         $redirectUrl = 'http://example.com/redirect';
-        $loginUrl = 'https://example.com/login';
+        $loginUrl    = 'https://example.com/login';
 
         $authorizationManagerMock = $this->createAuthorizationManagerMock();
         $authorizationManagerMock
@@ -122,6 +123,7 @@ final class UserExtensionTest extends TestCase
             ->andReturn($loginUrl);
 
         $extensionClassRef = new \ReflectionClass(UserExtension::class);
+
         $authorizationManagerPropertyRef = $extensionClassRef->getProperty('authorizationManager');
         $authorizationManagerPropertyRef->setAccessible(true);
         $authorizationManagerPropertyRef->setValue($extensionMock, $authorizationManagerMock);
@@ -141,7 +143,7 @@ final class UserExtensionTest extends TestCase
             ->makePartial();
 
         $redirectUrl = 'http://example.com/redirect';
-        $logoutUrl = 'https://example.com/logout';
+        $logoutUrl   = 'https://example.com/logout';
 
         $authorizationManagerMock = $this->createAuthorizationManagerMock();
         $authorizationManagerMock
@@ -151,6 +153,7 @@ final class UserExtensionTest extends TestCase
             ->andReturn($logoutUrl);
 
         $extensionClassRef = new \ReflectionClass(UserExtension::class);
+
         $authorizationManagerPropertyRef = $extensionClassRef->getProperty('authorizationManager');
         $authorizationManagerPropertyRef->setAccessible(true);
         $authorizationManagerPropertyRef->setValue($extensionMock, $authorizationManagerMock);
@@ -179,6 +182,7 @@ final class UserExtensionTest extends TestCase
             ->andReturn($user);
 
         $extensionClassRef = new \ReflectionClass(UserExtension::class);
+
         $userManagerPropertyRef = $extensionClassRef->getProperty('userManager');
         $userManagerPropertyRef->setAccessible(true);
         $userManagerPropertyRef->setValue($extensionMock, $userManagerMock);
@@ -207,6 +211,7 @@ final class UserExtensionTest extends TestCase
             ->andReturn($isAuthenticated);
 
         $extensionClassRef = new \ReflectionClass(UserExtension::class);
+
         $userManagerPropertyRef = $extensionClassRef->getProperty('userManager');
         $userManagerPropertyRef->setAccessible(true);
         $userManagerPropertyRef->setValue($extensionMock, $userManagerMock);

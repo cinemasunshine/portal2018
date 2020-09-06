@@ -55,10 +55,10 @@ class Manager
      */
     public function __construct(array $settings, SessionContainer $session)
     {
-        $this->host = $settings['authorization_code_host'];
-        $this->clientId = $settings['authorization_code_client_id'];
+        $this->host         = $settings['authorization_code_host'];
+        $this->clientId     = $settings['authorization_code_client_id'];
         $this->clientSecret = $settings['authorization_code_client_secret'];
-        $this->scopeList = $settings['authorization_code_scope'];
+        $this->scopeList    = $settings['authorization_code_scope'];
 
         $this->session = $session;
     }

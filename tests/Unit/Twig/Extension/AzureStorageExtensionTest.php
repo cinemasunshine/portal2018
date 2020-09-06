@@ -43,12 +43,13 @@ final class AzureStorageExtensionTest extends TestCase
      */
     public function testConstruct()
     {
-        $extensionMock = Mockery::mock(AzureStorageExtension::class);
+        $extensionMock     = Mockery::mock(AzureStorageExtension::class);
         $blobRestProxyMock = $this->crateBlobRestProxyMock();
-        $publicEndpoint = 'http://example.com';
+        $publicEndpoint    = 'http://example.com';
+
+        $extensionClassRef = new \ReflectionClass(AzureStorageExtension::class);
 
         // execute constructor
-        $extensionClassRef = new \ReflectionClass(AzureStorageExtension::class);
         $constructorRef = $extensionClassRef->getConstructor();
         $constructorRef->invoke($extensionMock, $blobRestProxyMock, $publicEndpoint);
 
@@ -109,7 +110,7 @@ final class AzureStorageExtensionTest extends TestCase
         $publicEndpointPropertyRef->setValue($extensionMock, $publicEndpoint);
 
         $container = 'test';
-        $blob = 'sample.txt';
+        $blob      = 'sample.txt';
 
         // execute
         $result = $extensionMock->blobUrl($container, $blob);
@@ -127,8 +128,8 @@ final class AzureStorageExtensionTest extends TestCase
     public function testBlobUrlDoNotHasPublicEndpoint()
     {
         $container = 'test';
-        $blob = 'sample.txt';
-        $url = 'http://storage.example.com/' . $container . '/' . $blob;
+        $blob      = 'sample.txt';
+        $url       = 'http://storage.example.com/' . $container . '/' . $blob;
 
         $extensionMock = Mockery::mock(AzureStorageExtension::class)
             ->makePartial();
@@ -164,8 +165,8 @@ final class AzureStorageExtensionTest extends TestCase
     public function testFileUrl()
     {
         $container = File::getBlobContainer();
-        $blob = 'sample.txt';
-        $url = 'http://storage.example.com/' . $container . '/' . $blob;
+        $blob      = 'sample.txt';
+        $url       = 'http://storage.example.com/' . $container . '/' . $blob;
 
         $fileMock = Mockery::mock(File::class);
         $fileMock

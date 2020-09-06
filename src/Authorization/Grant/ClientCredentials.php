@@ -42,12 +42,10 @@ class ClientCredentials extends AbstractGrant
      */
     public function __construct(string $host, string $clientId, string $clientSecret)
     {
-        $this->host = $host;
-        $this->clientId = $clientId;
+        $this->host         = $host;
+        $this->clientId     = $clientId;
         $this->clientSecret = $clientSecret;
-
-        $baseUri = 'https://' . $this->host;
-        $this->httpClient = $this->createHttpClient($baseUri);
+        $this->httpClient   = $this->createHttpClient('https://' . $this->host);
     }
 
     /**
@@ -57,13 +55,13 @@ class ClientCredentials extends AbstractGrant
      */
     public function requestToken(): Token
     {
-        $endpoint = '/oauth2/token';
         $headers = $this->getRequestHeaders($this->clientId, $this->clientSecret);
+
         $params = [
             'grant_type' => $this->name,
         ];
 
-        $response = $this->httpClient->post($endpoint, [
+        $response = $this->httpClient->post('/oauth2/token', [
             'headers' => $headers,
             'form_params' => $params,
         ]);

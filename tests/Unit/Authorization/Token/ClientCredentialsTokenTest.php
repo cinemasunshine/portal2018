@@ -54,8 +54,9 @@ final class ClientCredentialsTokenTest extends TestCase
     public function testCreate()
     {
         $accessToken = 'example_access_token';
-        $tokenType = 'example_type';
-        $expiresIn = 3600;
+        $tokenType   = 'example_type';
+        $expiresIn   = 3600;
+
         $data = [
             'access_token' => $accessToken,
             'token_type' => $tokenType,
@@ -66,6 +67,7 @@ final class ClientCredentialsTokenTest extends TestCase
         $this->assertInstanceOf(ClientCredentialsToken::class, $result);
 
         $targetRef = $this->createTargetReflection();
+
         $accessTokenPropertyRef = $targetRef->getProperty('accessToken');
         $accessTokenPropertyRef->setAccessible(true);
         $this->assertEquals($accessToken, $accessTokenPropertyRef->getValue($result));
@@ -94,6 +96,7 @@ final class ClientCredentialsTokenTest extends TestCase
         $targetMock->makePartial();
 
         $targetRef = $this->createTargetReflection();
+
         $accessTokenPropertyRef = $targetRef->getProperty('accessToken');
         $accessTokenPropertyRef->setAccessible(true);
         $accessTokenPropertyRef->setValue($targetMock, $accessToken);
@@ -112,7 +115,7 @@ final class ClientCredentialsTokenTest extends TestCase
         $accessToken = 'example_access_token';
 
         $targetMock = $this->createTargetMock();
-        $targetRef = $this->createTargetReflection();
+        $targetRef  = $this->createTargetReflection();
 
         $targetMethodRef = $targetRef->getMethod('setAccessToken');
         $targetMethodRef->setAccessible(true);
@@ -139,6 +142,7 @@ final class ClientCredentialsTokenTest extends TestCase
         $targetMock->makePartial();
 
         $targetRef = $this->createTargetReflection();
+
         $tokenTypePropertyRef = $targetRef->getProperty('tokenType');
         $tokenTypePropertyRef->setAccessible(true);
         $tokenTypePropertyRef->setValue($targetMock, $tokenType);
@@ -157,7 +161,7 @@ final class ClientCredentialsTokenTest extends TestCase
         $tokenType = 'example_token_type';
 
         $targetMock = $this->createTargetMock();
-        $targetRef = $this->createTargetReflection();
+        $targetRef  = $this->createTargetReflection();
 
         $targetMethodRef = $targetRef->getMethod('setTokenType');
         $targetMethodRef->setAccessible(true);
@@ -184,6 +188,7 @@ final class ClientCredentialsTokenTest extends TestCase
         $targetMock->makePartial();
 
         $targetRef = $this->createTargetReflection();
+
         $expiresInPropertyRef = $targetRef->getProperty('expiresIn');
         $expiresInPropertyRef->setAccessible(true);
         $expiresInPropertyRef->setValue($targetMock, $expiresIn);
@@ -202,7 +207,7 @@ final class ClientCredentialsTokenTest extends TestCase
         $expiresIn = 3600;
 
         $targetMock = $this->createTargetMock();
-        $targetRef = $this->createTargetReflection();
+        $targetRef  = $this->createTargetReflection();
 
         $targetMethodRef = $targetRef->getMethod('setExpiresIn');
         $targetMethodRef->setAccessible(true);

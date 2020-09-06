@@ -61,7 +61,7 @@ $container['view'] = function ($container) {
 
     // Instantiate and add Slim specific extension
     $router = $container->get('router');
-    $uri = \Slim\Http\Uri::createFromEnvironment(new \Slim\Http\Environment($_SERVER));
+    $uri    = \Slim\Http\Uri::createFromEnvironment(new \Slim\Http\Environment($_SERVER));
     $view->addExtension(new \Slim\Views\TwigExtension($router, $uri));
 
     // vendor extension
@@ -103,8 +103,8 @@ $container['view'] = function ($container) {
  */
 $container['logger'] = function ($container) {
     $settings = $container->get('settings')['logger'];
-    $logger = new Monolog\Logger($settings['name']);
 
+    $logger = new Monolog\Logger($settings['name']);
     $logger->pushProcessor(new Monolog\Processor\PsrLogMessageProcessor());
     $logger->pushProcessor(new Monolog\Processor\UidProcessor());
     $logger->pushProcessor(new Monolog\Processor\IntrospectionProcessor());
@@ -121,7 +121,7 @@ $container['logger'] = function ($container) {
     }
 
     $azureBlobStorageSettings = $settings['azure_blob_storage'];
-    $azureBlobStorageHandler = new App\Logger\Handler\AzureBlobStorageHandler(
+    $azureBlobStorageHandler  = new App\Logger\Handler\AzureBlobStorageHandler(
         $container->get('bc'),
         $azureBlobStorageSettings['container'],
         $azureBlobStorageSettings['blob'],
@@ -184,6 +184,7 @@ $container['em'] = function ($container) {
  */
 $container['sm'] = function ($container) {
     $settings = $container->get('settings')['session'];
+
     $config = new \Laminas\Session\Config\SessionConfig();
     $config->setOptions($settings);
 
@@ -199,6 +200,7 @@ $container['sm'] = function ($container) {
 $container['bc'] = function ($container) {
     $settings = $container->get('settings')['storage'];
     $protocol = $settings['secure'] ? 'https' : 'http';
+
     $connection = sprintf(
         'DefaultEndpointsProtocol=%s;AccountName=%s;AccountKey=%s;',
         $protocol,

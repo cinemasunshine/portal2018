@@ -44,13 +44,14 @@ final class MetaTagTest extends TestCase
      */
     public function testConstruct()
     {
-        $title = 'example title';
+        $title       = 'example title';
         $description = 'example description';
-        $keywords = 'example keywords';
+        $keywords    = 'example keywords';
 
         $metaTag = new MetaTag($title, $description, $keywords);
 
         $targetRef = $this->createTargetReflection();
+
         $titleRef = $targetRef->getProperty('title');
         $titleRef->setAccessible(true);
         $this->assertEquals($title, $titleRef->getValue($metaTag));
@@ -71,10 +72,12 @@ final class MetaTagTest extends TestCase
     public function testGetTitle()
     {
         $title = 'example title';
+
         $targetMock = $this->createTargetMock();
         $targetMock->makePartial();
 
         $targetRef = $this->createTargetReflection();
+
         $titleRef = $targetRef->getProperty('title');
         $titleRef->setAccessible(true);
         $titleRef->setValue($targetMock, $title);
@@ -89,10 +92,12 @@ final class MetaTagTest extends TestCase
     public function testGetDescription()
     {
         $description = 'example description';
+
         $targetMock = $this->createTargetMock();
         $targetMock->makePartial();
 
         $targetRef = $this->createTargetReflection();
+
         $descriptionRef = $targetRef->getProperty('description');
         $descriptionRef->setAccessible(true);
         $descriptionRef->setValue($targetMock, $description);
@@ -107,10 +112,12 @@ final class MetaTagTest extends TestCase
     public function testGetKeywords()
     {
         $keywords = 'example keywords';
+
         $targetMock = $this->createTargetMock();
         $targetMock->makePartial();
 
         $targetRef = $this->createTargetReflection();
+
         $keywordsRef = $targetRef->getProperty('keywords');
         $keywordsRef->setAccessible(true);
         $keywordsRef->setValue($targetMock, $keywords);
