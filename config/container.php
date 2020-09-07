@@ -22,7 +22,7 @@ $container['am'] = function ($container) {
      * 名称変更によるclearを想定しておく。（仕様変更などがあった場合）
      * must consist of alphanumerics, backslashes and underscores only.
      */
-    $sessionContainerName = 'authorization_20200116';
+    $sessionContainerName = 'authorization_20200907';
 
     return new \App\Authorization\Manager(
         $container->get('settings')['mp_service'],
@@ -40,7 +40,7 @@ $container['um'] = function ($container) {
      * 名称変更によるclearを想定しておく。（仕様変更などがあった場合）
      * must consist of alphanumerics, backslashes and underscores only.
      */
-    $sessionContainerName = 'user_20200116';
+    $sessionContainerName = 'user_20200907';
 
     return new \App\User\Manager(
         $container->get('sm')->getContainer($sessionContainerName)
