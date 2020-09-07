@@ -12,7 +12,7 @@ require dirname(__DIR__) . '/vendor/autoload.php';
 
 use Symfony\Component\Console\Application;
 
-use Cinemasunshine\Portal\Console\Command\{
+use App\Console\Command\{
     Cache\Clear\ViewCommand as CacheClearViewCommand
 };
 
