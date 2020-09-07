@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace Cinemasunshine\Portal\Responder;
+namespace App\Responder;
 
 use Slim\Views\Twig;
 

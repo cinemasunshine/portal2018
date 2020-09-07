@@ -6,12 +6,12 @@
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
-namespace Cinemasunshine\Portal\Twig\Extension;
+namespace App\Twig\Extension;
 
+use App\ORM\Entity\Theater;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 use Twig\TwigFunction;
-use Cinemasunshine\Portal\ORM\Entity\Theater;
 
 /**
  * Common twig extension class

@@ -8,10 +8,10 @@
 
 declare(strict_types=1);
 
-namespace Cinemasunshine\Portal\Schedule\Entity\V3;
+namespace App\Schedule\Entity\V3;
 
-use Cinemasunshine\Portal\Schedule\Entity\PortalEntityInterface;
-use Cinemasunshine\Portal\Schedule\Collection\Movie as MovieCollection;
+use App\Schedule\Entity\PortalEntityInterface;
+use App\Schedule\Collection\Movie as MovieCollection;
 use Cinemasunshine\Schedule\Entity\V3\Schedule as BaseEntity;
 
 /**

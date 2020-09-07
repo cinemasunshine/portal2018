@@ -6,10 +6,10 @@
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
-namespace Cinemasunshine\Portal\Controller\API;
+namespace App\Controller\API;
 
-use Cinemasunshine\Portal\Authorization\Grant\ClientCredentials;
-use Cinemasunshine\Portal\Exception\NotAuthenticatedException;
+use App\Authorization\Grant\ClientCredentials;
+use App\Exception\NotAuthenticatedException;
 
 /**
  * Authorization controller
@@ -17,7 +17,7 @@ use Cinemasunshine\Portal\Exception\NotAuthenticatedException;
 class AuthorizationController extends BaseController
 {
     public const USER_TYPE_VISITOR = 'visitor';
-    public const USER_TYPE_MEMBER = 'member';
+    public const USER_TYPE_MEMBER  = 'member';
 
     /**
      * token action
@@ -29,15 +29,15 @@ class AuthorizationController extends BaseController
      */
     public function executeToken($request, $response, $args)
     {
-        $meta = [
+        $meta     = [
             'name' => 'Authorization Token API',
         ];
-        $data = [];
+        $data     = [];
         $userType = $request->getParam('user_type');
 
         if ($userType === self::USER_TYPE_VISITOR) {
             $meta['type'] = self::USER_TYPE_VISITOR;
-            $data = $this->executeVisitorToken();
+            $data         = $this->executeVisitorToken();
         } elseif ($userType === self::USER_TYPE_MEMBER) {
             $meta['type'] = self::USER_TYPE_MEMBER;
 
@@ -109,8 +109,8 @@ class AuthorizationController extends BaseController
         $settings = $this->settings['mp_service'];
 
         $expirationBuffer = $settings['authorization_token_expiration_buffer'];
-        $expires = $token->getExpires() - $expirationBuffer;
-        $now = time();
+        $expires          = $token->getExpires() - $expirationBuffer;
+        $now              = time();
 
         $this->logger->debug(sprintf('Choeck token expires. (%s > %s)', $now, $expires));
 

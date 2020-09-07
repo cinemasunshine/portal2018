@@ -10,8 +10,8 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Authorization\Grant;
 
-use Cinemasunshine\Portal\Authorization\Grant\AuthorizationCode;
-use Cinemasunshine\Portal\Authorization\Token\AuthorizationCodeToken;
+use App\Authorization\Grant\AuthorizationCode;
+use App\Authorization\Token\AuthorizationCodeToken;
 use GuzzleHttp\Client as HttpClient;
 use Mockery;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
@@ -62,8 +62,8 @@ final class AuthorizationCodeTest extends TestCase
      */
     public function testConstruct()
     {
-        $host = 'example.com';
-        $clientId = 'client_id';
+        $host         = 'example.com';
+        $clientId     = 'client_id';
         $clientSecret = 'client_secret';
 
         $targetMock = $this->createTargetMock();
@@ -114,13 +114,13 @@ final class AuthorizationCodeTest extends TestCase
     public function testGetAuthorizationUrl()
     {
         $codeVerifier = 'code_verifier';
-        $redirectUri = 'https://example.com/redirect';
-        $scope = [
+        $redirectUri  = 'https://example.com/redirect';
+        $scope        = [
             'aaa',
             'bbb',
             'ccc',
         ];
-        $state = 'state_str';
+        $state        = 'state_str';
 
         $targetMock = $this->createTargetMock();
         $targetMock
@@ -130,11 +130,13 @@ final class AuthorizationCodeTest extends TestCase
         $targetRef = $this->createTargetReflection();
 
         $host = 'example.com';
+
         $hostPropertyRef = $targetRef->getProperty('host');
         $hostPropertyRef->setAccessible(true);
         $hostPropertyRef->setValue($targetMock, $host);
 
         $clientId = 'client_id';
+
         $clientIdPropertyRef = $targetRef->getProperty('clientId');
         $clientIdPropertyRef->setAccessible(true);
         $clientIdPropertyRef->setValue($targetMock, $clientId);
@@ -185,8 +187,8 @@ final class AuthorizationCodeTest extends TestCase
     public function testGetAuthorizationUrlWithNotState()
     {
         $codeVerifier = 'code_verifier';
-        $redirectUri = 'https://example.com/redirect';
-        $scope = [
+        $redirectUri  = 'https://example.com/redirect';
+        $scope        = [
             'aaa',
             'bbb',
             'ccc',
@@ -216,6 +218,7 @@ final class AuthorizationCodeTest extends TestCase
             ->andReturn('aaa bbb ccc');
 
         $result = $targetMock->getAuthorizationUrl($codeVerifier, $redirectUri, $scope);
+
         $queryString = parse_url($result, PHP_URL_QUERY);
         parse_str($queryString, $params);
 
@@ -233,12 +236,12 @@ final class AuthorizationCodeTest extends TestCase
         $codeVerifier = 'code_verifier';
 
         $targetMock = $this->createTargetMock();
-        $targetRef = $this->createTargetReflection();
+        $targetRef  = $this->createTargetReflection();
 
         $targetMethodRef = $targetRef->getMethod('generateCodeChallenge');
         $targetMethodRef->setAccessible(true);
 
-        $result = $targetMethodRef->invoke($targetMock, $codeVerifier, 'S256');
+        $result        = $targetMethodRef->invoke($targetMock, $codeVerifier, 'S256');
         $decodedResult = base64_decode($result);
         $this->assertEquals(
             hash('sha256', $codeVerifier),
@@ -261,8 +264,9 @@ final class AuthorizationCodeTest extends TestCase
             'aaa',
             'bbb',
         ];
+
         $targetMock = $this->createTargetMock();
-        $targetRef = $this->createTargetReflection();
+        $targetRef  = $this->createTargetReflection();
 
         $targetMethodRef = $targetRef->getMethod('generateScopeStr');
         $targetMethodRef->setAccessible(true);
@@ -313,7 +317,7 @@ final class AuthorizationCodeTest extends TestCase
             ->with($contents)
             ->andReturn($tokenMock);
 
-        $clientId = 'client_id';
+        $clientId     = 'client_id';
         $clientSecret = 'client_secret';
 
         $targetMock = $this->createTargetMock();
@@ -322,6 +326,7 @@ final class AuthorizationCodeTest extends TestCase
             ->makePartial();
 
         $targetRef = $this->createTargetReflection();
+
         $clientIdPropertyRef = $targetRef->getProperty('clientId');
         $clientIdPropertyRef->setAccessible(true);
         $clientIdPropertyRef->setValue($targetMock, $clientId);
@@ -341,8 +346,8 @@ final class AuthorizationCodeTest extends TestCase
             ->with($clientId, $clientSecret)
             ->andReturn($headers);
 
-        $code = 'example_code';
-        $redirectUri = 'https://example.com/redirect';
+        $code         = 'example_code';
+        $redirectUri  = 'https://example.com/redirect';
         $codeVerifier = 'code_verifier';
 
         $result = $targetMock->requestToken($code, $redirectUri, $codeVerifier);
@@ -394,11 +399,13 @@ final class AuthorizationCodeTest extends TestCase
         $targetRef = $this->createTargetReflection();
 
         $host = 'example.com';
+
         $hostPropertyRef = $targetRef->getProperty('host');
         $hostPropertyRef->setAccessible(true);
         $hostPropertyRef->setValue($targetMock, $host);
 
         $clientId = 'client_id';
+
         $clientIdPropertyRef = $targetRef->getProperty('clientId');
         $clientIdPropertyRef->setAccessible(true);
         $clientIdPropertyRef->setValue($targetMock, $clientId);

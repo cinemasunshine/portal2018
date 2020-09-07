@@ -8,10 +8,10 @@
 
 declare(strict_types=1);
 
-namespace Cinemasunshine\Portal\Authorization\Grant;
+namespace App\Authorization\Grant;
 
+use App\Authorization\Token\AuthorizationCodeToken as Token;
 use GuzzleHttp\Client as HttpClient;
-use Cinemasunshine\Portal\Authorization\Token\AuthorizationCodeToken as Token;
 
 /**
  * Authorization Code Grant class
@@ -45,12 +45,10 @@ class AuthorizationCode extends AbstractGrant
      */
     public function __construct(string $host, string $clientId, string $clientSecret)
     {
-        $this->host = $host;
-        $this->clientId = $clientId;
+        $this->host         = $host;
+        $this->clientId     = $clientId;
         $this->clientSecret = $clientSecret;
-
-        $baseUri = 'https://' . $this->host;
-        $this->httpClient = $this->createHttpClient($baseUri);
+        $this->httpClient   = $this->createHttpClient('https://' . $this->host);
     }
 
     /**
@@ -70,9 +68,9 @@ class AuthorizationCode extends AbstractGrant
         ?string $state = null
     ): string {
         $codeChallengeMethod = $this->codeChallengeMethod;
-        $codeChallenge = $this->generateCodeChallenge($codeVerifier, $codeChallengeMethod);
+        $codeChallenge       = $this->generateCodeChallenge($codeVerifier, $codeChallengeMethod);
+        $scope               = $this->generateScopeStr($scope);
 
-        $scope = $this->generateScopeStr($scope);
         $params = [
             'response_type'         => 'code',
             'client_id'             => $this->clientId,
@@ -128,8 +126,8 @@ class AuthorizationCode extends AbstractGrant
      */
     public function requestToken(string $code, string $redirectUri, string $codeVerifier): Token
     {
-        $endpoint = '/token';
         $headers = $this->getRequestHeaders($this->clientId, $this->clientSecret);
+
         $params = [
             'grant_type'    => $this->name,
             'client_id'     => $this->clientId,
@@ -138,7 +136,7 @@ class AuthorizationCode extends AbstractGrant
             'code_verifier' => $codeVerifier,
         ];
 
-        $response = $this->httpClient->post($endpoint, [
+        $response = $this->httpClient->post('/token', [
             'headers' => $headers,
             'form_params' => $params,
         ]);

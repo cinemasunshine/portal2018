@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Authorization\Token;
 
-use Cinemasunshine\Portal\Authorization\Token\DecodedAccessToken;
+use App\Authorization\Token\DecodedAccessToken;
 use Mockery;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use PHPUnit\Framework\TestCase;
@@ -52,8 +52,8 @@ final class DecodedAccessTokenTest extends TestCase
      */
     protected function encodeJWT(array $header, array $claims, string $signature): string
     {
-        $headerBase64 = base64_encode(json_encode($header));
-        $claimsBase64 = base64_encode(json_encode($claims));
+        $headerBase64    = base64_encode(json_encode($header));
+        $claimsBase64    = base64_encode(json_encode($claims));
         $signatureBase64 = base64_encode($signature);
 
         return implode('.', [ $headerBase64, $claimsBase64, $signatureBase64]);
@@ -67,14 +67,14 @@ final class DecodedAccessTokenTest extends TestCase
      */
     public function testDecodeJWT()
     {
-        $header = [
+        $header    = [
             'foo' => 'example_header',
         ];
-        $claims = [
+        $claims    = [
             'bar' => 'example_claims',
         ];
         $signature = 'example_signature';
-        $jwt = $this->encodeJWT($header, $claims, $signature);
+        $jwt       = $this->encodeJWT($header, $claims, $signature);
 
         $result = DecodedAccessToken::decodeJWT($jwt);
         $this->assertInstanceOf(DecodedAccessToken::class, $result);
@@ -112,16 +112,16 @@ final class DecodedAccessTokenTest extends TestCase
      */
     public function testConstruct()
     {
-        $header = [
+        $header    = [
             'foo' => 'example_header',
         ];
-        $claims = [
+        $claims    = [
             'bar' => 'example_claims',
         ];
         $signature = 'example_signature';
 
         $targetMock = $this->createTargetMock();
-        $targetRef = $this->createTargetReflection();
+        $targetRef  = $this->createTargetReflection();
 
         // execute constructor
         $constructorRef = $targetRef->getConstructor();
@@ -154,8 +154,10 @@ final class DecodedAccessTokenTest extends TestCase
         $header = [
             'foo' => 'example_header',
         ];
+
         $targetMock = $this->createTargetMock();
         $targetMock->makePartial();
+
         $targetRef = $this->createTargetReflection();
 
         $headerPropertyRef = $targetRef->getProperty('header');
@@ -176,8 +178,10 @@ final class DecodedAccessTokenTest extends TestCase
         $claims = [
             'bar' => 'example_claims',
         ];
+
         $targetMock = $this->createTargetMock();
         $targetMock->makePartial();
+
         $targetRef = $this->createTargetReflection();
 
         $claimsPropertyRef = $targetRef->getProperty('claims');
@@ -199,6 +203,7 @@ final class DecodedAccessTokenTest extends TestCase
 
         $targetMock = $this->createTargetMock();
         $targetMock->makePartial();
+
         $targetRef = $this->createTargetReflection();
 
         $signaturePropertyRef = $targetRef->getProperty('signature');

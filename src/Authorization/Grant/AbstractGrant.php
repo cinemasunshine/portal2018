@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace Cinemasunshine\Portal\Authorization\Grant;
+namespace App\Authorization\Grant;
 
 use GuzzleHttp\Client as HttpClient;
 

@@ -6,11 +6,11 @@
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
-namespace Cinemasunshine\Portal\ORM\Repository;
+namespace App\ORM\Repository;
 
+use App\ORM\Entity\AdvanceTicket;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\QueryBuilder;
-use Cinemasunshine\Portal\ORM\Entity\AdvanceTicket;
 
 /**
  * Advance Ticket repository class

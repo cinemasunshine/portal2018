@@ -10,10 +10,10 @@ declare(strict_types=1);
 
 namespace Tests\Unit\User;
 
-use Cinemasunshine\Portal\Authorization\Token\AuthorizationCodeToken;
-use Cinemasunshine\Portal\Authorization\Token\DecodedAccessToken;
-use Cinemasunshine\Portal\Session\Container as SessionContainer;
-use Cinemasunshine\Portal\User\Manager as UserManager;
+use App\Authorization\Token\AuthorizationCodeToken;
+use App\Authorization\Token\DecodedAccessToken;
+use App\Session\Container as SessionContainer;
+use App\User\Manager as UserManager;
 use Laminas\Stdlib\ArrayObject;
 use Mockery;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
@@ -79,10 +79,11 @@ final class ManagerTest extends TestCase
     public function testGetContainer()
     {
         $sessionContainerMock = $this->createSessionContainerMock();
-        $userManagerMock = Mockery::mock(UserManager::class);
+        $userManagerMock      = Mockery::mock(UserManager::class);
+
+        $userManagerClassRef = new \ReflectionClass(UserManager::class);
 
         // execute constructor
-        $userManagerClassRef = new \ReflectionClass(UserManager::class);
         $constructorRef = $userManagerClassRef->getConstructor();
         $constructorRef->invoke($userManagerMock, $sessionContainerMock);
 
@@ -107,9 +108,10 @@ final class ManagerTest extends TestCase
             ->makePartial();
 
         $username = 'username';
-        $claims = [
+        $claims   = [
             'username' => $username,
         ];
+
         $decodedAccessTokenMock = $this->createDecodedAccessTokenMock();
         $decodedAccessTokenMock
             ->shouldReceive('getClaims')
@@ -144,6 +146,7 @@ final class ManagerTest extends TestCase
             ->with('authenticated', true);
 
         $userManagerClassRef = new \ReflectionClass(UserManager::class);
+
         $sessionPropertyRef = $userManagerClassRef->getProperty('session');
         $sessionPropertyRef->setAccessible(true);
         $sessionPropertyRef->setValue($userManagerMock, $sessionContainerMock);
@@ -169,6 +172,7 @@ final class ManagerTest extends TestCase
             ->with();
 
         $userManagerClassRef = new \ReflectionClass(UserManager::class);
+
         $sessionPropertyRef = $userManagerClassRef->getProperty('session');
         $sessionPropertyRef->setAccessible(true);
         $sessionPropertyRef->setValue($userManagerMock, $sessionContainerMock);
@@ -191,6 +195,7 @@ final class ManagerTest extends TestCase
             ->makePartial();
 
         $userManagerClassRef = new \ReflectionClass(UserManager::class);
+
         $sessionPropertyRef = $userManagerClassRef->getProperty('session');
         $sessionPropertyRef->setAccessible(true);
         $sessionPropertyRef->setValue($userManagerMock, $sessionContainerMock);
@@ -216,6 +221,7 @@ final class ManagerTest extends TestCase
             ->makePartial();
 
         $userManagerClassRef = new \ReflectionClass(UserManager::class);
+
         $sessionPropertyRef = $userManagerClassRef->getProperty('session');
         $sessionPropertyRef->setAccessible(true);
         $sessionPropertyRef->setValue($userManagerMock, $sessionContainerMock);
@@ -223,6 +229,7 @@ final class ManagerTest extends TestCase
         $user = [
             'name' => 'username',
         ];
+
         $sessionContainerMock['user'] = $user;
         $this->assertEquals($user, $userManagerMock->getUser());
     }
@@ -242,11 +249,14 @@ final class ManagerTest extends TestCase
             ->andReturn(true, false);
 
         $authorizationCodeTokenMock = $this->createAuthorizationCodeTokenMock();
+
         $sessionContainerMock = $this->createArrayObjectMock()
             ->makePartial();
+
         $sessionContainerMock['authorization_token'] = $authorizationCodeTokenMock;
 
         $userManagerClassRef = new \ReflectionClass(UserManager::class);
+
         $sessionPropertyRef = $userManagerClassRef->getProperty('session');
         $sessionPropertyRef->setAccessible(true);
         $sessionPropertyRef->setValue($userManagerMock, $sessionContainerMock);
@@ -273,6 +283,7 @@ final class ManagerTest extends TestCase
             ->makePartial();
 
         $userManagerClassRef = new \ReflectionClass(UserManager::class);
+
         $sessionPropertyRef = $userManagerClassRef->getProperty('session');
         $sessionPropertyRef->setAccessible(true);
         $sessionPropertyRef->setValue($userManagerMock, $sessionContainerMock);

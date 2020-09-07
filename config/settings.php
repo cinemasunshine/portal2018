@@ -9,7 +9,9 @@
  */
 
 $settings = [];
+
 $settings['displayErrorDetails'] = APP_DEBUG;
+
 $settings['addContentLengthHeader'] = false;
 
 // view
@@ -61,9 +63,10 @@ $getSessionSetting = function () {
     }
 
     $savePath = 'tcp://'
-              . getenv('CUSTOMCONNSTR_REDIS_HOST')
-              . ':'
-              . getenv('CUSTOMCONNSTR_REDIS_PORT');
+        . getenv('CUSTOMCONNSTR_REDIS_HOST')
+        . ':'
+        . getenv('CUSTOMCONNSTR_REDIS_PORT');
+
     $savePath .= '?' . http_build_query($savePathParams, '', '&');
 
     $settings['save_path'] = $savePath;
@@ -142,6 +145,7 @@ $getDoctrineSetting = function () {
     if (getenv('MYSQLCONNSTR_SSL') === 'true') {
         // https://docs.microsoft.com/ja-jp/azure/mysql/howto-configure-ssl
         $cafile = APP_ROOT . '/cert/BaltimoreCyberTrustRoot.crt.pem';
+
         $settings['connection']['driverOptions'][PDO::MYSQL_ATTR_SSL_CA] = $cafile;
     }
 
@@ -157,14 +161,13 @@ $getStorageSettings = function () {
         'account_key' => getenv('CUSTOMCONNSTR_STORAGE_KEY'),
     ];
 
-    $secure = getenv('CUSTOMCONNSTR_STORAGE_SECURE');
-    $settings['secure'] = ($secure === 'false') ? false : true;
+    $settings['secure'] = (getenv('CUSTOMCONNSTR_STORAGE_SECURE') === 'false')
+        ? false
+        : true;
 
-    $blobEndpoint = getenv('CUSTOMCONNSTR_STORAGE_BLOB_ENDPOINT');
-    $settings['blob_endpoint'] = ($blobEndpoint) ?: null;
+    $settings['blob_endpoint'] = (getenv('CUSTOMCONNSTR_STORAGE_BLOB_ENDPOINT')) ?: null;
 
-    $publicEndpoint = getenv('CUSTOMCONNSTR_STORAGE_PUBLIC_ENDOPOINT');
-    $settings['public_endpoint'] = ($publicEndpoint) ?: null;
+    $settings['public_endpoint'] = (getenv('CUSTOMCONNSTR_STORAGE_PUBLIC_ENDOPOINT')) ?: null;
 
     return $settings;
 };
@@ -212,8 +215,8 @@ $getMpServiceSetting = function () {
     ];
 
     $apiUrl = 'https://' . $settings['api_host'];
-    $scopeList = str_replace('<API_URL>', $apiUrl, $baseScopeList);
-    $settings['authorization_code_scope'] = $scopeList;
+
+    $settings['authorization_code_scope'] = str_replace('<API_URL>', $apiUrl, $baseScopeList);
 
     return $settings;
 };

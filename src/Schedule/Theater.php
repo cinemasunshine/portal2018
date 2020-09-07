@@ -6,7 +6,7 @@
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
-namespace Cinemasunshine\Portal\Schedule;
+namespace App\Schedule;
 
 use Cinemasunshine\Schedule\Theater as Base;
 use Cinemasunshine\Schedule\Builder\ScheduleInterface as ScheduleBuilder;
@@ -62,11 +62,13 @@ class Theater extends Base
         $this->name = $name;
 
         $config = self::getConfig($name);
+
         $this->version = $config['version'];
-        $this->xml = $config['xml'];
+        $this->xml     = $config['xml'];
 
         $baseUrl = Service::getBaseUrl($environment);
-        $this->client   = new HttpClient([
+
+        $this->client = new HttpClient([
             'base_uri' => $baseUrl,
             'timeout'  => 10,
         ]);

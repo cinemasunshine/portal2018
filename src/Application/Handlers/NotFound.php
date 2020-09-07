@@ -6,7 +6,7 @@
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
-namespace Cinemasunshine\Portal\Application\Handlers;
+namespace App\Application\Handlers;
 
 use Slim\Handlers\NotFound as BaseHandler;
 

@@ -6,26 +6,26 @@
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
-namespace Cinemasunshine\Portal\Controller;
+namespace App\Controller;
 
+use App\Exception\RedirectException;
+use App\Responder\AbstractResponder;
+use Psr\Container\ContainerInterface;
 use Slim\Collection;
 use Slim\Http\Response;
 use Slim\Http\Request;
-use Psr\Container\ContainerInterface;
-use Cinemasunshine\Portal\Exception\RedirectException;
-use Cinemasunshine\Portal\Responder\AbstractResponder;
 
 /**
  * Abstract controller
  *
- * @property-read \Cinemasunshine\Portal\Authorization\Manager $am
+ * @property-read \App\Authorization\Manager $am
  * @property-read \Doctrine\ORM\EntityManager $em
  * @property-read \Slim\Http\Environment $environment
  * @property-read \Monolog\Logger $logger
  * @property-read \Slim\Router $router
  * @property-read array $settings
- * @property-read \Cinemasunshine\Portal\Session\SessionManager $sm
- * @property-read \Cinemasunshine\Portal\User\Manager $um
+ * @property-read \App\Session\SessionManager $sm
+ * @property-read \App\User\Manager $um
  * @property-read \Slim\Views\Twig $view
  */
 abstract class AbstractController
@@ -53,7 +53,7 @@ abstract class AbstractController
     public function __construct(ContainerInterface $container)
     {
         $this->container = $container;
-        $this->data = new Collection();
+        $this->data      = new Collection();
     }
 
     /**

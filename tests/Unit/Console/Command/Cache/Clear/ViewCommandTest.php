@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Console\Command\Cache\Clear;
 
-use Cinemasunshine\Portal\Console\Command\Cache\Clear\ViewCommand;
+use App\Console\Command\Cache\Clear\ViewCommand;
 use Mockery;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use Slim\Views\Twig;
@@ -66,8 +66,8 @@ final class ViewCommandTest extends AbstructTestCase
     {
         $targetMock = $this->createTargetMock()
             ->makePartial();
-        $targetRef = $this->createTargetReflection();
-        $twigMock = $this->createTwigMock();
+        $targetRef  = $this->createTargetReflection();
+        $twigMock   = $this->createTwigMock();
 
         $targetConstructor = $targetRef->getConstructor();
         $targetConstructor->invoke($targetMock, $twigMock);
@@ -110,6 +110,7 @@ final class ViewCommandTest extends AbstructTestCase
         $targetMock = $this->createTargetMock()
             ->shouldAllowMockingProtectedMethods()
             ->makePartial();
+
         $outputSpy = $this->createOutputSpy();
         $targetMock
             ->shouldReceive('clearFilesystemCache')
@@ -119,6 +120,7 @@ final class ViewCommandTest extends AbstructTestCase
         $inputMock = $this->createInputMock();
 
         $targetRef = $this->createTargetReflection();
+
         $viewPropertyRef = $targetRef->getProperty('view');
         $viewPropertyRef->setAccessible(true);
         $viewPropertyRef->setValue($targetMock, $twigMock);
@@ -191,6 +193,7 @@ final class ViewCommandTest extends AbstructTestCase
         $outputSpy = $this->createOutputSpy();
 
         $targetRef = $this->createTargetReflection();
+
         $viewPropertyRef = $targetRef->getProperty('view');
         $viewPropertyRef->setAccessible(true);
         $viewPropertyRef->setValue($targetMock, $twigMock);
@@ -256,6 +259,7 @@ final class ViewCommandTest extends AbstructTestCase
         $outputSpy = $this->createOutputSpy();
 
         $targetRef = $this->createTargetReflection();
+
         $viewPropertyRef = $targetRef->getProperty('view');
         $viewPropertyRef->setAccessible(true);
         $viewPropertyRef->setValue($targetMock, $twigMock);
@@ -290,6 +294,7 @@ final class ViewCommandTest extends AbstructTestCase
     public function testClearFilesystemCache()
     {
         $dir = '/foo/bar/cache';
+
         $filesystemMock = $this->createFilesystemMock();
         $filesystemMock
             ->shouldReceive('remove')
@@ -299,7 +304,7 @@ final class ViewCommandTest extends AbstructTestCase
         $outputSpy = $this->createOutputSpy();
 
         $targetMock = $this->createTargetMock();
-        $targetRef = $this->createTargetReflection();
+        $targetRef  = $this->createTargetReflection();
 
         $clearFilesystemCacheMethodRef = $targetRef->getMethod('clearFilesystemCache');
         $clearFilesystemCacheMethodRef->setAccessible(true);

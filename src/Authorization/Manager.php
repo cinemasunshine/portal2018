@@ -8,12 +8,12 @@
 
 declare(strict_types=1);
 
-namespace Cinemasunshine\Portal\Authorization;
+namespace App\Authorization;
 
-use Cinemasunshine\Portal\Authorization\Grant\AuthorizationCode as AuthorizationCodeGrant;
-use Cinemasunshine\Portal\Authorization\Grant\RefreshToken as RefreshTokenGrant;
-use Cinemasunshine\Portal\Authorization\Token\AuthorizationCodeToken as Token;
-use Cinemasunshine\Portal\Session\Container as SessionContainer;
+use App\Authorization\Grant\AuthorizationCode as AuthorizationCodeGrant;
+use App\Authorization\Grant\RefreshToken as RefreshTokenGrant;
+use App\Authorization\Token\AuthorizationCodeToken as Token;
+use App\Session\Container as SessionContainer;
 
 /**
  * Authorization Manager class
@@ -55,10 +55,10 @@ class Manager
      */
     public function __construct(array $settings, SessionContainer $session)
     {
-        $this->host = $settings['authorization_code_host'];
-        $this->clientId = $settings['authorization_code_client_id'];
+        $this->host         = $settings['authorization_code_host'];
+        $this->clientId     = $settings['authorization_code_client_id'];
         $this->clientSecret = $settings['authorization_code_client_secret'];
-        $this->scopeList = $settings['authorization_code_scope'];
+        $this->scopeList    = $settings['authorization_code_scope'];
 
         $this->session = $session;
     }

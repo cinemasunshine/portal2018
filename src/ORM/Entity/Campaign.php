@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace Cinemasunshine\Portal\ORM\Entity;
+namespace App\ORM\Entity;
 
 use Cinemasunshine\ORM\Entities\Campaign as BaseCampaign;
 use Cinemasunshine\ORM\Entities\File as BaseFile;
@@ -17,7 +17,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Campaign entity class
  *
- * @ORM\Entity(readOnly=true, repositoryClass="Cinemasunshine\Portal\ORM\Repository\CampaignRepository")
+ * @ORM\Entity(readOnly=true, repositoryClass="App\ORM\Repository\CampaignRepository")
  * @ORM\Table(name="campaign", options={"collate"="utf8mb4_general_ci"})
  * @ORM\HasLifecycleCallbacks
  */

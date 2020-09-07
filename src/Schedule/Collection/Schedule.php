@@ -6,7 +6,7 @@
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
-namespace Cinemasunshine\Portal\Schedule\Collection;
+namespace App\Schedule\Collection;
 
 use Cinemasunshine\Schedule\Collection\Schedule as Base;
 use Cinemasunshine\Schedule\Entity\ScheduleInterface;

@@ -6,11 +6,11 @@
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
-namespace Cinemasunshine\Portal\ORM\Repository;
+namespace App\ORM\Repository;
 
+use App\ORM\Entity\Theater;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\QueryBuilder;
-use Cinemasunshine\Portal\ORM\Entity\Theater;
 
 /**
  * Theater repository class

@@ -10,8 +10,8 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Authorization\Token;
 
-use Cinemasunshine\Portal\Authorization\Token\AuthorizationCodeToken;
-use Cinemasunshine\Portal\Authorization\Token\DecodedAccessToken;
+use App\Authorization\Token\AuthorizationCodeToken;
+use App\Authorization\Token\DecodedAccessToken;
 use Mockery;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use PHPUnit\Framework\TestCase;
@@ -54,11 +54,12 @@ final class AuthorizationCodeTokenTest extends TestCase
      */
     public function testCreate()
     {
-        $accessToken = 'example_access_token';
-        $tokenType = 'example_type';
+        $accessToken  = 'example_access_token';
+        $tokenType    = 'example_type';
         $refreshToken = 'example_refresh_token';
-        $expiresIn = 3600;
-        $idToken = 'example_id_token';
+        $expiresIn    = 3600;
+        $idToken      = 'example_id_token';
+
         $data = [
             'access_token' => $accessToken,
             'token_type' => $tokenType,
@@ -71,6 +72,7 @@ final class AuthorizationCodeTokenTest extends TestCase
         $this->assertInstanceOf(AuthorizationCodeToken::class, $result);
 
         $targetRef = $this->createTargetReflection();
+
         $accessTokenPropertyRef = $targetRef->getProperty('accessToken');
         $accessTokenPropertyRef->setAccessible(true);
         $this->assertEquals($accessToken, $accessTokenPropertyRef->getValue($result));
@@ -110,6 +112,7 @@ final class AuthorizationCodeTokenTest extends TestCase
         $targetMock->makePartial();
 
         $targetRef = $this->createTargetReflection();
+
         $accessTokenPropertyRef = $targetRef->getProperty('accessToken');
         $accessTokenPropertyRef->setAccessible(true);
         $accessTokenPropertyRef->setValue($targetMock, $accessToken);
@@ -128,7 +131,7 @@ final class AuthorizationCodeTokenTest extends TestCase
         $accessToken = 'example_access_token';
 
         $targetMock = $this->createTargetMock();
-        $targetRef = $this->createTargetReflection();
+        $targetRef  = $this->createTargetReflection();
 
         $targetMethodRef = $targetRef->getMethod('setAccessToken');
         $targetMethodRef->setAccessible(true);
@@ -196,6 +199,7 @@ final class AuthorizationCodeTokenTest extends TestCase
         $targetMock->makePartial();
 
         $targetRef = $this->createTargetReflection();
+
         $tokenTypePropertyRef = $targetRef->getProperty('tokenType');
         $tokenTypePropertyRef->setAccessible(true);
         $tokenTypePropertyRef->setValue($targetMock, $tokenType);
@@ -214,7 +218,7 @@ final class AuthorizationCodeTokenTest extends TestCase
         $tokenType = 'example_token_type';
 
         $targetMock = $this->createTargetMock();
-        $targetRef = $this->createTargetReflection();
+        $targetRef  = $this->createTargetReflection();
 
         $targetMethodRef = $targetRef->getMethod('setTokenType');
         $targetMethodRef->setAccessible(true);
@@ -241,6 +245,7 @@ final class AuthorizationCodeTokenTest extends TestCase
         $targetMock->makePartial();
 
         $targetRef = $this->createTargetReflection();
+
         $refreshTokenPropertyRef = $targetRef->getProperty('refreshToken');
         $refreshTokenPropertyRef->setAccessible(true);
         $refreshTokenPropertyRef->setValue($targetMock, $refreshToken);
@@ -259,7 +264,7 @@ final class AuthorizationCodeTokenTest extends TestCase
         $refreshToken = 'example_token_type';
 
         $targetMock = $this->createTargetMock();
-        $targetRef = $this->createTargetReflection();
+        $targetRef  = $this->createTargetReflection();
 
         $targetMethodRef = $targetRef->getMethod('setRefreshToken');
         $targetMethodRef->setAccessible(true);
@@ -286,6 +291,7 @@ final class AuthorizationCodeTokenTest extends TestCase
         $targetMock->makePartial();
 
         $targetRef = $this->createTargetReflection();
+
         $expiresInPropertyRef = $targetRef->getProperty('expiresIn');
         $expiresInPropertyRef->setAccessible(true);
         $expiresInPropertyRef->setValue($targetMock, $expiresIn);
@@ -304,7 +310,7 @@ final class AuthorizationCodeTokenTest extends TestCase
         $expiresIn = 3600;
 
         $targetMock = $this->createTargetMock();
-        $targetRef = $this->createTargetReflection();
+        $targetRef  = $this->createTargetReflection();
 
         $targetMethodRef = $targetRef->getMethod('setExpiresIn');
         $targetMethodRef->setAccessible(true);
@@ -331,6 +337,7 @@ final class AuthorizationCodeTokenTest extends TestCase
         $targetMock->makePartial();
 
         $targetRef = $this->createTargetReflection();
+
         $expiresPropertyRef = $targetRef->getProperty('expires');
         $expiresPropertyRef->setAccessible(true);
         $expiresPropertyRef->setValue($targetMock, $expires);
@@ -349,7 +356,7 @@ final class AuthorizationCodeTokenTest extends TestCase
         $expires = time();
 
         $targetMock = $this->createTargetMock();
-        $targetRef = $this->createTargetReflection();
+        $targetRef  = $this->createTargetReflection();
 
         $targetMethodRef = $targetRef->getMethod('setExpires');
         $targetMethodRef->setAccessible(true);
@@ -376,6 +383,7 @@ final class AuthorizationCodeTokenTest extends TestCase
         $targetMock->makePartial();
 
         $targetRef = $this->createTargetReflection();
+
         $idTokenPropertyRef = $targetRef->getProperty('idToken');
         $idTokenPropertyRef->setAccessible(true);
         $idTokenPropertyRef->setValue($targetMock, $idToken);
@@ -394,7 +402,7 @@ final class AuthorizationCodeTokenTest extends TestCase
         $idToken = 'example_id_token';
 
         $targetMock = $this->createTargetMock();
-        $targetRef = $this->createTargetReflection();
+        $targetRef  = $this->createTargetReflection();
 
         $targetMethodRef = $targetRef->getMethod('setIdToken');
         $targetMethodRef->setAccessible(true);

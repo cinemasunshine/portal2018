@@ -6,15 +6,15 @@
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
-namespace Cinemasunshine\Portal\Controller\API;
+namespace App\Controller\API;
 
+use App\Schedule\Builder\V3\Schedule as V3ScheduleBuilder;
+use App\Schedule\Collection\Movie as MovieCollection;
+use App\Schedule\Entity\V3\Time as TimeEntity;
+use App\Schedule\Theater as TheaterSchedule;
 use Cinemasunshine\Schedule\Entity\V3\Schedules as V3Schedules;
 use Cinemasunshine\Schedule\Entity\SchedulesInterface;
 use Cinemasunshine\Schedule\Response\Http as HttpResponse;
-use Cinemasunshine\Portal\Schedule\Builder\V3\Schedule as V3ScheduleBuilder;
-use Cinemasunshine\Portal\Schedule\Collection\Movie as MovieCollection;
-use Cinemasunshine\Portal\Schedule\Entity\V3\Time as TimeEntity;
-use Cinemasunshine\Portal\Schedule\Theater as TheaterSchedule;
 use Slim\Exception\NotFoundException;
 
 /**
@@ -33,7 +33,7 @@ class ScheduleController extends BaseController
      */
     protected function preExecute($request, $response, $args): void
     {
-        $settings = $this->settings['schedule'];
+        $settings          = $this->settings['schedule'];
         $this->scheduleEnv = $settings['env'];
 
         $this->purchaseBaseUrl = $this->settings['mp_service']['ticket_entrance_url'];
@@ -59,7 +59,7 @@ class ScheduleController extends BaseController
         }
 
         $theaterSchedule = new TheaterSchedule($theaterName, $this->scheduleEnv);
-        $builer = new V3ScheduleBuilder($this->purchaseBaseUrl);
+        $builer          = new V3ScheduleBuilder($this->purchaseBaseUrl);
 
         $scheduleResponse = $theaterSchedule->fetchSchedule($builer);
 
@@ -82,7 +82,7 @@ class ScheduleController extends BaseController
             return;
         }
 
-        $meta['error'] = V3Schedules::ERROR_NOT;
+        $meta['error']     = V3Schedules::ERROR_NOT;
         $meta['attention'] = $schedules->getAttention();
 
         foreach ($schedules->getScheduleCollection() as $schedule) {
@@ -106,7 +106,7 @@ class ScheduleController extends BaseController
     public function executeDate($request, $response, $args)
     {
         $theaterName = $args['name'];
-        $date = $args['date'];
+        $date        = $args['date'];
 
         if (!TheaterSchedule::validate($theaterName)) {
             // ひとまずNotFoundとする SASAKI-338
@@ -114,7 +114,7 @@ class ScheduleController extends BaseController
         }
 
         $theaterSchedule = new TheaterSchedule($theaterName, $this->scheduleEnv);
-        $builer = new V3ScheduleBuilder($this->purchaseBaseUrl);
+        $builer          = new V3ScheduleBuilder($this->purchaseBaseUrl);
 
         $scheduleResponse = $theaterSchedule->fetchSchedule($builer);
 
@@ -137,15 +137,15 @@ class ScheduleController extends BaseController
             return;
         }
 
-        $meta['error'] = V3Schedules::ERROR_NOT;
+        $meta['error']     = V3Schedules::ERROR_NOT;
         $meta['attention'] = $schedules->getAttention();
 
-        $params = [
+        $params          = [
             'date' => $date,
         ];
         $movieCollection = $this->findSchedule($params, $schedules);
 
-        $today = new \DateTime(date('Y-m-d'));
+        $today  = new \DateTime(date('Y-m-d'));
         $target = new \DateTime($date);
 
         if ($target < $today) {

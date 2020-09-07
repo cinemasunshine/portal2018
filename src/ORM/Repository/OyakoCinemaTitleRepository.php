@@ -6,9 +6,9 @@
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
-namespace Cinemasunshine\Portal\ORM\Repository;
+namespace App\ORM\Repository;
 
-use Cinemasunshine\Portal\ORM\Entity\OyakoCinemaTitle;
+use App\ORM\Entity\OyakoCinemaTitle;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\QueryBuilder;
 
@@ -43,7 +43,7 @@ class OyakoCinemaTitleRepository extends EntityRepository
         /**
          * あくまでOyakoCinemaTitleの条件
          * OyakoCinemaScheduleのフィルタは下記を参照
-         * @see Cinemasunshine\Portal\ORM\Entity\OyakoCinemaTitle::getOyakoCinemaSchedules()
+         * @see App\ORM\Entity\OyakoCinemaTitle::getOyakoCinemaSchedules()
          */
         $qb
             ->join('oct.oyakoCinemaSchedules', 'ocs')

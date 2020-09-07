@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace Cinemasunshine\Portal\Resource;
+namespace App\Resource;
 
 class MetaTag
 {
@@ -28,9 +28,9 @@ class MetaTag
      */
     public function __construct(string $title, string $description, string $keywords)
     {
-        $this->title = $title;
+        $this->title       = $title;
         $this->description = $description;
-        $this->keywords = $keywords;
+        $this->keywords    = $keywords;
     }
 
     /**

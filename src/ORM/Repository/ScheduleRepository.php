@@ -6,11 +6,11 @@
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
-namespace Cinemasunshine\Portal\ORM\Repository;
+namespace App\ORM\Repository;
 
+use App\ORM\Entity\Schedule;
+use App\ORM\Entity\ShowingFormat;
 use Cinemasunshine\ORM\Repositories\ScheduleRepository as BaseRepository;
-use Cinemasunshine\Portal\ORM\Entity\Schedule;
-use Cinemasunshine\Portal\ORM\Entity\ShowingFormat;
 
 /**
  * Schedule repository class
@@ -23,7 +23,7 @@ class ScheduleRepository extends BaseRepository
     public function findNowShowing(): array
     {
         $alias = 's';
-        $qb = $this->createQueryBuilder($alias);
+        $qb    = $this->createQueryBuilder($alias);
 
         $this->addNowShowingQuery($qb, $alias);
 
@@ -36,7 +36,7 @@ class ScheduleRepository extends BaseRepository
     public function findNowShowingForImax(): array
     {
         $alias = 's';
-        $qb = $this->createQueryBuilder($alias);
+        $qb    = $this->createQueryBuilder($alias);
 
         $this->addNowShowingQuery($qb, $alias);
 
@@ -59,7 +59,7 @@ class ScheduleRepository extends BaseRepository
     public function findNowShowingFor4dx(): array
     {
         $alias = 's';
-        $qb = $this->createQueryBuilder($alias);
+        $qb    = $this->createQueryBuilder($alias);
 
         $this->addNowShowingQuery($qb, $alias);
 
@@ -82,7 +82,7 @@ class ScheduleRepository extends BaseRepository
     public function findNowShowingForScreenX(): array
     {
         $alias = 's';
-        $qb = $this->createQueryBuilder($alias);
+        $qb    = $this->createQueryBuilder($alias);
 
         $this->addNowShowingQuery($qb, $alias);
 
@@ -100,7 +100,7 @@ class ScheduleRepository extends BaseRepository
     public function findNowShowingFor4dxScreen(): array
     {
         $alias = 's';
-        $qb = $this->createQueryBuilder($alias);
+        $qb    = $this->createQueryBuilder($alias);
 
         $this->addNowShowingQuery($qb, $alias);
 
@@ -118,7 +118,7 @@ class ScheduleRepository extends BaseRepository
     public function findCommingSoon(): array
     {
         $alias = 's';
-        $qb = $this->createQueryBuilder($alias);
+        $qb    = $this->createQueryBuilder($alias);
 
         $this->addComingSoonQuery($qb, $alias);
 
@@ -131,7 +131,7 @@ class ScheduleRepository extends BaseRepository
     public function findCommingSoonForImax(): array
     {
         $alias = 's';
-        $qb = $this->createQueryBuilder($alias);
+        $qb    = $this->createQueryBuilder($alias);
 
         $this->addComingSoonQuery($qb, $alias);
 
@@ -154,7 +154,7 @@ class ScheduleRepository extends BaseRepository
     public function findCommingSoonFor4dx(): array
     {
         $alias = 's';
-        $qb = $this->createQueryBuilder($alias);
+        $qb    = $this->createQueryBuilder($alias);
 
         $this->addComingSoonQuery($qb, $alias);
 
@@ -177,7 +177,7 @@ class ScheduleRepository extends BaseRepository
     public function findCommingSoonForScreenX(): array
     {
         $alias = 's';
-        $qb = $this->createQueryBuilder($alias);
+        $qb    = $this->createQueryBuilder($alias);
 
         $this->addComingSoonQuery($qb, $alias);
 
@@ -195,7 +195,7 @@ class ScheduleRepository extends BaseRepository
     public function findCommingSoonFor4dxScreen(): array
     {
         $alias = 's';
-        $qb = $this->createQueryBuilder($alias);
+        $qb    = $this->createQueryBuilder($alias);
 
         $this->addComingSoonQuery($qb, $alias);
 
@@ -214,7 +214,7 @@ class ScheduleRepository extends BaseRepository
     public function findOneById(int $id): ?Schedule
     {
         $alias = 's';
-        $qb = $this->createQueryBuilder($alias);
+        $qb    = $this->createQueryBuilder($alias);
 
         $this->addPublicQuery($qb, $alias);
 

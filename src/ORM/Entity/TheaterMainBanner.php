@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace Cinemasunshine\Portal\ORM\Entity;
+namespace App\ORM\Entity;
 
 use Cinemasunshine\ORM\Entities\MainBanner as BaseMainBanner;
 use Cinemasunshine\ORM\Entities\Theater as BaseTheater;

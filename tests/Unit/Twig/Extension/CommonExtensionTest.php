@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Twig\Extension;
 
-use Cinemasunshine\Portal\Twig\Extension\CommonExtension;
+use App\Twig\Extension\CommonExtension;
 use Mockery;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use PHPUnit\Framework\TestCase;
@@ -36,8 +36,9 @@ final class CommonExtensionTest extends TestCase
 
         $extensionMock = Mockery::mock(CommonExtension::class);
 
-        // execute constructor
         $extensionClassRef = new \ReflectionClass(CommonExtension::class);
+
+        // execute constructor
         $constructorRef = $extensionClassRef->getConstructor();
         $constructorRef->invoke($extensionMock);
 
@@ -84,6 +85,7 @@ final class CommonExtensionTest extends TestCase
             ->makePartial();
 
         $extensionClassRef = new \ReflectionClass(CommonExtension::class);
+
         $appEnvPropertyRef = $extensionClassRef->getProperty('appEnv');
         $appEnvPropertyRef->setAccessible(true);
         $appEnvPropertyRef->setValue($extensionMock, $env);
@@ -105,6 +107,7 @@ final class CommonExtensionTest extends TestCase
             ->makePartial();
 
         $extensionClassRef = new \ReflectionClass(CommonExtension::class);
+
         $appEnvPropertyRef = $extensionClassRef->getProperty('appEnv');
         $appEnvPropertyRef->setAccessible(true);
         $appEnvPropertyRef->setValue($extensionMock, $env);

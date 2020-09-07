@@ -10,8 +10,8 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Twig\Extension;
 
-use Cinemasunshine\Portal\Resource\MetaTag;
-use Cinemasunshine\Portal\Twig\Extension\SeoExtension;
+use App\Resource\MetaTag;
+use App\Twig\Extension\SeoExtension;
 use Mockery;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use PHPUnit\Framework\TestCase;
@@ -57,7 +57,7 @@ final class SeoExtensionTest extends TestCase
      */
     public function testConstruct()
     {
-        $file = $this->file;
+        $file  = $this->file;
         $metas = [
             'test' => new MetaTag('example title', 'example description', 'hoge, huge'),
         ];
@@ -71,6 +71,7 @@ final class SeoExtensionTest extends TestCase
             ->andReturn($metas);
 
         $targetRef = $this->createTargetReflection();
+
         $constructorRef = $targetRef->getConstructor();
         $constructorRef->invoke($targetMock, $file);
         $metasRef = $targetRef->getProperty('metas');
@@ -98,7 +99,8 @@ final class SeoExtensionTest extends TestCase
     public function testLoadMetas()
     {
         $targetMock = $this->createTargetMock();
-        $targetRef = $this->createTargetReflection();
+        $targetRef  = $this->createTargetReflection();
+
         $loadMetasRef = $targetRef->getMethod('loadMetas');
         $loadMetasRef->setAccessible(true);
         $result = $loadMetasRef->invoke($targetMock, $this->file);
@@ -138,7 +140,7 @@ final class SeoExtensionTest extends TestCase
      */
     public function testGetTitle()
     {
-        $key = 'test';
+        $key   = 'test';
         $title = 'example title';
         $metas = [
             $key => new MetaTag($title, 'example description', 'hoge, huge'),
@@ -148,6 +150,7 @@ final class SeoExtensionTest extends TestCase
         $targetMock->makePartial();
 
         $targetRef = $this->createTargetReflection();
+
         $metasRef = $targetRef->getProperty('metas');
         $metasRef->setAccessible(true);
         $metasRef->setValue($targetMock, $metas);
@@ -162,9 +165,9 @@ final class SeoExtensionTest extends TestCase
      */
     public function testGetDescription()
     {
-        $key = 'test';
+        $key         = 'test';
         $description = 'example description';
-        $metas = [
+        $metas       = [
             $key => new MetaTag('example title', $description, 'hoge, huge'),
         ];
 
@@ -172,6 +175,7 @@ final class SeoExtensionTest extends TestCase
         $targetMock->makePartial();
 
         $targetRef = $this->createTargetReflection();
+
         $metasRef = $targetRef->getProperty('metas');
         $metasRef->setAccessible(true);
         $metasRef->setValue($targetMock, $metas);
@@ -186,9 +190,9 @@ final class SeoExtensionTest extends TestCase
      */
     public function testGetKeywords()
     {
-        $key = 'test';
+        $key      = 'test';
         $keywords = 'hoge, huge';
-        $metas = [
+        $metas    = [
             $key => new MetaTag('example title', 'example description', $keywords),
         ];
 
@@ -196,6 +200,7 @@ final class SeoExtensionTest extends TestCase
         $targetMock->makePartial();
 
         $targetRef = $this->createTargetReflection();
+
         $metasRef = $targetRef->getProperty('metas');
         $metasRef->setAccessible(true);
         $metasRef->setValue($targetMock, $metas);

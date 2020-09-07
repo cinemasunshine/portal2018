@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Twig\Extension;
 
-use Cinemasunshine\Portal\Twig\Extension\MotionpictureTicketExtension;
+use App\Twig\Extension\MotionpictureTicketExtension;
 use Mockery;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use PHPUnit\Framework\TestCase;
@@ -32,10 +32,11 @@ final class MotionpictureTicketExtensionTest extends TestCase
     public function testConstruct()
     {
         $extensionMock = Mockery::mock(MotionpictureTicketExtension::class);
-        $settings = [];
+        $settings      = [];
+
+        $extensionClassRef = new \ReflectionClass(MotionpictureTicketExtension::class);
 
         // execute constructor
-        $extensionClassRef = new \ReflectionClass(MotionpictureTicketExtension::class);
         $constructorRef = $extensionClassRef->getConstructor();
         $constructorRef->invoke($extensionMock, $settings);
 
@@ -78,16 +79,18 @@ final class MotionpictureTicketExtensionTest extends TestCase
     {
         $extensionMock = Mockery::mock(MotionpictureTicketExtension::class)
             ->makePartial();
-        $settings = [
+        $settings      = [
             'ticket_url' => 'http://example.com',
         ];
 
         $extensionClassRef = new \ReflectionClass(MotionpictureTicketExtension::class);
+
         $settingsPropertyRef = $extensionClassRef->getProperty('settings');
         $settingsPropertyRef->setAccessible(true);
         $settingsPropertyRef->setValue($extensionMock, $settings);
 
         $theaterCode = '001';
+
         $result = $extensionMock->getTicketInquiryUrl($theaterCode);
         $this->assertStringContainsString($settings['ticket_url'], $result);
         $this->assertStringContainsString($theaterCode, $result);
@@ -103,11 +106,12 @@ final class MotionpictureTicketExtensionTest extends TestCase
     {
         $extensionMock = Mockery::mock(MotionpictureTicketExtension::class)
             ->makePartial();
-        $settings = [
+        $settings      = [
             'ticket_entrance_url' => 'http://example.com',
         ];
 
         $extensionClassRef = new \ReflectionClass(MotionpictureTicketExtension::class);
+
         $settingsPropertyRef = $extensionClassRef->getProperty('settings');
         $settingsPropertyRef->setAccessible(true);
         $settingsPropertyRef->setValue($extensionMock, $settings);

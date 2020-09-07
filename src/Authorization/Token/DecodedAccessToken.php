@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace Cinemasunshine\Portal\Authorization\Token;
+namespace App\Authorization\Token;
 
 /**
  * Decoded Access Token class
@@ -44,8 +44,8 @@ class DecodedAccessToken
 
         list($headB64, $claimsB64, $signatureB64) = $segments;
 
-        $header = json_decode(base64_decode($headB64), true);
-        $claims = json_decode(base64_decode($claimsB64), true);
+        $header    = json_decode(base64_decode($headB64), true);
+        $claims    = json_decode(base64_decode($claimsB64), true);
         $signature = base64_decode($signatureB64);
 
         return new self($header, $claims, $signature);
@@ -60,8 +60,8 @@ class DecodedAccessToken
      */
     public function __construct(array $header, array $claims, string $signature)
     {
-        $this->header = $header;
-        $this->claims = $claims;
+        $this->header    = $header;
+        $this->claims    = $claims;
         $this->signature = $signature;
     }
 

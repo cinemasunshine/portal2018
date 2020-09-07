@@ -8,10 +8,10 @@
 
 declare(strict_types=1);
 
-namespace Cinemasunshine\Portal\User;
+namespace App\User;
 
-use Cinemasunshine\Portal\Authorization\Token\AuthorizationCodeToken as AuthorizationToken;
-use Cinemasunshine\Portal\Session\Container as SessionContainer;
+use App\Authorization\Token\AuthorizationCodeToken as AuthorizationToken;
+use App\Session\Container as SessionContainer;
 
 /**
  * User manager class
@@ -48,9 +48,11 @@ class Manager
          * 情報が増えてきたらオブジェクト化など考える。
          */
         $claims = $authorizationToken->decodeAccessToken()->getClaims();
+
         $user = [
             'name' => $claims['username'],
         ];
+
         $this->session['user'] = $user;
 
         $this->session['authenticated'] = true;

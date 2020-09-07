@@ -6,7 +6,7 @@
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
-use Cinemasunshine\Portal\Controller\{
+use App\Controller\{
     AboutController,
     AuthorizationController,
     FourdxController,
@@ -20,11 +20,11 @@ use Cinemasunshine\Portal\Controller\{
     TheaterController,
     TheaterListController
 };
-use Cinemasunshine\Portal\Controller\API\{
+use App\Controller\API\{
     AuthorizationController as AuthorizationAPIController,
     ScheduleController as ScheduleApiController
 };
-use Cinemasunshine\Portal\Controller\Development\DoctrineController;
+use App\Controller\Development\DoctrineController;
 
 $app->get('/', IndexController::class . ':index')->setName('homepage');
 
