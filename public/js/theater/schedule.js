@@ -3,6 +3,7 @@ var MP_TICKET_ENTRANCE;
 var APP_ENV;
 var API_TIMEOUT = 60 * 1000;
 var PRE_SALE_DIFFERENCE_DAY = 2;
+var SCHEDULE_STATUS_THRESHOLD_VALUE = 20;
 
 /**
  * パフォーマンス
@@ -26,7 +27,7 @@ var Performance = (function () {
             { symbolText: '△', symbolClassName: 'status-02', icon: '/images/fixed/status_02.svg', className: 'bg-yellow text-white', text: '購入' },
             { symbolText: '○', symbolClassName: 'status-01', icon: '/images/fixed/status_01.svg', className: 'bg-blue text-white', text: '購入' }
         ];
-        var threshold = 10;
+        var threshold = SCHEDULE_STATUS_THRESHOLD_VALUE;
         return (value === 0)
             ? availability[0] : (value <= threshold)
                 ? availability[1] : availability[2];
