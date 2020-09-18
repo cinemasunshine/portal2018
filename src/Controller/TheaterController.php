@@ -308,7 +308,7 @@ class TheaterController extends BaseController
      */
     protected function getNewsList(Entity\Theater $theater, $category = [], ?int $limit = null)
     {
-        if (!is_array($category)) {
+        if (! is_array($category)) {
             $category = [ $category ];
         }
 
