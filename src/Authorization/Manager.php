@@ -70,7 +70,7 @@ class Manager
      */
     protected function getAuthorizationCodeGrunt(): AuthorizationCodeGrant
     {
-        if (!$this->authorizationCodeGrunt) {
+        if (! $this->authorizationCodeGrunt) {
             $this->authorizationCodeGrunt = new AuthorizationCodeGrant(
                 $this->host,
                 $this->clientId,
@@ -130,7 +130,7 @@ class Manager
      */
     public function getAuthorizationState(): string
     {
-        if (!isset($this->session['authorization_state'])) {
+        if (! isset($this->session['authorization_state'])) {
             $this->initAuthorizationState();
         }
 
@@ -166,7 +166,7 @@ class Manager
      */
     protected function getCodeVerifier(): string
     {
-        if (!isset($this->session['code_verifier'])) {
+        if (! isset($this->session['code_verifier'])) {
             $this->initCodeVerifier();
         }
 
@@ -207,7 +207,7 @@ class Manager
      */
     protected function getRefreshTokenGrant(): RefreshTokenGrant
     {
-        if (!$this->refreshTokenGrant) {
+        if (! $this->refreshTokenGrant) {
             $this->refreshTokenGrant = new RefreshTokenGrant(
                 $this->host,
                 $this->clientId,

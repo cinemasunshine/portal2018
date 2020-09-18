@@ -53,7 +53,7 @@ class Theater extends Base
      */
     public function __construct(string $name, string $environment)
     {
-        if (!self::validate($name)) {
+        if (! self::validate($name)) {
             throw new \InvalidArgumentException(
                 sprintf('invalid theater "%s".', $name)
             );

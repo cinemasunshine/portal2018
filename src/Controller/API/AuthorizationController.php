@@ -100,7 +100,7 @@ class AuthorizationController extends BaseController
      */
     protected function executeMemberToken(): array
     {
-        if (!$this->um->isAuthenticated()) {
+        if (! $this->um->isAuthenticated()) {
             throw new NotAuthenticatedException('Not authenticated');
         }
 

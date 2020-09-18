@@ -27,7 +27,7 @@ class SeoExtension extends AbstractExtension
      */
     public function __construct(string $file)
     {
-        if (!file_exists($file)) {
+        if (! file_exists($file)) {
             throw new \InvalidArgumentException('File does not exist.');
         }
 

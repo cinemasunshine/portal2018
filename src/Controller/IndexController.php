@@ -77,7 +77,7 @@ class IndexController extends GeneralController
             /** @var Entity\Theater $theater */
             $area = $theater->getArea();
 
-            if (!isset($areaToTheaters[$area])) {
+            if (! isset($areaToTheaters[$area])) {
                 $areaToTheaters[$area] = [];
             }
 

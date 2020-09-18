@@ -25,7 +25,7 @@ class Movie extends Base
      */
     public function add($movie)
     {
-        if (!$movie instanceof MovieInterface) {
+        if (! $movie instanceof MovieInterface) {
             throw new \InvalidArgumentException('should implement Entity\MovieInterface');
         }
         

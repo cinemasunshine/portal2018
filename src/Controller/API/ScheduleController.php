@@ -53,7 +53,7 @@ class ScheduleController extends BaseController
     {
         $theaterName = $args['name'];
 
-        if (!TheaterSchedule::validate($theaterName)) {
+        if (! TheaterSchedule::validate($theaterName)) {
             // ひとまずNotFoundとする SASAKI-338
             throw new NotFoundException($request, $response);
         }
@@ -108,7 +108,7 @@ class ScheduleController extends BaseController
         $theaterName = $args['name'];
         $date        = $args['date'];
 
-        if (!TheaterSchedule::validate($theaterName)) {
+        if (! TheaterSchedule::validate($theaterName)) {
             // ひとまずNotFoundとする SASAKI-338
             throw new NotFoundException($request, $response);
         }

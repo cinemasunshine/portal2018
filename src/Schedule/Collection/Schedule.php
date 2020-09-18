@@ -24,7 +24,7 @@ class Schedule extends Base
      */
     public function add($schedule)
     {
-        if (!$schedule instanceof ScheduleInterface) {
+        if (! $schedule instanceof ScheduleInterface) {
             throw new \InvalidArgumentException('should implement Entity\ScheduleInterface');
         }
 
