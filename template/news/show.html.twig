@@ -18,7 +18,7 @@
     <div class="width mx-auto breadcrumb-list small mb-5 p-3 d-none d-md-block">
         <a href="{{ path_for('homepage') }}" class="mr-3">ホーム</a>|
         <a href="{{ path_for('news_list') }}" class="mx-3">NEWS＆INFO</a>|
-        <span class="font-weight-bold mx-3">{{ news.getHeadline()|truncate(34, false, '…') }}</span>
+        <span class="font-weight-bold mx-3">{{ news.getHeadline()|u.truncate(34, '…') }}</span>
     </div>
 
     <div class="details-width mx-auto mb-5 p-3 pjack-bg">
