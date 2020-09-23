@@ -34,7 +34,7 @@
     <span class="font-weight-bold mx-2"> | </span>
     <a class="text-white" href="{{ path_for('4dx_news_list') }}">NEWS & INFO</a>
     <span class="font-weight-bold mx-2"> | </span>
-    <span>{{ news.getHeadline()|truncate(34, false, '…') }}<span>
+    <span>{{ news.getHeadline()|u.truncate(34, '…') }}<span>
 </div>
 
 <div class="details-width mx-auto mb-3 px-2 text-white">

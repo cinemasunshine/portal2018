@@ -66,7 +66,7 @@ $container['view'] = function ($container) {
 
     // vendor extension
     $view->addExtension(new \Twig\Extension\DebugExtension());
-    $view->addExtension(new \Twig\Extensions\TextExtension());
+    $view->addExtension(new \Twig\Extra\String\StringExtension());
 
     // app extension
     $view->addExtension(new \App\Twig\Extension\AdvanceTicketExtension());
