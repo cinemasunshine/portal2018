@@ -116,7 +116,7 @@ $app->group('/4dx-screen', function () {
     $this->get('/theater/', FourdxScreenController::class . ':theater')->setName('4dx_screen_theater');
 });
 
-# APIのURL設計はひとまずそのまま SASAKI-315
+// APIのURL設計はひとまずそのまま SASAKI-315
 $app->group('/api', function () {
     $this->group('/auth', function () {
         $this->get('/token', AuthorizationAPIController::class . ':token');
