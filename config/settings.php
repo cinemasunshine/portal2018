@@ -78,9 +78,7 @@ $settings['session'] = $getSessionSetting();
 
 // logger
 $getLoggerSetting = function () {
-    $settings = [
-        'name' => 'app',
-    ];
+    $settings = ['name' => 'app'];
 
     if (APP_DEBUG) {
         $settings['browser_console'] = [

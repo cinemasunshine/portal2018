@@ -140,9 +140,8 @@ class ScheduleController extends BaseController
         $meta['error']     = V3Schedules::ERROR_NOT;
         $meta['attention'] = $schedules->getAttention();
 
-        $params          = [
-            'date' => $date,
-        ];
+        $params = ['date' => $date];
+
         $movieCollection = $this->findSchedule($params, $schedules);
 
         $today  = new \DateTime(date('Y-m-d'));

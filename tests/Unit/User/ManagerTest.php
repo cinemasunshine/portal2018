@@ -108,9 +108,7 @@ final class ManagerTest extends TestCase
             ->makePartial();
 
         $username = 'username';
-        $claims   = [
-            'username' => $username,
-        ];
+        $claims   = ['username' => $username];
 
         $decodedAccessTokenMock = $this->createDecodedAccessTokenMock();
         $decodedAccessTokenMock
@@ -132,9 +130,7 @@ final class ManagerTest extends TestCase
             ->once()
             ->with('authorization_token', $authorizationCodeTokenMock);
 
-        $user = [
-            'name' => $username,
-        ];
+        $user = ['name' => $username];
         $sessionContainerMock
             ->shouldReceive('offsetSet')
             ->once()
@@ -226,9 +222,7 @@ final class ManagerTest extends TestCase
         $sessionPropertyRef->setAccessible(true);
         $sessionPropertyRef->setValue($userManagerMock, $sessionContainerMock);
 
-        $user = [
-            'name' => 'username',
-        ];
+        $user = ['name' => 'username'];
 
         $sessionContainerMock['user'] = $user;
         $this->assertEquals($user, $userManagerMock->getUser());

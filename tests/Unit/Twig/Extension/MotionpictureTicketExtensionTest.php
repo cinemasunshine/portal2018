@@ -77,11 +77,10 @@ final class MotionpictureTicketExtensionTest extends TestCase
      */
     public function testGetTicketInquiryUrl()
     {
+        $settings = ['ticket_url' => 'http://example.com'];
+
         $extensionMock = Mockery::mock(MotionpictureTicketExtension::class)
             ->makePartial();
-        $settings      = [
-            'ticket_url' => 'http://example.com',
-        ];
 
         $extensionClassRef = new \ReflectionClass(MotionpictureTicketExtension::class);
 
@@ -104,11 +103,10 @@ final class MotionpictureTicketExtensionTest extends TestCase
      */
     public function testGetTicketEntranceUrl()
     {
+        $settings = ['ticket_entrance_url' => 'http://example.com'];
+
         $extensionMock = Mockery::mock(MotionpictureTicketExtension::class)
             ->makePartial();
-        $settings      = [
-            'ticket_entrance_url' => 'http://example.com',
-        ];
 
         $extensionClassRef = new \ReflectionClass(MotionpictureTicketExtension::class);
 

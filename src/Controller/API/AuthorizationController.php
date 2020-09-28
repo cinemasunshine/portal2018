@@ -29,9 +29,7 @@ class AuthorizationController extends BaseController
      */
     public function executeToken($request, $response, $args)
     {
-        $meta     = [
-            'name' => 'Authorization Token API',
-        ];
+        $meta     = ['name' => 'Authorization Token API'];
         $data     = [];
         $userType = $request->getParam('user_type');
 
@@ -47,7 +45,7 @@ class AuthorizationController extends BaseController
                 $this->data->set('meta', $meta);
                 $error = [
                     'title' => 'Bad Request',
-                    'detail' => 'Not authenticated.'
+                    'detail' => 'Not authenticated.',
                 ];
                 $this->data->set('error', $error);
 
@@ -59,7 +57,7 @@ class AuthorizationController extends BaseController
 
             $error = [
                 'title' => 'Bad Request',
-                'detail' => 'Invalid parameter.'
+                'detail' => 'Invalid parameter.',
             ];
             $this->data->set('error', $error);
 

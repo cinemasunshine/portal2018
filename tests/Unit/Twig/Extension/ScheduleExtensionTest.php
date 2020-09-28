@@ -77,11 +77,10 @@ final class ScheduleExtensionTest extends TestCase
      */
     public function testGetApiUrl()
     {
+        $settings = ['api_url' => 'http://example.com'];
+
         $extensionMock = Mockery::mock(ScheduleExtension::class)
             ->makePartial();
-        $settings      = [
-            'api_url' => 'http://example.com',
-        ];
 
         $extensionClassRef = new \ReflectionClass(ScheduleExtension::class);
 
