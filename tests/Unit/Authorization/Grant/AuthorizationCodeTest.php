@@ -285,9 +285,7 @@ final class AuthorizationCodeTest extends TestCase
      */
     public function testRequestToken()
     {
-        $contents = [
-            'foo' => 'bar',
-        ];
+        $contents = ['foo' => 'bar'];
 
         $streamMock = $this->createStreamMock();
         $streamMock

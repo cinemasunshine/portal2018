@@ -67,14 +67,11 @@ final class DecodedAccessTokenTest extends TestCase
      */
     public function testDecodeJWT()
     {
-        $header    = [
-            'foo' => 'example_header',
-        ];
-        $claims    = [
-            'bar' => 'example_claims',
-        ];
+        $header    = ['foo' => 'example_header'];
+        $claims    = ['bar' => 'example_claims'];
         $signature = 'example_signature';
-        $jwt       = $this->encodeJWT($header, $claims, $signature);
+
+        $jwt = $this->encodeJWT($header, $claims, $signature);
 
         $result = DecodedAccessToken::decodeJWT($jwt);
         $this->assertInstanceOf(DecodedAccessToken::class, $result);
@@ -112,12 +109,8 @@ final class DecodedAccessTokenTest extends TestCase
      */
     public function testConstruct()
     {
-        $header    = [
-            'foo' => 'example_header',
-        ];
-        $claims    = [
-            'bar' => 'example_claims',
-        ];
+        $header    = ['foo' => 'example_header'];
+        $claims    = ['bar' => 'example_claims'];
         $signature = 'example_signature';
 
         $targetMock = $this->createTargetMock();
@@ -151,9 +144,7 @@ final class DecodedAccessTokenTest extends TestCase
      */
     public function testGetHeader()
     {
-        $header = [
-            'foo' => 'example_header',
-        ];
+        $header = ['foo' => 'example_header'];
 
         $targetMock = $this->createTargetMock();
         $targetMock->makePartial();
@@ -175,9 +166,7 @@ final class DecodedAccessTokenTest extends TestCase
      */
     public function testGetClaims()
     {
-        $claims = [
-            'bar' => 'example_claims',
-        ];
+        $claims = ['bar' => 'example_claims'];
 
         $targetMock = $this->createTargetMock();
         $targetMock->makePartial();

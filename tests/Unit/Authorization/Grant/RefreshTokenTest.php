@@ -115,9 +115,7 @@ final class RefreshTokenTest extends TestCase
      */
     public function testRequestToken()
     {
-        $contents = [
-            'foo' => 'bar',
-        ];
+        $contents = ['foo' => 'bar'];
 
         $streamMock = $this->createStreamMock();
         $streamMock
@@ -174,9 +172,7 @@ final class RefreshTokenTest extends TestCase
         $httpClientPropertyRef->setAccessible(true);
         $httpClientPropertyRef->setValue($targetMock, $httpClient);
 
-        $headers = [
-            'foo' => 'bar',
-        ];
+        $headers = ['foo' => 'bar'];
         $targetMock
             ->shouldReceive('getRequestHeaders')
             ->once()
