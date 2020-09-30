@@ -93,6 +93,7 @@ class AuthorizationCode extends AbstractGrant
      * generate code_challenge
      *
      * @param string $codeVerifier
+     * @param string $codeChallengeMethod
      * @return string
      * @throws \LogicException
      */
