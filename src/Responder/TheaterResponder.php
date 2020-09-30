@@ -20,7 +20,7 @@ class TheaterResponder extends BaseResponder
     /**
      * index
      *
-     * @param Response $response
+     * @param Response   $response
      * @param Collection $data
      * @return ResponseInterface
      */
@@ -32,7 +32,7 @@ class TheaterResponder extends BaseResponder
     /**
      * closed
      *
-     * @param Response $response
+     * @param Response   $response
      * @param Collection $data
      * @return ResponseInterface
      */
@@ -44,7 +44,7 @@ class TheaterResponder extends BaseResponder
     /**
      * access
      *
-     * @param Response $response
+     * @param Response   $response
      * @param Collection $data
      * @return ResponseInterface
      */
@@ -56,7 +56,7 @@ class TheaterResponder extends BaseResponder
     /**
      * admission
      *
-     * @param Response $response
+     * @param Response   $response
      * @param Collection $data
      * @return ResponseInterface
      */
@@ -68,7 +68,7 @@ class TheaterResponder extends BaseResponder
     /**
      * advance ticket
      *
-     * @param Response $response
+     * @param Response   $response
      * @param Collection $data
      * @return ResponseInterface
      */
@@ -80,7 +80,7 @@ class TheaterResponder extends BaseResponder
     /**
      * concession
      *
-     * @param Response $response
+     * @param Response   $response
      * @param Collection $data
      * @return ResponseInterface
      */
@@ -92,7 +92,7 @@ class TheaterResponder extends BaseResponder
     /**
      * floor guide
      *
-     * @param Response $response
+     * @param Response   $response
      * @param Collection $data
      * @return ResponseInterface
      */
@@ -104,7 +104,7 @@ class TheaterResponder extends BaseResponder
     /**
      * news list
      *
-     * @param Response $response
+     * @param Response   $response
      * @param Collection $data
      * @return ResponseInterface
      */
@@ -116,7 +116,7 @@ class TheaterResponder extends BaseResponder
     /**
      * news show
      *
-     * @param Response $response
+     * @param Response   $response
      * @param Collection $data
      * @return ResponseInterface
      */

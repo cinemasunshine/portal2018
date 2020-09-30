@@ -54,9 +54,9 @@ class AuthorizationCode extends AbstractGrant
     /**
      * return authorization URL
      *
-     * @param string $codeVerifier
-     * @param string $redirectUri
-     * @param array $scope
+     * @param string      $codeVerifier
+     * @param string      $redirectUri
+     * @param array       $scope
      * @param string|null $state
      * @return string
      * @link https://m-p.backlog.jp/view/SASAKI-485
@@ -93,6 +93,7 @@ class AuthorizationCode extends AbstractGrant
      * generate code_challenge
      *
      * @param string $codeVerifier
+     * @param string $codeChallengeMethod
      * @return string
      * @throws \LogicException
      */

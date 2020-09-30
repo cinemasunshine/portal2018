@@ -29,8 +29,8 @@ class UserExtension extends AbstractExtension
     /**
      * construct
      *
+     * @param UserManager          $userManager
      * @param AuthorizationManager $authorizationManager
-     * @param UserManager $userManager
      */
     public function __construct(UserManager $userManager, AuthorizationManager $authorizationManager)
     {

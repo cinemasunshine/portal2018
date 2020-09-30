@@ -54,8 +54,8 @@ class DecodedAccessToken
     /**
      * construct
      *
-     * @param array $header
-     * @param array $claims
+     * @param array  $header
+     * @param array  $claims
      * @param string $signature
      */
     public function __construct(array $header, array $claims, string $signature)

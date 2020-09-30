@@ -45,8 +45,8 @@ final class DecodedAccessTokenTest extends TestCase
     /**
      * Encode JWT
      *
-     * @param array $header
-     * @param array $claims
+     * @param array  $header
+     * @param array  $claims
      * @param string $signature
      * @return string
      */
