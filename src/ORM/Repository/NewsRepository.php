@@ -121,7 +121,7 @@ class NewsRepository extends EntityRepository
     /**
      * find by special_site
      *
-     * @param int $specialSiteId
+     * @param int      $specialSiteId
      * @param int|null $category
      * @param int|null $limit
      * @return News[]

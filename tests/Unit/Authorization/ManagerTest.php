@@ -40,7 +40,7 @@ final class ManagerTest extends TestCase
     /**
      * Create target mock with args
      *
-     * @param array $settings
+     * @param array            $settings
      * @param SessionContainer $session
      * @return \Mockery\MockInterface|\Mockery\LegacyMockInterface|AuthorizationManager
      */

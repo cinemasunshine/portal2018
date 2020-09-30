@@ -20,7 +20,7 @@ class AuthorizationResponder extends BaseResponder
     /**
      * error
      *
-     * @param Response $response
+     * @param Response   $response
      * @param Collection $data
      * @return ResponseInterface
      */

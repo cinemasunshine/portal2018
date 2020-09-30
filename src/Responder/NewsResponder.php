@@ -20,7 +20,7 @@ class NewsResponder extends BaseResponder
     /**
      * list
      *
-     * @param Response $response
+     * @param Response   $response
      * @param Collection $data
      * @return ResponseInterface
      */
@@ -32,7 +32,7 @@ class NewsResponder extends BaseResponder
     /**
      * show
      *
-     * @param Response $response
+     * @param Response   $response
      * @param Collection $data
      * @return ResponseInterface
      */

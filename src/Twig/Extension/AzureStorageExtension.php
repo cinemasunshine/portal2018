@@ -28,7 +28,7 @@ class AzureStorageExtension extends AbstractExtension
      * construct
      *
      * @param BlobRestProxy $client
-     * @param string|null $publicEndpoint
+     * @param string|null   $publicEndpoint
      */
     public function __construct(BlobRestProxy $client, $publicEndpoint = null)
     {

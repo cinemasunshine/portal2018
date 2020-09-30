@@ -20,7 +20,7 @@ class TheaterListResponder extends BaseResponder
     /**
      * index
      *
-     * @param Response $response
+     * @param Response   $response
      * @param Collection $data
      * @return ResponseInterface
      */
@@ -32,7 +32,7 @@ class TheaterListResponder extends BaseResponder
     /**
      * sns
      *
-     * @param Response $response
+     * @param Response   $response
      * @param Collection $data
      * @return ResponseInterface
      */
