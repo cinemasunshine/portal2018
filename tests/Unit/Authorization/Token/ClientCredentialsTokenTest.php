@@ -76,7 +76,6 @@ final class ClientCredentialsTokenTest extends TestCase
         $tokenTypePropertyRef->setAccessible(true);
         $this->assertEquals($tokenType, $tokenTypePropertyRef->getValue($result));
 
-
         $expiresInPropertyRef = $targetRef->getProperty('expiresIn');
         $expiresInPropertyRef->setAccessible(true);
         $this->assertEquals($expiresIn, $expiresInPropertyRef->getValue($result));

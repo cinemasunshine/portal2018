@@ -28,9 +28,9 @@ class Movie extends Base
         if (! $movie instanceof MovieInterface) {
             throw new \InvalidArgumentException('should implement Entity\MovieInterface');
         }
-        
+
         /** @var MovieInterface $movie */
-        
+
         $this->data[$movie->getCode()] = $movie;
     }
 }

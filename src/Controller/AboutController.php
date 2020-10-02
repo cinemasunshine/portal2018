@@ -24,7 +24,7 @@ class AboutController extends GeneralController
     public function executeCompany($request, $response, $args)
     {
     }
-    
+
     /**
      * mail magazine action
      *
@@ -36,7 +36,7 @@ class AboutController extends GeneralController
     public function executeMailMagazine($request, $response, $args)
     {
     }
-    
+
     /**
      * mvtk action
      *
@@ -48,7 +48,7 @@ class AboutController extends GeneralController
     public function executeMvtk($request, $response, $args)
     {
     }
-    
+
     /**
      * official app action
      *
@@ -60,7 +60,7 @@ class AboutController extends GeneralController
     public function executeOfficialApp($request, $response, $args)
     {
     }
-    
+
     /**
      * online ticket action
      *
@@ -72,7 +72,7 @@ class AboutController extends GeneralController
     public function executeOnlineTicket($request, $response, $args)
     {
     }
-    
+
     /**
      * privacy action
      *
@@ -84,7 +84,7 @@ class AboutController extends GeneralController
     public function executePrivacy($request, $response, $args)
     {
     }
-    
+
     /**
      * question action
      *
@@ -96,7 +96,7 @@ class AboutController extends GeneralController
     public function executeQuestion($request, $response, $args)
     {
     }
-    
+
     /**
      * sitemap action
      *
@@ -109,7 +109,7 @@ class AboutController extends GeneralController
     {
         $this->data->set('theaters', $this->getTheaters());
     }
-    
+
     /**
      * special ticket action
      *
@@ -121,7 +121,7 @@ class AboutController extends GeneralController
     public function executeSpecialTicket($request, $response, $args)
     {
     }
-    
+
     /**
      * specific quotient action
      *
@@ -133,7 +133,7 @@ class AboutController extends GeneralController
     public function executeSpecificQuotient($request, $response, $args)
     {
     }
-    
+
     /**
      * terms of service action
      *

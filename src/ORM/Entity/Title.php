@@ -158,7 +158,6 @@ class Title extends BaseTitle
         throw new \LogicException('Not allowed.');
     }
 
-
     /**
      * {@inheritDoc}
      *

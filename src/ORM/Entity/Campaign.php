@@ -63,7 +63,6 @@ class Campaign extends BaseCampaign
         throw new \LogicException('Not allowed.');
     }
 
-
     /**
      * {@inheritDoc}
      *

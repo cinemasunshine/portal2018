@@ -27,7 +27,7 @@ class TheaterRepository extends EntityRepository
         $qb = $this->createQueryBuilder('t');
         $qb
             ->where('t.isDeleted = false');
-        
+
         $statusList = [
             Theater::STATUS_OPEN,
             Theater::STATUS_CLOSED,
@@ -35,10 +35,10 @@ class TheaterRepository extends EntityRepository
         $qb
             ->andWhere('t.status IN (:status)')
             ->setParameter('status', $statusList);
-        
+
         return $qb;
     }
-    
+
     /**
      * find by active
      *
@@ -49,10 +49,10 @@ class TheaterRepository extends EntityRepository
         $qb = $this->getActiveQuery();
         $qb
             ->orderBy('t.displayOrder', 'ASC');
-        
+
         return $qb->getQuery()->getResult();
     }
-    
+
     /**
      * find one by name
      *
@@ -65,10 +65,10 @@ class TheaterRepository extends EntityRepository
         $qb
             ->andWhere('t.name = :name')
             ->setParameter('name', $name);
-            
+
         return $qb->getQuery()->getOneOrNullResult();
     }
-    
+
     /**
      * find by special_site
      *
@@ -83,7 +83,7 @@ class TheaterRepository extends EntityRepository
             ->andWhere('s.id = :special_site_id')
             ->setParameter('special_site_id', $specialSiteId)
             ->orderBy('t.displayOrder', 'ASC');
-        
+
         return $qb->getQuery()->getResult();
     }
 }

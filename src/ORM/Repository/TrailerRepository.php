@@ -27,10 +27,10 @@ class TrailerRepository extends EntityRepository
         $qb = $this->createQueryBuilder('t');
         $qb
             ->where('t.isDeleted = false');
-        
+
         return $qb;
     }
-    
+
     /**
      * find by page
      *
@@ -44,10 +44,10 @@ class TrailerRepository extends EntityRepository
             ->join('t.pageTrailers', 'pt')
             ->andWhere('pt.page = :page_id')
             ->setParameter('page_id', $pageId);
-        
+
         return $qb->getQuery()->getResult();
     }
-    
+
     /**
      * find by theater
      *
@@ -61,10 +61,10 @@ class TrailerRepository extends EntityRepository
             ->join('t.theaterTrailers', 'tt')
             ->andWhere('tt.theater = :theater_id')
             ->setParameter('theater_id', $theaterId);
-        
+
         return $qb->getQuery()->getResult();
     }
-    
+
     /**
      * find by special_site
      *
@@ -78,7 +78,7 @@ class TrailerRepository extends EntityRepository
             ->join('t.specialSiteTrailers', 'st')
             ->andWhere('st.specialSite = :special_site_id')
             ->setParameter('special_site_id', $specialSiteId);
-        
+
         return $qb->getQuery()->getResult();
     }
 }
