@@ -137,14 +137,14 @@ executors:
     docker:
       - image: circleci/php:7.3
         auth:
-          username: $DOCKERHUB_USERNAME
+          username: $DOCKERHUB_ID
           password: $DOCKERHUB_PASSWORD
 
   deployment:
     docker:
       - image: cimg/base:stable
         auth:
-          username: $DOCKERHUB_USERNAME
+          username: $DOCKERHUB_ID
           password: $DOCKERHUB_PASSWORD
 
 jobs:
@@ -359,21 +359,25 @@ workflows:
   deploy_development:
     jobs:
       - build_development:
+          context: docker-hub-creds
           filters:
             branches:
               only: develop
 
       - test:
+          context: docker-hub-creds
           requires:
             - build_development
 
       - deploy_to_dev:
+          context: docker-hub-creds
           requires:
             - build_development
 
   deploy_development_feature:
     jobs:
       - build_development:
+          context: docker-hub-creds
           filters:
             branches:
               ignore:
@@ -381,6 +385,7 @@ workflows:
                 - master
 
       - test:
+          context: docker-hub-creds
           requires:
             - build_development
 
@@ -390,21 +395,25 @@ workflows:
             - build_development
 
       - deploy_to_test:
+          context: docker-hub-creds
           requires:
             - deploy_approval
 
   deploy_production:
     jobs:
       - build_development:
+          context: docker-hub-creds
           filters:
             branches:
               only: master
 
       - test:
+          context: docker-hub-creds
           requires:
             - build_development
 
       - build_production:
+          context: docker-hub-creds
           requires:
             - test
 
@@ -414,5 +423,6 @@ workflows:
             - build_production
 
       - deploy_to_prod_release:
+          context: docker-hub-creds
           requires:
             - deploy_approval
