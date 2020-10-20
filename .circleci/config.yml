@@ -13,7 +13,7 @@ references:
       username: $DOCKERHUB_ID
       password: $DOCKERHUB_PASSWORD
 
-  job_setup:
+  job_setup: &job_setup
     context: docker-hub-creds
 
 commands:
