@@ -8,11 +8,11 @@
 
 declare(strict_types=1);
 
-namespace Cinemasunshine\Portal\ORM\Entity;
+namespace App\ORM\Entity;
 
-use Cinemasunshine\ORM\Entity\AdvanceSale as BaseAdvanceSale;
-use Cinemasunshine\ORM\Entity\Theater as BaseTheater;
-use Cinemasunshine\ORM\Entity\Title as BaseTitle;
+use Cinemasunshine\ORM\Entities\AdvanceSale as BaseAdvanceSale;
+use Cinemasunshine\ORM\Entities\Theater as BaseTheater;
+use Cinemasunshine\ORM\Entities\Title as BaseTitle;
 use Doctrine\ORM\Mapping as ORM;
 
 /**

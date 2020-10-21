@@ -1,10 +1,10 @@
 {% extends "4dx/layout.html.twig" %}
 
-{% block title %}4DX特設サイト | {{ parent() }}{% endblock %}
+{% block title %}{{ meta_title('4dx_theater') }}{% endblock %}
 
-{% block description %}シネマサンシャインの4DX特設サイトです。4DXの設備に関する情報や作品情報、鑑賞料金、上映劇場・キャンペーンのご案内など{% endblock %}
+{% block description %}{{ meta_description('4dx_theater') }}{% endblock %}
 
-{% block keywords %}{{ parent() }},予約,オンライン,上映,キャンペーン,4DX,4D,3D,作品情報,{% endblock %}
+{% block keywords %}{{ meta_keywords('4dx_theater') }}{% endblock %}
 
 {% block css %}
 <link href="/css/4dx/top.css" rel="stylesheet">
@@ -76,8 +76,8 @@
 <div class="py-5 text-white">
     {% include '4dx/include/index/title.html.twig' with {
         theaters: theaters,
-        screeningSchedules: screeningSchedules,
-        soonSchedules: soonSchedules,
+        nowShowingSchedules: nowShowingSchedules,
+        commingSoonSchedules: commingSoonSchedules,
     } only %}
 </div>
 

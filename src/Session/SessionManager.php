@@ -6,9 +6,9 @@
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
-namespace Cinemasunshine\Portal\Session;
+namespace App\Session;
 
-use Cinemasunshine\Portal\Session\Container;
+use App\Session\Container;
 use Laminas\Session\Config\ConfigInterface;
 use Laminas\Session\SessionManager as Base;
 
@@ -40,7 +40,7 @@ class SessionManager extends Base
      */
     public function getContainer(string $name = 'default')
     {
-        if (!isset($this->containers[$name])) {
+        if (! isset($this->containers[$name])) {
             $this->containers[$name] = new Container($name);
         }
 

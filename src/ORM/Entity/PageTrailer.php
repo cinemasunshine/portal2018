@@ -8,11 +8,11 @@
 
 declare(strict_types=1);
 
-namespace Cinemasunshine\Portal\ORM\Entity;
+namespace App\ORM\Entity;
 
-use Cinemasunshine\ORM\Entity\Page as BasePage;
-use Cinemasunshine\ORM\Entity\PageTrailer as BasePageTrailer;
-use Cinemasunshine\ORM\Entity\Trailer as BaseTrailer;
+use Cinemasunshine\ORM\Entities\Page as BasePage;
+use Cinemasunshine\ORM\Entities\PageTrailer as BasePageTrailer;
+use Cinemasunshine\ORM\Entities\Trailer as BaseTrailer;
 use Doctrine\ORM\Mapping as ORM;
 
 /**

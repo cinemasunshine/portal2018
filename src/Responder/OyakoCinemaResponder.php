@@ -6,7 +6,7 @@
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
-namespace Cinemasunshine\Portal\Responder;
+namespace App\Responder;
 
 use Psr\Http\Message\ResponseInterface;
 use Slim\Collection;
@@ -20,7 +20,7 @@ class OyakoCinemaResponder extends BaseResponder
     /**
      * index
      *
-     * @param Response $response
+     * @param Response   $response
      * @param Collection $data
      * @return ResponseInterface
      */

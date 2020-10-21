@@ -1,23 +1,11 @@
 {% extends "theater/layout.html.twig" %}
 
-{% set title = '映画館トップ・上映スケジュール | シネマサンシャイン' ~ theater.getNameJa() %}
-{% set description = 'シネマサンシャイン' ~ theater.getNameJa() ~ 'の劇場サイトトップページです。上映スケジュール、ニュース、前売券情報、コンセッション、料金案内、劇場設備、アクセスのご案内など。' %}
-{% set keywords = 'シネマサンシャイン,映画館,映画,シネマ,劇場,座席指定,予約,オンライン,上映,スケジュール,キャンペーン,公式アプリ,ムビチケ,' ~ theater_meta_keywords(theater) %}
+{% set metasKey = 'theater_' ~ theater.getName() %}
+{% block title %}{{ meta_title(metasKey) }}{% endblock %}
 
-{% if theater.getName() == 'gdcs' %}
-    {# SASAKI-579 #}
-    {% set title = '映画館トップ・上映スケジュール | グランドシネマサンシャイン池袋'%}
-    {% set description = 'グランドシネマサンシャイン池袋（映画館）のトップページです。上映スケジュール、映画ニュース、前売券・ムビチケ情報、コンセッション、料金案内、映画館設備、アクセスのご案内など。' %}
-    {% set keywords = 'グランドシネマサンシャイン,映画館,映画,シネマ,劇場,座席指定,チケット予約,オンライン,上映,スケジュール,キャンペーン,公式アプリ,ムビチケ,東京,池袋,応援上映,IMAXレーザー,４DX,SCREEN X(スクリーンX),4DX SCREEN(4DXスクリーン),BESTIA(ベスティア)' %}
-{% elseif theater.getName() == 'heiwajima' %}
-    {% set keywords = keywords ~ ',4DX' %}
-{% endif %}
+{% block description %}{{ meta_description(metasKey) }}{% endblock %}
 
-{% block title %}{{ title }}{% endblock %}
-
-{% block description %}{{ description }}{% endblock %}
-
-{% block keywords %}{{ keywords }}{% endblock %}
+{% block keywords %}{{ meta_keywords(metasKey) }}{% endblock %}
 
 {% block css %}
 <link href="/css/theater/top.css" rel="stylesheet">

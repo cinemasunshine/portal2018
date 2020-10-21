@@ -6,7 +6,7 @@
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
-use Cinemasunshine\Portal\Controller\{
+use App\Controller\{
     AboutController,
     AuthorizationController,
     FourdxController,
@@ -20,11 +20,11 @@ use Cinemasunshine\Portal\Controller\{
     TheaterController,
     TheaterListController
 };
-use Cinemasunshine\Portal\Controller\API\{
+use App\Controller\API\{
     AuthorizationController as AuthorizationAPIController,
     ScheduleController as ScheduleApiController
 };
-use Cinemasunshine\Portal\Controller\Development\CacheController;
+use App\Controller\Development\DoctrineController;
 
 $app->get('/', IndexController::class . ':index')->setName('homepage');
 
@@ -116,7 +116,7 @@ $app->group('/4dx-screen', function () {
     $this->get('/theater/', FourdxScreenController::class . ':theater')->setName('4dx_screen_theater');
 });
 
-# APIのURL設計はひとまずそのまま SASAKI-315
+// APIのURL設計はひとまずそのまま SASAKI-315
 $app->group('/api', function () {
     $this->group('/auth', function () {
         $this->get('/token', AuthorizationAPIController::class . ':token');
@@ -133,9 +133,8 @@ $app->group('/api', function () {
  * IPアドレスなどでアクセス制限することを推奨します。
  */
 $app->group('/dev', function () {
-    $this->group('/cache', function () {
-        $this->get('/stats', CacheController::class . ':stats');
-        $this->get('/clear/query', CacheController::class . ':clearQuery');
-        $this->get('/clear/metadata', CacheController::class . ':clearMetadata');
+    $this->group('/doctrine', function () {
+        $this->get('/cache/stats', DoctrineController::class . ':cacheStats');
+        $this->get('/cache/{target:query|metadata}/clear', DoctrineController::class . ':cacheClear');
     });
 });

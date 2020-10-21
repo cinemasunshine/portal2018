@@ -8,10 +8,10 @@
 
 declare(strict_types=1);
 
-namespace Cinemasunshine\Portal\ORM\Entity;
+namespace App\ORM\Entity;
 
-use Cinemasunshine\ORM\Entity\OyakoCinemaSchedule as BaseOyakoCinemaSchedule;
-use Cinemasunshine\ORM\Entity\OyakoCinemaTitle as BaseOyakoCinemaTitle;
+use Cinemasunshine\ORM\Entities\OyakoCinemaSchedule as BaseOyakoCinemaSchedule;
+use Cinemasunshine\ORM\Entities\OyakoCinemaTitle as BaseOyakoCinemaTitle;
 use Doctrine\ORM\Mapping as ORM;
 
 /**

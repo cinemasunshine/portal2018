@@ -8,10 +8,10 @@
 
 declare(strict_types=1);
 
-namespace Cinemasunshine\Portal\Schedule\Entity\V3;
+namespace App\Schedule\Entity\V3;
 
-use Cinemasunshine\Portal\Schedule\Entity\PortalEntityInterface;
-use Cinemasunshine\Portal\Schedule\Collection\Movie as MovieCollection;
+use App\Schedule\Entity\PortalEntityInterface;
+use App\Schedule\Collection\Movie as MovieCollection;
 use Cinemasunshine\Schedule\Entity\V3\Schedule as BaseEntity;
 
 /**
@@ -35,14 +35,14 @@ class Schedule extends BaseEntity implements PortalEntityInterface
      */
     public function toArray($deep = true)
     {
-        $data = array(
+        $data = [
             'date'         => $this->getDate(),
             'usable'       => $this->getUsable(),
             'has_pre_sale' => $this->getHasPreSale(),
-        );
+        ];
 
         if ($deep) {
-            $data['movie'] = array();
+            $data['movie'] = [];
 
             foreach ($this->getMovieCollection() as $movie) {
                 $data['movie'][] = $movie->toArray();

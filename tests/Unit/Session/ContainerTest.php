@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Session;
 
-use Cinemasunshine\Portal\Session\Container;
+use App\Session\Container;
 use Mockery;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use PHPUnit\Framework\TestCase;

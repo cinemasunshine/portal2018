@@ -10,8 +10,8 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Authorization\Grant;
 
-use Cinemasunshine\Portal\Authorization\Grant\RefreshToken;
-use Cinemasunshine\Portal\Authorization\Token\AuthorizationCodeToken;
+use App\Authorization\Grant\RefreshToken;
+use App\Authorization\Token\AuthorizationCodeToken;
 use GuzzleHttp\Client as HttpClient;
 use Mockery;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
@@ -62,8 +62,8 @@ final class RefreshTokenTest extends TestCase
      */
     public function testConstruct()
     {
-        $host = 'example.com';
-        $clientId = 'client_id';
+        $host         = 'example.com';
+        $clientId     = 'client_id';
         $clientSecret = 'client_secret';
 
         $targetMock = $this->createTargetMock();
@@ -115,9 +115,7 @@ final class RefreshTokenTest extends TestCase
      */
     public function testRequestToken()
     {
-        $contents = [
-            'foo' => 'bar',
-        ];
+        $contents = ['foo' => 'bar'];
 
         $streamMock = $this->createStreamMock();
         $streamMock
@@ -140,8 +138,9 @@ final class RefreshTokenTest extends TestCase
             ->with('/token', Mockery::type('array'))
             ->andReturn($responseMock);
 
-        $refreshToken = 'refresh_token';
+        $refreshToken    = 'refresh_token';
         $createTokenData = $contents;
+
         $createTokenData['refresh_token'] = $refreshToken;
 
         $tokenMock = $this->createTokenMock();
@@ -151,7 +150,7 @@ final class RefreshTokenTest extends TestCase
             ->with($createTokenData)
             ->andReturn($tokenMock);
 
-        $clientId = 'client_id';
+        $clientId     = 'client_id';
         $clientSecret = 'client_secret';
 
         $targetMock = $this->createTargetMock();
@@ -160,6 +159,7 @@ final class RefreshTokenTest extends TestCase
             ->makePartial();
 
         $targetRef = $this->createTargetReflection();
+
         $clientIdPropertyRef = $targetRef->getProperty('clientId');
         $clientIdPropertyRef->setAccessible(true);
         $clientIdPropertyRef->setValue($targetMock, $clientId);
@@ -172,9 +172,7 @@ final class RefreshTokenTest extends TestCase
         $httpClientPropertyRef->setAccessible(true);
         $httpClientPropertyRef->setValue($targetMock, $httpClient);
 
-        $headers = [
-            'foo' => 'bar',
-        ];
+        $headers = ['foo' => 'bar'];
         $targetMock
             ->shouldReceive('getRequestHeaders')
             ->once()

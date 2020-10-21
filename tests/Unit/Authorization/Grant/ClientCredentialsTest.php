@@ -10,8 +10,8 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Authorization\Grant;
 
-use Cinemasunshine\Portal\Authorization\Grant\ClientCredentials;
-use Cinemasunshine\Portal\Authorization\Token\ClientCredentialsToken;
+use App\Authorization\Grant\ClientCredentials;
+use App\Authorization\Token\ClientCredentialsToken;
 use GuzzleHttp\Client as HttpClient;
 use Mockery;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
@@ -62,8 +62,8 @@ final class ClientCredentialsTest extends TestCase
      */
     public function testConstruct()
     {
-        $host = 'example.com';
-        $clientId = 'client_id';
+        $host         = 'example.com';
+        $clientId     = 'client_id';
         $clientSecret = 'client_secret';
 
         $targetMock = $this->createTargetMock();
@@ -115,9 +115,7 @@ final class ClientCredentialsTest extends TestCase
      */
     public function testRequestToken()
     {
-        $contents = [
-            'foo' => 'bar',
-        ];
+        $contents = ['foo' => 'bar'];
 
         $streamMock = $this->createStreamMock();
         $streamMock
@@ -147,7 +145,7 @@ final class ClientCredentialsTest extends TestCase
             ->with($contents)
             ->andReturn($tokenMock);
 
-        $clientId = 'client_id';
+        $clientId     = 'client_id';
         $clientSecret = 'client_secret';
 
         $targetMock = $this->createTargetMock();
@@ -156,6 +154,7 @@ final class ClientCredentialsTest extends TestCase
             ->makePartial();
 
         $targetRef = $this->createTargetReflection();
+
         $clientIdPropertyRef = $targetRef->getProperty('clientId');
         $clientIdPropertyRef->setAccessible(true);
         $clientIdPropertyRef->setValue($targetMock, $clientId);
@@ -168,9 +167,7 @@ final class ClientCredentialsTest extends TestCase
         $httpClientPropertyRef->setAccessible(true);
         $httpClientPropertyRef->setValue($targetMock, $httpClient);
 
-        $headers = [
-            'foo' => 'bar',
-        ];
+        $headers = ['foo' => 'bar'];
         $targetMock
             ->shouldReceive('getRequestHeaders')
             ->once()

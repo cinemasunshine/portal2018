@@ -8,9 +8,9 @@
 
 declare(strict_types=1);
 
-namespace Cinemasunshine\Portal\ORM\Entity;
+namespace App\ORM\Entity;
 
-use Cinemasunshine\ORM\Entity\Title as BaseTitle;
+use Cinemasunshine\ORM\Entities\Title as BaseTitle;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 use Doctrine\ORM\Mapping as ORM;
@@ -158,7 +158,6 @@ class Title extends BaseTitle
         throw new \LogicException('Not allowed.');
     }
 
-
     /**
      * {@inheritDoc}
      *
@@ -197,8 +196,8 @@ class Title extends BaseTitle
     public function getUniversalLabel()
     {
         $univarsal = $this->getUniversal();
-        $types = self::getUniversalTypes();
-        $labels = [];
+        $types     = self::getUniversalTypes();
+        $labels    = [];
 
         foreach ($univarsal as $value) {
             if (isset($types[$value])) {

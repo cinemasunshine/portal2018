@@ -6,9 +6,9 @@
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
-namespace Cinemasunshine\Portal\Controller;
+namespace App\Controller;
 
-use Cinemasunshine\Portal\ORM\Entity;
+use App\ORM\Entity;
 
 /**
  * Index controller
@@ -77,7 +77,7 @@ class IndexController extends GeneralController
             /** @var Entity\Theater $theater */
             $area = $theater->getArea();
 
-            if (!isset($areaToTheaters[$area])) {
+            if (! isset($areaToTheaters[$area])) {
                 $areaToTheaters[$area] = [];
             }
 

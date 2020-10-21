@@ -6,10 +6,10 @@
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
-namespace Cinemasunshine\Portal\Controller;
+namespace App\Controller;
 
+use App\ORM\Entity;
 use Slim\Exception\NotFoundException;
-use Cinemasunshine\Portal\ORM\Entity;
 
 /**
  * News controller
@@ -27,10 +27,10 @@ class NewsController extends GeneralController
     public function executeList($request, $response, $args)
     {
         $this->data->set('newsList', $this->getNewsList());
-        
+
         $this->data->set('campaigns', $this->getCampaigns(self::PAGE_ID));
     }
-    
+
     /**
      * return news list
      *
@@ -42,7 +42,7 @@ class NewsController extends GeneralController
             ->getRepository(Entity\News::class)
             ->findByPage(self::PAGE_ID);
     }
-    
+
     /**
      * show action
      *
@@ -56,13 +56,13 @@ class NewsController extends GeneralController
         $news = $this->em
             ->getRepository(Entity\News::class)
             ->findOneById($args['id']);
-        
+
         if (is_null($news)) {
             throw new NotFoundException($request, $response);
         }
-        
+
         /**@var Entity\News $news */
-        
+
         $this->data->set('news', $news);
     }
 }

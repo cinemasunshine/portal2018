@@ -1,10 +1,10 @@
 {% extends '4dx_screen/layout.html.twig' %}
 
-{% block title %}作品一覧 | {{ parent() }}4DX SCREEN特設サイト{% endblock %}
+{% block title %}{{ meta_title('4dx_screen_schedule_list') }}{% endblock %}
 
-{% block description %}シネマサンシャイン4DX SCREEN特設サイトの作品一覧ページです。上映中・上映予定の映画作品のご案内{% endblock %}
+{% block description %}{{ meta_description('4dx_screen_schedule_list') }}{% endblock %}
 
-{% block keywords %}{{ parent() }},キャンペーン,上映中,上映予定,公開,作品情報,4DX SCREEN{% endblock %}
+{% block keywords %}{{ meta_keywords('4dx_screen_schedule_list') }}{% endblock %}
 
 {% block css %}
 <link href="/css/movie/list.css" rel="stylesheet">
@@ -49,7 +49,7 @@
 
     <div class="screening d-block">
 
-    {% for schedule in screeningSchedules %}
+    {% for schedule in nowShowingSchedules %}
         {% include '4dx_screen/schedule/include/list_row.html.twig' with {
         schedule: schedule,
         theaters: theaters
@@ -59,7 +59,7 @@
     </div>
     <div class="scheduled d-none">
 
-    {% for schedule in soonSchedules %}
+    {% for schedule in commingSoonSchedules %}
         {% include '4dx_screen/schedule/include/list_row.html.twig' with {
             schedule: schedule,
             theaters: theaters

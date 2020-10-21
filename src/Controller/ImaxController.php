@@ -6,10 +6,10 @@
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
-namespace Cinemasunshine\Portal\Controller;
+namespace App\Controller;
 
+use App\ORM\Entity;
 use Slim\Exception\NotFoundException;
-use Cinemasunshine\Portal\ORM\Entity;
 
 /**
  * Imax controller
@@ -36,9 +36,9 @@ class ImaxController extends SpecialSiteController
 
         $this->data->set('theaters', $this->getImaxTheaters());
 
-        $this->data->set('screeningSchedules', $this->getScreeningSchedules());
+        $this->data->set('nowShowingSchedules', $this->findNowShowingSchedules());
 
-        $this->data->set('soonSchedules', $this->getSoonSchedules());
+        $this->data->set('commingSoonSchedules', $this->findCommingSoonSchedules());
 
         $this->data->set('campaigns', $this->getCampaigns());
 
@@ -95,27 +95,23 @@ class ImaxController extends SpecialSiteController
     }
 
     /**
-     * return screening schedules
-     *
      * @return Entity\Schedule[]
      */
-    protected function getScreeningSchedules()
+    protected function findNowShowingSchedules(): array
     {
         return $this->em
             ->getRepository(Entity\Schedule::class)
-            ->findScreeningForImax();
+            ->findNowShowingForImax();
     }
 
     /**
-     * return soon schedules
-     *
      * @return Entity\Schedule[]
      */
-    protected function getSoonSchedules()
+    protected function findCommingSoonSchedules(): array
     {
         return $this->em
             ->getRepository(Entity\Schedule::class)
-            ->findSoonForImax();
+            ->findCommingSoonForImax();
     }
 
     /**
@@ -167,9 +163,9 @@ class ImaxController extends SpecialSiteController
     {
         $this->data->set('theaters', $this->getImaxTheaters());
 
-        $this->data->set('screeningSchedules', $this->getScreeningSchedules());
+        $this->data->set('nowShowingSchedules', $this->findNowShowingSchedules());
 
-        $this->data->set('soonSchedules', $this->getSoonSchedules());
+        $this->data->set('commingSoonSchedules', $this->findCommingSoonSchedules());
     }
 
     /**

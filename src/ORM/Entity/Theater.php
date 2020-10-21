@@ -8,15 +8,15 @@
 
 declare(strict_types=1);
 
-namespace Cinemasunshine\Portal\ORM\Entity;
+namespace App\ORM\Entity;
 
-use Cinemasunshine\ORM\Entity\Theater as BaseTheater;
+use Cinemasunshine\ORM\Entities\Theater as BaseTheater;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Theater entity class
  *
- * @ORM\Entity(readOnly=true, repositoryClass="Cinemasunshine\Portal\ORM\Repository\TheaterRepository")
+ * @ORM\Entity(readOnly=true, repositoryClass="App\ORM\Repository\TheaterRepository")
  * @ORM\Table(name="theater", options={"collate"="utf8mb4_general_ci"})
  * @ORM\HasLifecycleCallbacks
  */

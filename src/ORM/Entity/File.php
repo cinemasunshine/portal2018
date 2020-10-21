@@ -8,9 +8,9 @@
 
 declare(strict_types=1);
 
-namespace Cinemasunshine\Portal\ORM\Entity;
+namespace App\ORM\Entity;
 
-use Cinemasunshine\ORM\Entity\File as BaseFile;
+use Cinemasunshine\ORM\Entities\File as BaseFile;
 use Doctrine\ORM\Mapping as ORM;
 
 /**

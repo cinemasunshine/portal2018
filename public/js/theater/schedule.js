@@ -3,6 +3,7 @@ var MP_TICKET_ENTRANCE;
 var APP_ENV;
 var API_TIMEOUT = 60 * 1000;
 var PRE_SALE_DIFFERENCE_DAY = 2;
+var SCHEDULE_STATUS_THRESHOLD_VALUE = 20;
 
 /**
  * パフォーマンス
@@ -26,7 +27,7 @@ var Performance = (function () {
             { symbolText: '△', symbolClassName: 'status-02', icon: '/images/fixed/status_02.svg', className: 'bg-yellow text-white', text: '購入' },
             { symbolText: '○', symbolClassName: 'status-01', icon: '/images/fixed/status_01.svg', className: 'bg-blue text-white', text: '購入' }
         ];
-        var threshold = 10;
+        var threshold = SCHEDULE_STATUS_THRESHOLD_VALUE;
         return (value === 0)
             ? availability[0] : (value <= threshold)
                 ? availability[1] : availability[2];
@@ -62,9 +63,13 @@ var Performance = (function () {
     Performance.prototype.isWindow = function () {
         var startDate = moment(this.date + ' ' + this.time.start_time, 'YYYYMMDD HHmm');
         var now = moment();
+        var WINDOW_TIME_FROM_VALUE = 0;
+        var WINDOW_TIME_FROM_UNIT = 'minutes';
+        var WINDOW_TIME_THROUGH_VALUE = 10;
+        var WINDOW_TIME_THROUGH_UNIT = 'minutes';
         return (this.time.seat_count.cnt_reserve_free > 0
-            && moment(startDate).add(-60, 'minutes') < now
-            && moment(startDate).add(10, 'minutes') > now);
+            && moment(startDate).add(WINDOW_TIME_FROM_VALUE, WINDOW_TIME_FROM_UNIT) < now
+            && moment(startDate).add(WINDOW_TIME_THROUGH_VALUE, WINDOW_TIME_THROUGH_UNIT) > now);
     };
     /**
      * 上映時間取得

@@ -6,10 +6,10 @@
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
-namespace Cinemasunshine\Portal\Controller;
+namespace App\Controller;
 
+use App\ORM\Entity;
 use Slim\Exception\NotFoundException;
-use Cinemasunshine\Portal\ORM\Entity;
 
 /**
  * Theater controller
@@ -308,7 +308,7 @@ class TheaterController extends BaseController
      */
     protected function getNewsList(Entity\Theater $theater, $category = [], ?int $limit = null)
     {
-        if (!is_array($category)) {
+        if (! is_array($category)) {
             $category = [ $category ];
         }
 

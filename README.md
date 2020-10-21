@@ -8,7 +8,7 @@
 
 ## システム要件
 
-- PHP: 7.2
+- PHP: 7.3
 - MySQL: 5.7
 - Redis
 - Azure App Service (Windows)

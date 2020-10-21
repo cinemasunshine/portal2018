@@ -8,10 +8,10 @@
 
 declare(strict_types=1);
 
-namespace Cinemasunshine\Portal\ORM\Entity;
+namespace App\ORM\Entity;
 
-use Cinemasunshine\ORM\Entity\AdminUser as BaseAdminUser;
-use Cinemasunshine\ORM\Entity\Theater as BaseTheater;
+use Cinemasunshine\ORM\Entities\AdminUser as BaseAdminUser;
+use Cinemasunshine\ORM\Entities\Theater as BaseTheater;
 use Doctrine\ORM\Mapping as ORM;
 
 /**

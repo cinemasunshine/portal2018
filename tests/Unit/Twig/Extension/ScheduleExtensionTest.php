@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Twig\Extension;
 
-use Cinemasunshine\Portal\Twig\Extension\ScheduleExtension;
+use App\Twig\Extension\ScheduleExtension;
 use Mockery;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use PHPUnit\Framework\TestCase;
@@ -32,10 +32,11 @@ final class ScheduleExtensionTest extends TestCase
     public function testConstruct()
     {
         $extensionMock = Mockery::mock(ScheduleExtension::class);
-        $settings = [];
+        $settings      = [];
+
+        $extensionClassRef = new \ReflectionClass(ScheduleExtension::class);
 
         // execute constructor
-        $extensionClassRef = new \ReflectionClass(ScheduleExtension::class);
         $constructorRef = $extensionClassRef->getConstructor();
         $constructorRef->invoke($extensionMock, $settings);
 
@@ -76,13 +77,13 @@ final class ScheduleExtensionTest extends TestCase
      */
     public function testGetApiUrl()
     {
+        $settings = ['api_url' => 'http://example.com'];
+
         $extensionMock = Mockery::mock(ScheduleExtension::class)
             ->makePartial();
-        $settings = [
-            'api_url' => 'http://example.com',
-        ];
 
         $extensionClassRef = new \ReflectionClass(ScheduleExtension::class);
+
         $settingsPropertyRef = $extensionClassRef->getProperty('settings');
         $settingsPropertyRef->setAccessible(true);
         $settingsPropertyRef->setValue($extensionMock, $settings);

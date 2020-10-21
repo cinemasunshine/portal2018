@@ -6,7 +6,7 @@
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
-namespace Cinemasunshine\Portal\Responder;
+namespace App\Responder;
 
 use Slim\Views\Twig;
 
@@ -17,7 +17,7 @@ abstract class BaseResponder extends AbstractResponder
 {
     /** @var Twig view */
     protected $view;
-    
+
     /**
      * contsruct
      *

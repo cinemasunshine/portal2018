@@ -1,10 +1,10 @@
 {% extends "layout.html.twig" %}
 
-{% block title %}特定商取引法に基づく表記 | {{ parent() }}{% endblock %}
+{% block title %}{{ meta_title('about_specific_quotient') }}{% endblock %}
 
-{% block description %}特定商取引法に基づく表記{% endblock %}
+{% block description %}{{ meta_description('about_specific_quotient') }}{% endblock %}
 
-{% block keywords %}{{ parent()}},特定商取引法{% endblock %}
+{% block keywords %}{{ meta_keywords('about_specific_quotient') }}{% endblock %}
 
 {% block contents %}
 <div class="width mx-auto p-3">
@@ -54,7 +54,7 @@
                     いただくことによって行います。「引換番号」および「購入チケット確認用暗証番号」を失念された場合、発券することができないことがございます。
                     また、上映開始時刻を過ぎますと発券できません。予めご了承下さい。なお、郵便または宅配便等によるチケットの送付は行っておりません。<br>
                     購入枚数の制限一回のご購入手続において購入いただけますチケット枚数の上限は、4枚までとさせていただきます。5枚以上購入される場合には、再度お手続きをお願いいたします。
-                    <br> チケットは映画上映当日の上映開始1時間前までご購入いただけます。
+                    <br> チケットは映画上映当日の上映開始時間までご購入いただけます。
                 </p>
             </div>
             <div class="mb-4">

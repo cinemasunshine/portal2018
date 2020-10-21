@@ -6,7 +6,7 @@
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
-namespace Cinemasunshine\Portal\Responder;
+namespace App\Responder;
 
 use Psr\Http\Message\ResponseInterface;
 use Slim\Collection;
@@ -20,7 +20,7 @@ class ScreenXResponder extends BaseResponder
     /**
      * index
      *
-     * @param Response $response
+     * @param Response   $response
      * @param Collection $data
      * @return ResponseInterface
      */
@@ -32,7 +32,7 @@ class ScreenXResponder extends BaseResponder
     /**
      * about
      *
-     * @param Response $response
+     * @param Response   $response
      * @param Collection $data
      * @return ResponseInterface
      */
@@ -44,7 +44,7 @@ class ScreenXResponder extends BaseResponder
     /**
      * schedule list
      *
-     * @param Response $response
+     * @param Response   $response
      * @param Collection $data
      * @return ResponseInterface
      */
@@ -56,7 +56,7 @@ class ScreenXResponder extends BaseResponder
     /**
      * schedule show
      *
-     * @param Response $response
+     * @param Response   $response
      * @param Collection $data
      * @return ResponseInterface
      */
@@ -68,7 +68,7 @@ class ScreenXResponder extends BaseResponder
     /**
      * news list
      *
-     * @param Response $response
+     * @param Response   $response
      * @param Collection $data
      * @return ResponseInterface
      */
@@ -80,7 +80,7 @@ class ScreenXResponder extends BaseResponder
     /**
      * news show
      *
-     * @param Response $response
+     * @param Response   $response
      * @param Collection $data
      * @return ResponseInterface
      */
@@ -92,7 +92,7 @@ class ScreenXResponder extends BaseResponder
     /**
      * theater
      *
-     * @param Response $response
+     * @param Response   $response
      * @param Collection $data
      * @return ResponseInterface
      */

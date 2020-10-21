@@ -6,11 +6,11 @@
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
-namespace Cinemasunshine\Portal\ORM\Repository;
+namespace App\ORM\Repository;
 
+use App\ORM\Entity\AdvanceTicket;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\QueryBuilder;
-use Cinemasunshine\Portal\ORM\Entity\AdvanceTicket;
 
 /**
  * Advance Ticket repository class
@@ -25,7 +25,7 @@ class AdvanceTicketRepository extends EntityRepository
     protected function getActiveQuery()
     {
         $qb = $this->createQueryBuilder('t');
-        
+
         /**
          * orderByでNULLを最後にするためのSELECT
          * ISNULL関数は使えないのでCASEで対応
@@ -57,10 +57,10 @@ SQL;
              */
             ->orderBy('publishingExpectedDateIsNull', 'ASC')
             ->addOrderBy('s.publishingExpectedDate', 'ASC');
-        
+
         return $qb;
     }
-    
+
     /**
      * find by theater
      *
@@ -70,11 +70,11 @@ SQL;
     public function findByTheater(int $theaterId)
     {
         $qb = $this->getActiveQuery();
-        
+
         $qb
             ->andWhere('s.theater = :theater_id')
             ->setParameter('theater_id', $theaterId);
-        
+
         return $qb->getQuery()->getResult();
     }
 }

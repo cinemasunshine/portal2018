@@ -2,11 +2,11 @@
 
 {% set title = schedule.getTitle() %}
 
-{% block title %}{{ title.getName() }} | {{ parent() }}IMAX特設サイト{% endblock %}
+{% block title %}{{ title.getName() }} | シネマサンシャインIMAX特設サイト{% endblock %}
 
 {% block description %}シネマサンシャインIMAX特設サイトの作品紹介ページです。「{{ title.getName() }}」の作品情報の詳細はこちら{% endblock %}
 
-{% block keywords %}{{ parent()}},{{ title.getName() }},{{ title.getDirector()|replace({'、': ','}) }},{{ title.getCast()|replace({'、': ','}) }},IMAX,IMAX3D,{% endblock %}
+{% block keywords %}シネマサンシャイン,映画館,映画,シネマ,劇場,{{ title.getName() }},{{ title.getDirector()|replace({'、': ','}) }},{{ title.getCast()|replace({'、': ','}) }},IMAX,IMAX3D,{% endblock %}
 
 {% block css %}
 <link href="/css/movie/details.css" rel="stylesheet">

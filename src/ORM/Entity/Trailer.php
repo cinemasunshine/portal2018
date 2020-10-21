@@ -8,18 +8,18 @@
 
 declare(strict_types=1);
 
-namespace Cinemasunshine\Portal\ORM\Entity;
+namespace App\ORM\Entity;
 
-use Cinemasunshine\ORM\Entity\File as BaseFile;
-use Cinemasunshine\ORM\Entity\Title as BaseTitle;
-use Cinemasunshine\ORM\Entity\Trailer as BaseTrailer;
+use Cinemasunshine\ORM\Entities\File as BaseFile;
+use Cinemasunshine\ORM\Entities\Title as BaseTitle;
+use Cinemasunshine\ORM\Entities\Trailer as BaseTrailer;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Trailer entity class
  *
- * @ORM\Entity(readOnly=true, repositoryClass="Cinemasunshine\Portal\ORM\Repository\TrailerRepository")
+ * @ORM\Entity(readOnly=true, repositoryClass="App\ORM\Repository\TrailerRepository")
  * @ORM\Table(name="trailer", options={"collate"="utf8mb4_general_ci"})
  * @ORM\HasLifecycleCallbacks
  */

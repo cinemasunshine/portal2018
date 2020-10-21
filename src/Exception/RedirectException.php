@@ -6,7 +6,7 @@
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
-namespace Cinemasunshine\Portal\Exception;
+namespace App\Exception;
 
 use Psr\Http\Message\UriInterface;
 
@@ -17,7 +17,7 @@ class RedirectException extends \Exception
 {
     protected $url;
     protected $status;
-    
+
     /**
      * Undocumented function
      *
@@ -26,12 +26,12 @@ class RedirectException extends \Exception
      */
     public function __construct($url, $status = null)
     {
-        $this->url = $url;
+        $this->url    = $url;
         $this->status = $status;
-        
+
         parent::__construct('redirect');
     }
-    
+
     /**
      * get url
      *
@@ -41,7 +41,7 @@ class RedirectException extends \Exception
     {
         return $this->url;
     }
-    
+
     /**
      * get status
      *

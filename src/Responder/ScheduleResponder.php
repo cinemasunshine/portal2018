@@ -6,7 +6,7 @@
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
-namespace Cinemasunshine\Portal\Responder;
+namespace App\Responder;
 
 use Psr\Http\Message\ResponseInterface;
 use Slim\Collection;
@@ -20,7 +20,7 @@ class ScheduleResponder extends BaseResponder
     /**
      * list
      *
-     * @param Response $response
+     * @param Response   $response
      * @param Collection $data
      * @return ResponseInterface
      */
@@ -32,7 +32,7 @@ class ScheduleResponder extends BaseResponder
     /**
      * show
      *
-     * @param Response $response
+     * @param Response   $response
      * @param Collection $data
      * @return ResponseInterface
      */

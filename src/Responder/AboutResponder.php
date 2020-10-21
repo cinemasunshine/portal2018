@@ -6,7 +6,7 @@
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
-namespace Cinemasunshine\Portal\Responder;
+namespace App\Responder;
 
 use Psr\Http\Message\ResponseInterface;
 use Slim\Collection;
@@ -20,7 +20,7 @@ class AboutResponder extends BaseResponder
     /**
      * company
      *
-     * @param Response $response
+     * @param Response   $response
      * @param Collection $data
      * @return ResponseInterface
      */
@@ -32,7 +32,7 @@ class AboutResponder extends BaseResponder
     /**
      * mail magazine
      *
-     * @param Response $response
+     * @param Response   $response
      * @param Collection $data
      * @return ResponseInterface
      */
@@ -44,7 +44,7 @@ class AboutResponder extends BaseResponder
     /**
      * mvtk
      *
-     * @param Response $response
+     * @param Response   $response
      * @param Collection $data
      * @return ResponseInterface
      */
@@ -56,7 +56,7 @@ class AboutResponder extends BaseResponder
     /**
      * official app
      *
-     * @param Response $response
+     * @param Response   $response
      * @param Collection $data
      * @return ResponseInterface
      */
@@ -68,7 +68,7 @@ class AboutResponder extends BaseResponder
     /**
      * online ticket
      *
-     * @param Response $response
+     * @param Response   $response
      * @param Collection $data
      * @return ResponseInterface
      */
@@ -80,7 +80,7 @@ class AboutResponder extends BaseResponder
     /**
      * privacy
      *
-     * @param Response $response
+     * @param Response   $response
      * @param Collection $data
      * @return ResponseInterface
      */
@@ -92,7 +92,7 @@ class AboutResponder extends BaseResponder
     /**
      * question
      *
-     * @param Response $response
+     * @param Response   $response
      * @param Collection $data
      * @return ResponseInterface
      */
@@ -104,7 +104,7 @@ class AboutResponder extends BaseResponder
     /**
      * sitemap
      *
-     * @param Response $response
+     * @param Response   $response
      * @param Collection $data
      * @return ResponseInterface
      */
@@ -116,7 +116,7 @@ class AboutResponder extends BaseResponder
     /**
      * special ticket
      *
-     * @param Response $response
+     * @param Response   $response
      * @param Collection $data
      * @return ResponseInterface
      */
@@ -128,7 +128,7 @@ class AboutResponder extends BaseResponder
     /**
      * specific quotient
      *
-     * @param Response $response
+     * @param Response   $response
      * @param Collection $data
      * @return ResponseInterface
      */
@@ -140,7 +140,7 @@ class AboutResponder extends BaseResponder
     /**
      * terms of service
      *
-     * @param Response $response
+     * @param Response   $response
      * @param Collection $data
      * @return ResponseInterface
      */

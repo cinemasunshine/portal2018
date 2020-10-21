@@ -10,11 +10,11 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Application\Handlers;
 
-use Cinemasunshine\Portal\Application\Handlers\PhpError;
+use App\Application\Handlers\PhpError;
 use Mockery;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
+use Monolog\Logger;
 use PHPUnit\Framework\TestCase;
-use Slim\Container;
 
 /**
  * PhpError handler test
@@ -24,25 +24,27 @@ final class PhpErrorTest extends TestCase
     use MockeryPHPUnitIntegration;
 
     /**
-     * Create Container mock
-     *
-     * @return \Mockery\MockInterface|\Mockery\LegacyMockInterface|Container
+     * @return \ReflectionClass
      */
-    protected function createContainerMock()
+    protected function createTargetReflection()
     {
-        return Mockery::mock(Container::class);
+        return new \ReflectionClass(PhpError::class);
     }
 
     /**
-     * Create Logger mock
-     *
-     * ひとまず仮のクラスで実装する。
-     *
-     * @return \Mockery\MockInterface|\Mockery\LegacyMockInterface
+     * @return \Mockery\MockInterface&\Mockery\LegacyMockInterface&PhpError
+     */
+    protected function createTargetMock()
+    {
+        return Mockery::mock(PhpError::class);
+    }
+
+    /**
+     * @return \Mockery\MockInterface&\Mockery\LegacyMockInterface&Logger
      */
     protected function createLoggerMock()
     {
-        return Mockery::mock('Logger');
+        return Mockery::mock(Logger::class);
     }
 
     /**
@@ -53,40 +55,29 @@ final class PhpErrorTest extends TestCase
      */
     public function testConstruct()
     {
-        $containerMock = $this->createContainerMock();
-
         $loggerMock = $this->createLoggerMock();
-        $containerMock
-            ->shouldReceive('get')
-            ->once()
-            ->with('logger')
-            ->andReturn($loggerMock);
 
-        $settings = [
-            'displayErrorDetails' => true,
-        ];
-        $containerMock
-            ->shouldReceive('get')
-            ->once()
-            ->with('settings')
-            ->andReturn($settings);
+        $displayErrorDetails = true;
 
-        $phpErrorHandlerMock = Mockery::mock(PhpError::class);
+        $targetMock = $this->createTargetMock();
+        $targetRef  = $this->createTargetReflection();
 
         // execute constructor
-        $phpErrorHandlerRef = new \ReflectionClass(PhpError::class);
-        $phpErrorHandlerConstructor = $phpErrorHandlerRef->getConstructor();
-        $phpErrorHandlerConstructor->invoke($phpErrorHandlerMock, $containerMock);
-
-        // test property "container"
-        $containerPropertyRef = $phpErrorHandlerRef->getProperty('container');
-        $containerPropertyRef->setAccessible(true);
-        $this->assertEquals($containerMock, $containerPropertyRef->getValue($phpErrorHandlerMock));
+        $phpErrorHandlerConstructor = $targetRef->getConstructor();
+        $phpErrorHandlerConstructor->invoke($targetMock, $loggerMock, $displayErrorDetails);
 
         // test property "logger"
-        $loggerPropertyRef = $phpErrorHandlerRef->getProperty('logger');
+        $loggerPropertyRef = $targetRef->getProperty('logger');
         $loggerPropertyRef->setAccessible(true);
-        $this->assertEquals($loggerMock, $loggerPropertyRef->getValue($phpErrorHandlerMock));
+        $this->assertEquals($loggerMock, $loggerPropertyRef->getValue($targetMock));
+
+        // test property "displayErrorDetails"
+        $displayErrorDetailsPropertyRef = $targetRef->getProperty('displayErrorDetails');
+        $displayErrorDetailsPropertyRef->setAccessible(true);
+        $this->assertEquals(
+            $displayErrorDetails,
+            $displayErrorDetailsPropertyRef->getValue($targetMock)
+        );
     }
 
     /**
@@ -97,18 +88,21 @@ final class PhpErrorTest extends TestCase
     public function testWriteToErrorLog()
     {
         $exception = new \Exception();
-        $phpErrorHandlerMock = Mockery::mock(PhpError::class)->makePartial();
-        $phpErrorHandlerMock->shouldAllowMockingProtectedMethods();
-        $phpErrorHandlerMock
+
+        $targetMock = $this->createTargetMock();
+        $targetMock
+            ->makePartial()
+            ->shouldAllowMockingProtectedMethods();
+        $targetMock
             ->shouldReceive('log')
             ->once()
             ->with($exception);
 
-        $writeToErrorLogRef = new \ReflectionMethod($phpErrorHandlerMock, 'writeToErrorLog');
+        $writeToErrorLogRef = new \ReflectionMethod($targetMock, 'writeToErrorLog');
         $writeToErrorLogRef->setAccessible(true);
 
         // execute
-        $writeToErrorLogRef->invoke($phpErrorHandlerMock, $exception);
+        $writeToErrorLogRef->invoke($targetMock, $exception);
     }
 
     /**
@@ -130,19 +124,20 @@ final class PhpErrorTest extends TestCase
             ->once()
             ->with($message, Mockery::type('array'));
 
-        $phpErrorHandlerMock = Mockery::mock(PhpError::class)->makePartial();
+        $targetMock = $this->createTargetMock();
+        $targetMock->makePartial();
 
-        $phpErrorHandlerRef = new \ReflectionClass(PhpError::class);
+        $targetRef = $this->createTargetReflection();
 
         // test property "logger"
-        $loggerPropertyRef = $phpErrorHandlerRef->getProperty('logger');
+        $loggerPropertyRef = $targetRef->getProperty('logger');
         $loggerPropertyRef->setAccessible(true);
-        $loggerPropertyRef->setValue($phpErrorHandlerMock, $loggerMock);
+        $loggerPropertyRef->setValue($targetMock, $loggerMock);
 
-        $logMethodRef = $phpErrorHandlerRef->getMethod('log');
+        $logMethodRef = $targetRef->getMethod('log');
         $logMethodRef->setAccessible(true);
 
         // execute
-        $logMethodRef->invoke($phpErrorHandlerMock, $exception);
+        $logMethodRef->invoke($targetMock, $exception);
     }
 }

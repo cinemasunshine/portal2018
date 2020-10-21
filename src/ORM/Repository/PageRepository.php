@@ -6,11 +6,11 @@
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
-namespace Cinemasunshine\Portal\ORM\Repository;
+namespace App\ORM\Repository;
 
+use App\ORM\Entity\Page;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\QueryBuilder;
-use Cinemasunshine\Portal\ORM\Entity\Page;
 
 /**
  * Page repository class
@@ -26,10 +26,10 @@ class PageRepository extends EntityRepository
     {
         $qb = $this->createQueryBuilder('p');
         $qb->where('p.isDeleted = false');
-        
+
         return $qb;
     }
-    
+
     /**
      * find one by id
      *
@@ -42,7 +42,7 @@ class PageRepository extends EntityRepository
         $qb
             ->andWhere('p.id = :id')
             ->setParameter('id', $id);
-            
+
         return $qb->getQuery()->getOneOrNullResult();
     }
 }

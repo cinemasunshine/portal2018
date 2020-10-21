@@ -1,10 +1,10 @@
 {% extends "imax/layout.html.twig" %}
 
-{% block title %}IMAX特設サイト | {{ parent() }}{% endblock %}
+{% block title %}{{ meta_title('imax') }}{% endblock %}
 
-{% block description %}シネマサンシャインのIMAX特設サイトです。IMAXの設備に関する情報や作品情報、鑑賞料金、上映劇場・キャンペーン情報のご案内など{% endblock %}
+{% block description %}{{ meta_description('imax') }}{% endblock %}
 
-{% block keywords %}{{ parent() }},予約,オンライン,上映,シネマ,キャンペーン,IMAX,アイマックス,3D,作品情報{% endblock %}
+{% block keywords %}{{ meta_keywords('imax') }}{% endblock %}
 
 {% block css %}
 <link href="/css/imax/top.css" rel="stylesheet">
@@ -42,7 +42,7 @@
 <div class="pt-3 pb-5 text-white">
     <div class="width mx-auto px-3 film">
         <div class="d-md-flex">
-        
+
             <div class="about mb-5 mb-md-0">
                 <div class="mr-md-4">
                     <h3 class="font-weight-bold large mb-4 text-center text-md-left line-height-1">
@@ -55,14 +55,14 @@
                     </div>
                 </div>
             </div>
-            
+
         {% set trailer = trailers[0] %}
         {% if trailer %}
             {% include 'imax/include/index/trailer.html.twig' with {
                 trailer: trailer
             } only %}
         {% endif %}
-        
+
         </div>
     </div>
 </div>
@@ -76,8 +76,8 @@
 <div class="py-5 text-white">
     {% include 'imax/include/index/title.html.twig' with {
         theaters: theaters,
-        screeningSchedules: screeningSchedules,
-        soonSchedules: soonSchedules,
+        nowShowingSchedules: nowShowingSchedules,
+        commingSoonSchedules: commingSoonSchedules,
     } only %}
 </div>
 

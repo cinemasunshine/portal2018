@@ -6,9 +6,9 @@
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
-namespace Cinemasunshine\Portal\Controller;
+namespace App\Controller;
 
-use Cinemasunshine\Portal\ORM\Entity;
+use App\ORM\Entity;
 
 /**
  * Theater List controller
@@ -27,7 +27,7 @@ class TheaterListController extends GeneralController
     {
         $this->data->set('areaToTheaters', $this->getTheaters());
     }
-    
+
     /**
      * sns action
      *
@@ -40,7 +40,7 @@ class TheaterListController extends GeneralController
     {
         $this->data->set('areaToTheaters', $this->getTheaters());
     }
-    
+
     /**
      * return theaters
      *
@@ -49,20 +49,20 @@ class TheaterListController extends GeneralController
     protected function getTheaters()
     {
         $theaters = parent::getTheaters();
-        
+
         $areaToTheaters = [];
-        
+
         foreach ($theaters as $theater) {
             /** @var Entity\Theater $theater */
             $area = $theater->getArea();
-            
-            if (!isset($areaToTheaters[$area])) {
+
+            if (! isset($areaToTheaters[$area])) {
                 $areaToTheaters[$area] = [];
             }
-            
+
             $areaToTheaters[$area][] = $theater;
         }
-        
+
         return $areaToTheaters;
     }
 }

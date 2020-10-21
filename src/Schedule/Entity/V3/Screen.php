@@ -8,9 +8,9 @@
 
 declare(strict_types=1);
 
-namespace Cinemasunshine\Portal\Schedule\Entity\V3;
+namespace App\Schedule\Entity\V3;
 
-use Cinemasunshine\Portal\Schedule\Entity\PortalEntityInterface;
+use App\Schedule\Entity\PortalEntityInterface;
 use Cinemasunshine\Schedule\Entity\V3\Screen as BaseEntity;
 
 /**
@@ -25,11 +25,11 @@ class Screen extends BaseEntity implements PortalEntityInterface
      */
     public function toArray()
     {
-        $data = array(
+        $data = [
             'name' => $this->getName(),
             'code' => $this->getCode(),
-            'time' => array(),
-        );
+            'time' => [],
+        ];
 
         foreach ($this->getTimeCollection() as $time) {
             $data['time'][] = $time->toArray();

@@ -2,6 +2,20 @@
 
 version: 2.1
 
+# YAML記法を使った参照（CircleCIの設定ではない）
+# https://circleci.com/docs/ja/2.0/writing-yaml/#%E3%82%A2%E3%83%B3%E3%82%AB%E3%83%BC%E3%81%A8%E3%82%A8%E3%82%A4%E3%83%AA%E3%82%A2%E3%82%B9
+references:
+
+  # https://circleci.com/docs/ja/2.0/private-images/
+  # https://m-p.backlog.jp/alias/file/7162903
+  docker_hub_authentication: &docker_hub_authentication
+    auth:
+      username: $DOCKERHUB_ID
+      password: $DOCKERHUB_PASSWORD
+
+  job_setup: &job_setup
+    context: docker-hub-creds
+
 commands:
   update_php:
     description: "DockerイメージのPHPアップデート"
@@ -42,19 +56,92 @@ commands:
         type: string
       zip:
         type: string
+      async:
+        type: enum
+        enum: ["true", "false"]
+        default: "false"
+
     steps:
       - run:
           name: Deploy to Azure
           command: |
-            mkdir deploy
-            curl -s -X POST https://<< parameters.user >>:<< parameters.password >>@<< parameters.app >>.scm.azurewebsites.net/api/zipdeploy -T << parameters.zip >> -o ./deploy/result.html -w '%{http_code}' > ./deploy/http_code.txt
-            if [ $(cat ./deploy/http_code.txt) -eq "200" ]; then
+            dir="./deploy"
+            mkdir ${dir}
+
+            deploy_result="${dir}/result.html"
+            deploy_header="${dir}/header.txt"
+            deploy_url="https://<< parameters.app >>.scm.azurewebsites.net/api/zipdeploy?isAsync=<< parameters.async >>"
+
+            deploy_http_code=$(curl -s -X POST -u << parameters.user >>:<< parameters.password >> ${deploy_url} -T << parameters.zip >> -o ${deploy_result} --dump-header ${deploy_header} -w '%{http_code}')
+
+            echo "Deploy HTTP code is ${deploy_http_code}."
+
+            if [ ${deploy_http_code} -eq 200 ]; then
                 echo "Deploy successful."
                 exit 0
+            elif [ ${deploy_http_code} -eq 202 ]; then
+                echo "Deploy accepted."
             else
                 echo "Deploy failed."
                 exit 1
             fi
+
+            pollable_url=""
+            regex="^Location:\s(.+)$"
+
+            while read line
+            do
+              if [[ ${line} =~ ${regex} ]]; then
+                pollable_url=$(echo ${BASH_REMATCH[1]} | tr -d "\r\n" | tr -d "\n")
+                break
+              fi
+            done < ${deploy_header}
+
+            if [ ${pollable_url} = "" ]; then
+              echo "Pollable URL not found."
+              exit 1
+            fi
+
+            echo "Polling deployment status."
+
+            polling_count=0
+            polling_wait=30
+
+            while true
+            do
+              polling_count=$((++polling_count))
+              status_result="${dir}/status_${polling_count}.json"
+
+              status_http_code=$(curl -sS -u << parameters.user >>:<< parameters.password >> ${pollable_url} -o ${status_result} -w '%{http_code}')
+
+              echo "Deployment status HTTP code is ${status_http_code}."
+
+              if [ ${status_http_code} -lt 200 -o ${status_http_code} -ge 300 ]; then
+                  echo "Request status failed."
+                  exit 1
+              fi
+
+              result=$(cat ${status_result})
+              complete=$(echo ${result} | jq '.complete')
+              status=$(echo ${result} | jq '.status')
+              status_text=$(echo ${result} | jq -r '.status_text')
+
+              if ${complete}; then
+                if [ ${status} -eq 4 ]; then
+                  break
+                fi
+
+                echo "Deploy failed."
+                echo "${status_text}"
+                exit 1
+              else
+                echo "${status_text}"
+              fi
+
+              sleep ${polling_wait}
+            done
+
+            echo "Deploy successful."
 
       - store_artifacts:
           path: ./deploy
@@ -62,11 +149,13 @@ commands:
 executors:
   build:
     docker:
-      - image: circleci/php:7.2
+      - image: circleci/php:7.3
+        <<: *docker_hub_authentication
 
   deployment:
     docker:
       - image: cimg/base:stable
+        <<: *docker_hub_authentication
 
 jobs:
   build_development:
@@ -113,7 +202,7 @@ jobs:
           name: ZIP archive
           command: >-
             zip -r development_app.zip
-            azure bin cert config public src template vendor cli-config.php INSTALL.md README.md version.txt
+            azure bin cert config data public src template vendor cli-config.php INSTALL.md README.md version.txt
             -x public/Web.config.example public/Web.config.prod
 
       - store_artifacts:
@@ -176,7 +265,7 @@ jobs:
           name: ZIP archive
           command: >-
             zip -r production_app.zip
-            azure bin cert config public src template vendor .user.ini cli-config.php INSTALL.md README.md version.txt
+            azure bin cert config data public src template vendor .user.ini cli-config.php INSTALL.md README.md version.txt
             -x public/Web.config.example public/Web.config.prod
 
       - store_artifacts:
@@ -237,6 +326,7 @@ jobs:
           user: $DEV_AAS_USER
           password: $DEV_AAS_PASSWORD
           zip: development_app.zip
+          async: "true"
 
   deploy_to_test:
     working_directory: ~/development
@@ -253,6 +343,7 @@ jobs:
           user: $TEST_AAS_USER
           password: $TEST_AAS_PASSWORD
           zip: development_app.zip
+          async: "true"
 
   deploy_to_prod_release:
     working_directory: ~/production
@@ -270,6 +361,7 @@ jobs:
           user: $PROD_RELEASE_AAS_USER
           password: $PROD_RELEASE_AAS_PASSWORD
           zip: production_app.zip
+          async: "true"
 
 workflows:
   version: 2
@@ -277,21 +369,25 @@ workflows:
   deploy_development:
     jobs:
       - build_development:
+          <<: *job_setup
           filters:
             branches:
               only: develop
 
       - test:
+          <<: *job_setup
           requires:
             - build_development
 
       - deploy_to_dev:
+          <<: *job_setup
           requires:
             - build_development
 
   deploy_development_feature:
     jobs:
       - build_development:
+          <<: *job_setup
           filters:
             branches:
               ignore:
@@ -299,6 +395,7 @@ workflows:
                 - master
 
       - test:
+          <<: *job_setup
           requires:
             - build_development
 
@@ -308,21 +405,25 @@ workflows:
             - build_development
 
       - deploy_to_test:
+          <<: *job_setup
           requires:
             - deploy_approval
 
   deploy_production:
     jobs:
       - build_development:
+          <<: *job_setup
           filters:
             branches:
               only: master
 
       - test:
+          <<: *job_setup
           requires:
             - build_development
 
       - build_production:
+          <<: *job_setup
           requires:
             - test
 
@@ -332,5 +433,6 @@ workflows:
             - build_production
 
       - deploy_to_prod_release:
+          <<: *job_setup
           requires:
             - deploy_approval

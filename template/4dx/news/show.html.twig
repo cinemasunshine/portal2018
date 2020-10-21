@@ -1,10 +1,10 @@
 {% extends "4dx/layout.html.twig" %}
 
-{% block title %}{{ news.getHeadline() }} | {{ parent() }}4DX特設サイト{% endblock %}
+{% block title %}{{ news.getHeadline() }} | シネマサンシャイン4DX特設サイト{% endblock %}
 
 {% block description %}{{ news.getBody()|striptags }}{% endblock %}
 
-{% block keywords %}{{ parent() }},キャンペーン,ニュース,news,最新情報,映画情報,イベント情報,ライブビューイング,舞台挨拶,4DX{% endblock %}
+{% block keywords %}シネマサンシャイン,映画館,映画,シネマ,劇場,キャンペーン,ニュース,news,最新情報,映画情報,イベント情報,ライブビューイング,舞台挨拶,4DX{% endblock %}
 
 {% block css %}
 <link href="/css/news/details.css" rel="stylesheet">
@@ -34,16 +34,16 @@
     <span class="font-weight-bold mx-2"> | </span>
     <a class="text-white" href="{{ path_for('4dx_news_list') }}">NEWS & INFO</a>
     <span class="font-weight-bold mx-2"> | </span>
-    <span>{{ news.getHeadline()|truncate(34, false, '…') }}<span>
+    <span>{{ news.getHeadline()|u.truncate(34, '…') }}<span>
 </div>
 
 <div class="details-width mx-auto mb-3 px-2 text-white">
     <div class="d-flex align-items-center">
         <div class="text-gray">{{ news.getStartDt()|date('Y/n/j') }}</div>
     </div>
-    
+
     <h2 class="font-weight-bold x-large py-4" id="shareTitle">{{ news.getHeadline() }}</h2>
-    
+
 {% if news.getImage() %}
     <div class="mb-5">
         <img id="shareImage" class="w-100" src="{{ file_url(news.getImage()) }}">

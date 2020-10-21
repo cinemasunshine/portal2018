@@ -6,9 +6,9 @@
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
-namespace Cinemasunshine\Portal\Twig\Extension;
+namespace App\Twig\Extension;
 
-use Cinemasunshine\Portal\ORM\Entity\News;
+use App\ORM\Entity\News;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 

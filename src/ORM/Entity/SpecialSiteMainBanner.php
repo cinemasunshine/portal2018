@@ -8,11 +8,11 @@
 
 declare(strict_types=1);
 
-namespace Cinemasunshine\Portal\ORM\Entity;
+namespace App\ORM\Entity;
 
-use Cinemasunshine\ORM\Entity\MainBanner as BaseMainBanner;
-use Cinemasunshine\ORM\Entity\SpecialSite as BaseSpecialSite;
-use Cinemasunshine\ORM\Entity\SpecialSiteMainBanner as BaseSpecialSiteMainBanner;
+use Cinemasunshine\ORM\Entities\MainBanner as BaseMainBanner;
+use Cinemasunshine\ORM\Entities\SpecialSite as BaseSpecialSite;
+use Cinemasunshine\ORM\Entities\SpecialSiteMainBanner as BaseSpecialSiteMainBanner;
 use Doctrine\ORM\Mapping as ORM;
 
 /**

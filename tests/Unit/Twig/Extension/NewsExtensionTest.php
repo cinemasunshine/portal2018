@@ -10,8 +10,8 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Twig\Extension;
 
-use Cinemasunshine\Portal\ORM\Entity\News;
-use Cinemasunshine\Portal\Twig\Extension\NewsExtension;
+use App\ORM\Entity\News;
+use App\Twig\Extension\NewsExtension;
 use Mockery;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use PHPUnit\Framework\TestCase;

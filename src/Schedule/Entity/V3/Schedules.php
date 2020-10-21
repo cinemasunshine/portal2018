@@ -8,10 +8,10 @@
 
 declare(strict_types=1);
 
-namespace Cinemasunshine\Portal\Schedule\Entity\V3;
+namespace App\Schedule\Entity\V3;
 
-use Cinemasunshine\Portal\Schedule\Entity\PortalEntityInterface;
-use Cinemasunshine\Portal\Schedule\Collection\Schedule as ScheduleCollection;
+use App\Schedule\Entity\PortalEntityInterface;
+use App\Schedule\Collection\Schedule as ScheduleCollection;
 use Cinemasunshine\Schedule\Entity\V3\Schedules as BaseEntity;
 
 /**
@@ -34,11 +34,11 @@ class Schedules extends BaseEntity implements PortalEntityInterface
      */
     public function toArray()
     {
-        $data = array(
+        $data = [
             'error'     => $this->getError(),
             'attention' => $this->getAttention(),
             'schedule'  => [],
-        );
+        ];
 
         foreach ($this->getScheduleCollection() as $schedule) {
             $data['schedule'][] = $schedule->toArray();

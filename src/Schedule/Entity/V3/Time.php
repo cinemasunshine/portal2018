@@ -8,9 +8,9 @@
 
 declare(strict_types=1);
 
-namespace Cinemasunshine\Portal\Schedule\Entity\V3;
+namespace App\Schedule\Entity\V3;
 
-use Cinemasunshine\Portal\Schedule\Entity\PortalEntityInterface;
+use App\Schedule\Entity\PortalEntityInterface;
 use Cinemasunshine\Schedule\Entity\V3\Time as BaseEntity;
 
 /**
@@ -69,12 +69,12 @@ class Time extends BaseEntity implements PortalEntityInterface
      */
     public function toArray()
     {
-        return array(
+        return [
             'start'     => $this->getStart(),
             'end'       => $this->getEnd(),
             'available' => $this->getAvailable(),
             'url'       => $this->getUrl(),
             'late'      => $this->getLate(),
-        );
+        ];
     }
 }

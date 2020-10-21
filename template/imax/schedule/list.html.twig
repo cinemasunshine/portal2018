@@ -1,10 +1,10 @@
 {% extends "imax/layout.html.twig" %}
 
-{% block title %}作品一覧 | {{ parent() }}IMAX特設サイト{% endblock %}
+{% block title %}{{ meta_title('imax_schedule_list') }}{% endblock %}
 
-{% block description %}シネマサンシャインIMAX特設サイトの作品一覧ページです。上映中・上映予定の映画作品のご案内{% endblock %}
+{% block description %}{{ meta_description('imax_schedule_list') }}{% endblock %}
 
-{% block keywords %}{{ parent() }},キャンペーン,上映中,上映予定,2D,3D,公開中,公開予定,作品情報,作品紹介,IMAX,IMAX3D{% endblock %}
+{% block keywords %}{{ meta_keywords('imax_schedule_list') }}{% endblock %}
 
 {% block css %}
 <link href="/css/movie/list.css" rel="stylesheet">
@@ -46,27 +46,27 @@
             <a class="py-2 d-block border-gray text-dark-gray" href="#" data-type="scheduled">上映予定</a>
         </div>
     </div>
-    
+
     <div class="screening d-block">
-        
-    {% for schedule in screeningSchedules %}
+
+    {% for schedule in nowShowingSchedules %}
         {% include 'imax/schedule/include/list_row.html.twig' with {
         schedule: schedule,
         theaters: theaters
         } only %}
     {% endfor %}
-        
+
     </div>
-    
+
     <div class="scheduled d-none">
-        
-    {% for schedule in soonSchedules %}
+
+    {% for schedule in commingSoonSchedules %}
         {% include 'imax/schedule/include/list_row.html.twig' with {
             schedule: schedule,
             theaters: theaters
         } only %}
     {% endfor %}
-        
+
     </div>
 </div>
 {% endblock %}

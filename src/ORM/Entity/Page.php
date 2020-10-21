@@ -8,15 +8,15 @@
 
 declare(strict_types=1);
 
-namespace Cinemasunshine\Portal\ORM\Entity;
+namespace App\ORM\Entity;
 
-use Cinemasunshine\ORM\Entity\Page as BasePage;
+use Cinemasunshine\ORM\Entities\Page as BasePage;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Page entity class
  *
- * @ORM\Entity(readOnly=true, repositoryClass="Cinemasunshine\Portal\ORM\Repository\PageRepository")
+ * @ORM\Entity(readOnly=true, repositoryClass="App\ORM\Repository\PageRepository")
  * @ORM\Table(name="page", options={"collate"="utf8mb4_general_ci"})
  * @ORM\HasLifecycleCallbacks
  */

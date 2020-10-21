@@ -16,7 +16,7 @@
     <arg name="report-full" value="./report/phpcs_full.txt"/>
     <arg value="sp"/>
 
-    <!-- rule -->
-    <rule ref="PSR12"/>
+    <!-- Base rule -->
+    <rule ref="Motionpicture"/>
 
 </ruleset>

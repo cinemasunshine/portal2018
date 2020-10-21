@@ -1,10 +1,10 @@
 {% extends '4dx_screen/layout.html.twig' %}
 
-{% block title %}News&Info一覧 | {{ parent() }}4DX SCREEN特設サイト{% endblock %}
+{% block title %}{{ meta_title('4dx_screen_news_list') }}{% endblock %}
 
-{% block description %}TODO{% endblock %}
+{% block description %}{{ meta_description('4dx_screen_news_list') }}{% endblock %}
 
-{% block keywords %}TODO{% endblock %}
+{% block keywords %}{{ meta_keywords('4dx_screen_news_list') }}{% endblock %}
 
 {% block css %}
 <link href="/css/news/list.css" rel="stylesheet">

@@ -6,9 +6,9 @@
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
-namespace Cinemasunshine\Portal\Application\Handlers;
+namespace App\Application\Handlers;
 
-use Slim\Container;
+use Monolog\Logger;
 use Slim\Handlers\Error as BaseHandler;
 
 /**
@@ -16,45 +16,37 @@ use Slim\Handlers\Error as BaseHandler;
  */
 class Error extends BaseHandler
 {
-    /** @var Container */
-    protected $container;
-    
-    /** @var \Monolog\Logger */
+    /** @var Logger */
     protected $logger;
-    
+
     /**
      * construct
      *
-     * @param Container $container
+     * @param Logger $logger
+     * @param bool   $displayErrorDetails
      */
-    public function __construct(Container $container)
+    public function __construct(Logger $logger, bool $displayErrorDetails = false)
     {
-        $this->container = $container;
-        $this->logger = $container->get('logger');
-        
-        parent::__construct($container->get('settings')['displayErrorDetails']);
+        $this->logger = $logger;
+
+        parent::__construct($displayErrorDetails);
     }
-    
+
     /**
-     *  Write to the error log
-     *
-     * @see Slim\Handlers\AbstractError
-     *
      * @param \Exception|\Throwable $throwable
      * @return void
+     * @see Slim\Handlers\AbstractError
      */
     protected function writeToErrorLog($throwable)
     {
         $this->log($throwable);
     }
-    
+
     /**
-     * log
-     *
-     * @param \Exception $exception
+     * @param \Exception|\Throwable $exception
      * @return void
      */
-    protected function log(\Exception $exception)
+    protected function log($exception)
     {
         $this->logger->error($exception->getMessage(), [
             'type' => get_class($exception),

@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace Cinemasunshine\Portal\Responder;
+namespace App\Responder;
 
 use Slim\Views\Twig;
 
@@ -21,7 +21,7 @@ class ResponderFactory
      * factory
      *
      * @param string $name
-     * @param Twig $view
+     * @param Twig   $view
      * @return BaseResponder
      */
     public static function factory(string $name, Twig $view): BaseResponder

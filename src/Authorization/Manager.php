@@ -8,12 +8,12 @@
 
 declare(strict_types=1);
 
-namespace Cinemasunshine\Portal\Authorization;
+namespace App\Authorization;
 
-use Cinemasunshine\Portal\Authorization\Grant\AuthorizationCode as AuthorizationCodeGrant;
-use Cinemasunshine\Portal\Authorization\Grant\RefreshToken as RefreshTokenGrant;
-use Cinemasunshine\Portal\Authorization\Token\AuthorizationCodeToken as Token;
-use Cinemasunshine\Portal\Session\Container as SessionContainer;
+use App\Authorization\Grant\AuthorizationCode as AuthorizationCodeGrant;
+use App\Authorization\Grant\RefreshToken as RefreshTokenGrant;
+use App\Authorization\Token\AuthorizationCodeToken as Token;
+use App\Session\Container as SessionContainer;
 
 /**
  * Authorization Manager class
@@ -50,15 +50,15 @@ class Manager
     /**
      * construct
      *
-     * @param array $settings
+     * @param array            $settings
      * @param SessionContainer $session
      */
     public function __construct(array $settings, SessionContainer $session)
     {
-        $this->host = $settings['authorization_code_host'];
-        $this->clientId = $settings['authorization_code_client_id'];
+        $this->host         = $settings['authorization_code_host'];
+        $this->clientId     = $settings['authorization_code_client_id'];
         $this->clientSecret = $settings['authorization_code_client_secret'];
-        $this->scopeList = $settings['authorization_code_scope'];
+        $this->scopeList    = $settings['authorization_code_scope'];
 
         $this->session = $session;
     }
@@ -70,7 +70,7 @@ class Manager
      */
     protected function getAuthorizationCodeGrunt(): AuthorizationCodeGrant
     {
-        if (!$this->authorizationCodeGrunt) {
+        if (! $this->authorizationCodeGrunt) {
             $this->authorizationCodeGrunt = new AuthorizationCodeGrant(
                 $this->host,
                 $this->clientId,
@@ -130,7 +130,7 @@ class Manager
      */
     public function getAuthorizationState(): string
     {
-        if (!isset($this->session['authorization_state'])) {
+        if (! isset($this->session['authorization_state'])) {
             $this->initAuthorizationState();
         }
 
@@ -166,7 +166,7 @@ class Manager
      */
     protected function getCodeVerifier(): string
     {
-        if (!isset($this->session['code_verifier'])) {
+        if (! isset($this->session['code_verifier'])) {
             $this->initCodeVerifier();
         }
 
@@ -207,7 +207,7 @@ class Manager
      */
     protected function getRefreshTokenGrant(): RefreshTokenGrant
     {
-        if (!$this->refreshTokenGrant) {
+        if (! $this->refreshTokenGrant) {
             $this->refreshTokenGrant = new RefreshTokenGrant(
                 $this->host,
                 $this->clientId,

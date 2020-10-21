@@ -8,11 +8,11 @@
 
 declare(strict_types=1);
 
-namespace Cinemasunshine\Portal\ORM\Entity;
+namespace App\ORM\Entity;
 
-use Cinemasunshine\ORM\Entity\News as BaseNews;
-use Cinemasunshine\ORM\Entity\SpecialSite as BaseSpecialSite;
-use Cinemasunshine\ORM\Entity\SpecialSiteNews as BaseSpecialSiteNews;
+use Cinemasunshine\ORM\Entities\News as BaseNews;
+use Cinemasunshine\ORM\Entities\SpecialSite as BaseSpecialSite;
+use Cinemasunshine\ORM\Entities\SpecialSiteNews as BaseSpecialSiteNews;
 use Doctrine\ORM\Mapping as ORM;
 
 /**

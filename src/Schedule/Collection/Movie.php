@@ -6,7 +6,7 @@
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
-namespace Cinemasunshine\Portal\Schedule\Collection;
+namespace App\Schedule\Collection;
 
 use Cinemasunshine\Schedule\Collection\Movie as Base;
 use Cinemasunshine\Schedule\Entity\MovieInterface;
@@ -25,12 +25,12 @@ class Movie extends Base
      */
     public function add($movie)
     {
-        if (!$movie instanceof MovieInterface) {
+        if (! $movie instanceof MovieInterface) {
             throw new \InvalidArgumentException('should implement Entity\MovieInterface');
         }
-        
+
         /** @var MovieInterface $movie */
-        
+
         $this->data[$movie->getCode()] = $movie;
     }
 }

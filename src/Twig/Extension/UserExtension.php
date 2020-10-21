@@ -8,12 +8,12 @@
 
 declare(strict_types=1);
 
-namespace Cinemasunshine\Portal\Twig\Extension;
+namespace App\Twig\Extension;
 
+use App\Authorization\Manager as AuthorizationManager;
+use App\User\Manager as UserManager;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
-use Cinemasunshine\Portal\Authorization\Manager as AuthorizationManager;
-use Cinemasunshine\Portal\User\Manager as UserManager;
 
 /**
  * User twig extension class
@@ -29,12 +29,12 @@ class UserExtension extends AbstractExtension
     /**
      * construct
      *
+     * @param UserManager          $userManager
      * @param AuthorizationManager $authorizationManager
-     * @param UserManager $userManager
      */
     public function __construct(UserManager $userManager, AuthorizationManager $authorizationManager)
     {
-        $this->userManager = $userManager;
+        $this->userManager          = $userManager;
         $this->authorizationManager = $authorizationManager;
     }
 

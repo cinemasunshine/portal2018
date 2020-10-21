@@ -6,9 +6,9 @@
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
-namespace Cinemasunshine\Portal\ORM\Repository;
+namespace App\ORM\Repository;
 
-use Cinemasunshine\Portal\ORM\Entity\News;
+use App\ORM\Entity\News;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use Doctrine\ORM\QueryBuilder;
@@ -121,7 +121,7 @@ class NewsRepository extends EntityRepository
     /**
      * find by special_site
      *
-     * @param int $specialSiteId
+     * @param int      $specialSiteId
      * @param int|null $category
      * @param int|null $limit
      * @return News[]

@@ -1,10 +1,10 @@
 {% extends "layout.html.twig" %}
 
-{% block title %}公式SNS一覧 | {{ parent() }}{% endblock %}
+{% block title %}{{ meta_title('theater_sns') }}{% endblock %}
 
-{% block description %}シネマサンシャインの公式SNSアカウント一覧ページです。各劇場の公式SNSアカウントのご案内{% endblock %}
+{% block description %}{{ meta_description('theater_sns') }}{% endblock %}
 
-{% block keywords %}{{ parent()}},フェイスブック,ツイッター,SNS{% endblock %}
+{% block keywords %}{{ meta_keywords('theater_sns') }}{% endblock %}
 
 {% block css %}
 <link href="/css/theater-sns-list.css" rel="stylesheet">
@@ -16,7 +16,7 @@
         <a href="{{ path_for('homepage') }}">ホーム　|　</a>
         <span class="font-weight-bold">公式SNSアカウント一覧</span>
     </div>
-    
+
     <div>
         <h2 class="font-weight-bold large text-center text-md-left mb-4 mt-2">公式SNSアカウント一覧</h2>
     {% for area, theaters in areaToTheaters %}

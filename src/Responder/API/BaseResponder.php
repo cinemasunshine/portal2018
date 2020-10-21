@@ -6,9 +6,9 @@
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
-namespace Cinemasunshine\Portal\Responder\API;
+namespace App\Responder\API;
 
-use Cinemasunshine\Portal\Responder\AbstractResponder;
+use App\Responder\AbstractResponder;
 
 /**
  * Base responder

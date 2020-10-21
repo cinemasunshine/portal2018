@@ -6,7 +6,7 @@
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
-namespace Cinemasunshine\Portal\Logger\Handler;
+namespace App\Logger\Handler;
 
 use Blue32a\Monolog\Handler\AzureBlobStorageHandler as BaseHandler;
 use MicrosoftAzure\Storage\Common\Exceptions\ServiceException;
@@ -42,7 +42,7 @@ class AzureBlobStorageHandler extends BaseHandler
      */
     protected function write(array $record): void
     {
-        if (!$this->isBlobCreated) {
+        if (! $this->isBlobCreated) {
             $this->createBlob();
             $this->isBlobCreated = true;
         }

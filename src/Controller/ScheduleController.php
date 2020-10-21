@@ -6,10 +6,10 @@
  * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
-namespace Cinemasunshine\Portal\Controller;
+namespace App\Controller;
 
+use App\ORM\Entity;
 use Slim\Exception\NotFoundException;
-use Cinemasunshine\Portal\ORM\Entity;
 
 /**
  * Schedule controller
@@ -27,36 +27,32 @@ class ScheduleController extends GeneralController
     public function executeList($request, $response, $args)
     {
         $this->data->set('theaters', $this->getTheaters());
-        
-        $this->data->set('screeningSchedules', $this->getScreeningSchedules());
-        
-        $this->data->set('soonSchedules', $this->getSoonSchedules());
+
+        $this->data->set('nowShowingSchedules', $this->findNowShowingSchedules());
+
+        $this->data->set('commingSoonSchedules', $this->findCommingSoonSchedules());
     }
-    
+
     /**
-     * return screening schedules
-     *
      * @return Entity\Schedule[]
      */
-    protected function getScreeningSchedules()
+    protected function findNowShowingSchedules(): array
     {
         return $this->em
             ->getRepository(Entity\Schedule::class)
-            ->findScreening();
+            ->findNowShowing();
     }
-    
+
     /**
-     * return soon schedules
-     *
      * @return Entity\Schedule[]
      */
-    protected function getSoonSchedules()
+    protected function findCommingSoonSchedules(): array
     {
         return $this->em
             ->getRepository(Entity\Schedule::class)
-            ->findSoon();
+            ->findCommingSoon();
     }
-    
+
     /**
      * show action
      *
@@ -70,15 +66,15 @@ class ScheduleController extends GeneralController
         $schedule = $this->em
             ->getRepository(Entity\Schedule::class)
             ->findOneById($args['schedule']);
-        
+
         if (is_null($schedule)) {
             throw new NotFoundException($request, $response);
         }
-        
+
         /**@var Entity\Schedule $schedule */
-        
+
         $this->data->set('schedule', $schedule);
-        
+
         $this->data->set('theaters', $this->getTheaters());
     }
 }
