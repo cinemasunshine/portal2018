@@ -225,7 +225,7 @@ class Title extends BaseTitle
     {
         $criteria = Criteria::create()
             ->where(Criteria::expr()->eq('isDeleted', false))
-            ->orderBy([ 'createdAt' => Criteria::DESC ]);
+            ->orderBy(['createdAt' => Criteria::DESC]);
 
         return $this->trailers->matching($criteria);
     }
@@ -242,7 +242,7 @@ class Title extends BaseTitle
             ->where(Criteria::expr()->eq('isDeleted', false))
             ->andWhere(Criteria::expr()->lte('startDt', new \DateTime('now')))
             ->andWhere(Criteria::expr()->gt('endDt', new \DateTime('now')))
-            ->orderBy([ 'createdAt' => Criteria::ASC ]);
+            ->orderBy(['createdAt' => Criteria::ASC]);
 
         return $this->campaigns->matching($criteria);
     }

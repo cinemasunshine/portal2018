@@ -113,10 +113,10 @@ final class CommonExtensionTest extends TestCase
         $appEnvPropertyRef->setValue($extensionMock, $env);
 
         $this->assertTrue($extensionMock->isAppEnv($env));
-        $this->assertTrue($extensionMock->isAppEnv([ $env, 'dev' ]));
+        $this->assertTrue($extensionMock->isAppEnv([$env, 'dev']));
 
         $this->assertFalse($extensionMock->isAppEnv('dev'));
-        $this->assertFalse($extensionMock->isAppEnv([ 'dev', 'stg' ]));
+        $this->assertFalse($extensionMock->isAppEnv(['dev', 'stg']));
     }
 
     /**
