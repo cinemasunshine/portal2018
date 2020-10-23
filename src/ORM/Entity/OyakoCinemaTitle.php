@@ -64,7 +64,7 @@ class OyakoCinemaTitle extends BaseOyakoCinemaTitle
     {
         $criteria = Criteria::create()
             ->where(Criteria::expr()->gte('date', new \DateTime('now')))
-            ->orderBy([ 'date' => Criteria::ASC ]);
+            ->orderBy(['date' => Criteria::ASC]);
 
         return $this->oyakoCinemaSchedules->matching($criteria);
     }

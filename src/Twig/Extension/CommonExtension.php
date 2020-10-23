@@ -63,7 +63,7 @@ class CommonExtension extends AbstractExtension
     public function isAppEnv($env): bool
     {
         if (is_string($env)) {
-            $env = [ $env ];
+            $env = [$env];
         }
 
         return in_array($this->appEnv, $env);
