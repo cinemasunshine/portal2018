@@ -28,6 +28,13 @@ commands:
             sudo rm -rf /tmp/pear
             sudo docker-php-ext-enable redis
 
+  fix_composer_version:
+    description: "V2安定まで取り急ぎV1固定 SASAKI-607"
+    steps:
+      - run:
+          name: Using Composer version 1
+          command: sudo composer self-update --1
+
   file_exists:
     description: "Checks whether a file exists"
     parameters:
@@ -171,10 +178,7 @@ jobs:
             - composer-dev-{{ checksum "composer.lock" }}
             - composer-
 
-      # V2安定まで取り急ぎV1固定 SASAKI-607
-      - run:
-          name: Using Composer version 1
-          command: sudo composer self-update --1
+      - fix_composer_version
 
       - run:
           name: Composer install (with require-dev)
@@ -230,6 +234,8 @@ jobs:
           keys:
             - composer-{{ checksum "composer.lock" }}
             - composer-
+
+      - fix_composer_version
 
       - run:
           name: Composer install
