@@ -171,6 +171,11 @@ jobs:
             - composer-dev-{{ checksum "composer.lock" }}
             - composer-
 
+      # V2安定まで取り急ぎV1固定 SASAKI-607
+      - run:
+          name: Using Composer version 1
+          command: sudo composer self-update --1
+
       - run:
           name: Composer install (with require-dev)
           command: |
