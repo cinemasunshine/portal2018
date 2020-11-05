@@ -56,7 +56,7 @@ final class DecodedAccessTokenTest extends TestCase
         $claimsBase64    = base64_encode(json_encode($claims));
         $signatureBase64 = base64_encode($signature);
 
-        return implode('.', [ $headerBase64, $claimsBase64, $signatureBase64]);
+        return implode('.', [$headerBase64, $claimsBase64, $signatureBase64]);
     }
 
     /**
