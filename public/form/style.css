@@ -12,7 +12,7 @@ form ul li{list-style: none;margin-bottom: 30px;}
 .req-icon{background-color: red;color: #fff;font-size: 10px;padding:3px 5px;font-weight: normal;margin-left:10px;}
 .intro-area{padding:40px 0px 20px;}
 .btn-area{text-align: center;margin: 20px 0px 30px;}
-#form-area .submit-btn{background-color: #387EDE;color: #fff;max-width: 400px;text-align: center;border:none;height: 60px;display: inline-block;}
+#form-area .submit-btn{background-color: #387EDE;color: #fff;max-width: 400px;text-align: center;border:none;height: 60px;display: inline-block;appearance: none;}
 .finish-area h1{text-align: center;margin: 30px 0px;display: block;font-size: 24px;}
 .finish-area h2{text-align: center;margin: 20px 0px;display: block;font-size: 20px;font-weight: lighter;}
 .finish-area p{text-align: left;margin: 30px auto;display: block;font-size: 15px;font-weight: lighter;max-width:800px;line-height: 1.8;}
