@@ -20,6 +20,6 @@ form ul li{list-style: none;margin-bottom: 30px;}
 @media(max-width:760px){
     .inq-format{width: 90%;}
     .intro-txt{max-width:90%;}
-    #form-area .submit-btn{width: 90%;text-align: center;border:none;height: 60px;display: inline-block;}
+    #form-area .submit-btn{width: 90%;text-align: center;border:none;height: 60px;display: inline-block;appearance: none;}
     .finish-area{width: 90%;margin: 0 auto;}
 }
