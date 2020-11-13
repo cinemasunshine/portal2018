@@ -2,6 +2,7 @@
     "name": "cinemasunshine/portal2018-frontend",
     "description": "Cinemasunshine Portal2018 Frontend",
     "type": "project",
+    "license": "proprietary",
     "minimum-stability": "stable",
     "repositories": {
         "cinemasunshine/schedule": {
@@ -30,7 +31,7 @@
         "slim/twig-view": "^2.5",
         "vlucas/phpdotenv": "^3.6",
         "monolog/monolog": "^2.1",
-        "doctrine/orm": "^2.7",
+        "doctrine/orm": "^2.7.4",
         "cinemasunshine/portal2018-orm": "^1.1",
         "cinemasunshine/schedule": "2.7.0",
         "microsoft/azure-storage-blob": "^1.5",

@@ -23,7 +23,6 @@ RUN pecl install -o -f redis \
     && docker-php-ext-enable redis
 
 # https://hub.docker.com/_/composer
-# V2安定まで取り急ぎV1固定 SASAKI-607
-COPY --from=composer:1 /usr/bin/composer /usr/bin/composer
+COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 COPY php.ini /usr/local/etc/php
