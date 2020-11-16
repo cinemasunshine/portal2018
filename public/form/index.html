@@ -15,7 +15,7 @@
             <p class="intro-txt">シネマサンシャインリワード（アプリ）に関するお問合わせは下記のフォームよりお問い合わせください。<br>お問い合わせのご返信につきましては主にメールでのご連絡となります。</p>
         </section>
         <section id="form-area">
-            <form method="POST" class="inq-format">
+            <form method="POST" class="inq-format" onsubmit="invoke(event);">
                 <h2>ご連絡先</h2>
                 <ul>
                     <li>
@@ -55,18 +55,21 @@
                     </li>
                     <li>
                         <label for="question" class="label-name">お問合わせ内容詳細<span class="req-icon">必須</span></label>
-                        <textarea id="question" name="question" placeholder="例）ログインするためのユーザーネームがわからない。"></textarea>
+                        <textarea required id="question" name="question" placeholder="例）ログインするためのユーザーネームがわからない。"></textarea>
                     </li>
                 </ul>
                 <p class="btn-area">
-                    <input type="button" value="入力内容を送信" class="submit-btn" onclick="invoke();">
+                    <button type="submit" class="submit-btn">入力内容を送信</button>
                 </p>
                 <input type="hidden" id="reCAPTCHA" name="reCAPTCHA">
             </form>
         </section>
         <script src="https://www.google.com/recaptcha/api.js?render=6LeZLrsZAAAAAGLgm20s-wzhzpuQTEE3VT4DB8nB"></script>
         <script>
-            function invoke() {
+            function invoke(event) {
+                event.preventDefault();
+                var button = document.querySelector('button');
+                button.disabled = true;
                 grecaptcha.ready(function () {
                     try {
                         grecaptcha.execute('6LeZLrsZAAAAAGLgm20s-wzhzpuQTEE3VT4DB8nB', { action: 'submit' })
@@ -82,10 +85,12 @@
                                 form.submit();
                             }, function (reason) {
                                 console.error(reason);
+                                button.disabled = false;
                                 //no ops
                             });
                     } catch (e) {
                         console.error(e);
+                        button.disabled = false;
                         //no ops
                     }
                 });
