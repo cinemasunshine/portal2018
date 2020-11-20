@@ -9,80 +9,82 @@
 namespace App\ORM\Repository;
 
 use App\ORM\Entity\Theater;
-use Doctrine\ORM\EntityRepository;
+use Cinemasunshine\ORM\Repositories\TheaterRepository as BaseRepository;
 use Doctrine\ORM\QueryBuilder;
 
 /**
- * Theater repository class
+ * @extends BaseRepository<Theater>
  */
-class TheaterRepository extends EntityRepository
+class TheaterRepository extends BaseRepository
 {
     /**
-     * return active query
-     *
-     * @return QueryBuilder
+     * @param QueryBuilder $qb
+     * @param string       $alias
+     * @return void
      */
-    protected function getActiveQuery()
+    protected function addActiveQuery(QueryBuilder $qb, string $alias)
     {
-        $qb = $this->createQueryBuilder('t');
-        $qb
-            ->where('t.isDeleted = false');
+        parent::addActiveQuery($qb, $alias);
 
-        $statusList = [
+        $statuses = [
             Theater::STATUS_OPEN,
             Theater::STATUS_CLOSED,
         ];
         $qb
-            ->andWhere('t.status IN (:status)')
-            ->setParameter('status', $statusList);
-
-        return $qb;
+            ->andWhere($alias . '.status IN (:status)')
+            ->setParameter('status', $statuses);
     }
 
     /**
-     * find by active
-     *
      * @return Theater[]
      */
     public function findByActive()
     {
-        $qb = $this->getActiveQuery();
-        $qb
-            ->orderBy('t.displayOrder', 'ASC');
+        $alias = 't';
+        $qb    = $this->createQueryBuilder($alias);
+
+        $this->addActiveQuery($qb, $alias);
+
+        $qb->orderBy($alias . '.displayOrder', 'ASC');
 
         return $qb->getQuery()->getResult();
     }
 
     /**
-     * find one by name
-     *
      * @param string $name
      * @return Theater|null
      */
     public function findOneByName(string $name)
     {
-        $qb = $this->getActiveQuery();
+        $alias = 't';
+        $qb    = $this->createQueryBuilder($alias);
+
+        $this->addActiveQuery($qb, $alias);
+
         $qb
-            ->andWhere('t.name = :name')
+            ->andWhere($alias . '.name = :name')
             ->setParameter('name', $name);
 
         return $qb->getQuery()->getOneOrNullResult();
     }
 
     /**
-     * find by special_site
-     *
      * @param int $specialSiteId
      * @return Theater[]
      */
     public function findBySpecialSite(int $specialSiteId)
     {
-        $qb = $this->getActiveQuery();
+        $alias = 't';
+        $qb    = $this->createQueryBuilder($alias);
+
+        $this->addActiveQuery($qb, $alias);
+
+        $ailiasSpecialSites = 's';
         $qb
-            ->join('t.specialSites', 's')
-            ->andWhere('s.id = :special_site_id')
+            ->join($alias . '.specialSites', $ailiasSpecialSites)
+            ->andWhere($ailiasSpecialSites . '.id = :special_site_id')
             ->setParameter('special_site_id', $specialSiteId)
-            ->orderBy('t.displayOrder', 'ASC');
+            ->orderBy($alias . '.displayOrder', 'ASC');
 
         return $qb->getQuery()->getResult();
     }
