@@ -11,7 +11,7 @@ use Mockery;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use PHPUnit\Framework\TestCase;
 
-class TheaterRepositoryTest extends TestCase
+final class TheaterRepositoryTest extends TestCase
 {
     use MockeryPHPUnitIntegration;
 
