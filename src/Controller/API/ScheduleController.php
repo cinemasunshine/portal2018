@@ -45,7 +45,7 @@ class ScheduleController extends BaseController
      * @param \Slim\Http\Request  $request
      * @param \Slim\Http\Response $response
      * @param array               $args
-     * @return string|void
+     * @return \Slim\Http\Response
      * @throws NotFoundException
      * @todo エラー系のレスポンス検討
      */
@@ -76,10 +76,11 @@ class ScheduleController extends BaseController
             throw new \RuntimeException('schedule unknown error');
         } elseif ($schedules->getError() === V3Schedules::ERROR_NO_CONTENT) {
             $meta['error'] = V3Schedules::ERROR_NO_CONTENT;
-            $this->data->set('meta', $meta);
-            $this->data->set('data', $data);
 
-            return;
+            return $response->withJson([
+                'meta' => $meta,
+                'data' => $data,
+            ]);
         }
 
         $meta['error']     = V3Schedules::ERROR_NOT;
@@ -89,8 +90,10 @@ class ScheduleController extends BaseController
             $data[] = $schedule->toArray(false);
         }
 
-        $this->data->set('meta', $meta);
-        $this->data->set('data', $data);
+        return $response->withJson([
+            'meta' => $meta,
+            'data' => $data,
+        ]);
     }
 
     /**
@@ -99,7 +102,7 @@ class ScheduleController extends BaseController
      * @param \Slim\Http\Request  $request
      * @param \Slim\Http\Response $response
      * @param array               $args
-     * @return string|void
+     * @return \Slim\Http\Response
      * @throws NotFoundException
      * @todo エラー系のレスポンス検討
      */
@@ -131,10 +134,11 @@ class ScheduleController extends BaseController
             throw new \RuntimeException('schedule unknown error');
         } elseif ($schedules->getError() === V3Schedules::ERROR_NO_CONTENT) {
             $meta['error'] = V3Schedules::ERROR_NO_CONTENT;
-            $this->data->set('meta', $meta);
-            $this->data->set('data', $data);
 
-            return;
+            return $response->withJson([
+                'meta' => $meta,
+                'data' => $data,
+            ]);
         }
 
         $meta['error']     = V3Schedules::ERROR_NOT;
@@ -155,8 +159,10 @@ class ScheduleController extends BaseController
             $data[] = $movie->toArray();
         }
 
-        $this->data->set('meta', $meta);
-        $this->data->set('data', $data);
+        return $response->withJson([
+            'meta' => $meta,
+            'data' => $data,
+        ]);
     }
 
     /**
