@@ -10,7 +10,7 @@ use Mockery;
 final class TheaterListControllerTest extends BaseTestCase
 {
     /**
-     * @return \Mockery\MockInterface|\Mockery\LegacyMockInterface|TheaterListController
+     * @return \Mockery\MockInterface&\Mockery\LegacyMockInterface&TheaterListController
      */
     protected function createTargetMock()
     {

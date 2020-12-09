@@ -8,16 +8,18 @@ use App\Controller\ScheduleController;
 use App\ORM\Entity\Schedule;
 use App\ORM\Repository\ScheduleRepository;
 use Mockery;
+use Slim\Container;
 use Slim\Exception\NotFoundException;
 
 final class ScheduleControllerTest extends BaseTestCase
 {
     /**
-     * @return \Mockery\MockInterface|\Mockery\LegacyMockInterface|ScheduleController
+     * @param Container $container
+     * @return \Mockery\MockInterface&\Mockery\LegacyMockInterface&ScheduleController
      */
-    protected function createTargetMock()
+    protected function createTargetMock(Container $container)
     {
-        return Mockery::mock(ScheduleController::class);
+        return Mockery::mock(ScheduleController::class, [$container]);
     }
 
     /**
@@ -30,7 +32,9 @@ final class ScheduleControllerTest extends BaseTestCase
         $responseMock = $this->createResponseMock();
         $args         = [];
 
-        $targetMock = $this->createTargetMock();
+        $container = $this->createContainer();
+
+        $targetMock = $this->createTargetMock($container);
         $targetMock
             ->makePartial()
             ->shouldAllowMockingProtectedMethods();
@@ -91,18 +95,18 @@ final class ScheduleControllerTest extends BaseTestCase
             ->with($args['schedule'])
             ->andReturn($schedule);
 
-        $entityManagerMock = $this->createEntityManagerMock();
-        $entityManagerMock
+        $container = $this->createContainer();
+
+        $container['em']
             ->shouldReceive('getRepository')
             ->once()
             ->with(Schedule::class)
             ->andReturn($repositoryMock);
 
-        $targetMock = $this->createTargetMock();
+        $targetMock = $this->createTargetMock($container);
         $targetMock
             ->makePartial()
             ->shouldAllowMockingProtectedMethods();
-        $targetMock->em = $entityManagerMock;
 
         $theaters = [];
         $targetMock
@@ -144,18 +148,18 @@ final class ScheduleControllerTest extends BaseTestCase
             ->with($args['schedule'])
             ->andReturn(null);
 
-        $entityManagerMock = $this->createEntityManagerMock();
-        $entityManagerMock
+        $container = $this->createContainer();
+
+        $container['em']
             ->shouldReceive('getRepository')
             ->once()
             ->with(Schedule::class)
             ->andReturn($repositoryMock);
 
-        $targetMock = $this->createTargetMock();
+        $targetMock = $this->createTargetMock($container);
         $targetMock
             ->makePartial()
             ->shouldAllowMockingProtectedMethods();
-        $targetMock->em = $entityManagerMock;
 
         $this->expectException(NotFoundException::class);
 
@@ -163,7 +167,7 @@ final class ScheduleControllerTest extends BaseTestCase
     }
 
     /**
-     * @return \Mockery\MockInterface|\Mockery\LegacyMockInterface|ScheduleRepository
+     * @return \Mockery\MockInterface&\Mockery\LegacyMockInterface&ScheduleRepository
      */
     protected function createScheduleRepositoryMock()
     {
@@ -171,7 +175,7 @@ final class ScheduleControllerTest extends BaseTestCase
     }
 
     /**
-     * @return \Mockery\MockInterface|\Mockery\LegacyMockInterface|Schedule
+     * @return \Mockery\MockInterface&\Mockery\LegacyMockInterface&Schedule
      */
     protected function createScheduleMock()
     {

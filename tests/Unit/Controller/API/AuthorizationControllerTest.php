@@ -13,7 +13,7 @@ use Tests\Unit\Controller\BaseTestCase;
 final class AuthorizationControllerTest extends BaseTestCase
 {
     /**
-     * @return \Mockery\MockInterface|\Mockery\LegacyMockInterface|AuthorizationController
+     * @return \Mockery\MockInterface&\Mockery\LegacyMockInterface&AuthorizationController
      */
     protected function createTargetMock()
     {

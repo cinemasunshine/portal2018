@@ -18,15 +18,19 @@ abstract class BaseTestCase extends TestCase
     use MockeryPHPUnitIntegration;
 
     /**
-     * @return \Mockery\MockInterface|\Mockery\LegacyMockInterface|Container
+     * @return Container
      */
-    protected function createContainerMock()
+    protected function createContainer()
     {
-        return Mockery::mock(Container::class);
+        $container = new Container();
+
+        $container['em'] = $this->createEntityManagerMock();
+
+        return $container;
     }
 
     /**
-     * @return \Mockery\MockInterface|\Mockery\LegacyMockInterface|Request
+     * @return \Mockery\MockInterface&\Mockery\LegacyMockInterface&Request
      */
     protected function createRequestMock()
     {
@@ -34,7 +38,7 @@ abstract class BaseTestCase extends TestCase
     }
 
     /**
-     * @return \Mockery\MockInterface|\Mockery\LegacyMockInterface|Response
+     * @return \Mockery\MockInterface&\Mockery\LegacyMockInterface&Response
      */
     protected function createResponseMock()
     {
@@ -42,7 +46,7 @@ abstract class BaseTestCase extends TestCase
     }
 
     /**
-     * @return \Mockery\MockInterface|\Mockery\LegacyMockInterface|Router
+     * @return \Mockery\MockInterface&\Mockery\LegacyMockInterface&Router
      */
     protected function createRouterMock()
     {
@@ -50,7 +54,7 @@ abstract class BaseTestCase extends TestCase
     }
 
     /**
-     * @return \Mockery\MockInterface|\Mockery\LegacyMockInterface|EntityManager
+     * @return \Mockery\MockInterface&\Mockery\LegacyMockInterface&EntityManager
      */
     protected function createEntityManagerMock()
     {

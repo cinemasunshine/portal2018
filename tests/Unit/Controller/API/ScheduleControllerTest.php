@@ -13,7 +13,7 @@ use Tests\Unit\Controller\BaseTestCase;
 final class ScheduleControllerTest extends BaseTestCase
 {
     /**
-     * @return \Mockery\MockInterface|\Mockery\LegacyMockInterface|ScheduleController
+     * @return \Mockery\MockInterface&\Mockery\LegacyMockInterface&ScheduleController
      */
     protected function createTargetMock()
     {
@@ -21,7 +21,7 @@ final class ScheduleControllerTest extends BaseTestCase
     }
 
     /**
-     * @return \Mockery\MockInterface|\Mockery\LegacyMockInterface|TheaterSchedule
+     * @return \Mockery\MockInterface&\Mockery\LegacyMockInterface&TheaterSchedule
      */
     protected function createTheaterScheduleAliasMock()
     {

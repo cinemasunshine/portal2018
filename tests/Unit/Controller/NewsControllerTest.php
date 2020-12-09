@@ -8,16 +8,18 @@ use App\Controller\NewsController;
 use App\ORM\Entity\News;
 use App\ORM\Repository\NewsRepository;
 use Mockery;
+use Slim\Container;
 use Slim\Exception\NotFoundException;
 
 final class NewsControllerTest extends BaseTestCase
 {
     /**
-     * @return \Mockery\MockInterface|\Mockery\LegacyMockInterface|NewsController
+     * @param Container $container
+     * @return \Mockery\MockInterface&\Mockery\LegacyMockInterface&NewsController
      */
-    protected function createTargetMock()
+    protected function createTargetMock(Container $container)
     {
-        return Mockery::mock(NewsController::class);
+        return Mockery::mock(NewsController::class, [$container]);
     }
 
     /**
@@ -30,7 +32,9 @@ final class NewsControllerTest extends BaseTestCase
         $responseMock = $this->createResponseMock();
         $args         = [];
 
-        $targetMock = $this->createTargetMock();
+        $container = $this->createContainer();
+
+        $targetMock = $this->createTargetMock($container);
         $targetMock
             ->makePartial()
             ->shouldAllowMockingProtectedMethods();
@@ -83,18 +87,18 @@ final class NewsControllerTest extends BaseTestCase
             ->with($args['id'])
             ->andReturn($news);
 
-        $entityManagerMock = $this->createEntityManagerMock();
-        $entityManagerMock
+        $container = $this->createContainer();
+
+        $container['em']
             ->shouldReceive('getRepository')
             ->once()
             ->with(News::class)
             ->andReturn($repositoryMock);
 
-        $targetMock = $this->createTargetMock();
+        $targetMock = $this->createTargetMock($container);
         $targetMock
             ->makePartial()
             ->shouldAllowMockingProtectedMethods();
-        $targetMock->em = $entityManagerMock;
 
         $data = ['news' => $news];
         $targetMock
@@ -126,18 +130,18 @@ final class NewsControllerTest extends BaseTestCase
             ->with($args['id'])
             ->andReturn(null);
 
-        $entityManagerMock = $this->createEntityManagerMock();
-        $entityManagerMock
+        $container = $this->createContainer();
+
+        $container['em']
             ->shouldReceive('getRepository')
             ->once()
             ->with(News::class)
             ->andReturn($repositoryMock);
 
-        $targetMock = $this->createTargetMock();
+        $targetMock = $this->createTargetMock($container);
         $targetMock
             ->makePartial()
             ->shouldAllowMockingProtectedMethods();
-        $targetMock->em = $entityManagerMock;
 
         $this->expectException(NotFoundException::class);
 
@@ -145,7 +149,7 @@ final class NewsControllerTest extends BaseTestCase
     }
 
     /**
-     * @return \Mockery\MockInterface|\Mockery\LegacyMockInterface|NewsRepository
+     * @return \Mockery\MockInterface&\Mockery\LegacyMockInterface&NewsRepository
      */
     protected function createNewsRepositoryMock()
     {
@@ -153,7 +157,7 @@ final class NewsControllerTest extends BaseTestCase
     }
 
     /**
-     * @return \Mockery\MockInterface|\Mockery\LegacyMockInterface|News
+     * @return \Mockery\MockInterface&\Mockery\LegacyMockInterface&News
      */
     protected function createNewsMock()
     {

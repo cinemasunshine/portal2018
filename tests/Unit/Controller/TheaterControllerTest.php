@@ -8,18 +8,19 @@ use App\Controller\TheaterController;
 use App\ORM\Entity\News;
 use App\ORM\Entity\Theater;
 use App\ORM\Repository\NewsRepository;
-use App\ORM\Repository\ScheduleRepository;
 use Mockery;
+use Slim\Container;
 use Slim\Exception\NotFoundException;
 
 final class TheaterControllerTest extends BaseTestCase
 {
     /**
-     * @return \Mockery\MockInterface|\Mockery\LegacyMockInterface|TheaterController
+     * @param Container $container
+     * @return \Mockery\MockInterface&\Mockery\LegacyMockInterface&TheaterController
      */
-    protected function createTargetMock()
+    protected function createTargetMock(Container $container)
     {
-        return Mockery::mock(TheaterController::class);
+        return Mockery::mock(TheaterController::class, [$container]);
     }
 
     /**
@@ -31,7 +32,7 @@ final class TheaterControllerTest extends BaseTestCase
     }
 
     /**
-     * @return \Mockery\MockInterface|\Mockery\LegacyMockInterface|Theater
+     * @return \Mockery\MockInterface&\Mockery\LegacyMockInterface&Theater
      */
     protected function createTheaterMock()
     {
@@ -55,12 +56,15 @@ final class TheaterControllerTest extends BaseTestCase
             ->with()
             ->andReturn(false);
 
-        $targetMock = $this->createTargetMock();
+        $container = $this->createContainer();
+
+        $targetMock = $this->createTargetMock($container);
         $targetMock
             ->makePartial()
             ->shouldAllowMockingProtectedMethods();
 
-        $targetRef          = $this->createTargetReflection();
+        $targetRef = $this->createTargetReflection();
+
         $theaterPropertyRef = $targetRef->getProperty('theater');
         $theaterPropertyRef->setAccessible(true);
         $theaterPropertyRef->setValue($targetMock, $theaterMock);
@@ -152,12 +156,15 @@ final class TheaterControllerTest extends BaseTestCase
             ->with()
             ->andReturn(true);
 
-        $targetMock = $this->createTargetMock();
+        $container = $this->createContainer();
+
+        $targetMock = $this->createTargetMock($container);
         $targetMock
             ->makePartial()
             ->shouldAllowMockingProtectedMethods();
 
-        $targetRef          = $this->createTargetReflection();
+        $targetRef = $this->createTargetReflection();
+
         $theaterPropertyRef = $targetRef->getProperty('theater');
         $theaterPropertyRef->setAccessible(true);
         $theaterPropertyRef->setValue($targetMock, $theaterMock);
@@ -205,12 +212,15 @@ final class TheaterControllerTest extends BaseTestCase
 
         $theaterMock = $this->createTheaterMock();
 
-        $targetMock = $this->createTargetMock();
+        $container = $this->createContainer();
+
+        $targetMock = $this->createTargetMock($container);
         $targetMock
             ->makePartial()
             ->shouldAllowMockingProtectedMethods();
 
-        $targetRef          = $this->createTargetReflection();
+        $targetRef = $this->createTargetReflection();
+
         $theaterPropertyRef = $targetRef->getProperty('theater');
         $theaterPropertyRef->setAccessible(true);
         $theaterPropertyRef->setValue($targetMock, $theaterMock);
@@ -250,12 +260,15 @@ final class TheaterControllerTest extends BaseTestCase
 
         $theaterMock = $this->createTheaterMock();
 
-        $targetMock = $this->createTargetMock();
+        $container = $this->createContainer();
+
+        $targetMock = $this->createTargetMock($container);
         $targetMock
             ->makePartial()
             ->shouldAllowMockingProtectedMethods();
 
-        $targetRef          = $this->createTargetReflection();
+        $targetRef = $this->createTargetReflection();
+
         $theaterPropertyRef = $targetRef->getProperty('theater');
         $theaterPropertyRef->setAccessible(true);
         $theaterPropertyRef->setValue($targetMock, $theaterMock);
@@ -301,12 +314,15 @@ final class TheaterControllerTest extends BaseTestCase
             ->with()
             ->andReturn($theaterId);
 
-        $targetMock = $this->createTargetMock();
+        $container = $this->createContainer();
+
+        $targetMock = $this->createTargetMock($container);
         $targetMock
             ->makePartial()
             ->shouldAllowMockingProtectedMethods();
 
-        $targetRef          = $this->createTargetReflection();
+        $targetRef = $this->createTargetReflection();
+
         $theaterPropertyRef = $targetRef->getProperty('theater');
         $theaterPropertyRef->setAccessible(true);
         $theaterPropertyRef->setValue($targetMock, $theaterMock);
@@ -362,12 +378,15 @@ final class TheaterControllerTest extends BaseTestCase
 
         $theaterMock = $this->createTheaterMock();
 
-        $targetMock = $this->createTargetMock();
+        $container = $this->createContainer();
+
+        $targetMock = $this->createTargetMock($container);
         $targetMock
             ->makePartial()
             ->shouldAllowMockingProtectedMethods();
 
-        $targetRef          = $this->createTargetReflection();
+        $targetRef = $this->createTargetReflection();
+
         $theaterPropertyRef = $targetRef->getProperty('theater');
         $theaterPropertyRef->setAccessible(true);
         $theaterPropertyRef->setValue($targetMock, $theaterMock);
@@ -415,12 +434,15 @@ final class TheaterControllerTest extends BaseTestCase
 
         $theaterMock = $this->createTheaterMock();
 
-        $targetMock = $this->createTargetMock();
+        $container = $this->createContainer();
+
+        $targetMock = $this->createTargetMock($container);
         $targetMock
             ->makePartial()
             ->shouldAllowMockingProtectedMethods();
 
-        $targetRef          = $this->createTargetReflection();
+        $targetRef = $this->createTargetReflection();
+
         $theaterPropertyRef = $targetRef->getProperty('theater');
         $theaterPropertyRef->setAccessible(true);
         $theaterPropertyRef->setValue($targetMock, $theaterMock);
@@ -460,12 +482,15 @@ final class TheaterControllerTest extends BaseTestCase
 
         $theaterMock = $this->createTheaterMock();
 
-        $targetMock = $this->createTargetMock();
+        $container = $this->createContainer();
+
+        $targetMock = $this->createTargetMock($container);
         $targetMock
             ->makePartial()
             ->shouldAllowMockingProtectedMethods();
 
-        $targetRef          = $this->createTargetReflection();
+        $targetRef = $this->createTargetReflection();
+
         $theaterPropertyRef = $targetRef->getProperty('theater');
         $theaterPropertyRef->setAccessible(true);
         $theaterPropertyRef->setValue($targetMock, $theaterMock);
@@ -521,20 +546,21 @@ final class TheaterControllerTest extends BaseTestCase
             ->with($args['id'])
             ->andReturn($news);
 
-        $entityManagerMock = $this->createEntityManagerMock();
-        $entityManagerMock
+        $container = $this->createContainer();
+
+        $container['em']
             ->shouldReceive('getRepository')
             ->once()
             ->with(News::class)
             ->andReturn($repositoryMock);
 
-        $targetMock = $this->createTargetMock();
+        $targetMock = $this->createTargetMock($container);
         $targetMock
             ->makePartial()
             ->shouldAllowMockingProtectedMethods();
-        $targetMock->em = $entityManagerMock;
 
-        $targetRef          = $this->createTargetReflection();
+        $targetRef = $this->createTargetReflection();
+
         $theaterPropertyRef = $targetRef->getProperty('theater');
         $theaterPropertyRef->setAccessible(true);
         $theaterPropertyRef->setValue($targetMock, $theaterMock);
@@ -574,20 +600,21 @@ final class TheaterControllerTest extends BaseTestCase
             ->with($args['id'])
             ->andReturn(null);
 
-        $entityManagerMock = $this->createEntityManagerMock();
-        $entityManagerMock
+        $container = $this->createContainer();
+
+        $container['em']
             ->shouldReceive('getRepository')
             ->once()
             ->with(News::class)
             ->andReturn($repositoryMock);
 
-        $targetMock = $this->createTargetMock();
+        $targetMock = $this->createTargetMock($container);
         $targetMock
             ->makePartial()
             ->shouldAllowMockingProtectedMethods();
-        $targetMock->em = $entityManagerMock;
 
-        $targetRef          = $this->createTargetReflection();
+        $targetRef = $this->createTargetReflection();
+
         $theaterPropertyRef = $targetRef->getProperty('theater');
         $theaterPropertyRef->setAccessible(true);
         $theaterPropertyRef->setValue($targetMock, $theaterMock);
@@ -598,7 +625,7 @@ final class TheaterControllerTest extends BaseTestCase
     }
 
     /**
-     * @return \Mockery\MockInterface|\Mockery\LegacyMockInterface|NewsRepository
+     * @return \Mockery\MockInterface&\Mockery\LegacyMockInterface&NewsRepository
      */
     protected function createNewsRepositoryMock()
     {
@@ -606,7 +633,7 @@ final class TheaterControllerTest extends BaseTestCase
     }
 
     /**
-     * @return \Mockery\MockInterface|\Mockery\LegacyMockInterface|News
+     * @return \Mockery\MockInterface&\Mockery\LegacyMockInterface&News
      */
     protected function createNewsMock()
     {

@@ -10,16 +10,18 @@ use App\ORM\Entity\Schedule;
 use App\ORM\Repository\NewsRepository;
 use App\ORM\Repository\ScheduleRepository;
 use Mockery;
+use Slim\Container;
 use Slim\Exception\NotFoundException;
 
 final class ScreenXControllerTest extends BaseTestCase
 {
     /**
-     * @return \Mockery\MockInterface|\Mockery\LegacyMockInterface|ScreenXController
+     * @param Container $container
+     * @return \Mockery\MockInterface&\Mockery\LegacyMockInterface&ScreenXController
      */
-    protected function createTargetMock()
+    protected function createTargetMock(Container $container)
     {
-        return Mockery::mock(ScreenXController::class);
+        return Mockery::mock(ScreenXController::class, [$container]);
     }
 
     /**
@@ -32,7 +34,9 @@ final class ScreenXControllerTest extends BaseTestCase
         $responseMock = $this->createResponseMock();
         $args         = [];
 
-        $targetMock = $this->createTargetMock();
+        $container = $this->createContainer();
+
+        $targetMock = $this->createTargetMock($container);
         $targetMock
             ->makePartial()
             ->shouldAllowMockingProtectedMethods();
@@ -125,7 +129,9 @@ final class ScreenXControllerTest extends BaseTestCase
         $responseMock = $this->createResponseMock();
         $args         = [];
 
-        $targetMock = $this->createTargetMock();
+        $container = $this->createContainer();
+
+        $targetMock = $this->createTargetMock($container);
         $targetMock
             ->makePartial()
             ->shouldAllowMockingProtectedMethods();
@@ -152,7 +158,9 @@ final class ScreenXControllerTest extends BaseTestCase
         $responseMock = $this->createResponseMock();
         $args         = [];
 
-        $targetMock = $this->createTargetMock();
+        $container = $this->createContainer();
+
+        $targetMock = $this->createTargetMock($container);
         $targetMock
             ->makePartial()
             ->shouldAllowMockingProtectedMethods();
@@ -213,18 +221,18 @@ final class ScreenXControllerTest extends BaseTestCase
             ->with($args['schedule'])
             ->andReturn($schedule);
 
-        $entityManagerMock = $this->createEntityManagerMock();
-        $entityManagerMock
+        $container = $this->createContainer();
+
+        $container['em']
             ->shouldReceive('getRepository')
             ->once()
             ->with(Schedule::class)
             ->andReturn($repositoryMock);
 
-        $targetMock = $this->createTargetMock();
+        $targetMock = $this->createTargetMock($container);
         $targetMock
             ->makePartial()
             ->shouldAllowMockingProtectedMethods();
-        $targetMock->em = $entityManagerMock;
 
         $theaters = [];
         $targetMock
@@ -266,18 +274,18 @@ final class ScreenXControllerTest extends BaseTestCase
             ->with($args['schedule'])
             ->andReturn(null);
 
-        $entityManagerMock = $this->createEntityManagerMock();
-        $entityManagerMock
+        $container = $this->createContainer();
+
+        $container['em']
             ->shouldReceive('getRepository')
             ->once()
             ->with(Schedule::class)
             ->andReturn($repositoryMock);
 
-        $targetMock = $this->createTargetMock();
+        $targetMock = $this->createTargetMock($container);
         $targetMock
             ->makePartial()
             ->shouldAllowMockingProtectedMethods();
-        $targetMock->em = $entityManagerMock;
 
         $this->expectException(NotFoundException::class);
 
@@ -285,7 +293,7 @@ final class ScreenXControllerTest extends BaseTestCase
     }
 
     /**
-     * @return \Mockery\MockInterface|\Mockery\LegacyMockInterface|ScheduleRepository
+     * @return \Mockery\MockInterface&\Mockery\LegacyMockInterface&ScheduleRepository
      */
     protected function createScheduleRepositoryMock()
     {
@@ -293,7 +301,7 @@ final class ScreenXControllerTest extends BaseTestCase
     }
 
     /**
-     * @return \Mockery\MockInterface|\Mockery\LegacyMockInterface|Schedule
+     * @return \Mockery\MockInterface&\Mockery\LegacyMockInterface&Schedule
      */
     protected function createScheduleMock()
     {
@@ -310,7 +318,9 @@ final class ScreenXControllerTest extends BaseTestCase
         $responseMock = $this->createResponseMock();
         $args         = [];
 
-        $targetMock = $this->createTargetMock();
+        $container = $this->createContainer();
+
+        $targetMock = $this->createTargetMock($container);
         $targetMock
             ->makePartial()
             ->shouldAllowMockingProtectedMethods();
@@ -363,18 +373,18 @@ final class ScreenXControllerTest extends BaseTestCase
             ->with($args['id'])
             ->andReturn($news);
 
-        $entityManagerMock = $this->createEntityManagerMock();
-        $entityManagerMock
+        $container = $this->createContainer();
+
+        $container['em']
             ->shouldReceive('getRepository')
             ->once()
             ->with(News::class)
             ->andReturn($repositoryMock);
 
-        $targetMock = $this->createTargetMock();
+        $targetMock = $this->createTargetMock($container);
         $targetMock
             ->makePartial()
             ->shouldAllowMockingProtectedMethods();
-        $targetMock->em = $entityManagerMock;
 
         $data = ['news' => $news];
         $targetMock
@@ -406,18 +416,18 @@ final class ScreenXControllerTest extends BaseTestCase
             ->with($args['id'])
             ->andReturn(null);
 
-        $entityManagerMock = $this->createEntityManagerMock();
-        $entityManagerMock
+        $container = $this->createContainer();
+
+        $container['em']
             ->shouldReceive('getRepository')
             ->once()
             ->with(News::class)
             ->andReturn($repositoryMock);
 
-        $targetMock = $this->createTargetMock();
+        $targetMock = $this->createTargetMock($container);
         $targetMock
             ->makePartial()
             ->shouldAllowMockingProtectedMethods();
-        $targetMock->em = $entityManagerMock;
 
         $this->expectException(NotFoundException::class);
 
@@ -425,7 +435,7 @@ final class ScreenXControllerTest extends BaseTestCase
     }
 
     /**
-     * @return \Mockery\MockInterface|\Mockery\LegacyMockInterface|NewsRepository
+     * @return \Mockery\MockInterface&\Mockery\LegacyMockInterface&NewsRepository
      */
     protected function createNewsRepositoryMock()
     {
@@ -433,7 +443,7 @@ final class ScreenXControllerTest extends BaseTestCase
     }
 
     /**
-     * @return \Mockery\MockInterface|\Mockery\LegacyMockInterface|News
+     * @return \Mockery\MockInterface&\Mockery\LegacyMockInterface&News
      */
     protected function createNewsMock()
     {
@@ -450,7 +460,9 @@ final class ScreenXControllerTest extends BaseTestCase
         $responseMock = $this->createResponseMock();
         $args         = [];
 
-        $targetMock = $this->createTargetMock();
+        $container = $this->createContainer();
+
+        $targetMock = $this->createTargetMock($container);
         $targetMock
             ->makePartial()
             ->shouldAllowMockingProtectedMethods();

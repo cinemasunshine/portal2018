@@ -10,7 +10,7 @@ use Mockery;
 final class OyakoCinemaControllerTest extends BaseTestCase
 {
     /**
-     * @return \Mockery\MockInterface|\Mockery\LegacyMockInterface|OyakoCinemaController
+     * @return \Mockery\MockInterface&\Mockery\LegacyMockInterface&OyakoCinemaController
      */
     protected function createTargetMock()
     {
