@@ -10,6 +10,9 @@ namespace App\Controller\API;
 
 use App\Authorization\Grant\ClientCredentials;
 use App\Exception\NotAuthenticatedException;
+use Slim\Http\Request;
+use Slim\Http\Response;
+use Slim\Http\StatusCode;
 
 /**
  * Authorization controller
@@ -22,12 +25,12 @@ class AuthorizationController extends BaseController
     /**
      * token action
      *
-     * @param \Slim\Http\Request  $request
-     * @param \Slim\Http\Response $response
-     * @param array               $args
-     * @return string|void
+     * @param Request  $request
+     * @param Response $response
+     * @param array    $args
+     * @return Response
      */
-    public function executeToken($request, $response, $args)
+    public function executeToken(Request $request, Response $response, array $args)
     {
         $meta     = ['name' => 'Authorization Token API'];
         $data     = [];
@@ -42,30 +45,34 @@ class AuthorizationController extends BaseController
             try {
                 $data = $this->executeMemberToken();
             } catch (NotAuthenticatedException $e) {
-                $this->data->set('meta', $meta);
                 $error = [
                     'title' => 'Bad Request',
                     'detail' => 'Not authenticated.',
                 ];
-                $this->data->set('error', $error);
 
-                return 'badRequest';
+                return $response->withJson([
+                    'meta' => $meta,
+                    'error' => $error,
+                ], StatusCode::HTTP_BAD_REQUEST);
             }
         } else {
             // invalid user_type
-            $this->data->set('meta', $meta);
 
             $error = [
                 'title' => 'Bad Request',
                 'detail' => 'Invalid parameter.',
             ];
-            $this->data->set('error', $error);
 
-            return 'badRequest';
+            return $response->withJson([
+                'meta' => $meta,
+                'error' => $error,
+            ], StatusCode::HTTP_BAD_REQUEST);
         }
 
-        $this->data->set('meta', $meta);
-        $this->data->set('data', $data);
+        return $response->withJson([
+            'meta' => $meta,
+            'data' => $data,
+        ]);
     }
 
     /**

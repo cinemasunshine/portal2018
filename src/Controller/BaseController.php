@@ -8,40 +8,27 @@
 
 namespace App\Controller;
 
-use App\Responder\ResponderFactory;
-use App\Responder\AbstractResponder;
-use Psr\Container\ContainerInterface;
-use Psr\Http\Message\ResponseInterface as Response;
+use Slim\Http\Request;
+use Slim\Http\Response;
 
-/**
- * Base controller
- */
 abstract class BaseController extends AbstractController
 {
-    /**
-     * {@inheritDoc}
-     */
-    protected function preExecute($request, $response, $args): void
+    protected function preExecute(Request $request, Response $response, array $args): void
+    {
+    }
+
+    protected function postExecute(Request $request, Response $response, array $args): void
     {
     }
 
     /**
-     * {@inheritDoc}
+     * @param Response $response
+     * @param string   $template
+     * @param array    $data
+     * @return Response
      */
-    protected function postExecute($request, $response, $args): void
+    protected function render(Response $response, string $template, array $data = []): Response
     {
-    }
-
-    /**
-     * get responder
-     *
-     * @return AbstractResponder
-     */
-    protected function getResponder(): AbstractResponder
-    {
-        $path = explode('\\', static::class);
-        $name = str_replace('Controller', '', array_pop($path));
-
-        return ResponderFactory::factory($name, $this->view);
+        return $this->view->render($response, $template, $data);
     }
 }

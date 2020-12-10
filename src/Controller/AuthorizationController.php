@@ -10,8 +10,10 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use Slim\Http\Uri as HttpUri;
 use GuzzleHttp\Exception\BadResponseException;
+use Slim\Http\Request;
+use Slim\Http\Response;
+use Slim\Http\Uri as HttpUri;
 
 /**
  * Authorization controller
@@ -24,12 +26,12 @@ class AuthorizationController extends BaseController
      * リクエストエラーは認可サーバで処理される。
      * ただしそこからパラメータ無しで戻るリンクがある。
      *
-     * @param \Slim\Http\Request  $request
-     * @param \Slim\Http\Response $response
-     * @param array               $args
-     * @return string|void
+     * @param Request  $request
+     * @param Response $response
+     * @param array    $args
+     * @return Response
      */
-    public function executeLogin($request, $response, $args)
+    public function executeLogin(Request $request, Response $response, array $args)
     {
         $this->logger->info('Login params', $request->getParams());
 
@@ -47,7 +49,7 @@ class AuthorizationController extends BaseController
             || $state !== $this->am->getAuthorizationState()
         ) {
             $this->logger->info('Invalid state.');
-            return 'error';
+            return $this->renderError($response);
         }
 
         $this->am->clearAuthorizationState();
@@ -59,7 +61,7 @@ class AuthorizationController extends BaseController
             $token = $this->am->requestToken($code, $redirectUri);
         } catch (BadResponseException $e) {
             $this->logger->error($e->getMessage());
-            return 'error';
+            return $this->renderError($response);
         }
 
         $this->um->login($token);
@@ -79,14 +81,23 @@ class AuthorizationController extends BaseController
     }
 
     /**
+     * @param Response $response
+     * @return Response
+     */
+    protected function renderError(Response $response)
+    {
+        return $this->render($response, 'authorization/error.html.twig');
+    }
+
+    /**
      * logout action
      *
-     * @param \Slim\Http\Request  $request
-     * @param \Slim\Http\Response $response
-     * @param array               $args
-     * @return string|void
+     * @param Request  $request
+     * @param Response $response
+     * @param array    $args
+     * @return void
      */
-    public function executeLogout($request, $response, $args)
+    public function executeLogout(Request $request, Response $response, array $args)
     {
         $this->um->logout();
 

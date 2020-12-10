@@ -10,6 +10,8 @@ namespace App\Controller;
 
 use App\ORM\Entity;
 use Slim\Exception\NotFoundException;
+use Slim\Http\Request;
+use Slim\Http\Response;
 
 /**
  * ScreenX controller
@@ -21,28 +23,39 @@ class ScreenXController extends SpecialSiteController
     /**
      * index action
      *
-     * @param \Slim\Http\Request  $request
-     * @param \Slim\Http\Response $response
-     * @param array               $args
-     * @return string|void
+     * @param Request  $request
+     * @param Response $response
+     * @param array    $args
+     * @return Response
      */
-    public function executeIndex($request, $response, $args)
+    public function executeIndex(Request $request, Response $response, array $args)
     {
-        $this->data->set('mainBanners', $this->getMainBanners());
+        $mainBanners = $this->getMainBanners();
 
-        $this->data->set('trailers', $this->getTrailers());
+        $trailers = $this->getTrailers();
 
-        $this->data->set('newsList', $this->getNewsList(8));
+        $newsList = $this->getNewsList(8);
 
-        $this->data->set('theaters', $this->getScreenXTheaters());
+        $theaters = $this->getScreenXTheaters();
 
-        $this->data->set('screeningSchedules', $this->findNowShowingSchedules());
+        $nowShowingSchedules = $this->findNowShowingSchedules();
 
-        $this->data->set('commingSoonSchedules', $this->findCommingSoonSchedules());
+        $commingSoonSchedules = $this->findCommingSoonSchedules();
 
-        $this->data->set('campaigns', $this->getCampaigns());
+        $campaigns = $this->getCampaigns();
 
-        $this->data->set('infoNewsList', $this->getInfoNewsList(4));
+        $infoNewsList = $this->getInfoNewsList(4);
+
+        return $this->render($response, 'screenx/index.html.twig', [
+            'mainBanners' => $mainBanners,
+            'trailers' => $trailers,
+            'newsList' => $newsList,
+            'theaters' => $theaters,
+            'nowShowingSchedules' => $nowShowingSchedules,
+            'commingSoonSchedules' => $commingSoonSchedules,
+            'campaigns' => $campaigns,
+            'infoNewsList' => $infoNewsList,
+        ]);
     }
 
     /**
@@ -142,41 +155,48 @@ class ScreenXController extends SpecialSiteController
     /**
      * about action
      *
-     * @param \Slim\Http\Request  $request
-     * @param \Slim\Http\Response $response
-     * @param array               $args
-     * @return string|void
+     * @param Request  $request
+     * @param Response $response
+     * @param array    $args
+     * @return Response
      */
-    public function executeAbout($request, $response, $args)
+    public function executeAbout(Request $request, Response $response, array $args)
     {
+        return $this->render($response, 'screenx/about.html.twig');
     }
 
     /**
      * schedule list action
      *
-     * @param \Slim\Http\Request  $request
-     * @param \Slim\Http\Response $response
-     * @param array               $args
-     * @return string|void
+     * @param Request  $request
+     * @param Response $response
+     * @param array    $args
+     * @return Response
      */
-    public function executeScheduleList($request, $response, $args)
+    public function executeScheduleList(Request $request, Response $response, array $args)
     {
-        $this->data->set('theaters', $this->getScreenXTheaters());
+        $theaters = $this->getScreenXTheaters();
 
-        $this->data->set('nowShowingSchedules', $this->findNowShowingSchedules());
+        $nowShowingSchedules = $this->findNowShowingSchedules();
 
-        $this->data->set('commingSoonSchedules', $this->findCommingSoonSchedules());
+        $commingSoonSchedules = $this->findCommingSoonSchedules();
+
+        return $this->render($response, 'screenx/schedule/list.html.twig', [
+            'theaters' => $theaters,
+            'nowShowingSchedules' => $nowShowingSchedules,
+            'commingSoonSchedules' => $commingSoonSchedules,
+        ]);
     }
 
     /**
      * schedule show action
      *
-     * @param \Slim\Http\Request  $request
-     * @param \Slim\Http\Response $response
-     * @param array               $args
-     * @return string|void
+     * @param Request  $request
+     * @param Response $response
+     * @param array    $args
+     * @return Response
      */
-    public function executeScheduleShow($request, $response, $args)
+    public function executeScheduleShow(Request $request, Response $response, $args)
     {
         $schedule = $this->em
             ->getRepository(Entity\Schedule::class)
@@ -188,35 +208,43 @@ class ScreenXController extends SpecialSiteController
 
         /**@var Entity\Schedule $schedule */
 
-        $this->data->set('schedule', $schedule);
+        $theaters = $this->getScreenXTheaters();
 
-        $this->data->set('theaters', $this->getScreenXTheaters());
+        return $this->render($response, 'screenx/schedule/show.html.twig', [
+            'schedule' => $schedule,
+            'theaters' => $theaters,
+        ]);
     }
 
     /**
      * news list action
      *
-     * @param \Slim\Http\Request  $request
-     * @param \Slim\Http\Response $response
-     * @param array               $args
+     * @param Request  $request
+     * @param Response $response
+     * @param array    $args
      * @return string|void
      */
-    public function executeNewsList($request, $response, $args)
+    public function executeNewsList(Request $request, Response $response, array $args)
     {
-        $this->data->set('newsList', $this->getNewsList());
+        $newsList = $this->getNewsList();
 
-        $this->data->set('infoNewsList', $this->getInfoNewsList());
+        $infoNewsList = $this->getInfoNewsList();
+
+        return $this->render($response, 'screenx/news/list.html.twig', [
+            'newsList' => $newsList,
+            'infoNewsList' => $infoNewsList,
+        ]);
     }
 
     /**
      * news show action
      *
-     * @param \Slim\Http\Request  $request
-     * @param \Slim\Http\Response $response
-     * @param array               $args
-     * @return string|void
+     * @param Request  $request
+     * @param Response $response
+     * @param array    $args
+     * @return Response
      */
-    public function executeNewsShow($request, $response, $args)
+    public function executeNewsShow(Request $request, Response $response, array $args)
     {
         $news = $this->em
             ->getRepository(Entity\News::class)
@@ -228,19 +256,21 @@ class ScreenXController extends SpecialSiteController
 
         /**@var Entity\News $news */
 
-        $this->data->set('news', $news);
+        return $this->render($response, 'screenx/news/show.html.twig', ['news' => $news]);
     }
 
     /**
      * theater action
      *
-     * @param \Slim\Http\Request  $request
-     * @param \Slim\Http\Response $response
-     * @param array               $args
-     * @return string|void
+     * @param Request  $request
+     * @param Response $response
+     * @param array    $args
+     * @return Response
      */
-    public function executeTheater($request, $response, $args)
+    public function executeTheater(Request $request, Response $response, array $args)
     {
-        $this->data->set('theaters', $this->getScreenXTheaters());
+        $theaters = $this->getScreenXTheaters();
+
+        return $this->render($response, 'screenx/theater.html.twig', ['theaters' => $theaters]);
     }
 }
