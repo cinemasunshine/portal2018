@@ -10,6 +10,8 @@ namespace App\Controller;
 
 use App\ORM\Entity;
 use Slim\Exception\NotFoundException;
+use Slim\Http\Request;
+use Slim\Http\Response;
 
 /**
  * News controller
@@ -19,16 +21,21 @@ class NewsController extends GeneralController
     /**
      * list action
      *
-     * @param \Slim\Http\Request  $request
-     * @param \Slim\Http\Response $response
-     * @param array               $args
-     * @return string|void
+     * @param Request  $request
+     * @param Response $response
+     * @param array    $args
+     * @return Response
      */
-    public function executeList($request, $response, $args)
+    public function executeList(Request $request, Response $response, array $args)
     {
-        $this->data->set('newsList', $this->getNewsList());
+        $newsList = $this->getNewsList();
 
-        $this->data->set('campaigns', $this->getCampaigns(self::PAGE_ID));
+        $campaigns = $this->getCampaigns(self::PAGE_ID);
+
+        return $this->render($response, 'news/list.html.twig', [
+            'newsList' => $newsList,
+            'campaigns' => $campaigns,
+        ]);
     }
 
     /**
@@ -46,12 +53,12 @@ class NewsController extends GeneralController
     /**
      * show action
      *
-     * @param \Slim\Http\Request  $request
-     * @param \Slim\Http\Response $response
-     * @param array               $args
-     * @return string|void
+     * @param Request  $request
+     * @param Response $response
+     * @param array    $args
+     * @return Response
      */
-    public function executeShow($request, $response, $args)
+    public function executeShow(Request $request, Response $response, array $args)
     {
         $news = $this->em
             ->getRepository(Entity\News::class)
@@ -63,6 +70,6 @@ class NewsController extends GeneralController
 
         /**@var Entity\News $news */
 
-        $this->data->set('news', $news);
+        return $this->render($response, 'news/show.html.twig', ['news' => $news]);
     }
 }

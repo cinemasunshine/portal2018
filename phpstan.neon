@@ -13,10 +13,20 @@ parameters:
 	excludes_analyse:
 		- %currentWorkingDirectory%/src/ORM/Proxy/*
 		- %currentWorkingDirectory%/tests/entity-manager.php
+	earlyTerminatingMethodCalls:
+		App\Controller\AbstractController:
+			- redirect
 	doctrine:
 		objectManagerLoader: %currentWorkingDirectory%/tests/entity-manager.php
 
 	ignoreErrors:
+		# https://github.com/phpstan/phpstan/issues/4141#issuecomment-735227578
+		# 多くのスタブを作成することになりそうなので除外する
+		-
+			message: "#^Method App\\\\Controller\\\\BaseController\\:\\:render\\(\\) should return Slim\\\\Http\\\\Response but returns Psr\\\\Http\\\\Message\\\\ResponseInterface\\.$#"
+			count: 1
+			path: src/Controller/BaseController.php
+
 		# ライブラリの更新が必要なのでひとまず除外する
 		-
 			message: "#^Parameter \\#2 \\$builder of method Cinemasunshine\\\\Schedule\\\\Client\\\\Http\\:\\:get\\(\\) expects Cinemasunshine\\\\Schedule\\\\Builder\\\\Entity|null, Cinemasunshine\\\\Schedule\\\\Builder\\\\ScheduleInterface|null given\\.$#"

@@ -9,45 +9,56 @@
 namespace App\Controller;
 
 use App\ORM\Entity;
+use Slim\Http\Request;
+use Slim\Http\Response;
 
-/**
- * Index controller
- */
 class IndexController extends GeneralController
 {
     /**
      * index action
      *
-     * @param \Slim\Http\Request  $request
-     * @param \Slim\Http\Response $response
-     * @param array               $args
-     * @return string|void
+     * @param Request  $request
+     * @param Response $response
+     * @param array    $args
+     * @return Response
      */
-    public function executeIndex($request, $response, $args)
+    public function executeIndex(Request $request, Response $response, $args)
     {
-        $this->data->set('mainBanners', $this->getMainBanners());
+        $mainBanners = $this->getMainBanners();
 
-        $this->data->set('areaToTheaters', $this->getTheaters());
+        $areaToTheaters = $this->getTheaters();
 
-        $this->data->set('trailer', $this->getTrailer());
+        $trailer = $this->getTrailer();
 
-        $this->data->set('titleRanking', $this->getTitleRanking());
+        $titleRanking = $this->getTitleRanking();
 
-        $this->data->set('newsList', $this->getNewsList(Entity\News::CATEGORY_NEWS));
+        $newsList = $this->getNewsList(Entity\News::CATEGORY_NEWS);
 
-        $this->data->set('imaxNewsList', $this->getNewsList(Entity\News::CATEGORY_IMAX));
+        $imaxNewsList = $this->getNewsList(Entity\News::CATEGORY_IMAX);
 
-        // twigは数値から始まる変数が利用できない
-        $this->data->set('fourdxNewsList', $this->getNewsList(Entity\News::CATEGORY_4DX));
+        $fourdxNewsList = $this->getNewsList(Entity\News::CATEGORY_4DX);
 
-        $this->data->set('screenXNewsList', $this->getNewsList(Entity\News::CATEGORY_SCREENX));
+        $screenXNewsList = $this->getNewsList(Entity\News::CATEGORY_SCREENX);
 
-        // twigは数値から始まる変数が利用できない
-        $this->data->set('fourdxScreenNewsList', $this->getNewsList(Entity\News::CATEGORY_4DX_SCREEN));
+        $fourdxScreenNewsList = $this->getNewsList(Entity\News::CATEGORY_4DX_SCREEN);
 
-        $this->data->set('infoNewsList', $this->getNewsList(Entity\News::CATEGORY_INFO));
+        $infoNewsList = $this->getNewsList(Entity\News::CATEGORY_INFO);
 
-        $this->data->set('campaigns', $this->getCampaigns(self::PAGE_ID));
+        $campaigns = $this->getCampaigns(self::PAGE_ID);
+
+        return $this->render($response, 'index/index.html.twig', [
+            'mainBanners' => $mainBanners,
+            'areaToTheaters' => $areaToTheaters,
+            'trailer' => $trailer,
+            'titleRanking' => $titleRanking,
+            'newsList' => $newsList,
+            'imaxNewsList' => $imaxNewsList,
+            'fourdxNewsList' => $fourdxNewsList,
+            'screenXNewsList' => $screenXNewsList,
+            'fourdxScreenNewsList' => $fourdxScreenNewsList,
+            'infoNewsList' => $infoNewsList,
+            'campaigns' => $campaigns,
+        ]);
     }
 
     /**

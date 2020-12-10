@@ -10,6 +10,8 @@ namespace App\Controller;
 
 use App\ORM\Entity;
 use Slim\Exception\NotFoundException;
+use Slim\Http\Request;
+use Slim\Http\Response;
 
 /**
  * OyakoCinema controller
@@ -19,14 +21,16 @@ class OyakoCinemaController extends GeneralController
     /**
      * index action
      *
-     * @param \Slim\Http\Request  $request
-     * @param \Slim\Http\Response $response
-     * @param array               $args
-     * @return string|void
+     * @param Request  $request
+     * @param Response $response
+     * @param array    $args
+     * @return Response
      */
-    public function executeIndex($request, $response, $args)
+    public function executeIndex(Request $request, Response $response, array $args)
     {
-        $this->data->set('oyakoCinemaTitles', $this->getList());
+        $oyakoCinemaTitles = $this->getList();
+
+        return $this->render($response, 'oyako_cinema/index.html.twig', ['oyakoCinemaTitles' => $oyakoCinemaTitles]);
     }
 
     /**

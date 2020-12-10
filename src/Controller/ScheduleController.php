@@ -10,6 +10,8 @@ namespace App\Controller;
 
 use App\ORM\Entity;
 use Slim\Exception\NotFoundException;
+use Slim\Http\Request;
+use Slim\Http\Response;
 
 /**
  * Schedule controller
@@ -19,18 +21,24 @@ class ScheduleController extends GeneralController
     /**
      * list action
      *
-     * @param \Slim\Http\Request  $request
-     * @param \Slim\Http\Response $response
-     * @param array               $args
-     * @return string|void
+     * @param Request  $request
+     * @param Response $response
+     * @param array    $args
+     * @return Response
      */
-    public function executeList($request, $response, $args)
+    public function executeList(Request $request, Response $response, array $args)
     {
-        $this->data->set('theaters', $this->getTheaters());
+        $theaters = $this->getTheaters();
 
-        $this->data->set('nowShowingSchedules', $this->findNowShowingSchedules());
+        $nowShowingSchedules = $this->findNowShowingSchedules();
 
-        $this->data->set('commingSoonSchedules', $this->findCommingSoonSchedules());
+        $commingSoonSchedules = $this->findCommingSoonSchedules();
+
+        return $this->render($response, 'schedule/list.html.twig', [
+            'theaters' => $theaters,
+            'nowShowingSchedules' => $nowShowingSchedules,
+            'commingSoonSchedules' => $commingSoonSchedules,
+        ]);
     }
 
     /**
@@ -56,12 +64,12 @@ class ScheduleController extends GeneralController
     /**
      * show action
      *
-     * @param \Slim\Http\Request  $request
-     * @param \Slim\Http\Response $response
-     * @param array               $args
-     * @return string|void
+     * @param Request  $request
+     * @param Response $response
+     * @param array    $args
+     * @return Response
      */
-    public function executeShow($request, $response, $args)
+    public function executeShow(Request $request, Response $response, array $args)
     {
         $schedule = $this->em
             ->getRepository(Entity\Schedule::class)
@@ -73,8 +81,11 @@ class ScheduleController extends GeneralController
 
         /**@var Entity\Schedule $schedule */
 
-        $this->data->set('schedule', $schedule);
+        $theaters = $this->getTheaters();
 
-        $this->data->set('theaters', $this->getTheaters());
+        return $this->render($response, 'schedule/show.html.twig', [
+            'schedule' => $schedule,
+            'theaters' => $theaters,
+        ]);
     }
 }

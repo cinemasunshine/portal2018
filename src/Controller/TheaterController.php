@@ -10,6 +10,8 @@ namespace App\Controller;
 
 use App\ORM\Entity;
 use Slim\Exception\NotFoundException;
+use Slim\Http\Request;
+use Slim\Http\Response;
 
 /**
  * Theater controller
@@ -19,10 +21,7 @@ class TheaterController extends BaseController
     /** @var Entity\Theater */
     protected $theater;
 
-    /**
-     * {@inheritDoc}
-     */
-    protected function preExecute($request, $response, $args): void
+    protected function preExecute(Request $request, Response $response, array $args): void
     {
         $theater = $this->getTheater($args['name']);
 
@@ -35,10 +34,7 @@ class TheaterController extends BaseController
         $this->theater = $theater;
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    protected function postExecute($request, $response, $args): void
+    protected function postExecute(Request $request, Response $response, array $args): void
     {
         $session = $this->sm->getContainer();
 
@@ -65,38 +61,40 @@ class TheaterController extends BaseController
     /**
      * index action
      *
-     * @param \Slim\Http\Request  $request
-     * @param \Slim\Http\Response $response
-     * @param array               $args
-     * @return string|void
+     * @param Request  $request
+     * @param Response $response
+     * @param array    $args
+     * @return Response
      */
-    public function executeIndex($request, $response, $args)
+    public function executeIndex(Request $request, Response $response, array $args)
     {
         $theater = $this->theater;
 
-        $this->data->set('theater', $theater);
+        $mainBanners = $this->getMainBanners($theater);
 
-        $this->data->set('mainBanners', $this->getMainBanners($theater));
-
-        $this->data->set('infoNewsList', $this->getNewsList(
+        $infoNewsList = $this->getNewsList(
             $theater,
             Entity\News::CATEGORY_INFO,
             8
-        ));
+        );
 
         if ($theater->isStatusClosed()) {
-            return 'closed';
+            return $this->render($response, 'theater/index/closed.html.twig', [
+                'theater' => $theater,
+                'mainBanners' => $mainBanners,
+                'infoNewsList' => $infoNewsList,
+            ]);
         }
 
-        $this->data->set('trailer', $this->getTrailer($theater));
+        $trailer = $this->getTrailer($theater);
 
-        $this->data->set('eventNewsList', $this->getNewsList(
+        $eventNewsList = $this->getNewsList(
             $theater,
             Entity\News::CATEGORY_EVENT,
             8
-        ));
+        );
 
-        $this->data->set('newsList', $this->getNewsList(
+        $newsList = $this->getNewsList(
             $theater,
             [
                 Entity\News::CATEGORY_NEWS, // SASAKI-271
@@ -106,9 +104,19 @@ class TheaterController extends BaseController
                 Entity\News::CATEGORY_4DX_SCREEN, // SASAKI-482
             ],
             8
-        ));
+        );
 
-        $this->data->set('campaigns', $this->getCampaigns($theater));
+        $campaigns = $this->getCampaigns($theater);
+
+        return $this->render($response, 'theater/index/index.html.twig', [
+            'theater' => $theater,
+            'mainBanners' => $mainBanners,
+            'infoNewsList' => $infoNewsList,
+            'trailer' => $trailer,
+            'eventNewsList' => $eventNewsList,
+            'newsList' => $newsList,
+            'campaigns' => $campaigns,
+        ]);
     }
 
     /**
@@ -162,64 +170,75 @@ class TheaterController extends BaseController
     /**
      * access action
      *
-     * @param \Slim\Http\Request  $request
-     * @param \Slim\Http\Response $response
-     * @param array               $args
-     * @return string|void
+     * @param Request  $request
+     * @param Response $response
+     * @param array    $args
+     * @return Response
      */
-    public function executeAccess($request, $response, $args)
+    public function executeAccess(Request $request, Response $response, array $args)
     {
         $theater = $this->theater;
 
-        $this->data->set('theater', $theater);
-
-        $this->data->set('infoNewsList', $this->getNewsList(
+        $infoNewsList = $this->getNewsList(
             $theater,
             Entity\News::CATEGORY_INFO,
             8
-        ));
+        );
+
+        return $this->render($response, 'theater/access.html.twig', [
+            'theater' => $theater,
+            'infoNewsList' => $infoNewsList,
+        ]);
     }
 
     /**
      * admission action
      *
-     * @param \Slim\Http\Request  $request
-     * @param \Slim\Http\Response $response
-     * @param array               $args
-     * @return string|void
+     * @param Request  $request
+     * @param Response $response
+     * @param array    $args
+     * @return Response
      */
-    public function executeAdmission($request, $response, $args)
+    public function executeAdmission(Request $request, Response $response, array $args)
     {
         $theater = $this->theater;
 
-        $this->data->set('theater', $theater);
+        $campaigns = $this->getCampaigns($theater);
 
-        $this->data->set('campaigns', $this->getCampaigns($theater));
+        return $this->render($response, 'theater/admission.html.twig', [
+            'theater' => $theater,
+            'campaigns' => $campaigns,
+        ]);
     }
 
     /**
      * advance ticket action
      *
-     * @param \Slim\Http\Request  $request
-     * @param \Slim\Http\Response $response
-     * @param array               $args
-     * @return string|void
+     * @param Request  $request
+     * @param Response $response
+     * @param array    $args
+     * @return Response
      */
-    public function executeAdvanceTicket($request, $response, $args)
+    public function executeAdvanceTicket(Request $request, Response $response, array $args)
     {
         $theater = $this->theater;
 
-        $this->data->set('theater', $theater);
+        $advanceTickets = $this->getAdvanceTickets($theater->getId());
 
-        $this->data->set('advanceTickets', $this->getAdvanceTickets($theater->getId()));
+        $campaigns = $this->getCampaigns($theater);
 
-        $this->data->set('campaigns', $this->getCampaigns($theater));
-
-        $this->data->set('infoNewsList', $this->getNewsList(
+        $infoNewsList = $this->getNewsList(
             $theater,
             Entity\News::CATEGORY_INFO,
             8
-        ));
+        );
+
+        return $this->render($response, 'theater/advance_ticket.html.twig', [
+            'theater' => $theater,
+            'advanceTickets' => $advanceTickets,
+            'campaigns' => $campaigns,
+            'infoNewsList' => $infoNewsList,
+        ]);
     }
 
     /**
@@ -238,64 +257,75 @@ class TheaterController extends BaseController
     /**
      * concession action
      *
-     * @param \Slim\Http\Request  $request
-     * @param \Slim\Http\Response $response
-     * @param array               $args
-     * @return string|void
+     * @param Request  $request
+     * @param Response $response
+     * @param array    $args
+     * @return Response
      */
-    public function executeConcession($request, $response, $args)
+    public function executeConcession(Request $request, Response $response, array $args)
     {
         $theater = $this->theater;
 
-        $this->data->set('theater', $theater);
+        $campaigns = $this->getCampaigns($theater);
 
-        $this->data->set('campaigns', $this->getCampaigns($theater));
-
-        $this->data->set('infoNewsList', $this->getNewsList(
+        $infoNewsList = $this->getNewsList(
             $theater,
             Entity\News::CATEGORY_INFO,
             8
-        ));
+        );
+
+        return $this->render($response, 'theater/concession.html.twig', [
+            'theater' => $theater,
+            'campaigns' => $campaigns,
+            'infoNewsList' => $infoNewsList,
+        ]);
     }
 
     /**
      * floor guide action
      *
-     * @param \Slim\Http\Request  $request
-     * @param \Slim\Http\Response $response
-     * @param array               $args
-     * @return string|void
+     * @param Request  $request
+     * @param Response $response
+     * @param array    $args
+     * @return Response
      */
-    public function executeFloorGuide($request, $response, $args)
+    public function executeFloorGuide(Request $request, Response $response, array $args)
     {
         $theater = $this->theater;
 
-        $this->data->set('theater', $theater);
-
-        $this->data->set('infoNewsList', $this->getNewsList(
+        $infoNewsList = $this->getNewsList(
             $theater,
             Entity\News::CATEGORY_INFO,
             8
-        ));
+        );
+
+        return $this->render($response, 'theater/floor_guide.html.twig', [
+            'theater' => $theater,
+            'infoNewsList' => $infoNewsList,
+        ]);
     }
 
     /**
      * news list action
      *
-     * @param \Slim\Http\Request  $request
-     * @param \Slim\Http\Response $response
-     * @param array               $args
-     * @return string|void
+     * @param Request  $request
+     * @param Response $response
+     * @param array    $args
+     * @return Response
      */
-    public function executeNewsList($request, $response, $args)
+    public function executeNewsList(Request $request, Response $response, array $args)
     {
         $theater = $this->theater;
 
-        $this->data->set('theater', $theater);
+        $newsList = $this->getNewsList($theater);
 
-        $this->data->set('newsList', $this->getNewsList($theater));
+        $campaigns = $this->getCampaigns($theater);
 
-        $this->data->set('campaigns', $this->getCampaigns($theater));
+        return $this->render($response, 'theater/news/list.html.twig', [
+            'theater' => $theater,
+            'newsList' => $newsList,
+            'campaigns' => $campaigns,
+        ]);
     }
 
     /**
@@ -320,16 +350,14 @@ class TheaterController extends BaseController
     /**
      * news show action
      *
-     * @param \Slim\Http\Request  $request
-     * @param \Slim\Http\Response $response
-     * @param array               $args
-     * @return string|void
+     * @param Request  $request
+     * @param Response $response
+     * @param array    $args
+     * @return Response
      */
-    public function executeNewsShow($request, $response, $args)
+    public function executeNewsShow(Request $request, Response $response, array $args)
     {
         $theater = $this->theater;
-
-        $this->data->set('theater', $theater);
 
         $news = $this->em
             ->getRepository(Entity\News::class)
@@ -341,6 +369,9 @@ class TheaterController extends BaseController
 
         /**@var Entity\News $news */
 
-        $this->data->set('news', $news);
+        return $this->render($response, 'theater/news/show.html.twig', [
+            'theater' => $theater,
+            'news' => $news,
+        ]);
     }
 }
