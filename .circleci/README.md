@@ -4,7 +4,7 @@
 
 ## Environment Variables
 
-Settings > cinemasunshine > portal2018 > Environment Variables
+cinemasunshine (Organizations) > portal2018 (Projects) > Project Settings > Environment Variables
 
 ### Composer
 
@@ -23,5 +23,8 @@ Settings > cinemasunshine > portal2018 > Environment Variables
 |TEST_AAS_PASSWORD |テスト環境デプロイユーザのパスワード |
 |PROD_RELEASE_AAS_USER |運用環境releaseスロット デプロイユーザ |
 |PROD_RELEASE_AAS_PASSWORD |運用環境releaseスロット デプロイユーザのパスワード |
+|AZURE_TENANT |Azure テナントID [circleci/azure-cli orb](https://circleci.com/developer/orbs/orb/circleci/azure-cli) |
+|AZURE_USERNAME |Azure ユーザ名 [circleci/azure-cli orb](https://circleci.com/developer/orbs/orb/circleci/azure-cli) |
+|AZURE_PASSWORD |Azure パスワード [circleci/azure-cli orb](https://circleci.com/developer/orbs/orb/circleci/azure-cli) |
 
 デプロイユーザとパスワードはAzure App Serviceのプロパティ > デプロイの開始URL
