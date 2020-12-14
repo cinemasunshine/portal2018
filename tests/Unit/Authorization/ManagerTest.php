@@ -2,8 +2,6 @@
 
 /**
  * ManagerTest.php
- *
- * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
 declare(strict_types=1);
@@ -117,6 +115,7 @@ final class ManagerTest extends TestCase
      * test construct
      *
      * @test
+     *
      * @return void
      */
     public function testConstruct()
@@ -182,6 +181,7 @@ final class ManagerTest extends TestCase
      * test getAuthorizationCodeGrunt
      *
      * @test
+     *
      * @return void
      */
     public function testGetAuthorizationCodeGrunt()
@@ -219,6 +219,7 @@ final class ManagerTest extends TestCase
      * test getAuthorizationUrl
      *
      * @test
+     *
      * @return void
      */
     public function testGetAuthorizationUrl()
@@ -272,6 +273,7 @@ final class ManagerTest extends TestCase
      * test initAuthorizationState
      *
      * @test
+     *
      * @return void
      */
     public function testInitAuthorizationState()
@@ -308,6 +310,7 @@ final class ManagerTest extends TestCase
      * test createUniqueStr
      *
      * @test
+     *
      * @return void
      */
     public function testCreateUniqueStr()
@@ -333,6 +336,7 @@ final class ManagerTest extends TestCase
      * test getAuthorizationState
      *
      * @test
+     *
      * @return void
      */
     public function testGetAuthorizationState()
@@ -370,6 +374,7 @@ final class ManagerTest extends TestCase
      * test clearAuthorizationState
      *
      * @test
+     *
      * @return void
      */
     public function testClearAuthorizationState()
@@ -397,6 +402,7 @@ final class ManagerTest extends TestCase
      * test initCodeVerifier
      *
      * @test
+     *
      * @return void
      */
     public function testInitCodeVerifier()
@@ -433,6 +439,7 @@ final class ManagerTest extends TestCase
      * test getCodeVerifier
      *
      * @test
+     *
      * @return void
      */
     public function testGetCodeVerifier()
@@ -473,6 +480,7 @@ final class ManagerTest extends TestCase
      * test requestToken
      *
      * @test
+     *
      * @return void
      */
     public function testRequestToken()
@@ -516,6 +524,7 @@ final class ManagerTest extends TestCase
      * test getLogoutUrl
      *
      * @test
+     *
      * @return void
      */
     public function testGetLogoutUrl()
@@ -547,6 +556,7 @@ final class ManagerTest extends TestCase
      * test getRefreshTokenGrant
      *
      * @test
+     *
      * @return void
      */
     public function testGetRefreshTokenGrant()
@@ -592,6 +602,7 @@ final class ManagerTest extends TestCase
      * test refreshToken
      *
      * @test
+     *
      * @return void
      */
     public function testRefreshToken()

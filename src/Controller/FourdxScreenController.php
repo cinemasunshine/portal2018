@@ -2,8 +2,6 @@
 
 /**
  * FourdxScreenController.php
- *
- * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
 namespace App\Controller;
@@ -174,6 +172,7 @@ class FourdxScreenController extends SpecialSiteController
      */
     public function executeScheduleShow(Request $request, Response $response, array $args)
     {
+        /**@var Entity\Schedule|null $schedule */
         $schedule = $this->em
             ->getRepository(Entity\Schedule::class)
             ->findOneById($args['schedule']);
@@ -181,8 +180,6 @@ class FourdxScreenController extends SpecialSiteController
         if (is_null($schedule)) {
             throw new NotFoundException($request, $response);
         }
-
-        /**@var Entity\Schedule $schedule */
 
         $theaters = $this->getSpecialSiteTheaters();
 
@@ -248,6 +245,7 @@ class FourdxScreenController extends SpecialSiteController
      */
     public function executeNewsShow(Request $request, Response $response, array $args)
     {
+        /**@var Entity\News|null $news */
         $news = $this->em
             ->getRepository(Entity\News::class)
             ->findOneById($args['id']);
@@ -255,8 +253,6 @@ class FourdxScreenController extends SpecialSiteController
         if (is_null($news)) {
             throw new NotFoundException($request, $response);
         }
-
-        /**@var Entity\News $news */
 
         return $this->render($response, '4dx_screen/news/show.html.twig', ['news' => $news]);
     }

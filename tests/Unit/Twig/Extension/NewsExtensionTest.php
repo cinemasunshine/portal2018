@@ -2,8 +2,6 @@
 
 /**
  * NewsExtensionTest.php
- *
- * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
 declare(strict_types=1);
@@ -28,6 +26,7 @@ final class NewsExtensionTest extends TestCase
      * test getFunctions
      *
      * @test
+     *
      * @return void
      */
     public function testGetFunctions()
@@ -48,6 +47,7 @@ final class NewsExtensionTest extends TestCase
      * test getCategoryLabel
      *
      * @test
+     *
      * @return void
      */
     public function testGetCategoryLabel()
@@ -63,6 +63,7 @@ final class NewsExtensionTest extends TestCase
      * test getCategoryLabelClass
      *
      * @test
+     *
      * @return void
      */
     public function testGetCategoryLabelClass()

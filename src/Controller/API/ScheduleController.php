@@ -2,8 +2,6 @@
 
 /**
  * ScheduleController.php
- *
- * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
 namespace App\Controller\API;
@@ -42,12 +40,14 @@ class ScheduleController extends BaseController
     /**
      * index action
      *
+     * @todo エラー系のレスポンス検討
+     *
      * @param \Slim\Http\Request  $request
      * @param \Slim\Http\Response $response
      * @param array               $args
      * @return \Slim\Http\Response
+     *
      * @throws NotFoundException
-     * @todo エラー系のレスポンス検討
      */
     public function executeIndex($request, $response, $args)
     {
@@ -99,12 +99,14 @@ class ScheduleController extends BaseController
     /**
      * date action
      *
+     * @todo エラー系のレスポンス検討
+     *
      * @param \Slim\Http\Request  $request
      * @param \Slim\Http\Response $response
      * @param array               $args
      * @return \Slim\Http\Response
+     *
      * @throws NotFoundException
-     * @todo エラー系のレスポンス検討
      */
     public function executeDate($request, $response, $args)
     {
@@ -210,6 +212,7 @@ class ScheduleController extends BaseController
      * fix overnight
      *
      * @link https://m-p.backlog.jp/view/SASAKI-506
+     *
      * @param MovieCollection $movieCollection
      */
     protected function fixOvernight(MovieCollection $movieCollection)

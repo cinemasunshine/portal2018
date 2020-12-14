@@ -2,8 +2,6 @@
 
 /**
  * NewsController.php
- *
- * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
 namespace App\Controller;
@@ -60,6 +58,7 @@ class NewsController extends GeneralController
      */
     public function executeShow(Request $request, Response $response, array $args)
     {
+        /**@var Entity\News|null $news */
         $news = $this->em
             ->getRepository(Entity\News::class)
             ->findOneById($args['id']);
@@ -67,8 +66,6 @@ class NewsController extends GeneralController
         if (is_null($news)) {
             throw new NotFoundException($request, $response);
         }
-
-        /**@var Entity\News $news */
 
         return $this->render($response, 'news/show.html.twig', ['news' => $news]);
     }

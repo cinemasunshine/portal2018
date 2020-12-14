@@ -2,8 +2,6 @@
 
 /**
  * Title.php
- *
- * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
 declare(strict_types=1);
@@ -218,9 +216,6 @@ class Title extends BaseTitle
         throw new \LogicException('Not allowed.');
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public function getTrailers(): Collection
     {
         $criteria = Criteria::create()

@@ -2,8 +2,6 @@
 
 /**
  * TheaterExtensionTest.php
- *
- * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
 declare(strict_types=1);
@@ -29,6 +27,7 @@ final class TheaterExtensionTest extends TestCase
      * test getFilters
      *
      * @test
+     *
      * @return void
      */
     public function testGetFilters()
@@ -49,6 +48,7 @@ final class TheaterExtensionTest extends TestCase
      * test filterNameJa
      *
      * @test
+     *
      * @return void
      */
     public function testFilterNameJa()
@@ -67,6 +67,7 @@ final class TheaterExtensionTest extends TestCase
      * test filterNameJa2
      *
      * @test
+     *
      * @return void
      */
     public function testFilterNameJa2()
@@ -85,6 +86,7 @@ final class TheaterExtensionTest extends TestCase
      * test getFunctions
      *
      * @test
+     *
      * @return void
      */
     public function testGetFunctions()
@@ -105,6 +107,7 @@ final class TheaterExtensionTest extends TestCase
      * test theaterArea
      *
      * @test
+     *
      * @return void
      */
     public function testTheaterArea()
@@ -120,6 +123,7 @@ final class TheaterExtensionTest extends TestCase
      * test getMetaKeywords
      *
      * @test
+     *
      * @return void
      */
     public function testGetMetaKeywords()

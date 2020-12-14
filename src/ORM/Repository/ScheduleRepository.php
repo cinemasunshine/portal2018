@@ -2,8 +2,6 @@
 
 /**
  * ScheduleRepository.php
- *
- * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
 namespace App\ORM\Repository;
@@ -207,10 +205,6 @@ class ScheduleRepository extends BaseRepository
         return $qb->getQuery()->getResult();
     }
 
-    /**
-     * @param int $id
-     * @return Schedule|null
-     */
     public function findOneById(int $id): ?Schedule
     {
         $alias = 's';

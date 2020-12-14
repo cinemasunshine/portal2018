@@ -2,8 +2,6 @@
 
 /**
  * ClientCredentialsTest.php
- *
- * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
 declare(strict_types=1);
@@ -58,6 +56,7 @@ final class ClientCredentialsTest extends TestCase
      * test construct
      *
      * @test
+     *
      * @return void
      */
     public function testConstruct()
@@ -108,9 +107,10 @@ final class ClientCredentialsTest extends TestCase
     /**
      * test requestToken
      *
-     * @test
      * @runInSeparateProcess
      * @preserveGlobalState disabled
+     * @test
+     *
      * @return void
      */
     public function testRequestToken()

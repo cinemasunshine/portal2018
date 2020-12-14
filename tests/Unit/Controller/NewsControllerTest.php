@@ -24,6 +24,7 @@ final class NewsControllerTest extends BaseTestCase
 
     /**
      * @test
+     *
      * @return void
      */
     public function testExecuteList()
@@ -71,6 +72,7 @@ final class NewsControllerTest extends BaseTestCase
 
     /**
      * @test
+     *
      * @return void
      */
     public function testExecuteShow()
@@ -115,6 +117,7 @@ final class NewsControllerTest extends BaseTestCase
 
     /**
      * @test
+     *
      * @return void
      */
     public function testExecuteShowNotFound()

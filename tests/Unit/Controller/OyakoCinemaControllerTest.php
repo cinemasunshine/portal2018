@@ -19,6 +19,7 @@ final class OyakoCinemaControllerTest extends BaseTestCase
 
     /**
      * @test
+     *
      * @return void
      */
     public function testExecuteIndex()

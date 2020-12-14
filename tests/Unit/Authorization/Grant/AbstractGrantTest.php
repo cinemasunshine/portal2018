@@ -2,8 +2,6 @@
 
 /**
  * AbstractGrantTest.php
- *
- * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
 declare(strict_types=1);
@@ -47,6 +45,7 @@ final class AbstractGrantTest extends TestCase
      * test createHttpClient
      *
      * @test
+     *
      * @return void
      */
     public function testCreateHttpClient()
@@ -69,6 +68,7 @@ final class AbstractGrantTest extends TestCase
      * test getRequestHeaders
      *
      * @test
+     *
      * @return void
      */
     public function testGetRequestHeaders()

@@ -2,8 +2,6 @@
 
 /**
  * SeoExtension.php
- *
- * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
 declare(strict_types=1);
@@ -22,9 +20,6 @@ class SeoExtension extends AbstractExtension
     /** @var MetaTag[] */
     protected $metas;
 
-    /**
-     * @param string $file
-     */
     public function __construct(string $file)
     {
         if (! file_exists($file)) {
@@ -62,28 +57,16 @@ class SeoExtension extends AbstractExtension
         ];
     }
 
-    /**
-     * @param string $key
-     * @return string
-     */
     public function getTilte(string $key): string
     {
         return isset($this->metas[$key]) ? $this->metas[$key]->getTitle() : '';
     }
 
-    /**
-     * @param string $key
-     * @return string
-     */
     public function getDescription(string $key): string
     {
         return isset($this->metas[$key]) ? $this->metas[$key]->getDescription() : '';
     }
 
-    /**
-     * @param string $key
-     * @return string
-     */
     public function getKeywords(string $key): string
     {
         return isset($this->metas[$key]) ? $this->metas[$key]->getKeywords() : '';

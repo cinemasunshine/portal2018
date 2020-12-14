@@ -41,6 +41,7 @@ final class TheaterControllerTest extends BaseTestCase
 
     /**
      * @test
+     *
      * @return void
      */
     public function testExecuteIndexOpen()
@@ -141,6 +142,7 @@ final class TheaterControllerTest extends BaseTestCase
 
     /**
      * @test
+     *
      * @return void
      */
     public function testExecuteIndexClose()
@@ -202,6 +204,7 @@ final class TheaterControllerTest extends BaseTestCase
 
     /**
      * @test
+     *
      * @return void
      */
     public function testExecuteAccess()
@@ -250,6 +253,7 @@ final class TheaterControllerTest extends BaseTestCase
 
     /**
      * @test
+     *
      * @return void
      */
     public function testExecuteAdmission()
@@ -298,6 +302,7 @@ final class TheaterControllerTest extends BaseTestCase
 
     /**
      * @test
+     *
      * @return void
      */
     public function testExecuteAdvanceTicket()
@@ -368,6 +373,7 @@ final class TheaterControllerTest extends BaseTestCase
 
     /**
      * @test
+     *
      * @return void
      */
     public function testExecuteConcession()
@@ -424,6 +430,7 @@ final class TheaterControllerTest extends BaseTestCase
 
     /**
      * @test
+     *
      * @return void
      */
     public function testExecuteFloorGuide()
@@ -472,6 +479,7 @@ final class TheaterControllerTest extends BaseTestCase
 
     /**
      * @test
+     *
      * @return void
      */
     public function testExecuteNewsList()
@@ -528,6 +536,7 @@ final class TheaterControllerTest extends BaseTestCase
 
     /**
      * @test
+     *
      * @return void
      */
     public function testExecuteNewsShow()
@@ -583,6 +592,7 @@ final class TheaterControllerTest extends BaseTestCase
 
     /**
      * @test
+     *
      * @return void
      */
     public function testExecuteNewsShowNotFound()

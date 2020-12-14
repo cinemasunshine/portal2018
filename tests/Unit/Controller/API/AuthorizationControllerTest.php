@@ -22,6 +22,7 @@ final class AuthorizationControllerTest extends BaseTestCase
 
     /**
      * @test
+     *
      * @return void
      */
     public function testExecuteTokenTypeVisitor()
@@ -75,6 +76,7 @@ final class AuthorizationControllerTest extends BaseTestCase
 
     /**
      * @test
+     *
      * @return void
      */
     public function testExecuteTokenTypeMember()
@@ -128,6 +130,7 @@ final class AuthorizationControllerTest extends BaseTestCase
 
     /**
      * @test
+     *
      * @return void
      */
     public function testExecuteTokenTypeMemberNotAuthenticated()
@@ -181,6 +184,7 @@ final class AuthorizationControllerTest extends BaseTestCase
 
     /**
      * @test
+     *
      * @return void
      */
     public function testExecuteTokenInvalidType()

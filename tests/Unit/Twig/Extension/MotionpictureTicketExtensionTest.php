@@ -2,8 +2,6 @@
 
 /**
  * MotionpictureTicketExtensionTest.php
- *
- * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
 declare(strict_types=1);
@@ -27,6 +25,7 @@ final class MotionpictureTicketExtensionTest extends TestCase
      * test construct
      *
      * @test
+     *
      * @return void
      */
     public function testConstruct()
@@ -53,6 +52,7 @@ final class MotionpictureTicketExtensionTest extends TestCase
      * test getFunctions
      *
      * @test
+     *
      * @return void
      */
     public function testGetFunctions()
@@ -73,6 +73,7 @@ final class MotionpictureTicketExtensionTest extends TestCase
      * test getTicketInquiryUrl
      *
      * @test
+     *
      * @return void
      */
     public function testGetTicketInquiryUrl()
@@ -99,6 +100,7 @@ final class MotionpictureTicketExtensionTest extends TestCase
      * test getTicketEntranceUrl
      *
      * @test
+     *
      * @return void
      */
     public function testGetTicketEntranceUrl()

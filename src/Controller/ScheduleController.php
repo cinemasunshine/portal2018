@@ -2,8 +2,6 @@
 
 /**
  * ScheduleController.php
- *
- * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
 namespace App\Controller;
@@ -71,6 +69,7 @@ class ScheduleController extends GeneralController
      */
     public function executeShow(Request $request, Response $response, array $args)
     {
+        /**@var Entity\Schedule|null $schedule */
         $schedule = $this->em
             ->getRepository(Entity\Schedule::class)
             ->findOneById($args['schedule']);
@@ -78,8 +77,6 @@ class ScheduleController extends GeneralController
         if (is_null($schedule)) {
             throw new NotFoundException($request, $response);
         }
-
-        /**@var Entity\Schedule $schedule */
 
         $theaters = $this->getTheaters();
 

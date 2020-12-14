@@ -2,8 +2,6 @@
 
 /**
  * Schedule.php
- *
- * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
 namespace App\Schedule\Builder\V3;

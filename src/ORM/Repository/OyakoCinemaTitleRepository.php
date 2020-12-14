@@ -2,8 +2,6 @@
 
 /**
  * OyakoCinemaTitleRepository.php
- *
- * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
 namespace App\ORM\Repository;
@@ -43,6 +41,7 @@ class OyakoCinemaTitleRepository extends EntityRepository
         /**
          * あくまでOyakoCinemaTitleの条件
          * OyakoCinemaScheduleのフィルタは下記を参照
+         *
          * @see App\ORM\Entity\OyakoCinemaTitle::getOyakoCinemaSchedules()
          */
         $qb

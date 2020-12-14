@@ -30,8 +30,10 @@ final class ScheduleControllerTest extends BaseTestCase
 
     /**
      * @test
-     * @doesNotPerformAssertions
+     *
      * @return void
+     *
+     * @doesNotPerformAssertions
      */
     public function testExecuteIndex()
     {
@@ -40,6 +42,7 @@ final class ScheduleControllerTest extends BaseTestCase
 
     /**
      * @test
+     *
      * @return void
      */
     public function testExecuteIndexInvalidName()
@@ -67,8 +70,10 @@ final class ScheduleControllerTest extends BaseTestCase
 
     /**
      * @test
-     * @doesNotPerformAssertions
+     *
      * @return void
+     *
+     * @doesNotPerformAssertions
      */
     public function testExecuteDate()
     {
@@ -77,6 +82,7 @@ final class ScheduleControllerTest extends BaseTestCase
 
     /**
      * @test
+     *
      * @return void
      */
     public function testExecuteDateInvalidName()

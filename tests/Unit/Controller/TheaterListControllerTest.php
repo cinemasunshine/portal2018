@@ -19,6 +19,7 @@ final class TheaterListControllerTest extends BaseTestCase
 
     /**
      * @test
+     *
      * @return void
      */
     public function testExecuteIndex()
@@ -54,6 +55,7 @@ final class TheaterListControllerTest extends BaseTestCase
 
     /**
      * @test
+     *
      * @return void
      */
     public function testExecuteSns()

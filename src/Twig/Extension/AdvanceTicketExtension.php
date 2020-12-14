@@ -2,8 +2,6 @@
 
 /**
  * AdvanceTicketExtension.php
- *
- * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
 namespace App\Twig\Extension;

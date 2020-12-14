@@ -2,8 +2,6 @@
 
 /**
  * AuthorizationCodeTokenTest.php
- *
- * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
 declare(strict_types=1);
@@ -50,6 +48,7 @@ final class AuthorizationCodeTokenTest extends TestCase
      * setterの変更に注意。
      *
      * @test
+     *
      * @return void
      */
     public function testCreate()
@@ -102,6 +101,7 @@ final class AuthorizationCodeTokenTest extends TestCase
      * test getAccessToken
      *
      * @test
+     *
      * @return void
      */
     public function testGetAccessToken()
@@ -124,6 +124,7 @@ final class AuthorizationCodeTokenTest extends TestCase
      * test setAccessToken
      *
      * @test
+     *
      * @return void
      */
     public function testSetAccessToken()
@@ -147,9 +148,10 @@ final class AuthorizationCodeTokenTest extends TestCase
     /**
      * testdecodeAccessToken
      *
-     * @test
      * @runInSeparateProcess
      * @preserveGlobalState disabled
+     * @test
+     *
      * @return void
      */
     public function testDecodeAccessToken()
@@ -189,6 +191,7 @@ final class AuthorizationCodeTokenTest extends TestCase
      * test getTokenType
      *
      * @test
+     *
      * @return void
      */
     public function testGetTokenType()
@@ -211,6 +214,7 @@ final class AuthorizationCodeTokenTest extends TestCase
      * test setTokenType
      *
      * @test
+     *
      * @return void
      */
     public function testSetTokenType()
@@ -235,6 +239,7 @@ final class AuthorizationCodeTokenTest extends TestCase
      * test getRefreshToken
      *
      * @test
+     *
      * @return void
      */
     public function testGetRefreshToken()
@@ -257,6 +262,7 @@ final class AuthorizationCodeTokenTest extends TestCase
      * test setRefreshToken
      *
      * @test
+     *
      * @return void
      */
     public function testSetRefreshToken()
@@ -281,6 +287,7 @@ final class AuthorizationCodeTokenTest extends TestCase
      * test getExpiresIn
      *
      * @test
+     *
      * @return void
      */
     public function testGetExpiresIn()
@@ -303,6 +310,7 @@ final class AuthorizationCodeTokenTest extends TestCase
      * test setExpiresIn
      *
      * @test
+     *
      * @return void
      */
     public function testSetExpiresIn()
@@ -327,6 +335,7 @@ final class AuthorizationCodeTokenTest extends TestCase
      * test getExpires
      *
      * @test
+     *
      * @return void
      */
     public function testGetExpires()
@@ -349,6 +358,7 @@ final class AuthorizationCodeTokenTest extends TestCase
      * test setExpires
      *
      * @test
+     *
      * @return void
      */
     public function testSetExpires()
@@ -373,6 +383,7 @@ final class AuthorizationCodeTokenTest extends TestCase
      * test getIdToken
      *
      * @test
+     *
      * @return void
      */
     public function testGetIdToken()
@@ -395,6 +406,7 @@ final class AuthorizationCodeTokenTest extends TestCase
      * test setIdToken
      *
      * @test
+     *
      * @return void
      */
     public function testSetIdToken()

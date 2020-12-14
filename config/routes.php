@@ -2,8 +2,6 @@
 
 /**
  * routes.php
- *
- * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
 use App\Controller\{
@@ -25,6 +23,10 @@ use App\Controller\API\{
     ScheduleController as ScheduleApiController
 };
 use App\Controller\Development\DoctrineController;
+
+// phpcs:disable SlevomatCodingStandard.Commenting.InlineDocCommentDeclaration
+/** @var \Slim\App $app */
+// phpcs:enable
 
 $app->get('/', IndexController::class . ':index')->setName('homepage');
 

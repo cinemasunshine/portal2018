@@ -27,6 +27,7 @@ final class AuthorizationControllerTest extends BaseTestCase
 
     /**
      * @test
+     *
      * @return void
      */
     public function testRenderError()

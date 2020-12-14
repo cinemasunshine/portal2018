@@ -2,8 +2,6 @@
 
 /**
  * TitleRanking.php
- *
- * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
 declare(strict_types=1);

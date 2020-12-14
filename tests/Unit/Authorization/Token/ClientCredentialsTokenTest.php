@@ -2,8 +2,6 @@
 
 /**
  * ClientCredentialsTokenTest.php
- *
- * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
 declare(strict_types=1);
@@ -49,6 +47,7 @@ final class ClientCredentialsTokenTest extends TestCase
      * setterの変更に注意。
      *
      * @test
+     *
      * @return void
      */
     public function testCreate()
@@ -85,6 +84,7 @@ final class ClientCredentialsTokenTest extends TestCase
      * test getAccessToken
      *
      * @test
+     *
      * @return void
      */
     public function testGetAccessToken()
@@ -107,6 +107,7 @@ final class ClientCredentialsTokenTest extends TestCase
      * test setAccessToken
      *
      * @test
+     *
      * @return void
      */
     public function testSetAccessToken()
@@ -131,6 +132,7 @@ final class ClientCredentialsTokenTest extends TestCase
      * test getTokenType
      *
      * @test
+     *
      * @return void
      */
     public function testGetTokenType()
@@ -153,6 +155,7 @@ final class ClientCredentialsTokenTest extends TestCase
      * test setTokenType
      *
      * @test
+     *
      * @return void
      */
     public function testSetTokenType()
@@ -177,6 +180,7 @@ final class ClientCredentialsTokenTest extends TestCase
      * test getExpiresIn
      *
      * @test
+     *
      * @return void
      */
     public function testGetExpiresIn()
@@ -199,6 +203,7 @@ final class ClientCredentialsTokenTest extends TestCase
      * test setExpiresIn
      *
      * @test
+     *
      * @return void
      */
     public function testSetExpiresIn()
