@@ -1,9 +1,5 @@
 <?php
 
-/**
- * GeneralController.php
- */
-
 namespace App\Controller;
 
 use App\ORM\Entity;

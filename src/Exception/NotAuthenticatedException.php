@@ -1,9 +1,5 @@
 <?php
 
-/**
- * NotAuthenticatedException.php
- */
-
 namespace App\Exception;
 
 /**

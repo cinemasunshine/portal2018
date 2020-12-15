@@ -1,9 +1,5 @@
 <?php
 
-/**
- * ScreenXController.php
- */
-
 namespace App\Controller;
 
 use App\ORM\Entity;

@@ -1,9 +1,5 @@
 <?php
 
-/**
- * AzureStorageExtension.php
- */
-
 namespace App\Twig\Extension;
 
 use App\ORM\Entity\File;

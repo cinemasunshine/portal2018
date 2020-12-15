@@ -1,9 +1,5 @@
 <?php
 
-/**
- * AuthorizationController.php
- */
-
 namespace App\Controller\API;
 
 use App\Authorization\Grant\ClientCredentials;

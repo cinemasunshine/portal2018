@@ -1,9 +1,5 @@
 <?php
 
-/**
- * SpecialSiteController.php
- */
-
 namespace App\Controller;
 
 /**

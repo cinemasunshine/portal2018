@@ -1,9 +1,5 @@
 <?php
 
-/**
- * NewsExtension.php
- */
-
 namespace App\Twig\Extension;
 
 use App\ORM\Entity\News;

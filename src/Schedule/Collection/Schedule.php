@@ -1,9 +1,5 @@
 <?php
 
-/**
- * Schedule.php
- */
-
 namespace App\Schedule\Collection;
 
 use Cinemasunshine\Schedule\Collection\Schedule as Base;

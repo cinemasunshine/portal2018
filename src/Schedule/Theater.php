@@ -1,9 +1,5 @@
 <?php
 
-/**
- * Theater.php
- */
-
 namespace App\Schedule;
 
 use Cinemasunshine\Schedule\Theater as Base;

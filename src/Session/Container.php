@@ -1,9 +1,5 @@
 <?php
 
-/**
- * Container.php
- */
-
 namespace App\Session;
 
 use Laminas\Session\Container as Base;

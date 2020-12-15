@@ -1,9 +1,5 @@
 <?php
 
-/**
- * TheaterListController.php
- */
-
 namespace App\Controller;
 
 use App\ORM\Entity;

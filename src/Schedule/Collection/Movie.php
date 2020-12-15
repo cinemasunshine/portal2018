@@ -1,9 +1,5 @@
 <?php
 
-/**
- * Movie.php
- */
-
 namespace App\Schedule\Collection;
 
 use Cinemasunshine\Schedule\Collection\Movie as Base;

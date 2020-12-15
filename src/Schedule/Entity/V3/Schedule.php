@@ -1,9 +1,5 @@
 <?php
 
-/**
- * Schedule.php
- */
-
 declare(strict_types=1);
 
 namespace App\Schedule\Entity\V3;

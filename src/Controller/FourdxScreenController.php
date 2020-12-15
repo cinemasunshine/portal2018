@@ -1,9 +1,5 @@
 <?php
 
-/**
- * FourdxScreenController.php
- */
-
 namespace App\Controller;
 
 use App\ORM\Entity;

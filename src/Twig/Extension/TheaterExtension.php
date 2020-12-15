@@ -1,9 +1,5 @@
 <?php
 
-/**
- * TheaterExtension.php
- */
-
 namespace App\Twig\Extension;
 
 use App\ORM\Entity\Theater;

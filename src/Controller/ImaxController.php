@@ -1,9 +1,5 @@
 <?php
 
-/**
- * ImaxController.php
- */
-
 namespace App\Controller;
 
 use App\ORM\Entity;

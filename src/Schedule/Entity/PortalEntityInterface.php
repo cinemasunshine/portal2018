@@ -1,9 +1,5 @@
 <?php
 
-/**
- * PortalEntityInterface.php
- */
-
 namespace App\Schedule\Entity;
 
 /**

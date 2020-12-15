@@ -1,9 +1,5 @@
 <?php
 
-/**
- * ScheduleController.php
- */
-
 namespace App\Controller\API;
 
 use App\Schedule\Builder\V3\Schedule as V3ScheduleBuilder;

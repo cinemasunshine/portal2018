@@ -1,9 +1,5 @@
 <?php
 
-/**
- * Schedule.php
- */
-
 namespace App\Schedule\Builder\V3;
 
 use App\Schedule\Entity\V3\Movie as MovieEntity;
