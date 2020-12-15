@@ -14,6 +14,8 @@ use Cinemasunshine\Schedule\Entity\V3\Schedules as V3Schedules;
 use Cinemasunshine\Schedule\Entity\SchedulesInterface;
 use Cinemasunshine\Schedule\Response\Http as HttpResponse;
 use Slim\Exception\NotFoundException;
+use Slim\Http\Request;
+use Slim\Http\Response;
 
 /**
  * Schedule controller
@@ -26,10 +28,7 @@ class ScheduleController extends BaseController
     /** @var string */
     protected $purchaseBaseUrl;
 
-    /**
-     * {@inheritDoc}
-     */
-    protected function preExecute($request, $response, $args): void
+    protected function preExecute(Request $request, Response $response, array $args): void
     {
         $settings          = $this->settings['schedule'];
         $this->scheduleEnv = $settings['env'];
@@ -42,14 +41,14 @@ class ScheduleController extends BaseController
      *
      * @todo エラー系のレスポンス検討
      *
-     * @param \Slim\Http\Request  $request
-     * @param \Slim\Http\Response $response
-     * @param array               $args
-     * @return \Slim\Http\Response
+     * @param Request  $request
+     * @param Response $response
+     * @param array    $args
+     * @return Response
      *
      * @throws NotFoundException
      */
-    public function executeIndex($request, $response, $args)
+    public function executeIndex(Request $request, Response $response, array $args)
     {
         $theaterName = $args['name'];
 
@@ -101,14 +100,14 @@ class ScheduleController extends BaseController
      *
      * @todo エラー系のレスポンス検討
      *
-     * @param \Slim\Http\Request  $request
-     * @param \Slim\Http\Response $response
-     * @param array               $args
-     * @return \Slim\Http\Response
+     * @param Request  $request
+     * @param Response $response
+     * @param array    $args
+     * @return Response
      *
      * @throws NotFoundException
      */
-    public function executeDate($request, $response, $args)
+    public function executeDate(Request $request, Response $response, array $args)
     {
         $theaterName = $args['name'];
         $date        = $args['date'];
