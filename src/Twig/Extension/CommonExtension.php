@@ -1,11 +1,5 @@
 <?php
 
-/**
- * CommonExtension.php
- *
- * @author Atsushi Okui <okui@motionpicture.jp>
- */
-
 namespace App\Twig\Extension;
 
 use App\ORM\Entity\Theater;

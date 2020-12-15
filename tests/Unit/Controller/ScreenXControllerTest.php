@@ -26,6 +26,7 @@ final class ScreenXControllerTest extends BaseTestCase
 
     /**
      * @test
+     *
      * @return void
      */
     public function testExecuteIndex()
@@ -121,6 +122,7 @@ final class ScreenXControllerTest extends BaseTestCase
 
     /**
      * @test
+     *
      * @return void
      */
     public function testExecuteAbout()
@@ -150,6 +152,7 @@ final class ScreenXControllerTest extends BaseTestCase
 
     /**
      * @test
+     *
      * @return void
      */
     public function testExecuteScheduleList()
@@ -205,6 +208,7 @@ final class ScreenXControllerTest extends BaseTestCase
 
     /**
      * @test
+     *
      * @return void
      */
     public function testExecuteScheduleShow()
@@ -259,6 +263,7 @@ final class ScreenXControllerTest extends BaseTestCase
 
     /**
      * @test
+     *
      * @return void
      */
     public function testExecuteScheduleShowNotFound()
@@ -310,6 +315,7 @@ final class ScreenXControllerTest extends BaseTestCase
 
     /**
      * @test
+     *
      * @return void
      */
     public function testExecuteNewsList()
@@ -357,6 +363,7 @@ final class ScreenXControllerTest extends BaseTestCase
 
     /**
      * @test
+     *
      * @return void
      */
     public function testExecuteNewsShow()
@@ -401,6 +408,7 @@ final class ScreenXControllerTest extends BaseTestCase
 
     /**
      * @test
+     *
      * @return void
      */
     public function testExecuteNewsShowNotFound()
@@ -452,6 +460,7 @@ final class ScreenXControllerTest extends BaseTestCase
 
     /**
      * @test
+     *
      * @return void
      */
     public function testExecuteTheater()

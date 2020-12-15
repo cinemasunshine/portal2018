@@ -2,8 +2,6 @@
 
 /**
  * AdvanceTicketExtensionTest.php
- *
- * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
 declare(strict_types=1);
@@ -28,6 +26,7 @@ final class AdvanceTicketExtensionTest extends TestCase
      * test getFunctions
      *
      * @test
+     *
      * @return void
      */
     public function testGetFunctions()
@@ -48,6 +47,7 @@ final class AdvanceTicketExtensionTest extends TestCase
      * test getTypeLabel
      *
      * @test
+     *
      * @return void
      */
     public function testGetTypeLabel()

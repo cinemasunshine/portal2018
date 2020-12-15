@@ -2,8 +2,6 @@
 
 /**
  * MetaTagTest.php
- *
- * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
 declare(strict_types=1);
@@ -40,6 +38,7 @@ final class MetaTagTest extends TestCase
 
     /**
      * @test
+     *
      * @return void
      */
     public function testConstruct()
@@ -67,6 +66,7 @@ final class MetaTagTest extends TestCase
 
     /**
      * @test
+     *
      * @return void
      */
     public function testGetTitle()
@@ -87,6 +87,7 @@ final class MetaTagTest extends TestCase
 
     /**
      * @test
+     *
      * @return void
      */
     public function testGetDescription()
@@ -107,6 +108,7 @@ final class MetaTagTest extends TestCase
 
     /**
      * @test
+     *
      * @return void
      */
     public function testGetKeywords()

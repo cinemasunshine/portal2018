@@ -2,8 +2,6 @@
 
 /**
  * SeoExtension.php
- *
- * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
 declare(strict_types=1);
@@ -27,9 +25,6 @@ final class SeoExtensionTest extends TestCase
     /** @var string|null */
     protected $file;
 
-    /**
-     * @return void
-     */
     protected function setUp(): void
     {
         $this->file = __DIR__ . '/data/seo.json';
@@ -53,6 +48,7 @@ final class SeoExtensionTest extends TestCase
 
     /**
      * @test
+     *
      * @return void
      */
     public function testConstruct()
@@ -82,6 +78,7 @@ final class SeoExtensionTest extends TestCase
 
     /**
      * @test
+     *
      * @return void
      */
     public function testConstructInvalidArgument()
@@ -94,6 +91,7 @@ final class SeoExtensionTest extends TestCase
 
     /**
      * @test
+     *
      * @return void
      */
     public function testLoadMetas()
@@ -118,6 +116,7 @@ final class SeoExtensionTest extends TestCase
 
     /**
      * @test
+     *
      * @return void
      */
     public function testGetFunctions()
@@ -136,6 +135,7 @@ final class SeoExtensionTest extends TestCase
 
     /**
      * @test
+     *
      * @return void
      */
     public function testGetTitle()
@@ -161,6 +161,7 @@ final class SeoExtensionTest extends TestCase
 
     /**
      * @test
+     *
      * @return void
      */
     public function testGetDescription()
@@ -186,6 +187,7 @@ final class SeoExtensionTest extends TestCase
 
     /**
      * @test
+     *
      * @return void
      */
     public function testGetKeywords()

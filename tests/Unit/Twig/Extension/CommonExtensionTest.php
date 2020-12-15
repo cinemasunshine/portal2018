@@ -2,8 +2,6 @@
 
 /**
  * CommonExtensionTest.php
- *
- * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
 declare(strict_types=1);
@@ -28,6 +26,7 @@ final class CommonExtensionTest extends TestCase
      * test construct
      *
      * @test
+     *
      * @return void
      */
     public function testConstruct()
@@ -55,6 +54,7 @@ final class CommonExtensionTest extends TestCase
      * test getFunctions
      *
      * @test
+     *
      * @return void
      */
     public function testGetFunctions()
@@ -75,6 +75,7 @@ final class CommonExtensionTest extends TestCase
      * test getAppEnv
      *
      * @test
+     *
      * @return void
      */
     public function testGetAppEnv()
@@ -97,6 +98,7 @@ final class CommonExtensionTest extends TestCase
      * test isAppEnv
      *
      * @test
+     *
      * @return void
      */
     public function testIsAppEnv()
@@ -123,6 +125,7 @@ final class CommonExtensionTest extends TestCase
      * test getFacebookUrl
      *
      * @test
+     *
      * @return void
      */
     public function testGetFacebookUrl()
@@ -142,6 +145,7 @@ final class CommonExtensionTest extends TestCase
      * test getTwitterUrl
      *
      * @test
+     *
      * @return void
      */
     public function testGetTwitterUrl()
@@ -161,6 +165,7 @@ final class CommonExtensionTest extends TestCase
      * test getFilters
      *
      * @test
+     *
      * @return void
      */
     public function testGetFilters()
@@ -181,6 +186,7 @@ final class CommonExtensionTest extends TestCase
      * test weekdayFilter
      *
      * @test
+     *
      * @return void
      */
     public function testWeekdayFilter()

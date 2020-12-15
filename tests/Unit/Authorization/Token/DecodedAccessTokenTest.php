@@ -2,8 +2,6 @@
 
 /**
  * DecodedAccessTokenTest.php
- *
- * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
 declare(strict_types=1);
@@ -63,6 +61,7 @@ final class DecodedAccessTokenTest extends TestCase
      * test decodeJWT
      *
      * @test
+     *
      * @return void
      */
     public function testDecodeJWT()
@@ -81,6 +80,7 @@ final class DecodedAccessTokenTest extends TestCase
      * test decodeJWT (segments few)
      *
      * @test
+     *
      * @return void
      */
     public function testDecodeJWTSegmentsFew()
@@ -93,6 +93,7 @@ final class DecodedAccessTokenTest extends TestCase
      * test decodeJWT (segments many)
      *
      * @test
+     *
      * @return void
      */
     public function testDecodeJWTSegmentsMany()
@@ -105,6 +106,7 @@ final class DecodedAccessTokenTest extends TestCase
      * test construct
      *
      * @test
+     *
      * @return void
      */
     public function testConstruct()
@@ -140,6 +142,7 @@ final class DecodedAccessTokenTest extends TestCase
      * test getHeader
      *
      * @test
+     *
      * @return void
      */
     public function testGetHeader()
@@ -162,6 +165,7 @@ final class DecodedAccessTokenTest extends TestCase
      * test getClaims
      *
      * @test
+     *
      * @return void
      */
     public function testGetClaims()
@@ -184,6 +188,7 @@ final class DecodedAccessTokenTest extends TestCase
      * get getSignature
      *
      * @test
+     *
      * @return void
      */
     public function testGetSignature()

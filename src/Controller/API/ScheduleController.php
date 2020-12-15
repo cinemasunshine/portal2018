@@ -1,11 +1,5 @@
 <?php
 
-/**
- * ScheduleController.php
- *
- * @author Atsushi Okui <okui@motionpicture.jp>
- */
-
 namespace App\Controller\API;
 
 use App\Schedule\Builder\V3\Schedule as V3ScheduleBuilder;
@@ -16,6 +10,8 @@ use Cinemasunshine\Schedule\Entity\V3\Schedules as V3Schedules;
 use Cinemasunshine\Schedule\Entity\SchedulesInterface;
 use Cinemasunshine\Schedule\Response\Http as HttpResponse;
 use Slim\Exception\NotFoundException;
+use Slim\Http\Request;
+use Slim\Http\Response;
 
 /**
  * Schedule controller
@@ -28,10 +24,7 @@ class ScheduleController extends BaseController
     /** @var string */
     protected $purchaseBaseUrl;
 
-    /**
-     * {@inheritDoc}
-     */
-    protected function preExecute($request, $response, $args): void
+    protected function preExecute(Request $request, Response $response, array $args): void
     {
         $settings          = $this->settings['schedule'];
         $this->scheduleEnv = $settings['env'];
@@ -42,14 +35,16 @@ class ScheduleController extends BaseController
     /**
      * index action
      *
-     * @param \Slim\Http\Request  $request
-     * @param \Slim\Http\Response $response
-     * @param array               $args
-     * @return \Slim\Http\Response
-     * @throws NotFoundException
      * @todo エラー系のレスポンス検討
+     *
+     * @param Request  $request
+     * @param Response $response
+     * @param array    $args
+     * @return Response
+     *
+     * @throws NotFoundException
      */
-    public function executeIndex($request, $response, $args)
+    public function executeIndex(Request $request, Response $response, array $args)
     {
         $theaterName = $args['name'];
 
@@ -99,14 +94,16 @@ class ScheduleController extends BaseController
     /**
      * date action
      *
-     * @param \Slim\Http\Request  $request
-     * @param \Slim\Http\Response $response
-     * @param array               $args
-     * @return \Slim\Http\Response
-     * @throws NotFoundException
      * @todo エラー系のレスポンス検討
+     *
+     * @param Request  $request
+     * @param Response $response
+     * @param array    $args
+     * @return Response
+     *
+     * @throws NotFoundException
      */
-    public function executeDate($request, $response, $args)
+    public function executeDate(Request $request, Response $response, array $args)
     {
         $theaterName = $args['name'];
         $date        = $args['date'];
@@ -210,6 +207,7 @@ class ScheduleController extends BaseController
      * fix overnight
      *
      * @link https://m-p.backlog.jp/view/SASAKI-506
+     *
      * @param MovieCollection $movieCollection
      */
     protected function fixOvernight(MovieCollection $movieCollection)

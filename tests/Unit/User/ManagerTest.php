@@ -2,8 +2,6 @@
 
 /**
  * ManagerTest.php
- *
- * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
 declare(strict_types=1);
@@ -74,6 +72,7 @@ final class ManagerTest extends TestCase
      * test getContainer
      *
      * @test
+     *
      * @return void
      */
     public function testGetContainer()
@@ -100,6 +99,7 @@ final class ManagerTest extends TestCase
      * test logout
      *
      * @test
+     *
      * @return void
      */
     public function testLogin()
@@ -154,6 +154,7 @@ final class ManagerTest extends TestCase
      * test logout
      *
      * @test
+     *
      * @return void
      */
     public function testLogout()
@@ -180,6 +181,7 @@ final class ManagerTest extends TestCase
      * test isAuthenticated
      *
      * @test
+     *
      * @return void
      */
     public function testIsAuthenticated()
@@ -206,6 +208,7 @@ final class ManagerTest extends TestCase
      * test getUser
      *
      * @test
+     *
      * @return void
      */
     public function testGetUser()
@@ -232,6 +235,7 @@ final class ManagerTest extends TestCase
      * test getAuthorizationToken
      *
      * @test
+     *
      * @return void
      */
     public function testGetAuthorizationToken()
@@ -264,6 +268,7 @@ final class ManagerTest extends TestCase
      * test setAuthorizationToken
      *
      * @test
+     *
      * @return void
      */
     public function testSetAuthorizationToken()

@@ -1,11 +1,5 @@
 <?php
 
-/**
- * AuthorizationController.php
- *
- * @author Atsushi Okui <okui@motionpicture.jp>
- */
-
 namespace App\Controller\API;
 
 use App\Authorization\Grant\ClientCredentials;

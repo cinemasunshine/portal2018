@@ -1,11 +1,5 @@
 <?php
 
-/**
- * AuthorizationCode.php
- *
- * @author Atsushi Okui <okui@motionpicture.jp>
- */
-
 declare(strict_types=1);
 
 namespace App\Authorization\Grant;
@@ -54,12 +48,13 @@ class AuthorizationCode extends AbstractGrant
     /**
      * return authorization URL
      *
+     * @link https://m-p.backlog.jp/view/SASAKI-485
+     *
      * @param string      $codeVerifier
      * @param string      $redirectUri
      * @param array       $scope
      * @param string|null $state
      * @return string
-     * @link https://m-p.backlog.jp/view/SASAKI-485
      */
     public function getAuthorizationUrl(
         string $codeVerifier,
@@ -95,6 +90,7 @@ class AuthorizationCode extends AbstractGrant
      * @param string $codeVerifier
      * @param string $codeChallengeMethod
      * @return string
+     *
      * @throws \LogicException
      */
     protected function generateCodeChallenge(string $codeVerifier, string $codeChallengeMethod): string

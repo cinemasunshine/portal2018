@@ -19,6 +19,7 @@ final class AboutControllerTest extends BaseTestCase
 
     /**
      * @test
+     *
      * @return void
      */
     public function testExecuteCompany()
@@ -46,6 +47,7 @@ final class AboutControllerTest extends BaseTestCase
 
     /**
      * @test
+     *
      * @return void
      */
     public function testExecuteMailMagazine()
@@ -73,6 +75,7 @@ final class AboutControllerTest extends BaseTestCase
 
     /**
      * @test
+     *
      * @return void
      */
     public function testExecuteMvtk()
@@ -100,6 +103,7 @@ final class AboutControllerTest extends BaseTestCase
 
     /**
      * @test
+     *
      * @return void
      */
     public function testExecuteOnlineTicket()
@@ -127,6 +131,7 @@ final class AboutControllerTest extends BaseTestCase
 
     /**
      * @test
+     *
      * @return void
      */
     public function testExecutePrivacy()
@@ -154,6 +159,7 @@ final class AboutControllerTest extends BaseTestCase
 
     /**
      * @test
+     *
      * @return void
      */
     public function testExecuteQuestion()
@@ -181,6 +187,7 @@ final class AboutControllerTest extends BaseTestCase
 
     /**
      * @test
+     *
      * @return void
      */
     public function testExecuteSitemap()
@@ -216,6 +223,7 @@ final class AboutControllerTest extends BaseTestCase
 
     /**
      * @test
+     *
      * @return void
      */
     public function testExecuteSpecialTicket()
@@ -243,6 +251,7 @@ final class AboutControllerTest extends BaseTestCase
 
     /**
      * @test
+     *
      * @return void
      */
     public function testExecuteSpecificQuotient()
@@ -270,6 +279,7 @@ final class AboutControllerTest extends BaseTestCase
 
     /**
      * @test
+     *
      * @return void
      */
     public function testExecuteTermsOfService()

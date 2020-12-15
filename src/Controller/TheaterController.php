@@ -1,11 +1,5 @@
 <?php
 
-/**
- * TheaterController.php
- *
- * @author Atsushi Okui <okui@motionpicture.jp>
- */
-
 namespace App\Controller;
 
 use App\ORM\Entity;
@@ -23,13 +17,12 @@ class TheaterController extends BaseController
 
     protected function preExecute(Request $request, Response $response, array $args): void
     {
+        /**@var Entity\Theater|null $theater */
         $theater = $this->getTheater($args['name']);
 
         if (is_null($theater)) {
             throw new NotFoundException($request, $response);
         }
-
-        /**@var Entity\Theater $theater */
 
         $this->theater = $theater;
     }
@@ -359,6 +352,7 @@ class TheaterController extends BaseController
     {
         $theater = $this->theater;
 
+        /**@var Entity\News|null $news */
         $news = $this->em
             ->getRepository(Entity\News::class)
             ->findOneById($args['id']);
@@ -366,8 +360,6 @@ class TheaterController extends BaseController
         if (is_null($news)) {
             throw new NotFoundException($request, $response);
         }
-
-        /**@var Entity\News $news */
 
         return $this->render($response, 'theater/news/show.html.twig', [
             'theater' => $theater,

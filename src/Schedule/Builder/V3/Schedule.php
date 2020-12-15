@@ -1,11 +1,5 @@
 <?php
 
-/**
- * Schedule.php
- *
- * @author Atsushi Okui <okui@motionpicture.jp>
- */
-
 namespace App\Schedule\Builder\V3;
 
 use App\Schedule\Entity\V3\Movie as MovieEntity;

@@ -2,8 +2,6 @@
 
 /**
  * UserExtensionTest.php
- *
- * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
 declare(strict_types=1);
@@ -50,6 +48,7 @@ final class UserExtensionTest extends TestCase
      * test construct
      *
      * @test
+     *
      * @return void
      */
     public function testConstruct()
@@ -85,6 +84,7 @@ final class UserExtensionTest extends TestCase
      * test getFunctions
      *
      * @test
+     *
      * @return void
      */
     public function testGetFunctions()
@@ -105,6 +105,7 @@ final class UserExtensionTest extends TestCase
      * test getLoginUrl
      *
      * @test
+     *
      * @return void
      */
     public function testGetLoginUrl()
@@ -135,6 +136,7 @@ final class UserExtensionTest extends TestCase
      * test getLogoutUrl
      *
      * @test
+     *
      * @return void
      */
     public function testGetLogoutUrl()
@@ -165,6 +167,7 @@ final class UserExtensionTest extends TestCase
      * test getUser
      *
      * @test
+     *
      * @return void
      */
     public function testGetUser()
@@ -194,6 +197,7 @@ final class UserExtensionTest extends TestCase
      * test isLogin
      *
      * @test
+     *
      * @return void
      */
     public function testIsLogin()

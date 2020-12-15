@@ -1,11 +1,5 @@
 <?php
 
-/**
- * Schedule.php
- *
- * @author Atsushi Okui <okui@motionpicture.jp>
- */
-
 namespace App\Schedule\Collection;
 
 use Cinemasunshine\Schedule\Collection\Schedule as Base;
@@ -20,6 +14,7 @@ class Schedule extends Base
      * add
      *
      * @param ScheduleInterface $schedule
+     *
      * @throws \InvalidArgumentException
      */
     public function add($schedule)
@@ -57,8 +52,9 @@ class Schedule extends Base
     /**
      * キーでソート（昇順）
      *
-     * @return bool
      * @link http://php.net/manual/ja/function.ksort.php
+     *
+     * @return bool
      */
     public function ksort()
     {
@@ -68,8 +64,9 @@ class Schedule extends Base
     /**
      * キーでソート（降順）
      *
-     * @return bool
      * @link http://php.net/manual/ja/function.krsort.php
+     *
+     * @return bool
      */
     public function krsort()
     {

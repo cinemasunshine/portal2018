@@ -1,11 +1,5 @@
 <?php
 
-/**
- * Theater.php
- *
- * @author Atsushi Okui <okui@motionpicture.jp>
- */
-
 namespace App\Schedule;
 
 use Cinemasunshine\Schedule\Theater as Base;
@@ -49,6 +43,7 @@ class Theater extends Base
      *
      * @param string $name
      * @param string $environment
+     *
      * @throws \InvalidArgumentException
      */
     public function __construct(string $name, string $environment)

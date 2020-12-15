@@ -24,6 +24,7 @@ final class ScheduleControllerTest extends BaseTestCase
 
     /**
      * @test
+     *
      * @return void
      */
     public function testExecuteList()
@@ -79,6 +80,7 @@ final class ScheduleControllerTest extends BaseTestCase
 
     /**
      * @test
+     *
      * @return void
      */
     public function testExecuteShow()
@@ -133,6 +135,7 @@ final class ScheduleControllerTest extends BaseTestCase
 
     /**
      * @test
+     *
      * @return void
      */
     public function testExecuteShowNotFound()

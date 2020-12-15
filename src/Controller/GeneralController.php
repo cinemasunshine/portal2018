@@ -1,11 +1,5 @@
 <?php
 
-/**
- * GeneralController.php
- *
- * @author Atsushi Okui <okui@motionpicture.jp>
- */
-
 namespace App\Controller;
 
 use App\ORM\Entity;

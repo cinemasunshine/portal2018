@@ -2,8 +2,6 @@
 
 /**
  * ScheduleExtensionTest.php
- *
- * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
 declare(strict_types=1);
@@ -27,6 +25,7 @@ final class ScheduleExtensionTest extends TestCase
      * test construct
      *
      * @test
+     *
      * @return void
      */
     public function testConstruct()
@@ -53,6 +52,7 @@ final class ScheduleExtensionTest extends TestCase
      * test getFunctions
      *
      * @test
+     *
      * @return void
      */
     public function testGetFunctions()
@@ -73,6 +73,7 @@ final class ScheduleExtensionTest extends TestCase
      * test getApiUrl
      *
      * @test
+     *
      * @return void
      */
     public function testGetApiUrl()

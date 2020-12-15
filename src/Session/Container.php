@@ -1,11 +1,5 @@
 <?php
 
-/**
- * Container.php
- *
- * @author Atsushi Okui <okui@motionpicture.jp>
- */
-
 namespace App\Session;
 
 use Laminas\Session\Container as Base;

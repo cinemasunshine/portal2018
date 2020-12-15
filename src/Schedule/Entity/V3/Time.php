@@ -1,11 +1,5 @@
 <?php
 
-/**
- * Time.php
- *
- * @author Atsushi Okui <okui@motionpicture.jp>
- */
-
 declare(strict_types=1);
 
 namespace App\Schedule\Entity\V3;
@@ -34,9 +28,10 @@ class Time extends BaseEntity implements PortalEntityInterface
     /**
      * get url
      *
-     * @return string
      * @link https://m-p.backlog.jp/view/SSKTS-635
      * @link https://m-p.backlog.jp/view/SSKTS-738
+     *
+     * @return string
      */
     public function getUrl(): string
     {

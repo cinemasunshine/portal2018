@@ -49,6 +49,7 @@ final class TheaterRepositoryTest extends TestCase
 
     /**
      * @test
+     *
      * @return void
      */
     public function testAddActiveQuery()
@@ -89,6 +90,7 @@ final class TheaterRepositoryTest extends TestCase
 
     /**
      * @test
+     *
      * @return void
      */
     public function testFindByActive()
@@ -133,6 +135,7 @@ final class TheaterRepositoryTest extends TestCase
 
     /**
      * @test
+     *
      * @return void
      */
     public function testFindOneByName()
@@ -183,6 +186,7 @@ final class TheaterRepositoryTest extends TestCase
 
     /**
      * @test
+     *
      * @return void
      */
     public function testFindBySpecialSite()

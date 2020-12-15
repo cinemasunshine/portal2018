@@ -2,8 +2,6 @@
 
 /**
  * AuthorizationCodeTest.php
- *
- * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
 declare(strict_types=1);
@@ -58,6 +56,7 @@ final class AuthorizationCodeTest extends TestCase
      * test construct
      *
      * @test
+     *
      * @return void
      */
     public function testConstruct()
@@ -109,6 +108,7 @@ final class AuthorizationCodeTest extends TestCase
      * test getAuthorizationUrl
      *
      * @test
+     *
      * @return void
      */
     public function testGetAuthorizationUrl()
@@ -182,6 +182,7 @@ final class AuthorizationCodeTest extends TestCase
      * test getAuthorizationUrl (with not state)
      *
      * @test
+     *
      * @return void
      */
     public function testGetAuthorizationUrlWithNotState()
@@ -229,6 +230,7 @@ final class AuthorizationCodeTest extends TestCase
      * test generateCodeChallenge
      *
      * @test
+     *
      * @return void
      */
     public function testGenerateCodeChallenge()
@@ -256,6 +258,7 @@ final class AuthorizationCodeTest extends TestCase
      * test generateScopeStr
      *
      * @test
+     *
      * @return void
      */
     public function testGenerateScopeStr()
@@ -278,9 +281,10 @@ final class AuthorizationCodeTest extends TestCase
     /**
      * test requestToken
      *
-     * @test
      * @runInSeparateProcess
      * @preserveGlobalState disabled
+     * @test
+     *
      * @return void
      */
     public function testRequestToken()
@@ -386,6 +390,7 @@ final class AuthorizationCodeTest extends TestCase
      * test
      *
      * @test
+     *
      * @return void
      */
     public function testGetLogoutUrl()

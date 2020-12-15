@@ -2,8 +2,6 @@
 
 /**
  * ContainerTest.php
- *
- * @author Atsushi Okui <okui@motionpicture.jp>
  */
 
 declare(strict_types=1);
@@ -26,6 +24,7 @@ final class ContainerTest extends TestCase
      * test clear
      *
      * @test
+     *
      * @return void
      */
     public function testClear()
