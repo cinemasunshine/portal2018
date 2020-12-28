@@ -256,8 +256,8 @@ jobs:
           command: cp ./public/Web.config.prod ./public/Web.config
 
       - run:
-          name: Create .user.ini file
-          command: cp .user.ini.prod .user.ini
+          name: Create PHP configuration file (for Azure)
+          command: cp ./azure/ini/settings.ini-prod ./azure/ini/settings.ini
 
       - run:
           name: Create .env file
