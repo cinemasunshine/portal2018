@@ -38,12 +38,15 @@ class AdvanceTicketExtension extends AbstractExtension
      */
     public function getTypeLabel(int $type)
     {
-        if ($type === AdvanceTicket::TYPE_MVTK) {
-            return 'ムビチケカード';
-        } elseif ($type === AdvanceTicket::TYPE_PAPER) {
-            return '紙券';
-        }
+        switch ($type) {
+            case AdvanceTicket::TYPE_MVTK:
+                return 'ムビチケカード';
 
-        return null;
+            case AdvanceTicket::TYPE_PAPER:
+                return '紙券';
+
+            default:
+                return null;
+        }
     }
 }
