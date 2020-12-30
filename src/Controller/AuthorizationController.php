@@ -43,6 +43,7 @@ class AuthorizationController extends BaseController
             || $state !== $this->am->getAuthorizationState()
         ) {
             $this->logger->info('Invalid state.');
+
             return $this->renderError($response);
         }
 
@@ -55,6 +56,7 @@ class AuthorizationController extends BaseController
             $token = $this->am->requestToken($code, $redirectUri);
         } catch (BadResponseException $e) {
             $this->logger->error($e->getMessage());
+
             return $this->renderError($response);
         }
 

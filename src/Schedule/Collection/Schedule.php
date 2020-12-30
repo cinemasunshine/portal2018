@@ -46,7 +46,7 @@ class Schedule extends Base
      */
     public function get($date)
     {
-        return isset($this->data[$date]) ? $this->data[$date] : null;
+        return $this->data[$date] ?? null;
     }
 
     /**
