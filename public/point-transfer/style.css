@@ -7,10 +7,10 @@ body{padding: 0px;margin:0px;font-family: -apple-system, BlinkMacSystemFont, "He
 .body-area{background-color: #f2f2f2;padding:3em 1em;}
 .process{margin-bottom: 50px;}
 .note{margin-bottom: 50px;}
-.flow-list li{list-style: none;background-color: #fff;margin:15px 0px;display: block;}
+.flow-list li{list-style: none;background-color: #fff;margin:15px 0px;display: block;line-height: 1.6;}
 .flow-list li dt{background-color:#aaa;color: #fff;height: auto;padding: 20px;}
 .flow-list li dd{height: auto;padding: 20px;}
-
+.flow-list li dt,.flow-list li dd{display: inline-block;}
 .note-list{list-style-type:disc;list-style-position:inside;background-color: #fff;padding: 20px;color: red;line-height: 1.6;}
 .btn-area{text-align: center;margin: 20px 0px 30px;}
 .sub-tit{margin-bottom: 20px;}
@@ -18,11 +18,6 @@ button{background-color: transparent;border: none;cursor: pointer;outline: none;
 .theater-select{padding-bottom: 80px;}
 .theater-select select{display: block;max-width:800px;width: 100%;height: 60px;padding: 10px;margin-bottom: 20px;}
 .theater-select a{color: #fff;background-color:#387EDE;border-radius: 5px;width: 100%;max-width: 600px;display: block;padding: 20px 0px;text-decoration: none;text-align: center;}
-.
-@media(min-width:761px){
-    .intro-txt{max-width:90%;}
-    .flow-list li dt,.flow-list li dd{display: inline-block;}
-}
 @media(max-width:760px){
     .intro-txt{max-width:90%;}
     .flow-list li dt{background-color:#aaa;color: #fff;height: auto;padding: 10px;text-align: center;}
