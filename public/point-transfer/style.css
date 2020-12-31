@@ -1,0 +1,25 @@
+body{padding: 0px;margin:0px;font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", Arial, メイリオ, Meiryo, sans-serif;}
+.label-name{display: block;font-weight: bold;font-size: 14px;margin-bottom: 15px;}
+.intro-area h1{text-align: center;margin: 30px 0px;display: block;font-size: 24px;}
+.intro-txt{max-width:1000px;margin: 0 auto;line-height: 1.5;font-size: 14px;}
+.txt-red{color:red;}
+.intro-area{padding:40px 0px 20px;max-width:1000px;margin: 0 auto;}
+.body-area{background-color: #f2f2f2;padding:3em 1em;}
+.process{margin-bottom: 50px;max-width:1000px;margin: 0 auto;}
+.note{max-width:1000px;margin: 0 auto 50px;}
+.flow-list li{list-style: none;background-color: #fff;margin:15px 0px;display: block;line-height: 1.6;}
+.flow-list li dt{background-color:#aaa;color: #fff;height: auto;padding: 20px;}
+.flow-list li dd{height: auto;padding: 20px;}
+.flow-list li dt,.flow-list li dd{display: inline-block;}
+.note-list{list-style-type:disc;list-style-position:inside;background-color: #fff;padding: 20px;color: red;line-height: 1.6;}
+.btn-area{text-align: center;margin: 20px 0px 30px;}
+.sub-tit{margin-bottom: 20px;}
+button{background-color: transparent;border: none;cursor: pointer;outline: none;padding: 0;appearance: none;}
+.theater-select{padding-bottom: 80px;max-width:1000px;margin: 0 auto;text-align: center;}
+.theater-select select{display: block;max-width:800px;width: 100%;height: 60px;padding: 10px;margin: 0 auto 20px;}
+.theater-select a{color: #fff;background-color:#387EDE;border-radius: 5px;width: 100%;max-width: 600px;display: block;padding: 20px 0px;text-decoration: none;text-align: center;margin: 0 auto;}
+@media(max-width:760px){
+    .intro-txt{max-width:90%;}
+    .flow-list li dt{background-color:#aaa;color: #fff;height: auto;padding: 10px;text-align: center;}
+    .flow-list li dt,.flow-list li dd{display: block;}
+}
