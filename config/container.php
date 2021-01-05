@@ -19,7 +19,7 @@ $container = $app->getContainer();
  *
  * @return \App\Authorization\Manager
  */
-$container['am'] = function ($container) {
+$container['am'] = static function ($container) {
     /**
      * 名称変更によるclearを想定しておく。（仕様変更などがあった場合）
      * must consist of alphanumerics, backslashes and underscores only.
@@ -37,7 +37,7 @@ $container['am'] = function ($container) {
  *
  * @return \App\User\Manager
  */
-$container['um'] = function ($container) {
+$container['um'] = static function ($container) {
     /**
      * 名称変更によるclearを想定しておく。（仕様変更などがあった場合）
      * must consist of alphanumerics, backslashes and underscores only.
@@ -56,7 +56,7 @@ $container['um'] = function ($container) {
  *
  * @return \Slim\Views\Twig
  */
-$container['view'] = function ($container) {
+$container['view'] = static function ($container) {
     $settings = $container->get('settings')['view'];
 
     $view = new \Slim\Views\Twig($settings['template_path'], $settings['settings']);
@@ -103,7 +103,7 @@ $container['view'] = function ($container) {
  *
  * @return \Monolog\Logger
  */
-$container['logger'] = function ($container) {
+$container['logger'] = static function ($container) {
     $settings = $container->get('settings')['logger'];
 
     $logger = new Monolog\Logger($settings['name']);
@@ -144,7 +144,7 @@ $container['logger'] = function ($container) {
  *
  * @return \Doctrine\ORM\EntityManager
  */
-$container['em'] = function ($container) {
+$container['em'] = static function ($container) {
     $settings = $container->get('settings')['doctrine'];
     $proxyDir = APP_ROOT . '/src/ORM/Proxy';
 
@@ -186,7 +186,7 @@ $container['em'] = function ($container) {
  *
  * @return \App\Session\SessionManager
  */
-$container['sm'] = function ($container) {
+$container['sm'] = static function ($container) {
     $settings = $container->get('settings')['session'];
 
     $config = new \Laminas\Session\Config\SessionConfig();
@@ -202,7 +202,7 @@ $container['sm'] = function ($container) {
  *
  * @return \MicrosoftAzure\Storage\Blob\BlobRestProxy
  */
-$container['bc'] = function ($container) {
+$container['bc'] = static function ($container) {
     $settings = $container->get('settings')['storage'];
     $protocol = $settings['secure'] ? 'https' : 'http';
 
@@ -220,24 +220,24 @@ $container['bc'] = function ($container) {
     return \MicrosoftAzure\Storage\Blob\BlobRestProxy::createBlobService($connection);
 };
 
-$container['errorHandler'] = function ($container) {
+$container['errorHandler'] = static function ($container) {
     return new \App\Application\Handlers\Error(
         $container->get('logger'),
         $container->get('settings')['displayErrorDetails']
     );
 };
 
-$container['phpErrorHandler'] = function ($container) {
+$container['phpErrorHandler'] = static function ($container) {
     return new \App\Application\Handlers\PhpError(
         $container->get('logger'),
         $container->get('settings')['displayErrorDetails']
     );
 };
 
-$container['notFoundHandler'] = function ($container) {
+$container['notFoundHandler'] = static function ($container) {
     return new \App\Application\Handlers\NotFound();
 };
 
-$container['notAllowedHandler'] = function ($container) {
+$container['notAllowedHandler'] = static function ($container) {
     return new \App\Application\Handlers\NotAllowed();
 };
