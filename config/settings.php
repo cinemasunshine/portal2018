@@ -29,7 +29,7 @@ $settings['view'] = [
  * @link https://docs.laminas.dev/laminas-session/config/
  * @link https://github.com/phpredis/phpredis#php-session-handler
  */
-$getSessionSetting = function () {
+$getSessionSetting = static function () {
     $settings = [
         'name' => 'csportal',
         'php_save_handler' => 'redis',
@@ -75,7 +75,7 @@ $getSessionSetting = function () {
 $settings['session'] = $getSessionSetting();
 
 // logger
-$getLoggerSetting = function () {
+$getLoggerSetting = static function () {
     $settings = ['name' => 'app'];
 
     if (APP_DEBUG) {
@@ -106,7 +106,7 @@ $settings['logger'] = $getLoggerSetting();
  *
  * @return array
  */
-$getDoctrineSetting = function () {
+$getDoctrineSetting = static function () {
     $settings = [
         /**
          * ビルドに影響するのでtrueにするのはローカルモードに限定しておく。
@@ -151,7 +151,7 @@ $getDoctrineSetting = function () {
 $settings['doctrine'] = $getDoctrineSetting();
 
 // storage
-$getStorageSettings = function () {
+$getStorageSettings = static function () {
     $settings = [
         'account_name' => getenv('CUSTOMCONNSTR_STORAGE_NAME'),
         'account_key' => getenv('CUSTOMCONNSTR_STORAGE_KEY'),
@@ -169,7 +169,7 @@ $getStorageSettings = function () {
 $settings['storage'] = $getStorageSettings();
 
 // Motionpicture Service
-$getMpServiceSetting = function () {
+$getMpServiceSetting = static function () {
     $settings = [
         // API
         'api_host' => getenv('APPSETTING_MP_API_HOST'),
