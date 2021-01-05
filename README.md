@@ -53,13 +53,13 @@ $ docker-compose up
 ## アプリケーション コマンド
 
 ```sh
-$ php bin/concole help
+$ php bin/console help
 ```
 
 ### viewキャッシュ削除
 
 ```sh
-$ php bin/concole cache:clear:view
+$ php bin/console cache:clear:view
 ```
 
 ## その他 コマンド
