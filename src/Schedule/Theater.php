@@ -2,11 +2,11 @@
 
 namespace App\Schedule;
 
-use Cinemasunshine\Schedule\Theater as Base;
 use Cinemasunshine\Schedule\Builder\ScheduleInterface as ScheduleBuilder;
 use Cinemasunshine\Schedule\Client\Http as HttpClient;
 use Cinemasunshine\Schedule\Config;
 use Cinemasunshine\Schedule\Service;
+use Cinemasunshine\Schedule\Theater as Base;
 
 /**
  * Theater class

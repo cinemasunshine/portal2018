@@ -10,8 +10,8 @@ namespace Tests\Unit\Authorization;
 
 use App\Authorization\Grant\AuthorizationCode as AuthorizationCodeGrant;
 use App\Authorization\Grant\RefreshToken as RefreshTokenGrant;
-use App\Authorization\Token\AuthorizationCodeToken;
 use App\Authorization\Manager as AuthorizationManager;
+use App\Authorization\Token\AuthorizationCodeToken;
 use App\Session\Container as SessionContainer;
 use Laminas\Stdlib\ArrayObject;
 use Mockery;

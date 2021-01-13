@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\ORM\Entity;
-use Slim\Exception\NotFoundException;
 use Slim\Http\Request;
 use Slim\Http\Response;
 

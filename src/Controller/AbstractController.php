@@ -4,8 +4,8 @@ namespace App\Controller;
 
 use App\Exception\RedirectException;
 use Psr\Container\ContainerInterface;
-use Slim\Http\Response;
 use Slim\Http\Request;
+use Slim\Http\Response;
 
 /**
  * @property-read \App\Authorization\Manager $am

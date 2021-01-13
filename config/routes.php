@@ -4,25 +4,21 @@
  * routes.php
  */
 
-use App\Controller\{
-    AboutController,
-    AuthorizationController,
-    FourdxController,
-    FourdxScreenController,
-    ImaxController,
-    IndexController,
-    NewsController,
-    OyakoCinemaController,
-    ScheduleController,
-    ScreenXController,
-    TheaterController,
-    TheaterListController
-};
-use App\Controller\API\{
-    AuthorizationController as AuthorizationAPIController,
-    ScheduleController as ScheduleApiController
-};
+use App\Controller\AboutController;
+use App\Controller\API\AuthorizationController as AuthorizationAPIController;
+use App\Controller\API\ScheduleController as ScheduleApiController;
+use App\Controller\AuthorizationController;
 use App\Controller\Development\DoctrineController;
+use App\Controller\FourdxController;
+use App\Controller\FourdxScreenController;
+use App\Controller\ImaxController;
+use App\Controller\IndexController;
+use App\Controller\NewsController;
+use App\Controller\OyakoCinemaController;
+use App\Controller\ScheduleController;
+use App\Controller\ScreenXController;
+use App\Controller\TheaterController;
+use App\Controller\TheaterListController;
 
 // phpcs:disable SlevomatCodingStandard.Commenting.InlineDocCommentDeclaration
 /** @var \Slim\App $app */
