@@ -2,7 +2,6 @@
 
 namespace App\Session;
 
-use App\Session\Container;
 use Laminas\Session\Config\ConfigInterface;
 use Laminas\Session\SessionManager as Base;
 

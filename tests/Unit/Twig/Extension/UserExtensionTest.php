@@ -14,7 +14,6 @@ use App\User\Manager as UserManager;
 use Mockery;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use PHPUnit\Framework\TestCase;
-use Twig\TwigFilter;
 use Twig\TwigFunction;
 
 /**

@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Schedule\Entity\V3;
 
-use App\Schedule\Entity\PortalEntityInterface;
 use App\Schedule\Collection\Movie as MovieCollection;
+use App\Schedule\Entity\PortalEntityInterface;
 use Cinemasunshine\Schedule\Entity\V3\Schedule as BaseEntity;
 
 /**
