@@ -10,6 +10,8 @@ use App\ORM\Entity\Schedule;
 use App\ORM\Repository\NewsRepository;
 use App\ORM\Repository\ScheduleRepository;
 use Mockery;
+use Mockery\LegacyMockInterface;
+use Mockery\MockInterface;
 use Slim\Container;
 use Slim\Exception\NotFoundException;
 
@@ -17,7 +19,7 @@ final class ScreenXControllerTest extends BaseTestCase
 {
     /**
      * @param Container $container
-     * @return \Mockery\MockInterface&\Mockery\LegacyMockInterface&ScreenXController
+     * @return MockInterface&LegacyMockInterface&ScreenXController
      */
     protected function createTargetMock(Container $container)
     {
@@ -298,7 +300,7 @@ final class ScreenXControllerTest extends BaseTestCase
     }
 
     /**
-     * @return \Mockery\MockInterface&\Mockery\LegacyMockInterface&ScheduleRepository
+     * @return MockInterface&LegacyMockInterface&ScheduleRepository
      */
     protected function createScheduleRepositoryMock()
     {
@@ -306,7 +308,7 @@ final class ScreenXControllerTest extends BaseTestCase
     }
 
     /**
-     * @return \Mockery\MockInterface&\Mockery\LegacyMockInterface&Schedule
+     * @return MockInterface&LegacyMockInterface&Schedule
      */
     protected function createScheduleMock()
     {
@@ -443,7 +445,7 @@ final class ScreenXControllerTest extends BaseTestCase
     }
 
     /**
-     * @return \Mockery\MockInterface&\Mockery\LegacyMockInterface&NewsRepository
+     * @return MockInterface&LegacyMockInterface&NewsRepository
      */
     protected function createNewsRepositoryMock()
     {
@@ -451,7 +453,7 @@ final class ScreenXControllerTest extends BaseTestCase
     }
 
     /**
-     * @return \Mockery\MockInterface&\Mockery\LegacyMockInterface&News
+     * @return MockInterface&LegacyMockInterface&News
      */
     protected function createNewsMock()
     {

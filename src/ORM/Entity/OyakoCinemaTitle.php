@@ -6,9 +6,11 @@ namespace App\ORM\Entity;
 
 use Cinemasunshine\ORM\Entities\OyakoCinemaTitle as BaseOyakoCinemaTitle;
 use Cinemasunshine\ORM\Entities\Title as BaseTitle;
+use DateTime;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 use Doctrine\ORM\Mapping as ORM;
+use LogicException;
 
 /**
  * OyakoCinemaTitle entity class
@@ -22,31 +24,31 @@ class OyakoCinemaTitle extends BaseOyakoCinemaTitle
     /**
      * {@inheritDoc}
      *
-     * @throws \LogicException
+     * @throws LogicException
      */
     public function __construct()
     {
-        throw new \LogicException('Not allowed.');
+        throw new LogicException('Not allowed.');
     }
 
     /**
      * {@inheritDoc}
      *
-     * @throws \LogicException
+     * @throws LogicException
      */
     public function setTitle(BaseTitle $title)
     {
-        throw new \LogicException('Not allowed.');
+        throw new LogicException('Not allowed.');
     }
 
     /**
      * {@inheritDoc}
      *
-     * @throws \LogicException
+     * @throws LogicException
      */
     public function setTitleUrl(string $titleUrl)
     {
-        throw new \LogicException('Not allowed.');
+        throw new LogicException('Not allowed.');
     }
 
     /**
@@ -57,7 +59,7 @@ class OyakoCinemaTitle extends BaseOyakoCinemaTitle
     public function getOyakoCinemaSchedules(): Collection
     {
         $criteria = Criteria::create()
-            ->where(Criteria::expr()->gte('date', new \DateTime('now')))
+            ->where(Criteria::expr()->gte('date', new DateTime('now')))
             ->orderBy(['date' => Criteria::ASC]);
 
         return $this->oyakoCinemaSchedules->matching($criteria);

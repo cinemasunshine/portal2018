@@ -8,6 +8,7 @@ use Cinemasunshine\ORM\Entities\AdvanceSale as BaseAdvanceSale;
 use Cinemasunshine\ORM\Entities\Theater as BaseTheater;
 use Cinemasunshine\ORM\Entities\Title as BaseTitle;
 use Doctrine\ORM\Mapping as ORM;
+use LogicException;
 
 /**
  * AdvanceSale entity class
@@ -21,50 +22,50 @@ class AdvanceSale extends BaseAdvanceSale
     /**
      * {@inheritDoc}
      *
-     * @throws \LogicException
+     * @throws LogicException
      */
     public function __construct()
     {
-        throw new \LogicException('Not allowed.');
+        throw new LogicException('Not allowed.');
     }
 
     /**
      * {@inheritDoc}
      *
-     * @throws \LogicException
+     * @throws LogicException
      */
     public function setTheater(BaseTheater $theater)
     {
-        throw new \LogicException('Not allowed.');
+        throw new LogicException('Not allowed.');
     }
 
     /**
      * {@inheritDoc}
      *
-     * @throws \LogicException
+     * @throws LogicException
      */
     public function setTitle(BaseTitle $title)
     {
-        throw new \LogicException('Not allowed.');
+        throw new LogicException('Not allowed.');
     }
 
     /**
      * {@inheritDoc}
      *
-     * @throws \LogicException
+     * @throws LogicException
      */
     public function setPublishingExpectedDate($publishingExpectedDate)
     {
-        throw new \LogicException('Not allowed.');
+        throw new LogicException('Not allowed.');
     }
 
     /**
      * {@inheritDoc}
      *
-     * @throws \LogicException
+     * @throws LogicException
      */
     public function setPublishingExpectedDateText(?string $publishingExpectedDateText)
     {
-        throw new \LogicException('Not allowed.');
+        throw new LogicException('Not allowed.');
     }
 }

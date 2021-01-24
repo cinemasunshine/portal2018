@@ -11,9 +11,13 @@ namespace Tests\Unit\Authorization\Grant;
 use App\Authorization\Grant\AuthorizationCode;
 use App\Authorization\Token\AuthorizationCodeToken;
 use GuzzleHttp\Client as HttpClient;
+use LogicException;
 use Mockery;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
+use Mockery\LegacyMockInterface;
+use Mockery\MockInterface;
 use PHPUnit\Framework\TestCase;
+use ReflectionClass;
 
 /**
  * AuthorizationCode test
@@ -25,7 +29,7 @@ final class AuthorizationCodeTest extends TestCase
     /**
      * Create target mock
      *
-     * @return \Mockery\MockInterface|\Mockery\LegacyMockInterface|AuthorizationCode
+     * @return MockInterface|LegacyMockInterface|AuthorizationCode
      */
     protected function createTargetMock()
     {
@@ -35,17 +39,17 @@ final class AuthorizationCodeTest extends TestCase
     /**
      * Create target reflection
      *
-     * @return \ReflectionClass
+     * @return ReflectionClass
      */
     protected function createTargetReflection()
     {
-        return new \ReflectionClass(AuthorizationCode::class);
+        return new ReflectionClass(AuthorizationCode::class);
     }
 
     /**
      * Create HttpClient mock
      *
-     * @return \Mockery\MockInterface|\Mockery\LegacyMockInterface|HttpClient
+     * @return MockInterface|LegacyMockInterface|HttpClient
      */
     protected function createHttpClientMock()
     {
@@ -250,7 +254,7 @@ final class AuthorizationCodeTest extends TestCase
             $decodedResult
         );
 
-        $this->expectException(\LogicException::class);
+        $this->expectException(LogicException::class);
         $targetMethodRef->invoke($targetMock, $codeVerifier, 'invalid_method');
     }
 
@@ -359,7 +363,7 @@ final class AuthorizationCodeTest extends TestCase
     /**
      * Create Response mock
      *
-     * @return \Mockery\MockInterface|\Mockery\LegacyMockInterface
+     * @return MockInterface|LegacyMockInterface
      */
     protected function createResponseMock()
     {
@@ -369,7 +373,7 @@ final class AuthorizationCodeTest extends TestCase
     /**
      * Create Stream mock
      *
-     * @return \Mockery\MockInterface|\Mockery\LegacyMockInterface
+     * @return MockInterface|LegacyMockInterface
      */
     protected function createStreamMock()
     {
@@ -379,7 +383,7 @@ final class AuthorizationCodeTest extends TestCase
     /**
      * Create Token mock
      *
-     * @return \Mockery\MockInterface|\Mockery\LegacyMockInterface
+     * @return MockInterface|LegacyMockInterface
      */
     protected function createTokenMock()
     {

@@ -13,7 +13,10 @@ use App\Twig\Extension\UserExtension;
 use App\User\Manager as UserManager;
 use Mockery;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
+use Mockery\LegacyMockInterface;
+use Mockery\MockInterface;
 use PHPUnit\Framework\TestCase;
+use ReflectionClass;
 use Twig\TwigFunction;
 
 /**
@@ -26,7 +29,7 @@ final class UserExtensionTest extends TestCase
     /**
      * Create AuthorizationManager mock
      *
-     * @return \Mockery\MockInterface|\Mockery\LegacyMockInterface|AuthorizationManager
+     * @return MockInterface|LegacyMockInterface|AuthorizationManager
      */
     protected function createAuthorizationManagerMock()
     {
@@ -36,7 +39,7 @@ final class UserExtensionTest extends TestCase
     /**
      * Create UserManager mock
      *
-     * @return \Mockery\MockInterface|\Mockery\LegacyMockInterface|UserManager
+     * @return MockInterface|LegacyMockInterface|UserManager
      */
     protected function createUserManagerMock()
     {
@@ -56,7 +59,7 @@ final class UserExtensionTest extends TestCase
         $userManagerMock          = $this->createUserManagerMock();
         $authorizationManagerMock = $this->createAuthorizationManagerMock();
 
-        $extensionClassRef = new \ReflectionClass(UserExtension::class);
+        $extensionClassRef = new ReflectionClass(UserExtension::class);
 
         // execute constructor
         $constructorRef = $extensionClassRef->getConstructor();
@@ -122,7 +125,7 @@ final class UserExtensionTest extends TestCase
             ->with($redirectUrl)
             ->andReturn($loginUrl);
 
-        $extensionClassRef = new \ReflectionClass(UserExtension::class);
+        $extensionClassRef = new ReflectionClass(UserExtension::class);
 
         $authorizationManagerPropertyRef = $extensionClassRef->getProperty('authorizationManager');
         $authorizationManagerPropertyRef->setAccessible(true);
@@ -153,7 +156,7 @@ final class UserExtensionTest extends TestCase
             ->with($redirectUrl)
             ->andReturn($logoutUrl);
 
-        $extensionClassRef = new \ReflectionClass(UserExtension::class);
+        $extensionClassRef = new ReflectionClass(UserExtension::class);
 
         $authorizationManagerPropertyRef = $extensionClassRef->getProperty('authorizationManager');
         $authorizationManagerPropertyRef->setAccessible(true);
@@ -183,7 +186,7 @@ final class UserExtensionTest extends TestCase
             ->with()
             ->andReturn($user);
 
-        $extensionClassRef = new \ReflectionClass(UserExtension::class);
+        $extensionClassRef = new ReflectionClass(UserExtension::class);
 
         $userManagerPropertyRef = $extensionClassRef->getProperty('userManager');
         $userManagerPropertyRef->setAccessible(true);
@@ -213,7 +216,7 @@ final class UserExtensionTest extends TestCase
             ->with()
             ->andReturn($isAuthenticated);
 
-        $extensionClassRef = new \ReflectionClass(UserExtension::class);
+        $extensionClassRef = new ReflectionClass(UserExtension::class);
 
         $userManagerPropertyRef = $extensionClassRef->getProperty('userManager');
         $userManagerPropertyRef->setAccessible(true);

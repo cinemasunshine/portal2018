@@ -11,7 +11,10 @@ namespace Tests\Unit\Resource;
 use App\Resource\MetaTag;
 use Mockery;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
+use Mockery\LegacyMockInterface;
+use Mockery\MockInterface;
 use PHPUnit\Framework\TestCase;
+use ReflectionClass;
 
 /**
  * MetaTag test
@@ -21,7 +24,7 @@ final class MetaTagTest extends TestCase
     use MockeryPHPUnitIntegration;
 
     /**
-     * @return \Mockery\MockInterface&\Mockery\LegacyMockInterface&MetaTag
+     * @return MockInterface&LegacyMockInterface&MetaTag
      */
     protected function createTargetMock()
     {
@@ -29,11 +32,11 @@ final class MetaTagTest extends TestCase
     }
 
     /**
-     * @return \ReflectionClass
+     * @return ReflectionClass
      */
     protected function createTargetReflection()
     {
-        return new \ReflectionClass(MetaTag::class);
+        return new ReflectionClass(MetaTag::class);
     }
 
     /**

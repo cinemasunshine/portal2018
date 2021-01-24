@@ -11,6 +11,8 @@ namespace Tests\Unit\Session;
 use App\Session\Container;
 use Mockery;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
+use Mockery\LegacyMockInterface;
+use Mockery\MockInterface;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -31,14 +33,14 @@ final class ContainerTest extends TestCase
     {
         $name = 'test';
 
-        /** @var \Mockery\MockInterface|\Mockery\LegacyMockInterface $storageMock */
+        /** @var MockInterface|LegacyMockInterface $storageMock */
         $storageMock = Mockery::mock('Storage');
         $storageMock
             ->shouldReceive('clear')
             ->once()
             ->with($name);
 
-        /** @var \Mockery\MockInterface|\Mockery\LegacyMockInterface|Container $containerMock */
+        /** @var MockInterface|LegacyMockInterface|Container $containerMock */
         $containerMock = Mockery::mock(Container::class)
             ->makePartial()
             ->shouldAllowMockingProtectedMethods();

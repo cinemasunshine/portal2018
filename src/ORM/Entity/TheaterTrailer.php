@@ -8,6 +8,7 @@ use Cinemasunshine\ORM\Entities\Theater as BaseTheater;
 use Cinemasunshine\ORM\Entities\TheaterTrailer as BaseTheaterTrailer;
 use Cinemasunshine\ORM\Entities\Trailer as BaseTrailer;
 use Doctrine\ORM\Mapping as ORM;
+use LogicException;
 
 /**
  * TheaterTrailer entity class
@@ -21,30 +22,30 @@ class TheaterTrailer extends BaseTheaterTrailer
     /**
      * {@inheritDoc}
      *
-     * @throws \LogicException
+     * @throws LogicException
      */
     public function __construct()
     {
-        throw new \LogicException('Not allowed.');
+        throw new LogicException('Not allowed.');
     }
 
     /**
      * {@inheritDoc}
      *
-     * @throws \LogicException
+     * @throws LogicException
      */
     public function setTrailer(BaseTrailer $trailer)
     {
-        throw new \LogicException('Not allowed.');
+        throw new LogicException('Not allowed.');
     }
 
     /**
      * {@inheritDoc}
      *
-     * @throws \LogicException
+     * @throws LogicException
      */
     public function setTheater(BaseTheater $theater)
     {
-        throw new \LogicException('Not allowed.');
+        throw new LogicException('Not allowed.');
     }
 }

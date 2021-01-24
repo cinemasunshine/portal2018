@@ -4,6 +4,7 @@ namespace App\Schedule\Collection;
 
 use Cinemasunshine\Schedule\Collection\Schedule as Base;
 use Cinemasunshine\Schedule\Entity\ScheduleInterface;
+use InvalidArgumentException;
 
 /**
  * Schedule collection
@@ -15,12 +16,12 @@ class Schedule extends Base
      *
      * @param ScheduleInterface $schedule
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      */
     public function add($schedule)
     {
         if (! $schedule instanceof ScheduleInterface) {
-            throw new \InvalidArgumentException('should implement Entity\ScheduleInterface');
+            throw new InvalidArgumentException('should implement Entity\ScheduleInterface');
         }
 
         // 日付をキーとする

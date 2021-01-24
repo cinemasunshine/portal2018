@@ -8,6 +8,8 @@ use App\Controller\ScheduleController;
 use App\ORM\Entity\Schedule;
 use App\ORM\Repository\ScheduleRepository;
 use Mockery;
+use Mockery\LegacyMockInterface;
+use Mockery\MockInterface;
 use Slim\Container;
 use Slim\Exception\NotFoundException;
 
@@ -15,7 +17,7 @@ final class ScheduleControllerTest extends BaseTestCase
 {
     /**
      * @param Container $container
-     * @return \Mockery\MockInterface&\Mockery\LegacyMockInterface&ScheduleController
+     * @return MockInterface&LegacyMockInterface&ScheduleController
      */
     protected function createTargetMock(Container $container)
     {
@@ -170,7 +172,7 @@ final class ScheduleControllerTest extends BaseTestCase
     }
 
     /**
-     * @return \Mockery\MockInterface&\Mockery\LegacyMockInterface&ScheduleRepository
+     * @return MockInterface&LegacyMockInterface&ScheduleRepository
      */
     protected function createScheduleRepositoryMock()
     {
@@ -178,7 +180,7 @@ final class ScheduleControllerTest extends BaseTestCase
     }
 
     /**
-     * @return \Mockery\MockInterface&\Mockery\LegacyMockInterface&Schedule
+     * @return MockInterface&LegacyMockInterface&Schedule
      */
     protected function createScheduleMock()
     {

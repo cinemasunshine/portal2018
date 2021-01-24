@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Twig\Extension;
 
 use App\Resource\MetaTag;
+use InvalidArgumentException;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 
@@ -19,7 +20,7 @@ class SeoExtension extends AbstractExtension
     public function __construct(string $file)
     {
         if (! file_exists($file)) {
-            throw new \InvalidArgumentException('File does not exist.');
+            throw new InvalidArgumentException('File does not exist.');
         }
 
         $this->metas = $this->loadMetas($file);

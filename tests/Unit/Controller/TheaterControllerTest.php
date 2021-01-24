@@ -9,6 +9,9 @@ use App\ORM\Entity\News;
 use App\ORM\Entity\Theater;
 use App\ORM\Repository\NewsRepository;
 use Mockery;
+use Mockery\LegacyMockInterface;
+use Mockery\MockInterface;
+use ReflectionClass;
 use Slim\Container;
 use Slim\Exception\NotFoundException;
 
@@ -16,7 +19,7 @@ final class TheaterControllerTest extends BaseTestCase
 {
     /**
      * @param Container $container
-     * @return \Mockery\MockInterface&\Mockery\LegacyMockInterface&TheaterController
+     * @return MockInterface&LegacyMockInterface&TheaterController
      */
     protected function createTargetMock(Container $container)
     {
@@ -24,15 +27,15 @@ final class TheaterControllerTest extends BaseTestCase
     }
 
     /**
-     * @return \ReflectionClass
+     * @return ReflectionClass
      */
     protected function createTargetReflection()
     {
-        return new \ReflectionClass(TheaterController::class);
+        return new ReflectionClass(TheaterController::class);
     }
 
     /**
-     * @return \Mockery\MockInterface&\Mockery\LegacyMockInterface&Theater
+     * @return MockInterface&LegacyMockInterface&Theater
      */
     protected function createTheaterMock()
     {
@@ -635,7 +638,7 @@ final class TheaterControllerTest extends BaseTestCase
     }
 
     /**
-     * @return \Mockery\MockInterface&\Mockery\LegacyMockInterface&NewsRepository
+     * @return MockInterface&LegacyMockInterface&NewsRepository
      */
     protected function createNewsRepositoryMock()
     {
@@ -643,7 +646,7 @@ final class TheaterControllerTest extends BaseTestCase
     }
 
     /**
-     * @return \Mockery\MockInterface&\Mockery\LegacyMockInterface&News
+     * @return MockInterface&LegacyMockInterface&News
      */
     protected function createNewsMock()
     {

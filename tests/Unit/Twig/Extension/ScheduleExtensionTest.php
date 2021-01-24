@@ -12,6 +12,7 @@ use App\Twig\Extension\ScheduleExtension;
 use Mockery;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use PHPUnit\Framework\TestCase;
+use ReflectionClass;
 use Twig\TwigFunction;
 
 /**
@@ -33,7 +34,7 @@ final class ScheduleExtensionTest extends TestCase
         $extensionMock = Mockery::mock(ScheduleExtension::class);
         $settings      = [];
 
-        $extensionClassRef = new \ReflectionClass(ScheduleExtension::class);
+        $extensionClassRef = new ReflectionClass(ScheduleExtension::class);
 
         // execute constructor
         $constructorRef = $extensionClassRef->getConstructor();
@@ -83,7 +84,7 @@ final class ScheduleExtensionTest extends TestCase
         $extensionMock = Mockery::mock(ScheduleExtension::class)
             ->makePartial();
 
-        $extensionClassRef = new \ReflectionClass(ScheduleExtension::class);
+        $extensionClassRef = new ReflectionClass(ScheduleExtension::class);
 
         $settingsPropertyRef = $extensionClassRef->getProperty('settings');
         $settingsPropertyRef->setAccessible(true);

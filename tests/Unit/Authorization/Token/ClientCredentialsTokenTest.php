@@ -11,7 +11,10 @@ namespace Tests\Unit\Authorization\Token;
 use App\Authorization\Token\ClientCredentialsToken;
 use Mockery;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
+use Mockery\LegacyMockInterface;
+use Mockery\MockInterface;
 use PHPUnit\Framework\TestCase;
+use ReflectionClass;
 
 /**
  * ClientCredentialsToken test
@@ -23,7 +26,7 @@ final class ClientCredentialsTokenTest extends TestCase
     /**
      * Create target mock
      *
-     * @return \Mockery\MockInterface|\Mockery\LegacyMockInterface|ClientCredentialsToken
+     * @return MockInterface|LegacyMockInterface|ClientCredentialsToken
      */
     protected function createTargetMock()
     {
@@ -33,11 +36,11 @@ final class ClientCredentialsTokenTest extends TestCase
     /**
      * Create target reflection
      *
-     * @return \ReflectionClass
+     * @return ReflectionClass
      */
     protected function createTargetReflection()
     {
-        return new \ReflectionClass(ClientCredentialsToken::class);
+        return new ReflectionClass(ClientCredentialsToken::class);
     }
 
     /**

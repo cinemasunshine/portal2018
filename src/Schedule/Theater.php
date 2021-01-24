@@ -7,6 +7,7 @@ use Cinemasunshine\Schedule\Client\Http as HttpClient;
 use Cinemasunshine\Schedule\Config;
 use Cinemasunshine\Schedule\Service;
 use Cinemasunshine\Schedule\Theater as Base;
+use InvalidArgumentException;
 
 /**
  * Theater class
@@ -44,12 +45,12 @@ class Theater extends Base
      * @param string $name
      * @param string $environment
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      */
     public function __construct(string $name, string $environment)
     {
         if (! self::validate($name)) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 sprintf('invalid theater "%s".', $name)
             );
         }

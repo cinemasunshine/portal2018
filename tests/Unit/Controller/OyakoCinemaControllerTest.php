@@ -6,11 +6,13 @@ namespace Tests\Unit\Controller;
 
 use App\Controller\OyakoCinemaController;
 use Mockery;
+use Mockery\LegacyMockInterface;
+use Mockery\MockInterface;
 
 final class OyakoCinemaControllerTest extends BaseTestCase
 {
     /**
-     * @return \Mockery\MockInterface&\Mockery\LegacyMockInterface&OyakoCinemaController
+     * @return MockInterface&LegacyMockInterface&OyakoCinemaController
      */
     protected function createTargetMock()
     {

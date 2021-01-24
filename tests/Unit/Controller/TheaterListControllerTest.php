@@ -6,11 +6,13 @@ namespace Tests\Unit\Controller;
 
 use App\Controller\TheaterListController;
 use Mockery;
+use Mockery\LegacyMockInterface;
+use Mockery\MockInterface;
 
 final class TheaterListControllerTest extends BaseTestCase
 {
     /**
-     * @return \Mockery\MockInterface&\Mockery\LegacyMockInterface&TheaterListController
+     * @return MockInterface&LegacyMockInterface&TheaterListController
      */
     protected function createTargetMock()
     {

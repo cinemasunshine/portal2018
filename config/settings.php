@@ -6,6 +6,8 @@
  * @return array
  */
 
+use Monolog\Logger;
+
 $settings = [];
 
 $settings['displayErrorDetails'] = APP_DEBUG;
@@ -80,16 +82,16 @@ $getLoggerSetting = static function () {
 
     if (APP_DEBUG) {
         $settings['browser_console'] = [
-            'level' => \Monolog\Logger::DEBUG,
+            'level' => Logger::DEBUG,
         ];
     }
 
     $settings['fingers_crossed'] = [
-        'activation_strategy' => \Monolog\Logger::ERROR,
+        'activation_strategy' => Logger::ERROR,
     ];
 
     $settings['azure_blob_storage'] = [
-        'level' => \Monolog\Logger::INFO,
+        'level' => Logger::INFO,
         'container' => 'frontend-log',
         'blob' => date('Ymd') . '.log',
     ];

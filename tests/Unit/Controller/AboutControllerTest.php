@@ -6,11 +6,13 @@ namespace Tests\Unit\Controller;
 
 use App\Controller\AboutController;
 use Mockery;
+use Mockery\LegacyMockInterface;
+use Mockery\MockInterface;
 
 final class AboutControllerTest extends BaseTestCase
 {
     /**
-     * @return \Mockery\MockInterface&\Mockery\LegacyMockInterface&AboutController
+     * @return MockInterface&LegacyMockInterface&AboutController
      */
     protected function createTargetMock()
     {

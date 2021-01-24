@@ -9,9 +9,11 @@ declare(strict_types=1);
 namespace Tests\Unit\Twig\Extension;
 
 use App\Twig\Extension\CommonExtension;
+use DateTime;
 use Mockery;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use PHPUnit\Framework\TestCase;
+use ReflectionClass;
 use Twig\TwigFilter;
 use Twig\TwigFunction;
 
@@ -35,7 +37,7 @@ final class CommonExtensionTest extends TestCase
 
         $extensionMock = Mockery::mock(CommonExtension::class);
 
-        $extensionClassRef = new \ReflectionClass(CommonExtension::class);
+        $extensionClassRef = new ReflectionClass(CommonExtension::class);
 
         // execute constructor
         $constructorRef = $extensionClassRef->getConstructor();
@@ -85,7 +87,7 @@ final class CommonExtensionTest extends TestCase
         $extensionMock = Mockery::mock(CommonExtension::class)
             ->makePartial();
 
-        $extensionClassRef = new \ReflectionClass(CommonExtension::class);
+        $extensionClassRef = new ReflectionClass(CommonExtension::class);
 
         $appEnvPropertyRef = $extensionClassRef->getProperty('appEnv');
         $appEnvPropertyRef->setAccessible(true);
@@ -108,7 +110,7 @@ final class CommonExtensionTest extends TestCase
         $extensionMock = Mockery::mock(CommonExtension::class)
             ->makePartial();
 
-        $extensionClassRef = new \ReflectionClass(CommonExtension::class);
+        $extensionClassRef = new ReflectionClass(CommonExtension::class);
 
         $appEnvPropertyRef = $extensionClassRef->getProperty('appEnv');
         $appEnvPropertyRef->setAccessible(true);
@@ -191,7 +193,7 @@ final class CommonExtensionTest extends TestCase
      */
     public function testWeekdayFilter()
     {
-        $dateTimeMock = Mockery::mock(\DateTime::class);
+        $dateTimeMock = Mockery::mock(DateTime::class);
         $dateTimeMock
             ->shouldReceive('format')
             ->once()

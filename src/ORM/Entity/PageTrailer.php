@@ -8,6 +8,7 @@ use Cinemasunshine\ORM\Entities\Page as BasePage;
 use Cinemasunshine\ORM\Entities\PageTrailer as BasePageTrailer;
 use Cinemasunshine\ORM\Entities\Trailer as BaseTrailer;
 use Doctrine\ORM\Mapping as ORM;
+use LogicException;
 
 /**
  * PageTrailer entity class
@@ -21,30 +22,30 @@ class PageTrailer extends BasePageTrailer
     /**
      * {@inheritDoc}
      *
-     * @throws \LogicException
+     * @throws LogicException
      */
     public function __construct()
     {
-        throw new \LogicException('Not allowed.');
+        throw new LogicException('Not allowed.');
     }
 
     /**
      * {@inheritDoc}
      *
-     * @throws \LogicException
+     * @throws LogicException
      */
     public function setTrailer(BaseTrailer $trailer)
     {
-        throw new \LogicException('Not allowed.');
+        throw new LogicException('Not allowed.');
     }
 
     /**
      * {@inheritDoc}
      *
-     * @throws \LogicException
+     * @throws LogicException
      */
     public function setPage(BasePage $page)
     {
-        throw new \LogicException('Not allowed.');
+        throw new LogicException('Not allowed.');
     }
 }
