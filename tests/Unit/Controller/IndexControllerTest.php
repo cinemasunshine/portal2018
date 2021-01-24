@@ -7,11 +7,13 @@ namespace Tests\Unit\Controller;
 use App\Controller\IndexController;
 use App\ORM\Entity\News;
 use Mockery;
+use Mockery\LegacyMockInterface;
+use Mockery\MockInterface;
 
 final class IndexControllerTest extends BaseTestCase
 {
     /**
-     * @return \Mockery\MockInterface&\Mockery\LegacyMockInterface&IndexController
+     * @return MockInterface&LegacyMockInterface&IndexController
      */
     protected function createTargetMock()
     {

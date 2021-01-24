@@ -8,6 +8,7 @@ use Cinemasunshine\ORM\Entities\Campaign as BaseCampaign;
 use Cinemasunshine\ORM\Entities\SpecialSite as BaseSpecialSite;
 use Cinemasunshine\ORM\Entities\SpecialSiteCampaign as BaseSpecialSiteCampaign;
 use Doctrine\ORM\Mapping as ORM;
+use LogicException;
 
 /**
  * SpecialSiteCampaign entity class
@@ -21,40 +22,40 @@ class SpecialSiteCampaign extends BaseSpecialSiteCampaign
     /**
      * {@inheritDoc}
      *
-     * @throws \LogicException
+     * @throws LogicException
      */
     public function __construct()
     {
-        throw new \LogicException('Not allowed.');
+        throw new LogicException('Not allowed.');
     }
 
     /**
      * {@inheritDoc}
      *
-     * @throws \LogicException
+     * @throws LogicException
      */
     public function setCampaign(BaseCampaign $campaign)
     {
-        throw new \LogicException('Not allowed.');
+        throw new LogicException('Not allowed.');
     }
 
     /**
      * {@inheritDoc}
      *
-     * @throws \LogicException
+     * @throws LogicException
      */
     public function setSpecialSite(BaseSpecialSite $specialSite)
     {
-        throw new \LogicException('Not allowed.');
+        throw new LogicException('Not allowed.');
     }
 
     /**
      * {@inheritDoc}
      *
-     * @throws \LogicException
+     * @throws LogicException
      */
     public function setDisplayOrder(int $displayOrder)
     {
-        throw new \LogicException('Not allowed.');
+        throw new LogicException('Not allowed.');
     }
 }

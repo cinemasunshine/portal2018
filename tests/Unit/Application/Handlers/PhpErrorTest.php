@@ -9,10 +9,15 @@ declare(strict_types=1);
 namespace Tests\Unit\Application\Handlers;
 
 use App\Application\Handlers\PhpError;
+use Exception;
 use Mockery;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
+use Mockery\LegacyMockInterface;
+use Mockery\MockInterface;
 use Monolog\Logger;
 use PHPUnit\Framework\TestCase;
+use ReflectionClass;
+use ReflectionMethod;
 
 /**
  * PhpError handler test
@@ -22,15 +27,15 @@ final class PhpErrorTest extends TestCase
     use MockeryPHPUnitIntegration;
 
     /**
-     * @return \ReflectionClass
+     * @return ReflectionClass
      */
     protected function createTargetReflection()
     {
-        return new \ReflectionClass(PhpError::class);
+        return new ReflectionClass(PhpError::class);
     }
 
     /**
-     * @return \Mockery\MockInterface&\Mockery\LegacyMockInterface&PhpError
+     * @return MockInterface&LegacyMockInterface&PhpError
      */
     protected function createTargetMock()
     {
@@ -38,7 +43,7 @@ final class PhpErrorTest extends TestCase
     }
 
     /**
-     * @return \Mockery\MockInterface&\Mockery\LegacyMockInterface&Logger
+     * @return MockInterface&LegacyMockInterface&Logger
      */
     protected function createLoggerMock()
     {
@@ -86,7 +91,7 @@ final class PhpErrorTest extends TestCase
      */
     public function testWriteToErrorLog()
     {
-        $exception = new \Exception();
+        $exception = new Exception();
 
         $targetMock = $this->createTargetMock();
         $targetMock
@@ -97,7 +102,7 @@ final class PhpErrorTest extends TestCase
             ->once()
             ->with($exception);
 
-        $writeToErrorLogRef = new \ReflectionMethod($targetMock, 'writeToErrorLog');
+        $writeToErrorLogRef = new ReflectionMethod($targetMock, 'writeToErrorLog');
         $writeToErrorLogRef->setAccessible(true);
 
         // execute
@@ -116,7 +121,7 @@ final class PhpErrorTest extends TestCase
         $message = 'message';
 
         // Exceptionのmockは出来ない？
-        $exception = new \Exception($message);
+        $exception = new Exception($message);
 
         $loggerMock = $this->createLoggerMock();
         $loggerMock

@@ -8,6 +8,7 @@ use Cinemasunshine\ORM\Entities\News as BaseNews;
 use Cinemasunshine\ORM\Entities\Page as BasePage;
 use Cinemasunshine\ORM\Entities\PageNews as BasePageNews;
 use Doctrine\ORM\Mapping as ORM;
+use LogicException;
 
 /**
  * PageNews entity class
@@ -21,40 +22,40 @@ class PageNews extends BasePageNews
     /**
      * {@inheritDoc}
      *
-     * @throws \LogicException
+     * @throws LogicException
      */
     public function __construct()
     {
-        throw new \LogicException('Not allowed.');
+        throw new LogicException('Not allowed.');
     }
 
     /**
      * {@inheritDoc}
      *
-     * @throws \LogicException
+     * @throws LogicException
      */
     public function setNews(BaseNews $news)
     {
-        throw new \LogicException('Not allowed.');
+        throw new LogicException('Not allowed.');
     }
 
     /**
      * {@inheritDoc}
      *
-     * @throws \LogicException
+     * @throws LogicException
      */
     public function setPage(BasePage $page)
     {
-        throw new \LogicException('Not allowed.');
+        throw new LogicException('Not allowed.');
     }
 
     /**
      * {@inheritDoc}
      *
-     * @throws \LogicException
+     * @throws LogicException
      */
     public function setDisplayOrder(int $displayOrder)
     {
-        throw new \LogicException('Not allowed.');
+        throw new LogicException('Not allowed.');
     }
 }

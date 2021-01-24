@@ -8,6 +8,7 @@ use Cinemasunshine\ORM\Entities\Campaign as BaseCampaign;
 use Cinemasunshine\ORM\Entities\Page as BasePage;
 use Cinemasunshine\ORM\Entities\PageCampaign as BasePageCampaign;
 use Doctrine\ORM\Mapping as ORM;
+use LogicException;
 
 /**
  * PageCampaign entity class
@@ -21,40 +22,40 @@ class PageCampaign extends BasePageCampaign
     /**
      * {@inheritDoc}
      *
-     * @throws \LogicException
+     * @throws LogicException
      */
     public function __construct()
     {
-        throw new \LogicException('Not allowed.');
+        throw new LogicException('Not allowed.');
     }
 
     /**
      * {@inheritDoc}
      *
-     * @throws \LogicException
+     * @throws LogicException
      */
     public function setCampaign(BaseCampaign $campaign)
     {
-        throw new \LogicException('Not allowed.');
+        throw new LogicException('Not allowed.');
     }
 
     /**
      * {@inheritDoc}
      *
-     * @throws \LogicException
+     * @throws LogicException
      */
     public function setPage(BasePage $page)
     {
-        throw new \LogicException('Not allowed.');
+        throw new LogicException('Not allowed.');
     }
 
     /**
      * {@inheritDoc}
      *
-     * @throws \LogicException
+     * @throws LogicException
      */
     public function setDisplayOrder(int $displayOrder)
     {
-        throw new \LogicException('Not allowed.');
+        throw new LogicException('Not allowed.');
     }
 }

@@ -8,6 +8,7 @@ use Cinemasunshine\ORM\Entities\SpecialSite as BaseSpecialSite;
 use Cinemasunshine\ORM\Entities\SpecialSiteTrailer as BaseSpecialSiteTrailer;
 use Cinemasunshine\ORM\Entities\Trailer as BaseTrailer;
 use Doctrine\ORM\Mapping as ORM;
+use LogicException;
 
 /**
  * SpecialSiteTrailer entity class
@@ -21,30 +22,30 @@ class SpecialSiteTrailer extends BaseSpecialSiteTrailer
     /**
      * {@inheritDoc}
      *
-     * @throws \LogicException
+     * @throws LogicException
      */
     public function __construct()
     {
-        throw new \LogicException('Not allowed.');
+        throw new LogicException('Not allowed.');
     }
 
     /**
      * {@inheritDoc}
      *
-     * @throws \LogicException
+     * @throws LogicException
      */
     public function setTrailer(BaseTrailer $trailer)
     {
-        throw new \LogicException('Not allowed.');
+        throw new LogicException('Not allowed.');
     }
 
     /**
      * {@inheritDoc}
      *
-     * @throws \LogicException
+     * @throws LogicException
      */
     public function setSpecialSite(BaseSpecialSite $specialSite)
     {
-        throw new \LogicException('Not allowed.');
+        throw new LogicException('Not allowed.');
     }
 }

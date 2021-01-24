@@ -13,7 +13,10 @@ use App\Twig\Extension\AzureStorageExtension;
 use MicrosoftAzure\Storage\Blob\BlobRestProxy;
 use Mockery;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
+use Mockery\LegacyMockInterface;
+use Mockery\MockInterface;
 use PHPUnit\Framework\TestCase;
+use ReflectionClass;
 use Twig\TwigFunction;
 
 /**
@@ -26,7 +29,7 @@ final class AzureStorageExtensionTest extends TestCase
     /**
      * Create BlobRestProxy mock
      *
-     * @return \Mockery\MockInterface|\Mockery\LegacyMockInterface|BlobRestProxy
+     * @return MockInterface|LegacyMockInterface|BlobRestProxy
      */
     protected function crateBlobRestProxyMock()
     {
@@ -46,7 +49,7 @@ final class AzureStorageExtensionTest extends TestCase
         $blobRestProxyMock = $this->crateBlobRestProxyMock();
         $publicEndpoint    = 'http://example.com';
 
-        $extensionClassRef = new \ReflectionClass(AzureStorageExtension::class);
+        $extensionClassRef = new ReflectionClass(AzureStorageExtension::class);
 
         // execute constructor
         $constructorRef = $extensionClassRef->getConstructor();
@@ -102,7 +105,7 @@ final class AzureStorageExtensionTest extends TestCase
         $extensionMock = Mockery::mock(AzureStorageExtension::class)
             ->makePartial();
 
-        $extensionClassRef = new \ReflectionClass(AzureStorageExtension::class);
+        $extensionClassRef = new ReflectionClass(AzureStorageExtension::class);
 
         $publicEndpointPropertyRef = $extensionClassRef->getProperty('publicEndpoint');
         $publicEndpointPropertyRef->setAccessible(true);
@@ -143,7 +146,7 @@ final class AzureStorageExtensionTest extends TestCase
             ->with($container, $blob)
             ->andReturn($url);
 
-        $extensionClassRef = new \ReflectionClass(AzureStorageExtension::class);
+        $extensionClassRef = new ReflectionClass(AzureStorageExtension::class);
 
         $clientPropertyRef = $extensionClassRef->getProperty('client');
         $clientPropertyRef->setAccessible(true);

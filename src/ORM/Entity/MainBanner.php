@@ -7,6 +7,7 @@ namespace App\ORM\Entity;
 use Cinemasunshine\ORM\Entities\File as BaseFile;
 use Cinemasunshine\ORM\Entities\MainBanner as BaseMainBanner;
 use Doctrine\ORM\Mapping as ORM;
+use LogicException;
 
 /**
  * MainBanner entity class
@@ -36,41 +37,41 @@ class MainBanner extends BaseMainBanner
     /**
      * {@inheritDoc}
      *
-     * @throws \LogicException
+     * @throws LogicException
      */
     public function __construct()
     {
-        throw new \LogicException('Not allowed.');
+        throw new LogicException('Not allowed.');
     }
 
     /**
      * {@inheritDoc}
      *
-     * @throws \LogicException
+     * @throws LogicException
      */
     public function setImage(BaseFile $image)
     {
-        throw new \LogicException('Not allowed.');
+        throw new LogicException('Not allowed.');
     }
 
     /**
      * {@inheritDoc}
      *
-     * @throws \LogicException
+     * @throws LogicException
      */
     public function setName(string $name)
     {
-        throw new \LogicException('Not allowed.');
+        throw new LogicException('Not allowed.');
     }
 
     /**
      * {@inheritDoc}
      *
-     * @throws \LogicException
+     * @throws LogicException
      */
     public function setLinkType(int $linkType)
     {
-        throw new \LogicException('Not allowed.');
+        throw new LogicException('Not allowed.');
     }
 
     /**
@@ -96,10 +97,10 @@ class MainBanner extends BaseMainBanner
     /**
      * {@inheritDoc}
      *
-     * @throws \LogicException
+     * @throws LogicException
      */
     public function setLinkUrl($linkUrl)
     {
-        throw new \LogicException('Not allowed.');
+        throw new LogicException('Not allowed.');
     }
 }

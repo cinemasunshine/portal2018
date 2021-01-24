@@ -2,9 +2,11 @@
 
 namespace App\Exception;
 
+use RuntimeException;
+
 /**
  * Not authenticated exception class
  */
-class NotAuthenticatedException extends \RuntimeException
+class NotAuthenticatedException extends RuntimeException
 {
 }

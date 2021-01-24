@@ -9,6 +9,8 @@ use App\Schedule\Theater as TheaterSchedule;
 use Cinemasunshine\Schedule\Entity\SchedulesInterface;
 use Cinemasunshine\Schedule\Entity\V3\Schedules as V3Schedules;
 use Cinemasunshine\Schedule\Response\Http as HttpResponse;
+use DateTime;
+use RuntimeException;
 use Slim\Exception\NotFoundException;
 use Slim\Http\Request;
 use Slim\Http\Response;
@@ -68,7 +70,7 @@ class ScheduleController extends BaseController
         $data = [];
 
         if ($schedules->getError() === V3Schedules::ERROR_OTHER) {
-            throw new \RuntimeException('schedule unknown error');
+            throw new RuntimeException('schedule unknown error');
         }
 
         if ($schedules->getError() === V3Schedules::ERROR_NO_CONTENT) {
@@ -130,7 +132,7 @@ class ScheduleController extends BaseController
         $data = [];
 
         if ($schedules->getError() === V3Schedules::ERROR_OTHER) {
-            throw new \RuntimeException('schedule unknown error');
+            throw new RuntimeException('schedule unknown error');
         }
 
         if ($schedules->getError() === V3Schedules::ERROR_NO_CONTENT) {
@@ -149,8 +151,8 @@ class ScheduleController extends BaseController
 
         $movieCollection = $this->findSchedule($params, $schedules);
 
-        $today  = new \DateTime(date('Y-m-d'));
-        $target = new \DateTime($date);
+        $today  = new DateTime(date('Y-m-d'));
+        $target = new DateTime($date);
 
         if ($target < $today) {
             $this->fixOvernight($movieCollection);

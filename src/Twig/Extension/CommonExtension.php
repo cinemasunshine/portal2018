@@ -2,6 +2,7 @@
 
 namespace App\Twig\Extension;
 
+use DateTime;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 use Twig\TwigFunction;
@@ -99,10 +100,10 @@ class CommonExtension extends AbstractExtension
     /**
      * return weekday
      *
-     * @param \DateTime $datetime
+     * @param DateTime $datetime
      * @return string
      */
-    public function weekdayFilter(\DateTime $datetime)
+    public function weekdayFilter(DateTime $datetime)
     {
         $weekdays = ['日', '月', '火', '水', '木', '金', '土'];
 

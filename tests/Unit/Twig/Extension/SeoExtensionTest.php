@@ -10,9 +10,13 @@ namespace Tests\Unit\Twig\Extension;
 
 use App\Resource\MetaTag;
 use App\Twig\Extension\SeoExtension;
+use InvalidArgumentException;
 use Mockery;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
+use Mockery\LegacyMockInterface;
+use Mockery\MockInterface;
 use PHPUnit\Framework\TestCase;
+use ReflectionClass;
 use Twig\TwigFunction;
 
 /**
@@ -31,7 +35,7 @@ final class SeoExtensionTest extends TestCase
     }
 
     /**
-     * @return \Mockery\MockInterface&\Mockery\LegacyMockInterface&SeoExtension
+     * @return MockInterface&LegacyMockInterface&SeoExtension
      */
     protected function createTargetMock()
     {
@@ -39,11 +43,11 @@ final class SeoExtensionTest extends TestCase
     }
 
     /**
-     * @return \ReflectionClass
+     * @return ReflectionClass
      */
     protected function createTargetReflection()
     {
-        return new \ReflectionClass(SeoExtension::class);
+        return new ReflectionClass(SeoExtension::class);
     }
 
     /**
@@ -83,7 +87,7 @@ final class SeoExtensionTest extends TestCase
      */
     public function testConstructInvalidArgument()
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
 
         $file = __DIR__ . '/not_exist.json';
         new SeoExtension($file);

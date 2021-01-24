@@ -13,7 +13,10 @@ use App\Authorization\Token\AuthorizationCodeToken;
 use GuzzleHttp\Client as HttpClient;
 use Mockery;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
+use Mockery\LegacyMockInterface;
+use Mockery\MockInterface;
 use PHPUnit\Framework\TestCase;
+use ReflectionClass;
 
 /**
  * RefreshToken test
@@ -25,7 +28,7 @@ final class RefreshTokenTest extends TestCase
     /**
      * Create target mock
      *
-     * @return \Mockery\MockInterface|\Mockery\LegacyMockInterface|RefreshToken
+     * @return MockInterface|LegacyMockInterface|RefreshToken
      */
     protected function createTargetMock()
     {
@@ -35,17 +38,17 @@ final class RefreshTokenTest extends TestCase
     /**
      * Create target reflection
      *
-     * @return \ReflectionClass
+     * @return ReflectionClass
      */
     protected function createTargetReflection()
     {
-        return new \ReflectionClass(RefreshToken::class);
+        return new ReflectionClass(RefreshToken::class);
     }
 
     /**
      * Create HttpClient mock
      *
-     * @return \Mockery\MockInterface|\Mockery\LegacyMockInterface|HttpClient
+     * @return MockInterface|LegacyMockInterface|HttpClient
      */
     protected function createHttpClientMock()
     {
@@ -186,7 +189,7 @@ final class RefreshTokenTest extends TestCase
     /**
      * Create Response mock
      *
-     * @return \Mockery\MockInterface|\Mockery\LegacyMockInterface
+     * @return MockInterface|LegacyMockInterface
      */
     protected function createResponseMock()
     {
@@ -196,7 +199,7 @@ final class RefreshTokenTest extends TestCase
     /**
      * Create Stream mock
      *
-     * @return \Mockery\MockInterface|\Mockery\LegacyMockInterface
+     * @return MockInterface|LegacyMockInterface
      */
     protected function createStreamMock()
     {
@@ -206,7 +209,7 @@ final class RefreshTokenTest extends TestCase
     /**
      * Create Token mock
      *
-     * @return \Mockery\MockInterface|\Mockery\LegacyMockInterface
+     * @return MockInterface|LegacyMockInterface
      */
     protected function createTokenMock()
     {

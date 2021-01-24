@@ -7,13 +7,15 @@ namespace Tests\Unit\Controller\API;
 use App\Controller\API\AuthorizationController;
 use App\Exception\NotAuthenticatedException;
 use Mockery;
+use Mockery\LegacyMockInterface;
+use Mockery\MockInterface;
 use Slim\Http\StatusCode;
 use Tests\Unit\Controller\BaseTestCase;
 
 final class AuthorizationControllerTest extends BaseTestCase
 {
     /**
-     * @return \Mockery\MockInterface&\Mockery\LegacyMockInterface&AuthorizationController
+     * @return MockInterface&LegacyMockInterface&AuthorizationController
      */
     protected function createTargetMock()
     {

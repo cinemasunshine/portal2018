@@ -13,7 +13,10 @@ use App\Authorization\Token\ClientCredentialsToken;
 use GuzzleHttp\Client as HttpClient;
 use Mockery;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
+use Mockery\LegacyMockInterface;
+use Mockery\MockInterface;
 use PHPUnit\Framework\TestCase;
+use ReflectionClass;
 
 /**
  * ClientCredentials test
@@ -25,7 +28,7 @@ final class ClientCredentialsTest extends TestCase
     /**
      * Create target mock
      *
-     * @return \Mockery\MockInterface|\Mockery\LegacyMockInterface|ClientCredentials
+     * @return MockInterface|LegacyMockInterface|ClientCredentials
      */
     protected function createTargetMock()
     {
@@ -35,17 +38,17 @@ final class ClientCredentialsTest extends TestCase
     /**
      * Create target reflection
      *
-     * @return \ReflectionClass
+     * @return ReflectionClass
      */
     protected function createTargetReflection()
     {
-        return new \ReflectionClass(ClientCredentials::class);
+        return new ReflectionClass(ClientCredentials::class);
     }
 
     /**
      * Create HttpClient mock
      *
-     * @return \Mockery\MockInterface|\Mockery\LegacyMockInterface|HttpClient
+     * @return MockInterface|LegacyMockInterface|HttpClient
      */
     protected function createHttpClientMock()
     {
@@ -181,7 +184,7 @@ final class ClientCredentialsTest extends TestCase
     /**
      * Create Response mock
      *
-     * @return \Mockery\MockInterface|\Mockery\LegacyMockInterface
+     * @return MockInterface|LegacyMockInterface
      */
     protected function createResponseMock()
     {
@@ -191,7 +194,7 @@ final class ClientCredentialsTest extends TestCase
     /**
      * Create Stream mock
      *
-     * @return \Mockery\MockInterface|\Mockery\LegacyMockInterface
+     * @return MockInterface|LegacyMockInterface
      */
     protected function createStreamMock()
     {
@@ -201,7 +204,7 @@ final class ClientCredentialsTest extends TestCase
     /**
      * Create Token mock
      *
-     * @return \Mockery\MockInterface|\Mockery\LegacyMockInterface
+     * @return MockInterface|LegacyMockInterface
      */
     protected function createTokenMock()
     {

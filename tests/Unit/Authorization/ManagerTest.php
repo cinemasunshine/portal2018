@@ -16,7 +16,10 @@ use App\Session\Container as SessionContainer;
 use Laminas\Stdlib\ArrayObject;
 use Mockery;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
+use Mockery\LegacyMockInterface;
+use Mockery\MockInterface;
 use PHPUnit\Framework\TestCase;
+use ReflectionClass;
 
 /**
  * Manager test
@@ -28,7 +31,7 @@ final class ManagerTest extends TestCase
     /**
      * Create target mock
      *
-     * @return \Mockery\MockInterface|\Mockery\LegacyMockInterface|AuthorizationManager
+     * @return MockInterface|LegacyMockInterface|AuthorizationManager
      */
     protected function createTargetMock()
     {
@@ -40,7 +43,7 @@ final class ManagerTest extends TestCase
      *
      * @param array            $settings
      * @param SessionContainer $session
-     * @return \Mockery\MockInterface|\Mockery\LegacyMockInterface|AuthorizationManager
+     * @return MockInterface|LegacyMockInterface|AuthorizationManager
      */
     protected function createTargetMockWithArgs(array $settings, SessionContainer $session)
     {
@@ -50,17 +53,17 @@ final class ManagerTest extends TestCase
     /**
      * Create target reflection
      *
-     * @return \ReflectionClass
+     * @return ReflectionClass
      */
     protected function createTargetReflection()
     {
-        return new \ReflectionClass(AuthorizationManager::class);
+        return new ReflectionClass(AuthorizationManager::class);
     }
 
     /**
      * Create SessionContainer mock
      *
-     * @return \Mockery\MockInterface|\Mockery\LegacyMockInterface|SessionContainer
+     * @return MockInterface|LegacyMockInterface|SessionContainer
      */
     protected function createSessionContainerMock()
     {
@@ -74,7 +77,7 @@ final class ManagerTest extends TestCase
      * SessionContainerの代わりとする。
      * 現状ではoffsetGet()、offsetSet()が利用できれば良い。
      *
-     * @return \Mockery\MockInterface|\Mockery\LegacyMockInterface|ArrayObject
+     * @return MockInterface|LegacyMockInterface|ArrayObject
      */
     protected function createArrayObjectMock()
     {
@@ -84,7 +87,7 @@ final class ManagerTest extends TestCase
     /**
      * Create AuthorizationCodeGrant mock
      *
-     * @return \Mockery\MockInterface|\Mockery\LegacyMockInterface|AuthorizationCodeGrant
+     * @return MockInterface|LegacyMockInterface|AuthorizationCodeGrant
      */
     protected function createAuthorizationCodeGrantMock()
     {
@@ -94,7 +97,7 @@ final class ManagerTest extends TestCase
     /**
      * Crate RefreshTokenGrant mock
      *
-     * @return \Mockery\MockInterface|\Mockery\LegacyMockInterface|RefreshTokenGrant
+     * @return MockInterface|LegacyMockInterface|RefreshTokenGrant
      */
     protected function createRefreshTokenGrantMock()
     {
@@ -104,7 +107,7 @@ final class ManagerTest extends TestCase
     /**
      * Create AuthorizationCodeToken mock
      *
-     * @return \Mockery\MockInterface|\Mockery\LegacyMockInterface|AuthorizationCodeToken
+     * @return MockInterface|LegacyMockInterface|AuthorizationCodeToken
      */
     protected function createAuthorizationCodeTokenMock()
     {

@@ -7,6 +7,8 @@ namespace Tests\Unit\Controller;
 use Doctrine\ORM\EntityManager;
 use Mockery;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
+use Mockery\LegacyMockInterface;
+use Mockery\MockInterface;
 use PHPUnit\Framework\TestCase;
 use Slim\Container;
 use Slim\Http\Request;
@@ -30,7 +32,7 @@ abstract class BaseTestCase extends TestCase
     }
 
     /**
-     * @return \Mockery\MockInterface&\Mockery\LegacyMockInterface&Request
+     * @return MockInterface&LegacyMockInterface&Request
      */
     protected function createRequestMock()
     {
@@ -38,7 +40,7 @@ abstract class BaseTestCase extends TestCase
     }
 
     /**
-     * @return \Mockery\MockInterface&\Mockery\LegacyMockInterface&Response
+     * @return MockInterface&LegacyMockInterface&Response
      */
     protected function createResponseMock()
     {
@@ -46,7 +48,7 @@ abstract class BaseTestCase extends TestCase
     }
 
     /**
-     * @return \Mockery\MockInterface&\Mockery\LegacyMockInterface&Router
+     * @return MockInterface&LegacyMockInterface&Router
      */
     protected function createRouterMock()
     {
@@ -54,7 +56,7 @@ abstract class BaseTestCase extends TestCase
     }
 
     /**
-     * @return \Mockery\MockInterface&\Mockery\LegacyMockInterface&EntityManager
+     * @return MockInterface&LegacyMockInterface&EntityManager
      */
     protected function createEntityManagerMock()
     {

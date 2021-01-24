@@ -12,6 +12,7 @@ use App\Twig\Extension\MotionpictureTicketExtension;
 use Mockery;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use PHPUnit\Framework\TestCase;
+use ReflectionClass;
 use Twig\TwigFunction;
 
 /**
@@ -33,7 +34,7 @@ final class MotionpictureTicketExtensionTest extends TestCase
         $extensionMock = Mockery::mock(MotionpictureTicketExtension::class);
         $settings      = [];
 
-        $extensionClassRef = new \ReflectionClass(MotionpictureTicketExtension::class);
+        $extensionClassRef = new ReflectionClass(MotionpictureTicketExtension::class);
 
         // execute constructor
         $constructorRef = $extensionClassRef->getConstructor();
@@ -83,7 +84,7 @@ final class MotionpictureTicketExtensionTest extends TestCase
         $extensionMock = Mockery::mock(MotionpictureTicketExtension::class)
             ->makePartial();
 
-        $extensionClassRef = new \ReflectionClass(MotionpictureTicketExtension::class);
+        $extensionClassRef = new ReflectionClass(MotionpictureTicketExtension::class);
 
         $settingsPropertyRef = $extensionClassRef->getProperty('settings');
         $settingsPropertyRef->setAccessible(true);
@@ -110,7 +111,7 @@ final class MotionpictureTicketExtensionTest extends TestCase
         $extensionMock = Mockery::mock(MotionpictureTicketExtension::class)
             ->makePartial();
 
-        $extensionClassRef = new \ReflectionClass(MotionpictureTicketExtension::class);
+        $extensionClassRef = new ReflectionClass(MotionpictureTicketExtension::class);
 
         $settingsPropertyRef = $extensionClassRef->getProperty('settings');
         $settingsPropertyRef->setAccessible(true);

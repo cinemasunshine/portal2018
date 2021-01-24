@@ -8,6 +8,7 @@ use Cinemasunshine\ORM\Entities\Schedule as BaseSchedule;
 use Cinemasunshine\ORM\Entities\ShowingTheater as BaseShowingTheater;
 use Cinemasunshine\ORM\Entities\Theater as BaseTheater;
 use Doctrine\ORM\Mapping as ORM;
+use LogicException;
 
 /**
  * ShowingTheater entity class
@@ -21,30 +22,30 @@ class ShowingTheater extends BaseShowingTheater
     /**
      * {@inheritDoc}
      *
-     * @throws \LogicException
+     * @throws LogicException
      */
     public function __construct()
     {
-        throw new \LogicException('Not allowed.');
+        throw new LogicException('Not allowed.');
     }
 
     /**
      * {@inheritDoc}
      *
-     * @throws \LogicException
+     * @throws LogicException
      */
     public function setSchedule(BaseSchedule $schedule)
     {
-        throw new \LogicException('Not allowed.');
+        throw new LogicException('Not allowed.');
     }
 
     /**
      * {@inheritDoc}
      *
-     * @throws \LogicException
+     * @throws LogicException
      */
     public function setTheater(BaseTheater $theater)
     {
-        throw new \LogicException('Not allowed.');
+        throw new LogicException('Not allowed.');
     }
 }

@@ -11,8 +11,11 @@ namespace Tests\Unit\Logger;
 use App\Logger\DbalLogger;
 use Mockery;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
+use Mockery\LegacyMockInterface;
+use Mockery\MockInterface;
 use Monolog\Logger;
 use PHPUnit\Framework\TestCase;
+use ReflectionClass;
 
 /**
  * DBAL Logger test
@@ -24,7 +27,7 @@ final class DbalLoggerTest extends TestCase
     /**
      * Create Logger mock
      *
-     * @return \Mockery\MockInterface|\Mockery\LegacyMockInterface|Logger
+     * @return MockInterface|LegacyMockInterface|Logger
      */
     protected function createLoggerMock()
     {
@@ -44,7 +47,7 @@ final class DbalLoggerTest extends TestCase
 
         $dbalLoggerMock = Mockery::mock(DbalLogger::class);
 
-        $dbalLoggerRef = new \ReflectionClass(DbalLogger::class);
+        $dbalLoggerRef = new ReflectionClass(DbalLogger::class);
 
         // execute constructor
         $dbalLoggerConstructor = $dbalLoggerRef->getConstructor();
@@ -69,7 +72,7 @@ final class DbalLoggerTest extends TestCase
         $params = ['p' => 1];
         $types  = ['t' => 2];
 
-        /** @var \Mockery\MockInterface|\Mockery\LegacyMockInterface|DbalLogger $dbalLoggerMock */
+        /** @var MockInterface|LegacyMockInterface|DbalLogger $dbalLoggerMock */
         $dbalLoggerMock = Mockery::mock(DbalLogger::class)
             ->makePartial()
             ->shouldAllowMockingProtectedMethods();
@@ -101,7 +104,7 @@ final class DbalLoggerTest extends TestCase
 
         $dbalLoggerMock = Mockery::mock(DbalLogger::class);
 
-        $dbalLoggerRef = new \ReflectionClass(DbalLogger::class);
+        $dbalLoggerRef = new ReflectionClass(DbalLogger::class);
 
         $loggerPropertyRef = $dbalLoggerRef->getProperty('logger');
         $loggerPropertyRef->setAccessible(true);

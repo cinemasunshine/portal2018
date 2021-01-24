@@ -7,13 +7,15 @@ namespace Tests\Unit\Controller\API;
 use App\Controller\API\ScheduleController;
 use App\Schedule\Theater as TheaterSchedule;
 use Mockery;
+use Mockery\LegacyMockInterface;
+use Mockery\MockInterface;
 use Slim\Exception\NotFoundException;
 use Tests\Unit\Controller\BaseTestCase;
 
 final class ScheduleControllerTest extends BaseTestCase
 {
     /**
-     * @return \Mockery\MockInterface&\Mockery\LegacyMockInterface&ScheduleController
+     * @return MockInterface&LegacyMockInterface&ScheduleController
      */
     protected function createTargetMock()
     {
@@ -21,7 +23,7 @@ final class ScheduleControllerTest extends BaseTestCase
     }
 
     /**
-     * @return \Mockery\MockInterface&\Mockery\LegacyMockInterface&TheaterSchedule
+     * @return MockInterface&LegacyMockInterface&TheaterSchedule
      */
     protected function createTheaterScheduleAliasMock()
     {

@@ -12,7 +12,10 @@ use App\Authorization\Token\AuthorizationCodeToken;
 use App\Authorization\Token\DecodedAccessToken;
 use Mockery;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
+use Mockery\LegacyMockInterface;
+use Mockery\MockInterface;
 use PHPUnit\Framework\TestCase;
+use ReflectionClass;
 
 /**
  * AuthorizationCodeToken test
@@ -24,7 +27,7 @@ final class AuthorizationCodeTokenTest extends TestCase
     /**
      * Create target mock
      *
-     * @return \Mockery\MockInterface|\Mockery\LegacyMockInterface|AuthorizationCodeToken
+     * @return MockInterface|LegacyMockInterface|AuthorizationCodeToken
      */
     protected function createTargetMock()
     {
@@ -34,11 +37,11 @@ final class AuthorizationCodeTokenTest extends TestCase
     /**
      * Create target reflection
      *
-     * @return \ReflectionClass
+     * @return ReflectionClass
      */
     protected function createTargetReflection()
     {
-        return new \ReflectionClass(AuthorizationCodeToken::class);
+        return new ReflectionClass(AuthorizationCodeToken::class);
     }
 
     /**
@@ -180,7 +183,7 @@ final class AuthorizationCodeTokenTest extends TestCase
     /**
      * Create DecodedAccessToken mock
      *
-     * @return \Mockery\MockInterface|\Mockery\LegacyMockInterface|DecodedAccessToken
+     * @return MockInterface|LegacyMockInterface|DecodedAccessToken
      */
     protected function createDecodedAccessTokenMock()
     {

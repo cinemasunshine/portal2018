@@ -11,7 +11,11 @@ namespace Tests\Unit\Authorization\Token;
 use App\Authorization\Token\DecodedAccessToken;
 use Mockery;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
+use Mockery\LegacyMockInterface;
+use Mockery\MockInterface;
 use PHPUnit\Framework\TestCase;
+use ReflectionClass;
+use UnexpectedValueException;
 
 /**
  * DecodedAccessToken test
@@ -23,7 +27,7 @@ final class DecodedAccessTokenTest extends TestCase
     /**
      * Create target mock
      *
-     * @return \Mockery\MockInterface|\Mockery\LegacyMockInterface|DecodedAccessToken
+     * @return MockInterface|LegacyMockInterface|DecodedAccessToken
      */
     protected function createTargetMock()
     {
@@ -33,11 +37,11 @@ final class DecodedAccessTokenTest extends TestCase
     /**
      * Create target reflection
      *
-     * @return \ReflectionClass
+     * @return ReflectionClass
      */
     protected function createTargetReflection()
     {
-        return new \ReflectionClass(DecodedAccessToken::class);
+        return new ReflectionClass(DecodedAccessToken::class);
     }
 
     /**
@@ -85,7 +89,7 @@ final class DecodedAccessTokenTest extends TestCase
      */
     public function testDecodeJWTSegmentsFew()
     {
-        $this->expectException(\UnexpectedValueException::class);
+        $this->expectException(UnexpectedValueException::class);
         DecodedAccessToken::decodeJWT('aaa.bbb');
     }
 
@@ -98,7 +102,7 @@ final class DecodedAccessTokenTest extends TestCase
      */
     public function testDecodeJWTSegmentsMany()
     {
-        $this->expectException(\UnexpectedValueException::class);
+        $this->expectException(UnexpectedValueException::class);
         DecodedAccessToken::decodeJWT('aaa.bbb.ccc.ddd');
     }
 

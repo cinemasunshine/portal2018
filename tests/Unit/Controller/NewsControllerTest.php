@@ -8,6 +8,8 @@ use App\Controller\NewsController;
 use App\ORM\Entity\News;
 use App\ORM\Repository\NewsRepository;
 use Mockery;
+use Mockery\LegacyMockInterface;
+use Mockery\MockInterface;
 use Slim\Container;
 use Slim\Exception\NotFoundException;
 
@@ -15,7 +17,7 @@ final class NewsControllerTest extends BaseTestCase
 {
     /**
      * @param Container $container
-     * @return \Mockery\MockInterface&\Mockery\LegacyMockInterface&NewsController
+     * @return MockInterface&LegacyMockInterface&NewsController
      */
     protected function createTargetMock(Container $container)
     {
@@ -152,7 +154,7 @@ final class NewsControllerTest extends BaseTestCase
     }
 
     /**
-     * @return \Mockery\MockInterface&\Mockery\LegacyMockInterface&NewsRepository
+     * @return MockInterface&LegacyMockInterface&NewsRepository
      */
     protected function createNewsRepositoryMock()
     {
@@ -160,7 +162,7 @@ final class NewsControllerTest extends BaseTestCase
     }
 
     /**
-     * @return \Mockery\MockInterface&\Mockery\LegacyMockInterface&News
+     * @return MockInterface&LegacyMockInterface&News
      */
     protected function createNewsMock()
     {

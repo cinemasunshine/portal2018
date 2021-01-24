@@ -6,6 +6,7 @@ namespace App\Authorization\Grant;
 
 use App\Authorization\Token\AuthorizationCodeToken as Token;
 use GuzzleHttp\Client as HttpClient;
+use LogicException;
 
 /**
  * Authorization Code Grant class
@@ -91,7 +92,7 @@ class AuthorizationCode extends AbstractGrant
      * @param string $codeChallengeMethod
      * @return string
      *
-     * @throws \LogicException
+     * @throws LogicException
      */
     protected function generateCodeChallenge(string $codeVerifier, string $codeChallengeMethod): string
     {
@@ -99,7 +100,7 @@ class AuthorizationCode extends AbstractGrant
             return base64_encode(hash('sha256', $codeVerifier));
         }
 
-        throw new \LogicException(sprintf('code_challenge_method does not support %s.', $codeChallengeMethod));
+        throw new LogicException(sprintf('code_challenge_method does not support %s.', $codeChallengeMethod));
     }
 
     /**

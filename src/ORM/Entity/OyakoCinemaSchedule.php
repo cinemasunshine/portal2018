@@ -7,6 +7,7 @@ namespace App\ORM\Entity;
 use Cinemasunshine\ORM\Entities\OyakoCinemaSchedule as BaseOyakoCinemaSchedule;
 use Cinemasunshine\ORM\Entities\OyakoCinemaTitle as BaseOyakoCinemaTitle;
 use Doctrine\ORM\Mapping as ORM;
+use LogicException;
 
 /**
  * OyakoCinemaSchedule entity class
@@ -20,30 +21,30 @@ class OyakoCinemaSchedule extends BaseOyakoCinemaSchedule
     /**
      * {@inheritDoc}
      *
-     * @throws \LogicException
+     * @throws LogicException
      */
     public function __construct()
     {
-        throw new \LogicException('Not allowed.');
+        throw new LogicException('Not allowed.');
     }
 
     /**
      * {@inheritDoc}
      *
-     * @throws \LogicException
+     * @throws LogicException
      */
     public function setOyakoCinemaTitle(BaseOyakoCinemaTitle $oyakoCinemaTitle)
     {
-        throw new \LogicException('Not allowed.');
+        throw new LogicException('Not allowed.');
     }
 
     /**
      * {@inheritDoc}
      *
-     * @throws \LogicException
+     * @throws LogicException
      */
     public function setDate($date)
     {
-        throw new \LogicException('Not allowed.');
+        throw new LogicException('Not allowed.');
     }
 }

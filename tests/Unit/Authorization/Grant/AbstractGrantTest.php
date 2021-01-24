@@ -12,7 +12,10 @@ use App\Authorization\Grant\AbstractGrant;
 use GuzzleHttp\Client as HttpClient;
 use Mockery;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
+use Mockery\LegacyMockInterface;
+use Mockery\MockInterface;
 use PHPUnit\Framework\TestCase;
+use ReflectionClass;
 
 /**
  * AbstractGrant test
@@ -24,7 +27,7 @@ final class AbstractGrantTest extends TestCase
     /**
      * Create target mock
      *
-     * @return \Mockery\MockInterface|\Mockery\LegacyMockInterface|AbstractGrant
+     * @return MockInterface|LegacyMockInterface|AbstractGrant
      */
     protected function createTargetMock()
     {
@@ -34,11 +37,11 @@ final class AbstractGrantTest extends TestCase
     /**
      * Create target reflection
      *
-     * @return \ReflectionClass
+     * @return ReflectionClass
      */
     protected function createTargetReflection()
     {
-        return new \ReflectionClass(AbstractGrant::class);
+        return new ReflectionClass(AbstractGrant::class);
     }
 
     /**

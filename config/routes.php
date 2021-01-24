@@ -19,9 +19,10 @@ use App\Controller\ScheduleController;
 use App\Controller\ScreenXController;
 use App\Controller\TheaterController;
 use App\Controller\TheaterListController;
+use Slim\App as SlimApp;
 
 // phpcs:disable SlevomatCodingStandard.Commenting.InlineDocCommentDeclaration
-/** @var \Slim\App $app */
+/** @var SlimApp $app */
 // phpcs:enable
 
 $app->get('/', IndexController::class . ':index')->setName('homepage');
