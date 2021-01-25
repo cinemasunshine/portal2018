@@ -221,7 +221,7 @@ jobs:
 
   deploy_to_dev:
     working_directory: ~/development
-    executor: deployment
+    executor: azure-cli/azure-docker
     steps:
       - attach_workspace:
           at: .
@@ -263,7 +263,7 @@ jobs:
 
   deploy_to_prod_release:
     working_directory: ~/production
-    executor: deployment
+    executor: azure-cli/azure-docker
 
     steps:
       - attach_workspace:
