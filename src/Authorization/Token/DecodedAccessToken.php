@@ -34,7 +34,7 @@ class DecodedAccessToken
     {
         $segments = explode('.', $token);
 
-        if (count($segments) != 3) {
+        if (count($segments) !== 3) {
             throw new UnexpectedValueException('Invalid number of segments.');
         }
 
