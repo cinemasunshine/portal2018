@@ -2,6 +2,17 @@
 
 [ドキュメント](https://circleci.com/docs/ja/)
 
+## Contexts
+
+cinemasunshine (Organizations) > Organization Settings > Contexts
+
+### Docker Hub
+
+| Name | Value |
+|:---|:---|
+|DOCKERHUB_ID |Docker Hub ユーザ |
+|DOCKERHUB_PASSWORD |Docker Hub ユーザのパスワード |
+
 ## Environment Variables
 
 cinemasunshine (Organizations) > portal2018 (Projects) > Project Settings > Environment Variables
