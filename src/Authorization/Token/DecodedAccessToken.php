@@ -38,7 +38,7 @@ class DecodedAccessToken
             throw new UnexpectedValueException('Invalid number of segments.');
         }
 
-        list($headB64, $claimsB64, $signatureB64) = $segments;
+        [$headB64, $claimsB64, $signatureB64] = $segments;
 
         $header    = json_decode(base64_decode($headB64), true);
         $claims    = json_decode(base64_decode($claimsB64), true);
