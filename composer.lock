@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "44f32ffbe2d20b306a47bd0b9e3fca92",
+    "content-hash": "5a27e80a2364024b38223a3143a690dd",
     "packages": [
         {
             "name": "blue32a/monolog-azure-blob",
@@ -115,20 +115,20 @@
         },
         {
             "name": "cinemasunshine/schedule",
-            "version": "v2.7.0",
+            "version": "v2.8.0",
             "source": {
                 "type": "git",
                 "url": "https://m-p.backlog.jp/git/SASAKI/schedule.git",
-                "reference": "a20554dd790c2bd8b7cad07dd11cd40adb1c0458"
+                "reference": "0ba64bcb8b4c46de05d41a31092a0f01bdc736c8"
             },
             "require": {
                 "guzzlehttp/guzzle": ">=6.3 <7",
                 "php": "~7.2"
             },
             "require-dev": {
+                "mp-okui/php-coding-standard": "v0.8.0-alpha",
                 "phpmd/phpmd": "^2.8",
-                "phpunit/phpunit": "^8.5",
-                "squizlabs/php_codesniffer": "^3.5"
+                "phpunit/phpunit": "^8.5"
             },
             "type": "library",
             "autoload": {
@@ -160,8 +160,11 @@
                     "vendor/bin/phpmd ./src --reportfile ./report/phpmd/index.html html phpmd.xml"
                 ]
             },
+            "license": [
+                "proprietary"
+            ],
             "description": "Cinemasunshine schedule client",
-            "time": "2020-08-08T08:57:30+00:00"
+            "time": "2021-02-08T07:49:44+00:00"
         },
         {
             "name": "composer/package-versions-deprecated",
