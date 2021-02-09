@@ -12,13 +12,11 @@ use Twig\TwigFunction;
  */
 class MotionpictureTicketExtension extends AbstractExtension
 {
-    /** @var array */
+    /** @var array<string, mixed> */
     protected $settings;
 
     /**
-     * construct
-     *
-     * @param array $settings
+     * @param array<string, mixed> $settings
      */
     public function __construct(array $settings)
     {
@@ -26,11 +24,9 @@ class MotionpictureTicketExtension extends AbstractExtension
     }
 
     /**
-     * get functions
-     *
-     * @return array
+     * @return TwigFunction[]
      */
-    public function getFunctions()
+    public function getFunctions(): array
     {
         return [
             new TwigFunction('mp_ticket_inquiry', [$this, 'getTicketInquiryUrl'], [ 'is_safe' => ['html'] ]),
@@ -38,12 +34,6 @@ class MotionpictureTicketExtension extends AbstractExtension
         ];
     }
 
-    /**
-     * return ticket inquiry URL
-     *
-     * @param string $theaterCode
-     * @return string
-     */
     public function getTicketInquiryUrl(string $theaterCode): string
     {
         $path = sprintf('/inquiry/login?theater=%s', $theaterCode);
@@ -51,11 +41,6 @@ class MotionpictureTicketExtension extends AbstractExtension
         return $this->settings['ticket_url'] . $path;
     }
 
-    /**
-     * return ticket entrance URL
-     *
-     * @return string
-     */
     public function getTicketEntranceUrl(): string
     {
         return $this->settings['ticket_entrance_url'];

@@ -20,7 +20,7 @@ use LogicException;
  */
 class Title extends BaseTitle
 {
-    /** @var array */
+    /** @var array<int, string> */
     protected static $ratingTypes = [
         '1' => 'G',
         '2' => 'PG12',
@@ -28,28 +28,24 @@ class Title extends BaseTitle
         '4' => 'R18+',
     ];
 
-    /** @var array */
+    /** @var array<int, string> */
     protected static $universalTypes = [
         '1' => '音声上映',
         '2' => '字幕上映',
     ];
 
     /**
-     * Return rating types
-     *
-     * @return array
+     * @return array<int, string>
      */
-    public static function getRatingTypes()
+    public static function getRatingTypes(): array
     {
         return self::$ratingTypes;
     }
 
     /**
-     * Return universal types
-     *
-     * @return array
+     * @return array<int, string>
      */
-    public static function getUniversalTypes()
+    public static function getUniversalTypes(): array
     {
         return self::$universalTypes;
     }
@@ -185,11 +181,9 @@ class Title extends BaseTitle
     }
 
     /**
-     * get univarsal label
-     *
-     * @return array
+     * @return string[]
      */
-    public function getUniversalLabel()
+    public function getUniversalLabel(): array
     {
         $univarsal = $this->getUniversal();
         $types     = self::getUniversalTypes();

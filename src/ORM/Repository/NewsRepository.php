@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\ORM\Repository;
 
 use App\ORM\Entity\News;
@@ -12,12 +14,7 @@ use Doctrine\ORM\QueryBuilder;
  */
 class NewsRepository extends EntityRepository
 {
-    /**
-     * return active query
-     *
-     * @return QueryBuilder
-     */
-    protected function getActiveQuery()
+    protected function getActiveQuery(): QueryBuilder
     {
         $qb = $this->createQueryBuilder('n');
         $qb
@@ -30,13 +27,7 @@ class NewsRepository extends EntityRepository
         return $qb;
     }
 
-    /**
-     * find one by id
-     *
-     * @param int $id
-     * @return News|null
-     */
-    public function findOneById(int $id)
+    public function findOneById(int $id): ?News
     {
         $qb = $this->getActiveQuery();
         $qb
@@ -47,14 +38,9 @@ class NewsRepository extends EntityRepository
     }
 
     /**
-     * find by page
-     *
-     * @param int $pageId
-     * @param int $category
-     * @param int $limit
      * @return News[]
      */
-    public function findByPage(int $pageId, int $category = null, int $limit = null)
+    public function findByPage(int $pageId, ?int $category = null, ?int $limit = null): array
     {
         $qb = $this->getActiveQuery();
         $qb
@@ -80,14 +66,10 @@ class NewsRepository extends EntityRepository
     }
 
     /**
-     * find by theater
-     *
-     * @param int      $theaterId
-     * @param array    $category
-     * @param int|null $limit
+     * @param int[] $category
      * @return News[]
      */
-    public function findByTheater(int $theaterId, array $category = [], ?int $limit = null)
+    public function findByTheater(int $theaterId, array $category = [], ?int $limit = null): array
     {
         $qb = $this->getActiveQuery();
         $qb
@@ -113,14 +95,9 @@ class NewsRepository extends EntityRepository
     }
 
     /**
-     * find by special_site
-     *
-     * @param int      $specialSiteId
-     * @param int|null $category
-     * @param int|null $limit
      * @return News[]
      */
-    public function findBySpecialSite(int $specialSiteId, ?int $category = null, ?int $limit = null)
+    public function findBySpecialSite(int $specialSiteId, ?int $category = null, ?int $limit = null): array
     {
         $qb = $this->getActiveQuery();
         $qb
@@ -146,12 +123,9 @@ class NewsRepository extends EntityRepository
     }
 
     /**
-     * find by IMAX
-     *
-     * @param int|null $limit
      * @return News[]
      */
-    public function findByImax(?int $limit = null)
+    public function findByImax(?int $limit = null): array
     {
         $qb = $this->getActiveQuery();
         $qb
@@ -170,12 +144,9 @@ class NewsRepository extends EntityRepository
     }
 
     /**
-     * find by 4DX
-     *
-     * @param int|null $limit
      * @return News[]
      */
-    public function findBy4dx(?int $limit = null)
+    public function findBy4dx(?int $limit = null): array
     {
         $qb = $this->getActiveQuery();
         $qb
@@ -194,12 +165,9 @@ class NewsRepository extends EntityRepository
     }
 
     /**
-     * find by ScreenX
-     *
-     * @param int|null $limit
      * @return News[]
      */
-    public function findByScreenX(?int $limit = null)
+    public function findByScreenX(?int $limit = null): array
     {
         $qb = $this->getActiveQuery();
         $qb
@@ -218,12 +186,9 @@ class NewsRepository extends EntityRepository
     }
 
     /**
-     * find by 4DX Screen
-     *
-     * @param int|null $limit
      * @return News[]
      */
-    public function findBy4DXScreen(?int $limit = null)
+    public function findBy4DXScreen(?int $limit = null): array
     {
         $qb = $this->getActiveQuery();
         $qb

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller;
 
 use App\ORM\Entity;
@@ -8,13 +10,7 @@ abstract class GeneralController extends BaseController
 {
     public const PAGE_ID = 1;
 
-    /**
-     * return page
-     *
-     * @param int $pageId
-     * @return Entity\Page|null
-     */
-    protected function getPage(int $pageId)
+    protected function getPage(int $pageId): ?Entity\Page
     {
         return $this->em
             ->getRepository(Entity\Page::class)
@@ -22,12 +18,9 @@ abstract class GeneralController extends BaseController
     }
 
     /**
-     * return campaigns
-     *
-     * @param int $pageId
      * @return Entity\Campaign[]
      */
-    protected function getCampaigns(int $pageId)
+    protected function getCampaigns(int $pageId): array
     {
         return $this->em
             ->getRepository(Entity\Campaign::class)
@@ -35,11 +28,9 @@ abstract class GeneralController extends BaseController
     }
 
     /**
-     * return theaters
-     *
      * @return Entity\Theater[]
      */
-    protected function getTheaters()
+    protected function getTheaters(): array
     {
         return $this->em
             ->getRepository(Entity\Theater::class)

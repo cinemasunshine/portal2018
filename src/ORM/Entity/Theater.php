@@ -17,7 +17,7 @@ use LogicException;
  */
 class Theater extends BaseTheater
 {
-    /** @var array */
+    /** @var array<int, string> */
     protected static $areas = [
         1 => '関東',
         2 => '北陸・中部',
@@ -27,11 +27,9 @@ class Theater extends BaseTheater
     ];
 
     /**
-     * return areas
-     *
-     * @return array
+     * @return array<int, string>
      */
-    public static function getAreas()
+    public static function getAreas(): array
     {
         return self::$areas;
     }
@@ -118,10 +116,8 @@ class Theater extends BaseTheater
 
     /**
      * is status closed
-     *
-     * @return boolean
      */
-    public function isStatusClosed()
+    public function isStatusClosed(): bool
     {
         return $this->getStatus() === self::STATUS_CLOSED;
     }

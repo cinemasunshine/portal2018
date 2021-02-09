@@ -25,11 +25,9 @@ class File extends BaseFile
     protected static $blobContainer = 'file';
 
     /**
-     * get blob container
-     *
-     * @return string
+     * Return blob container name
      */
-    public static function getBlobContainer()
+    public static function getBlobContainer(): string
     {
         return self::$blobContainer;
     }

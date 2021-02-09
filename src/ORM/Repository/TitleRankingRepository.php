@@ -14,12 +14,6 @@ use Doctrine\ORM\Mapping\ClassMetadata;
  */
 class TitleRankingRepository extends EntityRepository
 {
-    /**
-     * find one by id
-     *
-     * @param integer $id
-     * @return TitleRanking
-     */
     public function findOneById(int $id): ?TitleRanking
     {
         $qb = $this->createQueryBuilder('tr');

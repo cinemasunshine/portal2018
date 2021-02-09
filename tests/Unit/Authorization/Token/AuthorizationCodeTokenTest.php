@@ -25,8 +25,6 @@ final class AuthorizationCodeTokenTest extends TestCase
     use MockeryPHPUnitIntegration;
 
     /**
-     * Create target mock
-     *
      * @return MockInterface|LegacyMockInterface|AuthorizationCodeToken
      */
     protected function createTargetMock()
@@ -34,12 +32,7 @@ final class AuthorizationCodeTokenTest extends TestCase
         return Mockery::mock(AuthorizationCodeToken::class);
     }
 
-    /**
-     * Create target reflection
-     *
-     * @return ReflectionClass
-     */
-    protected function createTargetReflection()
+    protected function createTargetReflection(): ReflectionClass
     {
         return new ReflectionClass(AuthorizationCodeToken::class);
     }
@@ -51,10 +44,8 @@ final class AuthorizationCodeTokenTest extends TestCase
      * setterの変更に注意。
      *
      * @test
-     *
-     * @return void
      */
-    public function testCreate()
+    public function testCreate(): void
     {
         $accessToken  = 'example_access_token';
         $tokenType    = 'example_type';
@@ -101,13 +92,9 @@ final class AuthorizationCodeTokenTest extends TestCase
     }
 
     /**
-     * test getAccessToken
-     *
      * @test
-     *
-     * @return void
      */
-    public function testGetAccessToken()
+    public function testGetAccessToken(): void
     {
         $accessToken = 'example_access_token';
 
@@ -124,13 +111,9 @@ final class AuthorizationCodeTokenTest extends TestCase
     }
 
     /**
-     * test setAccessToken
-     *
      * @test
-     *
-     * @return void
      */
-    public function testSetAccessToken()
+    public function testSetAccessToken(): void
     {
         $accessToken = 'example_access_token';
 
@@ -149,15 +132,11 @@ final class AuthorizationCodeTokenTest extends TestCase
     }
 
     /**
-     * testdecodeAccessToken
-     *
      * @runInSeparateProcess
      * @preserveGlobalState disabled
      * @test
-     *
-     * @return void
      */
-    public function testDecodeAccessToken()
+    public function testDecodeAccessToken(): void
     {
         $accessToken = 'example_access_token';
 
@@ -181,8 +160,6 @@ final class AuthorizationCodeTokenTest extends TestCase
     }
 
     /**
-     * Create DecodedAccessToken mock
-     *
      * @return MockInterface|LegacyMockInterface|DecodedAccessToken
      */
     protected function createDecodedAccessTokenMock()
@@ -191,13 +168,9 @@ final class AuthorizationCodeTokenTest extends TestCase
     }
 
     /**
-     * test getTokenType
-     *
      * @test
-     *
-     * @return void
      */
-    public function testGetTokenType()
+    public function testGetTokenType(): void
     {
         $tokenType = 'example_token_type';
 
@@ -214,13 +187,9 @@ final class AuthorizationCodeTokenTest extends TestCase
     }
 
     /**
-     * test setTokenType
-     *
      * @test
-     *
-     * @return void
      */
-    public function testSetTokenType()
+    public function testSetTokenType(): void
     {
         $tokenType = 'example_token_type';
 
@@ -239,13 +208,9 @@ final class AuthorizationCodeTokenTest extends TestCase
     }
 
     /**
-     * test getRefreshToken
-     *
      * @test
-     *
-     * @return void
      */
-    public function testGetRefreshToken()
+    public function testGetRefreshToken(): void
     {
         $refreshToken = 'example_token_type';
 
@@ -262,13 +227,9 @@ final class AuthorizationCodeTokenTest extends TestCase
     }
 
     /**
-     * test setRefreshToken
-     *
      * @test
-     *
-     * @return void
      */
-    public function testSetRefreshToken()
+    public function testSetRefreshToken(): void
     {
         $refreshToken = 'example_token_type';
 
@@ -287,13 +248,9 @@ final class AuthorizationCodeTokenTest extends TestCase
     }
 
     /**
-     * test getExpiresIn
-     *
      * @test
-     *
-     * @return void
      */
-    public function testGetExpiresIn()
+    public function testGetExpiresIn(): void
     {
         $expiresIn = 3600;
 
@@ -310,13 +267,9 @@ final class AuthorizationCodeTokenTest extends TestCase
     }
 
     /**
-     * test setExpiresIn
-     *
      * @test
-     *
-     * @return void
      */
-    public function testSetExpiresIn()
+    public function testSetExpiresIn(): void
     {
         $expiresIn = 3600;
 
@@ -335,13 +288,9 @@ final class AuthorizationCodeTokenTest extends TestCase
     }
 
     /**
-     * test getExpires
-     *
      * @test
-     *
-     * @return void
      */
-    public function testGetExpires()
+    public function testGetExpires(): void
     {
         $expires = time();
 
@@ -358,13 +307,9 @@ final class AuthorizationCodeTokenTest extends TestCase
     }
 
     /**
-     * test setExpires
-     *
      * @test
-     *
-     * @return void
      */
-    public function testSetExpires()
+    public function testSetExpires(): void
     {
         $expires = time();
 
@@ -383,13 +328,9 @@ final class AuthorizationCodeTokenTest extends TestCase
     }
 
     /**
-     * test getIdToken
-     *
      * @test
-     *
-     * @return void
      */
-    public function testGetIdToken()
+    public function testGetIdToken(): void
     {
         $idToken = 'example_id_token';
 
@@ -406,13 +347,9 @@ final class AuthorizationCodeTokenTest extends TestCase
     }
 
     /**
-     * test setIdToken
-     *
      * @test
-     *
-     * @return void
      */
-    public function testSetIdToken()
+    public function testSetIdToken(): void
     {
         $idToken = 'example_id_token';
 

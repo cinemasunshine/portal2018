@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller\API;
 
 use App\Schedule\Builder\V3\Schedule as V3ScheduleBuilder;
@@ -26,6 +28,9 @@ class ScheduleController extends BaseController
     /** @var string */
     protected $purchaseBaseUrl;
 
+    /**
+     * @param array<string, mixed> $args
+     */
     protected function preExecute(Request $request, Response $response, array $args): void
     {
         $settings          = $this->settings['schedule'];
@@ -39,14 +44,11 @@ class ScheduleController extends BaseController
      *
      * @todo エラー系のレスポンス検討
      *
-     * @param Request  $request
-     * @param Response $response
-     * @param array    $args
-     * @return Response
+     * @param array<string, mixed> $args
      *
      * @throws NotFoundException
      */
-    public function executeIndex(Request $request, Response $response, array $args)
+    public function executeIndex(Request $request, Response $response, array $args): Response
     {
         $theaterName = $args['name'];
 
@@ -100,14 +102,11 @@ class ScheduleController extends BaseController
      *
      * @todo エラー系のレスポンス検討
      *
-     * @param Request  $request
-     * @param Response $response
-     * @param array    $args
-     * @return Response
+     * @param array<string, mixed> $args
      *
      * @throws NotFoundException
      */
-    public function executeDate(Request $request, Response $response, array $args)
+    public function executeDate(Request $request, Response $response, array $args): Response
     {
         $theaterName = $args['name'];
         $date        = $args['date'];
@@ -169,13 +168,9 @@ class ScheduleController extends BaseController
     }
 
     /**
-     * スケジュール検索
-     *
-     * @param array              $params
-     * @param SchedulesInterface $schedules
-     * @return MovieCollection
+     * @param array<string, mixed> $params
      */
-    public function findSchedule(array $params, SchedulesInterface $schedules)
+    public function findSchedule(array $params, SchedulesInterface $schedules): MovieCollection
     {
         $movieCollection = new MovieCollection();
 
@@ -185,17 +180,13 @@ class ScheduleController extends BaseController
     }
 
     /**
-     * 作品検索
-     *
-     * @param array              $params
-     * @param SchedulesInterface $schedules
-     * @param MovieCollection    $movieCollection
+     * @param array<string, mixed> $params
      */
     protected function findMovie(
         array $params,
         SchedulesInterface $schedules,
         MovieCollection $movieCollection
-    ) {
+    ): void {
         foreach ($schedules->getScheduleCollection() as $schedule) {
             if ($schedule->getDate() !== $params['date']) {
                 continue;
@@ -210,13 +201,9 @@ class ScheduleController extends BaseController
     }
 
     /**
-     * fix overnight
-     *
      * @link https://m-p.backlog.jp/view/SASAKI-506
-     *
-     * @param MovieCollection $movieCollection
      */
-    protected function fixOvernight(MovieCollection $movieCollection)
+    protected function fixOvernight(MovieCollection $movieCollection): void
     {
         foreach ($movieCollection as $movie) {
             foreach ($movie->getScreenCollection() as $screen) {

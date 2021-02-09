@@ -15,11 +15,6 @@ class Manager
     /** @var SessionContainer */
     protected $session;
 
-    /**
-     * construct
-     *
-     * @param SessionContainer $session
-     */
     public function __construct(SessionContainer $session)
     {
         $this->session = $session;
@@ -29,11 +24,8 @@ class Manager
      * login
      *
      * logoutも適宜更新してください。
-     *
-     * @param AuthorizationToken $authorizationToken
-     * @return void
      */
-    public function login(AuthorizationToken $authorizationToken)
+    public function login(AuthorizationToken $authorizationToken): void
     {
         $this->session['authorization_token'] = $authorizationToken;
 
@@ -52,20 +44,13 @@ class Manager
         $this->session['authenticated'] = true;
     }
 
-    /**
-     * logout
-     *
-     * @return void
-     */
-    public function logout()
+    public function logout(): void
     {
         $this->session->clear();
     }
 
     /**
      * 認証判定
-     *
-     * @return boolean
      */
     public function isAuthenticated(): bool
     {
@@ -75,18 +60,13 @@ class Manager
     /**
      * return authenticated user data
      *
-     * @return array|null
+     * @return array<string, mixed>|null
      */
     public function getUser(): ?array
     {
         return $this->session['user'];
     }
 
-    /**
-     * return authorization token
-     *
-     * @return AuthorizationToken|null
-     */
     public function getAuthorizationToken(): ?AuthorizationToken
     {
         if ($this->isAuthenticated()) {
@@ -96,13 +76,7 @@ class Manager
         return null;
     }
 
-    /**
-     * set authorization token
-     *
-     * @param AuthorizationToken $token
-     * @return void
-     */
-    public function setAuthorizationToken(AuthorizationToken $token)
+    public function setAuthorizationToken(AuthorizationToken $token): void
     {
         $this->session['authorization_token'] = $token;
     }

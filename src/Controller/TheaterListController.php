@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller;
 
 use App\ORM\Entity;
@@ -14,14 +16,11 @@ class TheaterListController extends GeneralController
     /**
      * index action
      *
-     * @param Request  $request
-     * @param Response $response
-     * @param array    $args
-     * @return Response
+     * @param array<string, mixed> $args
      */
-    public function executeIndex(Request $request, Response $response, array $args)
+    public function executeIndex(Request $request, Response $response, array $args): Response
     {
-        $areaToTheaters = $this->getTheaters();
+        $areaToTheaters = $this->getAreaToTheaters();
 
         return $this->render($response, 'theater_list/index.html.twig', ['areaToTheaters' => $areaToTheaters]);
     }
@@ -29,24 +28,19 @@ class TheaterListController extends GeneralController
     /**
      * sns action
      *
-     * @param Request  $request
-     * @param Response $response
-     * @param array    $args
-     * @return Response
+     * @param array<string, mixed> $args
      */
-    public function executeSns(Request $request, Response $response, array $args)
+    public function executeSns(Request $request, Response $response, array $args): Response
     {
-        $areaToTheaters = $this->getTheaters();
+        $areaToTheaters = $this->getAreaToTheaters();
 
         return $this->render($response, 'theater_list/sns.html.twig', ['areaToTheaters' => $areaToTheaters]);
     }
 
     /**
-     * return theaters
-     *
-     * @return array
+     * @return array<int, Entity\Theater[]>
      */
-    protected function getTheaters()
+    protected function getAreaToTheaters(): array
     {
         $theaters = parent::getTheaters();
 

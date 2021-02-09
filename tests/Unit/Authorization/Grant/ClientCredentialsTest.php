@@ -26,8 +26,6 @@ final class ClientCredentialsTest extends TestCase
     use MockeryPHPUnitIntegration;
 
     /**
-     * Create target mock
-     *
      * @return MockInterface|LegacyMockInterface|ClientCredentials
      */
     protected function createTargetMock()
@@ -35,19 +33,12 @@ final class ClientCredentialsTest extends TestCase
         return Mockery::mock(ClientCredentials::class);
     }
 
-    /**
-     * Create target reflection
-     *
-     * @return ReflectionClass
-     */
-    protected function createTargetReflection()
+    protected function createTargetReflection(): ReflectionClass
     {
         return new ReflectionClass(ClientCredentials::class);
     }
 
     /**
-     * Create HttpClient mock
-     *
      * @return MockInterface|LegacyMockInterface|HttpClient
      */
     protected function createHttpClientMock()
@@ -56,13 +47,9 @@ final class ClientCredentialsTest extends TestCase
     }
 
     /**
-     * test construct
-     *
      * @test
-     *
-     * @return void
      */
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $host         = 'example.com';
         $clientId     = 'client_id';
@@ -108,15 +95,11 @@ final class ClientCredentialsTest extends TestCase
     }
 
     /**
-     * test requestToken
-     *
      * @runInSeparateProcess
      * @preserveGlobalState disabled
      * @test
-     *
-     * @return void
      */
-    public function testRequestToken()
+    public function testRequestToken(): void
     {
         $contents = ['foo' => 'bar'];
 
@@ -182,8 +165,6 @@ final class ClientCredentialsTest extends TestCase
     }
 
     /**
-     * Create Response mock
-     *
      * @return MockInterface|LegacyMockInterface
      */
     protected function createResponseMock()
@@ -192,8 +173,6 @@ final class ClientCredentialsTest extends TestCase
     }
 
     /**
-     * Create Stream mock
-     *
      * @return MockInterface|LegacyMockInterface
      */
     protected function createStreamMock()
@@ -202,8 +181,6 @@ final class ClientCredentialsTest extends TestCase
     }
 
     /**
-     * Create Token mock
-     *
      * @return MockInterface|LegacyMockInterface
      */
     protected function createTokenMock()

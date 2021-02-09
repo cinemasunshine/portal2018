@@ -20,12 +20,9 @@ class AuthorizationController extends BaseController
      * リクエストエラーは認可サーバで処理される。
      * ただしそこからパラメータ無しで戻るリンクがある。
      *
-     * @param Request  $request
-     * @param Response $response
-     * @param array    $args
-     * @return Response
+     * @param array<string, mixed> $args
      */
-    public function executeLogin(Request $request, Response $response, array $args)
+    public function executeLogin(Request $request, Response $response, array $args): Response
     {
         $this->logger->info('Login params', $request->getParams());
 
@@ -76,11 +73,7 @@ class AuthorizationController extends BaseController
         $this->redirect($redirectPath);
     }
 
-    /**
-     * @param Response $response
-     * @return Response
-     */
-    protected function renderError(Response $response)
+    protected function renderError(Response $response): Response
     {
         return $this->render($response, 'authorization/error.html.twig');
     }
@@ -88,12 +81,9 @@ class AuthorizationController extends BaseController
     /**
      * logout action
      *
-     * @param Request  $request
-     * @param Response $response
-     * @param array    $args
-     * @return void
+     * @param array<string, mixed> $args
      */
-    public function executeLogout(Request $request, Response $response, array $args)
+    public function executeLogout(Request $request, Response $response, array $args): void
     {
         $this->um->logout();
 

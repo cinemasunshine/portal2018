@@ -25,13 +25,9 @@ final class CommonExtensionTest extends TestCase
     use MockeryPHPUnitIntegration;
 
     /**
-     * test construct
-     *
      * @test
-     *
-     * @return void
      */
-    public function testConstruct()
+    public function testConstruct(): void
     {
         define('APP_ENV', getenv('APPSETTING_ENV'));
 
@@ -53,13 +49,9 @@ final class CommonExtensionTest extends TestCase
     }
 
     /**
-     * test getFunctions
-     *
      * @test
-     *
-     * @return void
      */
-    public function testGetFunctions()
+    public function testGetFunctions(): void
     {
         $extensionMock = Mockery::mock(CommonExtension::class)
             ->makePartial();
@@ -74,13 +66,9 @@ final class CommonExtensionTest extends TestCase
     }
 
     /**
-     * test getAppEnv
-     *
      * @test
-     *
-     * @return void
      */
-    public function testGetAppEnv()
+    public function testGetAppEnv(): void
     {
         $env = 'test';
 
@@ -97,13 +85,9 @@ final class CommonExtensionTest extends TestCase
     }
 
     /**
-     * test isAppEnv
-     *
      * @test
-     *
-     * @return void
      */
-    public function testIsAppEnv()
+    public function testIsAppEnv(): void
     {
         $env = 'test';
 
@@ -124,13 +108,9 @@ final class CommonExtensionTest extends TestCase
     }
 
     /**
-     * test getFacebookUrl
-     *
      * @test
-     *
-     * @return void
      */
-    public function testGetFacebookUrl()
+    public function testGetFacebookUrl(): void
     {
         $name = 'example';
 
@@ -144,13 +124,9 @@ final class CommonExtensionTest extends TestCase
     }
 
     /**
-     * test getTwitterUrl
-     *
      * @test
-     *
-     * @return void
      */
-    public function testGetTwitterUrl()
+    public function testGetTwitterUrl(): void
     {
         $name = 'example';
 
@@ -164,13 +140,9 @@ final class CommonExtensionTest extends TestCase
     }
 
     /**
-     * test getFilters
-     *
      * @test
-     *
-     * @return void
      */
-    public function testGetFilters()
+    public function testGetFilters(): void
     {
         $extensionMock = Mockery::mock(CommonExtension::class)
             ->makePartial();
@@ -185,13 +157,9 @@ final class CommonExtensionTest extends TestCase
     }
 
     /**
-     * test weekdayFilter
-     *
      * @test
-     *
-     * @return void
      */
-    public function testWeekdayFilter()
+    public function testWeekdayFilter(): void
     {
         $dateTimeMock = Mockery::mock(DateTime::class);
         $dateTimeMock

@@ -13,10 +13,10 @@ use UnexpectedValueException;
  */
 class DecodedAccessToken
 {
-    /** @var array */
+    /** @var array<string, string> */
     protected $header;
 
-    /** @var array */
+    /** @var array<string, mixed> */
     protected $claims;
 
     /** @var string */
@@ -26,9 +26,6 @@ class DecodedAccessToken
      * decode JSON Web Token
      *
      * 最低限のチェックとデコード処理。
-     *
-     * @param string $token
-     * @return self
      */
     public static function decodeJWT(string $token): self
     {
@@ -48,11 +45,8 @@ class DecodedAccessToken
     }
 
     /**
-     * construct
-     *
-     * @param array  $header
-     * @param array  $claims
-     * @param string $signature
+     * @param array<string, string> $header
+     * @param array<string, mixed>  $claims
      */
     public function __construct(array $header, array $claims, string $signature)
     {
@@ -62,9 +56,7 @@ class DecodedAccessToken
     }
 
     /**
-     * return header
-     *
-     * @return array
+     * @return array<string, string>
      */
     public function getHeader(): array
     {
@@ -72,20 +64,13 @@ class DecodedAccessToken
     }
 
     /**
-     * return claims
-     *
-     * @return array
+     * @return array<string, mixed>
      */
     public function getClaims(): array
     {
         return $this->claims;
     }
 
-    /**
-     * return signature
-     *
-     * @return string
-     */
     public function getSignature(): string
     {
         return $this->signature;

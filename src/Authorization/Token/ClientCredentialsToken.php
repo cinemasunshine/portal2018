@@ -19,10 +19,7 @@ class ClientCredentialsToken extends AbstractToken
     protected $expiresIn;
 
     /**
-     * create token
-     *
-     * @param array $data
-     * @return self
+     * @param array<string, mixed> $data
      */
     public static function create(array $data): self
     {
@@ -34,72 +31,36 @@ class ClientCredentialsToken extends AbstractToken
         return $token;
     }
 
-    /**
-     * construct
-     */
     protected function __construct()
     {
     }
 
-    /**
-     * return access_token
-     *
-     * @return string
-     */
     public function getAccessToken(): string
     {
         return $this->accessToken;
     }
 
-    /**
-     * set access_token
-     *
-     * @param string $accessToken
-     * @return void
-     */
-    protected function setAccessToken(string $accessToken)
+    protected function setAccessToken(string $accessToken): void
     {
         $this->accessToken = $accessToken;
     }
 
-    /**
-     * return token_type
-     *
-     * @return string
-     */
     public function getTokenType(): string
     {
         return $this->tokenType;
     }
 
-    /**
-     * set token_type
-     *
-     * @param string $tokenType
-     * @return void
-     */
-    protected function setTokenType(string $tokenType)
+    protected function setTokenType(string $tokenType): void
     {
         $this->tokenType = $tokenType;
     }
 
-    /**
-     * return expires_in
-     *
-     * @return integer
-     */
     public function getExpiresIn(): int
     {
         return $this->expiresIn;
     }
 
-    /**
-     * set expires_in
-     *
-     * @param integer $expiresIn
-     * @return void
-     */
-    public function setExpiresIn(int $expiresIn)
+    public function setExpiresIn(int $expiresIn): void
     {
         $this->expiresIn = $expiresIn;
     }

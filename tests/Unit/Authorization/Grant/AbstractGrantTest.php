@@ -25,8 +25,6 @@ final class AbstractGrantTest extends TestCase
     use MockeryPHPUnitIntegration;
 
     /**
-     * Create target mock
-     *
      * @return MockInterface|LegacyMockInterface|AbstractGrant
      */
     protected function createTargetMock()
@@ -34,24 +32,15 @@ final class AbstractGrantTest extends TestCase
         return Mockery::mock(AbstractGrant::class);
     }
 
-    /**
-     * Create target reflection
-     *
-     * @return ReflectionClass
-     */
-    protected function createTargetReflection()
+    protected function createTargetReflection(): ReflectionClass
     {
         return new ReflectionClass(AbstractGrant::class);
     }
 
     /**
-     * test createHttpClient
-     *
      * @test
-     *
-     * @return void
      */
-    public function testCreateHttpClient()
+    public function testCreateHttpClient(): void
     {
         $baseUri = 'https://example.com';
 
@@ -68,13 +57,9 @@ final class AbstractGrantTest extends TestCase
     }
 
     /**
-     * test getRequestHeaders
-     *
      * @test
-     *
-     * @return void
      */
-    public function testGetRequestHeaders()
+    public function testGetRequestHeaders(): void
     {
         $clientId     = 'client_id';
         $clientSecret = 'client_secret';

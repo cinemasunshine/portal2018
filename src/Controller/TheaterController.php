@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller;
 
 use App\ORM\Entity;
@@ -15,9 +17,12 @@ class TheaterController extends BaseController
     /** @var Entity\Theater */
     protected $theater;
 
+    /**
+     * @param array<string, mixed> $args
+     */
     protected function preExecute(Request $request, Response $response, array $args): void
     {
-        /**@var Entity\Theater|null $theater */
+        /** @var Entity\Theater|null $theater */
         $theater = $this->getTheater($args['name']);
 
         if (is_null($theater)) {
@@ -27,6 +32,9 @@ class TheaterController extends BaseController
         $this->theater = $theater;
     }
 
+    /**
+     * @param array<string, mixed> $args
+     */
     protected function postExecute(Request $request, Response $response, array $args): void
     {
         $session = $this->sm->getContainer();
@@ -38,13 +46,7 @@ class TheaterController extends BaseController
         $session['viewed_theater'] = $this->theater->getName();
     }
 
-    /**
-     * find by entity
-     *
-     * @param string $name
-     * @return Entity\Theater|null
-     */
-    protected function getTheater(string $name)
+    protected function getTheater(string $name): ?Entity\Theater
     {
         return $this->em
             ->getRepository(Entity\Theater::class)
@@ -54,12 +56,9 @@ class TheaterController extends BaseController
     /**
      * index action
      *
-     * @param Request  $request
-     * @param Response $response
-     * @param array    $args
-     * @return Response
+     * @param array<string, mixed> $args
      */
-    public function executeIndex(Request $request, Response $response, array $args)
+    public function executeIndex(Request $request, Response $response, array $args): Response
     {
         $theater = $this->theater;
 
@@ -113,12 +112,9 @@ class TheaterController extends BaseController
     }
 
     /**
-     * return main_banners
-     *
-     * @param Entity\Theater $theater
      * @return Entity\MainBanner[]
      */
-    protected function getMainBanners(Entity\Theater $theater)
+    protected function getMainBanners(Entity\Theater $theater): array
     {
         return $this->em
             ->getRepository(Entity\MainBanner::class)
@@ -126,29 +122,20 @@ class TheaterController extends BaseController
     }
 
     /**
-     * return campaigns
-     *
-     * @param Entity\Theater $theater
      * @return Entity\Campaign[]
      */
-    protected function getCampaigns(Entity\Theater $theater)
+    protected function getCampaigns(Entity\Theater $theater): array
     {
         return $this->em
             ->getRepository(Entity\Campaign::class)
             ->findByTheater($theater->getId());
     }
 
-    /**
-     * return trailer
-     *
-     * @param Entity\Theater $theater
-     * @return Entity\Trailer|null
-     */
     protected function getTrailer(Entity\Theater $theater): ?Entity\Trailer
     {
         $trailers = $this->em
-                ->getRepository(Entity\Trailer::class)
-                ->findByTheater($theater->getId());
+            ->getRepository(Entity\Trailer::class)
+            ->findByTheater($theater->getId());
 
         if (count($trailers) === 0) {
             return null;
@@ -163,12 +150,9 @@ class TheaterController extends BaseController
     /**
      * access action
      *
-     * @param Request  $request
-     * @param Response $response
-     * @param array    $args
-     * @return Response
+     * @param array<string, mixed> $args
      */
-    public function executeAccess(Request $request, Response $response, array $args)
+    public function executeAccess(Request $request, Response $response, array $args): Response
     {
         $theater = $this->theater;
 
@@ -187,12 +171,9 @@ class TheaterController extends BaseController
     /**
      * admission action
      *
-     * @param Request  $request
-     * @param Response $response
-     * @param array    $args
-     * @return Response
+     * @param array<string, mixed> $args
      */
-    public function executeAdmission(Request $request, Response $response, array $args)
+    public function executeAdmission(Request $request, Response $response, array $args): Response
     {
         $theater = $this->theater;
 
@@ -207,12 +188,9 @@ class TheaterController extends BaseController
     /**
      * advance ticket action
      *
-     * @param Request  $request
-     * @param Response $response
-     * @param array    $args
-     * @return Response
+     * @param array<string, mixed> $args
      */
-    public function executeAdvanceTicket(Request $request, Response $response, array $args)
+    public function executeAdvanceTicket(Request $request, Response $response, array $args): Response
     {
         $theater = $this->theater;
 
@@ -235,12 +213,9 @@ class TheaterController extends BaseController
     }
 
     /**
-     * return advance tickets
-     *
-     * @param int $theaterId
      * @return Entity\AdvanceTicket[]
      */
-    protected function getAdvanceTickets(int $theaterId)
+    protected function getAdvanceTickets(int $theaterId): array
     {
         return $this->em
             ->getRepository(Entity\AdvanceTicket::class)
@@ -250,12 +225,9 @@ class TheaterController extends BaseController
     /**
      * concession action
      *
-     * @param Request  $request
-     * @param Response $response
-     * @param array    $args
-     * @return Response
+     * @param array<string, mixed> $args
      */
-    public function executeConcession(Request $request, Response $response, array $args)
+    public function executeConcession(Request $request, Response $response, array $args): Response
     {
         $theater = $this->theater;
 
@@ -277,12 +249,9 @@ class TheaterController extends BaseController
     /**
      * floor guide action
      *
-     * @param Request  $request
-     * @param Response $response
-     * @param array    $args
-     * @return Response
+     * @param array<string, mixed> $args
      */
-    public function executeFloorGuide(Request $request, Response $response, array $args)
+    public function executeFloorGuide(Request $request, Response $response, array $args): Response
     {
         $theater = $this->theater;
 
@@ -301,12 +270,9 @@ class TheaterController extends BaseController
     /**
      * news list action
      *
-     * @param Request  $request
-     * @param Response $response
-     * @param array    $args
-     * @return Response
+     * @param array<string, mixed> $args
      */
-    public function executeNewsList(Request $request, Response $response, array $args)
+    public function executeNewsList(Request $request, Response $response, array $args): Response
     {
         $theater = $this->theater;
 
@@ -322,14 +288,10 @@ class TheaterController extends BaseController
     }
 
     /**
-     * return news list
-     *
-     * @param Entity\Theater $theater
-     * @param array|int      $category
-     * @param int|null       $limit
+     * @param int[]|int $category
      * @return Entity\News[]
      */
-    protected function getNewsList(Entity\Theater $theater, $category = [], ?int $limit = null)
+    protected function getNewsList(Entity\Theater $theater, $category = [], ?int $limit = null): array
     {
         if (! is_array($category)) {
             $category = [$category];
@@ -343,19 +305,16 @@ class TheaterController extends BaseController
     /**
      * news show action
      *
-     * @param Request  $request
-     * @param Response $response
-     * @param array    $args
-     * @return Response
+     * @param array<string, mixed> $args
      */
-    public function executeNewsShow(Request $request, Response $response, array $args)
+    public function executeNewsShow(Request $request, Response $response, array $args): Response
     {
         $theater = $this->theater;
 
-        /**@var Entity\News|null $news */
+        /** @var Entity\News|null $news */
         $news = $this->em
             ->getRepository(Entity\News::class)
-            ->findOneById($args['id']);
+            ->findOneById((int) $args['id']);
 
         if (is_null($news)) {
             throw new NotFoundException($request, $response);

@@ -20,20 +20,15 @@ final class AuthorizationControllerTest extends BaseTestCase
         return Mockery::mock(AuthorizationController::class);
     }
 
-    /**
-     * @return ReflectionClass
-     */
-    protected function createTargetReflection()
+    protected function createTargetReflection(): ReflectionClass
     {
         return new ReflectionClass(AuthorizationController::class);
     }
 
     /**
      * @test
-     *
-     * @return void
      */
-    public function testRenderError()
+    public function testRenderError(): void
     {
         $responseMock = $this->createResponseMock();
 

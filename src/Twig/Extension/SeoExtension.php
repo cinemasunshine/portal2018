@@ -27,7 +27,6 @@ class SeoExtension extends AbstractExtension
     }
 
     /**
-     * @param string $file
      * @return MetaTag[]
      */
     protected function loadMetas(string $file): array
@@ -43,9 +42,9 @@ class SeoExtension extends AbstractExtension
     }
 
     /**
-     * @return array
+     * @return TwigFunction[]
      */
-    public function getFunctions()
+    public function getFunctions(): array
     {
         return [
             new TwigFunction('meta_title', [$this, 'getTilte'], [ 'is_safe' => ['html'] ]),

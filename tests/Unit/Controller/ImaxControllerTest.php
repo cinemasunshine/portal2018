@@ -18,7 +18,6 @@ use Slim\Exception\NotFoundException;
 final class ImaxControllerTest extends BaseTestCase
 {
     /**
-     * @param Container $container
      * @return MockInterface&LegacyMockInterface&ImaxController
      */
     protected function createTargetMock(Container $container)
@@ -28,10 +27,8 @@ final class ImaxControllerTest extends BaseTestCase
 
     /**
      * @test
-     *
-     * @return void
      */
-    public function testExecuteIndex()
+    public function testExecuteIndex(): void
     {
         $requestMock  = $this->createRequestMock();
         $responseMock = $this->createResponseMock();
@@ -124,10 +121,8 @@ final class ImaxControllerTest extends BaseTestCase
 
     /**
      * @test
-     *
-     * @return void
      */
-    public function testExecuteAbout()
+    public function testExecuteAbout(): void
     {
         $requestMock  = $this->createRequestMock();
         $responseMock = $this->createResponseMock();
@@ -154,10 +149,8 @@ final class ImaxControllerTest extends BaseTestCase
 
     /**
      * @test
-     *
-     * @return void
      */
-    public function testExecuteScheduleList()
+    public function testExecuteScheduleList(): void
     {
         $requestMock  = $this->createRequestMock();
         $responseMock = $this->createResponseMock();
@@ -210,10 +203,8 @@ final class ImaxControllerTest extends BaseTestCase
 
     /**
      * @test
-     *
-     * @return void
      */
-    public function testExecuteScheduleShow()
+    public function testExecuteScheduleShow(): void
     {
         $requestMock  = $this->createRequestMock();
         $responseMock = $this->createResponseMock();
@@ -265,10 +256,8 @@ final class ImaxControllerTest extends BaseTestCase
 
     /**
      * @test
-     *
-     * @return void
      */
-    public function testExecuteScheduleShowNotFound()
+    public function testExecuteScheduleShowNotFound(): void
     {
         $requestMock  = $this->createRequestMock();
         $responseMock = $this->createResponseMock();
@@ -317,10 +306,8 @@ final class ImaxControllerTest extends BaseTestCase
 
     /**
      * @test
-     *
-     * @return void
      */
-    public function testExecuteNewsList()
+    public function testExecuteNewsList(): void
     {
         $requestMock  = $this->createRequestMock();
         $responseMock = $this->createResponseMock();
@@ -365,10 +352,8 @@ final class ImaxControllerTest extends BaseTestCase
 
     /**
      * @test
-     *
-     * @return void
      */
-    public function testExecuteNewsShow()
+    public function testExecuteNewsShow(): void
     {
         $requestMock  = $this->createRequestMock();
         $responseMock = $this->createResponseMock();
@@ -410,10 +395,8 @@ final class ImaxControllerTest extends BaseTestCase
 
     /**
      * @test
-     *
-     * @return void
      */
-    public function testExecuteNewsShowNotFound()
+    public function testExecuteNewsShowNotFound(): void
     {
         $requestMock  = $this->createRequestMock();
         $responseMock = $this->createResponseMock();
@@ -462,10 +445,8 @@ final class ImaxControllerTest extends BaseTestCase
 
     /**
      * @test
-     *
-     * @return void
      */
-    public function testExecuteTheater()
+    public function testExecuteTheater(): void
     {
         $requestMock  = $this->createRequestMock();
         $responseMock = $this->createResponseMock();

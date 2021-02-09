@@ -12,13 +12,11 @@ use Twig\TwigFunction;
  */
 class ScheduleExtension extends AbstractExtension
 {
-    /** @var array */
+    /** @var array<string, mixed> */
     protected $settings;
 
     /**
-     * construct
-     *
-     * @param array $settings
+     * @param array<string, mixed> $settings
      */
     public function __construct(array $settings)
     {
@@ -26,22 +24,15 @@ class ScheduleExtension extends AbstractExtension
     }
 
     /**
-     * get functions
-     *
-     * @return array
+     * @return TwigFunction[]
      */
-    public function getFunctions()
+    public function getFunctions(): array
     {
         return [
             new TwigFunction('schedule_api', [$this, 'getApiUrl'], [ 'is_safe' => ['html'] ]),
         ];
     }
 
-    /**
-     * return API URL
-     *
-     * @return string
-     */
     public function getApiUrl(): string
     {
         return $this->settings['api_url'];

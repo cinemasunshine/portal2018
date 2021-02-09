@@ -16,7 +16,6 @@ use Slim\Exception\NotFoundException;
 final class ScheduleControllerTest extends BaseTestCase
 {
     /**
-     * @param Container $container
      * @return MockInterface&LegacyMockInterface&ScheduleController
      */
     protected function createTargetMock(Container $container)
@@ -26,10 +25,8 @@ final class ScheduleControllerTest extends BaseTestCase
 
     /**
      * @test
-     *
-     * @return void
      */
-    public function testExecuteList()
+    public function testExecuteList(): void
     {
         $requestMock  = $this->createRequestMock();
         $responseMock = $this->createResponseMock();
@@ -82,10 +79,8 @@ final class ScheduleControllerTest extends BaseTestCase
 
     /**
      * @test
-     *
-     * @return void
      */
-    public function testExecuteShow()
+    public function testExecuteShow(): void
     {
         $requestMock  = $this->createRequestMock();
         $responseMock = $this->createResponseMock();
@@ -137,10 +132,8 @@ final class ScheduleControllerTest extends BaseTestCase
 
     /**
      * @test
-     *
-     * @return void
      */
-    public function testExecuteShowNotFound()
+    public function testExecuteShowNotFound(): void
     {
         $requestMock  = $this->createRequestMock();
         $responseMock = $this->createResponseMock();

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller;
 
 use Slim\Http\Request;
@@ -10,12 +12,9 @@ class AboutController extends GeneralController
     /**
      * company action
      *
-     * @param Request  $request
-     * @param Response $response
-     * @param array    $args
-     * @return Response
+     * @param array<string, mixed> $args
      */
-    public function executeCompany(Request $request, Response $response, array $args)
+    public function executeCompany(Request $request, Response $response, array $args): Response
     {
         return $this->render($response, 'about/company.html.twig');
     }
@@ -23,12 +22,9 @@ class AboutController extends GeneralController
     /**
      * mail magazine action
      *
-     * @param Request  $request
-     * @param Response $response
-     * @param array    $args
-     * @return Response
+     * @param array<string, mixed> $args
      */
-    public function executeMailMagazine(Request $request, Response $response, array $args)
+    public function executeMailMagazine(Request $request, Response $response, array $args): Response
     {
         return $this->render($response, 'about/mail_magazine.html.twig');
     }
@@ -36,12 +32,9 @@ class AboutController extends GeneralController
     /**
      * mvtk action
      *
-     * @param Request  $request
-     * @param Response $response
-     * @param array    $args
-     * @return Response
+     * @param array<string, mixed> $args
      */
-    public function executeMvtk(Request $request, Response $response, array $args)
+    public function executeMvtk(Request $request, Response $response, array $args): Response
     {
         return $this->render($response, 'about/mvtk.html.twig');
     }
@@ -49,12 +42,9 @@ class AboutController extends GeneralController
     /**
      * official app action
      *
-     * @param Request  $request
-     * @param Response $response
-     * @param array    $args
-     * @return Response
+     * @param array<string, mixed> $args
      */
-    public function executeOfficialApp(Request $request, Response $response, array $args)
+    public function executeOfficialApp(Request $request, Response $response, array $args): Response
     {
         return $this->render($response, 'about/official_app.html.twig');
     }
@@ -62,12 +52,9 @@ class AboutController extends GeneralController
     /**
      * online ticket action
      *
-     * @param Request  $request
-     * @param Response $response
-     * @param array    $args
-     * @return Response
+     * @param array<string, mixed> $args
      */
-    public function executeOnlineTicket(Request $request, Response $response, array $args)
+    public function executeOnlineTicket(Request $request, Response $response, array $args): Response
     {
         return $this->render($response, 'about/online_ticket.html.twig');
     }
@@ -75,12 +62,9 @@ class AboutController extends GeneralController
     /**
      * privacy action
      *
-     * @param Request  $request
-     * @param Response $response
-     * @param array    $args
-     * @return Response
+     * @param array<string, mixed> $args
      */
-    public function executePrivacy(Request $request, Response $response, array $args)
+    public function executePrivacy(Request $request, Response $response, array $args): Response
     {
         return $this->render($response, 'about/privacy.html.twig');
     }
@@ -88,12 +72,9 @@ class AboutController extends GeneralController
     /**
      * question action
      *
-     * @param Request  $request
-     * @param Response $response
-     * @param array    $args
-     * @return Response
+     * @param array<string, mixed> $args
      */
-    public function executeQuestion(Request $request, Response $response, array $args)
+    public function executeQuestion(Request $request, Response $response, array $args): Response
     {
         return $this->render($response, 'about/question.html.twig');
     }
@@ -101,12 +82,9 @@ class AboutController extends GeneralController
     /**
      * sitemap action
      *
-     * @param Request  $request
-     * @param Response $response
-     * @param array    $args
-     * @return Response
+     * @param array<string, mixed> $args
      */
-    public function executeSitemap(Request $request, Response $response, array $args)
+    public function executeSitemap(Request $request, Response $response, array $args): Response
     {
         return $this->render($response, 'about/sitemap.html.twig', [
             'theaters' => $this->getTheaters(),
@@ -116,12 +94,9 @@ class AboutController extends GeneralController
     /**
      * special ticket action
      *
-     * @param Request  $request
-     * @param Response $response
-     * @param array    $args
-     * @return Response
+     * @param array<string, mixed> $args
      */
-    public function executeSpecialTicket(Request $request, Response $response, $args)
+    public function executeSpecialTicket(Request $request, Response $response, array $args): Response
     {
         return $this->render($response, 'about/special_ticket.html.twig');
     }
@@ -129,12 +104,9 @@ class AboutController extends GeneralController
     /**
      * specific quotient action
      *
-     * @param Request  $request
-     * @param Response $response
-     * @param array    $args
-     * @return Response
+     * @param array<string, mixed> $args
      */
-    public function executeSpecificQuotient(Request $request, Response $response, $args)
+    public function executeSpecificQuotient(Request $request, Response $response, array $args): Response
     {
         return $this->render($response, 'about/specific_quotient.html.twig');
     }
@@ -142,12 +114,9 @@ class AboutController extends GeneralController
     /**
      * terms of service action
      *
-     * @param Request  $request
-     * @param Response $response
-     * @param array    $args
-     * @return Response
+     * @param array<string, mixed> $args
      */
-    public function executeTermsOfService(Request $request, Response $response, $args)
+    public function executeTermsOfService(Request $request, Response $response, array $args): Response
     {
         return $this->render($response, 'about/terms_of_service.html.twig');
     }

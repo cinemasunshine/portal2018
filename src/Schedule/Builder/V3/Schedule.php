@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Schedule\Builder\V3;
 
 use App\Schedule\Entity\V3\Movie as MovieEntity;
@@ -17,54 +19,32 @@ class Schedule extends BaseBuilder
     /** @var string */
     protected $purchaseBaseUrl;
 
-    /**
-     * construct
-     *
-     * @param string $purchaseBaseUrl
-     */
     public function __construct(string $purchaseBaseUrl)
     {
         $this->purchaseBaseUrl = $purchaseBaseUrl;
     }
 
-    /**
-     * create Schedules entity
-     *
-     * @return SchedulesEntity
-     */
-    protected function createSchedulesEntity()
+    protected function createSchedulesEntity(): SchedulesEntity
     {
         return new SchedulesEntity();
     }
 
-    /**
-     * @return ScheduleEntity
-     */
-    protected function createScheduleEntity()
+    protected function createScheduleEntity(): ScheduleEntity
     {
         return new ScheduleEntity();
     }
 
-    /**
-     * @return MovieEntity
-     */
-    protected function createMovieEntity()
+    protected function createMovieEntity(): MovieEntity
     {
         return new MovieEntity();
     }
 
-    /**
-     * @return ScreenEntity
-     */
-    protected function createScreenEntity()
+    protected function createScreenEntity(): ScreenEntity
     {
         return new ScreenEntity();
     }
 
-    /**
-     * @return TimeEntity
-     */
-    protected function createTimeEntity()
+    protected function createTimeEntity(): TimeEntity
     {
         return new TimeEntity($this->purchaseBaseUrl);
     }

@@ -18,10 +18,7 @@ final class TheaterRepositoryTest extends TestCase
 {
     use MockeryPHPUnitIntegration;
 
-    /**
-     * @return ReflectionClass
-     */
-    protected function createTargetReflection()
+    protected function createTargetReflection(): ReflectionClass
     {
         return new ReflectionClass(TheaterRepository::class);
     }
@@ -52,10 +49,8 @@ final class TheaterRepositoryTest extends TestCase
 
     /**
      * @test
-     *
-     * @return void
      */
-    public function testAddActiveQuery()
+    public function testAddActiveQuery(): void
     {
         $alias = 'test';
 
@@ -93,10 +88,8 @@ final class TheaterRepositoryTest extends TestCase
 
     /**
      * @test
-     *
-     * @return void
      */
-    public function testFindByActive()
+    public function testFindByActive(): void
     {
         $alias = 't';
 
@@ -138,10 +131,8 @@ final class TheaterRepositoryTest extends TestCase
 
     /**
      * @test
-     *
-     * @return void
      */
-    public function testFindOneByName()
+    public function testFindOneByName(): void
     {
         $alias = 't';
 
@@ -189,10 +180,8 @@ final class TheaterRepositoryTest extends TestCase
 
     /**
      * @test
-     *
-     * @return void
      */
-    public function testFindBySpecialSite()
+    public function testFindBySpecialSite(): void
     {
         $alias = 't';
 

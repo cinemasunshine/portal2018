@@ -21,10 +21,8 @@ final class TheaterListControllerTest extends BaseTestCase
 
     /**
      * @test
-     *
-     * @return void
      */
-    public function testExecuteIndex()
+    public function testExecuteIndex(): void
     {
         $requestMock  = $this->createRequestMock();
         $responseMock = $this->createResponseMock();
@@ -35,14 +33,14 @@ final class TheaterListControllerTest extends BaseTestCase
             ->makePartial()
             ->shouldAllowMockingProtectedMethods();
 
-        $theaters = [];
+        $areaToTheaters = [];
         $targetMock
-            ->shouldReceive('getTheaters')
+            ->shouldReceive('getAreaToTheaters')
             ->once()
             ->with()
-            ->andReturn($theaters);
+            ->andReturn($areaToTheaters);
 
-        $data = ['areaToTheaters' => $theaters];
+        $data = ['areaToTheaters' => $areaToTheaters];
         $targetMock
             ->shouldReceive('render')
             ->once()
@@ -57,10 +55,8 @@ final class TheaterListControllerTest extends BaseTestCase
 
     /**
      * @test
-     *
-     * @return void
      */
-    public function testExecuteSns()
+    public function testExecuteSns(): void
     {
         $requestMock  = $this->createRequestMock();
         $responseMock = $this->createResponseMock();
@@ -71,14 +67,14 @@ final class TheaterListControllerTest extends BaseTestCase
             ->makePartial()
             ->shouldAllowMockingProtectedMethods();
 
-        $theaters = [];
+        $areaToTheaters = [];
         $targetMock
-            ->shouldReceive('getTheaters')
+            ->shouldReceive('getAreaToTheaters')
             ->once()
             ->with()
-            ->andReturn($theaters);
+            ->andReturn($areaToTheaters);
 
-        $data = ['areaToTheaters' => $theaters];
+        $data = ['areaToTheaters' => $areaToTheaters];
         $targetMock
             ->shouldReceive('render')
             ->once()

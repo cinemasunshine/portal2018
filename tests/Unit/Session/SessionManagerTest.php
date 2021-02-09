@@ -22,13 +22,9 @@ final class SessionManagerTest extends TestCase
     use MockeryPHPUnitIntegration;
 
     /**
-     * test getContainer
-     *
      * @test
-     *
-     * @return void
      */
-    public function testGetContainer()
+    public function testGetContainer(): void
     {
         $sessionManagerMock = Mockery::mock(SessionManager::class)
             ->makePartial();

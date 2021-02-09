@@ -27,8 +27,6 @@ final class UserExtensionTest extends TestCase
     use MockeryPHPUnitIntegration;
 
     /**
-     * Create AuthorizationManager mock
-     *
      * @return MockInterface|LegacyMockInterface|AuthorizationManager
      */
     protected function createAuthorizationManagerMock()
@@ -37,8 +35,6 @@ final class UserExtensionTest extends TestCase
     }
 
     /**
-     * Create UserManager mock
-     *
      * @return MockInterface|LegacyMockInterface|UserManager
      */
     protected function createUserManagerMock()
@@ -47,13 +43,9 @@ final class UserExtensionTest extends TestCase
     }
 
     /**
-     * test construct
-     *
      * @test
-     *
-     * @return void
      */
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $extensionMock            = Mockery::mock(UserExtension::class);
         $userManagerMock          = $this->createUserManagerMock();
@@ -83,13 +75,9 @@ final class UserExtensionTest extends TestCase
     }
 
     /**
-     * test getFunctions
-     *
      * @test
-     *
-     * @return void
      */
-    public function testGetFunctions()
+    public function testGetFunctions(): void
     {
         $extensionMock = Mockery::mock(UserExtension::class)
             ->makePartial();
@@ -104,13 +92,9 @@ final class UserExtensionTest extends TestCase
     }
 
     /**
-     * test getLoginUrl
-     *
      * @test
-     *
-     * @return void
      */
-    public function testGetLoginUrl()
+    public function testGetLoginUrl(): void
     {
         $extensionMock = Mockery::mock(UserExtension::class)
             ->makePartial();
@@ -135,13 +119,9 @@ final class UserExtensionTest extends TestCase
     }
 
     /**
-     * test getLogoutUrl
-     *
      * @test
-     *
-     * @return void
      */
-    public function testGetLogoutUrl()
+    public function testGetLogoutUrl(): void
     {
         $extensionMock = Mockery::mock(UserExtension::class)
             ->makePartial();
@@ -166,13 +146,9 @@ final class UserExtensionTest extends TestCase
     }
 
     /**
-     * test getUser
-     *
      * @test
-     *
-     * @return void
      */
-    public function testGetUser()
+    public function testGetUser(): void
     {
         $extensionMock = Mockery::mock(UserExtension::class)
             ->makePartial();
@@ -196,13 +172,9 @@ final class UserExtensionTest extends TestCase
     }
 
     /**
-     * test isLogin
-     *
      * @test
-     *
-     * @return void
      */
-    public function testIsLogin()
+    public function testIsLogin(): void
     {
         $extensionMock = Mockery::mock(UserExtension::class)
             ->makePartial();

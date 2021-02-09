@@ -27,8 +27,6 @@ final class AzureStorageExtensionTest extends TestCase
     use MockeryPHPUnitIntegration;
 
     /**
-     * Create BlobRestProxy mock
-     *
      * @return MockInterface|LegacyMockInterface|BlobRestProxy
      */
     protected function crateBlobRestProxyMock()
@@ -37,13 +35,9 @@ final class AzureStorageExtensionTest extends TestCase
     }
 
     /**
-     * test construct
-     *
      * @test
-     *
-     * @return void
      */
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $extensionMock     = Mockery::mock(AzureStorageExtension::class);
         $blobRestProxyMock = $this->crateBlobRestProxyMock();
@@ -73,13 +67,9 @@ final class AzureStorageExtensionTest extends TestCase
     }
 
     /**
-     * test getFunctions
-     *
      * @test
-     *
-     * @return void
      */
-    public function testGetFunctions()
+    public function testGetFunctions(): void
     {
         $extensionMock = Mockery::mock(AzureStorageExtension::class)
             ->makePartial();
@@ -97,10 +87,8 @@ final class AzureStorageExtensionTest extends TestCase
      * test blobUrl has publicEndpoint
      *
      * @test
-     *
-     * @return void
      */
-    public function testBlobUrlHasPublicEndpoint()
+    public function testBlobUrlHasPublicEndpoint(): void
     {
         $extensionMock = Mockery::mock(AzureStorageExtension::class)
             ->makePartial();
@@ -127,10 +115,8 @@ final class AzureStorageExtensionTest extends TestCase
      * test blobUrl do not has publicEndpoint
      *
      * @test
-     *
-     * @return void
      */
-    public function testBlobUrlDoNotHasPublicEndpoint()
+    public function testBlobUrlDoNotHasPublicEndpoint(): void
     {
         $container = 'test';
         $blob      = 'sample.txt';
@@ -162,13 +148,9 @@ final class AzureStorageExtensionTest extends TestCase
     }
 
     /**
-     * test fileUrl
-     *
      * @test
-     *
-     * @return void
      */
-    public function testFileUrl()
+    public function testFileUrl(): void
     {
         $container = File::getBlobContainer();
         $blob      = 'sample.txt';

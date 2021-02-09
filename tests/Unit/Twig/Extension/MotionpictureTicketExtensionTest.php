@@ -23,13 +23,9 @@ final class MotionpictureTicketExtensionTest extends TestCase
     use MockeryPHPUnitIntegration;
 
     /**
-     * test construct
-     *
      * @test
-     *
-     * @return void
      */
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $extensionMock = Mockery::mock(MotionpictureTicketExtension::class);
         $settings      = [];
@@ -50,13 +46,9 @@ final class MotionpictureTicketExtensionTest extends TestCase
     }
 
     /**
-     * test getFunctions
-     *
      * @test
-     *
-     * @return void
      */
-    public function testGetFunctions()
+    public function testGetFunctions(): void
     {
         $extensionMock = Mockery::mock(MotionpictureTicketExtension::class)
             ->makePartial();
@@ -71,13 +63,9 @@ final class MotionpictureTicketExtensionTest extends TestCase
     }
 
     /**
-     * test getTicketInquiryUrl
-     *
      * @test
-     *
-     * @return void
      */
-    public function testGetTicketInquiryUrl()
+    public function testGetTicketInquiryUrl(): void
     {
         $settings = ['ticket_url' => 'http://example.com'];
 
@@ -98,13 +86,9 @@ final class MotionpictureTicketExtensionTest extends TestCase
     }
 
     /**
-     * test getTicketEntranceUrl
-     *
      * @test
-     *
-     * @return void
      */
-    public function testGetTicketEntranceUrl()
+    public function testGetTicketEntranceUrl(): void
     {
         $settings = ['ticket_entrance_url' => 'http://example.com'];
 

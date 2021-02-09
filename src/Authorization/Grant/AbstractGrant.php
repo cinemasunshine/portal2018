@@ -11,12 +11,6 @@ use GuzzleHttp\Client as HttpClient;
  */
 abstract class AbstractGrant
 {
-    /**
-     * create HTTP client
-     *
-     * @param string $baseUri
-     * @return HttpClient
-     */
     protected function createHttpClient(string $baseUri): HttpClient
     {
         $config = [
@@ -30,11 +24,7 @@ abstract class AbstractGrant
     }
 
     /**
-     * return request headers
-     *
-     * @param string $clientId
-     * @param string $clientSecret
-     * @return array
+     * @return array<string, string>
      */
     protected function getRequestHeaders(string $clientId, string $clientSecret): array
     {

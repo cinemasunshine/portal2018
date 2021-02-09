@@ -27,13 +27,6 @@ class RefreshToken extends AbstractGrant
     /** @var HttpClient */
     protected $httpClient;
 
-    /**
-     * construct
-     *
-     * @param string $host
-     * @param string $clientId
-     * @param string $clientSecret
-     */
     public function __construct(string $host, string $clientId, string $clientSecret)
     {
         $this->host         = $host;
@@ -42,12 +35,6 @@ class RefreshToken extends AbstractGrant
         $this->httpClient   = $this->createHttpClient('https://' . $this->host);
     }
 
-    /**
-     * Request token
-     *
-     * @param string $refreshToken
-     * @return Token
-     */
     public function requestToken(string $refreshToken): Token
     {
         $headers = $this->getRequestHeaders($this->clientId, $this->clientSecret);

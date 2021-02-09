@@ -13,11 +13,9 @@ use Cinemasunshine\Schedule\Entity\V3\Screen as BaseEntity;
 class Screen extends BaseEntity implements PortalEntityInterface
 {
     /**
-     * to array
-     *
-     * @return array
+     * @return array<string, mixed>
      */
-    public function toArray()
+    public function toArray(): array
     {
         $data = [
             'name' => $this->getName(),

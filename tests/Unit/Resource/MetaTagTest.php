@@ -31,20 +31,15 @@ final class MetaTagTest extends TestCase
         return Mockery::mock(MetaTag::class);
     }
 
-    /**
-     * @return ReflectionClass
-     */
-    protected function createTargetReflection()
+    protected function createTargetReflection(): ReflectionClass
     {
         return new ReflectionClass(MetaTag::class);
     }
 
     /**
      * @test
-     *
-     * @return void
      */
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $title       = 'example title';
         $description = 'example description';
@@ -69,10 +64,8 @@ final class MetaTagTest extends TestCase
 
     /**
      * @test
-     *
-     * @return void
      */
-    public function testGetTitle()
+    public function testGetTitle(): void
     {
         $title = 'example title';
 
@@ -90,10 +83,8 @@ final class MetaTagTest extends TestCase
 
     /**
      * @test
-     *
-     * @return void
      */
-    public function testGetDescription()
+    public function testGetDescription(): void
     {
         $description = 'example description';
 
@@ -111,10 +102,8 @@ final class MetaTagTest extends TestCase
 
     /**
      * @test
-     *
-     * @return void
      */
-    public function testGetKeywords()
+    public function testGetKeywords(): void
     {
         $keywords = 'example keywords';
 

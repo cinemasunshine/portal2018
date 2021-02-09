@@ -31,13 +31,6 @@ class AuthorizationCode extends AbstractGrant
     /** @var string */
     protected $codeChallengeMethod = 'S256';
 
-    /**
-     * construct
-     *
-     * @param string $host
-     * @param string $clientId
-     * @param string $clientSecret
-     */
     public function __construct(string $host, string $clientId, string $clientSecret)
     {
         $this->host         = $host;
@@ -47,15 +40,9 @@ class AuthorizationCode extends AbstractGrant
     }
 
     /**
-     * return authorization URL
-     *
      * @link https://m-p.backlog.jp/view/SASAKI-485
      *
-     * @param string      $codeVerifier
-     * @param string      $redirectUri
-     * @param array       $scope
-     * @param string|null $state
-     * @return string
+     * @param string[] $scope
      */
     public function getAuthorizationUrl(
         string $codeVerifier,
@@ -86,12 +73,6 @@ class AuthorizationCode extends AbstractGrant
     }
 
     /**
-     * generate code_challenge
-     *
-     * @param string $codeVerifier
-     * @param string $codeChallengeMethod
-     * @return string
-     *
      * @throws LogicException
      */
     protected function generateCodeChallenge(string $codeVerifier, string $codeChallengeMethod): string
@@ -104,24 +85,13 @@ class AuthorizationCode extends AbstractGrant
     }
 
     /**
-     * generate scope string
-     *
-     * @param array $scopeList
-     * @return string
+     * @param string[] $scopeList
      */
     protected function generateScopeStr(array $scopeList): string
     {
         return implode(' ', $scopeList);
     }
 
-    /**
-     * Request token
-     *
-     * @param string $code
-     * @param string $redirectUri
-     * @param string $codeVerifier
-     * @return Token
-     */
     public function requestToken(string $code, string $redirectUri, string $codeVerifier): Token
     {
         $headers = $this->getRequestHeaders($this->clientId, $this->clientSecret);
@@ -144,12 +114,6 @@ class AuthorizationCode extends AbstractGrant
         return Token::create(json_decode($rawContents, true));
     }
 
-    /**
-     * return logout URL
-     *
-     * @param string $redirectUri
-     * @return string
-     */
     public function getLogoutUrl(string $redirectUri): string
     {
         $params = [

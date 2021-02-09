@@ -12,11 +12,7 @@ use Cinemasunshine\ORM\Repositories\PageRepository as BaseRepository;
  */
 class PageRepository extends BaseRepository
 {
-    /**
-     * @param int $id
-     * @return Page|null
-     */
-    public function findOneById(int $id)
+    public function findOneById(int $id): ?Page
     {
         $alias = 'p';
         $qb    = $this->createQueryBuilder($alias);

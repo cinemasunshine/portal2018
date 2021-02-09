@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\ORM\Repository;
 
 use App\ORM\Entity\Trailer;
@@ -11,12 +13,7 @@ use Doctrine\ORM\QueryBuilder;
  */
 class TrailerRepository extends EntityRepository
 {
-    /**
-     * return active query
-     *
-     * @return QueryBuilder
-     */
-    protected function getActiveQuery()
+    protected function getActiveQuery(): QueryBuilder
     {
         $qb = $this->createQueryBuilder('t');
         $qb
@@ -26,12 +23,9 @@ class TrailerRepository extends EntityRepository
     }
 
     /**
-     * find by page
-     *
-     * @param int $pageId
      * @return Trailer[]
      */
-    public function findByPage(int $pageId)
+    public function findByPage(int $pageId): array
     {
         $qb = $this->getActiveQuery();
         $qb
@@ -43,12 +37,9 @@ class TrailerRepository extends EntityRepository
     }
 
     /**
-     * find by theater
-     *
-     * @param int $theaterId
      * @return Trailer[]
      */
-    public function findByTheater(int $theaterId)
+    public function findByTheater(int $theaterId): array
     {
         $qb = $this->getActiveQuery();
         $qb
@@ -60,12 +51,9 @@ class TrailerRepository extends EntityRepository
     }
 
     /**
-     * find by special_site
-     *
-     * @param int $specialSiteId
      * @return Trailer[]
      */
-    public function findBySpecialSite(int $specialSiteId)
+    public function findBySpecialSite(int $specialSiteId): array
     {
         $qb = $this->getActiveQuery();
         $qb

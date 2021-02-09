@@ -13,11 +13,9 @@ use Cinemasunshine\Schedule\Entity\V3\Movie as BaseEntity;
 class Movie extends BaseEntity implements PortalEntityInterface
 {
     /**
-     * to array
-     *
-     * @return array
+     * @return array<string, mixed>
      */
-    public function toArray()
+    public function toArray(): array
     {
         $data = [
             'is_pre_sale'   => $this->getIsPreSale(),

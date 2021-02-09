@@ -20,12 +20,6 @@ class UserExtension extends AbstractExtension
     /** @var AuthorizationManager */
     protected $authorizationManager;
 
-    /**
-     * construct
-     *
-     * @param UserManager          $userManager
-     * @param AuthorizationManager $authorizationManager
-     */
     public function __construct(UserManager $userManager, AuthorizationManager $authorizationManager)
     {
         $this->userManager          = $userManager;
@@ -33,11 +27,9 @@ class UserExtension extends AbstractExtension
     }
 
     /**
-     * get functions
-     *
-     * @return array
+     * @return TwigFunction[]
      */
-    public function getFunctions()
+    public function getFunctions(): array
     {
         return [
             new TwigFunction('login_url', [$this, 'getLoginUrl'], [ 'is_safe' => ['all'] ]),
@@ -47,23 +39,11 @@ class UserExtension extends AbstractExtension
         ];
     }
 
-    /**
-     * return Login URL
-     *
-     * @param string $redirectUri
-     * @return string
-     */
     public function getLoginUrl(string $redirectUri): string
     {
         return $this->authorizationManager->getAuthorizationUrl($redirectUri);
     }
 
-    /**
-     * return logout URL
-     *
-     * @param string $redirectUri
-     * @return string
-     */
     public function getLogoutUrl(string $redirectUri): string
     {
         return $this->authorizationManager->getLogoutUrl($redirectUri);
@@ -72,18 +52,13 @@ class UserExtension extends AbstractExtension
     /**
      * return authorized user data
      *
-     * @return array|null
+     * @return array<string, mixed>|null
      */
     public function getUser(): ?array
     {
         return $this->userManager->getUser();
     }
 
-    /**
-     * ログイン判定
-     *
-     * @return boolean
-     */
     public function isLogin(): bool
     {
         return $this->userManager->isAuthenticated();

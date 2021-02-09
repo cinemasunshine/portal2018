@@ -24,8 +24,6 @@ final class ClientCredentialsTokenTest extends TestCase
     use MockeryPHPUnitIntegration;
 
     /**
-     * Create target mock
-     *
      * @return MockInterface|LegacyMockInterface|ClientCredentialsToken
      */
     protected function createTargetMock()
@@ -33,12 +31,7 @@ final class ClientCredentialsTokenTest extends TestCase
         return Mockery::mock(ClientCredentialsToken::class);
     }
 
-    /**
-     * Create target reflection
-     *
-     * @return ReflectionClass
-     */
-    protected function createTargetReflection()
+    protected function createTargetReflection(): ReflectionClass
     {
         return new ReflectionClass(ClientCredentialsToken::class);
     }
@@ -50,10 +43,8 @@ final class ClientCredentialsTokenTest extends TestCase
      * setterの変更に注意。
      *
      * @test
-     *
-     * @return void
      */
-    public function testCreate()
+    public function testCreate(): void
     {
         $accessToken = 'example_access_token';
         $tokenType   = 'example_type';
@@ -84,13 +75,9 @@ final class ClientCredentialsTokenTest extends TestCase
     }
 
     /**
-     * test getAccessToken
-     *
      * @test
-     *
-     * @return void
      */
-    public function testGetAccessToken()
+    public function testGetAccessToken(): void
     {
         $accessToken = 'example_access_token';
 
@@ -107,13 +94,9 @@ final class ClientCredentialsTokenTest extends TestCase
     }
 
     /**
-     * test setAccessToken
-     *
      * @test
-     *
-     * @return void
      */
-    public function testSetAccessToken()
+    public function testSetAccessToken(): void
     {
         $accessToken = 'example_access_token';
 
@@ -132,13 +115,9 @@ final class ClientCredentialsTokenTest extends TestCase
     }
 
     /**
-     * test getTokenType
-     *
      * @test
-     *
-     * @return void
      */
-    public function testGetTokenType()
+    public function testGetTokenType(): void
     {
         $tokenType = 'example_token_type';
 
@@ -155,13 +134,9 @@ final class ClientCredentialsTokenTest extends TestCase
     }
 
     /**
-     * test setTokenType
-     *
      * @test
-     *
-     * @return void
      */
-    public function testSetTokenType()
+    public function testSetTokenType(): void
     {
         $tokenType = 'example_token_type';
 
@@ -180,13 +155,9 @@ final class ClientCredentialsTokenTest extends TestCase
     }
 
     /**
-     * test getExpiresIn
-     *
      * @test
-     *
-     * @return void
      */
-    public function testGetExpiresIn()
+    public function testGetExpiresIn(): void
     {
         $expiresIn = 3600;
 
@@ -203,13 +174,9 @@ final class ClientCredentialsTokenTest extends TestCase
     }
 
     /**
-     * test setExpiresIn
-     *
      * @test
-     *
-     * @return void
      */
-    public function testSetExpiresIn()
+    public function testSetExpiresIn(): void
     {
         $expiresIn = 3600;
 

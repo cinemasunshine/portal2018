@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\ORM\Repository;
 
 use App\ORM\Entity\Campaign;
@@ -12,12 +14,7 @@ use Doctrine\ORM\QueryBuilder;
  */
 class CampaignRepository extends EntityRepository
 {
-    /**
-     * return active query
-     *
-     * @return QueryBuilder
-     */
-    protected function getActiveQuery()
+    protected function getActiveQuery(): QueryBuilder
     {
         $qb = $this->createQueryBuilder('c');
         $qb
@@ -31,12 +28,9 @@ class CampaignRepository extends EntityRepository
     }
 
     /**
-     * find by page
-     *
-     * @param int $pageId
      * @return Campaign[]
      */
-    public function findByPage(int $pageId)
+    public function findByPage(int $pageId): array
     {
         $qb = $this->getActiveQuery();
 
@@ -53,12 +47,9 @@ class CampaignRepository extends EntityRepository
     }
 
     /**
-     * find by theater
-     *
-     * @param int $theaterId
      * @return Campaign[]
      */
-    public function findByTheater(int $theaterId)
+    public function findByTheater(int $theaterId): array
     {
         $qb = $this->getActiveQuery();
 
@@ -75,12 +66,9 @@ class CampaignRepository extends EntityRepository
     }
 
     /**
-     * find by special_site
-     *
-     * @param int $specialSiteId
      * @return Campaign[]
      */
-    public function findBySpecialSite(int $specialSiteId)
+    public function findBySpecialSite(int $specialSiteId): array
     {
         $qb = $this->getActiveQuery();
 

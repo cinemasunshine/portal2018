@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller;
 
 use App\ORM\Entity;
@@ -11,16 +13,13 @@ class IndexController extends GeneralController
     /**
      * index action
      *
-     * @param Request  $request
-     * @param Response $response
-     * @param array    $args
-     * @return Response
+     * @param array<string, mixed> $args
      */
-    public function executeIndex(Request $request, Response $response, $args)
+    public function executeIndex(Request $request, Response $response, array $args): Response
     {
         $mainBanners = $this->getMainBanners();
 
-        $areaToTheaters = $this->getTheaters();
+        $areaToTheaters = $this->getAreaToTheaters();
 
         $trailer = $this->getTrailer();
 
@@ -56,11 +55,9 @@ class IndexController extends GeneralController
     }
 
     /**
-     * return main_banners
-     *
      * @return Entity\MainBanner[]
      */
-    protected function getMainBanners()
+    protected function getMainBanners(): array
     {
         return $this->em
             ->getRepository(Entity\MainBanner::class)
@@ -68,11 +65,9 @@ class IndexController extends GeneralController
     }
 
     /**
-     * return theaters
-     *
-     * @return array
+     * @return array<int, Entity\Theater[]>
      */
-    protected function getTheaters()
+    protected function getAreaToTheaters(): array
     {
         $theaters = parent::getTheaters();
 
@@ -92,11 +87,6 @@ class IndexController extends GeneralController
         return $areaToTheaters;
     }
 
-    /**
-     * return trailer
-     *
-     * @return Entity\Trailer|null
-     */
     protected function getTrailer(): ?Entity\Trailer
     {
         $trailers = $this->em
@@ -113,12 +103,7 @@ class IndexController extends GeneralController
         return $trailers[0];
     }
 
-    /**
-     * return title_raning
-     *
-     * @return Entity\TitleRanking
-     */
-    protected function getTitleRanking()
+    protected function getTitleRanking(): Entity\TitleRanking
     {
         return $this->em
             ->getRepository(Entity\TitleRanking::class)
@@ -126,12 +111,9 @@ class IndexController extends GeneralController
     }
 
     /**
-     * return news list
-     *
-     * @param int $category
      * @return Entity\News[]
      */
-    protected function getNewsList(int $category)
+    protected function getNewsList(int $category): array
     {
         return $this->em
             ->getRepository(Entity\News::class)
