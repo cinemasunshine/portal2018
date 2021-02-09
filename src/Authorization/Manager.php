@@ -35,17 +35,14 @@ class Manager
     /** @var RefreshTokenGrant|null */
     protected $refreshTokenGrant;
 
-    /** @var array */
+    /** @var string[] */
     protected $scopeList;
 
     /** @var SessionContainer */
     protected $session;
 
     /**
-     * construct
-     *
-     * @param array            $settings
-     * @param SessionContainer $session
+     * @param array<string, mixed> $settings
      */
     public function __construct(array $settings, SessionContainer $session)
     {
@@ -57,11 +54,6 @@ class Manager
         $this->session = $session;
     }
 
-    /**
-     * return Authorization Code Grunt
-     *
-     * @return AuthorizationCodeGrant
-     */
     protected function getAuthorizationCodeGrunt(): AuthorizationCodeGrant
     {
         if (! $this->authorizationCodeGrunt) {
@@ -75,12 +67,6 @@ class Manager
         return $this->authorizationCodeGrunt;
     }
 
-    /**
-     * return Authorization URL
-     *
-     * @param string $redirectUri
-     * @return string
-     */
     public function getAuthorizationUrl(string $redirectUri): string
     {
         return $this->getAuthorizationCodeGrunt()->getAuthorizationUrl(
@@ -97,31 +83,17 @@ class Manager
      * slim/flashのような一時的なストレージのほうが安全ではあるが
      * このアプリケーション設計では使用できない。
      * （APIやiframeなどのリクエストで消えてしまう）
-     *
-     * @return void
      */
-    protected function initAuthorizationState()
+    protected function initAuthorizationState(): void
     {
         $this->session['authorization_state'] = $this->createUniqueStr('authorization_state');
     }
 
-    /**
-     * Create unique string
-     *
-     * @param string $name
-     * @param string $salt
-     * @return string
-     */
     protected function createUniqueStr(string $name, string $salt = 'salt'): string
     {
         return md5($salt . uniqid((string) random_int(1, 99999), true) . $name);
     }
 
-    /**
-     * return authorization state
-     *
-     * @return string
-     */
     public function getAuthorizationState(): string
     {
         if (! isset($this->session['authorization_state'])) {
@@ -131,21 +103,11 @@ class Manager
         return $this->session['authorization_state'];
     }
 
-    /**
-     * clear authorization state
-     *
-     * @return void
-     */
-    public function clearAuthorizationState()
+    public function clearAuthorizationState(): void
     {
         unset($this->session['authorization_state']);
     }
 
-    /**
-     * Initialize code_verifier
-     *
-     * @return void
-     */
     protected function initCodeVerifier(): void
     {
         $this->session['code_verifier'] = $this->createUniqueStr('code_verifier');
@@ -155,8 +117,6 @@ class Manager
      * return code_verifier
      *
      * 新たに認証を開始する時は code_verifier を初期化してください。
-     *
-     * @return string
      */
     protected function getCodeVerifier(): string
     {
@@ -167,13 +127,6 @@ class Manager
         return $this->session['code_verifier'];
     }
 
-    /**
-     * request token
-     *
-     * @param string $code
-     * @param string $redirectUri
-     * @return Token
-     */
     public function requestToken(string $code, string $redirectUri): Token
     {
         return $this->getAuthorizationCodeGrunt()->requestToken(
@@ -183,22 +136,11 @@ class Manager
         );
     }
 
-    /**
-     * return logout URL
-     *
-     * @param string $redirectUri
-     * @return string
-     */
     public function getLogoutUrl(string $redirectUri): string
     {
         return $this->getAuthorizationCodeGrunt()->getLogoutUrl($redirectUri);
     }
 
-    /**
-     * return Refresh Token Grant
-     *
-     * @return RefreshTokenGrant
-     */
     protected function getRefreshTokenGrant(): RefreshTokenGrant
     {
         if (! $this->refreshTokenGrant) {
@@ -212,12 +154,6 @@ class Manager
         return $this->refreshTokenGrant;
     }
 
-    /**
-     * Refreshing a Token
-     *
-     * @param string $refreshToken
-     * @return Token
-     */
     public function refreshToken(string $refreshToken): Token
     {
         return $this->getRefreshTokenGrant()->requestToken($refreshToken);

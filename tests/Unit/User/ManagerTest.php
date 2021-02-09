@@ -28,8 +28,6 @@ final class ManagerTest extends TestCase
     use MockeryPHPUnitIntegration;
 
     /**
-     * Create SessionContainer mock
-     *
      * @return MockInterface|LegacyMockInterface|SessionContainer
      */
     protected function createSessionContainerMock()
@@ -52,8 +50,6 @@ final class ManagerTest extends TestCase
     }
 
     /**
-     * Create AuthorizationCodeToken mock
-     *
      * @return MockInterface|LegacyMockInterface|AuthorizationCodeToken
      */
     protected function createAuthorizationCodeTokenMock()
@@ -62,8 +58,6 @@ final class ManagerTest extends TestCase
     }
 
     /**
-     * Ceate DecodedAccessToken mock
-     *
      * @return MockInterface|LegacyMockInterface|DecodedAccessToken
      */
     protected function createDecodedAccessTokenMock()
@@ -72,13 +66,9 @@ final class ManagerTest extends TestCase
     }
 
     /**
-     * test getContainer
-     *
      * @test
-     *
-     * @return void
      */
-    public function testGetContainer()
+    public function testGetContainer(): void
     {
         $sessionContainerMock = $this->createSessionContainerMock();
         $userManagerMock      = Mockery::mock(UserManager::class);
@@ -99,13 +89,9 @@ final class ManagerTest extends TestCase
     }
 
     /**
-     * test logout
-     *
      * @test
-     *
-     * @return void
      */
-    public function testLogin()
+    public function testLogin(): void
     {
         $userManagerMock = Mockery::mock(UserManager::class)
             ->makePartial();
@@ -154,13 +140,9 @@ final class ManagerTest extends TestCase
     }
 
     /**
-     * test logout
-     *
      * @test
-     *
-     * @return void
      */
-    public function testLogout()
+    public function testLogout(): void
     {
         $userManagerMock = Mockery::mock(UserManager::class)
             ->makePartial();
@@ -181,13 +163,9 @@ final class ManagerTest extends TestCase
     }
 
     /**
-     * test isAuthenticated
-     *
      * @test
-     *
-     * @return void
      */
-    public function testIsAuthenticated()
+    public function testIsAuthenticated(): void
     {
         $userManagerMock = Mockery::mock(UserManager::class)
             ->makePartial();
@@ -208,13 +186,9 @@ final class ManagerTest extends TestCase
     }
 
     /**
-     * test getUser
-     *
      * @test
-     *
-     * @return void
      */
-    public function testGetUser()
+    public function testGetUser(): void
     {
         $userManagerMock = Mockery::mock(UserManager::class)
             ->makePartial();
@@ -235,13 +209,9 @@ final class ManagerTest extends TestCase
     }
 
     /**
-     * test getAuthorizationToken
-     *
      * @test
-     *
-     * @return void
      */
-    public function testGetAuthorizationToken()
+    public function testGetAuthorizationToken(): void
     {
         $userManagerMock = Mockery::mock(UserManager::class)
             ->makePartial();
@@ -268,13 +238,9 @@ final class ManagerTest extends TestCase
     }
 
     /**
-     * test setAuthorizationToken
-     *
      * @test
-     *
-     * @return void
      */
-    public function testSetAuthorizationToken()
+    public function testSetAuthorizationToken(): void
     {
         $userManagerMock = Mockery::mock(UserManager::class)
             ->makePartial();

@@ -23,13 +23,9 @@ final class ContainerTest extends TestCase
     use MockeryPHPUnitIntegration;
 
     /**
-     * test clear
-     *
      * @test
-     *
-     * @return void
      */
-    public function testClear()
+    public function testClear(): void
     {
         $name = 'test';
 

@@ -23,13 +23,9 @@ final class AdvanceTicketExtensionTest extends TestCase
     use MockeryPHPUnitIntegration;
 
     /**
-     * test getFunctions
-     *
      * @test
-     *
-     * @return void
      */
-    public function testGetFunctions()
+    public function testGetFunctions(): void
     {
         $extensionMock = Mockery::mock(AdvanceTicketExtension::class)
             ->makePartial();
@@ -44,13 +40,9 @@ final class AdvanceTicketExtensionTest extends TestCase
     }
 
     /**
-     * test getTypeLabel
-     *
      * @test
-     *
-     * @return void
      */
-    public function testGetTypeLabel()
+    public function testGetTypeLabel(): void
     {
         $extensionMock = Mockery::mock(AdvanceTicketExtension::class)
             ->makePartial();

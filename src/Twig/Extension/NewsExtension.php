@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Twig\Extension;
 
 use App\ORM\Entity\News;
@@ -11,7 +13,7 @@ use Twig\TwigFunction;
  */
 class NewsExtension extends AbstractExtension
 {
-    /** @var array */
+    /** @var array<int, string> */
     protected $categoryLabels = [
         News::CATEGORY_NEWS       => 'ニュース',
         News::CATEGORY_INFO       => 'インフォメーション',
@@ -22,7 +24,7 @@ class NewsExtension extends AbstractExtension
         News::CATEGORY_4DX_SCREEN => '4DX SCREEN',
     ];
 
-    /** @var array */
+    /** @var array<int, string> */
     protected $categoryLabelClasses = [
         News::CATEGORY_NEWS       => 'list-type-news',
         News::CATEGORY_INFO       => 'list-type-information',
@@ -33,19 +35,14 @@ class NewsExtension extends AbstractExtension
         News::CATEGORY_4DX_SCREEN => 'list-type-4dxwscx',
     ];
 
-    /**
-     * construct
-     */
     public function __construct()
     {
     }
 
     /**
-     * get functions
-     *
-     * @return array
+     * @return TwigFunction[]
      */
-    public function getFunctions()
+    public function getFunctions(): array
     {
         return [
             new TwigFunction('news_category_label', [$this, 'getCategoryLabel']),
@@ -53,24 +50,12 @@ class NewsExtension extends AbstractExtension
         ];
     }
 
-    /**
-     * return category label
-     *
-     * @param int $category
-     * @return string|null
-     */
-    public function getCategoryLabel(int $category)
+    public function getCategoryLabel(int $category): ?string
     {
         return $this->categoryLabels[$category] ?? null;
     }
 
-    /**
-     * return category label class
-     *
-     * @param int $category
-     * @return string|null
-     */
-    public function getCategoryLabelClass(int $category)
+    public function getCategoryLabelClass(int $category): ?string
     {
         return $this->categoryLabelClasses[$category] ?? null;
     }

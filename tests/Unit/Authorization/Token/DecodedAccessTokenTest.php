@@ -25,8 +25,6 @@ final class DecodedAccessTokenTest extends TestCase
     use MockeryPHPUnitIntegration;
 
     /**
-     * Create target mock
-     *
      * @return MockInterface|LegacyMockInterface|DecodedAccessToken
      */
     protected function createTargetMock()
@@ -34,23 +32,14 @@ final class DecodedAccessTokenTest extends TestCase
         return Mockery::mock(DecodedAccessToken::class);
     }
 
-    /**
-     * Create target reflection
-     *
-     * @return ReflectionClass
-     */
-    protected function createTargetReflection()
+    protected function createTargetReflection(): ReflectionClass
     {
         return new ReflectionClass(DecodedAccessToken::class);
     }
 
     /**
-     * Encode JWT
-     *
-     * @param array  $header
-     * @param array  $claims
-     * @param string $signature
-     * @return string
+     * @param array<string, string> $header
+     * @param array<string, mixed>  $claims
      */
     protected function encodeJWT(array $header, array $claims, string $signature): string
     {
@@ -62,13 +51,9 @@ final class DecodedAccessTokenTest extends TestCase
     }
 
     /**
-     * test decodeJWT
-     *
      * @test
-     *
-     * @return void
      */
-    public function testDecodeJWT()
+    public function testDecodeJWT(): void
     {
         $header    = ['foo' => 'example_header'];
         $claims    = ['bar' => 'example_claims'];
@@ -84,10 +69,8 @@ final class DecodedAccessTokenTest extends TestCase
      * test decodeJWT (segments few)
      *
      * @test
-     *
-     * @return void
      */
-    public function testDecodeJWTSegmentsFew()
+    public function testDecodeJWTSegmentsFew(): void
     {
         $this->expectException(UnexpectedValueException::class);
         DecodedAccessToken::decodeJWT('aaa.bbb');
@@ -97,23 +80,17 @@ final class DecodedAccessTokenTest extends TestCase
      * test decodeJWT (segments many)
      *
      * @test
-     *
-     * @return void
      */
-    public function testDecodeJWTSegmentsMany()
+    public function testDecodeJWTSegmentsMany(): void
     {
         $this->expectException(UnexpectedValueException::class);
         DecodedAccessToken::decodeJWT('aaa.bbb.ccc.ddd');
     }
 
     /**
-     * test construct
-     *
      * @test
-     *
-     * @return void
      */
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $header    = ['foo' => 'example_header'];
         $claims    = ['bar' => 'example_claims'];
@@ -143,13 +120,9 @@ final class DecodedAccessTokenTest extends TestCase
     }
 
     /**
-     * test getHeader
-     *
      * @test
-     *
-     * @return void
      */
-    public function testGetHeader()
+    public function testGetHeader(): void
     {
         $header = ['foo' => 'example_header'];
 
@@ -166,13 +139,9 @@ final class DecodedAccessTokenTest extends TestCase
     }
 
     /**
-     * test getClaims
-     *
      * @test
-     *
-     * @return void
      */
-    public function testGetClaims()
+    public function testGetClaims(): void
     {
         $claims = ['bar' => 'example_claims'];
 
@@ -189,13 +158,9 @@ final class DecodedAccessTokenTest extends TestCase
     }
 
     /**
-     * get getSignature
-     *
      * @test
-     *
-     * @return void
      */
-    public function testGetSignature()
+    public function testGetSignature(): void
     {
         $signature = 'example_signature';
 

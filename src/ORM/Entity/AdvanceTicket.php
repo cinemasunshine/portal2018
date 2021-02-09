@@ -108,43 +108,31 @@ class AdvanceTicket extends BaseAdvanceTicket
         throw new LogicException('Not allowed.');
     }
 
-    /**
-     * is special gift stock
-     *
-     * @param int $stock
-     * @return boolean
-     */
-    public function isSpecialGiftStock(int $stock)
+    public function isSpecialGiftStock(int $stock): bool
     {
         return $this->getSpecialGiftStock() === $stock;
     }
 
     /**
      * 特典あり
-     *
-     * @return boolean
      */
-    public function isSpecialGiftStockIn()
+    public function isSpecialGiftStockIn(): bool
     {
         return $this->isSpecialGiftStock(self::SPECIAL_GIFT_STOCK_IN);
     }
 
     /**
      * 特典残り僅か
-     *
-     * @return boolean
      */
-    public function isSpecialGiftStockFew()
+    public function isSpecialGiftStockFew(): bool
     {
         return $this->isSpecialGiftStock(self::SPECIAL_GIFT_STOCK_FEW);
     }
 
     /**
      * 特典終了
-     *
-     * @return boolean
      */
-    public function isSpecialGiftStockNotIn()
+    public function isSpecialGiftStockNotIn(): bool
     {
         return $this->isSpecialGiftStock(self::SPECIAL_GIFT_STOCK_NOT_IN);
     }

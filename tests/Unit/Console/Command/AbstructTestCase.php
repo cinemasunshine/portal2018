@@ -18,8 +18,6 @@ use Symfony\Component\Console\Output\OutputInterface;
 abstract class AbstructTestCase extends TestCase
 {
     /**
-     * Create Input mock
-     *
      * @return MockInterface|LegacyMockInterface|InputInterface
      */
     protected function createInputMock()
@@ -28,8 +26,6 @@ abstract class AbstructTestCase extends TestCase
     }
 
     /**
-     * Create Input spy
-     *
      * @return MockInterface|LegacyMockInterface
      */
     protected function createInputSpy()
@@ -38,8 +34,6 @@ abstract class AbstructTestCase extends TestCase
     }
 
     /**
-     * Create Output mock
-     *
      * @return MockInterface|LegacyMockInterface|OutputInterface
      */
     protected function createOutputMock()
@@ -48,8 +42,6 @@ abstract class AbstructTestCase extends TestCase
     }
 
     /**
-     * Create Output spy
-     *
      * @return MockInterface|LegacyMockInterface
      */
     protected function createOutputSpy()

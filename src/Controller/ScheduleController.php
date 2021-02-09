@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller;
 
 use App\ORM\Entity;
@@ -15,12 +17,9 @@ class ScheduleController extends GeneralController
     /**
      * list action
      *
-     * @param Request  $request
-     * @param Response $response
-     * @param array    $args
-     * @return Response
+     * @param array<string, mixed> $args
      */
-    public function executeList(Request $request, Response $response, array $args)
+    public function executeList(Request $request, Response $response, array $args): Response
     {
         $theaters = $this->getTheaters();
 
@@ -58,17 +57,14 @@ class ScheduleController extends GeneralController
     /**
      * show action
      *
-     * @param Request  $request
-     * @param Response $response
-     * @param array    $args
-     * @return Response
+     * @param array<string, mixed> $args
      */
-    public function executeShow(Request $request, Response $response, array $args)
+    public function executeShow(Request $request, Response $response, array $args): Response
     {
-        /**@var Entity\Schedule|null $schedule */
+        /** @var Entity\Schedule|null $schedule */
         $schedule = $this->em
             ->getRepository(Entity\Schedule::class)
-            ->findOneById($args['schedule']);
+            ->findOneById((int) $args['schedule']);
 
         if (is_null($schedule)) {
             throw new NotFoundException($request, $response);

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Twig\Extension;
 
 use DateTime;
@@ -15,20 +17,15 @@ class CommonExtension extends AbstractExtension
     /** @var string */
     protected $appEnv;
 
-    /**
-     * construct
-     */
     public function __construct()
     {
         $this->appEnv = APP_ENV;
     }
 
     /**
-     * get functions
-     *
-     * @return array
+     * @return TwigFunction[]
      */
-    public function getFunctions()
+    public function getFunctions(): array
     {
         return [
             new TwigFunction('app_env', [$this, 'getAppEnv']),
@@ -38,11 +35,6 @@ class CommonExtension extends AbstractExtension
         ];
     }
 
-    /**
-     * return application environment
-     *
-     * @return string
-     */
     public function getAppEnv(): string
     {
         return $this->appEnv;
@@ -51,8 +43,7 @@ class CommonExtension extends AbstractExtension
     /**
      * Is the specific application environment?
      *
-     * @param string|array $env
-     * @return boolean
+     * @param string|string[] $env
      */
     public function isAppEnv($env): bool
     {
@@ -63,47 +54,27 @@ class CommonExtension extends AbstractExtension
         return in_array($this->appEnv, $env);
     }
 
-    /**
-     * retrun facebook URL
-     *
-     * @param string $name
-     * @return string
-     */
-    public function getFacebookUrl(string $name)
+    public function getFacebookUrl(string $name): string
     {
         return sprintf('https://www.facebook.com/%s', $name);
     }
 
-    /**
-     * return twitter URL
-     *
-     * @param string $name
-     * @return string
-     */
-    public function getTwitterUrl(string $name)
+    public function getTwitterUrl(string $name): string
     {
         return sprintf('https://twitter.com/%s', $name);
     }
 
     /**
-     * get filters
-     *
-     * @return array
+     * @return TwigFilter[]
      */
-    public function getFilters()
+    public function getFilters(): array
     {
         return [
             new TwigFilter('weekday', [$this, 'weekdayFilter']),
         ];
     }
 
-    /**
-     * return weekday
-     *
-     * @param DateTime $datetime
-     * @return string
-     */
-    public function weekdayFilter(DateTime $datetime)
+    public function weekdayFilter(DateTime $datetime): string
     {
         $weekdays = ['日', '月', '火', '水', '木', '金', '土'];
 

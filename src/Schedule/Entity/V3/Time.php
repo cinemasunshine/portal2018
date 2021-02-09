@@ -15,23 +15,14 @@ class Time extends BaseEntity implements PortalEntityInterface
     /** @var string */
     protected $baseUrl;
 
-    /**
-     * construct
-     *
-     * @param string $baseUrl
-     */
     public function __construct(string $baseUrl)
     {
         $this->baseUrl = $baseUrl;
     }
 
     /**
-     * get url
-     *
      * @link https://m-p.backlog.jp/view/SSKTS-635
      * @link https://m-p.backlog.jp/view/SSKTS-738
-     *
-     * @return string
      */
     public function getUrl(): string
     {
@@ -58,11 +49,9 @@ class Time extends BaseEntity implements PortalEntityInterface
     }
 
     /**
-     * to array
-     *
-     * @return array
+     * @return array<string, mixed>
      */
-    public function toArray()
+    public function toArray(): array
     {
         return [
             'start'     => $this->getStart(),

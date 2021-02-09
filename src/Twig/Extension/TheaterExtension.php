@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Twig\Extension;
 
 use App\ORM\Entity\Theater;
@@ -17,7 +19,7 @@ class TheaterExtension extends AbstractExtension
      *
      * 添字は劇場ID。
      *
-     * @var array
+     * @var array<int, string>
      */
     protected $metaKeywords = [
         2  => '東京,平和島',
@@ -35,19 +37,14 @@ class TheaterExtension extends AbstractExtension
         19 => '千葉,ユーカリが丘,ユーカリプラザ',
     ];
 
-    /**
-     * construct
-     */
     public function __construct()
     {
     }
 
     /**
-     * get filters
-     *
-     * @return array
+     * @return TwigFilter[]
      */
-    public function getFilters()
+    public function getFilters(): array
     {
         return [
             new TwigFilter('theater_name_ja', [$this, 'filterNameJa'], [ 'is_safe' => ['all'] ]),
@@ -55,12 +52,6 @@ class TheaterExtension extends AbstractExtension
         ];
     }
 
-    /**
-     * filter name_ja
-     *
-     * @param string $nameJa
-     * @return string
-     */
     public function filterNameJa(string $nameJa): string
     {
         if ($nameJa === 'グランドシネマサンシャイン') {
@@ -73,12 +64,6 @@ class TheaterExtension extends AbstractExtension
         return $filtered;
     }
 
-    /**
-     * filter name_ja
-     *
-     * @param string $nameJa
-     * @return string
-     */
     public function filterNameJa2(string $nameJa): string
     {
         if ($nameJa === 'グランドシネマサンシャイン') {
@@ -92,11 +77,9 @@ class TheaterExtension extends AbstractExtension
     }
 
     /**
-     * get functions
-     *
-     * @return array
+     * @return TwigFunction[]
      */
-    public function getFunctions()
+    public function getFunctions(): array
     {
         return [
             new TwigFunction('theater_area', [$this, 'theaterArea']),
@@ -104,26 +87,14 @@ class TheaterExtension extends AbstractExtension
         ];
     }
 
-    /**
-     * return theater area label
-     *
-     * @param int $area
-     * @return string|null
-     */
-    public function theaterArea(int $area)
+    public function theaterArea(int $area): ?string
     {
         $areas = Theater::getAreas();
 
         return $areas[$area] ?? null;
     }
 
-    /**
-     * metaタグkeywordを取得
-     *
-     * @param Theater $theater
-     * @return string|null
-     */
-    public function getMetaKeywords(Theater $theater)
+    public function getMetaKeywords(Theater $theater): ?string
     {
         return $this->metaKeywords[$theater->getId()] ?? null;
     }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Session;
 
 use Laminas\Session\Container as Base;
@@ -9,12 +11,7 @@ use Laminas\Session\Container as Base;
  */
 class Container extends Base
 {
-    /**
-     * clear
-     *
-     * @return void
-     */
-    public function clear()
+    public function clear(): void
     {
         $this->getStorage()->clear($this->getName());
     }

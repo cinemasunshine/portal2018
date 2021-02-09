@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Schedule\Entity;
 
 /**
@@ -8,9 +10,7 @@ namespace App\Schedule\Entity;
 interface PortalEntityInterface
 {
     /**
-     * to array
-     *
-     * @return array
+     * @return array<string, mixed>
      */
-    public function toArray();
+    public function toArray(): array;
 }

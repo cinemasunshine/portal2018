@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\ORM\Repository;
 
 use App\ORM\Entity\Theater;
@@ -11,12 +13,7 @@ use Doctrine\ORM\QueryBuilder;
  */
 class TheaterRepository extends BaseRepository
 {
-    /**
-     * @param QueryBuilder $qb
-     * @param string       $alias
-     * @return void
-     */
-    protected function addActiveQuery(QueryBuilder $qb, string $alias)
+    protected function addActiveQuery(QueryBuilder $qb, string $alias): void
     {
         parent::addActiveQuery($qb, $alias);
 
@@ -32,7 +29,7 @@ class TheaterRepository extends BaseRepository
     /**
      * @return Theater[]
      */
-    public function findByActive()
+    public function findByActive(): array
     {
         $alias = 't';
         $qb    = $this->createQueryBuilder($alias);
@@ -44,11 +41,7 @@ class TheaterRepository extends BaseRepository
         return $qb->getQuery()->getResult();
     }
 
-    /**
-     * @param string $name
-     * @return Theater|null
-     */
-    public function findOneByName(string $name)
+    public function findOneByName(string $name): ?Theater
     {
         $alias = 't';
         $qb    = $this->createQueryBuilder($alias);
@@ -63,10 +56,9 @@ class TheaterRepository extends BaseRepository
     }
 
     /**
-     * @param int $specialSiteId
      * @return Theater[]
      */
-    public function findBySpecialSite(int $specialSiteId)
+    public function findBySpecialSite(int $specialSiteId): array
     {
         $alias = 't';
         $qb    = $this->createQueryBuilder($alias);

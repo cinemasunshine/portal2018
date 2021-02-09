@@ -33,21 +33,17 @@ final class ScheduleControllerTest extends BaseTestCase
     /**
      * @test
      *
-     * @return void
-     *
      * @doesNotPerformAssertions
      */
-    public function testExecuteIndex()
+    public function testExecuteIndex(): void
     {
         // todo
     }
 
     /**
      * @test
-     *
-     * @return void
      */
-    public function testExecuteIndexInvalidName()
+    public function testExecuteIndexInvalidName(): void
     {
         $theaterName = 'invalid';
 
@@ -73,21 +69,17 @@ final class ScheduleControllerTest extends BaseTestCase
     /**
      * @test
      *
-     * @return void
-     *
      * @doesNotPerformAssertions
      */
-    public function testExecuteDate()
+    public function testExecuteDate(): void
     {
         // todo
     }
 
     /**
      * @test
-     *
-     * @return void
      */
-    public function testExecuteDateInvalidName()
+    public function testExecuteDateInvalidName(): void
     {
         $theaterName = 'invalid';
 

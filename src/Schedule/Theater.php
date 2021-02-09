@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Schedule;
 
 use Cinemasunshine\Schedule\Builder\ScheduleInterface as ScheduleBuilder;
@@ -27,12 +29,9 @@ class Theater extends Base
     protected $client;
 
     /**
-     * return config
-     *
-     * @param string $theater
-     * @return array
+     * @return array<string, mixed>
      */
-    protected static function getConfig(string $theater)
+    protected static function getConfig(string $theater): array
     {
         $configName = self::CONFIG_PREFIX . $theater;
 
@@ -40,11 +39,6 @@ class Theater extends Base
     }
 
     /**
-     * constructor
-     *
-     * @param string $name
-     * @param string $environment
-     *
      * @throws InvalidArgumentException
      */
     public function __construct(string $name, string $environment)
@@ -73,20 +67,13 @@ class Theater extends Base
     /**
      * スケジュール取得
      *
-     * @param ScheduleBuilder $builder
      * @return mixed
      */
-    public function fetchSchedule(ScheduleBuilder $builder = null)
+    public function fetchSchedule(?ScheduleBuilder $builder = null)
     {
         return $this->client->get($this->xml, $builder);
     }
 
-    /**
-     * is version
-     *
-     * @param string $version
-     * @return boolean
-     */
     public function isVersion(string $version): bool
     {
         return $this->version === $version;

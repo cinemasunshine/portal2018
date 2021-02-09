@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller\API;
 
 use App\Authorization\Grant\ClientCredentials;
@@ -19,12 +21,9 @@ class AuthorizationController extends BaseController
     /**
      * token action
      *
-     * @param Request  $request
-     * @param Response $response
-     * @param array    $args
-     * @return Response
+     * @param array<string, mixed> $args
      */
-    public function executeToken(Request $request, Response $response, array $args)
+    public function executeToken(Request $request, Response $response, array $args): Response
     {
         $meta     = ['name' => 'Authorization Token API'];
         $data     = [];
@@ -70,9 +69,7 @@ class AuthorizationController extends BaseController
     }
 
     /**
-     * execute visitor token
-     *
-     * @return array
+     * @return array<string, mixed>
      */
     protected function executeVisitorToken(): array
     {
@@ -93,9 +90,7 @@ class AuthorizationController extends BaseController
     }
 
     /**
-     * execute member token
-     *
-     * @return array
+     * @return array<string, mixed>
      */
     protected function executeMemberToken(): array
     {

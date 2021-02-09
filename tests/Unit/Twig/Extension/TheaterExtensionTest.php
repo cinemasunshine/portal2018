@@ -24,13 +24,9 @@ final class TheaterExtensionTest extends TestCase
     use MockeryPHPUnitIntegration;
 
     /**
-     * test getFilters
-     *
      * @test
-     *
-     * @return void
      */
-    public function testGetFilters()
+    public function testGetFilters(): void
     {
         $extensionMock = Mockery::mock(TheaterExtension::class)
             ->makePartial();
@@ -45,13 +41,9 @@ final class TheaterExtensionTest extends TestCase
     }
 
     /**
-     * test filterNameJa
-     *
      * @test
-     *
-     * @return void
      */
-    public function testFilterNameJa()
+    public function testFilterNameJa(): void
     {
         $extensionMock = Mockery::mock(TheaterExtension::class)
             ->makePartial();
@@ -64,13 +56,9 @@ final class TheaterExtensionTest extends TestCase
     }
 
     /**
-     * test filterNameJa2
-     *
      * @test
-     *
-     * @return void
      */
-    public function testFilterNameJa2()
+    public function testFilterNameJa2(): void
     {
         $extensionMock = Mockery::mock(TheaterExtension::class)
             ->makePartial();
@@ -83,13 +71,9 @@ final class TheaterExtensionTest extends TestCase
     }
 
     /**
-     * test getFunctions
-     *
      * @test
-     *
-     * @return void
      */
-    public function testGetFunctions()
+    public function testGetFunctions(): void
     {
         $extensionMock = Mockery::mock(TheaterExtension::class)
             ->makePartial();
@@ -104,13 +88,9 @@ final class TheaterExtensionTest extends TestCase
     }
 
     /**
-     * test theaterArea
-     *
      * @test
-     *
-     * @return void
      */
-    public function testTheaterArea()
+    public function testTheaterArea(): void
     {
         $extensionMock = Mockery::mock(TheaterExtension::class)
             ->makePartial();
@@ -120,13 +100,9 @@ final class TheaterExtensionTest extends TestCase
     }
 
     /**
-     * test getMetaKeywords
-     *
      * @test
-     *
-     * @return void
      */
-    public function testGetMetaKeywords()
+    public function testGetMetaKeywords(): void
     {
         $extensionMock = Mockery::mock(TheaterExtension::class)
             ->makePartial();

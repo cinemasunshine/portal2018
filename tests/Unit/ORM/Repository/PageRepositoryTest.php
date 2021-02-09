@@ -17,10 +17,7 @@ final class PageRepositoryTest extends TestCase
 {
     use MockeryPHPUnitIntegration;
 
-    /**
-     * @return ReflectionClass
-     */
-    protected function createTargetReflection()
+    protected function createTargetReflection(): ReflectionClass
     {
         return new ReflectionClass(PageRepository::class);
     }
@@ -49,7 +46,10 @@ final class PageRepositoryTest extends TestCase
         return Mockery::mock('Query');
     }
 
-    public function testFindOneById()
+    /**
+     * @test
+     */
+    public function testFindOneById(): void
     {
         $id    = 3;
         $alias = 'p';

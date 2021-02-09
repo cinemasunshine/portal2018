@@ -42,20 +42,15 @@ final class SeoExtensionTest extends TestCase
         return Mockery::mock(SeoExtension::class);
     }
 
-    /**
-     * @return ReflectionClass
-     */
-    protected function createTargetReflection()
+    protected function createTargetReflection(): ReflectionClass
     {
         return new ReflectionClass(SeoExtension::class);
     }
 
     /**
      * @test
-     *
-     * @return void
      */
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $file  = $this->file;
         $metas = [
@@ -82,10 +77,8 @@ final class SeoExtensionTest extends TestCase
 
     /**
      * @test
-     *
-     * @return void
      */
-    public function testConstructInvalidArgument()
+    public function testConstructInvalidArgument(): void
     {
         $this->expectException(InvalidArgumentException::class);
 
@@ -95,10 +88,8 @@ final class SeoExtensionTest extends TestCase
 
     /**
      * @test
-     *
-     * @return void
      */
-    public function testLoadMetas()
+    public function testLoadMetas(): void
     {
         $targetMock = $this->createTargetMock();
         $targetRef  = $this->createTargetReflection();
@@ -120,10 +111,8 @@ final class SeoExtensionTest extends TestCase
 
     /**
      * @test
-     *
-     * @return void
      */
-    public function testGetFunctions()
+    public function testGetFunctions(): void
     {
         $targetMock = $this->createTargetMock();
         $targetMock->makePartial();
@@ -139,10 +128,8 @@ final class SeoExtensionTest extends TestCase
 
     /**
      * @test
-     *
-     * @return void
      */
-    public function testGetTitle()
+    public function testGetTitle(): void
     {
         $key   = 'test';
         $title = 'example title';
@@ -165,10 +152,8 @@ final class SeoExtensionTest extends TestCase
 
     /**
      * @test
-     *
-     * @return void
      */
-    public function testGetDescription()
+    public function testGetDescription(): void
     {
         $key         = 'test';
         $description = 'example description';
@@ -191,10 +176,8 @@ final class SeoExtensionTest extends TestCase
 
     /**
      * @test
-     *
-     * @return void
      */
-    public function testGetKeywords()
+    public function testGetKeywords(): void
     {
         $key      = 'test';
         $keywords = 'hoge, huge';

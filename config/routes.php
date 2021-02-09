@@ -1,8 +1,6 @@
 <?php
 
-/**
- * routes.php
- */
+declare(strict_types=1);
 
 use App\Controller\AboutController;
 use App\Controller\API\AuthorizationController as AuthorizationAPIController;
@@ -44,12 +42,12 @@ $app->get('/sitepolicy/', AboutController::class . ':termsOfService')->setName('
 
 $app->get('/oyako_cinema/', OyakoCinemaController::class . ':index')->setName('oyako_cinema');
 
-$app->group('/news', function () {
+$app->group('/news', function (): void {
     $this->get('/', NewsController::class . ':list')->setName('news_list');
     $this->get('/{id:[0-9]+}.php', NewsController::class . ':show')->setName('news_show');
 });
 
-$app->group('/movie', function () {
+$app->group('/movie', function (): void {
     $this->get('/', ScheduleController::class . ':list')->setName('schedule_list');
     $this->get('/{schedule:[0-9]+}.php', ScheduleController::class . ':show')->setName('schedule_show');
 });
@@ -57,7 +55,7 @@ $app->group('/movie', function () {
 $app->get('/theater/', TheaterListController::class . ':index')->setName('theater_list');
 $app->get('/theater-sns/', TheaterListController::class . ':sns')->setName('theater_sns');
 
-$app->group('/theater/{name}', function () {
+$app->group('/theater/{name}', function (): void {
     $this->get('/', TheaterController::class . ':index')->setName('theater');
     $this->get('/access/', TheaterController::class . ':access')->setName('theater_access');
     $this->get('/admission/', TheaterController::class . ':admission')->setName('theater_admission');
@@ -65,13 +63,13 @@ $app->group('/theater/{name}', function () {
     $this->get('/concession/', TheaterController::class . ':concession')->setName('theater_concession');
     $this->get('/floor_guide/', TheaterController::class . ':floorGuide')->setName('theater_floor_guide');
 
-    $this->group('/news', function () {
+    $this->group('/news', function (): void {
         $this->get('/', TheaterController::class . ':newsList')->setName('theater_news_list');
         $this->get('/{id:[0-9]+}.php', TheaterController::class . ':newsShow')->setName('theater_news_show');
     });
 });
 
-$app->group('/imax', function () {
+$app->group('/imax', function (): void {
     $this->get('/', ImaxController::class . ':index')->setName('imax');
     $this->get('/about/', ImaxController::class . ':about')->setName('imax_about');
     $this->get('/movie/', ImaxController::class . ':scheduleList')->setName('imax_schedule_list');
@@ -81,7 +79,7 @@ $app->group('/imax', function () {
     $this->get('/theater/', ImaxController::class . ':theater')->setName('imax_theater');
 });
 
-$app->group('/4dx', function () {
+$app->group('/4dx', function (): void {
     $this->get('/', FourdxController::class . ':index')->setName('4dx');
     $this->get('/about/', FourdxController::class . ':about')->setName('4dx_about');
     $this->get('/movie/', FourdxController::class . ':scheduleList')->setName('4dx_schedule_list');
@@ -91,7 +89,7 @@ $app->group('/4dx', function () {
     $this->get('/theater/', FourdxController::class . ':theater')->setName('4dx_theater');
 });
 
-$app->group('/screen-x', function () {
+$app->group('/screen-x', function (): void {
     $this->get('/', ScreenXController::class . ':index')->setName('screenx');
     $this->get('/about/', ScreenXController::class . ':about')->setName('screenx_about');
     $this->get('/movie/', ScreenXController::class . ':scheduleList')->setName('screenx_schedule_list');
@@ -102,7 +100,7 @@ $app->group('/screen-x', function () {
     $this->get('/theater/', ScreenXController::class . ':theater')->setName('screenx_theater');
 });
 
-$app->group('/4dx-screen', function () {
+$app->group('/4dx-screen', function (): void {
     $this->get('/', FourdxScreenController::class . ':index')->setName('4dx_screen');
     $this->get('/about/', FourdxScreenController::class . ':about')->setName('4dx_screen_about');
     $this->get('/movie/', FourdxScreenController::class . ':scheduleList')
@@ -116,11 +114,11 @@ $app->group('/4dx-screen', function () {
 });
 
 // APIのURL設計はひとまずそのまま SASAKI-315
-$app->group('/api', function () {
-    $this->group('/auth', function () {
+$app->group('/api', function (): void {
+    $this->group('/auth', function (): void {
         $this->get('/token', AuthorizationAPIController::class . ':token');
     });
-    $this->group('/schedule/{name}', function () {
+    $this->group('/schedule/{name}', function (): void {
         $this->get('', ScheduleApiController::class . ':index');
         $this->get('/{date:[\d]{4}-[\d]{2}-[\d]{2}}', ScheduleApiController::class . ':date');
     });
@@ -131,8 +129,8 @@ $app->group('/api', function () {
  *
  * IPアドレスなどでアクセス制限することを推奨します。
  */
-$app->group('/dev', function () {
-    $this->group('/doctrine', function () {
+$app->group('/dev', function (): void {
+    $this->group('/doctrine', function (): void {
         $this->get('/cache/stats', DoctrineController::class . ':cacheStats');
         $this->get('/cache/{target:query|metadata}/clear', DoctrineController::class . ':cacheClear');
     });

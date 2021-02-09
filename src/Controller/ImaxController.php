@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller;
 
 use App\ORM\Entity;
@@ -17,12 +19,9 @@ class ImaxController extends SpecialSiteController
     /**
      * index action
      *
-     * @param Request  $request
-     * @param Response $response
-     * @param array    $args
-     * @return Response
+     * @param array<string, mixed> $args
      */
-    public function executeIndex(Request $request, Response $response, array $args)
+    public function executeIndex(Request $request, Response $response, array $args): Response
     {
         $mainBanners = $this->getMainBanners();
 
@@ -53,11 +52,9 @@ class ImaxController extends SpecialSiteController
     }
 
     /**
-     * return main_banners
-     *
      * @return Entity\MainBanner[]
      */
-    protected function getMainBanners()
+    protected function getMainBanners(): array
     {
         return $this->em
             ->getRepository(Entity\MainBanner::class)
@@ -65,11 +62,9 @@ class ImaxController extends SpecialSiteController
     }
 
     /**
-     * return trailers
-     *
      * @return Entity\Trailer[]
      */
-    protected function getTrailers()
+    protected function getTrailers(): array
     {
         return $this->em
             ->getRepository(Entity\Trailer::class)
@@ -77,12 +72,9 @@ class ImaxController extends SpecialSiteController
     }
 
     /**
-     * return news list
-     *
-     * @param int|null $limit
      * @return Entity\News[]
      */
-    protected function getNewsList(?int $limit = null)
+    protected function getNewsList(?int $limit = null): array
     {
         return $this->em
             ->getRepository(Entity\News::class)
@@ -90,11 +82,9 @@ class ImaxController extends SpecialSiteController
     }
 
     /**
-     * return IMAX theaters
-     *
      * @return Entity\Theater[]
      */
-    protected function getImaxTheaters()
+    protected function getImaxTheaters(): array
     {
         return $this->em
             ->getRepository(Entity\Theater::class)
@@ -122,11 +112,9 @@ class ImaxController extends SpecialSiteController
     }
 
     /**
-     * return campaigns
-     *
      * @return Entity\Campaign[]
      */
-    protected function getCampaigns()
+    protected function getCampaigns(): array
     {
         return $this->em
             ->getRepository(Entity\Campaign::class)
@@ -134,12 +122,9 @@ class ImaxController extends SpecialSiteController
     }
 
     /**
-     * return information news list
-     *
-     * @param int|null $limit
      * @return Entity\News[]
      */
-    protected function getInfoNewsList(?int $limit = null)
+    protected function getInfoNewsList(?int $limit = null): array
     {
         return $this->em
             ->getRepository(Entity\News::class)
@@ -149,12 +134,9 @@ class ImaxController extends SpecialSiteController
     /**
      * about action
      *
-     * @param Request  $request
-     * @param Response $response
-     * @param array    $args
-     * @return Response
+     * @param array<string, mixed> $args
      */
-    public function executeAbout(Request $request, Response $response, array $args)
+    public function executeAbout(Request $request, Response $response, array $args): Response
     {
         return $this->render($response, 'imax/about.html.twig');
     }
@@ -162,12 +144,9 @@ class ImaxController extends SpecialSiteController
     /**
      * schedule list action
      *
-     * @param Request  $request
-     * @param Response $response
-     * @param array    $args
-     * @return Response
+     * @param array<string, mixed> $args
      */
-    public function executeScheduleList(Request $request, Response $response, array $args)
+    public function executeScheduleList(Request $request, Response $response, array $args): Response
     {
         $theaters = $this->getImaxTheaters();
 
@@ -185,17 +164,14 @@ class ImaxController extends SpecialSiteController
     /**
      * schedule show action
      *
-     * @param Request  $request
-     * @param Response $response
-     * @param array    $args
-     * @return Response
+     * @param array<string, mixed> $args
      */
-    public function executeScheduleShow(Request $request, Response $response, array $args)
+    public function executeScheduleShow(Request $request, Response $response, array $args): Response
     {
-        /**@var Entity\Schedule|null $schedule */
+        /** @var Entity\Schedule|null $schedule */
         $schedule = $this->em
             ->getRepository(Entity\Schedule::class)
-            ->findOneById($args['schedule']);
+            ->findOneById((int) $args['schedule']);
 
         if (is_null($schedule)) {
             throw new NotFoundException($request, $response);
@@ -212,12 +188,9 @@ class ImaxController extends SpecialSiteController
     /**
      * news list action
      *
-     * @param Request  $request
-     * @param Response $response
-     * @param array    $args
-     * @return Response
+     * @param array<string, mixed> $args
      */
-    public function executeNewsList(Request $request, Response $response, array $args)
+    public function executeNewsList(Request $request, Response $response, array $args): Response
     {
         $newsList = $this->getNewsList();
 
@@ -232,17 +205,14 @@ class ImaxController extends SpecialSiteController
     /**
      * news show action
      *
-     * @param Request  $request
-     * @param Response $response
-     * @param array    $args
-     * @return Response
+     * @param array<string, mixed> $args
      */
-    public function executeNewsShow(Request $request, Response $response, array $args)
+    public function executeNewsShow(Request $request, Response $response, array $args): Response
     {
-        /**@var Entity\News|null $news */
+        /** @var Entity\News|null $news */
         $news = $this->em
             ->getRepository(Entity\News::class)
-            ->findOneById($args['id']);
+            ->findOneById((int) $args['id']);
 
         if (is_null($news)) {
             throw new NotFoundException($request, $response);
@@ -254,12 +224,9 @@ class ImaxController extends SpecialSiteController
     /**
      * theater action
      *
-     * @param Request  $request
-     * @param Response $response
-     * @param array    $args
-     * @return Response
+     * @param array<string, mixed> $args
      */
-    public function executeTheater(Request $request, Response $response, array $args)
+    public function executeTheater(Request $request, Response $response, array $args): Response
     {
         $theaters = $this->getImaxTheaters();
 

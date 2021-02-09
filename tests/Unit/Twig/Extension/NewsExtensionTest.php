@@ -23,13 +23,9 @@ final class NewsExtensionTest extends TestCase
     use MockeryPHPUnitIntegration;
 
     /**
-     * test getFunctions
-     *
      * @test
-     *
-     * @return void
      */
-    public function testGetFunctions()
+    public function testGetFunctions(): void
     {
         $extensionMock = Mockery::mock(NewsExtension::class)
             ->makePartial();
@@ -44,13 +40,9 @@ final class NewsExtensionTest extends TestCase
     }
 
     /**
-     * test getCategoryLabel
-     *
      * @test
-     *
-     * @return void
      */
-    public function testGetCategoryLabel()
+    public function testGetCategoryLabel(): void
     {
         $extensionMock = Mockery::mock(NewsExtension::class)
             ->makePartial();
@@ -60,13 +52,9 @@ final class NewsExtensionTest extends TestCase
     }
 
     /**
-     * test getCategoryLabelClass
-     *
      * @test
-     *
-     * @return void
      */
-    public function testGetCategoryLabelClass()
+    public function testGetCategoryLabelClass(): void
     {
         $extensionMock = Mockery::mock(NewsExtension::class)
             ->makePartial();

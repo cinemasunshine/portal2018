@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Schedule\Collection;
 
 use Cinemasunshine\Schedule\Collection\Movie as Base;
@@ -12,14 +14,11 @@ use InvalidArgumentException;
 class Movie extends Base
 {
     /**
-     * add
-     *
      * @param MovieInterface $movie
-     * @return void
      *
      * @throws InvalidArgumentException
      */
-    public function add($movie)
+    public function add($movie): void
     {
         if (! $movie instanceof MovieInterface) {
             throw new InvalidArgumentException('should implement Entity\MovieInterface');

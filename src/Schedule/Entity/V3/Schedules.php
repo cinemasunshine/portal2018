@@ -13,20 +13,15 @@ use Cinemasunshine\Schedule\Entity\V3\Schedules as BaseEntity;
  */
 class Schedules extends BaseEntity implements PortalEntityInterface
 {
-    /**
-     * constructor
-     */
     public function __construct()
     {
         $this->scheduleCollection = new ScheduleCollection();
     }
 
     /**
-     * to array
-     *
-     * @return array
+     * @return array<string, mixed>
      */
-    public function toArray()
+    public function toArray(): array
     {
         $data = [
             'error'     => $this->getError(),

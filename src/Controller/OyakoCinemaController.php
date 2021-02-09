@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller;
 
 use App\ORM\Entity;
@@ -14,12 +16,9 @@ class OyakoCinemaController extends GeneralController
     /**
      * index action
      *
-     * @param Request  $request
-     * @param Response $response
-     * @param array    $args
-     * @return Response
+     * @param array<string, mixed> $args
      */
-    public function executeIndex(Request $request, Response $response, array $args)
+    public function executeIndex(Request $request, Response $response, array $args): Response
     {
         $oyakoCinemaTitles = $this->getList();
 
@@ -27,11 +26,9 @@ class OyakoCinemaController extends GeneralController
     }
 
     /**
-     * return list
-     *
      * @return Entity\OyakoCinemaTitle[]
      */
-    protected function getList()
+    protected function getList(): array
     {
         return $this->em
             ->getRepository(Entity\OyakoCinemaTitle::class)

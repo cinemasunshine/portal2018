@@ -16,7 +16,6 @@ use Slim\Exception\NotFoundException;
 final class NewsControllerTest extends BaseTestCase
 {
     /**
-     * @param Container $container
      * @return MockInterface&LegacyMockInterface&NewsController
      */
     protected function createTargetMock(Container $container)
@@ -26,10 +25,8 @@ final class NewsControllerTest extends BaseTestCase
 
     /**
      * @test
-     *
-     * @return void
      */
-    public function testExecuteList()
+    public function testExecuteList(): void
     {
         $requestMock  = $this->createRequestMock();
         $responseMock = $this->createResponseMock();
@@ -74,10 +71,8 @@ final class NewsControllerTest extends BaseTestCase
 
     /**
      * @test
-     *
-     * @return void
      */
-    public function testExecuteShow()
+    public function testExecuteShow(): void
     {
         $requestMock  = $this->createRequestMock();
         $responseMock = $this->createResponseMock();
@@ -119,10 +114,8 @@ final class NewsControllerTest extends BaseTestCase
 
     /**
      * @test
-     *
-     * @return void
      */
-    public function testExecuteShowNotFound()
+    public function testExecuteShowNotFound(): void
     {
         $requestMock  = $this->createRequestMock();
         $responseMock = $this->createResponseMock();

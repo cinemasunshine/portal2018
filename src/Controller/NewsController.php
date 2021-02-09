@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller;
 
 use App\ORM\Entity;
@@ -15,12 +17,9 @@ class NewsController extends GeneralController
     /**
      * list action
      *
-     * @param Request  $request
-     * @param Response $response
-     * @param array    $args
-     * @return Response
+     * @param array<string, mixed> $args
      */
-    public function executeList(Request $request, Response $response, array $args)
+    public function executeList(Request $request, Response $response, array $args): Response
     {
         $newsList = $this->getNewsList();
 
@@ -33,11 +32,9 @@ class NewsController extends GeneralController
     }
 
     /**
-     * return news list
-     *
      * @return Entity\News[]
      */
-    protected function getNewsList()
+    protected function getNewsList(): array
     {
         return $this->em
             ->getRepository(Entity\News::class)
@@ -47,17 +44,14 @@ class NewsController extends GeneralController
     /**
      * show action
      *
-     * @param Request  $request
-     * @param Response $response
-     * @param array    $args
-     * @return Response
+     * @param array<string, mixed> $args
      */
-    public function executeShow(Request $request, Response $response, array $args)
+    public function executeShow(Request $request, Response $response, array $args): Response
     {
-        /**@var Entity\News|null $news */
+        /** @var Entity\News|null $news */
         $news = $this->em
             ->getRepository(Entity\News::class)
-            ->findOneById($args['id']);
+            ->findOneById((int) $args['id']);
 
         if (is_null($news)) {
             throw new NotFoundException($request, $response);

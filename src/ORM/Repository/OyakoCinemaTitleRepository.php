@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\ORM\Repository;
 
 use App\ORM\Entity\OyakoCinemaTitle;
@@ -11,12 +13,7 @@ use Doctrine\ORM\QueryBuilder;
  */
 class OyakoCinemaTitleRepository extends EntityRepository
 {
-    /**
-     * return active query
-     *
-     * @return QueryBuilder
-     */
-    protected function getActiveQuery()
+    protected function getActiveQuery(): QueryBuilder
     {
         $qb = $this->createQueryBuilder('oct');
         $qb
@@ -26,11 +23,9 @@ class OyakoCinemaTitleRepository extends EntityRepository
     }
 
     /**
-     * find by active
-     *
      * @return OyakoCinemaTitle[]
      */
-    public function findByActive()
+    public function findByActive(): array
     {
         $qb = $this->getActiveQuery();
 

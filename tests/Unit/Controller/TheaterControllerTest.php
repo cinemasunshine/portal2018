@@ -18,7 +18,6 @@ use Slim\Exception\NotFoundException;
 final class TheaterControllerTest extends BaseTestCase
 {
     /**
-     * @param Container $container
      * @return MockInterface&LegacyMockInterface&TheaterController
      */
     protected function createTargetMock(Container $container)
@@ -26,10 +25,7 @@ final class TheaterControllerTest extends BaseTestCase
         return Mockery::mock(TheaterController::class, [$container]);
     }
 
-    /**
-     * @return ReflectionClass
-     */
-    protected function createTargetReflection()
+    protected function createTargetReflection(): ReflectionClass
     {
         return new ReflectionClass(TheaterController::class);
     }
@@ -44,10 +40,8 @@ final class TheaterControllerTest extends BaseTestCase
 
     /**
      * @test
-     *
-     * @return void
      */
-    public function testExecuteIndexOpen()
+    public function testExecuteIndexOpen(): void
     {
         $requestMock  = $this->createRequestMock();
         $responseMock = $this->createResponseMock();
@@ -145,10 +139,8 @@ final class TheaterControllerTest extends BaseTestCase
 
     /**
      * @test
-     *
-     * @return void
      */
-    public function testExecuteIndexClose()
+    public function testExecuteIndexClose(): void
     {
         $requestMock  = $this->createRequestMock();
         $responseMock = $this->createResponseMock();
@@ -207,10 +199,8 @@ final class TheaterControllerTest extends BaseTestCase
 
     /**
      * @test
-     *
-     * @return void
      */
-    public function testExecuteAccess()
+    public function testExecuteAccess(): void
     {
         $requestMock  = $this->createRequestMock();
         $responseMock = $this->createResponseMock();
@@ -256,10 +246,8 @@ final class TheaterControllerTest extends BaseTestCase
 
     /**
      * @test
-     *
-     * @return void
      */
-    public function testExecuteAdmission()
+    public function testExecuteAdmission(): void
     {
         $requestMock  = $this->createRequestMock();
         $responseMock = $this->createResponseMock();
@@ -305,10 +293,8 @@ final class TheaterControllerTest extends BaseTestCase
 
     /**
      * @test
-     *
-     * @return void
      */
-    public function testExecuteAdvanceTicket()
+    public function testExecuteAdvanceTicket(): void
     {
         $requestMock  = $this->createRequestMock();
         $responseMock = $this->createResponseMock();
@@ -376,10 +362,8 @@ final class TheaterControllerTest extends BaseTestCase
 
     /**
      * @test
-     *
-     * @return void
      */
-    public function testExecuteConcession()
+    public function testExecuteConcession(): void
     {
         $requestMock  = $this->createRequestMock();
         $responseMock = $this->createResponseMock();
@@ -433,10 +417,8 @@ final class TheaterControllerTest extends BaseTestCase
 
     /**
      * @test
-     *
-     * @return void
      */
-    public function testExecuteFloorGuide()
+    public function testExecuteFloorGuide(): void
     {
         $requestMock  = $this->createRequestMock();
         $responseMock = $this->createResponseMock();
@@ -482,10 +464,8 @@ final class TheaterControllerTest extends BaseTestCase
 
     /**
      * @test
-     *
-     * @return void
      */
-    public function testExecuteNewsList()
+    public function testExecuteNewsList(): void
     {
         $requestMock  = $this->createRequestMock();
         $responseMock = $this->createResponseMock();
@@ -539,10 +519,8 @@ final class TheaterControllerTest extends BaseTestCase
 
     /**
      * @test
-     *
-     * @return void
      */
-    public function testExecuteNewsShow()
+    public function testExecuteNewsShow(): void
     {
         $requestMock  = $this->createRequestMock();
         $responseMock = $this->createResponseMock();
@@ -595,10 +573,8 @@ final class TheaterControllerTest extends BaseTestCase
 
     /**
      * @test
-     *
-     * @return void
      */
-    public function testExecuteNewsShowNotFound()
+    public function testExecuteNewsShowNotFound(): void
     {
         $requestMock  = $this->createRequestMock();
         $responseMock = $this->createResponseMock();

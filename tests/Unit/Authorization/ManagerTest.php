@@ -29,8 +29,6 @@ final class ManagerTest extends TestCase
     use MockeryPHPUnitIntegration;
 
     /**
-     * Create target mock
-     *
      * @return MockInterface|LegacyMockInterface|AuthorizationManager
      */
     protected function createTargetMock()
@@ -39,10 +37,7 @@ final class ManagerTest extends TestCase
     }
 
     /**
-     * Create target mock with args
-     *
-     * @param array            $settings
-     * @param SessionContainer $session
+     * @param array<string, mixed> $settings
      * @return MockInterface|LegacyMockInterface|AuthorizationManager
      */
     protected function createTargetMockWithArgs(array $settings, SessionContainer $session)
@@ -50,19 +45,12 @@ final class ManagerTest extends TestCase
         return Mockery::mock(AuthorizationManager::class, [$settings, $session]);
     }
 
-    /**
-     * Create target reflection
-     *
-     * @return ReflectionClass
-     */
-    protected function createTargetReflection()
+    protected function createTargetReflection(): ReflectionClass
     {
         return new ReflectionClass(AuthorizationManager::class);
     }
 
     /**
-     * Create SessionContainer mock
-     *
      * @return MockInterface|LegacyMockInterface|SessionContainer
      */
     protected function createSessionContainerMock()
@@ -85,8 +73,6 @@ final class ManagerTest extends TestCase
     }
 
     /**
-     * Create AuthorizationCodeGrant mock
-     *
      * @return MockInterface|LegacyMockInterface|AuthorizationCodeGrant
      */
     protected function createAuthorizationCodeGrantMock()
@@ -95,8 +81,6 @@ final class ManagerTest extends TestCase
     }
 
     /**
-     * Crate RefreshTokenGrant mock
-     *
      * @return MockInterface|LegacyMockInterface|RefreshTokenGrant
      */
     protected function createRefreshTokenGrantMock()
@@ -105,8 +89,6 @@ final class ManagerTest extends TestCase
     }
 
     /**
-     * Create AuthorizationCodeToken mock
-     *
      * @return MockInterface|LegacyMockInterface|AuthorizationCodeToken
      */
     protected function createAuthorizationCodeTokenMock()
@@ -115,13 +97,9 @@ final class ManagerTest extends TestCase
     }
 
     /**
-     * test construct
-     *
      * @test
-     *
-     * @return void
      */
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $settings = [
             'authorization_code_host' => 'host',
@@ -181,13 +159,9 @@ final class ManagerTest extends TestCase
     }
 
     /**
-     * test getAuthorizationCodeGrunt
-     *
      * @test
-     *
-     * @return void
      */
-    public function testGetAuthorizationCodeGrunt()
+    public function testGetAuthorizationCodeGrunt(): void
     {
         $settings = [
             'authorization_code_host' => 'host',
@@ -219,13 +193,9 @@ final class ManagerTest extends TestCase
     }
 
     /**
-     * test getAuthorizationUrl
-     *
      * @test
-     *
-     * @return void
      */
-    public function testGetAuthorizationUrl()
+    public function testGetAuthorizationUrl(): void
     {
         $redirectUri      = 'https://example.com/redirect';
         $authorizationUrl = 'https://example.com/authorization';
@@ -273,13 +243,9 @@ final class ManagerTest extends TestCase
     }
 
     /**
-     * test initAuthorizationState
-     *
      * @test
-     *
-     * @return void
      */
-    public function testInitAuthorizationState()
+    public function testInitAuthorizationState(): void
     {
         $targetMock = $this->createTargetMock();
         $targetMock->shouldAllowMockingProtectedMethods()
@@ -310,13 +276,9 @@ final class ManagerTest extends TestCase
     }
 
     /**
-     * test createUniqueStr
-     *
      * @test
-     *
-     * @return void
      */
-    public function testCreateUniqueStr()
+    public function testCreateUniqueStr(): void
     {
         $targetMock = $this->createTargetMock();
         $targetRef  = $this->createTargetReflection();
@@ -336,13 +298,9 @@ final class ManagerTest extends TestCase
     }
 
     /**
-     * test getAuthorizationState
-     *
      * @test
-     *
-     * @return void
      */
-    public function testGetAuthorizationState()
+    public function testGetAuthorizationState(): void
     {
         $targetMock = $this->createTargetMock();
         $targetMock->shouldAllowMockingProtectedMethods()
@@ -374,13 +332,9 @@ final class ManagerTest extends TestCase
     }
 
     /**
-     * test clearAuthorizationState
-     *
      * @test
-     *
-     * @return void
      */
-    public function testClearAuthorizationState()
+    public function testClearAuthorizationState(): void
     {
         $targetMock = $this->createTargetMock();
         $targetMock->makePartial();
@@ -402,13 +356,9 @@ final class ManagerTest extends TestCase
     }
 
     /**
-     * test initCodeVerifier
-     *
      * @test
-     *
-     * @return void
      */
-    public function testInitCodeVerifier()
+    public function testInitCodeVerifier(): void
     {
         $targetMock = $this->createTargetMock();
         $targetMock->shouldAllowMockingProtectedMethods()
@@ -439,13 +389,9 @@ final class ManagerTest extends TestCase
     }
 
     /**
-     * test getCodeVerifier
-     *
      * @test
-     *
-     * @return void
      */
-    public function testGetCodeVerifier()
+    public function testGetCodeVerifier(): void
     {
         $targetMock = $this->createTargetMock();
         $targetMock->shouldAllowMockingProtectedMethods()
@@ -480,13 +426,9 @@ final class ManagerTest extends TestCase
     }
 
     /**
-     * test requestToken
-     *
      * @test
-     *
-     * @return void
      */
-    public function testRequestToken()
+    public function testRequestToken(): void
     {
         $tokenMock = $this->createAuthorizationCodeTokenMock();
 
@@ -524,13 +466,9 @@ final class ManagerTest extends TestCase
     }
 
     /**
-     * test getLogoutUrl
-     *
      * @test
-     *
-     * @return void
      */
-    public function testGetLogoutUrl()
+    public function testGetLogoutUrl(): void
     {
         $logoutUrl   = 'https://example.com/logout';
         $redirectUri = 'http://example.com/redirect';
@@ -556,13 +494,9 @@ final class ManagerTest extends TestCase
     }
 
     /**
-     * test getRefreshTokenGrant
-     *
      * @test
-     *
-     * @return void
      */
-    public function testGetRefreshTokenGrant()
+    public function testGetRefreshTokenGrant(): void
     {
         $targetMock = $this->createTargetMock();
         $targetMock->shouldAllowMockingProtectedMethods()
@@ -602,13 +536,9 @@ final class ManagerTest extends TestCase
     }
 
     /**
-     * test refreshToken
-     *
      * @test
-     *
-     * @return void
      */
-    public function testRefreshToken()
+    public function testRefreshToken(): void
     {
         $tokenMock = $this->createAuthorizationCodeTokenMock();
 

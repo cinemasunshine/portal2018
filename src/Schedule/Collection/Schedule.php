@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Schedule\Collection;
 
 use Cinemasunshine\Schedule\Collection\Schedule as Base;
@@ -12,13 +14,11 @@ use InvalidArgumentException;
 class Schedule extends Base
 {
     /**
-     * add
-     *
      * @param ScheduleInterface $schedule
      *
      * @throws InvalidArgumentException
      */
-    public function add($schedule)
+    public function add($schedule): void
     {
         if (! $schedule instanceof ScheduleInterface) {
             throw new InvalidArgumentException('should implement Entity\ScheduleInterface');
@@ -28,24 +28,12 @@ class Schedule extends Base
         $this->data[$schedule->getDate()] = $schedule;
     }
 
-    /**
-     * has
-     *
-     * @param string $date
-     * @return bool
-     */
-    public function has($date)
+    public function has(string $date): bool
     {
         return isset($this->data[$date]);
     }
 
-    /**
-     * get
-     *
-     * @param string $date
-     * @return ScheduleInterface
-     */
-    public function get($date)
+    public function get(string $date): ?ScheduleInterface
     {
         return $this->data[$date] ?? null;
     }
@@ -54,10 +42,8 @@ class Schedule extends Base
      * キーでソート（昇順）
      *
      * @link http://php.net/manual/ja/function.ksort.php
-     *
-     * @return bool
      */
-    public function ksort()
+    public function ksort(): bool
     {
         return ksort($this->data);
     }
@@ -66,10 +52,8 @@ class Schedule extends Base
      * キーでソート（降順）
      *
      * @link http://php.net/manual/ja/function.krsort.php
-     *
-     * @return bool
      */
-    public function krsort()
+    public function krsort(): bool
     {
         return krsort($this->data);
     }

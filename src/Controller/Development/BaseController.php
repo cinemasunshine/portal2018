@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller\Development;
 
 use App\Controller\AbstractController;
@@ -12,22 +14,14 @@ use Slim\Http\Response;
 abstract class BaseController extends AbstractController
 {
     /**
-     * pre execute
-     *
-     * @param Request  $request
-     * @param Response $response
-     * @return void
+     * @param array<string, mixed> $args
      */
     protected function preExecute(Request $request, Response $response, array $args): void
     {
     }
 
     /**
-     * post execute
-     *
-     * @param Request  $request
-     * @param Response $response
-     * @return void
+     * @param array<string, mixed> $args
      */
     protected function postExecute(Request $request, Response $response, array $args): void
     {

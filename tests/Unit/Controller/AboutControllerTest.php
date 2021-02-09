@@ -21,10 +21,8 @@ final class AboutControllerTest extends BaseTestCase
 
     /**
      * @test
-     *
-     * @return void
      */
-    public function testExecuteCompany()
+    public function testExecuteCompany(): void
     {
         $requestMock  = $this->createRequestMock();
         $responseMock = $this->createResponseMock();
@@ -49,10 +47,8 @@ final class AboutControllerTest extends BaseTestCase
 
     /**
      * @test
-     *
-     * @return void
      */
-    public function testExecuteMailMagazine()
+    public function testExecuteMailMagazine(): void
     {
         $requestMock  = $this->createRequestMock();
         $responseMock = $this->createResponseMock();
@@ -77,10 +73,8 @@ final class AboutControllerTest extends BaseTestCase
 
     /**
      * @test
-     *
-     * @return void
      */
-    public function testExecuteMvtk()
+    public function testExecuteMvtk(): void
     {
         $requestMock  = $this->createRequestMock();
         $responseMock = $this->createResponseMock();
@@ -105,10 +99,8 @@ final class AboutControllerTest extends BaseTestCase
 
     /**
      * @test
-     *
-     * @return void
      */
-    public function testExecuteOnlineTicket()
+    public function testExecuteOnlineTicket(): void
     {
         $requestMock  = $this->createRequestMock();
         $responseMock = $this->createResponseMock();
@@ -133,10 +125,8 @@ final class AboutControllerTest extends BaseTestCase
 
     /**
      * @test
-     *
-     * @return void
      */
-    public function testExecutePrivacy()
+    public function testExecutePrivacy(): void
     {
         $requestMock  = $this->createRequestMock();
         $responseMock = $this->createResponseMock();
@@ -161,10 +151,8 @@ final class AboutControllerTest extends BaseTestCase
 
     /**
      * @test
-     *
-     * @return void
      */
-    public function testExecuteQuestion()
+    public function testExecuteQuestion(): void
     {
         $requestMock  = $this->createRequestMock();
         $responseMock = $this->createResponseMock();
@@ -189,10 +177,8 @@ final class AboutControllerTest extends BaseTestCase
 
     /**
      * @test
-     *
-     * @return void
      */
-    public function testExecuteSitemap()
+    public function testExecuteSitemap(): void
     {
         $requestMock  = $this->createRequestMock();
         $responseMock = $this->createResponseMock();
@@ -225,10 +211,8 @@ final class AboutControllerTest extends BaseTestCase
 
     /**
      * @test
-     *
-     * @return void
      */
-    public function testExecuteSpecialTicket()
+    public function testExecuteSpecialTicket(): void
     {
         $requestMock  = $this->createRequestMock();
         $responseMock = $this->createResponseMock();
@@ -253,10 +237,8 @@ final class AboutControllerTest extends BaseTestCase
 
     /**
      * @test
-     *
-     * @return void
      */
-    public function testExecuteSpecificQuotient()
+    public function testExecuteSpecificQuotient(): void
     {
         $requestMock  = $this->createRequestMock();
         $responseMock = $this->createResponseMock();
@@ -281,10 +263,8 @@ final class AboutControllerTest extends BaseTestCase
 
     /**
      * @test
-     *
-     * @return void
      */
-    public function testExecuteTermsOfService()
+    public function testExecuteTermsOfService(): void
     {
         $requestMock  = $this->createRequestMock();
         $responseMock = $this->createResponseMock();

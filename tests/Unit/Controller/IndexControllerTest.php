@@ -6,6 +6,7 @@ namespace Tests\Unit\Controller;
 
 use App\Controller\IndexController;
 use App\ORM\Entity\News;
+use App\ORM\Entity\TitleRanking;
 use Mockery;
 use Mockery\LegacyMockInterface;
 use Mockery\MockInterface;
@@ -22,10 +23,8 @@ final class IndexControllerTest extends BaseTestCase
 
     /**
      * @test
-     *
-     * @return void
      */
-    public function testExecuteIndex()
+    public function testExecuteIndex(): void
     {
         $requestMock  = $this->createRequestMock();
         $responseMock = $this->createResponseMock();
@@ -43,12 +42,12 @@ final class IndexControllerTest extends BaseTestCase
             ->with()
             ->andReturn($mainBanners);
 
-        $theaters = [];
+        $areaToTheaters = [];
         $targetMock
-            ->shouldReceive('getTheaters')
+            ->shouldReceive('getAreaToTheaters')
             ->once()
             ->with()
-            ->andReturn($theaters);
+            ->andReturn($areaToTheaters);
 
         $trailer = null;
         $targetMock
@@ -57,7 +56,7 @@ final class IndexControllerTest extends BaseTestCase
             ->with()
             ->andReturn($trailer);
 
-        $titleRanking = null;
+        $titleRanking = $this->createTitleRankingMock();
         $targetMock
             ->shouldReceive('getTitleRanking')
             ->once()
@@ -115,7 +114,7 @@ final class IndexControllerTest extends BaseTestCase
 
         $data = [
             'mainBanners' => $mainBanners,
-            'areaToTheaters' => $theaters,
+            'areaToTheaters' => $areaToTheaters,
             'trailer' => $trailer,
             'titleRanking' => $titleRanking,
             'newsList' => $newsList,
@@ -136,5 +135,13 @@ final class IndexControllerTest extends BaseTestCase
             $responseMock,
             $targetMock->executeIndex($requestMock, $responseMock, $args)
         );
+    }
+
+    /**
+     * @return MockInterface&LegacyMockInterface&TitleRanking
+     */
+    protected function createTitleRankingMock()
+    {
+        return Mockery::mock(TitleRanking::class);
     }
 }

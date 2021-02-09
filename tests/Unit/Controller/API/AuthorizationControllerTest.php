@@ -24,10 +24,8 @@ final class AuthorizationControllerTest extends BaseTestCase
 
     /**
      * @test
-     *
-     * @return void
      */
-    public function testExecuteTokenTypeVisitor()
+    public function testExecuteTokenTypeVisitor(): void
     {
         $userType = AuthorizationController::USER_TYPE_VISITOR;
 
@@ -78,10 +76,8 @@ final class AuthorizationControllerTest extends BaseTestCase
 
     /**
      * @test
-     *
-     * @return void
      */
-    public function testExecuteTokenTypeMember()
+    public function testExecuteTokenTypeMember(): void
     {
         $userType = AuthorizationController::USER_TYPE_MEMBER;
 
@@ -132,10 +128,8 @@ final class AuthorizationControllerTest extends BaseTestCase
 
     /**
      * @test
-     *
-     * @return void
      */
-    public function testExecuteTokenTypeMemberNotAuthenticated()
+    public function testExecuteTokenTypeMemberNotAuthenticated(): void
     {
         $userType = AuthorizationController::USER_TYPE_MEMBER;
 
@@ -186,10 +180,8 @@ final class AuthorizationControllerTest extends BaseTestCase
 
     /**
      * @test
-     *
-     * @return void
      */
-    public function testExecuteTokenInvalidType()
+    public function testExecuteTokenInvalidType(): void
     {
         $userType = 'invalid';
 

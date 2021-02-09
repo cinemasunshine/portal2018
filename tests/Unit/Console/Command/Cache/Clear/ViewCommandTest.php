@@ -29,8 +29,6 @@ final class ViewCommandTest extends AbstructTestCase
     use MockeryPHPUnitIntegration;
 
     /**
-     * Create target mock
-     *
      * @return MockInterface|LegacyMockInterface|ViewCommand
      */
     protected function createTargetMock()
@@ -38,19 +36,12 @@ final class ViewCommandTest extends AbstructTestCase
         return Mockery::mock(ViewCommand::class);
     }
 
-    /**
-     * Create target reflection
-     *
-     * @return ReflectionClass
-     */
-    protected function createTargetReflection()
+    protected function createTargetReflection(): ReflectionClass
     {
         return new ReflectionClass(ViewCommand::class);
     }
 
     /**
-     * Create Twig mock
-     *
      * @return MockInterface|LegacyMockInterface|Twig
      */
     protected function createTwigMock()
@@ -59,13 +50,9 @@ final class ViewCommandTest extends AbstructTestCase
     }
 
     /**
-     * test construct
-     *
      * @test
-     *
-     * @return void
      */
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $targetMock = $this->createTargetMock()
             ->makePartial();
@@ -84,10 +71,8 @@ final class ViewCommandTest extends AbstructTestCase
      * test execute (user FilesystemCache)
      *
      * @test
-     *
-     * @return void
      */
-    public function testExecuteUseFilesystemCache()
+    public function testExecuteUseFilesystemCache(): void
     {
         $filesystemCacheMock = $this->createFilesystemCacheMock();
 
@@ -143,8 +128,6 @@ final class ViewCommandTest extends AbstructTestCase
     }
 
     /**
-     * Create TwigEnvironment mock
-     *
      * @return MockInterface|LegacyMockInterface
      */
     protected function createTwigEnvironmentMock()
@@ -153,8 +136,6 @@ final class ViewCommandTest extends AbstructTestCase
     }
 
     /**
-     * Create FilesystemCache mock
-     *
      * @return MockInterface|LegacyMockInterface|FilesystemCache
      */
     protected function createFilesystemCacheMock()
@@ -166,10 +147,8 @@ final class ViewCommandTest extends AbstructTestCase
      * test execute (user NullCahce)
      *
      * @test
-     *
-     * @return void
      */
-    public function testExecuteUseNullCache()
+    public function testExecuteUseNullCache(): void
     {
         $nullCache = $this->createNullCache();
 
@@ -221,10 +200,8 @@ final class ViewCommandTest extends AbstructTestCase
      *
      * finalが指定されたクラスはプロキシパーシャルテストダブルを使うことになるが、
      * instanceofのチェックをパスできないのでモックしない。
-     *
-     * @return NullCache
      */
-    protected function createNullCache()
+    protected function createNullCache(): NullCache
     {
         return new NullCache();
     }
@@ -233,10 +210,8 @@ final class ViewCommandTest extends AbstructTestCase
      * test execute (use other cache)
      *
      * @test
-     *
-     * @return void
      */
-    public function testExecuteUseOtherCache()
+    public function testExecuteUseOtherCache(): void
     {
         $otherCache = $this->createOtherCacheMock();
 
@@ -280,8 +255,6 @@ final class ViewCommandTest extends AbstructTestCase
     }
 
     /**
-     * Create OtherCache mock
-     *
      * @return MockInterface|LegacyMockInterface
      */
     protected function createOtherCacheMock()
@@ -290,15 +263,11 @@ final class ViewCommandTest extends AbstructTestCase
     }
 
     /**
-     * test clearFilesystemCache
-     *
      * @runInSeparateProcess
      * @preserveGlobalState disabled
      * @test
-     *
-     * @return void
      */
-    public function testClearFilesystemCache()
+    public function testClearFilesystemCache(): void
     {
         $dir = '/foo/bar/cache';
 
@@ -326,8 +295,6 @@ final class ViewCommandTest extends AbstructTestCase
     }
 
     /**
-     * Create Filesystem mock
-     *
      * @return MockInterface|LegacyMockInterface
      */
     protected function createFilesystemMock()

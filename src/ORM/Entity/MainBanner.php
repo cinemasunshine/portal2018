@@ -18,18 +18,16 @@ use LogicException;
  */
 class MainBanner extends BaseMainBanner
 {
-    /** @var array */
+    /** @var array<int, string> */
     protected static $linkTypes = [
         self::LINK_TYPE_NONE => 'リンクなし',
         self::LINK_TYPE_URL  => 'URL',
     ];
 
     /**
-     * return link types
-     *
-     * @return array
+     * @return array<int, string>
      */
-    public static function getLinkTypes()
+    public static function getLinkTypes(): array
     {
         return self::$linkTypes;
     }
@@ -76,20 +74,16 @@ class MainBanner extends BaseMainBanner
 
     /**
      * is link_type none
-     *
-     * @return boolean
      */
-    public function isLinkTypeNone()
+    public function isLinkTypeNone(): bool
     {
         return $this->getLinkType() === self::LINK_TYPE_NONE;
     }
 
     /**
      * is link_type URL
-     *
-     * @return boolean
      */
-    public function isLinkTypeUrl()
+    public function isLinkTypeUrl(): bool
     {
         return $this->getLinkType() === self::LINK_TYPE_URL;
     }

@@ -23,13 +23,9 @@ final class ScheduleExtensionTest extends TestCase
     use MockeryPHPUnitIntegration;
 
     /**
-     * test construct
-     *
      * @test
-     *
-     * @return void
      */
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $extensionMock = Mockery::mock(ScheduleExtension::class);
         $settings      = [];
@@ -50,13 +46,9 @@ final class ScheduleExtensionTest extends TestCase
     }
 
     /**
-     * test getFunctions
-     *
      * @test
-     *
-     * @return void
      */
-    public function testGetFunctions()
+    public function testGetFunctions(): void
     {
         $extensionMock = Mockery::mock(ScheduleExtension::class)
             ->makePartial();
@@ -71,13 +63,9 @@ final class ScheduleExtensionTest extends TestCase
     }
 
     /**
-     * test getApiUrl
-     *
      * @test
-     *
-     * @return void
      */
-    public function testGetApiUrl()
+    public function testGetApiUrl(): void
     {
         $settings = ['api_url' => 'http://example.com'];
 
