@@ -58,7 +58,7 @@ active: 'top',
     theater: theater
 } only %}
 
-{# % if theater.getName() not in ['ikebukuro', 'okaido'] % #}
+{# % if theater.getName() not in ['ikebukuro'] % #}
     {# SASAKI-399 #}
     {# % include 'include/pagejack/sp_animation_file.html.twig' only % #}
 {# % endif % #}
@@ -84,7 +84,7 @@ active: 'top',
     </div>
 </div>
 
-{# % if theater.getName() not in ['ikebukuro', 'okaido'] % #}
+{# % if theater.getName() not in ['ikebukuro'] % #}
     {# SASAKI-399 #}
     {# % include 'include/pagejack/animation_file.html.twig' only % #}
 {# % endif % #}

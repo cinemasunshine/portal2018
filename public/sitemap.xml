@@ -642,41 +642,6 @@
   <changefreq>yearly</changefreq>
 </url>
 <url>
-  <loc>https://www.cinemasunshine.co.jp/theater/okaido/</loc>
-  <priority>1.0</priority>
-  <changefreq>weekly</changefreq>
-</url>
-<url>
-  <loc>https://www.cinemasunshine.co.jp/theater/okaido/advance_ticket/</loc>
-  <priority>0.5</priority>
-  <changefreq>weekly</changefreq>
-</url>
-<url>
-  <loc>https://www.cinemasunshine.co.jp/theater/okaido/news/</loc>
-  <priority>0.5</priority>
-  <changefreq>weekly</changefreq>
-</url>
-<url>
-  <loc>https://www.cinemasunshine.co.jp/theater/okaido/concession/</loc>
-  <priority>0.5</priority>
-  <changefreq>yearly</changefreq>
-</url>
-<url>
-  <loc>https://www.cinemasunshine.co.jp/theater/okaido/admission/</loc>
-  <priority>0.5</priority>
-  <changefreq>yearly</changefreq>
-</url>
-<url>
-  <loc>https://www.cinemasunshine.co.jp/theater/okaido/floor_guide/</loc>
-  <priority>0.5</priority>
-  <changefreq>yearly</changefreq>
-</url>
-<url>
-  <loc>https://www.cinemasunshine.co.jp/theater/okaido/access/</loc>
-  <priority>0.5</priority>
-  <changefreq>yearly</changefreq>
-</url>
-<url>
   <loc>https://www.cinemasunshine.co.jp/theater/kinuyama/</loc>
   <priority>1.0</priority>
   <changefreq>weekly</changefreq>

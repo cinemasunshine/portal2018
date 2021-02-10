@@ -26,7 +26,6 @@ class TheaterExtension extends AbstractExtension
         6  => '静岡,沼津,4DX,bivi',
         7  => '徳島,北島,フジグラン',
         8  => '愛媛,松山,衣山,IMAX,パルティフジ',
-        9  => '愛媛,松山,大街道',
         12 => '愛媛,東温,野田,フジグラン,重信',
         13 => '茨城,土浦,イオン,IMAX,IMAX3D',
         14 => '石川,かほく,イオン',

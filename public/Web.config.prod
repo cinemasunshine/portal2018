@@ -27,10 +27,18 @@
                     <match url="^4dx-with-screen-x/(.*)" />
                     <action type="Redirect" url="4dx-screen/{R:1}" appendQueryString="true" redirectType="Permanent" />
                 </rule>
-                <!-- 池袋閉館用ルール SASAKI-489 -->
-                <rule name="Ikebukuro Close Rule" patternSyntax="ECMAScript" stopProcessing="true">
+                <!-- 池袋閉館ルール SASAKI-489 -->
+                <rule name="Closed Ikebukuro Rule" patternSyntax="ECMAScript" stopProcessing="true">
                     <match url="^theater/ikebukuro/.*" />
                     <action type="Redirect" url="theater/gdcs/" appendQueryString="false" redirectType="Permanent" />
+                </rule>
+                <!-- 劇場閉館ルール -->
+                <rule name="Closed Theater Rule" patternSyntax="ECMAScript" stopProcessing="true">
+                    <match url="^(.*)$" />
+                    <conditions logicalGrouping="MatchAny">
+                        <add input="{URL}" pattern="^/theater/okaido/.*" /><!-- 大街道削除 SASAKI-621 -->
+                    </conditions>
+                    <action type="Redirect" url="/" appendQueryString="false" redirectType="Permanent" />
                 </rule>
                 <!-- 旧サイト用ルール SASAKI-320 -->
                 <rule name="Old Site Rule" patternSyntax="ECMAScript" stopProcessing="true">
