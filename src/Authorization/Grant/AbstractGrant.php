@@ -30,11 +30,9 @@ abstract class AbstractGrant
     {
         $encodedCredentials = base64_encode(sprintf('%s:%s', $clientId, $clientSecret));
 
-        $headers = [
+        return [
             'Authorization' => 'Basic ' . $encodedCredentials,
             'Content-Type'  => 'application/x-www-form-urlencoded',
         ];
-
-        return $headers;
     }
 }
