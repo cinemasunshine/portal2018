@@ -132,8 +132,8 @@ final class AuthorizationCodeTokenTest extends TestCase
     }
 
     /**
-     * @runInSeparateProcess
      * @preserveGlobalState disabled
+     * @runInSeparateProcess
      * @test
      */
     public function testDecodeAccessToken(): void
