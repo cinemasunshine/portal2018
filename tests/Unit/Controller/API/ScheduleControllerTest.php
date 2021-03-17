@@ -31,9 +31,8 @@ final class ScheduleControllerTest extends BaseTestCase
     }
 
     /**
-     * @test
-     *
      * @doesNotPerformAssertions
+     * @test
      */
     public function testExecuteIndex(): void
     {
@@ -67,9 +66,8 @@ final class ScheduleControllerTest extends BaseTestCase
     }
 
     /**
-     * @test
-     *
      * @doesNotPerformAssertions
+     * @test
      */
     public function testExecuteDate(): void
     {
