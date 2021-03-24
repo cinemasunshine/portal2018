@@ -1,100 +1,218 @@
 <!DOCTYPE html>
 <html lang="ja">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>お問合わせフォーム| シネマサンシャイン</title>
-        <meta name="description" content="シネマサンシャインリワード（アプリ）に関するお問い合わせフォームになります。アプリに関するお問い合わせはこちら">
-        <meta name="keywords" content="シネマサンシャイン,app,アプリ,リワード,お問い合わせ">
-        <link rel="stylesheet" href="reset.css">
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
-        <section class="intro-area">
-            <h1>お問合わせフォーム</h1>
-            <p class="intro-txt">シネマサンシャインリワード（アプリ）に関するお問合わせは下記のフォームよりお問い合わせください。<br>お問い合わせのご返信につきましては主にメールでのご連絡となります。</p>
-        </section>
-        <section id="form-area">
-            <form method="POST" class="inq-format" onsubmit="invoke(event);">
-                <h2>ご連絡先</h2>
-                <ul>
-                    <li>
-                        <label for="user-mail" class="label-name">メールアドレス<span class="req-icon">必須</span></label>
-                        <input required type="email" id="user-mail" name="user-mail" placeholder="例）sample@sample.com" pattern=".*\S+.*">
-                        <p class="note">キャリアメールアドレス（docomo、au、softbankなど）の場合、メールが届かない可能性がございます。<br>yahooやGoogleなどのフリーメールアドレスをお持ちのお客様はそちらのアドレスをご入力ください。</p>
-                    </li>
-                    <li>
-                        <label for="user-tel" class="label-name">電話番号</label>
-                        <input type="tel" id="user-tel" name="user-tel" placeholder="例）08012345678" maxlength="12">
-                    </li>
-                </ul>
-                <h2>お問合わせ内容</h2>
-                <ul>
-                    <li>
-                        <label for="app-matter" class="label-name">お問合わせ内容<span class="req-icon">必須</span></label>
-                        <select required id="app-matter" name="app-matter">
-                            <option hidden>選択してください</option>
-                            <option value="1">ユーザーネームがわからない</option>
-                            <option value="2">登録済メールアドレスの変更希望</option>
-                            <option value="3">ワンタイムパスワードが届かない</option>
-                            <option value="4">パスワードがわからない</option>
-                            <option value="5">退会の代行手続希望</option>
-                        </select>
-                    </li>
-                    <li>
-                        <label for="app-name" class="label-name">氏名（全角カタカナ）<span class="req-icon">必須</span></label>
-                        <input required type="text" id="app-name" name="app-name" placeholder="例）エイガタロウ" pattern="(?=.*?[\u30A1-\u30FC])[\u30A1-\u30FC\s]*">
-                    </li>
-                    <li>
-                        <label for="app-tel" class="label-name">ご登録済み電話番号<span class="req-icon">必須</span></label>
-                        <input required type="tel" id="app-tel" name="app-tel" placeholder="例）08012345678" maxlength="12" pattern=".*\S+.*">
-                    </li>
-                    <li>
-                        <label for="app-mail" class="label-name">ご登録済みメールアドレス<span class="req-icon">必須</span></label>
-                        <input required type="email" id="app-mail" name="app-mail" placeholder="例）sample@sample.com" pattern=".*\S+.*">
-                    </li>
-                    <li>
-                        <label for="question" class="label-name">お問合わせ内容詳細<span class="req-icon">必須</span></label>
-                        <textarea required id="question" name="question" placeholder="例）ログインするためのユーザーネームがわからない。"></textarea>
-                    </li>
-                </ul>
-                <p class="btn-area">
-                    <button type="submit" class="submit-btn">入力内容を送信</button>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>お問合わせフォーム| シネマサンシャイン</title>
+    <meta name="description" content="シネマサンシャインリワード（アプリ）に関するお問い合わせフォームになります。アプリに関するお問い合わせはこちら">
+    <meta name="keywords" content="シネマサンシャイン,app,アプリ,リワード,お問い合わせ">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <section class="intro-area">
+        <h1>お問合わせフォーム</h1>
+        <p class="intro-txt">シネマサンシャインリワード（アプリ）に関するお問合わせは下記のフォームよりお問い合わせください。<br>お問い合わせのご返信につきましては主にメールでのご連絡となります。</p>
+    </section>
+    <section id="form-area">
+        <form method="POST" class="inq-format" onsubmit="invoke(event);">
+            <h2>お問合わせ内容</h2>
+            <ul>
+                <li>
+                    <label for="app-matter" class="label-name">お問合わせ内容<span class="req-icon">必須</span></label>
+                    <select required id="app-matter" name="app-matter" onchange="changeMatter(this);">
+                        <option hidden>選択してください</option>
+                        <option value="1">ユーザーネームがわからない</option>
+                        <option value="2">登録済メールアドレスの変更希望</option>
+                        <option value="3">ワンタイムパスワードが届かない</option>
+                        <option value="4">パスワードがわからない</option>
+                        <option value="6">その他</option>
+                    </select>
+                </li>
+            </ul>
+            <h2 class="contact d-none">ご連絡先</h2>
+            <ul class="contact d-none">
+                <li>
+                    <label for="user-mail" class="label-name">メールアドレス<span class="req-icon">必須</span></label>
+                    <input required disabled type="email" id="user-mail" name="user-mail"
+                        placeholder="例）sample@sample.com" pattern=".*\S+.*">
+                    <p class="note">
+                        キャリアメールアドレス（docomo、au、softbankなど）の場合、メールが届かない可能性がございます。<br>yahooやGoogleなどのフリーメールアドレスをお持ちのお客様はそちらのアドレスをご入力ください。
+                    </p>
+                </li>
+                <li>
+                    <label for="user-tel" class="label-name">電話番号</label>
+                    <input type="tel" id="user-tel" name="user-tel" placeholder="例）08012345678" maxlength="12">
+                </li>
+            </ul>
+            <h2 class="profile d-none">ご登録済み情報</h2>
+            <ul class="profile d-none">
+                <li>
+                    <label for="app-name" class="label-name">氏名（全角カタカナ）<span class="req-icon">必須</span></label>
+                    <input required disabled type="text" id="app-name" name="app-name" placeholder="例）エイガタロウ"
+                        pattern="(?=.*?[\u30A1-\u30FC])[\u30A1-\u30FC\s]*">
+                </li>
+                <li>
+                    <label for="app-tel" class="label-name">ご登録済み電話番号<span class="req-icon">必須</span></label>
+                    <input required disabled type="tel" id="app-tel" name="app-tel" placeholder="例）08012345678"
+                        maxlength="12" pattern=".*\S+.*">
+                </li>
+                <li>
+                    <label for="app-mail" class="label-name">ご登録済みメールアドレス<span class="req-icon">必須</span></label>
+                    <input required disabled type="email" id="app-mail" name="app-mail"
+                        placeholder="例）sample@sample.com" pattern=".*\S+.*">
+                </li>
+            </ul>
+            <h2 class="changeEmail d-none">変更後</h2>
+            <ul class="changeEmail d-none">
+                <li>
+                    <label for="app-mail" class="label-name">メールアドレス<span class="req-icon">必須</span></label>
+                    <input required type="email" id="change-mail" name="change-mail" placeholder="例）sample@sample.com"
+                        pattern=".*\S+.*">
+                </li>
+            </ul>
+            <p class="btn-area d-none">
+                <button type="submit" class="submit-btn">入力内容を送信</button>
+            </p>
+            <input type="hidden" id="reCAPTCHA" name="reCAPTCHA">
+            <h2 class="guidance d-none">ご案内</h2>
+            <div class="onetime d-none">
+                <p class="mb-3">ワンタイムパスワードが届かない場合は下記の可能性が考えられます。 </p>
+                <p class="mb-3 ml-3 indent">● キャリアのなりすましメールフィルターの設定などに引っかかってしまっている </p><br>
+                <p class="mb-3 ml-3 indent">● 迷惑メールフォルダなど、通常の受信フォルダとは違うメールフォルダに振り分けられている </p><br>
+                <p class="mb-3 ml-3 indent">● 現在使用しているアドレスと登録済メールアドレスが違っている </p><br>
+                <p class="mb-3 ml-3 indent">● 入力したユーザーネームが違っている（ユーザーネームが不明な場合はこちらのページからお問い合わせください）</p><br>
+                <p class="mb-3">メールクライアントやキャリア毎で設定方法などが違うため、それぞれの設定に従って受信許可設定をお願いいたします。 </p>
+                <div style="text-align: center;">
+                    <p class="mb-2">
+                        <a target="_brank"
+                            href="https://www.softbank.jp/mobile/support/mail/antispam/">Softbankの方はこちら＞</a>
+                        <a class="ml-3" target="_brank"
+                            href="https://www.au.com/support/service/mobile/trouble/mail/email/filter/">auの方はこちら＞
+                        </a>
+                    </p>
+                    <p class="mb-2">
+                        <a target="_brank" href="https://www.nttdocomo.co.jp/info/spam_mail/spmode/">docomoの方はこちら＞</a>
+                        <a class="ml-3" target="_brank"
+                            href="https://support.google.com/mail/answer/1366858?co=GENIE.Platform%3DiOS&hl=ja">Gmailの方はこちら＞</a><br>
+                    </p>
+                    <p class="mb-2">
+                        <a target="_brank"
+                            href="https://support.yahoo-net.jp/PccMail/s/article/H000011502#1">Yahooの方はこちら＞</a>
+                        <a class="ml-3" target="_brank"
+                            href="https://support.apple.com/ja-jp/HT202315">iCloudの方はこちら＞</a>
+                    </p>
+                </div>
+            </div>
+            <div class="forgotten d-none">
+                <p class="mb-3">セキュリティの関係上、お客様が設定したパスワードは調べる事ができない
+                    為、お忘れのお客様はログイン画面にある「パスワードを忘れた方はこちら」
+                    からパスワード再設定のお手続きをお願いいたします。
                 </p>
-                <input type="hidden" id="reCAPTCHA" name="reCAPTCHA">
-            </form>
-        </section>
-        <script src="https://www.google.com/recaptcha/api.js?render=6LeZLrsZAAAAAGLgm20s-wzhzpuQTEE3VT4DB8nB"></script>
-        <script>
-            function invoke(event) {
-                event.preventDefault();
-                var button = document.querySelector('button');
-                button.disabled = true;
-                grecaptcha.ready(function () {
-                    try {
-                        grecaptcha.execute('6LeZLrsZAAAAAGLgm20s-wzhzpuQTEE3VT4DB8nB', { action: 'submit' })
-                            .then(function (token) {
-                                document.getElementById('reCAPTCHA').value = token;
-                                var form = document.forms[0];
-                                var host = window.location.host;
-                                if (host.indexOf('cinemasunshine') > -1) {
-                                    form.action = 'https://sskts-inquiry-production.azurewebsites.net/inquiry';
-                                } else {
-                                    form.action = 'https://sskts-inquiry-test.azurewebsites.net/inquiry';
-                                }
-                                form.submit();
-                            }, function (reason) {
-                                console.error(reason);
-                                button.disabled = false;
-                                //no ops
-                            });
-                    } catch (e) {
-                        console.error(e);
-                        button.disabled = false;
-                        //no ops
-                    }
-                });
+                <p class="note">
+                    ※パスワード再設定には、ユーザーネームが必要となります。ユーザーネームをお忘れの
+                    方はこのフォームから事前にユーザーネームをお問い合わせください。
+                </p>
+            </div>
+            <div class="others d-none">
+                <p class="mb-3">下記の内容に関するお問い合わせは、直接各劇場までお問い合わせください。
+                    こちらのお問い合わせフォームからでは回答致しかねる場合がございます。
+                </p>
+                <p class="mb-3 ml-3 indent">● チケットの確認ならびに購入・キャンセルについて </p><br>
+                <p class="mb-3 ml-3 indent">● 先行予約や上映２日前販売など販売タイミングについて </p><br>
+                <p class="mb-3 ml-3 indent">● 上映スケジュールについて </p>
+            </div>
+        </form>
+    </section>
+    <script src="https://www.google.com/recaptcha/api.js?render=6LeZLrsZAAAAAGLgm20s-wzhzpuQTEE3VT4DB8nB"></script>
+    <script>
+        function invoke(event) {
+            event.preventDefault();
+            var button = document.querySelector('button');
+            button.disabled = true;
+            grecaptcha.ready(function () {
+                try {
+                    grecaptcha.execute('6LeZLrsZAAAAAGLgm20s-wzhzpuQTEE3VT4DB8nB', { action: 'submit' })
+                        .then(function (token) {
+                            document.getElementById('reCAPTCHA').value = token;
+                            var form = document.forms[0];
+                            var host = window.location.host;
+                            if (host.indexOf('cinemasunshine') > -1) {
+                                form.action = 'https://sskts-inquiry-production.azurewebsites.net/inquiry';
+                            } else {
+                                form.action = 'https://sskts-inquiry-test.azurewebsites.net/inquiry';
+                            }
+                            form.submit();
+                        }, function (reason) {
+                            console.error(reason);
+                            button.disabled = false;
+                            //no ops
+                        });
+                } catch (e) {
+                    console.error(e);
+                    button.disabled = false;
+                    //no ops
+                }
+            });
+        }
+    </script>
+    <script>
+        function changeMatter(elm) {
+            allInactive();
+            switch (elm.value) {
+                case '1':
+                    //active
+                    $('.contact').removeClass('d-none');
+                    $('.contact input').prop('disabled', false)
+                    $('.profile').removeClass('d-none');
+                    $('.profile input').prop('disabled', false)
+                    $('.btn-area').removeClass('d-none');
+                    break;
+                case '2':
+                    $('.contact').removeClass('d-none');
+                    $('.contact input').prop('disabled', false)
+                    $('.profile').removeClass('d-none');
+                    $('.profile input').prop('disabled', false)
+                    $('.changeEmail').removeClass('d-none');
+                    $('.changeEmail input').prop('disabled', false)
+                    $('.btn-area').removeClass('d-none');
+                    break;
+                case '3':
+                    $('.guidance').removeClass('d-none');
+                    $('.onetime').removeClass('d-none');
+
+                    break;
+                case '4':
+                    $('.guidance').removeClass('d-none');
+                    $('.forgotten').removeClass('d-none');
+                    break;
+                case '5':
+                    break;
+                case '6':
+                    $('.guidance').removeClass('d-none');
+                    $('.others').removeClass('d-none');
+                    break;
+                default:
+                    break;
             }
-        </script>
-    </body>
+        }
+        function allInactive() {
+            $('.contact').addClass('d-none');
+            $('.profile').addClass('d-none');
+            $('.changeEmail').addClass('d-none');
+            $('.btn-area').addClass('d-none');
+            $('.guidance').addClass('d-none');
+            $('.onetime').addClass('d-none');
+            $('.forgotten').addClass('d-none');
+            $('.others').addClass('d-none');
+
+            $('.contact input').prop('disabled', true)
+            $('.changeEmail input').prop('disabled', true)
+        }
+    </script>
+</body>
+
 </html>
