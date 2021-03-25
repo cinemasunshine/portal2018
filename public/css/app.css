@@ -5,7 +5,7 @@
     line-height: 1.6;
 }
 .headline {
-    font-size: 18px; 
+    font-size: 18px;
     line-height: 1.9;
 }
 .apps {
@@ -70,7 +70,18 @@
     width: 200px;
     margin: 10px 0px;
 }
-
+.new-function-txt{
+    width: 65%;
+}
+.new-function-img{
+    width: 30%;
+}
+.function-colum-first{
+    border-top: 1px solid rgb(154,154,154);
+}
+.function-colum{
+    border-bottom: 1px solid rgb(154,154,154);
+}
 
 @media (max-width: 767.98px) {
     .smp-img img {
@@ -128,5 +139,12 @@
     .mvtk_goriyou{
         width: 200px;
         margin: 15px;
+    }
+    .new-function-txt{
+        width: 100%;
+    }
+    .new-function-img{
+        width: 70%;
+        margin: 0px auto;
     }
 }
