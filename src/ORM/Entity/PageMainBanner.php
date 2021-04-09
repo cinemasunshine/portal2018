@@ -34,7 +34,7 @@ class PageMainBanner extends BasePageMainBanner
      *
      * @throws LogicException
      */
-    public function setMainBanner(BaseMainBanner $mainBanner)
+    public function setMainBanner(BaseMainBanner $mainBanner): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -44,7 +44,7 @@ class PageMainBanner extends BasePageMainBanner
      *
      * @throws LogicException
      */
-    public function setPage(BasePage $page)
+    public function setPage(BasePage $page): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -54,7 +54,7 @@ class PageMainBanner extends BasePageMainBanner
      *
      * @throws LogicException
      */
-    public function setDisplayOrder(int $displayOrder)
+    public function setDisplayOrder(int $displayOrder): void
     {
         throw new LogicException('Not allowed.');
     }

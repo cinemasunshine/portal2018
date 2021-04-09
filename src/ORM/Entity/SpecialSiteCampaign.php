@@ -34,7 +34,7 @@ class SpecialSiteCampaign extends BaseSpecialSiteCampaign
      *
      * @throws LogicException
      */
-    public function setCampaign(BaseCampaign $campaign)
+    public function setCampaign(BaseCampaign $campaign): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -44,7 +44,7 @@ class SpecialSiteCampaign extends BaseSpecialSiteCampaign
      *
      * @throws LogicException
      */
-    public function setSpecialSite(BaseSpecialSite $specialSite)
+    public function setSpecialSite(BaseSpecialSite $specialSite): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -54,7 +54,7 @@ class SpecialSiteCampaign extends BaseSpecialSiteCampaign
      *
      * @throws LogicException
      */
-    public function setDisplayOrder(int $displayOrder)
+    public function setDisplayOrder(int $displayOrder): void
     {
         throw new LogicException('Not allowed.');
     }

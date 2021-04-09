@@ -34,7 +34,7 @@ class TheaterTrailer extends BaseTheaterTrailer
      *
      * @throws LogicException
      */
-    public function setTrailer(BaseTrailer $trailer)
+    public function setTrailer(BaseTrailer $trailer): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -44,7 +44,7 @@ class TheaterTrailer extends BaseTheaterTrailer
      *
      * @throws LogicException
      */
-    public function setTheater(BaseTheater $theater)
+    public function setTheater(BaseTheater $theater): void
     {
         throw new LogicException('Not allowed.');
     }

@@ -33,7 +33,7 @@ class AdminUser extends BaseAdminUser
      *
      * @throws LogicException
      */
-    public function setName(string $name)
+    public function setName(string $name): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -43,7 +43,7 @@ class AdminUser extends BaseAdminUser
      *
      * @throws LogicException
      */
-    public function setDisplayName(string $displayName)
+    public function setDisplayName(string $displayName): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -53,7 +53,7 @@ class AdminUser extends BaseAdminUser
      *
      * @throws LogicException
      */
-    public function setPassword(string $password)
+    public function setPassword(string $password): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -63,7 +63,7 @@ class AdminUser extends BaseAdminUser
      *
      * @throws LogicException
      */
-    public function setGroup(int $group)
+    public function setGroup(int $group): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -73,7 +73,7 @@ class AdminUser extends BaseAdminUser
      *
      * @throws LogicException
      */
-    public function setTheater(?BaseTheater $theater)
+    public function setTheater(?BaseTheater $theater): void
     {
         throw new LogicException('Not allowed.');
     }

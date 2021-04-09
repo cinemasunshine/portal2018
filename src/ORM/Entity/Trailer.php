@@ -35,7 +35,7 @@ class Trailer extends BaseTrailer
      *
      * @throws LogicException
      */
-    public function setTitle(?BaseTitle $title)
+    public function setTitle(?BaseTitle $title): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -45,7 +45,7 @@ class Trailer extends BaseTrailer
      *
      * @throws LogicException
      */
-    public function setName(string $name)
+    public function setName(string $name): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -55,7 +55,7 @@ class Trailer extends BaseTrailer
      *
      * @throws LogicException
      */
-    public function setYoutube(string $youtube)
+    public function setYoutube(string $youtube): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -65,7 +65,7 @@ class Trailer extends BaseTrailer
      *
      * @throws LogicException
      */
-    public function setBannerImage(?BaseFile $bannerImage)
+    public function setBannerImage(?BaseFile $bannerImage): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -75,7 +75,7 @@ class Trailer extends BaseTrailer
      *
      * @throws LogicException
      */
-    public function setBannerLinkUrl(string $bannerLinkUrl)
+    public function setBannerLinkUrl(string $bannerLinkUrl): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -85,7 +85,7 @@ class Trailer extends BaseTrailer
      *
      * @throws LogicException
      */
-    public function setPageTrailers(Collection $pageTrailers)
+    public function setPageTrailers(Collection $pageTrailers): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -95,7 +95,7 @@ class Trailer extends BaseTrailer
      *
      * @throws LogicException
      */
-    public function setTheaterTrailers(Collection $theaterTrailers)
+    public function setTheaterTrailers(Collection $theaterTrailers): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -105,7 +105,7 @@ class Trailer extends BaseTrailer
      *
      * @throws LogicException
      */
-    public function setSpecialSiteTrailers(Collection $specialSiteTrailers)
+    public function setSpecialSiteTrailers(Collection $specialSiteTrailers): void
     {
         throw new LogicException('Not allowed.');
     }

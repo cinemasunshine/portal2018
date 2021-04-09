@@ -34,7 +34,7 @@ class PageTrailer extends BasePageTrailer
      *
      * @throws LogicException
      */
-    public function setTrailer(BaseTrailer $trailer)
+    public function setTrailer(BaseTrailer $trailer): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -44,7 +44,7 @@ class PageTrailer extends BasePageTrailer
      *
      * @throws LogicException
      */
-    public function setPage(BasePage $page)
+    public function setPage(BasePage $page): void
     {
         throw new LogicException('Not allowed.');
     }

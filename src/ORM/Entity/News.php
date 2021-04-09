@@ -6,6 +6,7 @@ namespace App\ORM\Entity;
 
 use Cinemasunshine\ORM\Entities\File as BaseFile;
 use Cinemasunshine\ORM\Entities\News as BaseNews;
+use Cinemasunshine\ORM\Entities\Title as BaseTitle;
 use Doctrine\ORM\Mapping as ORM;
 use LogicException;
 
@@ -33,7 +34,7 @@ class News extends BaseNews
      *
      * @throws LogicException
      */
-    public function setTitle($title)
+    public function setTitle(?BaseTitle $title): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -43,7 +44,7 @@ class News extends BaseNews
      *
      * @throws LogicException
      */
-    public function setImage(?BaseFile $image)
+    public function setImage(?BaseFile $image): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -53,7 +54,7 @@ class News extends BaseNews
      *
      * @throws LogicException
      */
-    public function setCategory(int $category)
+    public function setCategory(int $category): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -63,7 +64,7 @@ class News extends BaseNews
      *
      * @throws LogicException
      */
-    public function setHeadline(string $headline)
+    public function setHeadline(string $headline): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -73,7 +74,7 @@ class News extends BaseNews
      *
      * @throws LogicException
      */
-    public function setBody(string $body)
+    public function setBody(string $body): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -83,7 +84,7 @@ class News extends BaseNews
      *
      * @throws LogicException
      */
-    public function setStartDt($startDt)
+    public function setStartDt($startDt): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -93,7 +94,7 @@ class News extends BaseNews
      *
      * @throws LogicException
      */
-    public function setEndDt($endDt)
+    public function setEndDt($endDt): void
     {
         throw new LogicException('Not allowed.');
     }

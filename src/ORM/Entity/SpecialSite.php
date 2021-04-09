@@ -32,7 +32,7 @@ class SpecialSite extends BaseSpecialSite
      *
      * @throws LogicException
      */
-    public function setName(string $name)
+    public function setName(string $name): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -42,7 +42,7 @@ class SpecialSite extends BaseSpecialSite
      *
      * @throws LogicException
      */
-    public function setNameJa(string $nameJa)
+    public function setNameJa(string $nameJa): void
     {
         throw new LogicException('Not allowed.');
     }

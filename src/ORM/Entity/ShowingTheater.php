@@ -34,7 +34,7 @@ class ShowingTheater extends BaseShowingTheater
      *
      * @throws LogicException
      */
-    public function setSchedule(BaseSchedule $schedule)
+    public function setSchedule(BaseSchedule $schedule): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -44,7 +44,7 @@ class ShowingTheater extends BaseShowingTheater
      *
      * @throws LogicException
      */
-    public function setTheater(BaseTheater $theater)
+    public function setTheater(BaseTheater $theater): void
     {
         throw new LogicException('Not allowed.');
     }
