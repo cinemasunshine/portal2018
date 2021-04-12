@@ -34,7 +34,7 @@ class AdvanceSale extends BaseAdvanceSale
      *
      * @throws LogicException
      */
-    public function setTheater(BaseTheater $theater)
+    public function setTheater(BaseTheater $theater): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -44,7 +44,7 @@ class AdvanceSale extends BaseAdvanceSale
      *
      * @throws LogicException
      */
-    public function setTitle(BaseTitle $title)
+    public function setTitle(BaseTitle $title): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -54,7 +54,7 @@ class AdvanceSale extends BaseAdvanceSale
      *
      * @throws LogicException
      */
-    public function setPublishingExpectedDate($publishingExpectedDate)
+    public function setPublishingExpectedDate($publishingExpectedDate): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -64,7 +64,7 @@ class AdvanceSale extends BaseAdvanceSale
      *
      * @throws LogicException
      */
-    public function setPublishingExpectedDateText(?string $publishingExpectedDateText)
+    public function setPublishingExpectedDateText(?string $publishingExpectedDateText): void
     {
         throw new LogicException('Not allowed.');
     }

@@ -33,7 +33,7 @@ class AdvanceTicket extends BaseAdvanceTicket
      *
      * @throws LogicException
      */
-    public function setAdvanceSale(BaseAdvanceSale $advanceSale)
+    public function setAdvanceSale(BaseAdvanceSale $advanceSale): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -43,7 +43,7 @@ class AdvanceTicket extends BaseAdvanceTicket
      *
      * @throws LogicException
      */
-    public function setPublishingStartDt($publishingStartDt)
+    public function setPublishingStartDt($publishingStartDt): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -53,7 +53,7 @@ class AdvanceTicket extends BaseAdvanceTicket
      *
      * @throws LogicException
      */
-    public function setReleaseDt($releaseDt)
+    public function setReleaseDt($releaseDt): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -63,7 +63,7 @@ class AdvanceTicket extends BaseAdvanceTicket
      *
      * @throws LogicException
      */
-    public function setReleaseDtText(?string $releaseDtText)
+    public function setReleaseDtText(?string $releaseDtText): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -73,7 +73,7 @@ class AdvanceTicket extends BaseAdvanceTicket
      *
      * @throws LogicException
      */
-    public function setIsSalesEnd(bool $isSalesEnd)
+    public function setIsSalesEnd(bool $isSalesEnd): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -83,7 +83,7 @@ class AdvanceTicket extends BaseAdvanceTicket
      *
      * @throws LogicException
      */
-    public function setType(int $type)
+    public function setType(int $type): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -93,7 +93,7 @@ class AdvanceTicket extends BaseAdvanceTicket
      *
      * @throws LogicException
      */
-    public function setPriceText(?string $priceText)
+    public function setPriceText(?string $priceText): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -103,7 +103,7 @@ class AdvanceTicket extends BaseAdvanceTicket
      *
      * @throws LogicException
      */
-    public function setSpecialGift(?string $specialGift)
+    public function setSpecialGift(?string $specialGift): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -142,7 +142,7 @@ class AdvanceTicket extends BaseAdvanceTicket
      *
      * @throws LogicException
      */
-    public function setSpecialGiftStock($specialGiftStock)
+    public function setSpecialGiftStock($specialGiftStock): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -152,7 +152,7 @@ class AdvanceTicket extends BaseAdvanceTicket
      *
      * @throws LogicException
      */
-    public function setSpecialGiftImage($specialGiftImage)
+    public function setSpecialGiftImage($specialGiftImage): void
     {
         throw new LogicException('Not allowed.');
     }

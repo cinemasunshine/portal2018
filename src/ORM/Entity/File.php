@@ -47,7 +47,7 @@ class File extends BaseFile
      *
      * @throws LogicException
      */
-    public function setName(string $name)
+    public function setName(string $name): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -57,7 +57,7 @@ class File extends BaseFile
      *
      * @throws LogicException
      */
-    public function setOriginalName(string $originalName)
+    public function setOriginalName(string $originalName): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -67,7 +67,7 @@ class File extends BaseFile
      *
      * @throws LogicException
      */
-    public function setMimeType(string $mimeType)
+    public function setMimeType(string $mimeType): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -77,7 +77,7 @@ class File extends BaseFile
      *
      * @throws LogicException
      */
-    public function setSize(int $size)
+    public function setSize(int $size): void
     {
         throw new LogicException('Not allowed.');
     }

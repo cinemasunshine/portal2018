@@ -34,7 +34,7 @@ class PageNews extends BasePageNews
      *
      * @throws LogicException
      */
-    public function setNews(BaseNews $news)
+    public function setNews(BaseNews $news): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -44,7 +44,7 @@ class PageNews extends BasePageNews
      *
      * @throws LogicException
      */
-    public function setPage(BasePage $page)
+    public function setPage(BasePage $page): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -54,7 +54,7 @@ class PageNews extends BasePageNews
      *
      * @throws LogicException
      */
-    public function setDisplayOrder(int $displayOrder)
+    public function setDisplayOrder(int $displayOrder): void
     {
         throw new LogicException('Not allowed.');
     }

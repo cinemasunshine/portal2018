@@ -34,7 +34,7 @@ class TheaterNews extends BaseTheaterNews
      *
      * @throws LogicException
      */
-    public function setNews(BaseNews $news)
+    public function setNews(BaseNews $news): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -44,7 +44,7 @@ class TheaterNews extends BaseTheaterNews
      *
      * @throws LogicException
      */
-    public function setTheater(BaseTheater $theater)
+    public function setTheater(BaseTheater $theater): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -54,7 +54,7 @@ class TheaterNews extends BaseTheaterNews
      *
      * @throws LogicException
      */
-    public function setDisplayOrder(int $displayOrder)
+    public function setDisplayOrder(int $displayOrder): void
     {
         throw new LogicException('Not allowed.');
     }
