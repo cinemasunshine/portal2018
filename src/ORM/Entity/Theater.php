@@ -49,7 +49,7 @@ class Theater extends BaseTheater
      *
      * @throws LogicException
      */
-    public function setName(string $name)
+    public function setName(string $name): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -59,7 +59,7 @@ class Theater extends BaseTheater
      *
      * @throws LogicException
      */
-    public function setNameJa(string $nameJa)
+    public function setNameJa(string $nameJa): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -69,7 +69,7 @@ class Theater extends BaseTheater
      *
      * @throws LogicException
      */
-    public function setArea($area)
+    public function setArea(int $area): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -79,7 +79,7 @@ class Theater extends BaseTheater
      *
      * @throws LogicException
      */
-    public function setMasterVersion($masterVersion)
+    public function setMasterVersion(int $masterVersion): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -89,7 +89,7 @@ class Theater extends BaseTheater
      *
      * @throws LogicException
      */
-    public function setMasterCode($masterCode)
+    public function setMasterCode(?string $masterCode): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -99,7 +99,7 @@ class Theater extends BaseTheater
      *
      * @throws LogicException
      */
-    public function setDisplayOrder(int $displayOrder)
+    public function setDisplayOrder(int $displayOrder): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -109,7 +109,7 @@ class Theater extends BaseTheater
      *
      * @throws LogicException
      */
-    public function setStatus(int $status)
+    public function setStatus(int $status): void
     {
         throw new LogicException('Not allowed.');
     }

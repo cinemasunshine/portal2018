@@ -33,7 +33,7 @@ class ShowingFormat extends BaseShowingFormat
      *
      * @throws LogicException
      */
-    public function setSchedule(BaseSchedule $schedule)
+    public function setSchedule(BaseSchedule $schedule): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -43,7 +43,7 @@ class ShowingFormat extends BaseShowingFormat
      *
      * @throws LogicException
      */
-    public function setSystem(int $system)
+    public function setSystem(int $system): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -53,7 +53,7 @@ class ShowingFormat extends BaseShowingFormat
      *
      * @throws LogicException
      */
-    public function setSound(int $sound)
+    public function setSound(int $sound): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -63,7 +63,7 @@ class ShowingFormat extends BaseShowingFormat
      *
      * @throws LogicException
      */
-    public function setVoice(int $voice)
+    public function setVoice(int $voice): void
     {
         throw new LogicException('Not allowed.');
     }

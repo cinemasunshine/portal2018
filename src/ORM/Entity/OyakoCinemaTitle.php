@@ -36,7 +36,7 @@ class OyakoCinemaTitle extends BaseOyakoCinemaTitle
      *
      * @throws LogicException
      */
-    public function setTitle(BaseTitle $title)
+    public function setTitle(BaseTitle $title): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -46,7 +46,7 @@ class OyakoCinemaTitle extends BaseOyakoCinemaTitle
      *
      * @throws LogicException
      */
-    public function setTitleUrl(string $titleUrl)
+    public function setTitleUrl(string $titleUrl): void
     {
         throw new LogicException('Not allowed.');
     }

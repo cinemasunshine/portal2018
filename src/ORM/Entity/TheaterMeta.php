@@ -33,7 +33,7 @@ class TheaterMeta extends BaseTheaterMeta
      *
      * @throws LogicException
      */
-    public function setTheater(BaseTheater $theater)
+    public function setTheater(BaseTheater $theater): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -43,7 +43,7 @@ class TheaterMeta extends BaseTheaterMeta
      *
      * @throws LogicException
      */
-    public function setOpeningHours(array $openingHours)
+    public function setOpeningHours(array $openingHours): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -53,7 +53,7 @@ class TheaterMeta extends BaseTheaterMeta
      *
      * @throws LogicException
      */
-    public function setTwitter(?string $twitter)
+    public function setTwitter(?string $twitter): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -63,7 +63,7 @@ class TheaterMeta extends BaseTheaterMeta
      *
      * @throws LogicException
      */
-    public function setFacebook(?string $facebook)
+    public function setFacebook(?string $facebook): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -73,7 +73,7 @@ class TheaterMeta extends BaseTheaterMeta
      *
      * @throws LogicException
      */
-    public function setOyakoCinemaUrl(?string $oyakoCinemaUrl)
+    public function setOyakoCinemaUrl(?string $oyakoCinemaUrl): void
     {
         throw new LogicException('Not allowed.');
     }

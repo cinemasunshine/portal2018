@@ -34,7 +34,7 @@ class SpecialSiteNews extends BaseSpecialSiteNews
      *
      * @throws LogicException
      */
-    public function setNews(BaseNews $news)
+    public function setNews(BaseNews $news): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -44,7 +44,7 @@ class SpecialSiteNews extends BaseSpecialSiteNews
      *
      * @throws LogicException
      */
-    public function setSpecialSite(BaseSpecialSite $specialSite)
+    public function setSpecialSite(BaseSpecialSite $specialSite): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -54,7 +54,7 @@ class SpecialSiteNews extends BaseSpecialSiteNews
      *
      * @throws LogicException
      */
-    public function setDisplayOrder(int $displayOrder)
+    public function setDisplayOrder(int $displayOrder): void
     {
         throw new LogicException('Not allowed.');
     }

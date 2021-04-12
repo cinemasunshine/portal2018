@@ -47,7 +47,7 @@ class MainBanner extends BaseMainBanner
      *
      * @throws LogicException
      */
-    public function setImage(BaseFile $image)
+    public function setImage(BaseFile $image): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -57,7 +57,7 @@ class MainBanner extends BaseMainBanner
      *
      * @throws LogicException
      */
-    public function setName(string $name)
+    public function setName(string $name): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -67,7 +67,7 @@ class MainBanner extends BaseMainBanner
      *
      * @throws LogicException
      */
-    public function setLinkType(int $linkType)
+    public function setLinkType(int $linkType): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -93,7 +93,7 @@ class MainBanner extends BaseMainBanner
      *
      * @throws LogicException
      */
-    public function setLinkUrl($linkUrl)
+    public function setLinkUrl(?string $linkUrl): void
     {
         throw new LogicException('Not allowed.');
     }

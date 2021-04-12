@@ -34,7 +34,7 @@ class OyakoCinemaTheater extends BaseOyakoCinemaTheater
      *
      * @throws LogicException
      */
-    public function setOyakoCinemaSchedule(BaseOyakoCinemaSchedule $oyakoCinemaSchedule)
+    public function setOyakoCinemaSchedule(BaseOyakoCinemaSchedule $oyakoCinemaSchedule): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -44,7 +44,7 @@ class OyakoCinemaTheater extends BaseOyakoCinemaTheater
      *
      * @throws LogicException
      */
-    public function setTheater(BaseTheater $theater)
+    public function setTheater(BaseTheater $theater): void
     {
         throw new LogicException('Not allowed.');
     }

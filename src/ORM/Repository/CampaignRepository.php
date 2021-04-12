@@ -5,26 +5,23 @@ declare(strict_types=1);
 namespace App\ORM\Repository;
 
 use App\ORM\Entity\Campaign;
-use Doctrine\ORM\EntityRepository;
+use Cinemasunshine\ORM\Repositories\CampaignRepository as BaseRepository;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use Doctrine\ORM\QueryBuilder;
 
 /**
- * Campaign repository class
+ * @extends BaseRepository<Campaign>
  */
-class CampaignRepository extends EntityRepository
+class CampaignRepository extends BaseRepository
 {
-    protected function getActiveQuery(): QueryBuilder
+    protected function addActiveQuery(QueryBuilder $qb, string $alias): void
     {
-        $qb = $this->createQueryBuilder('c');
-        $qb
-            ->where('c.isDeleted = false')
-            ->andWhere($qb->expr()->andX(
-                $qb->expr()->lte('c.startDt', 'CURRENT_TIMESTAMP()'),
-                $qb->expr()->gt('c.endDt', 'CURRENT_TIMESTAMP()')
-            ));
+        parent::addActiveQuery($qb, $alias);
 
-        return $qb;
+        $qb->andWhere($qb->expr()->andX(
+            $qb->expr()->lte($alias . '.startDt', 'CURRENT_TIMESTAMP()'),
+            $qb->expr()->gt($alias . '.endDt', 'CURRENT_TIMESTAMP()')
+        ));
     }
 
     /**
@@ -32,13 +29,17 @@ class CampaignRepository extends EntityRepository
      */
     public function findByPage(int $pageId): array
     {
-        $qb = $this->getActiveQuery();
+        $alias = 'c';
+        $qb    = $this->createQueryBuilder($alias);
 
+        $this->addActiveQuery($qb, $alias);
+
+        $campaignPagesAlias = 'cp';
         $qb
-            ->join('c.pages', 'pc')
-            ->andWhere('pc.page = :page_id')
+            ->join($alias . '.pages', $campaignPagesAlias)
+            ->andWhere($campaignPagesAlias . '.page = :page_id')
             ->setParameter('page_id', $pageId)
-            ->orderBy('pc.displayOrder', 'ASC');
+            ->orderBy($campaignPagesAlias . '.displayOrder', 'ASC');
 
         $query = $qb->getQuery();
         $query->setFetchMode(Campaign::class, 'image', ClassMetadata::FETCH_EAGER);
@@ -51,13 +52,17 @@ class CampaignRepository extends EntityRepository
      */
     public function findByTheater(int $theaterId): array
     {
-        $qb = $this->getActiveQuery();
+        $alias = 'c';
+        $qb    = $this->createQueryBuilder($alias);
 
+        $this->addActiveQuery($qb, $alias);
+
+        $campaingTheatersAlias = 'ct';
         $qb
-            ->join('c.theaters', 'tc')
-            ->andWhere('tc.theater = :theater_id')
+            ->join($alias . '.theaters', $campaingTheatersAlias)
+            ->andWhere($campaingTheatersAlias . '.theater = :theater_id')
             ->setParameter('theater_id', $theaterId)
-            ->orderBy('tc.displayOrder', 'ASC');
+            ->orderBy($campaingTheatersAlias . '.displayOrder', 'ASC');
 
         $query = $qb->getQuery();
         $query->setFetchMode(Campaign::class, 'image', ClassMetadata::FETCH_EAGER);
@@ -70,13 +75,17 @@ class CampaignRepository extends EntityRepository
      */
     public function findBySpecialSite(int $specialSiteId): array
     {
-        $qb = $this->getActiveQuery();
+        $alias = 'c';
+        $qb    = $this->createQueryBuilder($alias);
 
+        $this->addActiveQuery($qb, $alias);
+
+        $campaingSpecialSitesAlias = 'cs';
         $qb
-            ->join('c.specialSites', 'sc')
-            ->andWhere('sc.specialSite = :special_site_id')
+            ->join($alias . '.specialSites', $campaingSpecialSitesAlias)
+            ->andWhere($campaingSpecialSitesAlias . '.specialSite = :special_site_id')
             ->setParameter('special_site_id', $specialSiteId)
-            ->orderBy('sc.displayOrder', 'ASC');
+            ->orderBy($campaingSpecialSitesAlias . '.displayOrder', 'ASC');
 
         $query = $qb->getQuery();
         $query->setFetchMode(Campaign::class, 'image', ClassMetadata::FETCH_EAGER);

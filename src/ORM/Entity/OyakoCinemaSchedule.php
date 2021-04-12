@@ -33,7 +33,7 @@ class OyakoCinemaSchedule extends BaseOyakoCinemaSchedule
      *
      * @throws LogicException
      */
-    public function setOyakoCinemaTitle(BaseOyakoCinemaTitle $oyakoCinemaTitle)
+    public function setOyakoCinemaTitle(BaseOyakoCinemaTitle $oyakoCinemaTitle): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -43,7 +43,7 @@ class OyakoCinemaSchedule extends BaseOyakoCinemaSchedule
      *
      * @throws LogicException
      */
-    public function setDate($date)
+    public function setDate($date): void
     {
         throw new LogicException('Not allowed.');
     }

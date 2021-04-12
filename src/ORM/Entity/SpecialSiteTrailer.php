@@ -34,7 +34,7 @@ class SpecialSiteTrailer extends BaseSpecialSiteTrailer
      *
      * @throws LogicException
      */
-    public function setTrailer(BaseTrailer $trailer)
+    public function setTrailer(BaseTrailer $trailer): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -44,7 +44,7 @@ class SpecialSiteTrailer extends BaseSpecialSiteTrailer
      *
      * @throws LogicException
      */
-    public function setSpecialSite(BaseSpecialSite $specialSite)
+    public function setSpecialSite(BaseSpecialSite $specialSite): void
     {
         throw new LogicException('Not allowed.');
     }

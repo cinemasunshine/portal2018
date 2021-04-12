@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\ORM\Entity;
 
+use Cinemasunshine\ORM\Entities\File as BaseFile;
 use Cinemasunshine\ORM\Entities\Title as BaseTitle;
 use DateTime;
 use Doctrine\Common\Collections\Collection;
@@ -65,7 +66,7 @@ class Title extends BaseTitle
      *
      * @throws LogicException
      */
-    public function setImage($image)
+    public function setImage(?BaseFile $image): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -75,7 +76,7 @@ class Title extends BaseTitle
      *
      * @throws LogicException
      */
-    public function setName(string $name)
+    public function setName(string $name): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -85,7 +86,7 @@ class Title extends BaseTitle
      *
      * @throws LogicException
      */
-    public function setNameKana(?string $nameKana)
+    public function setNameKana(?string $nameKana): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -95,7 +96,7 @@ class Title extends BaseTitle
      *
      * @throws LogicException
      */
-    public function setNameOriginal(?string $nameOriginal)
+    public function setNameOriginal(?string $nameOriginal): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -105,7 +106,7 @@ class Title extends BaseTitle
      *
      * @throws LogicException
      */
-    public function setCredit(?string $credit)
+    public function setCredit(?string $credit): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -115,7 +116,7 @@ class Title extends BaseTitle
      *
      * @throws LogicException
      */
-    public function setCatchcopy(?string $catchcopy)
+    public function setCatchcopy(?string $catchcopy): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -125,7 +126,7 @@ class Title extends BaseTitle
      *
      * @throws LogicException
      */
-    public function setIntroduction(?string $introduction)
+    public function setIntroduction(?string $introduction): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -135,7 +136,7 @@ class Title extends BaseTitle
      *
      * @throws LogicException
      */
-    public function setDirector(?string $director)
+    public function setDirector(?string $director): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -145,7 +146,7 @@ class Title extends BaseTitle
      *
      * @throws LogicException
      */
-    public function setCast(?string $cast)
+    public function setCast(?string $cast): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -155,7 +156,7 @@ class Title extends BaseTitle
      *
      * @throws LogicException
      */
-    public function setPublishingExpectedDate($publishingExpectedDate)
+    public function setPublishingExpectedDate($publishingExpectedDate): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -165,7 +166,7 @@ class Title extends BaseTitle
      *
      * @throws LogicException
      */
-    public function setOfficialSite(?string $officialSite)
+    public function setOfficialSite(?string $officialSite): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -175,7 +176,7 @@ class Title extends BaseTitle
      *
      * @throws LogicException
      */
-    public function setRating(?int $rating)
+    public function setRating(?int $rating): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -203,7 +204,7 @@ class Title extends BaseTitle
      *
      * @throws LogicException
      */
-    public function setUniversal(?array $universal)
+    public function setUniversal(?array $universal): void
     {
         throw new LogicException('Not allowed.');
     }

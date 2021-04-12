@@ -34,7 +34,7 @@ class Schedule extends BaseSchedule
      *
      * @throws LogicException
      */
-    public function setTitle(BaseTitle $title)
+    public function setTitle(BaseTitle $title): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -44,7 +44,7 @@ class Schedule extends BaseSchedule
      *
      * @throws LogicException
      */
-    public function setStartDate($startDate)
+    public function setStartDate($startDate): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -54,7 +54,7 @@ class Schedule extends BaseSchedule
      *
      * @throws LogicException
      */
-    public function setEndDate($endDate)
+    public function setEndDate($endDate): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -64,7 +64,7 @@ class Schedule extends BaseSchedule
      *
      * @throws LogicException
      */
-    public function setPublicStartDt($publicStartDt)
+    public function setPublicStartDt($publicStartDt): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -74,7 +74,7 @@ class Schedule extends BaseSchedule
      *
      * @throws LogicException
      */
-    public function setPublicEndDt($publicEndDt)
+    public function setPublicEndDt($publicEndDt): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -84,7 +84,7 @@ class Schedule extends BaseSchedule
      *
      * @throws LogicException
      */
-    public function setRemark(?string $remark)
+    public function setRemark(?string $remark): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -94,7 +94,7 @@ class Schedule extends BaseSchedule
      *
      * @throws LogicException
      */
-    public function setShowingFormats(Collection $showingFormats)
+    public function setShowingFormats(Collection $showingFormats): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -104,7 +104,7 @@ class Schedule extends BaseSchedule
      *
      * @throws LogicException
      */
-    public function setShowingTheaters(Collection $showingTheaters)
+    public function setShowingTheaters(Collection $showingTheaters): void
     {
         throw new LogicException('Not allowed.');
     }

@@ -33,7 +33,7 @@ class TitleRanking extends BaseTitleRanking
      *
      * @throws LogicException
      */
-    public function setFromDate($fromDate)
+    public function setFromDate($fromDate): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -43,7 +43,7 @@ class TitleRanking extends BaseTitleRanking
      *
      * @throws LogicException
      */
-    public function setToDate($toDate)
+    public function setToDate($toDate): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -53,7 +53,7 @@ class TitleRanking extends BaseTitleRanking
      *
      * @throws LogicException
      */
-    public function setRank1Title(?BaseTitle $title)
+    public function setRank1Title(?BaseTitle $title): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -63,7 +63,7 @@ class TitleRanking extends BaseTitleRanking
      *
      * @throws LogicException
      */
-    public function setRank2Title(?BaseTitle $title)
+    public function setRank2Title(?BaseTitle $title): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -73,7 +73,7 @@ class TitleRanking extends BaseTitleRanking
      *
      * @throws LogicException
      */
-    public function setRank3Title(?BaseTitle $title)
+    public function setRank3Title(?BaseTitle $title): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -83,7 +83,7 @@ class TitleRanking extends BaseTitleRanking
      *
      * @throws LogicException
      */
-    public function setRank4Title(?BaseTitle $title)
+    public function setRank4Title(?BaseTitle $title): void
     {
         throw new LogicException('Not allowed.');
     }
@@ -93,7 +93,7 @@ class TitleRanking extends BaseTitleRanking
      *
      * @throws LogicException
      */
-    public function setRank5Title(?BaseTitle $title)
+    public function setRank5Title(?BaseTitle $title): void
     {
         throw new LogicException('Not allowed.');
     }
