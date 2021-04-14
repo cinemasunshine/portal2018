@@ -25,7 +25,10 @@
         schedule: schedule,
         theaters: theaters
     } only %}
-
+    {% include 'theater/index/include/news.html.twig' with {
+    theater: theater,
+    newsList: newsList,
+    } only %}
     {% include 'include/campaign.html.twig' with {
         campaigns: title.getCampaigns()
     } only %}
