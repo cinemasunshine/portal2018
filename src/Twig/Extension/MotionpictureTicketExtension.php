@@ -31,6 +31,7 @@ class MotionpictureTicketExtension extends AbstractExtension
         return [
             new TwigFunction('mp_ticket_inquiry', [$this, 'getTicketInquiryUrl'], [ 'is_safe' => ['html'] ]),
             new TwigFunction('mp_ticket_entrance', [$this, 'getTicketEntranceUrl'], [ 'is_safe' => ['html'] ]),
+            new TwigFunction('mp_ticket', [$this, 'getTicketUrl'], [ 'is_safe' => ['html'] ]),
         ];
     }
 
@@ -44,5 +45,10 @@ class MotionpictureTicketExtension extends AbstractExtension
     public function getTicketEntranceUrl(): string
     {
         return $this->settings['ticket_entrance_url'];
+    }
+
+    public function getTicketUrl(): string
+    {
+        return $this->settings['ticket_url'];
     }
 }
