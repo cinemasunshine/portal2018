@@ -1,9 +1,11 @@
 var SCHEDULE_API;
 var MP_TICKET_ENTRANCE;
+var MP_TICKET;
 var APP_ENV;
 var API_TIMEOUT = 60 * 1000;
 var PRE_SALE_DIFFERENCE_DAY = 2;
 var SCHEDULE_STATUS_THRESHOLD_VALUE = 20;
+var SELLER;
 
 /**
  * パフォーマンス
@@ -94,14 +96,15 @@ var Performance = (function () {
      * url生成
      */
     Performance.prototype.createURL = function () {
-        var theaterName = $('body').attr('data-theater');
-        var theatreTable = getTheaterTable();
-        var theatreTableFindResult = theatreTable.find(function (t) { return (theaterName === t.name); });
-        var plefix = (APP_ENV === 'production' || APP_ENV === 'prod') ? '0' : '1';
-        var id = plefix + theatreTableFindResult.code + this.movie.movie_short_code + this.movie.movie_branch_code + this.date + this.screen.screen_code + this.time.start_time;
+        var id = SELLER.branchCode + this.movie.movie_short_code + this.movie.movie_branch_code + this.date + this.screen.screen_code + this.time.start_time;
         var member = (isSignIn()) ? '1' : '0';
         var url = MP_TICKET_ENTRANCE + '/purchase/index.html';
-        return url + '?id=' + id + '&member=' + member;
+        return url + '?' + object2query({
+            id: id,
+            member: member,
+            sellerId: SELLER.id,
+            redirectUrl: encodeURIComponent(MP_TICKET),
+        });
     };
     return Performance;
 }());
@@ -156,29 +159,6 @@ function hasDisplayPerformance(performances, movie) {
         return p.isDisplay();
     });
     return filterResult.length > 0;
-}
-
-/**
- * 劇場一覧取得
- */
-function getTheaterTable() {
-    return [
-        { "code": "20", "name": "gdcs" },
-        { "code": "02", "name": "heiwajima" },
-        { "code": "19", "name": "yukarigaoka" },
-        { "code": "13", "name": "tsuchiura" },
-        { "code": "06", "name": "numazu" },
-        { "code": "21", "name": "lalaportnumazu" },
-        { "code": "14", "name": "kahoku" },
-        { "code": "16", "name": "yamatokoriyama" },
-        { "code": "17", "name": "shimonoseki" },
-        { "code": "07", "name": "okaido" },
-        { "code": "08", "name": "kinuyama" },
-        { "code": "09", "name": "shigenobu" },
-        { "code": "15", "name": "masaki" },
-        { "code": "12", "name": "kitajima" },
-        { "code": "18", "name": "aira" }
-    ]
 }
 
 Vue.component('purchase-performance-film', {
@@ -272,16 +252,8 @@ Vue.component('purchase-performance-film', {
     </div>\
 </div>'});
 
-/**
- * スケジュールレンダリング
- */
-function scheduleRender() {
-
-    SCHEDULE_API = $('input[name=SCHEDULE_API]').val();
-    MP_TICKET_ENTRANCE = $('input[name=MP_TICKET_ENTRANCE]').val();
-    APP_ENV = $('input[name=APP_ENV]').val();
-
-    var app = new Vue({
+function createVueInstance() {
+    return new Vue({
         el: '#schedule',
         data: {
             theaterCode: undefined,
@@ -396,10 +368,7 @@ function scheduleRender() {
             getSchedule: function () {
                 this.error = undefined;
                 var now = moment().format('YYYYMMDDHHmm');
-                var theaterName = $('body').attr('data-theater');
-                var theatreTable = getTheaterTable();
-                var theatreTableFindResult = theatreTable.find(function (t) { return (theaterName === t.name); });
-                var url = SCHEDULE_API + '/' + theatreTableFindResult.name + '/schedule.json?date=' + now;
+                var url = SCHEDULE_API + '/' + SELLER.alias + '/schedule.json?date=' + now;
                 var options = {
                     dataType: 'json',
                     url: url,
@@ -465,5 +434,52 @@ function scheduleRender() {
     });
 }
 
+/**
+ * オブジェクトをクエリストリングへ変換
+ */
+function object2query(params) {
+    var query = '';
+    for (var i = 0; i < Object.keys(params).length; i++) {
+        var key = Object.keys(params)[i];
+        var value = params[key];
+        if (i > 0) {
+            query += '&';
+        }
+        query += key + '=' + value;
+    }
+    return query;
+}
 
+/**
+ * スケジュールレンダリング
+ */
+ function scheduleRender() {
 
+    SCHEDULE_API = $('input[name=SCHEDULE_API]').val();
+    MP_TICKET_ENTRANCE = $('input[name=MP_TICKET_ENTRANCE]').val();
+    MP_TICKET = $('input[name=MP_TICKET]').val();
+    APP_ENV = $('input[name=APP_ENV]').val();
+
+    var now = moment().format('YYYYMMDDHHmm');
+    var options = {
+        dataType: 'json',
+        url: SCHEDULE_API + '/seller/seller.json?date=' + now,
+        type: 'GET',
+        timeout: API_TIMEOUT
+    };
+    var _this = this;
+    $.ajax(options).done(function (data) {
+        var alias = $('body').attr('data-theater');
+        var findResult = data.find(function(s) {
+            return s.alias === alias;
+        });
+        if (findResult === undefined) {
+            console.error('not seller');
+            return;
+        }
+        SELLER = findResult;
+        var app = createVueInstance();
+    }).fail(function (error) {
+        console.error(error);
+    });;
+}
