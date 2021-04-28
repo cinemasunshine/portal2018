@@ -50,7 +50,7 @@ class TheaterExtension extends AbstractExtension
 
     public function filterNameJa(Theater $theater): string
     {
-        $nameJa = $theater->getNameJa();
+        $nameJa   = $theater->getNameJa();
         $filtered = $nameJa;
 
         if ($theater->getId() === 20) {
@@ -67,7 +67,7 @@ class TheaterExtension extends AbstractExtension
 
     public function filterNameJa2(Theater $theater): string
     {
-        $nameJa = $theater->getNameJa();
+        $nameJa   = $theater->getNameJa();
         $filtered = $nameJa;
 
         if ($theater->getId() === 20) {

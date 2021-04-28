@@ -92,6 +92,7 @@ final class TheaterExtensionTest extends TestCase
     public function testFilterNameJaCaseGDCS(): void
     {
         $name = 'グランドシネマサンシャイン 池袋';
+
         $theaterMock = $this->createTheaterMock();
         $theaterMock
             ->shouldReceive('getId')
@@ -101,6 +102,7 @@ final class TheaterExtensionTest extends TestCase
             ->shouldReceive('getNameJa')
             ->with()
             ->andReturn($name);
+
         $this->assertStringContainsString('<br', $this->extension->filterNameJa($theaterMock));
     }
 
@@ -112,6 +114,7 @@ final class TheaterExtensionTest extends TestCase
     public function testfilterNameJaCaseOtherName(): void
     {
         $name = '平和島';
+
         $theaterMock = $this->createTheaterMock();
         $theaterMock
             ->shouldReceive('getId')
@@ -121,6 +124,7 @@ final class TheaterExtensionTest extends TestCase
             ->shouldReceive('getNameJa')
             ->with()
             ->andReturn($name);
+
         $this->assertEquals($name, $this->extension->filterNameJa($theaterMock));
     }
 
@@ -132,6 +136,7 @@ final class TheaterExtensionTest extends TestCase
     public function testFilterNameJa2CaseGDCS(): void
     {
         $name = 'グランドシネマサンシャイン 池袋';
+
         $theaterMock = $this->createTheaterMock();
         $theaterMock
             ->shouldReceive('getId')
@@ -141,6 +146,7 @@ final class TheaterExtensionTest extends TestCase
             ->shouldReceive('getNameJa')
             ->with()
             ->andReturn($name);
+
         $this->assertStringContainsString('<br', $this->extension->filterNameJa2($theaterMock));
     }
 
@@ -152,6 +158,7 @@ final class TheaterExtensionTest extends TestCase
     public function testFilterNameJa2CaseOtherName(): void
     {
         $name = '平和島';
+
         $theaterMock = $this->createTheaterMock();
         $theaterMock
             ->shouldReceive('getId')
@@ -161,6 +168,7 @@ final class TheaterExtensionTest extends TestCase
             ->shouldReceive('getNameJa')
             ->with()
             ->andReturn($name);
+
         $this->assertEquals($name, $this->extension->filterNameJa2($theaterMock));
     }
 
