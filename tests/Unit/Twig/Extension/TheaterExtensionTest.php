@@ -1,9 +1,5 @@
 <?php
 
-/**
- * TheaterExtensionTest.php
- */
-
 declare(strict_types=1);
 
 namespace Tests\Unit\Twig\Extension;
@@ -12,26 +8,38 @@ use App\ORM\Entity\Theater;
 use App\Twig\Extension\TheaterExtension;
 use Mockery;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
+use Mockery\LegacyMockInterface;
+use Mockery\MockInterface;
 use PHPUnit\Framework\TestCase;
 use Twig\TwigFilter;
 use Twig\TwigFunction;
 
 /**
- * Theater extension test
+ * @coversDefaultClass \App\Twig\Extension\TheaterExtension
  */
 final class TheaterExtensionTest extends TestCase
 {
     use MockeryPHPUnitIntegration;
 
-    /**
-     * @test
-     */
-    public function testGetFilters(): void
-    {
-        $extensionMock = Mockery::mock(TheaterExtension::class)
-            ->makePartial();
+    /** @var TheaterExtension */
+    private $extension;
 
-        $filters = $extensionMock->getFilters();
+    /**
+     * @before
+     */
+    public function setUp(): void
+    {
+        $this->extension = new TheaterExtension();
+    }
+
+    /**
+     * @covers ::getFilters
+     * @test
+     * @testdox getFiltersはTwigFilterの配列を返す
+     */
+    public function testGetFiltersCaseReturnType(): void
+    {
+        $filters = $this->extension->getFilters();
 
         $this->assertIsArray($filters);
 
@@ -41,44 +49,85 @@ final class TheaterExtensionTest extends TestCase
     }
 
     /**
-     * @test
+     * @return array<string,array<string>>
      */
-    public function testFilterNameJa(): void
+    public function getFilterNameDataProvider(): array
     {
-        $extensionMock = Mockery::mock(TheaterExtension::class)
-            ->makePartial();
-
-        $nameGDCS = 'グランドシネマサンシャイン';
-        $this->assertStringContainsString('<br', $extensionMock->filterNameJa($nameGDCS));
-
-        $nameOther = '平和島';
-        $this->assertEquals($nameOther, $extensionMock->filterNameJa($nameOther));
+        return [
+            'filter theater_name_ja' => ['theater_name_ja'],
+            'filter theater_name_ja2' => ['theater_name_ja2'],
+        ];
     }
 
     /**
+     * @covers ::getFilters
+     * @dataProvider getFilterNameDataProvider
      * @test
+     * @testdox getFiltersは指定のfilter名を含む
      */
-    public function testFilterNameJa2(): void
+    public function testGetFiltersCaseFilterNameExist(string $name): void
     {
-        $extensionMock = Mockery::mock(TheaterExtension::class)
-            ->makePartial();
+        $filters = $this->extension->getFilters();
 
-        $nameGDCS = 'グランドシネマサンシャイン';
-        $this->assertStringContainsString('<br', $extensionMock->filterNameJa2($nameGDCS));
+        $filterNames = array_map(static function (TwigFilter $filter) {
+            return $filter->getName();
+        }, $filters);
 
-        $nameOther = '平和島';
-        $this->assertEquals($nameOther, $extensionMock->filterNameJa2($nameOther));
+        $this->assertTrue(in_array($name, $filterNames));
     }
 
     /**
+     * @covers ::filterNameJa
      * @test
+     * @testdox filterNameJaはグランドシネマサンシャインはbrタグを挿入した名称を返す
      */
-    public function testGetFunctions(): void
+    public function testFilterNameJaCaseGDCS(): void
     {
-        $extensionMock = Mockery::mock(TheaterExtension::class)
-            ->makePartial();
+        $name = 'グランドシネマサンシャイン';
+        $this->assertStringContainsString('<br', $this->extension->filterNameJa($name));
+    }
 
-        $functions = $extensionMock->getFunctions();
+    /**
+     * @covers ::filterNameJa
+     * @test
+     * @testdox filterNameJaはグランドシネマサンシャイン以外はそのままの名称を返す
+     */
+    public function testfilterNameJaCaseOtherName(): void
+    {
+        $otherName = '平和島';
+        $this->assertEquals($otherName, $this->extension->filterNameJa($otherName));
+    }
+
+    /**
+     * @covers ::filterNameJa2
+     * @test
+     * @testdox filterNameJa2はグランドシネマサンシャインはbrタグを挿入した名称を返す
+     */
+    public function testFilterNameJa2CaseGDCS(): void
+    {
+        $name = 'グランドシネマサンシャイン';
+        $this->assertStringContainsString('<br', $this->extension->filterNameJa2($name));
+    }
+
+    /**
+     * @covers ::filterNameJa2
+     * @test
+     * @testdox filterNameJa2はグランドシネマサンシャイン以外はそのままの名称を返す
+     */
+    public function testFilterNameJa2CaseOtherName(): void
+    {
+        $otherName = '平和島';
+        $this->assertEquals($otherName, $this->extension->filterNameJa2($otherName));
+    }
+
+    /**
+     * @covers ::getFunctions
+     * @test
+     * @testdox getFunctionsはTwigFunctionの配列を返す
+     */
+    public function testGetFunctionsCaseReturnType(): void
+    {
+        $functions = $this->extension->getFunctions();
 
         $this->assertIsArray($functions);
 
@@ -88,32 +137,90 @@ final class TheaterExtensionTest extends TestCase
     }
 
     /**
-     * @test
+     * @return array<string,array<string>>
      */
-    public function testTheaterArea(): void
+    public function getFunctionNameDataProvider(): array
     {
-        $extensionMock = Mockery::mock(TheaterExtension::class)
-            ->makePartial();
-
-        $this->assertIsString($extensionMock->theaterArea(1));
-        $this->assertNull($extensionMock->theaterArea(99));
+        return [
+            'function theater_area' => ['theater_area'],
+            'funciton theater_meta_keywords' => ['theater_meta_keywords'],
+        ];
     }
 
     /**
+     * @covers ::getFunctions
+     * @dataProvider getFunctionNameDataProvider
      * @test
+     * @testdox getFunctionsは指定のfunction名を含む
      */
-    public function testGetMetaKeywords(): void
+    public function testGetFunctionsCaseFunctionNameExist(string $name): void
     {
-        $extensionMock = Mockery::mock(TheaterExtension::class)
-            ->makePartial();
+        $functions = $this->extension->getFunctions();
 
-        $theaterMock = Mockery::mock(Theater::class);
+        $functionNames = array_map(static function (TwigFunction $function) {
+            return $function->getName();
+        }, $functions);
+
+        $this->assertTrue(in_array($name, $functionNames));
+    }
+
+    /**
+     * @covers ::theaterArea
+     * @test
+     * @testdox theaterAreaはエリアが存在する場合は文字列を返
+     */
+    public function testTheaterAreaCaseAreaExist(): void
+    {
+        $this->assertIsString($this->extension->theaterArea(1));
+    }
+
+    /**
+     * @covers ::theaterArea
+     * @test
+     * @testdox theaterAreaはエリアが存在しない場合はnullを返す
+     */
+    public function testTheaterAreaCaseAreaNotExist(): void
+    {
+        $this->assertNull($this->extension->theaterArea(99));
+    }
+
+    /**
+     * @return MockInterface&LegacyMockInterface&Theater
+     */
+    private function createTheaterMock()
+    {
+        return Mockery::mock(Theater::class);
+    }
+
+    /**
+     * @covers ::getMetaKeywords
+     * @test
+     * @testdox getMetaKeywordsはkeywords設定が存在する劇場は文字列を返す
+     */
+    public function testGetMetaKeywordsCaseKeywordsExist(): void
+    {
+        $theaterMock = $this->createTheaterMock();
         $theaterMock
             ->shouldReceive('getId')
             ->with()
-            ->andReturn(2, 99);
+            ->andReturn(2);
 
-        $this->assertIsString($extensionMock->getMetaKeywords($theaterMock));
-        $this->assertNull($extensionMock->getMetaKeywords($theaterMock));
+        $this->assertIsString($this->extension->getMetaKeywords($theaterMock));
+    }
+
+    /**
+     * @covers ::getMetaKeywords
+     * @test
+     * @testdox getMetaKeywordsはkeywords設定が存在しない劇場はnullを返す
+     */
+    public function testGetMetaKeywordsCaseKeywordsNotExist(): void
+    {
+        $theaterMock = $this->createTheaterMock();
+        $theaterMock
+            ->shouldReceive('getId')
+            ->with()
+            ->andReturn(99);
+
+        $this->assertNull($this->extension->getMetaKeywords($theaterMock));
     }
 }
