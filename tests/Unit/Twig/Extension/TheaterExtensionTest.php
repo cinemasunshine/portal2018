@@ -25,6 +25,14 @@ final class TheaterExtensionTest extends TestCase
     private $extension;
 
     /**
+     * @return MockInterface&LegacyMockInterface&Theater
+     */
+    private function createTheaterMock()
+    {
+        return Mockery::mock(Theater::class);
+    }
+
+    /**
      * @before
      */
     public function setUp(): void
@@ -83,8 +91,17 @@ final class TheaterExtensionTest extends TestCase
      */
     public function testFilterNameJaCaseGDCS(): void
     {
-        $name = 'グランドシネマサンシャイン';
-        $this->assertStringContainsString('<br', $this->extension->filterNameJa($name));
+        $name = 'グランドシネマサンシャイン 池袋';
+        $theaterMock = $this->createTheaterMock();
+        $theaterMock
+            ->shouldReceive('getId')
+            ->with()
+            ->andReturn(20);
+        $theaterMock
+            ->shouldReceive('getNameJa')
+            ->with()
+            ->andReturn($name);
+        $this->assertStringContainsString('<br', $this->extension->filterNameJa($theaterMock));
     }
 
     /**
@@ -94,8 +111,17 @@ final class TheaterExtensionTest extends TestCase
      */
     public function testfilterNameJaCaseOtherName(): void
     {
-        $otherName = '平和島';
-        $this->assertEquals($otherName, $this->extension->filterNameJa($otherName));
+        $name = '平和島';
+        $theaterMock = $this->createTheaterMock();
+        $theaterMock
+            ->shouldReceive('getId')
+            ->with()
+            ->andReturn(2);
+        $theaterMock
+            ->shouldReceive('getNameJa')
+            ->with()
+            ->andReturn($name);
+        $this->assertEquals($name, $this->extension->filterNameJa($theaterMock));
     }
 
     /**
@@ -105,8 +131,17 @@ final class TheaterExtensionTest extends TestCase
      */
     public function testFilterNameJa2CaseGDCS(): void
     {
-        $name = 'グランドシネマサンシャイン';
-        $this->assertStringContainsString('<br', $this->extension->filterNameJa2($name));
+        $name = 'グランドシネマサンシャイン 池袋';
+        $theaterMock = $this->createTheaterMock();
+        $theaterMock
+            ->shouldReceive('getId')
+            ->with()
+            ->andReturn(20);
+        $theaterMock
+            ->shouldReceive('getNameJa')
+            ->with()
+            ->andReturn($name);
+        $this->assertStringContainsString('<br', $this->extension->filterNameJa2($theaterMock));
     }
 
     /**
@@ -116,8 +151,17 @@ final class TheaterExtensionTest extends TestCase
      */
     public function testFilterNameJa2CaseOtherName(): void
     {
-        $otherName = '平和島';
-        $this->assertEquals($otherName, $this->extension->filterNameJa2($otherName));
+        $name = '平和島';
+        $theaterMock = $this->createTheaterMock();
+        $theaterMock
+            ->shouldReceive('getId')
+            ->with()
+            ->andReturn(2);
+        $theaterMock
+            ->shouldReceive('getNameJa')
+            ->with()
+            ->andReturn($name);
+        $this->assertEquals($name, $this->extension->filterNameJa2($theaterMock));
     }
 
     /**
@@ -182,14 +226,6 @@ final class TheaterExtensionTest extends TestCase
     public function testTheaterAreaCaseAreaNotExist(): void
     {
         $this->assertNull($this->extension->theaterArea(99));
-    }
-
-    /**
-     * @return MockInterface&LegacyMockInterface&Theater
-     */
-    private function createTheaterMock()
-    {
-        return Mockery::mock(Theater::class);
     }
 
     /**
