@@ -57,9 +57,9 @@ class TheaterExtension extends AbstractExtension
             $br = '<br class="tn_br_gdcs">';
 
             $filtered
-                = mb_substr($nameJa, 0, 4)
+                = mb_substr($nameJa, 0, 7)
                 . $br
-                . mb_substr($nameJa, 4);
+                . mb_substr($nameJa, 7);
         }
 
         return $filtered;
@@ -74,11 +74,11 @@ class TheaterExtension extends AbstractExtension
             $br = '<br class="tn_br_gdcs">';
 
             $filtered
-                = mb_substr($nameJa, 0, 4)
+                = mb_substr($nameJa, 0, 7)
                 . $br
-                . mb_substr($nameJa, 4, 3)
+                . mb_substr($nameJa, 7, 6)
                 . $br
-                . mb_substr($nameJa, 7);
+                . mb_substr($nameJa, 13);
         }
 
         return $filtered;
