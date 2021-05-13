@@ -9,9 +9,6 @@ use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 use Twig\TwigFunction;
 
-/**
- * Theater twig extension class
- */
 class TheaterExtension extends AbstractExtension
 {
     /**
@@ -51,25 +48,37 @@ class TheaterExtension extends AbstractExtension
         ];
     }
 
-    public function filterNameJa(string $nameJa): string
+    public function filterNameJa(Theater $theater): string
     {
-        if ($nameJa === 'グランドシネマサンシャイン') {
-            $br       = '<br class="tn_br_gdcs">';
-            $filtered = 'グランド' . $br . 'シネマサンシャイン';
-        } else {
-            $filtered = $nameJa;
+        $nameJa   = $theater->getNameJa();
+        $filtered = $nameJa;
+
+        if ($theater->getId() === 20) {
+            $br = '<br class="tn_br_gdcs">';
+
+            $filtered
+                = mb_substr($nameJa, 0, 7)
+                . $br
+                . mb_substr($nameJa, 7);
         }
 
         return $filtered;
     }
 
-    public function filterNameJa2(string $nameJa): string
+    public function filterNameJa2(Theater $theater): string
     {
-        if ($nameJa === 'グランドシネマサンシャイン') {
-            $br       = '<br class="tn_br_gdcs">';
-            $filtered = 'グランド' . $br . 'シネマ' . $br . 'サンシャイン';
-        } else {
-            $filtered = $nameJa;
+        $nameJa   = $theater->getNameJa();
+        $filtered = $nameJa;
+
+        if ($theater->getId() === 20) {
+            $br = '<br class="tn_br_gdcs">';
+
+            $filtered
+                = mb_substr($nameJa, 0, 7)
+                . $br
+                . mb_substr($nameJa, 7, 6)
+                . $br
+                . mb_substr($nameJa, 13);
         }
 
         return $filtered;
