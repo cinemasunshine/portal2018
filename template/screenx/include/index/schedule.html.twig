@@ -8,7 +8,7 @@
         {% for theater in theaters %}
             <li>
                 <a href="#" class="m-2 d-block py-3 rounded border text-gray border-gray" data-theaterCode="{{ theater.getId() }}">{{
-                theater.getNameJa()|theater_name_ja2 }}</a>
+                theater|theater_name_ja2 }}</a>
             </li>
         {% endfor %}
         </ul>

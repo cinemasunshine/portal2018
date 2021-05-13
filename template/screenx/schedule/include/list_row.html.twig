@@ -59,9 +59,9 @@
 
                     <div class="area-button mb-md-2 pr-md-2 mb-2 px-1 px-md-0 small font-weight-bold">
                     {% if isShowing %}
-                        <a class="d-flex align-items-center justify-content-center text-white border-orange bg-orange" href="{{ path_for('theater', { name: theater.getName() }) }}">{{ theater.getNameJa()|theater_name_ja2 }}</a>
+                        <a class="d-flex align-items-center justify-content-center text-white border-orange bg-orange" href="{{ path_for('theater', { name: theater.getName() }) }}">{{ theater|theater_name_ja2 }}</a>
                     {% else %}
-                        <span class="d-flex align-items-center justify-content-center text-gray border-gray bg-transparent">{{ theater.getNameJa()|theater_name_ja2 }}</span>
+                        <span class="d-flex align-items-center justify-content-center text-gray border-gray bg-transparent">{{ theater|theater_name_ja2 }}</span>
                     {% endif %}
                     </div>
                 {% endfor %}
