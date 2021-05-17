@@ -123,8 +123,8 @@
                 <dl class="x-small ml-2 ml-md-0">{{ title.getCredit() }}</dl>
 
             {% if advanceTicket.getDetailUrl() %}
-                <dl class="d-flex mb-md-2 mb-1">
-                    <a href="{{ advanceTicket.getDetailUrl() }}" target="_blank">詳細はこちら</a>
+                <dl class="d-flex mb-md-2 mb-1 detail-btn normal mt-3">
+                    <a href="{{ advanceTicket.getDetailUrl() }}" target="_blank" class="border-blue bg-white text-blue">詳細はこちら</a>
                 </dl>
             {% endif %}
             </div>
