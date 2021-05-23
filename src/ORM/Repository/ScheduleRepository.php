@@ -29,6 +29,25 @@ class ScheduleRepository extends BaseRepository
     /**
      * @return Schedule[]
      */
+    public function findNowShowingByTheaterId(int $theaterId): array
+    {
+        $alias = 's';
+        $qb    = $this->createQueryBuilder($alias);
+
+        $this->addNowShowingQuery($qb, $alias);
+
+        $aliasShowingTheaters = 'st';
+        $qb
+            ->join(sprintf('%s.showingTheaters', $alias), $aliasShowingTheaters)
+            ->andWhere(sprintf('%s.theater = :theater', $aliasShowingTheaters))
+            ->setParameter('theater', $theaterId);
+
+        return $qb->getQuery()->getResult();
+    }
+
+    /**
+     * @return Schedule[]
+     */
     public function findNowShowingForImax(): array
     {
         $alias = 's';
@@ -117,6 +136,25 @@ class ScheduleRepository extends BaseRepository
         $qb    = $this->createQueryBuilder($alias);
 
         $this->addComingSoonQuery($qb, $alias);
+
+        return $qb->getQuery()->getResult();
+    }
+
+    /**
+     * @return Schedule[]
+     */
+    public function findCommingSoonByTheaterId(int $theaterId): array
+    {
+        $alias = 's';
+        $qb    = $this->createQueryBuilder($alias);
+
+        $this->addComingSoonQuery($qb, $alias);
+
+        $aliasShowingTheaters = 'st';
+        $qb
+            ->join(sprintf('%s.showingTheaters', $alias), $aliasShowingTheaters)
+            ->andWhere(sprintf('%s.theater = :theater', $aliasShowingTheaters))
+            ->setParameter('theater', $theaterId);
 
         return $qb->getQuery()->getResult();
     }

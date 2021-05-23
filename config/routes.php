@@ -19,6 +19,7 @@ use App\Controller\Theater\AboutController as TheaterAboutController;
 use App\Controller\Theater\AdvanceTicketController as TheaterAdvanceTicketController;
 use App\Controller\Theater\IndexController as TheaterIndexController;
 use App\Controller\Theater\NewsController as TheaterNewsController;
+use App\Controller\Theater\ScheduleController as TheaterScheduleController;
 use App\Controller\TheaterListController;
 use Slim\App as SlimApp;
 
@@ -69,6 +70,10 @@ $app->group('/theater/{name}', function (): void {
     $this->group('/news', function (): void {
         $this->get('/', TheaterNewsController::class . ':index')->setName('theater_news_list');
         $this->get('/{id:[0-9]+}.php', TheaterNewsController::class . ':show')->setName('theater_news_show');
+    });
+
+    $this->group('/movie', function (): void {
+        $this->get('/', TheaterScheduleController::class . ':index')->setName('theater_schedule');
     });
 });
 
