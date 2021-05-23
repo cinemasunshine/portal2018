@@ -74,7 +74,8 @@ $app->group('/theater/{name}', function (): void {
 
     $this->group('/movie', function (): void {
         $this->get('/', TheaterScheduleController::class . ':index')->setName('theater_schedule');
-        $this->get('/{schedule:[0-9]+}.php', TheaterScheduleController::class . ':show')->setName('theater_schedule_show');
+        $this->get('/{schedule:[0-9]+}.php', TheaterScheduleController::class . ':show')
+            ->setName('theater_schedule_show');
     });
 });
 
