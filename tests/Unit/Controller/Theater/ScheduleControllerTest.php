@@ -12,6 +12,7 @@ use Mockery\LegacyMockInterface;
 use Mockery\MockInterface;
 use ReflectionClass;
 use Slim\Container;
+use Slim\Exception\NotFoundException;
 
 /**
  * @coversDefaultClass \App\Controller\Theater\ScheduleController
@@ -166,6 +167,43 @@ final class ScheduleControllerTest extends BaseTestCase
     }
 
     /**
+     * @covers ::findOneSchedule
+     * @test
+     * @testdox findOneScheduleはエンティティScheduleを返す
+     */
+    public function testFindOneSchedule(): void
+    {
+        $scheduleId = 1;
+
+        $scheduleRepositoryMock = $this->createScheduleRepositoryMock();
+
+        $result = $this->createScheduleMock();
+        $scheduleRepositoryMock
+            ->shouldReceive('findOneById')
+            ->once()
+            ->with($scheduleId)
+            ->andReturn($result);
+
+        $scheduleControllerMock = $this->createScheduleControllerMock($this->createContainer());
+        $scheduleControllerMock->shouldAllowMockingProtectedMethods();
+        $scheduleControllerMock
+            ->shouldReceive('getScheduleRepository')
+            ->once()
+            ->with()
+            ->andReturn($scheduleRepositoryMock);
+
+        $scheduleControllerRef = $this->createScheduleControllerReflection();
+
+        $findOneScheduleMethodRef = $scheduleControllerRef->getMethod('findOneSchedule');
+        $findOneScheduleMethodRef->setAccessible(true);
+
+        $this->assertEquals(
+            $result,
+            $findOneScheduleMethodRef->invoke($scheduleControllerMock, $scheduleId)
+        );
+    }
+
+    /**
      * @covers ::executeIndex
      * @test
      * @testdox executeIndexはテンプレートtheater/schedule/index.html.twigを描画する
@@ -217,6 +255,86 @@ final class ScheduleControllerTest extends BaseTestCase
         $this->assertEquals(
             $responseMock,
             $scheduleControllerMock->executeIndex($requestMock, $responseMock, $args)
+        );
+    }
+
+    /**
+     * @covers ::executeShow
+     * @test
+     * @testdox executeShowはScheduleが存在する場合、テンプレートtheater/schedule/show.html.twigを描画する
+     */
+    public function testExecuteShowCaceScheduleExists(): void
+    {
+        $scheduleId = '1';
+
+        $requestMock  = $this->createRequestMock();
+        $responseMock = $this->createResponseMock();
+        $args         = ['schedule' => $scheduleId];
+
+        $scheduleControllerMock = $this->createScheduleControllerMock($this->createContainer());
+        $scheduleControllerMock
+            ->makePartial()
+            ->shouldAllowMockingProtectedMethods();
+
+        $scheduleMock = $this->createScheduleMock();
+        $scheduleControllerMock
+            ->shouldReceive('findOneSchedule')
+            ->once()
+            ->with((int) $scheduleId)
+            ->andReturn($scheduleMock);
+
+        $scheduleControllerRef = $this->createScheduleControllerReflection();
+
+        $theaterMock = $this->createTheaterMock();
+
+        $theaterPropertyRef = $scheduleControllerRef->getProperty('theater');
+        $theaterPropertyRef->setAccessible(true);
+        $theaterPropertyRef->setValue($scheduleControllerMock, $theaterMock);
+
+        $data = [
+            'theater' => $theaterMock,
+            'schedule' => $scheduleMock,
+        ];
+        $scheduleControllerMock
+            ->shouldReceive('render')
+            ->once()
+            ->with($responseMock, 'theater/schedule/show.html.twig', $data)
+            ->andReturn($responseMock);
+
+        $this->assertEquals(
+            $responseMock,
+            $scheduleControllerMock->executeShow($requestMock, $responseMock, $args)
+        );
+    }
+
+    /**
+     * @covers ::executeShow
+     * @test
+     * @testdox executeShowはScheduleが存在しない場合、例外NotFoundExceptionをthrowする
+     */
+    public function testExecuteShowCaceScheduleNotExists(): void
+    {
+        $scheduleId = '99';
+
+        $requestMock  = $this->createRequestMock();
+        $responseMock = $this->createResponseMock();
+        $args         = ['schedule' => $scheduleId];
+
+        $scheduleControllerMock = $this->createScheduleControllerMock($this->createContainer());
+        $scheduleControllerMock
+            ->makePartial()
+            ->shouldAllowMockingProtectedMethods();
+
+        $scheduleControllerMock
+            ->shouldReceive('findOneSchedule')
+            ->once()
+            ->with((int) $scheduleId)
+            ->andReturn(null);
+
+        $this->expectException(NotFoundException::class);
+        $this->assertEquals(
+            $responseMock,
+            $scheduleControllerMock->executeShow($requestMock, $responseMock, $args)
         );
     }
 }

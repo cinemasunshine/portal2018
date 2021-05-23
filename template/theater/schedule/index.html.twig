@@ -45,7 +45,8 @@
 
 {% for schedule in nowShowingSchedules %}
         {% include 'theater/schedule/include/list_row.html.twig' with {
-            schedule: schedule
+            schedule: schedule,
+            theater: theater,
         } only %}
 {% endfor %}
 
@@ -55,7 +56,8 @@
 
 {% for schedule in commingSoonSchedules %}
         {% include 'theater/schedule/include/list_row.html.twig' with {
-            schedule: schedule
+            schedule: schedule,
+            theater: theater,
         } only %}
 {% endfor %}
 

@@ -7,6 +7,7 @@ namespace App\Controller\Theater;
 use App\ORM\Entity\Schedule;
 use App\ORM\Entity\Theater;
 use App\ORM\Repository\ScheduleRepository;
+use Slim\Exception\NotFoundException;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
@@ -35,6 +36,12 @@ class ScheduleController extends BaseController
             ->findCommingSoonByTheaterId($theater->getId());
     }
 
+    protected function findOneSchedule(int $scheduleId): ?Schedule
+    {
+        return $this->getScheduleRepository()
+            ->findOneById($scheduleId);
+    }
+
     /**
      * @param array<string, mixed> $args
      */
@@ -50,6 +57,23 @@ class ScheduleController extends BaseController
             'theater' => $theater,
             'nowShowingSchedules' => $nowShowingSchedules,
             'commingSoonSchedules' => $commingSoonSchedules,
+        ]);
+    }
+
+    /**
+     * @param array<string, mixed> $args
+     */
+    public function executeShow(Request $request, Response $response, array $args): Response
+    {
+        $schedule = $this->findOneSchedule((int) $args['schedule']);
+
+        if (is_null($schedule)) {
+            throw new NotFoundException($request, $response);
+        }
+
+        return $this->render($response, 'theater/schedule/show.html.twig', [
+            'theater' => $this->theater,
+            'schedule' => $schedule,
         ]);
     }
 }
