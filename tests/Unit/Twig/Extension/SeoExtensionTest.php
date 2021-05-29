@@ -1,9 +1,5 @@
 <?php
 
-/**
- * SeoExtension.php
- */
-
 declare(strict_types=1);
 
 namespace Tests\Unit\Twig\Extension;
@@ -20,83 +16,96 @@ use ReflectionClass;
 use Twig\TwigFunction;
 
 /**
- * SEO extension test
+ * @coversDefaultClass \App\Twig\Extension\SeoExtensionTest
  */
 final class SeoExtensionTest extends TestCase
 {
     use MockeryPHPUnitIntegration;
 
-    /** @var string|null */
-    protected $file;
+    protected const DATA_FILE = __DIR__ . '/data/seo.json';
 
-    protected function setUp(): void
-    {
-        $this->file = __DIR__ . '/data/seo.json';
-    }
+    /** @var SeoExtension */
+    protected $extension;
 
     /**
      * @return MockInterface&LegacyMockInterface&SeoExtension
      */
-    protected function createTargetMock()
+    protected function createSeoExtensionMock()
     {
         return Mockery::mock(SeoExtension::class);
     }
 
-    protected function createTargetReflection(): ReflectionClass
+    protected function createSeoExtensionReflection(): ReflectionClass
     {
         return new ReflectionClass(SeoExtension::class);
     }
 
     /**
-     * @test
+     * @before
      */
-    public function testConstruct(): void
+    public function setUp(): void
     {
-        $file  = $this->file;
+        $this->extension = new SeoExtension(self::DATA_FILE);
+    }
+
+    /**
+     * @covers ::__construct
+     * @test
+     * @testdox __constructは引数のファイルが存在する場合、loadMetas()の結果をプロパティにセットする
+     */
+    public function testConstructCaseFileExists(): void
+    {
         $metas = [
             'test' => new MetaTag('example title', 'example description', 'hoge, huge'),
         ];
 
-        $targetMock = $this->createTargetMock();
-        $targetMock->shouldAllowMockingProtectedMethods();
-        $targetMock
+        $seoExtensionMock = $this->createSeoExtensionMock();
+        $seoExtensionMock->shouldAllowMockingProtectedMethods();
+
+        $seoExtensionMock
             ->shouldReceive('loadMetas')
             ->once()
-            ->with($file)
+            ->with(self::DATA_FILE)
             ->andReturn($metas);
 
-        $targetRef = $this->createTargetReflection();
+        $seoExtensionRef = $this->createSeoExtensionReflection();
 
-        $constructorRef = $targetRef->getConstructor();
-        $constructorRef->invoke($targetMock, $file);
-        $metasRef = $targetRef->getProperty('metas');
-        $metasRef->setAccessible(true);
+        $constructorRef = $seoExtensionRef->getConstructor();
+        $constructorRef->invoke($seoExtensionMock, self::DATA_FILE);
 
-        $this->assertEquals($metas, $metasRef->getValue($targetMock));
+        $metasPropertyRef = $seoExtensionRef->getProperty('metas');
+        $metasPropertyRef->setAccessible(true);
+
+        $this->assertEquals($metas, $metasPropertyRef->getValue($seoExtensionMock));
     }
 
     /**
+     * @covers ::__construct
      * @test
+     * @testdox __constructは引数のファイルが存在しない場合、例外をthrowする
      */
-    public function testConstructInvalidArgument(): void
+    public function testConstructCaseFileNotExists(): void
     {
         $this->expectException(InvalidArgumentException::class);
 
-        $file = __DIR__ . '/not_exist.json';
-        new SeoExtension($file);
+        new SeoExtension(__DIR__ . '/not_exist.json');
     }
 
     /**
+     * @covers ::loadMetas
      * @test
+     * @testdox loadMetasは引数のファイルを読み込んで、MetaTagオブジェクトのリストを返す
      */
     public function testLoadMetas(): void
     {
-        $targetMock = $this->createTargetMock();
-        $targetRef  = $this->createTargetReflection();
+        $seoExtensionMock = $this->createSeoExtensionMock();
 
-        $loadMetasRef = $targetRef->getMethod('loadMetas');
-        $loadMetasRef->setAccessible(true);
-        $result = $loadMetasRef->invoke($targetMock, $this->file);
+        $seoExtensionRef = $this->createSeoExtensionReflection();
+
+        $loadMetasMethodRef = $seoExtensionRef->getMethod('loadMetas');
+        $loadMetasMethodRef->setAccessible(true);
+
+        $result = $loadMetasMethodRef->invoke($seoExtensionMock, self::DATA_FILE);
 
         foreach ($result as $row) {
             $this->assertInstanceOf(MetaTag::class, $row);
@@ -104,20 +113,20 @@ final class SeoExtensionTest extends TestCase
 
         /** @var MetaTag $metaTag */
         $metaTag = $result['test'];
+
         $this->assertEquals('example title', $metaTag->getTitle());
         $this->assertEquals('example description', $metaTag->getDescription());
         $this->assertEquals('hoge, fuge', $metaTag->getKeywords());
     }
 
     /**
+     * @covers ::getFunctions
      * @test
+     * @testdox getFunctionsはTwigFunctionの配列を返す
      */
-    public function testGetFunctions(): void
+    public function testGetFunctionsCaseReturnType(): void
     {
-        $targetMock = $this->createTargetMock();
-        $targetMock->makePartial();
-
-        $functions = $targetMock->getFunctions();
+        $functions = $this->extension->getFunctions();
 
         $this->assertIsArray($functions);
 
@@ -127,74 +136,109 @@ final class SeoExtensionTest extends TestCase
     }
 
     /**
-     * @test
+     * @return array<string,array<string>>
      */
-    public function testGetTitle(): void
+    public function getFunctionNameDataProvider(): array
     {
-        $key   = 'test';
-        $title = 'example title';
-        $metas = [
-            $key => new MetaTag($title, 'example description', 'hoge, huge'),
+        return [
+            'function meta_title' => ['meta_title'],
+            'funciton meta_description' => ['meta_description'],
+            'funciton meta_keywords' => ['meta_keywords'],
         ];
-
-        $targetMock = $this->createTargetMock();
-        $targetMock->makePartial();
-
-        $targetRef = $this->createTargetReflection();
-
-        $metasRef = $targetRef->getProperty('metas');
-        $metasRef->setAccessible(true);
-        $metasRef->setValue($targetMock, $metas);
-
-        $this->assertEquals($title, $targetMock->getTilte($key));
-        $this->assertEquals('', $targetMock->getTilte('not_exist'));
     }
 
     /**
+     * @covers ::getFunctions
+     * @dataProvider getFunctionNameDataProvider
      * @test
+     * @testdox getFunctionsは指定のfunction名を含む
      */
-    public function testGetDescription(): void
+    public function testGetFunctionsCaseFunctionNameExist(string $name): void
     {
-        $key         = 'test';
-        $description = 'example description';
-        $metas       = [
-            $key => new MetaTag('example title', $description, 'hoge, huge'),
-        ];
+        $functions = $this->extension->getFunctions();
 
-        $targetMock = $this->createTargetMock();
-        $targetMock->makePartial();
+        $functionNames = array_map(static function (TwigFunction $function) {
+            return $function->getName();
+        }, $functions);
 
-        $targetRef = $this->createTargetReflection();
-
-        $metasRef = $targetRef->getProperty('metas');
-        $metasRef->setAccessible(true);
-        $metasRef->setValue($targetMock, $metas);
-
-        $this->assertEquals($description, $targetMock->getDescription($key));
-        $this->assertEquals('', $targetMock->getDescription('not_exist'));
+        $this->assertTrue(in_array($name, $functionNames));
     }
 
     /**
+     * @covers ::getTilte
      * @test
+     * @testdox getTilteは引数keyのMetaTagが存在する場合、そのtitleを返す
      */
-    public function testGetKeywords(): void
+    public function testGetTitleCaseMetaTagExists(): void
     {
-        $key      = 'test';
-        $keywords = 'hoge, huge';
-        $metas    = [
-            $key => new MetaTag('example title', 'example description', $keywords),
-        ];
+        $this->assertEquals(
+            'example title',
+            $this->extension->getTilte('test')
+        );
+    }
 
-        $targetMock = $this->createTargetMock();
-        $targetMock->makePartial();
+    /**
+     * @covers ::getTilte
+     * @test
+     * @testdox getTilteは引数keyのMetaTagが存在しない場合、ブランク文字列を返す
+     */
+    public function testGetTitleCaseMetaTagNotExists(): void
+    {
+        $this->assertEquals(
+            '',
+            $this->extension->getTilte('not-exists')
+        );
+    }
 
-        $targetRef = $this->createTargetReflection();
+    /**
+     * @covers ::getDescription
+     * @test
+     * @testdox getDescriptionは引数keyのMetaTagが存在する場合、そのdescriptionを返す
+     */
+    public function testGetDescriptionCaseMetaTagExists(): void
+    {
+        $this->assertEquals(
+            'example description',
+            $this->extension->getDescription('test')
+        );
+    }
 
-        $metasRef = $targetRef->getProperty('metas');
-        $metasRef->setAccessible(true);
-        $metasRef->setValue($targetMock, $metas);
+    /**
+     * @covers ::getDescription
+     * @test
+     * @testdox getDescriptionは引数keyのMetaTagが存在しない場合、ブランク文字列を返す
+     */
+    public function testGetDescriptionCaseMetaTagNotExists(): void
+    {
+        $this->assertEquals(
+            '',
+            $this->extension->getDescription('not-exists')
+        );
+    }
 
-        $this->assertEquals($keywords, $targetMock->getKeywords($key));
-        $this->assertEquals('', $targetMock->getKeywords('not_exist'));
+    /**
+     * @covers ::getKeywords
+     * @test
+     * @testdox getKeywordsは引数keyのMetaTagが存在する場合、そのkeywordsを返す
+     */
+    public function testGetKeywordsCaseMetaTagExists(): void
+    {
+        $this->assertEquals(
+            'hoge, fuge',
+            $this->extension->getKeywords('test')
+        );
+    }
+
+    /**
+     * @covers ::getKeywords
+     * @test
+     * @testdox getKeywordsは引数keyのMetaTagが存在しない場合、ブランク文字列を返す
+     */
+    public function testGetKeywordsCaseMetaTagNotExists(): void
+    {
+        $this->assertEquals(
+            '',
+            $this->extension->getKeywords('not-exists')
+        );
     }
 }
