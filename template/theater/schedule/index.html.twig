@@ -1,10 +1,11 @@
 {% extends "theater/layout.html.twig" %}
 
-{% block title %}{% endblock %}
+{% set metasKey = 'theater_' ~ theater.getName() ~ '_schedule_list' %}
+{% block title %}{{ meta_title(metasKey) }}{% endblock %}
 
-{% block description %}{% endblock %}
+{% block description %}{{ meta_description(metasKey) }}{% endblock %}
 
-{% block keywords %}{% endblock %}
+{% block keywords %}{{ meta_keywords(metasKey) }}{% endblock %}
 
 {% block css %}
 <link href="/css/movie/list.css" rel="stylesheet">

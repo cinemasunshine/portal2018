@@ -1,11 +1,12 @@
 {% extends "theater/layout.html.twig" %}
 {% set title = schedule.getTitle() %}
 
-{% block title %}{% endblock %}
+{% set theaterName = theater.getName() == 'gdcs' ? theater.getNameJa() : 'シネマサンシャイン' ~ theater.getNameJa() %}
+{% block title %}{{ title.getName() }} | {{ theaterName }}{% endblock %}
 
-{% block description %}{% endblock %}
+{% block description %}{{ theaterName }}の{{ title.getName() }}詳細ページです。作品情報のご案内など{% endblock %}
 
-{% block keywords %}{% endblock %}
+{% block keywords %}{{ theaterName }},映画館,映画,シネマ,{{ title.getName() }}{% endblock %}
 
 {% block css %}
 <link href="/css/movie/details.css" rel="stylesheet">
