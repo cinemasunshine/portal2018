@@ -145,7 +145,14 @@
 /* レイトショーアイコン非表示 */
 .gdcs .schedule .performances .late {
   background-image: none;
-} 
+}
+/* 上映作品　*/
+.gdcs .tabs .active .border-blue{
+    border-color:#a57a43!important;
+}
+.gdcs .tabs .active .text-blue{
+    color:#a57a43!important;
+}
 @media (max-width: 767.98px) {
   /*スライダー下ロゴサイズ指定*/
   .gdcs .top_logo{

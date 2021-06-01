@@ -1,0 +1,72 @@
+{% extends "theater/layout.html.twig" %}
+
+{% set metasKey = 'theater_' ~ theater.getName() ~ '_schedule_list' %}
+{% block title %}{{ meta_title(metasKey) }}{% endblock %}
+
+{% block description %}{{ meta_description(metasKey) }}{% endblock %}
+
+{% block keywords %}{{ meta_keywords(metasKey) }}{% endblock %}
+
+{% block css %}
+<link href="/css/movie/list.css" rel="stylesheet">
+{% endblock %}
+
+{% block javascript %}
+<script src="/js/movie/list.js"></script>
+{% endblock %}
+
+{% block navbar %}
+{% include 'theater/include/navbar.html.twig' with {
+    theater: theater,
+    active: 'movie',
+} only %}
+{% endblock %}
+
+{% block sp_navbar %}
+{% include 'theater/include/sp_navbar.html.twig' with {
+    theater: theater,
+    active: 'movie',
+} only %}
+{% endblock %}
+
+{% block contents %}
+<div class="width mx-auto p-3">
+    <div class="breadcrumb-list small width mx-auto d-none d-md-block">
+        <a href="{{ path_for('theater', { name: theater.getName() }) }}" class="mr-3">ホーム | {{ theater.getNameJa() }}</a>|
+        <span class="font-weight-bold mx-3">作品一覧</span>
+    </div>
+
+    <h2 class="font-weight-bold large text-center text-md-left mb-4 mt-3">作品一覧</h2>
+
+    <div class="tabs mx-auto d-flex mb-5">
+        <div class="w-50 text-center active">
+            <a class="py-2 d-block border-blue text-blue" href="#" data-type="screening">上映中</a>
+        </div>
+        <div class="w-50 text-center">
+            <a class="py-2 d-block border-gray text-gray" href="#" data-type="scheduled">上映予定</a>
+        </div>
+    </div>
+
+    <div class="screening d-block">
+
+{% for schedule in nowShowingSchedules %}
+        {% include 'theater/schedule/include/list_row.html.twig' with {
+            schedule: schedule,
+            theater: theater,
+        } only %}
+{% endfor %}
+
+    </div>
+
+    <div class="scheduled d-none">
+
+{% for schedule in commingSoonSchedules %}
+        {% include 'theater/schedule/include/list_row.html.twig' with {
+            schedule: schedule,
+            theater: theater,
+        } only %}
+{% endfor %}
+
+    </div>
+</div>
+{% endblock %}

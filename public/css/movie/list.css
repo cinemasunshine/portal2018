@@ -161,4 +161,7 @@ form .form-control {
     .pc_disp{
         display: none;
     }
+    .theater-movielist-story{
+        display:none;
+    }
 }

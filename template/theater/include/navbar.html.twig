@@ -1,26 +1,30 @@
 {% set activeClass = 'active' %}
 
 {% if active == 'top' %}
-{% set topClass = activeClass %}
+    {% set topClass = activeClass %}
 {% elseif active == 'news' %}
-{% set newsClass = activeClass %}
+    {% set newsClass = activeClass %}
 {% elseif active == 'advance-ticket' %}
-{% set advanceTicketClass = activeClass %}
+    {% set advanceTicketClass = activeClass %}
 {% elseif active == 'concession' %}
-{% set concessionClass = activeClass %}
+    {% set concessionClass = activeClass %}
+{% elseif active == 'movie' %}
+    {% set movieClass = activeClass %}
 {% elseif active == 'admission' %}
-{% set admissionClass = activeClass %}
+    {% set admissionClass = activeClass %}
 {% elseif active == 'floor-guide' %}
-{% set floorGuideClass = activeClass %}
+    {% set floorGuideClass = activeClass %}
 {% elseif active == 'access' %}
-{% set accessClass = activeClass %}
+    {% set accessClass = activeClass %}
 {% endif %}
 
 <div class="sub-header border-top d-md-block d-none">
     <div class="sub-header-inner border-bottom border-gray">
         <ul class="d-flex justify-content-center text-center mb-0 mx-auto small">
             <li class="d-flex {{ topClass }}">
-                <a class="py-2 d-flex align-items-center justify-content-center w-100 text-dark-gray" href="{{ path_for('theater', { name: theater.getName() }) }}">
+                <a
+                    class="py-2 d-flex align-items-center justify-content-center w-100 text-dark-gray"
+                    href="{{ path_for('theater', { name: theater.getName() }) }}">
                     <div>
                         <div class="mb-1">TOP/<br>上映スケジュール</div>
                         <div class="x-small gdcs_eng_font_r">TOP/SCHEDULE</div>
@@ -28,47 +32,75 @@
                 </a>
             </li>
             <li class="d-flex {{ newsClass }}">
-                <a class="py-2 d-flex align-items-center justify-content-center w-100 text-dark-gray" href="{{ path_for('theater_news_list', { name: theater.getName() }) }}">
+                <a
+                    class="py-2 d-flex align-items-center justify-content-center w-100 text-dark-gray"
+                    href="{{ path_for('theater_news_list', { name: theater.getName() }) }}">
                     <div>
                         <div class="mb-1">NEWS ＆ INFO</div>
                         <div class="x-small gdcs_eng_font_r">NEWS &amp; INFORMATION</div>
                     </div>
-                </a></li>
+                </a>
+            </li>
             <li class="d-flex {{ advanceTicketClass }}">
-                <a class="py-2 d-flex align-items-center justify-content-center w-100 text-dark-gray" href="{{ path_for('theater_advance_ticket', { name: theater.getName() }) }}">
+                <a
+                    class="py-2 d-flex align-items-center justify-content-center w-100 text-dark-gray"
+                    href="{{ path_for('theater_advance_ticket', { name: theater.getName() }) }}">
                     <div>
                         <div class="mb-1">前売券情報</div>
                         <div class="x-small gdcs_eng_font_r">ADVANCE TICKET</div>
                     </div>
-                </a></li>
+                </a>
+            </li>
             <li class="d-flex {{ concessionClass }}">
-                <a class="py-2 d-flex align-items-center justify-content-center w-100 text-dark-gray" href="{{ path_for('theater_concession', { name: theater.getName() }) }}">
+                <a
+                    class="py-2 d-flex align-items-center justify-content-center w-100 text-dark-gray"
+                    href="{{ path_for('theater_concession', { name: theater.getName() }) }}">
                     <div>
                         <div class="mb-1">コンセッション</div>
                         <div class="x-small gdcs_eng_font_r">CONCESSION</div>
                     </div>
-                </a></li>
+                </a>
+            </li>
+            <li class="d-flex {{ movieClass }}">
+                <a
+                    class="py-2 d-flex align-items-center justify-content-center w-100 text-dark-gray"
+                    href="{{ path_for('theater_schedule', { name: theater.getName() }) }}">
+                    <div>
+                        <div class="mb-1">作品一覧</div>
+                        <div class="x-small gdcs_eng_font_r">MOVIE</div>
+                    </div>
+                </a>
+            </li>
             <li class="d-flex {{ admissionClass }}">
-                <a class="py-2 d-flex align-items-center justify-content-center w-100 text-dark-gray" href="{{ path_for('theater_admission', { name: theater.getName() }) }}">
+                <a
+                    class="py-2 d-flex align-items-center justify-content-center w-100 text-dark-gray"
+                    href="{{ path_for('theater_admission', { name: theater.getName() }) }}">
                     <div>
                         <div class="mb-1">料金案内</div>
                         <div class="x-small gdcs_eng_font_r">ADMISSION</div>
                     </div>
-                </a></li>
+                </a>
+            </li>
             <li class="d-flex {{ floorGuideClass }}">
-                <a class="py-2 d-flex align-items-center justify-content-center w-100 text-dark-gray" href="{{ path_for('theater_floor_guide', { name: theater.getName() }) }}">
+                <a
+                    class="py-2 d-flex align-items-center justify-content-center w-100 text-dark-gray"
+                    href="{{ path_for('theater_floor_guide', { name: theater.getName() }) }}">
                     <div>
                         <div class="mb-1">劇場設備</div>
                         <div class="x-small gdcs_eng_font_r">FLOOR GUIDE</div>
                     </div>
-                </a></li>
+                </a>
+            </li>
             <li class="d-flex {{ accessClass }}">
-                <a class="py-2 d-flex align-items-center justify-content-center w-100 text-dark-gray" href="{{ path_for('theater_access', { name: theater.getName() }) }}">
+                <a
+                    class="py-2 d-flex align-items-center justify-content-center w-100 text-dark-gray"
+                    href="{{ path_for('theater_access', { name: theater.getName() }) }}">
                     <div>
                         <div class="mb-1">アクセス</div>
                         <div class="x-small gdcs_eng_font_r">ACCESS</div>
                     </div>
-                </a></li>
+                </a>
+            </li>
         </ul>
     </div>
 </div>

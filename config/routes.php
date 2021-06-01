@@ -15,7 +15,11 @@ use App\Controller\NewsController;
 use App\Controller\OyakoCinemaController;
 use App\Controller\ScheduleController;
 use App\Controller\ScreenXController;
-use App\Controller\TheaterController;
+use App\Controller\Theater\AboutController as TheaterAboutController;
+use App\Controller\Theater\AdvanceTicketController as TheaterAdvanceTicketController;
+use App\Controller\Theater\IndexController as TheaterIndexController;
+use App\Controller\Theater\NewsController as TheaterNewsController;
+use App\Controller\Theater\ScheduleController as TheaterScheduleController;
 use App\Controller\TheaterListController;
 use Slim\App as SlimApp;
 
@@ -56,16 +60,22 @@ $app->get('/theater/', TheaterListController::class . ':index')->setName('theate
 $app->get('/theater-sns/', TheaterListController::class . ':sns')->setName('theater_sns');
 
 $app->group('/theater/{name}', function (): void {
-    $this->get('/', TheaterController::class . ':index')->setName('theater');
-    $this->get('/access/', TheaterController::class . ':access')->setName('theater_access');
-    $this->get('/admission/', TheaterController::class . ':admission')->setName('theater_admission');
-    $this->get('/advance_ticket/', TheaterController::class . ':advanceTicket')->setName('theater_advance_ticket');
-    $this->get('/concession/', TheaterController::class . ':concession')->setName('theater_concession');
-    $this->get('/floor_guide/', TheaterController::class . ':floorGuide')->setName('theater_floor_guide');
+    $this->get('/', TheaterIndexController::class . ':show')->setName('theater');
+    $this->get('/access/', TheaterAboutController::class . ':access')->setName('theater_access');
+    $this->get('/admission/', TheaterAboutController::class . ':admission')->setName('theater_admission');
+    $this->get('/advance_ticket/', TheaterAdvanceTicketController::class . ':index')->setName('theater_advance_ticket');
+    $this->get('/concession/', TheaterAboutController::class . ':concession')->setName('theater_concession');
+    $this->get('/floor_guide/', TheaterAboutController::class . ':floorGuide')->setName('theater_floor_guide');
 
     $this->group('/news', function (): void {
-        $this->get('/', TheaterController::class . ':newsList')->setName('theater_news_list');
-        $this->get('/{id:[0-9]+}.php', TheaterController::class . ':newsShow')->setName('theater_news_show');
+        $this->get('/', TheaterNewsController::class . ':index')->setName('theater_news_list');
+        $this->get('/{id:[0-9]+}.php', TheaterNewsController::class . ':show')->setName('theater_news_show');
+    });
+
+    $this->group('/movie', function (): void {
+        $this->get('/', TheaterScheduleController::class . ':index')->setName('theater_schedule');
+        $this->get('/{schedule:[0-9]+}.php', TheaterScheduleController::class . ':show')
+            ->setName('theater_schedule_show');
     });
 });
 
