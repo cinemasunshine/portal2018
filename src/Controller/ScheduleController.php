@@ -4,16 +4,43 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\ORM\Entity;
+use App\ORM\Entity\Schedule;
+use App\ORM\Repository\ScheduleRepository;
 use Slim\Exception\NotFoundException;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-/**
- * Schedule controller
- */
 class ScheduleController extends GeneralController
 {
+    protected function getScheduleRepository(): ScheduleRepository
+    {
+        return $this->em->getRepository(Schedule::class);
+    }
+
+    /**
+     * @return Schedule[]
+     */
+    protected function findNowShowingSchedules(): array
+    {
+        return $this->getScheduleRepository()
+            ->findNowShowing();
+    }
+
+    /**
+     * @return Schedule[]
+     */
+    protected function findCommingSoonSchedules(): array
+    {
+        return $this->getScheduleRepository()
+            ->findCommingSoon();
+    }
+
+    protected function findOneSchedule(int $id): ?Schedule
+    {
+        return $this->getScheduleRepository()
+            ->findOneById($id);
+    }
+
     /**
      * list action
      *
@@ -35,36 +62,13 @@ class ScheduleController extends GeneralController
     }
 
     /**
-     * @return Entity\Schedule[]
-     */
-    protected function findNowShowingSchedules(): array
-    {
-        return $this->em
-            ->getRepository(Entity\Schedule::class)
-            ->findNowShowing();
-    }
-
-    /**
-     * @return Entity\Schedule[]
-     */
-    protected function findCommingSoonSchedules(): array
-    {
-        return $this->em
-            ->getRepository(Entity\Schedule::class)
-            ->findCommingSoon();
-    }
-
-    /**
      * show action
      *
      * @param array<string, mixed> $args
      */
     public function executeShow(Request $request, Response $response, array $args): Response
     {
-        /** @var Entity\Schedule|null $schedule */
-        $schedule = $this->em
-            ->getRepository(Entity\Schedule::class)
-            ->findOneById((int) $args['schedule']);
+        $schedule = $this->findOneSchedule((int) $args['schedule']);
 
         if (is_null($schedule)) {
             throw new NotFoundException($request, $response);
