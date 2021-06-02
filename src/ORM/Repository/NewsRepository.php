@@ -9,29 +9,27 @@ use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use Doctrine\ORM\QueryBuilder;
 
-/**
- * News repository class
- */
 class NewsRepository extends EntityRepository
 {
-    protected function getActiveQuery(): QueryBuilder
+    protected function addActiveQuery(QueryBuilder $qb, string $alias): void
     {
-        $qb = $this->createQueryBuilder('n');
         $qb
-            ->where('n.isDeleted = false')
+            ->andWhere(sprintf('%s.isDeleted = false', $alias))
             ->andWhere($qb->expr()->andX(
-                $qb->expr()->lte('n.startDt', 'CURRENT_TIMESTAMP()'),
-                $qb->expr()->gt('n.endDt', 'CURRENT_TIMESTAMP()')
+                $qb->expr()->lte(sprintf('%s.startDt', $alias), 'CURRENT_TIMESTAMP()'),
+                $qb->expr()->gt(sprintf('%s.endDt', $alias), 'CURRENT_TIMESTAMP()')
             ));
-
-        return $qb;
     }
 
     public function findOneById(int $id): ?News
     {
-        $qb = $this->getActiveQuery();
+        $alias = 'n';
+        $qb    = $this->createQueryBuilder($alias);
+
+        $this->addActiveQuery($qb, $alias);
+
         $qb
-            ->andWhere('n.id = :id')
+            ->andWhere(sprintf('%s.id = :id', $alias))
             ->setParameter('id', $id);
 
         return $qb->getQuery()->getOneOrNullResult();
@@ -42,16 +40,21 @@ class NewsRepository extends EntityRepository
      */
     public function findByPage(int $pageId, ?int $category = null, ?int $limit = null): array
     {
-        $qb = $this->getActiveQuery();
+        $alias = 'n';
+        $qb    = $this->createQueryBuilder($alias);
+
+        $this->addActiveQuery($qb, $alias);
+
+        $newsPagesAlias = 'np';
         $qb
-            ->join('n.pages', 'pn')
-            ->andWhere('pn.page = :page_id')
+            ->join(sprintf('%s.pages', $alias), $newsPagesAlias)
+            ->andWhere(sprintf('%s.page = :page_id', $newsPagesAlias))
             ->setParameter('page_id', $pageId)
-            ->orderBy('pn.displayOrder', 'ASC');
+            ->orderBy(sprintf('%s.displayOrder', $newsPagesAlias), 'ASC');
 
         if ($category) {
             $qb
-                ->andWhere('n.category = :category')
+                ->andWhere(sprintf('%s.category = :category', $alias))
                 ->setParameter('category', $category);
         }
 
@@ -71,16 +74,21 @@ class NewsRepository extends EntityRepository
      */
     public function findByTheater(int $theaterId, array $category = [], ?int $limit = null): array
     {
-        $qb = $this->getActiveQuery();
+        $alias = 'n';
+        $qb    = $this->createQueryBuilder($alias);
+
+        $this->addActiveQuery($qb, $alias);
+
+        $newsTheatersAlias = 'nt';
         $qb
-            ->join('n.theaters', 'pt')
-            ->andWhere('pt.theater = :theater_id')
+            ->join(sprintf('%s.theaters', $alias), $newsTheatersAlias)
+            ->andWhere(sprintf('%s.theater = :theater_id', $newsTheatersAlias))
             ->setParameter('theater_id', $theaterId)
-            ->orderBy('pt.displayOrder', 'ASC');
+            ->orderBy(sprintf('%s.displayOrder', $newsTheatersAlias), 'ASC');
 
         if ($category) {
             $qb
-                ->andWhere('n.category IN (:category)')
+                ->andWhere(sprintf('%s.category IN (:category)', $alias))
                 ->setParameter('category', $category);
         }
 
@@ -99,16 +107,21 @@ class NewsRepository extends EntityRepository
      */
     public function findBySpecialSite(int $specialSiteId, ?int $category = null, ?int $limit = null): array
     {
-        $qb = $this->getActiveQuery();
+        $alias = 'n';
+        $qb    = $this->createQueryBuilder($alias);
+
+        $this->addActiveQuery($qb, $alias);
+
+        $newsSpecialSitesAlias = 'ns';
         $qb
-            ->join('n.specialSites', 'sn')
-            ->andWhere('sn.specialSite = :special_site_id')
+            ->join(sprintf('%s.specialSites', $alias), $newsSpecialSitesAlias)
+            ->andWhere(sprintf('%s.specialSite = :special_site_id', $newsSpecialSitesAlias))
             ->setParameter('special_site_id', $specialSiteId)
-            ->orderBy('sn.displayOrder', 'ASC');
+            ->orderBy(sprintf('%s.displayOrder', $newsSpecialSitesAlias), 'ASC');
 
         if ($category) {
             $qb
-                ->andWhere('n.category = :category')
+                ->andWhere(sprintf('%s.category IN (:category)', $alias))
                 ->setParameter('category', $category);
         }
 
@@ -127,11 +140,15 @@ class NewsRepository extends EntityRepository
      */
     public function findByImax(?int $limit = null): array
     {
-        $qb = $this->getActiveQuery();
+        $alias = 'n';
+        $qb    = $this->createQueryBuilder($alias);
+
+        $this->addActiveQuery($qb, $alias);
+
         $qb
-            ->andWhere('n.category = :category')
+            ->andWhere(sprintf('%s.category = :category', $alias))
             ->setParameter('category', News::CATEGORY_IMAX)
-            ->orderBy('n.createdAt', 'DESC');
+            ->orderBy(sprintf('%s.createdAt', $alias), 'DESC');
 
         if ($limit) {
             $qb->setMaxResults($limit);
@@ -148,11 +165,15 @@ class NewsRepository extends EntityRepository
      */
     public function findBy4dx(?int $limit = null): array
     {
-        $qb = $this->getActiveQuery();
+        $alias = 'n';
+        $qb    = $this->createQueryBuilder($alias);
+
+        $this->addActiveQuery($qb, $alias);
+
         $qb
-            ->andWhere('n.category = :category')
+            ->andWhere(sprintf('%s.category = :category', $alias))
             ->setParameter('category', News::CATEGORY_4DX)
-            ->orderBy('n.createdAt', 'DESC');
+            ->orderBy(sprintf('%s.createdAt', $alias), 'DESC');
 
         if ($limit) {
             $qb->setMaxResults($limit);
@@ -169,11 +190,15 @@ class NewsRepository extends EntityRepository
      */
     public function findByScreenX(?int $limit = null): array
     {
-        $qb = $this->getActiveQuery();
+        $alias = 'n';
+        $qb    = $this->createQueryBuilder($alias);
+
+        $this->addActiveQuery($qb, $alias);
+
         $qb
-            ->andWhere('n.category = :category')
+            ->andWhere(sprintf('%s.category = :category', $alias))
             ->setParameter('category', News::CATEGORY_SCREENX)
-            ->orderBy('n.createdAt', 'DESC');
+            ->orderBy(sprintf('%s.createdAt', $alias), 'DESC');
 
         if ($limit) {
             $qb->setMaxResults($limit);
@@ -190,11 +215,15 @@ class NewsRepository extends EntityRepository
      */
     public function findBy4DXScreen(?int $limit = null): array
     {
-        $qb = $this->getActiveQuery();
+        $alias = 'n';
+        $qb    = $this->createQueryBuilder($alias);
+
+        $this->addActiveQuery($qb, $alias);
+
         $qb
-            ->andWhere('n.category = :category')
+            ->andWhere(sprintf('%s.category = :category', $alias))
             ->setParameter('category', News::CATEGORY_4DX_SCREEN)
-            ->orderBy('n.createdAt', 'DESC');
+            ->orderBy(sprintf('%s.createdAt', $alias), 'DESC');
 
         if ($limit) {
             $qb->setMaxResults($limit);
