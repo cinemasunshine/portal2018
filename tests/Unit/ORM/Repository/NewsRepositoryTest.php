@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace Tests\Unit\ORM\Repository;
 
+use App\ORM\Entity\News;
 use App\ORM\Repository\NewsRepository;
+use Doctrine\ORM\Mapping\ClassMetadata;
 use Doctrine\ORM\QueryBuilder;
 use Mockery;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
@@ -31,6 +33,14 @@ final class NewsRepositoryTest extends TestCase
     protected function createNewsRepositoryReflection(): ReflectionClass
     {
         return new ReflectionClass(NewsRepository::class);
+    }
+
+    /**
+     * @return MockInterface&LegacyMockInterface&News
+     */
+    protected function createNewsMock()
+    {
+        return Mockery::mock(News::class);
     }
 
     /**
@@ -91,5 +101,115 @@ final class NewsRepositoryTest extends TestCase
 
         $newsRepositoryMock = $this->createNewsRepositoryMock();
         $addActiveQueryRef->invoke($newsRepositoryMock, $queryBuilderMock, $alias);
+    }
+
+    /**
+     * @covers ::findByTitleId
+     * @test
+     * @testdox findByTitleIdは引数titleIdにマッチするエンティティNewsのリストを取得する
+     */
+    public function testFindByTitleId(): void
+    {
+        $titleId = 5;
+
+        $result = [$this->createNewsMock()];
+
+        $newsRepositoryMock = $this->createNewsRepositoryMock();
+        $newsRepositoryMock->makePartial();
+
+        $queryBuilderMock = $this->baseTestFindByTitleId($newsRepositoryMock, $titleId, $result);
+
+        // without limit
+        $queryBuilderMock->shouldNotReceive('setMaxResults');
+
+        $this->assertEquals(
+            $result,
+            $newsRepositoryMock->findByTitleId($titleId)
+        );
+    }
+
+    /**
+     * @covers ::findByTitleId
+     * @test
+     * @testdox findByTitleIdは引数titleIdにマッチするエンティティNewsのリストを引数limitの件数取得する
+     */
+    public function testFindByTitleIdCaseWithLimit(): void
+    {
+        $titleId = 5;
+        $limit   = 10;
+
+        $result = [$this->createNewsMock()];
+
+        $newsRepositoryMock = $this->createNewsRepositoryMock();
+        $newsRepositoryMock->makePartial();
+
+        $queryBuilderMock = $this->baseTestFindByTitleId($newsRepositoryMock, $titleId, $result);
+
+        $queryBuilderMock
+            ->shouldReceive('setMaxResults')
+            ->once()
+            ->with($limit);
+
+        $this->assertEquals(
+            $result,
+            $newsRepositoryMock->findByTitleId($titleId, $limit)
+        );
+    }
+
+    /**
+     * @param mixed  $newsRepositoryMock
+     * @param News[] $result
+     * @return MockInterface&LegacyMockInterface&QueryBuilder
+     */
+    protected function baseTestFindByTitleId($newsRepositoryMock, int $titleId, array $result)
+    {
+        $alias = 'n';
+
+        $newsRepositoryMock->shouldAllowMockingProtectedMethods();
+
+        $queryBuilderMock = $this->createQueryBuilderMock();
+        $newsRepositoryMock
+            ->shouldReceive('createQueryBuilder')
+            ->once()
+            ->with($alias)
+            ->andReturn($queryBuilderMock);
+
+        $newsRepositoryMock
+            ->shouldReceive('addActiveQuery')
+            ->once()
+            ->with($queryBuilderMock, $alias);
+
+        $queryBuilderMock
+            ->shouldReceive('andWhere')
+            ->once()
+            ->with($alias . '.title = :title')
+            ->andReturn($queryBuilderMock);
+
+        $queryBuilderMock
+            ->shouldReceive('setParameter')
+            ->once()
+            ->with('title', $titleId)
+            ->andReturn($queryBuilderMock);
+
+        /** @var MockInterface&LegacyMockInterface $queryMock */
+        $queryMock = Mockery::mock('Query');
+        $queryBuilderMock
+            ->shouldReceive('getQuery')
+            ->once()
+            ->with()
+            ->andReturn($queryMock);
+
+        $queryMock
+            ->shouldReceive('setFetchMode')
+            ->once()
+            ->with(News::class, 'image', ClassMetadata::FETCH_EAGER);
+
+        $queryMock
+            ->shouldReceive('getResult')
+            ->once()
+            ->with()
+            ->andReturn($result);
+
+        return $queryBuilderMock;
     }
 }

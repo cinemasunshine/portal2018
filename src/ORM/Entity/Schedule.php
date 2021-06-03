@@ -16,6 +16,8 @@ use LogicException;
  * @ORM\Entity(readOnly=true, repositoryClass="App\ORM\Repository\ScheduleRepository")
  * @ORM\Table(name="schedule", options={"collate"="utf8mb4_general_ci"})
  * @ORM\HasLifecycleCallbacks
+ *
+ * @method Title getTitle()
  */
 class Schedule extends BaseSchedule
 {

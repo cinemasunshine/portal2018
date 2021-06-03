@@ -234,4 +234,28 @@ class NewsRepository extends EntityRepository
 
         return $query->getResult();
     }
+
+    /**
+     * @return News[]
+     */
+    public function findByTitleId(int $titleId, ?int $limit = null): array
+    {
+        $alias = 'n';
+        $qb    = $this->createQueryBuilder($alias);
+
+        $this->addActiveQuery($qb, $alias);
+
+        $qb
+            ->andWhere(sprintf('%s.title = :title', $alias))
+            ->setParameter('title', $titleId);
+
+        if ($limit) {
+            $qb->setMaxResults($limit);
+        }
+
+        $query = $qb->getQuery();
+        $query->setFetchMode(News::class, 'image', ClassMetadata::FETCH_EAGER);
+
+        return $query->getResult();
+    }
 }

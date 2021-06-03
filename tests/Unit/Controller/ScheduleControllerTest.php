@@ -5,7 +5,10 @@ declare(strict_types=1);
 namespace Tests\Unit\Controller;
 
 use App\Controller\ScheduleController;
+use App\ORM\Entity\News;
 use App\ORM\Entity\Schedule;
+use App\ORM\Entity\Title;
+use App\ORM\Repository\NewsRepository;
 use App\ORM\Repository\ScheduleRepository;
 use Mockery;
 use Mockery\LegacyMockInterface;
@@ -46,6 +49,30 @@ final class ScheduleControllerTest extends BaseTestCase
     protected function createScheduleMock()
     {
         return Mockery::mock(Schedule::class);
+    }
+
+    /**
+     * @return MockInterface&LegacyMockInterface&NewsRepository
+     */
+    protected function createNewsRepositoryMock()
+    {
+        return Mockery::mock(NewsRepository::class);
+    }
+
+    /**
+     * @return MockInterface&LegacyMockInterface&News
+     */
+    protected function createNewsMock()
+    {
+        return Mockery::mock(News::class);
+    }
+
+    /**
+     * @return MockInterface&LegacyMockInterface&Title
+     */
+    protected function createTitleMock()
+    {
+        return Mockery::mock(Title::class);
     }
 
     /**
@@ -150,12 +177,12 @@ final class ScheduleControllerTest extends BaseTestCase
             ->makePartial()
             ->shouldAllowMockingProtectedMethods();
 
-        $id       = 2;
-        $schedule = $this->createScheduleMock();
+        $scheduleId   = 2;
+        $scheduleMock = $this->createScheduleMock();
         $scheduleControllerMock
             ->shouldReceive('getScheduleRepository->findOneById')
-            ->with($id)
-            ->andReturn($schedule, null);
+            ->with($scheduleId)
+            ->andReturn($scheduleMock, null);
 
         $scheduleControllerRef = $this->createScheduleControllerReflection();
 
@@ -163,10 +190,101 @@ final class ScheduleControllerTest extends BaseTestCase
         $findOneScheduleMethodRef->setAccessible(true);
 
         $this->assertEquals(
-            $schedule,
-            $findOneScheduleMethodRef->invoke($scheduleControllerMock, $id)
+            $scheduleMock,
+            $findOneScheduleMethodRef->invoke($scheduleControllerMock, $scheduleId)
         );
-        $this->assertNull($findOneScheduleMethodRef->invoke($scheduleControllerMock, $id));
+        $this->assertNull($findOneScheduleMethodRef->invoke($scheduleControllerMock, $scheduleId));
+    }
+
+    /**
+     * @covers ::getNewsRepository
+     * @test
+     * @testdox getNewsRepositoryはエンティティNewsのRepositoryを返す
+     */
+    public function testGetNewsRepository(): void
+    {
+        $newsRepositoryMock = $this->createNewsRepositoryMock();
+
+        $container = $this->createContainer();
+
+        $container['em']
+            ->shouldReceive('getRepository')
+            ->once()
+            ->with(News::class)
+            ->andReturn($newsRepositoryMock);
+
+        $scheduleControllerMock = $this->createScheduleControllerMock($container);
+
+        $scheduleControllerRef = $this->createScheduleControllerReflection();
+
+        $getNewsRepositoryMethodRef = $scheduleControllerRef->getMethod('getNewsRepository');
+        $getNewsRepositoryMethodRef->setAccessible(true);
+
+        $this->assertEquals(
+            $newsRepositoryMock,
+            $getNewsRepositoryMethodRef->invoke($scheduleControllerMock)
+        );
+    }
+
+    /**
+     * @return array<string,array{int,?int}>
+     */
+    public function findNewsByTitleDataProvider(): array
+    {
+        return [
+            'without limit' => [
+                5,
+                null,
+            ],
+            'with limit' => [
+                8,
+                10,
+            ],
+        ];
+    }
+
+    /**
+     * @covers ::findNewsByTitle
+     * @dataProvider findNewsByTitleDataProvider
+     * @test
+     * @testdox findNewsByTitleはNewsRepository::findByTitleIdの結果を返す
+     */
+    public function testFindNewsByTitle(int $titleId, ?int $limit): void
+    {
+        $scheduleControllerMock = $this->createScheduleControllerMock($this->createContainer());
+        $scheduleControllerMock
+            ->makePartial()
+            ->shouldAllowMockingProtectedMethods();
+
+        $titleMock = $this->createTitleMock();
+        $titleMock
+            ->shouldReceive('getId')
+            ->once()
+            ->with()
+            ->andReturn($titleId);
+
+        $result = [$this->createNewsMock()];
+        $scheduleControllerMock
+            ->shouldReceive('getNewsRepository->findByTitleId')
+            ->withArgs([$titleId, $limit])
+            ->andReturn($result);
+
+        $scheduleControllerRef = $this->createScheduleControllerReflection();
+
+        $findNewsByTitleMethodRef = $scheduleControllerRef->getMethod('findNewsByTitle');
+        $findNewsByTitleMethodRef->setAccessible(true);
+
+        $args   = [];
+        $args[] = $titleMock;
+
+        if ($limit) {
+            $args[] = $limit;
+        }
+
+        $this->assertEquals(
+            $result,
+            $findNewsByTitleMethodRef->invokeArgs($scheduleControllerMock, $args)
+        );
     }
 
     /**
@@ -236,7 +354,14 @@ final class ScheduleControllerTest extends BaseTestCase
         $responseMock = $this->createResponseMock();
         $args         = ['schedule' => '3'];
 
-        $schedule = $this->createScheduleMock();
+        $scheduleMock = $this->createScheduleMock();
+
+        $titleMock = $this->createTitleMock();
+        $scheduleMock
+            ->shouldReceive('getTitle')
+            ->once()
+            ->with()
+            ->andReturn($titleMock);
 
         $scheduleControllerMock = $this->createScheduleControllerMock($this->createContainer());
         $scheduleControllerMock
@@ -247,7 +372,14 @@ final class ScheduleControllerTest extends BaseTestCase
             ->shouldReceive('findOneSchedule')
             ->once()
             ->with((int) $args['schedule'])
-            ->andReturn($schedule);
+            ->andReturn($scheduleMock);
+
+        $newsList = [];
+        $scheduleControllerMock
+            ->shouldReceive('findNewsByTitle')
+            ->once()
+            ->with($titleMock, Mockery::type('int'))
+            ->andReturn($newsList);
 
         $theaters = [];
         $scheduleControllerMock
@@ -257,7 +389,8 @@ final class ScheduleControllerTest extends BaseTestCase
             ->andReturn($theaters);
 
         $data = [
-            'schedule' => $schedule,
+            'schedule' => $scheduleMock,
+            'newsList' => $newsList,
             'theaters' => $theaters,
         ];
         $scheduleControllerMock
