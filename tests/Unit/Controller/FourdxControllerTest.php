@@ -7,6 +7,7 @@ namespace Tests\Unit\Controller;
 use App\Controller\FourdxController;
 use App\ORM\Entity\News;
 use App\ORM\Entity\Schedule;
+use App\ORM\Entity\Title;
 use App\ORM\Repository\NewsRepository;
 use App\ORM\Repository\ScheduleRepository;
 use Mockery;
@@ -23,6 +24,46 @@ final class FourdxControllerTest extends BaseTestCase
     protected function createTargetMock(Container $container)
     {
         return Mockery::mock(FourdxController::class, [$container]);
+    }
+
+    /**
+     * @return MockInterface&LegacyMockInterface&NewsRepository
+     */
+    protected function createNewsRepositoryMock()
+    {
+        return Mockery::mock(NewsRepository::class);
+    }
+
+    /**
+     * @return MockInterface&LegacyMockInterface&ScheduleRepository
+     */
+    protected function createScheduleRepositoryMock()
+    {
+        return Mockery::mock(ScheduleRepository::class);
+    }
+
+    /**
+     * @return MockInterface&LegacyMockInterface&News
+     */
+    protected function createNewsMock()
+    {
+        return Mockery::mock(News::class);
+    }
+
+    /**
+     * @return MockInterface&LegacyMockInterface&Schedule
+     */
+    protected function createScheduleMock()
+    {
+        return Mockery::mock(Schedule::class);
+    }
+
+    /**
+     * @return MockInterface&LegacyMockInterface&Title
+     */
+    protected function createTitleMock()
+    {
+        return Mockery::mock(Title::class);
     }
 
     /**
@@ -208,28 +249,41 @@ final class FourdxControllerTest extends BaseTestCase
     {
         $requestMock  = $this->createRequestMock();
         $responseMock = $this->createResponseMock();
-        $args         = ['schedule' => 3];
+        $args         = ['schedule' => '3'];
 
-        $schedule       = $this->createScheduleMock();
-        $repositoryMock = $this->createScheduleRepositoryMock();
-        $repositoryMock
+        $scheduleMock = $this->createScheduleMock();
+
+        $titleMock = $this->createTitleMock();
+        $scheduleMock
+            ->shouldReceive('getTitle')
+            ->once()
+            ->with()
+            ->andReturn($titleMock);
+
+        $scheduleRepositoryMock = $this->createScheduleRepositoryMock();
+        $scheduleRepositoryMock
             ->shouldReceive('findOneById')
             ->once()
-            ->with($args['schedule'])
-            ->andReturn($schedule);
+            ->with((int) $args['schedule'])
+            ->andReturn($scheduleMock);
 
-        $container = $this->createContainer();
-
-        $container['em']
-            ->shouldReceive('getRepository')
-            ->once()
-            ->with(Schedule::class)
-            ->andReturn($repositoryMock);
-
-        $targetMock = $this->createTargetMock($container);
+        $targetMock = $this->createTargetMock($this->createContainer());
         $targetMock
             ->makePartial()
             ->shouldAllowMockingProtectedMethods();
+
+        $targetMock
+            ->shouldReceive('getScheduleRepository')
+            ->once()
+            ->with()
+            ->andReturn($scheduleRepositoryMock);
+
+        $newsList = [$this->createNewsMock()];
+        $targetMock
+            ->shouldReceive('findNewsByTitle')
+            ->once()
+            ->with($titleMock, Mockery::type('int'))
+            ->andReturn($newsList);
 
         $theaters = [];
         $targetMock
@@ -239,7 +293,8 @@ final class FourdxControllerTest extends BaseTestCase
             ->andReturn($theaters);
 
         $data = [
-            'schedule' => $schedule,
+            'schedule' => $scheduleMock,
+            'newsList' => $newsList,
             'theaters' => $theaters,
         ];
         $targetMock
@@ -261,47 +316,29 @@ final class FourdxControllerTest extends BaseTestCase
     {
         $requestMock  = $this->createRequestMock();
         $responseMock = $this->createResponseMock();
-        $args         = ['schedule' => 3];
+        $args         = ['schedule' => '99'];
 
-        $repositoryMock = $this->createScheduleRepositoryMock();
-        $repositoryMock
+        $scheduleRepositoryMock = $this->createScheduleRepositoryMock();
+        $scheduleRepositoryMock
             ->shouldReceive('findOneById')
             ->once()
-            ->with($args['schedule'])
+            ->with((int) $args['schedule'])
             ->andReturn(null);
 
-        $container = $this->createContainer();
-
-        $container['em']
-            ->shouldReceive('getRepository')
-            ->once()
-            ->with(Schedule::class)
-            ->andReturn($repositoryMock);
-
-        $targetMock = $this->createTargetMock($container);
+        $targetMock = $this->createTargetMock($this->createContainer());
         $targetMock
             ->makePartial()
             ->shouldAllowMockingProtectedMethods();
 
+        $targetMock
+            ->shouldReceive('getScheduleRepository')
+            ->once()
+            ->with()
+            ->andReturn($scheduleRepositoryMock);
+
         $this->expectException(NotFoundException::class);
 
         $targetMock->executeScheduleShow($requestMock, $responseMock, $args);
-    }
-
-    /**
-     * @return MockInterface&LegacyMockInterface&ScheduleRepository
-     */
-    protected function createScheduleRepositoryMock()
-    {
-        return Mockery::mock(ScheduleRepository::class);
-    }
-
-    /**
-     * @return MockInterface&LegacyMockInterface&Schedule
-     */
-    protected function createScheduleMock()
-    {
-        return Mockery::mock(Schedule::class);
     }
 
     /**
@@ -425,22 +462,6 @@ final class FourdxControllerTest extends BaseTestCase
         $this->expectException(NotFoundException::class);
 
         $targetMock->executeNewsShow($requestMock, $responseMock, $args);
-    }
-
-    /**
-     * @return MockInterface&LegacyMockInterface&NewsRepository
-     */
-    protected function createNewsRepositoryMock()
-    {
-        return Mockery::mock(NewsRepository::class);
-    }
-
-    /**
-     * @return MockInterface&LegacyMockInterface&News
-     */
-    protected function createNewsMock()
-    {
-        return Mockery::mock(News::class);
     }
 
     /**

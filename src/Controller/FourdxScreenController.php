@@ -9,6 +9,7 @@ use App\ORM\Entity\MainBanner;
 use App\ORM\Entity\News;
 use App\ORM\Entity\Schedule;
 use App\ORM\Entity\Theater;
+use App\ORM\Entity\Title;
 use App\ORM\Entity\Trailer;
 use Slim\Exception\NotFoundException;
 use Slim\Http\Request;
@@ -143,6 +144,15 @@ class FourdxScreenController extends SpecialSiteController
     }
 
     /**
+     * @return News[]
+     */
+    protected function findNewsByTitle(Title $title, ?int $limit = null): array
+    {
+        return $this->getNewsRepository()
+            ->findByTitleId($title->getId(), $limit);
+    }
+
+    /**
      * schedule show action
      *
      * @param array<string, mixed> $args
@@ -156,10 +166,13 @@ class FourdxScreenController extends SpecialSiteController
             throw new NotFoundException($request, $response);
         }
 
+        $newsList = $this->findNewsByTitle($schedule->getTitle(), 8);
+
         $theaters = $this->getSpecialSiteTheaters();
 
         return $this->render($response, '4dx_screen/schedule/show.html.twig', [
             'schedule' => $schedule,
+            'newsList' => $newsList,
             'theaters' => $theaters,
         ]);
     }
