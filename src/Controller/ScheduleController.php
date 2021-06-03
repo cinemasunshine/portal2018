@@ -58,6 +58,12 @@ class ScheduleController extends GeneralController
             ->findByTitleId($title->getId(), $limit);
     }
 
+    protected function findOneNews(int $id): ?News
+    {
+        return $this->getNewsRepository()
+            ->findOneById($id);
+    }
+
     /**
      * list action
      *
@@ -99,6 +105,52 @@ class ScheduleController extends GeneralController
             'schedule' => $schedule,
             'newsList' => $newsList,
             'theaters' => $theaters,
+        ]);
+    }
+
+    /**
+     * news action
+     *
+     * @param array<string, mixed> $args
+     */
+    public function executeNews(Request $request, Response $response, array $args): Response
+    {
+        $schedule = $this->findOneSchedule((int) $args['schedule']);
+
+        if (is_null($schedule)) {
+            throw new NotFoundException($request, $response);
+        }
+
+        $newsList = $this->findNewsByTitle($schedule->getTitle(), 8);
+
+        return $this->render($response, 'schedule/news/index.html.twig', [
+            'schedule' => $schedule,
+            'newsList' => $newsList,
+        ]);
+    }
+
+    /**
+     * news show action
+     *
+     * @param array<string, mixed> $args
+     */
+    public function executeNewsShow(Request $request, Response $response, array $args): Response
+    {
+        $schedule = $this->findOneSchedule((int) $args['schedule']);
+
+        if (is_null($schedule)) {
+            throw new NotFoundException($request, $response);
+        }
+
+        $news = $this->findOneNews((int) $args['news']);
+
+        if (is_null($news)) {
+            throw new NotFoundException($request, $response);
+        }
+
+        return $this->render($response, 'schedule/news/show.html.twig', [
+            'schedule' => $schedule,
+            'news' => $news,
         ]);
     }
 }

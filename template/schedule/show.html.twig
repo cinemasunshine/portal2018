@@ -44,7 +44,8 @@
                 <ul class="row mb-0">
                 {% for news in newsList|slice(0, 4) %}
                     {% include "schedule/include/news_row.html.twig" with {
-                        news: news
+                        schedule: schedule,
+                        news: news,
                     } only %}
                 {% endfor %}
                 </ul>
@@ -52,7 +53,8 @@
                 <ul class="row d-none" data-contents="more-contents">
                 {% for news in newsList|slice(4, 4) %}
                     {% include "schedule/include/news_row.html.twig" with {
-                        news: news
+                        schedule: schedule,
+                        news: news,
                     } only %}
                 {% endfor %}
                 </ul>
@@ -62,7 +64,7 @@
                 <a href="#" data-target-contents="more-contents" data-target-button="more-button">もっと見る</a>
             </div>
             <div class="button-01 shadow-01 mx-auto d-none list-display" data-button="more-button">
-                <a href="#">一覧表示</a>
+                <a href="{{ path_for('schedule_news', {schedule: schedule.getId()}) }}">一覧表示</a>
             </div>
         </div>
     </div>
