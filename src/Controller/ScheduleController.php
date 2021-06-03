@@ -121,7 +121,7 @@ class ScheduleController extends GeneralController
             throw new NotFoundException($request, $response);
         }
 
-        $newsList = $this->findNewsByTitle($schedule->getTitle(), 8);
+        $newsList = $this->findNewsByTitle($schedule->getTitle());
 
         return $this->render($response, 'schedule/news/index.html.twig', [
             'schedule' => $schedule,
