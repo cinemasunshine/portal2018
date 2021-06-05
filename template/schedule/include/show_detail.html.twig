@@ -92,10 +92,45 @@
             </div>
         </div>
     </div>
+
     <div class="px-3 px-md-0">
         <div>
             <p class="desc">{{ title.getCatchcopy()|nl2br }}</p>
             <p class="mb-0 py-3">{{ title.getIntroduction()|nl2br }}</p>
+
+{% set theaterStrs = [] %}
+{% for showingTehater in schedule.getShowingTheaters %}
+    {% if showingTehater.getTheater().getName() == 'heiwajima' %}
+        {% set theaterStrs = theaterStrs|merge(['東京|平和島']) %}
+    {% elseif showingTehater.getTheater().getName() == 'numazu' %}
+        {% set theaterStrs = theaterStrs|merge(['静岡|沼津']) %}
+    {% elseif showingTehater.getTheater().getName() == 'kitajima' %}
+        {% set theaterStrs = theaterStrs|merge(['北島']) %}
+    {% elseif showingTehater.getTheater().getName() == 'kinuyama' %}
+        {% set theaterStrs = theaterStrs|merge(['衣山']) %}
+    {% elseif showingTehater.getTheater().getName() == 'shigenobu' %}
+        {% set theaterStrs = theaterStrs|merge(['重信']) %}
+    {% elseif showingTehater.getTheater().getName() == 'tsuchiura' %}
+        {% set theaterStrs = theaterStrs|merge(['茨城/土浦']) %}
+    {% elseif showingTehater.getTheater().getName() == 'kahoku' %}
+        {% set theaterStrs = theaterStrs|merge(['かほく']) %}
+    {% elseif showingTehater.getTheater().getName() == 'masaki' %}
+        {% set theaterStrs = theaterStrs|merge(['MASAKI']) %}
+    {% elseif showingTehater.getTheater().getName() == 'yamatokoriyama' %}
+        {% set theaterStrs = theaterStrs|merge(['奈良/大和郡山']) %}
+    {% elseif showingTehater.getTheater().getName() == 'shimonoseki' %}
+        {% set theaterStrs = theaterStrs|merge(['山口|下関']) %}
+    {% elseif showingTehater.getTheater().getName() == 'aira' %}
+        {% set theaterStrs = theaterStrs|merge(['姶良']) %}
+    {% elseif showingTehater.getTheater().getName() == 'yukarigaoka' %}
+        {% set theaterStrs = theaterStrs|merge(['ユーカリが丘']) %}
+    {% elseif showingTehater.getTheater().getName() == 'gdcs' %}
+        {% set theaterStrs = theaterStrs|merge(['東京/池袋']) %}
+    {% elseif showingTehater.getTheater().getName() == 'lalaportnumazu' %}
+        {% set theaterStrs = theaterStrs|merge(['ららぽーと沼津']) %}
+    {% endif %}
+{% endfor %}
+            <p>公開劇場：{{ theaterStrs|join('、') }}</p>
         </div>
         <div class="d-md-flex mb-3 align-items-center">
             <div class="icon-supervisor text-white bg-dark-gray text-center mb-2 mb-md-0 py-1">監督</div>
