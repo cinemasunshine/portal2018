@@ -51,7 +51,7 @@ final class SeoExtensionTest extends TestCase
     /**
      * @covers ::__construct
      * @test
-     * @testdox __constructは引数のファイルが存在する場合、loadMetas()の結果をプロパティにセットする
+     * @testdox __constructはloadMetas()の結果をプロパティmetasにセットする
      */
     public function testConstructCaseFileExists(): void
     {
@@ -80,23 +80,11 @@ final class SeoExtensionTest extends TestCase
     }
 
     /**
-     * @covers ::__construct
-     * @test
-     * @testdox __constructは引数のファイルが存在しない場合、例外をthrowする
-     */
-    public function testConstructCaseFileNotExists(): void
-    {
-        $this->expectException(InvalidArgumentException::class);
-
-        new SeoExtension(__DIR__ . '/not_exist.json');
-    }
-
-    /**
      * @covers ::loadMetas
      * @test
-     * @testdox loadMetasは引数のファイルを読み込んで、MetaTagオブジェクトのリストを返す
+     * @testdox loadMetasは引数のファイルが存在する場合、ファイルを読み込んでMetaTagオブジェクトのリストを返す
      */
-    public function testLoadMetas(): void
+    public function testLoadMetasCaseFileExists(): void
     {
         $seoExtensionMock = $this->createSeoExtensionMock();
 
@@ -107,9 +95,13 @@ final class SeoExtensionTest extends TestCase
 
         $result = $loadMetasMethodRef->invoke($seoExtensionMock, self::DATA_FILE);
 
+        $this->assertIsArray($result);
+
         foreach ($result as $row) {
             $this->assertInstanceOf(MetaTag::class, $row);
         }
+
+        $this->assertArrayHasKey('test', $result);
 
         /** @var MetaTag $metaTag */
         $metaTag = $result['test'];
@@ -117,6 +109,24 @@ final class SeoExtensionTest extends TestCase
         $this->assertEquals('example title', $metaTag->getTitle());
         $this->assertEquals('example description', $metaTag->getDescription());
         $this->assertEquals('hoge, fuge', $metaTag->getKeywords());
+    }
+
+    /**
+     * @covers ::loadMetas
+     * @test
+     * @testdox loadMetasは引数のファイルが存在しない場合、例外をthrowする
+     */
+    public function testLoadMetasCaseFileNotExists(): void
+    {
+        $seoExtensionMock = $this->createSeoExtensionMock();
+
+        $seoExtensionRef = $this->createSeoExtensionReflection();
+
+        $loadMetasMethodRef = $seoExtensionRef->getMethod('loadMetas');
+        $loadMetasMethodRef->setAccessible(true);
+
+        $this->expectException(InvalidArgumentException::class);
+        $loadMetasMethodRef->invoke($seoExtensionMock, __DIR__ . '/not_exist.json');
     }
 
     /**
