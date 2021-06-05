@@ -5,7 +5,15 @@
 
 {% block description %}シネマサンシャインの作品紹介ページです。「「{{ title.getName() }}」」の作品情報の詳細はこちら{% endblock %}
 
-{% block keywords %}シネマサンシャイン,映画館,映画,シネマ,劇場,{{ title.getName() }},{{ title.getDirector()|replace({'、': ','}) }},{{ title.getCast()|replace({'、': ','}) }}{% endblock %}
+{% set keywords = 'シネマサンシャイン,映画館,映画,シネマ,劇場' %}
+{% set keywords = keywords ~ ',' ~ title.getName() %}
+{% set keywords = keywords ~ ',' ~ title.getDirector()|replace({'、': ','}) %}
+{% set keywords = keywords ~ ',' ~ title.getCast()|replace({'、': ','}) %}
+
+{% for showingTehater in schedule.getShowingTheaters %}
+    {% set keywords = keywords ~ ',' ~ theater_keywords(showingTehater.getTheater()) %}
+{% endfor %}
+{% block keywords %}{{ keywords }}{% endblock %}
 
 {% block css %}
 <link href="/css/movie/details.css" rel="stylesheet">
