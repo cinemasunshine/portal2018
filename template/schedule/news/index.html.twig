@@ -1,11 +1,16 @@
 {% extends "layout.html.twig" %}
 
 {% set title = schedule.getTitle() %}
-{% block title %}{% endblock %}
+{% block title %}
+　「{{ title.getName() }}」関連ニュース一覧｜シネマサンシャイン
+{% endblock %}
 
-{% block description %}{% endblock %}
-
-{% block keywords %}{% endblock %}
+{% block description %}
+「{{ title.getName() }}」に関連するニュースの一覧ページになります。最新の上映情報やキャンペーン情報、イベント情報など
+{% endblock %}
+{% block keywords %}
+{{ title.getName() }},シネマサンシャイン,キャンペーン,映画,最新情報,上映情報,映画館
+{% endblock %}
 
 {% block css %}
 <link href="/css/news/list.css" rel="stylesheet">
