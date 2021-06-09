@@ -101,36 +101,36 @@
 {% set theaterStrs = [] %}
 {% for showingTehater in schedule.getShowingTheaters %}
     {% if showingTehater.getTheater().getName() == 'heiwajima' %}
-        {% set theaterStrs = theaterStrs|merge(['東京|平和島']) %}
+        {% set theaterStrs = theaterStrs|merge(['東京/平和島']) %}
     {% elseif showingTehater.getTheater().getName() == 'numazu' %}
-        {% set theaterStrs = theaterStrs|merge(['静岡|沼津']) %}
+        {% set theaterStrs = theaterStrs|merge(['静岡/沼津']) %}
     {% elseif showingTehater.getTheater().getName() == 'kitajima' %}
-        {% set theaterStrs = theaterStrs|merge(['北島']) %}
+        {% set theaterStrs = theaterStrs|merge(['徳島/北島']) %}
     {% elseif showingTehater.getTheater().getName() == 'kinuyama' %}
-        {% set theaterStrs = theaterStrs|merge(['衣山']) %}
+        {% set theaterStrs = theaterStrs|merge(['愛媛/松山']) %}
     {% elseif showingTehater.getTheater().getName() == 'shigenobu' %}
-        {% set theaterStrs = theaterStrs|merge(['重信']) %}
+        {% set theaterStrs = theaterStrs|merge(['愛媛/東温']) %}
     {% elseif showingTehater.getTheater().getName() == 'tsuchiura' %}
         {% set theaterStrs = theaterStrs|merge(['茨城/土浦']) %}
     {% elseif showingTehater.getTheater().getName() == 'kahoku' %}
-        {% set theaterStrs = theaterStrs|merge(['かほく']) %}
+        {% set theaterStrs = theaterStrs|merge(['石川/かほく']) %}
     {% elseif showingTehater.getTheater().getName() == 'masaki' %}
-        {% set theaterStrs = theaterStrs|merge(['MASAKI']) %}
+        {% set theaterStrs = theaterStrs|merge(['愛媛/伊予']) %}
     {% elseif showingTehater.getTheater().getName() == 'yamatokoriyama' %}
         {% set theaterStrs = theaterStrs|merge(['奈良/大和郡山']) %}
     {% elseif showingTehater.getTheater().getName() == 'shimonoseki' %}
-        {% set theaterStrs = theaterStrs|merge(['山口|下関']) %}
+        {% set theaterStrs = theaterStrs|merge(['山口/下関']) %}
     {% elseif showingTehater.getTheater().getName() == 'aira' %}
-        {% set theaterStrs = theaterStrs|merge(['姶良']) %}
+        {% set theaterStrs = theaterStrs|merge(['鹿児島/姶良']) %}
     {% elseif showingTehater.getTheater().getName() == 'yukarigaoka' %}
-        {% set theaterStrs = theaterStrs|merge(['ユーカリが丘']) %}
+        {% set theaterStrs = theaterStrs|merge(['千葉/ユーカリが丘']) %}
     {% elseif showingTehater.getTheater().getName() == 'gdcs' %}
         {% set theaterStrs = theaterStrs|merge(['東京/池袋']) %}
     {% elseif showingTehater.getTheater().getName() == 'lalaportnumazu' %}
-        {% set theaterStrs = theaterStrs|merge(['ららぽーと沼津']) %}
+        {% set theaterStrs = theaterStrs|merge(['静岡/沼津（ららぽーと）']) %}
     {% endif %}
 {% endfor %}
-            <p>公開劇場：{{ theaterStrs|join('、') }}</p>
+            <p class="small">公開劇場：{{ theaterStrs|join('、') }}</p>
         </div>
         <div class="d-md-flex mb-3 align-items-center">
             <div class="icon-supervisor text-white bg-dark-gray text-center mb-2 mb-md-0 py-1">監督</div>
