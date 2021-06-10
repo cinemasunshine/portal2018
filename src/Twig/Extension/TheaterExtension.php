@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Twig\Extension;
 
 use App\ORM\Entity\Theater;
+use InvalidArgumentException;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 use Twig\TwigFunction;
@@ -33,8 +34,30 @@ class TheaterExtension extends AbstractExtension
         19 => '千葉,ユーカリが丘,ユーカリプラザ',
     ];
 
-    public function __construct()
+    /**
+     * 劇場keywords
+     *
+     * 添字は劇場名
+     *
+     * @var array<string,string>
+     */
+    protected $keywords;
+
+    /**
+     * @return array<string,string>
+     */
+    protected function loadKeywords(string $file): array
     {
+        if (! file_exists($file)) {
+            throw new InvalidArgumentException('File does not exist.');
+        }
+
+        return json_decode(file_get_contents($file), true);
+    }
+
+    public function __construct(string $file)
+    {
+        $this->keywords = $this->loadKeywords($file);
     }
 
     /**
@@ -91,7 +114,7 @@ class TheaterExtension extends AbstractExtension
     {
         return [
             new TwigFunction('theater_area', [$this, 'theaterArea']),
-            new TwigFunction('theater_meta_keywords', [$this, 'getMetaKeywords']),
+            new TwigFunction('theater_keywords', [$this, 'getKeywords']),
         ];
     }
 
@@ -102,8 +125,8 @@ class TheaterExtension extends AbstractExtension
         return $areas[$area] ?? null;
     }
 
-    public function getMetaKeywords(Theater $theater): ?string
+    public function getKeywords(Theater $theater): ?string
     {
-        return $this->metaKeywords[$theater->getId()] ?? null;
+        return $this->keywords[$theater->getName()] ?? null;
     }
 }

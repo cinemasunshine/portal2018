@@ -6,11 +6,13 @@ namespace Tests\Unit\Twig\Extension;
 
 use App\ORM\Entity\Theater;
 use App\Twig\Extension\TheaterExtension;
+use InvalidArgumentException;
 use Mockery;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use Mockery\LegacyMockInterface;
 use Mockery\MockInterface;
 use PHPUnit\Framework\TestCase;
+use ReflectionClass;
 use Twig\TwigFilter;
 use Twig\TwigFunction;
 
@@ -21,8 +23,23 @@ final class TheaterExtensionTest extends TestCase
 {
     use MockeryPHPUnitIntegration;
 
+    protected const DATA_FILE = __DIR__ . '/data/theater/keywords.json';
+
     /** @var TheaterExtension */
     private $extension;
+
+    /**
+     * @return MockInterface&LegacyMockInterface&TheaterExtension
+     */
+    protected function createTheaterExtensionMock()
+    {
+        return Mockery::mock(TheaterExtension::class);
+    }
+
+    protected function createTheaterExtensionReflection(): ReflectionClass
+    {
+        return new ReflectionClass(TheaterExtension::class);
+    }
 
     /**
      * @return MockInterface&LegacyMockInterface&Theater
@@ -37,7 +54,80 @@ final class TheaterExtensionTest extends TestCase
      */
     public function setUp(): void
     {
-        $this->extension = new TheaterExtension();
+        $this->extension = new TheaterExtension(self::DATA_FILE);
+    }
+
+    /**
+     * @covers ::__construct
+     * @test
+     * @testdox __constructはloadKeywords()の結果をプロパティkeywordsにセットする
+     */
+    public function testConstruct(): void
+    {
+        $keywords = ['test' => 'hoge,fuga'];
+
+        $theaterExtensionMock = $this->createTheaterExtensionMock();
+        $theaterExtensionMock->shouldAllowMockingProtectedMethods();
+
+        $theaterExtensionMock
+            ->shouldReceive('loadKeywords')
+            ->once()
+            ->with(self::DATA_FILE)
+            ->andReturn($keywords);
+
+        $theaterExtensionRef = $this->createTheaterExtensionReflection();
+
+        $constructorRef = $theaterExtensionRef->getConstructor();
+        $constructorRef->invoke($theaterExtensionMock, self::DATA_FILE);
+
+        $keywordsPropertyRef = $theaterExtensionRef->getProperty('keywords');
+        $keywordsPropertyRef->setAccessible(true);
+
+        $this->assertEquals($keywords, $keywordsPropertyRef->getValue($theaterExtensionMock));
+    }
+
+    /**
+     * @covers ::loadKeywords
+     * @test
+     * @testdox loadKeywordsは引数のファイルが存在する場合、そのデータを返す
+     */
+    public function testLoadKeywordsCaseFileExists(): void
+    {
+        $theaterExtensionRef = $this->createTheaterExtensionReflection();
+
+        $loadKeywordsMethodRef = $theaterExtensionRef->getMethod('loadKeywords');
+        $loadKeywordsMethodRef->setAccessible(true);
+
+        $theaterExtensionMock = $this->createTheaterExtensionMock();
+
+        $result = $loadKeywordsMethodRef->invoke($theaterExtensionMock, self::DATA_FILE);
+
+        $this->assertIsArray($result);
+
+        foreach ($result as $row) {
+            $this->assertIsString($row);
+        }
+
+        $this->assertArrayHasKey('example', $result);
+        $this->assertEquals('hoge,fuga', $result['example']);
+    }
+
+    /**
+     * @covers ::loadKeywords
+     * @test
+     * @testdox loadKeywordsは引数のファイルが存在しない場合、例外をthrowする
+     */
+    public function testLoadKeywordsCaseFileNotExists(): void
+    {
+        $theaterExtensionRef = $this->createTheaterExtensionReflection();
+
+        $loadKeywordsMethodRef = $theaterExtensionRef->getMethod('loadKeywords');
+        $loadKeywordsMethodRef->setAccessible(true);
+
+        $theaterExtensionMock = $this->createTheaterExtensionMock();
+
+        $this->expectException(InvalidArgumentException::class);
+        $loadKeywordsMethodRef->invoke($theaterExtensionMock, __DIR__ . '/not_exist.json');
     }
 
     /**
@@ -195,7 +285,7 @@ final class TheaterExtensionTest extends TestCase
     {
         return [
             'function theater_area' => ['theater_area'],
-            'funciton theater_meta_keywords' => ['theater_meta_keywords'],
+            'funciton theater_keywords' => ['theater_keywords'],
         ];
     }
 
@@ -237,34 +327,34 @@ final class TheaterExtensionTest extends TestCase
     }
 
     /**
-     * @covers ::getMetaKeywords
+     * @covers ::getKeywords
      * @test
-     * @testdox getMetaKeywordsはkeywords設定が存在する劇場は文字列を返す
+     * @testdox getKeywordsはkeywords設定が存在する劇場は文字列を返す
      */
-    public function testGetMetaKeywordsCaseKeywordsExist(): void
+    public function testGetKeywordsCaseKeywordsExist(): void
     {
         $theaterMock = $this->createTheaterMock();
         $theaterMock
-            ->shouldReceive('getId')
+            ->shouldReceive('getName')
             ->with()
-            ->andReturn(2);
+            ->andReturn('example');
 
-        $this->assertIsString($this->extension->getMetaKeywords($theaterMock));
+        $this->assertEquals('hoge,fuga', $this->extension->getKeywords($theaterMock));
     }
 
     /**
-     * @covers ::getMetaKeywords
+     * @covers ::getKeywords
      * @test
-     * @testdox getMetaKeywordsはkeywords設定が存在しない劇場はnullを返す
+     * @testdox getKeywordsはkeywords設定が存在しない劇場はnullを返す
      */
     public function testGetMetaKeywordsCaseKeywordsNotExist(): void
     {
         $theaterMock = $this->createTheaterMock();
         $theaterMock
-            ->shouldReceive('getId')
+            ->shouldReceive('getName')
             ->with()
-            ->andReturn(99);
+            ->andReturn('not_exists');
 
-        $this->assertNull($this->extension->getMetaKeywords($theaterMock));
+        $this->assertNull($this->extension->getKeywords($theaterMock));
     }
 }

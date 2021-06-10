@@ -122,7 +122,9 @@ $container['view'] = static function ($container) {
     $view->addExtension(new ScheduleExtension(
         $container->get('settings')['schedule']
     ));
-    $view->addExtension(new TheaterExtension());
+    $view->addExtension(new TheaterExtension(
+        APP_ROOT . '/data/theater/keywords.json'
+    ));
     $view->addExtension(new UserExtension(
         $container->get('um'),
         $container->get('am')

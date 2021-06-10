@@ -9,9 +9,6 @@ use InvalidArgumentException;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 
-/**
- * SEO twig extension class
- */
 class SeoExtension extends AbstractExtension
 {
     /** @var MetaTag[] */
@@ -19,10 +16,6 @@ class SeoExtension extends AbstractExtension
 
     public function __construct(string $file)
     {
-        if (! file_exists($file)) {
-            throw new InvalidArgumentException('File does not exist.');
-        }
-
         $this->metas = $this->loadMetas($file);
     }
 
@@ -31,6 +24,10 @@ class SeoExtension extends AbstractExtension
      */
     protected function loadMetas(string $file): array
     {
+        if (! file_exists($file)) {
+            throw new InvalidArgumentException('File does not exist.');
+        }
+
         $json  = json_decode(file_get_contents($file), true);
         $metas = [];
 
