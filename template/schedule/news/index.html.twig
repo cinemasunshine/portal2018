@@ -1,0 +1,56 @@
+{% extends "layout.html.twig" %}
+
+{% set title = schedule.getTitle() %}
+{% block title %}
+　「{{ title.getName() }}」関連ニュース一覧｜シネマサンシャイン
+{% endblock %}
+
+{% block description %}
+「{{ title.getName() }}」に関連するニュースの一覧ページになります。最新の上映情報やキャンペーン情報、イベント情報など
+{% endblock %}
+{% block keywords %}
+{{ title.getName() }},シネマサンシャイン,キャンペーン,映画,最新情報,上映情報,映画館
+{% endblock %}
+
+{% block css %}
+<link href="/css/news/list.css" rel="stylesheet">
+{% endblock %}
+
+{% block contents %}
+<div class="width mx-auto p-3">
+    <div class="breadcrumb-list small width mx-auto d-none d-md-block">
+        <a href="{{ path_for('homepage') }}" class="mr-3">ホーム</a>|
+        <a href="{{ path_for('schedule_show', { schedule: schedule.getId() }) }}" class="mx-3">{{ title.getName() }}</a>|
+        <span class="font-weight-bold mx-3">NEWS＆INFO</span>
+    </div>
+</div>
+
+<div class="width mx-auto p-3">
+    <div class="news">
+        <h2 class="font-weight-bold large mb-5 text-center text-md-left mt-2">「{{ title.getName() }}」関連ニュース⼀覧</h2>
+        <div class="container w-100 mw-100 m-0 mb-4 px-1">
+            <ul class="row">
+            {% for news in newsList %}
+                <li class="col-md-3 col-6 py-2 mb-4">
+                    <a href="{{ path_for('schedule_news_show', {schedule: schedule.getId(), news: news.getId()}) }}" class="d-block">
+                        {% set labelClass = news_category_label_class(news.getCategory()) %}
+                        <div class="{{ labelClass }} text-center py-1 x-small">{{ news_category_label(news.getCategory()) }}</div>
+
+                        <div class="text-dark-gray py-2">{{ news.getStartDt()|date('Y/n/j') }}</div>
+
+                    {% if news.getImage() %}
+                        <div class="border mb-2 image border-gray" style="background-image: url({{ file_url(news.getImage()) }})"></div>
+                    {% endif %}
+                        <p class="mb-0">{{ news.getHeadline() }}</p>
+                    </a>
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+{% include 'include/campaign.html.twig' with {
+    campaigns: title.getCampaigns()
+} only %}
+{% endblock %}

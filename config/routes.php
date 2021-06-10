@@ -54,6 +54,11 @@ $app->group('/news', function (): void {
 $app->group('/movie', function (): void {
     $this->get('/', ScheduleController::class . ':list')->setName('schedule_list');
     $this->get('/{schedule:[0-9]+}.php', ScheduleController::class . ':show')->setName('schedule_show');
+
+    $this->group('/{schedule:[0-9]+}', function (): void {
+        $this->get('/news/', ScheduleController::class . ':news')->setName('schedule_news');
+        $this->get('/news/{news:[0-9]+}.php', ScheduleController::class . ':newsShow')->setName('schedule_news_show');
+    });
 });
 
 $app->get('/theater/', TheaterListController::class . ':index')->setName('theater_list');

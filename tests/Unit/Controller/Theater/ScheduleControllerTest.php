@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace Tests\Unit\Controller\Theater;
 
 use App\Controller\Theater\ScheduleController;
+use App\ORM\Entity\News;
 use App\ORM\Entity\Schedule;
+use App\ORM\Entity\Title;
 use App\ORM\Repository\ScheduleRepository;
 use Mockery;
 use Mockery\LegacyMockInterface;
@@ -46,6 +48,22 @@ final class ScheduleControllerTest extends BaseTestCase
     protected function createScheduleMock()
     {
         return Mockery::mock(Schedule::class);
+    }
+
+    /**
+     * @return MockInterface&LegacyMockInterface&Title
+     */
+    protected function createTitleMock()
+    {
+        return Mockery::mock(Title::class);
+    }
+
+    /**
+     * @return MockInterface&LegacyMockInterface&News
+     */
+    protected function createNewsMock()
+    {
+        return Mockery::mock(News::class);
     }
 
     /**
@@ -283,6 +301,20 @@ final class ScheduleControllerTest extends BaseTestCase
             ->with((int) $scheduleId)
             ->andReturn($scheduleMock);
 
+        $titleMock = $this->createTitleMock();
+        $scheduleMock
+            ->shouldReceive('getTitle')
+            ->once()
+            ->with()
+            ->andReturn($titleMock);
+
+        $newsList = [$this->createNewsMock()];
+        $scheduleControllerMock
+            ->shouldReceive('findNewsByTitle')
+            ->once()
+            ->with($titleMock, Mockery::type('int'))
+            ->andReturn($newsList);
+
         $scheduleControllerRef = $this->createScheduleControllerReflection();
 
         $theaterMock = $this->createTheaterMock();
@@ -293,6 +325,7 @@ final class ScheduleControllerTest extends BaseTestCase
 
         $data = [
             'theater' => $theaterMock,
+            'newsList' => $newsList,
             'schedule' => $scheduleMock,
         ];
         $scheduleControllerMock

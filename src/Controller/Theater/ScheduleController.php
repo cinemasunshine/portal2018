@@ -4,8 +4,11 @@ declare(strict_types=1);
 
 namespace App\Controller\Theater;
 
+use App\ORM\Entity\News;
 use App\ORM\Entity\Schedule;
 use App\ORM\Entity\Theater;
+use App\ORM\Entity\Title;
+use App\ORM\Repository\NewsRepository;
 use App\ORM\Repository\ScheduleRepository;
 use Slim\Exception\NotFoundException;
 use Slim\Http\Request;
@@ -42,6 +45,20 @@ class ScheduleController extends BaseController
             ->findOneById($scheduleId);
     }
 
+    protected function getNewsRepository(): NewsRepository
+    {
+        return $this->em->getRepository(News::class);
+    }
+
+    /**
+     * @return News[]
+     */
+    protected function findNewsByTitle(Title $title, ?int $limit = null): array
+    {
+        return $this->getNewsRepository()
+            ->findByTitleId($title->getId(), $limit);
+    }
+
     /**
      * @param array<string, mixed> $args
      */
@@ -71,9 +88,12 @@ class ScheduleController extends BaseController
             throw new NotFoundException($request, $response);
         }
 
+        $newsList = $this->findNewsByTitle($schedule->getTitle(), 8);
+
         return $this->render($response, 'theater/schedule/show.html.twig', [
             'theater' => $this->theater,
             'schedule' => $schedule,
+            'newsList' => $newsList,
         ]);
     }
 }

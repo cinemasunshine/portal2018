@@ -4,7 +4,13 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\ORM\Entity;
+use App\ORM\Entity\Campaign;
+use App\ORM\Entity\MainBanner;
+use App\ORM\Entity\News;
+use App\ORM\Entity\Schedule;
+use App\ORM\Entity\Theater;
+use App\ORM\Entity\Title;
+use App\ORM\Entity\Trailer;
 use Slim\Exception\NotFoundException;
 use Slim\Http\Request;
 use Slim\Http\Response;
@@ -54,83 +60,75 @@ class FourdxController extends SpecialSiteController
     }
 
     /**
-     * @return Entity\MainBanner[]
+     * @return MainBanner[]
      */
     protected function getMainBanners(): array
     {
-        return $this->em
-            ->getRepository(Entity\MainBanner::class)
+        return $this->getMainBannerRepository()
             ->findBySpecialSiteId(self::SPECIAL_SITE_ID);
     }
 
     /**
-     * @return Entity\Trailer[]
+     * @return Trailer[]
      */
     protected function getTrailers(): array
     {
-        return $this->em
-            ->getRepository(Entity\Trailer::class)
+        return $this->getTrailerRepository()
             ->findBySpecialSite(self::SPECIAL_SITE_ID);
     }
 
     /**
-     * @return Entity\News[]
+     * @return News[]
      */
     protected function getNewsList(?int $limit = null): array
     {
-        return $this->em
-            ->getRepository(Entity\News::class)
+        return $this->getNewsRepository()
             ->findBy4dx($limit);
     }
 
     /**
-     * @return Entity\Theater[]
+     * @return Theater[]
      */
     protected function get4dxTheaters(): array
     {
-        return $this->em
-            ->getRepository(Entity\Theater::class)
+        return $this->getTheaterRepository()
             ->findBySpecialSite(self::SPECIAL_SITE_ID);
     }
 
     /**
-     * @return Entity\Schedule[]
+     * @return Schedule[]
      */
     protected function findNowShowingSchedules(): array
     {
-        return $this->em
-            ->getRepository(Entity\Schedule::class)
+        return $this->getScheduleRepository()
             ->findNowShowingFor4dx();
     }
 
     /**
-     * @return Entity\Schedule[]
+     * @return Schedule[]
      */
     protected function findCommingSoonSchedules(): array
     {
-        return $this->em
-            ->getRepository(Entity\Schedule::class)
+        return $this->getScheduleRepository()
             ->findCommingSoonFor4dx();
     }
 
     /**
-     * @return Entity\Campaign[]
+     * @return Campaign[]
      */
     protected function getCampaigns(): array
     {
-        return $this->em
-            ->getRepository(Entity\Campaign::class)
+        return $this->getCampaignRepository()
             ->findBySpecialSite(self::SPECIAL_SITE_ID);
     }
 
     /**
-     * @return Entity\News[]
+     * @return News[]
      */
     protected function getInfoNewsList(?int $limit = null): array
     {
-        return $this->em
-            ->getRepository(Entity\News::class)
-            ->findBySpecialSite(self::SPECIAL_SITE_ID, Entity\News::CATEGORY_INFO, $limit);
+        return $this->getNewsRepository()
+            ->findBySpecialSite(self::SPECIAL_SITE_ID, News::CATEGORY_INFO, $limit);
     }
 
     /**
@@ -164,25 +162,35 @@ class FourdxController extends SpecialSiteController
     }
 
     /**
+     * @return News[]
+     */
+    protected function findNewsByTitle(Title $title, ?int $limit = null): array
+    {
+        return $this->getNewsRepository()
+            ->findByTitleId($title->getId(), $limit);
+    }
+
+    /**
      * schedule show action
      *
      * @param array<string, mixed> $args
      */
     public function executeScheduleShow(Request $request, Response $response, array $args): Response
     {
-        /** @var Entity\Schedule|null $schedule */
-        $schedule = $this->em
-            ->getRepository(Entity\Schedule::class)
+        $schedule = $this->getScheduleRepository()
             ->findOneById((int) $args['schedule']);
 
         if (is_null($schedule)) {
             throw new NotFoundException($request, $response);
         }
 
+        $newsList = $this->findNewsByTitle($schedule->getTitle(), 8);
+
         $theaters = $this->get4dxTheaters();
 
         return $this->render($response, '4dx/schedule/show.html.twig', [
             'schedule' => $schedule,
+            'newsList' => $newsList,
             'theaters' => $theaters,
         ]);
     }
@@ -211,9 +219,7 @@ class FourdxController extends SpecialSiteController
      */
     public function executeNewsShow(Request $request, Response $response, array $args): Response
     {
-        /** @var Entity\News|null $news */
-        $news = $this->em
-            ->getRepository(Entity\News::class)
+        $news = $this->getNewsRepository()
             ->findOneById((int) $args['id']);
 
         if (is_null($news)) {
