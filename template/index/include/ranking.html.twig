@@ -1,94 +1,47 @@
 <div class="width mx-auto px-3 ranking mb-5">
     {% set fromDate = null %}
-    
+
     {% if titleRanking.getFromDate() %}
         {% set fromDate = titleRanking.getFromDate()|date('n/j') ~ '(' ~ titleRanking.getFromDate()|weekday ~ ')' %}
     {% endif %}
-    
+
     {% set toDate = null %}
-    
+
     {% if titleRanking.getToDate() %}
         {% set toDate = titleRanking.getToDate()|date('n/j') ~ '(' ~ titleRanking.getToDate()|weekday ~ ')' %}
     {% endif %}
-    
+
     <h3 class="font-weight-bold large text-center text-md-left line-height-1 mb-3">ランキング<br><span class="small">RANKING</span></h3>
     <p class="mb-4">{{ fromDate }}-{{ toDate }}に集計したランキングになります。</p>
+
     <div class="scroll">
         <ul class="d-flex">
-        {% set rank1Title = titleRanking.getRank1Title() %}
-        {% if rank1Title %}
+
+    {% for titleRank in titleRanking.getRanks() %}
+        {% if titleRank.getTitle() %}
+            {% set title = titleRank.getTitle() %}
             <li class="ml-0">
-                <div class="rank-01 text-center text-white mb-2 py-1 small">1</div>
+                <div class="rank-0{{ titleRank.getRank() }} text-center text-white mb-2 py-1 small">{{ titleRank.getRank() }}</div>
                 <div class="mb-2 border">
-                {% if rank1Title.getImage() %}
-                    <img class="w-100" src="{{ file_url(rank1Title.getImage()) }}">
-                {% else %}
-                    <img class="w-100" src="/images/common/no_img_movie.png">
+
+                {% if titleRank.getDetailUrl() %}
+                    <a href="{{ titleRank.getDetailUrl() }}">
                 {% endif %}
+
+                    {% set image = title.getImage() ? file_url(title.getImage()) : '/images/common/no_img_movie.png' %}
+                    <img class="w-100" src="{{ image }}">
+
+                {% if titleRank.getDetailUrl() %}
+                    </a>
+                {% endif %}
+
                 </div>
-                <p class="mb-0">{{ rank1Title.getName() }}</p>
+                <p class="mb-0">{{ title.getName() }}</p>
             </li>
         {% endif %}
-        
-        {% set rank2Title = titleRanking.getRank2Title() %}
-        {% if rank2Title %}
-            <li>
-                <div class="rank-02 text-center text-white mb-2 py-1 small">2</div>
-                <div class="mb-2 border">
-                {% if rank2Title.getImage() %}
-                    <img class="w-100" src="{{ file_url(rank2Title.getImage()) }}">
-                {% else %}
-                    <img class="w-100" src="/images/common/no_img_movie.png">
-                {% endif %}
-                </div>
-                <p class="mb-0">{{ rank2Title.getName() }}</p>
-            </li>
-        {% endif %}
-        
-        {% set rank3Title = titleRanking.getRank3Title() %}
-        {% if rank3Title %}
-            <li>
-                <div class="rank-03 text-center text-white mb-2 py-1 small">3</div>
-                <div class="mb-2 border">
-                {% if rank3Title.getImage() %}
-                    <img class="w-100" src="{{ file_url(rank3Title.getImage()) }}">
-                {% else %}
-                    <img class="w-100" src="/images/common/no_img_movie.png">
-                {% endif %}
-                </div>
-                <p class="mb-0">{{ rank3Title.getName() }}</p>
-            </li>
-        {% endif %}
-        
-        {% set rank4Title = titleRanking.getRank4Title() %}
-        {% if rank4Title %}
-            <li>
-                <div class="rank-04 text-center text-white mb-2 py-1 small">4</div>
-                <div class="mb-2 border">
-                {% if rank4Title.getImage() %}
-                    <img class="w-100" src="{{ file_url(rank4Title.getImage()) }}">
-                {% else %}
-                    <img class="w-100" src="/images/common/no_img_movie.png">
-                {% endif %}
-                </div>
-                <p class="mb-0">{{ rank4Title.getName() }}</p>
-            </li>
-        {% endif %}
-        
-        {% set rank5Title = titleRanking.getRank5Title() %}
-        {% if rank5Title %}
-            <li class="mr-0">
-                <div class="rank-05 text-center text-white mb-2 py-1 small">5</div>
-                <div class="mb-2 border">
-                {% if rank5Title.getImage() %}
-                    <img class="w-100" src="{{ file_url(rank5Title.getImage()) }}">
-                {% else %}
-                    <img class="w-100" src="/images/common/no_img_movie.png">
-                {% endif %}
-                </div>
-                <p class="mb-0">{{ rank5Title.getName() }}</p>
-            </li>
-        {% endif %}
+    {% endfor %}
+
         </ul>
     </div>
+
 </div>
