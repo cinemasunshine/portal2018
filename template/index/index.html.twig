@@ -48,9 +48,11 @@
 
 {% include 'include/adsense/top.html.twig' only %}
 
+{# アップデートのため、一時的に止める SASAKI-632
 {% include 'index/include/ranking.html.twig' with {
     titleRanking: titleRanking
 } only %}
+#}
 
 {% include 'index/include/news.html.twig' with {
     newsList: newsList

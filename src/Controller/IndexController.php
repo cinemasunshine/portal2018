@@ -23,7 +23,8 @@ class IndexController extends GeneralController
 
         $trailer = $this->getTrailer();
 
-        $titleRanking = $this->getTitleRanking();
+        // アップデートのため、一時的に止める SASAKI-632
+        // $titleRanking = $this->getTitleRanking();
 
         $newsList = $this->getNewsList(Entity\News::CATEGORY_NEWS);
 
@@ -43,7 +44,7 @@ class IndexController extends GeneralController
             'mainBanners' => $mainBanners,
             'areaToTheaters' => $areaToTheaters,
             'trailer' => $trailer,
-            'titleRanking' => $titleRanking,
+            // 'titleRanking' => $titleRanking,
             'newsList' => $newsList,
             'imaxNewsList' => $imaxNewsList,
             'fourdxNewsList' => $fourdxNewsList,
