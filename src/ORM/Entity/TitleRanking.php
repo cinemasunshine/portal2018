@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\ORM\Entity;
 
-use Cinemasunshine\ORM\Entities\Title as BaseTitle;
 use Cinemasunshine\ORM\Entities\TitleRanking as BaseTitleRanking;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use LogicException;
 
@@ -15,6 +15,8 @@ use LogicException;
  * @ORM\Entity(readOnly=true, repositoryClass="App\ORM\Repository\TitleRankingRepository")
  * @ORM\Table(name="title_ranking", options={"collate"="utf8mb4_general_ci"})
  * @ORM\HasLifecycleCallbacks
+ *
+ * @method Collection<int,TitleRankingRank> getRanks()
  */
 class TitleRanking extends BaseTitleRanking
 {
@@ -44,56 +46,6 @@ class TitleRanking extends BaseTitleRanking
      * @throws LogicException
      */
     public function setToDate($toDate): void
-    {
-        throw new LogicException('Not allowed.');
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @throws LogicException
-     */
-    public function setRank1Title(?BaseTitle $title): void
-    {
-        throw new LogicException('Not allowed.');
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @throws LogicException
-     */
-    public function setRank2Title(?BaseTitle $title): void
-    {
-        throw new LogicException('Not allowed.');
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @throws LogicException
-     */
-    public function setRank3Title(?BaseTitle $title): void
-    {
-        throw new LogicException('Not allowed.');
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @throws LogicException
-     */
-    public function setRank4Title(?BaseTitle $title): void
-    {
-        throw new LogicException('Not allowed.');
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @throws LogicException
-     */
-    public function setRank5Title(?BaseTitle $title): void
     {
         throw new LogicException('Not allowed.');
     }

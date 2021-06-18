@@ -8,9 +8,6 @@ use App\ORM\Entity\Trailer;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\QueryBuilder;
 
-/**
- * Trailer repository class
- */
 class TrailerRepository extends EntityRepository
 {
     protected function getActiveQuery(): QueryBuilder
@@ -29,8 +26,8 @@ class TrailerRepository extends EntityRepository
     {
         $qb = $this->getActiveQuery();
         $qb
-            ->join('t.pageTrailers', 'pt')
-            ->andWhere('pt.page = :page_id')
+            ->join('t.pages', 'tp')
+            ->andWhere('tp.page = :page_id')
             ->setParameter('page_id', $pageId);
 
         return $qb->getQuery()->getResult();
@@ -43,7 +40,7 @@ class TrailerRepository extends EntityRepository
     {
         $qb = $this->getActiveQuery();
         $qb
-            ->join('t.theaterTrailers', 'tt')
+            ->join('t.theaters', 'tt')
             ->andWhere('tt.theater = :theater_id')
             ->setParameter('theater_id', $theaterId);
 
@@ -57,8 +54,8 @@ class TrailerRepository extends EntityRepository
     {
         $qb = $this->getActiveQuery();
         $qb
-            ->join('t.specialSiteTrailers', 'st')
-            ->andWhere('st.specialSite = :special_site_id')
+            ->join('t.specialSites', 'ts')
+            ->andWhere('ts.specialSite = :special_site_id')
             ->setParameter('special_site_id', $specialSiteId);
 
         return $qb->getQuery()->getResult();

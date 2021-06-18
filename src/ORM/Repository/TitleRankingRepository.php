@@ -9,25 +9,18 @@ use App\ORM\Entity\TitleRanking;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Mapping\ClassMetadata;
 
-/**
- * TitleRanking repository class
- */
 class TitleRankingRepository extends EntityRepository
 {
     public function findOneById(int $id): ?TitleRanking
     {
-        $qb = $this->createQueryBuilder('tr');
+        $alias = 'tr';
+
+        $qb = $this->createQueryBuilder($alias);
         $qb
-            ->addSelect('t1')
-            ->leftJoin('tr.rank1Title', 't1')
-            ->addSelect('t2')
-            ->leftJoin('tr.rank2Title', 't2')
-            ->addSelect('t3')
-            ->leftJoin('tr.rank3Title', 't3')
-            ->addSelect('t4')
-            ->leftJoin('tr.rank4Title', 't4')
-            ->addSelect('t5')
-            ->leftJoin('tr.rank5Title', 't5')
+            ->addSelect('trr')
+            ->join($alias . '.ranks', 'trr')
+            ->addSelect('t')
+            ->leftJoin('trr.title', 't')
             ->where('tr.id = :id')
             ->setParameter('id', $id);
 
