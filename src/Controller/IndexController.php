@@ -44,7 +44,7 @@ class IndexController extends GeneralController
             'mainBanners' => $mainBanners,
             'areaToTheaters' => $areaToTheaters,
             'trailer' => $trailer,
-            'titleRanking' => $titleRanking,
+            // 'titleRanking' => $titleRanking,
             'newsList' => $newsList,
             'imaxNewsList' => $imaxNewsList,
             'fourdxNewsList' => $fourdxNewsList,
