@@ -56,12 +56,12 @@ final class IndexControllerTest extends BaseTestCase
             ->with()
             ->andReturn($trailer);
 
-        $titleRanking = $this->createTitleRankingMock();
-        $targetMock
-            ->shouldReceive('getTitleRanking')
-            ->once()
-            ->with()
-            ->andReturn($titleRanking);
+        // $titleRanking = $this->createTitleRankingMock();
+        // $targetMock
+        //     ->shouldReceive('getTitleRanking')
+        //     ->once()
+        //     ->with()
+        //     ->andReturn($titleRanking);
 
         $newsList = [];
         $targetMock
@@ -116,7 +116,7 @@ final class IndexControllerTest extends BaseTestCase
             'mainBanners' => $mainBanners,
             'areaToTheaters' => $areaToTheaters,
             'trailer' => $trailer,
-            'titleRanking' => $titleRanking,
+            // 'titleRanking' => $titleRanking,
             'newsList' => $newsList,
             'imaxNewsList' => $imaxNewsList,
             'fourdxNewsList' => $fourdxNewsList,
