@@ -191,7 +191,7 @@ final class AboutControllerTest extends BaseTestCase
 
         $theaters = [];
         $targetMock
-            ->shouldReceive('getTheaters')
+            ->shouldReceive('findTheaters')
             ->once()
             ->with()
             ->andReturn($theaters);

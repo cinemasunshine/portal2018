@@ -307,7 +307,7 @@ final class ScheduleControllerTest extends BaseTestCase
 
         $theaters = [];
         $scheduleControllerMock
-            ->shouldReceive('getTheaters')
+            ->shouldReceive('findTheaters')
             ->once()
             ->with()
             ->andReturn($theaters);
@@ -383,7 +383,7 @@ final class ScheduleControllerTest extends BaseTestCase
 
         $theaters = [];
         $scheduleControllerMock
-            ->shouldReceive('getTheaters')
+            ->shouldReceive('findTheaters')
             ->once()
             ->with()
             ->andReturn($theaters);

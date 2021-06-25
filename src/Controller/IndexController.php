@@ -37,7 +37,7 @@ class IndexController extends GeneralController
 
         $infoNewsList = $this->getNewsList(Entity\News::CATEGORY_INFO);
 
-        $campaigns = $this->getCampaigns(self::PAGE_ID);
+        $campaigns = $this->findCampaigns();
 
         return $this->render($response, 'index/index.html.twig', [
             'mainBanners' => $mainBanners,
@@ -69,7 +69,7 @@ class IndexController extends GeneralController
      */
     protected function getAreaToTheaters(): array
     {
-        $theaters = parent::getTheaters();
+        $theaters = parent::findTheaters();
 
         $areaToTheaters = [];
 

@@ -4,36 +4,40 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\ORM\Entity;
+use App\ORM\Entity\Campaign;
+use App\ORM\Entity\Theater;
+use App\ORM\Repository\CampaignRepository;
+use App\ORM\Repository\TheaterRepository;
 
 abstract class GeneralController extends BaseController
 {
-    public const PAGE_ID = 1;
+    protected const PAGE_ID = 1;
 
-    protected function getPage(int $pageId): ?Entity\Page
+    protected function getCampaignRepository(): CampaignRepository
     {
-        return $this->em
-            ->getRepository(Entity\Page::class)
-            ->findOneById($pageId);
+        return $this->em->getRepository(Campaign::class);
     }
 
     /**
-     * @return Entity\Campaign[]
+     * @return Campaign[]
      */
-    protected function getCampaigns(int $pageId): array
+    protected function findCampaigns(): array
     {
-        return $this->em
-            ->getRepository(Entity\Campaign::class)
-            ->findByPage($pageId);
+        return $this->getCampaignRepository()
+            ->findByPage(self::PAGE_ID);
+    }
+
+    protected function getTheaterRepository(): TheaterRepository
+    {
+        return $this->em->getRepository(Theater::class);
     }
 
     /**
-     * @return Entity\Theater[]
+     * @return Theater[]
      */
-    protected function getTheaters(): array
+    protected function findTheaters(): array
     {
-        return $this->em
-            ->getRepository(Entity\Theater::class)
+        return $this->getTheaterRepository()
             ->findByActive();
     }
 }

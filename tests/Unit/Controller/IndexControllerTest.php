@@ -107,9 +107,9 @@ final class IndexControllerTest extends BaseTestCase
 
         $campaigns = [];
         $targetMock
-            ->shouldReceive('getCampaigns')
+            ->shouldReceive('findCampaigns')
             ->once()
-            ->with(IndexController::PAGE_ID)
+            ->with()
             ->andReturn($campaigns);
 
         $data = [

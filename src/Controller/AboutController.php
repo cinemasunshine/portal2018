@@ -87,7 +87,7 @@ class AboutController extends GeneralController
     public function executeSitemap(Request $request, Response $response, array $args): Response
     {
         return $this->render($response, 'about/sitemap.html.twig', [
-            'theaters' => $this->getTheaters(),
+            'theaters' => $this->findTheaters(),
         ]);
     }
 
