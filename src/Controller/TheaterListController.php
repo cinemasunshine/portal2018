@@ -42,7 +42,7 @@ class TheaterListController extends GeneralController
      */
     protected function getAreaToTheaters(): array
     {
-        $theaters = parent::getTheaters();
+        $theaters = parent::findTheaters();
 
         $areaToTheaters = [];
 

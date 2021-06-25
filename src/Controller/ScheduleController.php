@@ -71,7 +71,7 @@ class ScheduleController extends GeneralController
      */
     public function executeList(Request $request, Response $response, array $args): Response
     {
-        $theaters = $this->getTheaters();
+        $theaters = $this->findTheaters();
 
         $nowShowingSchedules = $this->findNowShowingSchedules();
 
@@ -99,7 +99,7 @@ class ScheduleController extends GeneralController
 
         $newsList = $this->findNewsByTitle($schedule->getTitle(), 8);
 
-        $theaters = $this->getTheaters();
+        $theaters = $this->findTheaters();
 
         return $this->render($response, 'schedule/show.html.twig', [
             'schedule' => $schedule,

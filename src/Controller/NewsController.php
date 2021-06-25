@@ -23,7 +23,7 @@ class NewsController extends GeneralController
     {
         $newsList = $this->getNewsList();
 
-        $campaigns = $this->getCampaigns(self::PAGE_ID);
+        $campaigns = $this->findCampaigns();
 
         return $this->render($response, 'news/list.html.twig', [
             'newsList' => $newsList,

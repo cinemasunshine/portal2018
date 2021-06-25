@@ -48,9 +48,9 @@ final class NewsControllerTest extends BaseTestCase
 
         $campaigns = [];
         $targetMock
-            ->shouldReceive('getCampaigns')
+            ->shouldReceive('findCampaigns')
             ->once()
-            ->with(NewsController::PAGE_ID)
+            ->with()
             ->andReturn($campaigns);
 
         $data = [
