@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3fbb40d0b0dbb2fea111f521b05d2cb5",
+    "content-hash": "35d3e9102aaf91e79000d1cc046806e8",
     "packages": [
         {
             "name": "blue32a/monolog-azure-blob",
@@ -112,59 +112,6 @@
                 "issues": "https://github.com/cinemasunshine/portal2018-orm/issues"
             },
             "time": "2021-06-18T04:43:01+00:00"
-        },
-        {
-            "name": "cinemasunshine/schedule",
-            "version": "v2.8.0",
-            "source": {
-                "type": "git",
-                "url": "https://m-p.backlog.jp/git/SASAKI/schedule.git",
-                "reference": "0ba64bcb8b4c46de05d41a31092a0f01bdc736c8"
-            },
-            "require": {
-                "guzzlehttp/guzzle": ">=6.3 <7",
-                "php": "~7.2"
-            },
-            "require-dev": {
-                "mp-okui/php-coding-standard": "v0.8.0-alpha",
-                "phpmd/phpmd": "^2.8",
-                "phpunit/phpunit": "^8.5"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Cinemasunshine\\Schedule\\": "src/"
-                },
-                "files": [
-                    "config/service.php",
-                    "config/theater.php"
-                ]
-            },
-            "autoload-dev": {
-                "psr-4": {
-                    "Test\\": "test/"
-                }
-            },
-            "scripts": {
-                "phpunit": [
-                    "vendor/bin/phpunit"
-                ],
-                "phpcs": [
-                    "mkdir -p ./report/phpcs",
-                    "vendor/bin/phpcs --standard=phpcs.xml"
-                ],
-                "phpcbf": [
-                    "vendor/bin/phpcbf --standard=phpcs.xml"
-                ],
-                "phpmd": [
-                    "vendor/bin/phpmd ./src --reportfile ./report/phpmd/index.html html phpmd.xml"
-                ]
-            },
-            "license": [
-                "proprietary"
-            ],
-            "description": "Cinemasunshine schedule client",
-            "time": "2021-02-08T07:49:44+00:00"
         },
         {
             "name": "composer/package-versions-deprecated",
