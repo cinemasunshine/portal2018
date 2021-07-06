@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 use App\Controller\AboutController;
 use App\Controller\API\AuthorizationController as AuthorizationAPIController;
-use App\Controller\API\ScheduleController as ScheduleApiController;
 use App\Controller\AuthorizationController;
 use App\Controller\Development\DoctrineController;
 use App\Controller\FourdxController;
@@ -132,10 +131,6 @@ $app->group('/4dx-screen', function (): void {
 $app->group('/api', function (): void {
     $this->group('/auth', function (): void {
         $this->get('/token', AuthorizationAPIController::class . ':token');
-    });
-    $this->group('/schedule/{name}', function (): void {
-        $this->get('', ScheduleApiController::class . ':index');
-        $this->get('/{date:[\d]{4}-[\d]{2}-[\d]{2}}', ScheduleApiController::class . ':date');
     });
 });
 
