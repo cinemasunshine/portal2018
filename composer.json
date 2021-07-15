@@ -5,10 +5,6 @@
     "license": "proprietary",
     "minimum-stability": "stable",
     "repositories": {
-        "cinemasunshine/schedule": {
-            "type": "git",
-            "url":  "https://m-p.backlog.jp/git/SASAKI/schedule.git"
-        },
         "cinemasunshine/portal2018-orm": {
             "type": "vcs",
             "url": "https://github.com/cinemasunshine/portal2018-orm.git"
@@ -29,7 +25,6 @@
         "ext-redis": "*",
         "blue32a/monolog-azure-blob": "^0.2",
         "cinemasunshine/portal2018-orm": "^2.0",
-        "cinemasunshine/schedule": "2.8.0",
         "doctrine/orm": "^2.7.4",
         "guzzlehttp/guzzle": "^6.5",
         "laminas/laminas-session": "^2.9",
