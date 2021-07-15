@@ -5,10 +5,6 @@
     "license": "proprietary",
     "minimum-stability": "stable",
     "repositories": {
-        "cinemasunshine/schedule": {
-            "type": "git",
-            "url":  "https://m-p.backlog.jp/git/SASAKI/schedule.git"
-        },
         "cinemasunshine/portal2018-orm": {
             "type": "vcs",
             "url": "https://github.com/cinemasunshine/portal2018-orm.git"
