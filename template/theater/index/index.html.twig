@@ -100,6 +100,8 @@ active: 'top',
 {# scheduleテンプレートのincludeをトリガーとしてjavascriptの処理を実行する #}
 {% include 'theater/index/include/schedule.html.twig' only %}
 
+{% include 'include/adsense/theater-top-schedule.html.twig' only %}
+
 {% include 'theater/index/include/event.html.twig' with {
 theater: theater,
 newsList: eventNewsList,
