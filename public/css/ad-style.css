@@ -1,0 +1,12 @@
+@media (max-width: 767px){
+.cs_portal_rpad{display:inline-block;width:320px!important;height:50px;margin: 0 auto;}
+.cs_ad_squaer{display:inline-block;width:300px!important;height:auto!important;margin: 0 auto;}
+}
+@media (min-width:768px)and(max-width: 979px) {
+    .cs_portal_rpad{display:inline-block;max-width:728px!important;height:90px;margin: 0 auto;}
+    .cs_ad_squaer{display:inline-block;width:728px!important;height:90px!important;margin: 0 auto;}
+}
+@media (min-width:980px) {
+    .cs_portal_rpad{display:inline-block;width:970px!important;height:90px!important;margin: 0 auto;}
+    .cs_ad_squaer{display:inline-block;width:970px!important;height:90px!important;margin: 0 auto;}
+}
