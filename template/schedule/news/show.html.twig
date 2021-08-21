@@ -15,6 +15,7 @@
 
 {% block css %}
 <link href="/css/news/details.css" rel="stylesheet">
+<link href="/css/ad-style.css" rel="stylesheet">
 {% endblock %}
 
 {% block javascript %}
@@ -27,7 +28,7 @@
     <a href="{{ path_for('schedule_show', { schedule: schedule.getId() }) }}" class="mx-3">「{{ title.getName() }}」関連ニュース</a>|
     <span class="font-weight-bold mx-3">{{ news.getHeadline()|u.truncate(34, '…') }}</span>
 </div>
-
+{% include 'include/adsense/movie-top.html.twig' only %}
 <div class="details-width mx-auto mb-5 p-3 pjack-bg">
     <div class="d-flex align-items-center">
         {% set labelClass = news_category_label_class(news.getCategory()) %}

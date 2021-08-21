@@ -17,6 +17,7 @@
 
 {% block css %}
 <link href="/css/movie/details.css" rel="stylesheet">
+<link href="/css/ad-style.css" rel="stylesheet">
 {% endblock %}
 
 {% block contents %}
@@ -27,7 +28,7 @@
         <span class="font-weight-bold">{{ title.getName() }}</span>
     </div>
 </div>
-
+{% include 'include/adsense/movie-top.html.twig' only %}
 <div class="width mx-auto px-md-3 px-0 pt-md-3 movie_detail_pjcp">
     {% include 'schedule/include/show_detail.html.twig' with {
         schedule: schedule,

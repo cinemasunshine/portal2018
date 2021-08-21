@@ -8,6 +8,7 @@
 
 {% block css %}
 <link href="/css/movie/list.css" rel="stylesheet">
+<link href="/css/ad-style.css" rel="stylesheet">
 {% endblock %}
 
 {% block javascript %}
@@ -20,7 +21,7 @@
         <a href="{{ path_for('homepage') }}">ホーム　|　</a>
         <span class="font-weight-bold">作品一覧</span>
     </div>
-
+    {% include 'include/adsense/movie-top.html.twig' only %}
     <h2 class="font-weight-bold large text-center text-md-left mb-4 mt-3">作品一覧</h2>
     <form>
         <div class="form-group mb-5">
