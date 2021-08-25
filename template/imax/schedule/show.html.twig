@@ -34,7 +34,7 @@
     <span class="font-weight-bold mx-2"> | </span>
     <span>{{ title.getName() }}<span>
 </div>
-
+{% include 'include/adsense/movie-top.html.twig' only %}
 {% include 'imax/schedule/include/show_detail.html.twig' with {
     schedule: schedule,
     theaters: theaters,
