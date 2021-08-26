@@ -17,17 +17,6 @@
     <link href="/css/common.css?v=20191028" rel="stylesheet">
     <link href="/css/ad-style.css" rel="stylesheet">
     {% block css %}{% endblock %}
-    <style>
-        @media (max-width: 767px){
-        .cs_portal_rpad{display:inline-block;width:320px!important;height:50px;margin: 0 auto;}
-        }
-        @media (min-width:768px)and(max-width: 979px) {
-            .cs_portal_rpad{display:inline-block;max-width:728px!important;height:90px;margin: 0 auto;}
-        }
-        @media (min-width:980px) {
-            .cs_portal_rpad{display:inline-block;width:970px!important;height:90px!important;margin: 0 auto;}
-        }
-    </style>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
@@ -69,7 +58,7 @@
         {% block contents %}{% endblock %}
     </div>
 
-    {% include 'include/adsense/footer.html.twig' only %}
+    {% include 'include/adsense/theater-top-schedule.html.twig' only %}
     {% include 'screenx/include/footer_navbar.html.twig' only %}
     {% include 'screenx/include/footer.html.twig' only %}
     {% block sp_navbar %}{% endblock %}

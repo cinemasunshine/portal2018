@@ -36,7 +36,7 @@
     <span class="font-weight-bold mx-2"> | </span>
     <span>{{ news.getHeadline()|u.truncate(34, '…') }}<span>
 </div>
-
+{% include 'include/adsense/movie-top.html.twig' only %}
 <div class="details-width mx-auto mb-3 px-2 text-white">
     <div class="d-flex align-items-center">
         <div class="text-gray">{{ news.getStartDt()|date('Y/n/j') }}</div>
