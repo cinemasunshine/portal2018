@@ -161,6 +161,64 @@ function hasDisplayPerformance(performances, movie) {
     return filterResult.length > 0;
 }
 
+Vue.component('purchase-performance', {
+    props: ['performance'],
+    created: function () {},
+    template: '\
+    <li v-if="performance.isDisplay()" class="mb-3">\
+        <a v-on:click="$emit(\'selectPerformance\', {event: $event, performance: performance})" v-bind:href="performance.createURL()" class= "d-block position-relative py-2 mx-2" \
+            v-bind:class="[\
+                (performance.isSalse()) ? performance.getAvailability().className : \'bg-light-gray text-dark-gray\',\
+                { first: performance.time.late === 1, late: performance.time.late === 2 }\
+            ]">\
+            <div class="mb-2">\
+                <strong class="large gdcs_eng_font_b">{{ performance.getTime(\'start\') }}</strong>\
+                <span class="gdcs_eng_font_r">～{{ performance.getTime(\'end\') }}</span>\
+            </div>\
+            <div class="small mb-2">{{ performance.screen.name }}</div>\
+            <div v-if="performance.isSalse()" class="d-flex align-items-center justify-content-center">\
+                <span class="mr-2" v-bind:class="performance.getAvailability().symbolClassName">{{ performance.getAvailability().symbolText }}</span>\
+                <span>{{ performance.getAvailability().text }}</span>\
+            </div>\
+            <div v-if="!performance.isSalse() && performance.time.seat_count.cnt_reserve_free > 0 && performance.isBeforePeriod()" class="d-flex align-items-center justify-content-center">販売期間外</div>\
+            <div v-if="!performance.isSalse() && performance.time.seat_count.cnt_reserve_free > 0 && performance.isAfterPeriod()" class="d-flex align-items-center justify-content-center">販売期間外</div>\
+            <div v-if="!performance.isSalse() && performance.time.seat_count.cnt_reserve_free > 0 && !performance.isBeforePeriod() && !performance.isAfterPeriod() && performance.isWindow()" class="d-flex align-items-center justify-content-center">窓口</div>\
+            <div v-if="!performance.isSalse() && performance.time.seat_count.cnt_reserve_free === 0" class="d-flex align-items-center justify-content-center">満席</div>\
+        </a>\
+    </li>'
+});
+
+Vue.component('purchase-performance-sp', {
+    props: ['performance'],
+    created: function () {},
+    template: '\
+    <li v-if="performance.isDisplay()" \
+        class="border-bottom d-flex align-items-center justify-content-between py-3 pl-2" \
+        v-bind:class="[\
+            (performance.isSalse()) ? \'\' : \'bg-light-gray text-dark-gray\',\
+            { first: performance.time.late === 1, late: performance.time.late === 2 }\
+        ]">\
+        <div class="line-height-1">\
+            <div><strong class="x-large">{{ performance.getTime(\'start\') }}</strong></div>\
+            <div>～{{ performance.getTime(\'end\') }}</div>\
+        </div>\
+        <div class="x-small mx-2">{{ performance.screen.name }}</div>\
+        <div class="purchase-button text-center">\
+            <a v-on:click="$emit(\'selectPerformance\', {event: $event, performance: performance})" v-if="performance.isSalse()" v-bind:href="performance.createURL()" \
+            class="d-flex align-items-center justify-content-center py-3" v-bind:class="performance.getAvailability().className">\
+                <span class="mr-2" v-bind:class="performance.getAvailability().symbolClassName">{{ performance.getAvailability().symbolText }}</span>\
+                <span>{{ performance.getAvailability().text }}</span>\
+            </a>\
+            <span v-if="!performance.isSalse() && performance.time.seat_count.cnt_reserve_free > 0 && performance.isBeforePeriod()" class="d-block">販売期間外</span>\
+            <span v-if="!performance.isSalse() && performance.time.seat_count.cnt_reserve_free > 0 && performance.isAfterPeriod()" class="d-block">販売期間外</span>\
+            <span v-if="!performance.isSalse() && performance.time.seat_count.cnt_reserve_free > 0 && !performance.isBeforePeriod() && !performance.isAfterPeriod() && performance.isWindow()" class="d-block">窓口</span>\
+            <span v-if="!performance.isSalse() && performance.time.seat_count.cnt_reserve_free === 0" class="d-block">満席</span>\
+        </div>\
+    </li>'
+});
+
+
+
 Vue.component('purchase-performance-film', {
     props: ['schedule'],
     data: function () {
@@ -169,6 +227,18 @@ Vue.component('purchase-performance-film', {
             filterPerformancebyMovie: filterPerformancebyMovie,
             hasDisplayPerformance: hasDisplayPerformance
         };
+    },
+    methods: {
+        selectPerformance: function(data) {
+            var performance = data.performance;
+            var appearPopup = performance.time.appear_popup;
+            if (appearPopup === undefined || appearPopup === '0') {
+                return;
+            }
+            data.event.preventDefault();
+            $('#appearPopupNext').attr('href', performance.createURL());
+            $('#appearPopup').modal('show');
+        }
     },
     created: function () {
         this.performances = schedule2Performance(this.schedule, isSignIn());
@@ -185,27 +255,9 @@ Vue.component('purchase-performance-film', {
                 <div v-if="movie.comment || movie.ename" class="small text-dark-gray line-height-1"><span v-if="movie.comment" v-html="movie.comment"></span><span v-if="movie.comment && movie.ename">&nbsp;/&nbsp;</span><span v-if="movie.ename" v-html="movie.ename"></span></div>\
             </div>\
             <ul class="performances d-flex flex-wrap mb-0 px-3 pt-3 pb-0 text-center">\
-                <li v-for="performance of filterPerformancebyMovie(performances, movie)" v-if="performance.isDisplay()" class="mb-3">\
-                    <a v-bind:href="performance.createURL()" class= "d-block position-relative py-2 mx-2" \
-                    v-bind:class="[\
-                        (performance.isSalse()) ? performance.getAvailability().className : \'bg-light-gray text-dark-gray\',\
-                        { first: performance.time.late === 1, late: performance.time.late === 2 }\
-                    ]">\
-                        <div class="mb-2">\
-                            <strong class="large gdcs_eng_font_b">{{ performance.getTime(\'start\') }}</strong>\
-                            <span class="gdcs_eng_font_r">～{{ performance.getTime(\'end\') }}</span>\
-                        </div>\
-                        <div class="small mb-2">{{ performance.screen.name }}</div>\
-                        <div v-if="performance.isSalse()" class="d-flex align-items-center justify-content-center">\
-                            <span class="mr-2" v-bind:class="performance.getAvailability().symbolClassName">{{ performance.getAvailability().symbolText }}</span>\
-                            <span>{{ performance.getAvailability().text }}</span>\
-                        </div>\
-                        <div v-if="!performance.isSalse() && performance.time.seat_count.cnt_reserve_free > 0 && performance.isBeforePeriod()" class="d-flex align-items-center justify-content-center">販売期間外</div>\
-                        <div v-if="!performance.isSalse() && performance.time.seat_count.cnt_reserve_free > 0 && performance.isAfterPeriod()" class="d-flex align-items-center justify-content-center">販売期間外</div>\
-                        <div v-if="!performance.isSalse() && performance.time.seat_count.cnt_reserve_free > 0 && !performance.isBeforePeriod() && !performance.isAfterPeriod() && performance.isWindow()" class="d-flex align-items-center justify-content-center">窓口</div>\
-                        <div v-if="!performance.isSalse() && performance.time.seat_count.cnt_reserve_free === 0" class="d-flex align-items-center justify-content-center">満席</div>\
-                    </a>\
-                </li>\
+                <template v-for="performance of filterPerformancebyMovie(performances, movie)">\
+                    <purchase-performance v-bind:performance="performance" v-on:selectPerformance="selectPerformance($event)"></purchase-performance>\
+                </template>\
             </ul>\
         </div>\
     </div>\
@@ -223,29 +275,9 @@ Vue.component('purchase-performance-film', {
             <div class="collapse" v-bind:id="\'collapse\' + movie.movie_code" style="">\
                 <div v-if="movie.comment" class="small text-dark-gray line-height-1 p-2 border-bottom">{{ movie.comment }}</div>\
                 <ul class="performances mb-0 p-2">\
-                    <li v-for="performance of filterPerformancebyMovie(performances, movie)" v-if="performance.isDisplay()" \
-                    class="border-bottom d-flex align-items-center justify-content-between py-3 pl-2" \
-                    v-bind:class="[\
-                        (performance.isSalse()) ? \'\' : \'bg-light-gray text-dark-gray\',\
-                        { first: performance.time.late === 1, late: performance.time.late === 2 }\
-                    ]">\
-                        <div class="line-height-1">\
-                            <div><strong class="x-large">{{ performance.getTime(\'start\') }}</strong></div>\
-                            <div>～{{ performance.getTime(\'end\') }}</div>\
-                        </div>\
-                        <div class="x-small mx-2">{{ performance.screen.name }}</div>\
-                        <div class="purchase-button text-center">\
-                            <a v-if="performance.isSalse()" v-bind:href="performance.createURL()" \
-                            class="d-flex align-items-center justify-content-center py-3" v-bind:class="performance.getAvailability().className">\
-                                <span class="mr-2" v-bind:class="performance.getAvailability().symbolClassName">{{ performance.getAvailability().symbolText }}</span>\
-                                <span>{{ performance.getAvailability().text }}</span>\
-                            </a>\
-                            <span v-if="!performance.isSalse() && performance.time.seat_count.cnt_reserve_free > 0 && performance.isBeforePeriod()" class="d-block">販売期間外</span>\
-                            <span v-if="!performance.isSalse() && performance.time.seat_count.cnt_reserve_free > 0 && performance.isAfterPeriod()" class="d-block">販売期間外</span>\
-                            <span v-if="!performance.isSalse() && performance.time.seat_count.cnt_reserve_free > 0 && !performance.isBeforePeriod() && !performance.isAfterPeriod() && performance.isWindow()" class="d-block">窓口</span>\
-                            <span v-if="!performance.isSalse() && performance.time.seat_count.cnt_reserve_free === 0" class="d-block">満席</span>\
-                        </div>\
-                    </li>\
+                    <template v-for="performance of filterPerformancebyMovie(performances, movie)">\
+                        <purchase-performance-sp v-bind:performance="performance" v-on:selectPerformance="selectPerformance($event)"></purchase-performance-sp>\
+                    </template>\
                 </ul>\
             </div>\
         </div>\

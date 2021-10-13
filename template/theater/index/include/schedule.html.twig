@@ -69,6 +69,29 @@
     </div>
 </div>
 
+<div class="modal fade" id="appearPopup">
+    <div class="modal-dialog modal-dialog-centered" style="max-width: 600px;">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="mb-4">
+                    <p class="mb-1">入場時にワクチン接種済証明書のご提示をお願いいたします。</p>
+                    <p class="text-danger mb-0">※ご提示いただけない場合はご入場をお断りさせていただきます。</p>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-6 mb-3 mb-md-0">
+                        <a id="appearPopupNext" href="" class="btn btn-primary btn-block py-3">了承する</a>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <button type="button" class="btn btn-secondary btn-block py-3" data-dismiss="modal">キャンセル</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 <input type="hidden" name="SCHEDULE_API" value="{{ schedule_api() }}">
 <input type="hidden" name="MP_TICKET_ENTRANCE" value="{{ mp_ticket_entrance() }}">
 <input type="hidden" name="MP_TICKET" value="{{ mp_ticket() }}">
