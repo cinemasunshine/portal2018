@@ -393,6 +393,6 @@ workflows:
           filters:
             branches:
               only:
-                - feature/SASAKI-637 # TODO master
+                - master
     jobs:
       - test_login_to_azure
