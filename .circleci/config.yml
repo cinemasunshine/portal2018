@@ -296,6 +296,12 @@ jobs:
           name: Slot swap
           command: az webapp deployment slot swap -g ssk-portal-win-prod -n ssk-portal2018-frontend-win-prod --slot release --target-slot production
 
+  test_login_to_azure:
+    executor: azure-cli/azure-docker
+    steps:
+      - azure-cli/login-with-user:
+          alternate-tenant: true
+
 workflows:
   version: 2
 
@@ -380,3 +386,13 @@ workflows:
           requires:
             - swap_approval
 
+  check_user_password_expired:
+    triggers:
+      - schedule:
+          cron: "0 0 * * *"
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - test_login_to_azure
