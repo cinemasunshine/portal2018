@@ -31,9 +31,9 @@ $(function () {
  * お知らせ表示
  */
 function initInformations() {
-    //if ($('body').attr('data-theater') === 'gdcs') {
-    //    return;
-    // }
+    if ($('body').attr('data-theater') === 'gdcs') {
+        return;
+     }
     var informationId = $('#information').val();
     var informations = localStorage.getItem('informations');
     informations = (informations) ? JSON.parse(informations) : [];
