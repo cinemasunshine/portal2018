@@ -163,7 +163,7 @@ function hasDisplayPerformance(performances, movie) {
 
 Vue.component('purchase-performance', {
     props: ['performance'],
-    created: function () {},
+    created: function () { },
     template: '\
     <li v-if="performance.isDisplay()" class="mb-3">\
         <a v-on:click="$emit(\'selectPerformance\', {event: $event, performance: performance})" v-bind:href="performance.createURL()" class= "d-block position-relative py-2 mx-2" \
@@ -190,7 +190,7 @@ Vue.component('purchase-performance', {
 
 Vue.component('purchase-performance-sp', {
     props: ['performance'],
-    created: function () {},
+    created: function () { },
     template: '\
     <li v-if="performance.isDisplay()" \
         class="border-bottom d-flex align-items-center justify-content-between py-3 pl-2" \
@@ -229,13 +229,28 @@ Vue.component('purchase-performance-film', {
         };
     },
     methods: {
-        selectPerformance: function(data) {
+        selectPerformance: function (data) {
             var performance = data.performance;
-            var appearPopup = performance.time.appear_popup;
-            if (appearPopup === undefined || appearPopup === '0') {
+            var popupMessage1 = performance.time.popupMessage1;
+            var popupMessage2 = performance.time.popupMessage2;
+            if (popupMessage1 === undefined && 
+                popupMessage2 === undefined && 
+                popupMessage1 === '' && 
+                popupMessage2 === '') {
                 return;
             }
             data.event.preventDefault();
+            $('#appearPopupNext').attr('href', performance.createURL());
+            var title = (popupMessage1 === undefined || popupMessage1 === '')
+                ? ''
+                : $('<p class="mb-2 text-danger font-weight-bold large"></p>').text(popupMessage1);
+            var read = (popupMessage2 === undefined || popupMessage2 === '')
+                ? ''
+                : $('<p class="mb-0"></p>').text(popupMessage2);
+            $('#appearPopup .message-area')
+                .html('')
+                .append(title)
+                .append(read);
             $('#appearPopupNext').attr('href', performance.createURL());
             $('#appearPopup').modal('show');
         }
@@ -485,7 +500,7 @@ function object2query(params) {
 /**
  * スケジュールレンダリング
  */
- function scheduleRender() {
+function scheduleRender() {
 
     SCHEDULE_API = $('input[name=SCHEDULE_API]').val();
     MP_TICKET_ENTRANCE = $('input[name=MP_TICKET_ENTRANCE]').val();
@@ -502,7 +517,7 @@ function object2query(params) {
     var _this = this;
     $.ajax(options).done(function (data) {
         var alias = $('body').attr('data-theater');
-        var findResult = data.find(function(s) {
+        var findResult = data.find(function (s) {
             return s.alias === alias;
         });
         if (findResult === undefined) {
