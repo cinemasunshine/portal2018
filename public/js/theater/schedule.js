@@ -231,20 +231,21 @@ Vue.component('purchase-performance-film', {
     methods: {
         selectPerformance: function (data) {
             var performance = data.performance;
-            var popupMessage1 = performance.time.popupMessage1;
-            var popupMessage2 = performance.time.popupMessage2;
-            if (
-                (popupMessage1 === undefined &&  popupMessage2 === undefined) ||
-                (popupMessage1 === '' &&  popupMessage2 === '') 
-            ) {
+            var popupMessage1 = (performance.time.popupMessage1 === '')
+                ? undefined
+                : performance.time.popupMessage1;
+            var popupMessage2 = (performance.time.popupMessage2 === '')
+                ? undefined
+                : performance.time.popupMessage2;
+            if (popupMessage1 === undefined && popupMessage2 === undefined) {
                 return;
             }
             data.event.preventDefault();
             $('#appearPopupNext').attr('href', performance.createURL());
-            var title = (popupMessage1 === undefined || popupMessage1 === '')
+            var title = (popupMessage1 === undefined)
                 ? ''
                 : $('<p class="mb-2 text-danger font-weight-bold large"></p>').text(popupMessage1);
-            var read = (popupMessage2 === undefined || popupMessage2 === '')
+            var read = (popupMessage2 === undefined)
                 ? ''
                 : $('<p class="mb-0"></p>').text(popupMessage2);
             $('#appearPopup .message-area')
