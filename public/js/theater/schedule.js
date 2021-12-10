@@ -233,10 +233,10 @@ Vue.component('purchase-performance-film', {
             var performance = data.performance;
             var popupMessage1 = performance.time.popupMessage1;
             var popupMessage2 = performance.time.popupMessage2;
-            if (popupMessage1 === undefined && 
-                popupMessage2 === undefined && 
-                popupMessage1 === '' && 
-                popupMessage2 === '') {
+            if (
+                (popupMessage1 === undefined &&  popupMessage2 === undefined) ||
+                (popupMessage1 === '' &&  popupMessage2 === '') 
+            ) {
                 return;
             }
             data.event.preventDefault();
