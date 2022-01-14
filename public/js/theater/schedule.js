@@ -281,7 +281,7 @@ Vue.component('purchase-performance-film', {
         <div v-for="movie of schedule.movie" v-bind:class="{ \'d-none\': !hasDisplayPerformance(performances, movie) }" class="rounded mb-3 shadow-01">\
             <div class="border-bottom">\
                 <a class="bg-light-gray p-3 pr-5 d-block" href="#" data-toggle="collapse" v-bind:data-target="\'#collapse\' + movie.movie_code" aria-expanded="false">\
-                    <div class="mb-2"><strong>{{ movie.name }}</strong></div>\
+                    <div class="font-weight-bold mb-2" v-html="movie.name"></div>\
                     <div class="small text-dark-gray d-flex align-items-center">\
                         <i class="mr-2 time-icon"></i>\
                         <span class="mr-2">{{ movie.running_time }}分</span>\
