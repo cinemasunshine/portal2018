@@ -97,13 +97,13 @@ var Performance = (function () {
      */
     Performance.prototype.createURL = function () {
         var id = SELLER.branchCode + this.movie.movie_short_code + this.movie.movie_branch_code + this.date + this.screen.screen_code + this.time.start_time;
-        var member = (isSignIn()) ? '1' : '0';
         var url = MP_TICKET_ENTRANCE + '/purchase/index.html';
         return url + '?' + object2query({
             id: id,
-            member: member,
+            member: isSignIn() ? '1' : '0',
             sellerId: SELLER.id,
             redirectUrl: encodeURIComponent(MP_TICKET),
+            username: isSignIn() ? undefined : $('.username').text()
         });
     };
     return Performance;
@@ -492,6 +492,9 @@ function object2query(params) {
         var value = params[key];
         if (i > 0) {
             query += '&';
+        }
+        if (value === undefined) {
+            continue;
         }
         query += key + '=' + value;
     }
