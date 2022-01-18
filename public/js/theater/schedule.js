@@ -103,7 +103,7 @@ var Performance = (function () {
             member: isSignIn() ? '1' : '0',
             sellerId: SELLER.id,
             redirectUrl: encodeURIComponent(MP_TICKET),
-            username: isSignIn() ? undefined : $('.username').text()
+            username: isSignIn() ? $('.username').text() : undefined
         });
     };
     return Performance;
