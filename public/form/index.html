@@ -51,6 +51,30 @@
             <h2 class="profile d-none">ご登録済み情報</h2>
             <ul class="profile d-none">
                 <li>
+                    <label for="app-theater" class="label-name">よく行く劇場<span class="req-icon">必須</span></label>
+                    <select required id="app-theater" name="app-theater">
+                        <option value="unselected" hidden>選択してください</option>
+                        <option value="シネマサンシャイン平和島">シネマサンシャイン平和島</option>
+                        <option value="シネマサンシャイン沼津">シネマサンシャイン沼津</option>
+                        <option value="シネマサンシャイン大街道">シネマサンシャイン大街道</option>
+                        <option value="シネマサンシャイン衣山">シネマサンシャイン衣山</option>
+                        <option value="シネマサンシャイン重信">シネマサンシャイン重信</option>
+                        <option value="シネマサンシャイン北島">シネマサンシャイン北島</option>
+                        <option value="シネマサンシャイン土浦">シネマサンシャイン土浦</option>
+                        <option value="シネマサンシャインかほく">シネマサンシャインかほく</option>
+                        <option value="シネマサンシャイン エミフルMASAKI">シネマサンシャイン エミフルMASAKI</option>
+                        <option value="シネマサンシャイン大和郡山">シネマサンシャイン大和郡山</option>
+                        <option value="シネマサンシャイン下関">シネマサンシャイン下関</option>
+                        <option value="シネマサンシャイン姶良">シネマサンシャイン姶良</option>
+                        <option value="シネマサンシャイン ユーカリが丘">シネマサンシャイン ユーカリが丘</option>
+                        <option value="グランドシネマサンシャイン">グランドシネマサンシャイン</option>
+                        <option value="シネマサンシャインららぽーと沼津">シネマサンシャインららぽーと沼津</option>
+                    </select>
+                    <p class="note">
+                        劇場が不明な方はお心当たりのある劇場を選択してください。
+                    </p>
+                </li>
+                <li>
                     <label for="app-name" class="label-name">氏名（全角カタカナ）<span class="req-icon">必須</span></label>
                     <input required disabled type="text" id="app-name" name="app-name" placeholder="例）エイガタロウ"
                         pattern="(?=.*?[\u30A1-\u30FC])[\u30A1-\u30FC\s]*">
@@ -131,6 +155,7 @@
     <script>
         function invoke(event) {
             event.preventDefault();
+            if ($('#app-theater').val() == 'unselected') return alert("よく行く劇場を選択してください。");
             var button = document.querySelector('button');
             button.disabled = true;
             grecaptcha.ready(function () {
