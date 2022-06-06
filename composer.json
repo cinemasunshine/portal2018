@@ -21,11 +21,11 @@
         }
     },
     "require": {
-        "php": "~7.3",
+        "php": "~7.4",
         "ext-redis": "*",
         "blue32a/monolog-azure-blob": "^0.2",
         "cinemasunshine/portal2018-orm": "^2.0",
-        "doctrine/orm": "^2.7.4",
+        "doctrine/orm": "~2.7.4",
         "guzzlehttp/guzzle": "^6.5",
         "laminas/laminas-session": "^2.9",
         "microsoft/azure-storage-blob": "^1.5",
