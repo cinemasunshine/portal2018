@@ -10,43 +10,31 @@ namespace Tests\Unit\User;
 
 use App\Authorization\Token\AuthorizationCodeToken;
 use App\Authorization\Token\DecodedAccessToken;
-use App\Session\Container as SessionContainer;
+use App\Session\SessionManager;
 use App\User\Manager as UserManager;
-use Laminas\Stdlib\ArrayObject;
+use Laminas\Session\Config\StandardConfig;
 use Mockery;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use Mockery\LegacyMockInterface;
 use Mockery\MockInterface;
 use PHPUnit\Framework\TestCase;
-use ReflectionClass;
 
-/**
- * Manager test
- */
 final class ManagerTest extends TestCase
 {
     use MockeryPHPUnitIntegration;
 
-    /**
-     * @return MockInterface|LegacyMockInterface|SessionContainer
-     */
-    protected function createSessionContainerMock()
+    private SessionManager $sessionManager;
+
+    protected function setUp(): void
     {
-        return Mockery::mock(SessionContainer::class);
+        $sessionConfig = new StandardConfig();
+        $sessionConfig->setOptions(['name' => 'test']);
+        $this->sessionManager = new SessionManager($sessionConfig);
     }
 
-    /**
-     * Create ArrayObject mock
-     *
-     * 実際のセッション（$_SESSION）を利用しないように、
-     * SessionContainerの代わりとする。
-     * 現状ではoffsetGet()、offsetSet()が利用できれば良い。
-     *
-     * @return MockInterface|LegacyMockInterface|ArrayObject
-     */
-    protected function createArrayObjectMock()
+    protected function tearDown(): void
     {
-        return Mockery::mock(ArrayObject::class);
+        $this->sessionManager->getStorage()->clear();
     }
 
     /**
@@ -68,34 +56,8 @@ final class ManagerTest extends TestCase
     /**
      * @test
      */
-    public function testGetContainer(): void
-    {
-        $sessionContainerMock = $this->createSessionContainerMock();
-        $userManagerMock      = Mockery::mock(UserManager::class);
-
-        $userManagerClassRef = new ReflectionClass(UserManager::class);
-
-        // execute constructor
-        $constructorRef = $userManagerClassRef->getConstructor();
-        $constructorRef->invoke($userManagerMock, $sessionContainerMock);
-
-        // test property "session"
-        $sessionPropertyRef = $userManagerClassRef->getProperty('session');
-        $sessionPropertyRef->setAccessible(true);
-        $this->assertEquals(
-            $sessionContainerMock,
-            $sessionPropertyRef->getValue($userManagerMock)
-        );
-    }
-
-    /**
-     * @test
-     */
     public function testLogin(): void
     {
-        $userManagerMock = Mockery::mock(UserManager::class)
-            ->makePartial();
-
         $username = 'username';
         $claims   = ['username' => $username];
 
@@ -113,30 +75,15 @@ final class ManagerTest extends TestCase
             ->with()
             ->andReturn($decodedAccessTokenMock);
 
-        $sessionContainerMock = $this->createArrayObjectMock();
-        $sessionContainerMock
-            ->shouldReceive('offsetSet')
-            ->once()
-            ->with('authorization_token', $authorizationCodeTokenMock);
+        $sessionContainer = $this->sessionManager->getContainer();
 
-        $user = ['name' => $username];
-        $sessionContainerMock
-            ->shouldReceive('offsetSet')
-            ->once()
-            ->with('user', $user);
+        $userManager = new UserManager($sessionContainer);
+        $userManager->login($authorizationCodeTokenMock);
 
-        $sessionContainerMock
-            ->shouldReceive('offsetSet')
-            ->once()
-            ->with('authenticated', true);
-
-        $userManagerClassRef = new ReflectionClass(UserManager::class);
-
-        $sessionPropertyRef = $userManagerClassRef->getProperty('session');
-        $sessionPropertyRef->setAccessible(true);
-        $sessionPropertyRef->setValue($userManagerMock, $sessionContainerMock);
-
-        $userManagerMock->login($authorizationCodeTokenMock);
+        $this->assertSame(
+            $authorizationCodeTokenMock,
+            $sessionContainer['authorization_token']
+        );
     }
 
     /**
@@ -144,22 +91,13 @@ final class ManagerTest extends TestCase
      */
     public function testLogout(): void
     {
-        $userManagerMock = Mockery::mock(UserManager::class)
-            ->makePartial();
+        $sessionContainer         = $this->sessionManager->getContainer();
+        $sessionContainer['hoge'] = 'hoge';
 
-        $sessionContainerMock = $this->createArrayObjectMock();
-        $sessionContainerMock
-            ->shouldReceive('clear')
-            ->once()
-            ->with();
+        $userManager = new UserManager($sessionContainer);
+        $userManager->logout();
 
-        $userManagerClassRef = new ReflectionClass(UserManager::class);
-
-        $sessionPropertyRef = $userManagerClassRef->getProperty('session');
-        $sessionPropertyRef->setAccessible(true);
-        $sessionPropertyRef->setValue($userManagerMock, $sessionContainerMock);
-
-        $userManagerMock->logout();
+        $this->assertEmpty($sessionContainer['hoge']);
     }
 
     /**
@@ -167,22 +105,13 @@ final class ManagerTest extends TestCase
      */
     public function testIsAuthenticated(): void
     {
-        $userManagerMock = Mockery::mock(UserManager::class)
-            ->makePartial();
+        $sessionContainer = $this->sessionManager->getContainer();
+        $userManager      = new UserManager($sessionContainer);
 
-        $sessionContainerMock = $this->createArrayObjectMock()
-            ->makePartial();
+        $this->assertFalse($userManager->isAuthenticated());
 
-        $userManagerClassRef = new ReflectionClass(UserManager::class);
-
-        $sessionPropertyRef = $userManagerClassRef->getProperty('session');
-        $sessionPropertyRef->setAccessible(true);
-        $sessionPropertyRef->setValue($userManagerMock, $sessionContainerMock);
-
-        $this->assertFalse($userManagerMock->isAuthenticated());
-
-        $sessionContainerMock['authenticated'] = true;
-        $this->assertTrue($userManagerMock->isAuthenticated());
+        $sessionContainer['authenticated'] = true;
+        $this->assertTrue($userManager->isAuthenticated());
     }
 
     /**
@@ -190,51 +119,41 @@ final class ManagerTest extends TestCase
      */
     public function testGetUser(): void
     {
-        $userManagerMock = Mockery::mock(UserManager::class)
-            ->makePartial();
-
-        $sessionContainerMock = $this->createArrayObjectMock()
-            ->makePartial();
-
-        $userManagerClassRef = new ReflectionClass(UserManager::class);
-
-        $sessionPropertyRef = $userManagerClassRef->getProperty('session');
-        $sessionPropertyRef->setAccessible(true);
-        $sessionPropertyRef->setValue($userManagerMock, $sessionContainerMock);
-
         $user = ['name' => 'username'];
 
-        $sessionContainerMock['user'] = $user;
-        $this->assertEquals($user, $userManagerMock->getUser());
+        $sessionContainer         = $this->sessionManager->getContainer();
+        $sessionContainer['user'] = $user;
+
+        $userManager = new UserManager($sessionContainer);
+
+        $this->assertSame($user, $userManager->getUser());
     }
 
     /**
      * @test
      */
-    public function testGetAuthorizationToken(): void
+    public function testGetAuthorizationTokenNotLogin(): void
     {
-        $userManagerMock = Mockery::mock(UserManager::class)
-            ->makePartial();
-        $userManagerMock
-            ->shouldReceive('isAuthenticated')
-            ->andReturn(true, false);
+        $sessionContainer = $this->sessionManager->getContainer();
+        $userManager      = new UserManager($sessionContainer);
+
+        $this->assertNull($userManager->getAuthorizationToken());
+    }
+
+    /**
+     * @test
+     */
+    public function testGetAuthorizationTokenLoggedIn(): void
+    {
+        $sessionContainer = $this->sessionManager->getContainer();
+        $userManager      = new UserManager($sessionContainer);
 
         $authorizationCodeTokenMock = $this->createAuthorizationCodeTokenMock();
 
-        $sessionContainerMock = $this->createArrayObjectMock()
-            ->makePartial();
+        $sessionContainer['authorization_token'] = $authorizationCodeTokenMock;
+        $sessionContainer['authenticated']       = true;
 
-        $sessionContainerMock['authorization_token'] = $authorizationCodeTokenMock;
-
-        $userManagerClassRef = new ReflectionClass(UserManager::class);
-
-        $sessionPropertyRef = $userManagerClassRef->getProperty('session');
-        $sessionPropertyRef->setAccessible(true);
-        $sessionPropertyRef->setValue($userManagerMock, $sessionContainerMock);
-
-        $this->assertEquals($authorizationCodeTokenMock, $userManagerMock->getAuthorizationToken());
-
-        $this->assertNull($userManagerMock->getAuthorizationToken());
+        $this->assertSame($authorizationCodeTokenMock, $userManager->getAuthorizationToken());
     }
 
     /**
@@ -242,25 +161,15 @@ final class ManagerTest extends TestCase
      */
     public function testSetAuthorizationToken(): void
     {
-        $userManagerMock = Mockery::mock(UserManager::class)
-            ->makePartial();
+        $sessionContainer = $this->sessionManager->getContainer();
+        $userManager      = new UserManager($sessionContainer);
 
         $authorizationCodeTokenMock = $this->createAuthorizationCodeTokenMock();
-
-        $sessionContainerMock = $this->createArrayObjectMock()
-            ->makePartial();
-
-        $userManagerClassRef = new ReflectionClass(UserManager::class);
-
-        $sessionPropertyRef = $userManagerClassRef->getProperty('session');
-        $sessionPropertyRef->setAccessible(true);
-        $sessionPropertyRef->setValue($userManagerMock, $sessionContainerMock);
-
-        $userManagerMock->setAuthorizationToken($authorizationCodeTokenMock);
+        $userManager->setAuthorizationToken($authorizationCodeTokenMock);
 
         $this->assertEquals(
             $authorizationCodeTokenMock,
-            $sessionContainerMock['authorization_token']
+            $sessionContainer['authorization_token']
         );
     }
 }

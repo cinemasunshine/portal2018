@@ -13,7 +13,8 @@ use App\Authorization\Grant\RefreshToken as RefreshTokenGrant;
 use App\Authorization\Manager as AuthorizationManager;
 use App\Authorization\Token\AuthorizationCodeToken;
 use App\Session\Container as SessionContainer;
-use Laminas\Stdlib\ArrayObject;
+use App\Session\SessionManager;
+use Laminas\Session\Config\StandardConfig;
 use Mockery;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use Mockery\LegacyMockInterface;
@@ -21,12 +22,23 @@ use Mockery\MockInterface;
 use PHPUnit\Framework\TestCase;
 use ReflectionClass;
 
-/**
- * Manager test
- */
 final class ManagerTest extends TestCase
 {
     use MockeryPHPUnitIntegration;
+
+    private SessionManager $sessionManager;
+
+    protected function setUp(): void
+    {
+        $sessionConfig = new StandardConfig();
+        $sessionConfig->setOptions(['name' => 'test']);
+        $this->sessionManager = new SessionManager($sessionConfig);
+    }
+
+    protected function tearDown(): void
+    {
+        $this->sessionManager->getStorage()->clear();
+    }
 
     /**
      * @return MockInterface|LegacyMockInterface|AuthorizationManager
@@ -48,28 +60,6 @@ final class ManagerTest extends TestCase
     protected function createTargetReflection(): ReflectionClass
     {
         return new ReflectionClass(AuthorizationManager::class);
-    }
-
-    /**
-     * @return MockInterface|LegacyMockInterface|SessionContainer
-     */
-    protected function createSessionContainerMock()
-    {
-        return Mockery::mock(SessionContainer::class);
-    }
-
-    /**
-     * Create ArrayObject mock
-     *
-     * 実際のセッション（$_SESSION）を利用しないように、
-     * SessionContainerの代わりとする。
-     * 現状ではoffsetGet()、offsetSet()が利用できれば良い。
-     *
-     * @return MockInterface|LegacyMockInterface|ArrayObject
-     */
-    protected function createArrayObjectMock()
-    {
-        return Mockery::mock(ArrayObject::class);
     }
 
     /**
@@ -108,14 +98,14 @@ final class ManagerTest extends TestCase
             'authorization_code_scope' => ['scope'],
         ];
 
-        $sessionContainerMock = $this->createSessionContainerMock();
+        $sessionContainer = $this->sessionManager->getContainer();
 
         $targetMock = $this->createTargetMock();
         $targetRef  = $this->createTargetReflection();
 
         // execute constructor
         $constructorRef = $targetRef->getConstructor();
-        $constructorRef->invoke($targetMock, $settings, $sessionContainerMock);
+        $constructorRef->invoke($targetMock, $settings, $sessionContainer);
 
         // test property "host"
         $hostPropertyRef = $targetRef->getProperty('host');
@@ -153,7 +143,7 @@ final class ManagerTest extends TestCase
         $sessionPropertyRef = $targetRef->getProperty('session');
         $sessionPropertyRef->setAccessible(true);
         $this->assertEquals(
-            $sessionContainerMock,
+            $sessionContainer,
             $sessionPropertyRef->getValue($targetMock)
         );
     }
@@ -170,9 +160,9 @@ final class ManagerTest extends TestCase
             'authorization_code_scope' => ['scope'],
         ];
 
-        $sessionContainerMock = $this->createSessionContainerMock();
+        $sessionContainer = $this->sessionManager->getContainer();
 
-        $targetMock = $this->createTargetMockWithArgs($settings, $sessionContainerMock);
+        $targetMock = $this->createTargetMockWithArgs($settings, $sessionContainer);
         $targetRef  = $this->createTargetReflection();
 
         $authorizationCodeGruntPropertyRef = $targetRef->getProperty('authorizationCodeGrunt');
@@ -260,19 +250,18 @@ final class ManagerTest extends TestCase
 
         $targetRef = $this->createTargetReflection();
 
-        $arrayObjectMock = $this->createArrayObjectMock()
-            ->makePartial();
+        $sessionContainer = $this->sessionManager->getContainer();
 
         $sessionPropertyRef = $targetRef->getProperty('session');
         $sessionPropertyRef->setAccessible(true);
-        $sessionPropertyRef->setValue($targetMock, $arrayObjectMock);
+        $sessionPropertyRef->setValue($targetMock, $sessionContainer);
 
         $targetMethodRef = $targetRef->getMethod('initAuthorizationState');
         $targetMethodRef->setAccessible(true);
 
         $targetMethodRef->invoke($targetMock);
 
-        $this->assertEquals($authorizationState, $arrayObjectMock['authorization_state']);
+        $this->assertEquals($authorizationState, $sessionContainer['authorization_state']);
     }
 
     /**
@@ -313,16 +302,15 @@ final class ManagerTest extends TestCase
 
         $targetRef = $this->createTargetReflection();
 
-        $arrayObjectMock = $this->createArrayObjectMock()
-            ->makePartial();
+        $sessionContainer = $this->sessionManager->getContainer();
 
         $sessionPropertyRef = $targetRef->getProperty('session');
         $sessionPropertyRef->setAccessible(true);
-        $sessionPropertyRef->setValue($targetMock, $arrayObjectMock);
+        $sessionPropertyRef->setValue($targetMock, $sessionContainer);
 
         $result = $targetMock->getAuthorizationState();
 
-        $this->assertEquals($arrayObjectMock['authorization_state'], $result);
+        $this->assertEquals($sessionContainer['authorization_state'], $result);
 
         $targetMock
             ->shouldReceive('initAuthorizationState')
@@ -341,18 +329,17 @@ final class ManagerTest extends TestCase
 
         $targetRef = $this->createTargetReflection();
 
-        $arrayObjectMock = $this->createArrayObjectMock()
-            ->makePartial();
+        $sessionContainer = $this->sessionManager->getContainer();
 
-        $arrayObjectMock['authorization_state'] = 'example';
+        $sessionContainer['authorization_state'] = 'example';
 
         $sessionPropertyRef = $targetRef->getProperty('session');
         $sessionPropertyRef->setAccessible(true);
-        $sessionPropertyRef->setValue($targetMock, $arrayObjectMock);
+        $sessionPropertyRef->setValue($targetMock, $sessionContainer);
 
         $targetMock->clearAuthorizationState();
 
-        $this->assertNull($arrayObjectMock['authorization_state']);
+        $this->assertNull($sessionContainer['authorization_state']);
     }
 
     /**
@@ -373,19 +360,18 @@ final class ManagerTest extends TestCase
 
         $targetRef = $this->createTargetReflection();
 
-        $arrayObjectMock = $this->createArrayObjectMock()
-            ->makePartial();
+        $sessionContainer = $this->sessionManager->getContainer();
 
         $sessionPropertyRef = $targetRef->getProperty('session');
         $sessionPropertyRef->setAccessible(true);
-        $sessionPropertyRef->setValue($targetMock, $arrayObjectMock);
+        $sessionPropertyRef->setValue($targetMock, $sessionContainer);
 
         $targetMethodRef = $targetRef->getMethod('initCodeVerifier');
         $targetMethodRef->setAccessible(true);
 
         $targetMethodRef->invoke($targetMock);
 
-        $this->assertEquals($codeVerifier, $arrayObjectMock['code_verifier']);
+        $this->assertEquals($codeVerifier, $sessionContainer['code_verifier']);
     }
 
     /**
@@ -404,19 +390,18 @@ final class ManagerTest extends TestCase
 
         $targetRef = $this->createTargetReflection();
 
-        $arrayObjectMock = $this->createArrayObjectMock()
-            ->makePartial();
+        $sessionContainer = $this->sessionManager->getContainer();
 
         $sessionPropertyRef = $targetRef->getProperty('session');
         $sessionPropertyRef->setAccessible(true);
-        $sessionPropertyRef->setValue($targetMock, $arrayObjectMock);
+        $sessionPropertyRef->setValue($targetMock, $sessionContainer);
 
         $targetMethodRef = $targetRef->getMethod('getCodeVerifier');
         $targetMethodRef->setAccessible(true);
 
         $result = $targetMethodRef->invoke($targetMock);
 
-        $this->assertEquals($arrayObjectMock['code_verifier'], $result);
+        $this->assertEquals($sessionContainer['code_verifier'], $result);
 
         $targetMock
             ->shouldReceive('initCodeVerifier')
