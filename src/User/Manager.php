@@ -12,8 +12,7 @@ use App\Session\Container as SessionContainer;
  */
 class Manager
 {
-    /** @var SessionContainer */
-    protected $session;
+    protected SessionContainer $session;
 
     public function __construct(SessionContainer $session)
     {

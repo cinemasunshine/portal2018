@@ -14,13 +14,12 @@ use UnexpectedValueException;
 class DecodedAccessToken
 {
     /** @var array<string, string> */
-    protected $header;
+    protected array $header;
 
     /** @var array<string, mixed> */
-    protected $claims;
+    protected array $claims;
 
-    /** @var string */
-    protected $signature;
+    protected string $signature;
 
     /**
      * decode JSON Web Token

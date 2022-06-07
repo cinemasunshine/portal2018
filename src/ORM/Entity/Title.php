@@ -22,7 +22,7 @@ use LogicException;
 class Title extends BaseTitle
 {
     /** @var array<int, string> */
-    protected static $ratingTypes = [
+    protected static array $ratingTypes = [
         '1' => 'G',
         '2' => 'PG12',
         '3' => 'R15+',
@@ -30,7 +30,7 @@ class Title extends BaseTitle
     ];
 
     /** @var array<int, string> */
-    protected static $universalTypes = [
+    protected static array $universalTypes = [
         '1' => '音声上映',
         '2' => '字幕上映',
     ];

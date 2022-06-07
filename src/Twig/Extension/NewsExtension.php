@@ -14,7 +14,7 @@ use Twig\TwigFunction;
 class NewsExtension extends AbstractExtension
 {
     /** @var array<int, string> */
-    protected $categoryLabels = [
+    protected array $categoryLabels = [
         News::CATEGORY_NEWS       => 'ニュース',
         News::CATEGORY_INFO       => 'インフォメーション',
         News::CATEGORY_IMAX       => 'IMAX',
@@ -25,7 +25,7 @@ class NewsExtension extends AbstractExtension
     ];
 
     /** @var array<int, string> */
-    protected $categoryLabelClasses = [
+    protected array $categoryLabelClasses = [
         News::CATEGORY_NEWS       => 'list-type-news',
         News::CATEGORY_INFO       => 'list-type-information',
         News::CATEGORY_IMAX       => 'list-type-imax',

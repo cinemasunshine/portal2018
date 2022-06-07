@@ -18,7 +18,7 @@ use LogicException;
 class Theater extends BaseTheater
 {
     /** @var array<int, string> */
-    protected static $areas = [
+    protected static array $areas = [
         1 => '関東',
         2 => '北陸・中部',
         3 => '関西',

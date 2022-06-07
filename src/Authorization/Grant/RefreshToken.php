@@ -12,20 +12,15 @@ use GuzzleHttp\Client as HttpClient;
  */
 class RefreshToken extends AbstractGrant
 {
-    /** @var string */
-    protected $name = 'refresh_token';
+    protected string $name = 'refresh_token';
 
-    /** @var string */
-    protected $host;
+    protected string $host;
 
-    /** @var string */
-    protected $clientId;
+    protected string $clientId;
 
-    /** @var string */
-    protected $clientSecret;
+    protected string $clientSecret;
 
-    /** @var HttpClient */
-    protected $httpClient;
+    protected HttpClient $httpClient;
 
     public function __construct(string $host, string $clientId, string $clientSecret)
     {

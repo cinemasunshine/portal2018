@@ -14,8 +14,7 @@ use Twig\TwigFunction;
  */
 class CommonExtension extends AbstractExtension
 {
-    /** @var string */
-    protected $appEnv;
+    protected string $appEnv;
 
     public function __construct()
     {

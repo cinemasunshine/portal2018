@@ -17,29 +17,22 @@ use App\Session\Container as SessionContainer;
  */
 class Manager
 {
-    /** @var AuthorizationCodeGrant|null */
-    protected $authorizationCodeGrunt;
+    protected ?AuthorizationCodeGrant $authorizationCodeGrunt = null;
 
-    /** @var string */
-    protected $clientId;
+    protected string $clientId;
 
-    /** @var string */
-    protected $clientSecret;
+    protected string $clientSecret;
 
-    /** @var string */
-    protected $codeChallengeMethod = 'S256';
+    protected string $codeChallengeMethod = 'S256';
 
-    /** @var string */
-    protected $host;
+    protected string $host;
 
-    /** @var RefreshTokenGrant|null */
-    protected $refreshTokenGrant;
+    protected ?RefreshTokenGrant $refreshTokenGrant = null;
 
     /** @var string[] */
-    protected $scopeList;
+    protected array $scopeList;
 
-    /** @var SessionContainer */
-    protected $session;
+    protected SessionContainer $session;
 
     /**
      * @param array<string, mixed> $settings

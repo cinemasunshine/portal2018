@@ -24,8 +24,7 @@ final class SeoExtensionTest extends TestCase
 
     protected const DATA_FILE = __DIR__ . '/data/seo.json';
 
-    /** @var SeoExtension */
-    protected $extension;
+    protected SeoExtension $extension;
 
     /**
      * @return MockInterface&LegacyMockInterface&SeoExtension
