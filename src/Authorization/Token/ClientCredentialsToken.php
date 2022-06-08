@@ -9,14 +9,11 @@ namespace App\Authorization\Token;
  */
 class ClientCredentialsToken extends AbstractToken
 {
-    /** @var string */
-    protected $accessToken;
+    protected string $accessToken;
 
-    /** @var string */
-    protected $tokenType;
+    protected string $tokenType;
 
-    /** @var int */
-    protected $expiresIn;
+    protected int $expiresIn;
 
     /**
      * @param array<string, mixed> $data

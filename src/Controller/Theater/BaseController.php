@@ -17,8 +17,7 @@ use Slim\Http\Response;
 
 class BaseController extends AppBaseController
 {
-    /** @var Theater */
-    protected $theater;
+    protected Theater $theater;
 
     protected function getTheaterRepository(): TheaterRepository
     {

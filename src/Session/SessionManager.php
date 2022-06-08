@@ -13,7 +13,7 @@ use Laminas\Session\SessionManager as Base;
 class SessionManager extends Base
 {
     /** @var Container[] */
-    protected $containers = [];
+    protected array $containers = [];
 
     public function __construct(ConfigInterface $config)
     {

@@ -14,11 +14,9 @@ use Twig\TwigFunction;
  */
 class UserExtension extends AbstractExtension
 {
-    /** @var UserManager */
-    protected $userManager;
+    protected UserManager $userManager;
 
-    /** @var AuthorizationManager */
-    protected $authorizationManager;
+    protected AuthorizationManager $authorizationManager;
 
     public function __construct(UserManager $userManager, AuthorizationManager $authorizationManager)
     {

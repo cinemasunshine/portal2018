@@ -9,17 +9,13 @@ use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 use Twig\TwigFunction;
 
-/**
- * Common twig extension class
- */
 class CommonExtension extends AbstractExtension
 {
-    /** @var string */
-    protected $appEnv;
+    protected string $appEnv;
 
-    public function __construct()
+    public function __construct(string $appEnv)
     {
-        $this->appEnv = APP_ENV;
+        $this->appEnv = $appEnv;
     }
 
     /**

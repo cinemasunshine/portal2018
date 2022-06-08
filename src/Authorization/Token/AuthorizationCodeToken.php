@@ -9,23 +9,17 @@ namespace App\Authorization\Token;
  */
 class AuthorizationCodeToken extends AbstractToken
 {
-    /** @var string */
-    protected $accessToken;
+    protected string $accessToken;
 
-    /** @var string */
-    protected $tokenType;
+    protected string $tokenType;
 
-    /** @var string */
-    protected $refreshToken;
+    protected string $refreshToken;
 
-    /** @var int */
-    protected $expiresIn;
+    protected int $expiresIn;
 
-    /** @var int */
-    protected $expires;
+    protected int $expires;
 
-    /** @var string */
-    protected $idToken;
+    protected string $idToken;
 
     /**
      * @param array<string, mixed> $data

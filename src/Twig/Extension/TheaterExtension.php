@@ -19,7 +19,7 @@ class TheaterExtension extends AbstractExtension
      *
      * @var array<int, string>
      */
-    protected $metaKeywords = [
+    protected array $metaKeywords = [
         2  => '東京,平和島',
         6  => '静岡,沼津,4DX,bivi',
         7  => '徳島,北島,フジグラン',
@@ -41,7 +41,7 @@ class TheaterExtension extends AbstractExtension
      *
      * @var array<string,string>
      */
-    protected $keywords;
+    protected array $keywords;
 
     /**
      * @return array<string,string>

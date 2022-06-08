@@ -19,10 +19,8 @@ class File extends BaseFile
 {
     /**
      * blob container name
-     *
-     * @var string
      */
-    protected static $blobContainer = 'file';
+    protected static string $blobContainer = 'file';
 
     /**
      * Return blob container name

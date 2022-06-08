@@ -25,8 +25,7 @@ final class TheaterExtensionTest extends TestCase
 
     protected const DATA_FILE = __DIR__ . '/data/theater/keywords.json';
 
-    /** @var TheaterExtension */
-    private $extension;
+    private TheaterExtension $extension;
 
     /**
      * @return MockInterface&LegacyMockInterface&TheaterExtension

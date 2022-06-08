@@ -13,23 +13,17 @@ use LogicException;
  */
 class AuthorizationCode extends AbstractGrant
 {
-    /** @var string */
-    protected $name = 'authorization_code';
+    protected string $name = 'authorization_code';
 
-    /** @var string */
-    protected $host;
+    protected string $host;
 
-    /** @var string */
-    protected $clientId;
+    protected string $clientId;
 
-    /** @var string */
-    protected $clientSecret;
+    protected string $clientSecret;
 
-    /** @var HttpClient */
-    protected $httpClient;
+    protected HttpClient $httpClient;
 
-    /** @var string */
-    protected $codeChallengeMethod = 'S256';
+    protected string $codeChallengeMethod = 'S256';
 
     public function __construct(string $host, string $clientId, string $clientSecret)
     {

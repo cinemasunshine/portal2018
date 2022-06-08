@@ -32,11 +32,8 @@ use Slim\Views\Twig;
  */
 abstract class AbstractController
 {
-    /** @var ContainerInterface container */
-    protected $container;
-
-    /** @var string */
-    protected $actionName;
+    protected ContainerInterface $container;
+    protected string $actionName;
 
     public function __construct(ContainerInterface $container)
     {

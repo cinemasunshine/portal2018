@@ -111,7 +111,7 @@ $container['view'] = static function ($container) {
         $container->get('bc'),
         $container->get('settings')['storage']['public_endpoint']
     ));
-    $view->addExtension(new CommonExtension());
+    $view->addExtension(new CommonExtension(APP_ENV));
     $view->addExtension(new MotionpictureTicketExtension(
         $container->get('settings')['mp_service']
     ));

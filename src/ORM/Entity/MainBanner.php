@@ -19,7 +19,7 @@ use LogicException;
 class MainBanner extends BaseMainBanner
 {
     /** @var array<int, string> */
-    protected static $linkTypes = [
+    protected static array $linkTypes = [
         self::LINK_TYPE_NONE => 'リンクなし',
         self::LINK_TYPE_URL  => 'URL',
     ];

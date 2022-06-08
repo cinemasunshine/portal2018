@@ -12,7 +12,7 @@ use Twig\TwigFunction;
 class SeoExtension extends AbstractExtension
 {
     /** @var MetaTag[] */
-    protected $metas;
+    protected array $metas;
 
     public function __construct(string $file)
     {

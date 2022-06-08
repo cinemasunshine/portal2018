@@ -6,14 +6,11 @@ namespace App\Resource;
 
 class MetaTag
 {
-    /** @var string */
-    protected $title;
+    protected string $title;
 
-    /** @var string */
-    protected $description;
+    protected string $description;
 
-    /** @var string */
-    protected $keywords;
+    protected string $keywords;
 
     public function __construct(string $title, string $description, string $keywords)
     {
