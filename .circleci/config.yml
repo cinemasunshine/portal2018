@@ -281,7 +281,7 @@ jobs:
             az webapp deployment source config-zip \
               -g ssk-portal-win-prod \
               -n ssk-portal2018-frontend-win-prod \
-              -s release02 \
+              -s release03 \
               --src production_app.zip
 
   swap_prod_release_to_production:
@@ -294,7 +294,7 @@ jobs:
 
       - run:
           name: Slot swap
-          command: az webapp deployment slot swap -g ssk-portal-win-prod -n ssk-portal2018-frontend-win-prod --slot release --target-slot production
+          command: az webapp deployment slot swap -g ssk-portal-win-prod -n ssk-portal2018-frontend-win-prod --slot release03 --target-slot production
 
   test_login_to_azure:
     executor: azure-cli/azure-docker
