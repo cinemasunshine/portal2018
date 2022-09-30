@@ -79,9 +79,7 @@ jobs:
 
       - run:
           name: Composer install (with require-dev)
-          command: |
-            composer config http-basic.m-p.backlog.jp $BACKLOG_USER $BACKLOG_PASSWORD
-            composer install --dev -n --prefer-dist
+          command: composer install --dev -n --prefer-dist
 
       - save_cache:
           key: composer-dev-{{ checksum "composer.lock" }}
@@ -136,9 +134,7 @@ jobs:
 
       - run:
           name: Composer install
-          command: |
-            composer config http-basic.m-p.backlog.jp $BACKLOG_USER $BACKLOG_PASSWORD
-            composer install --no-dev -n --prefer-dist --optimize-autoloader
+          command: composer install --no-dev -n --prefer-dist --optimize-autoloader
 
       - save_cache:
           key: composer-{{ checksum "composer.lock" }}
