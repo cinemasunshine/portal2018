@@ -17,13 +17,6 @@ cinemasunshine (Organizations) > Organization Settings > Contexts
 
 cinemasunshine (Organizations) > portal2018 (Projects) > Project Settings > Environment Variables
 
-### Composer
-
-| Name | Value |
-|:---|:---|
-|BACKLOG_USER |backlogのユーザ（プロジェクトSASAKIの権限が必要） |
-|BACKLOG_PASSWORD |backlogユーザのパスワード |
-
 ### デプロイ
 
 | Name | Value |
