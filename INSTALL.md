@@ -62,6 +62,7 @@ Azure Web Appsのアプリケーション設定で設定する場合はプレフ
 |:--|:--|:--|:--|
 |APPSETTING_ENV|*String*|○|アプリケーションの実行環境|
 |APPSETTING_DEBUG|*Boolean*|-|デバッグ設定（デフォルト： false）|
+|APPSETTING_VIEW_CACHE_DIR|*String*|-|Viewキャッシュのディレクトリ（デフォルト： ./cache/view）|
 |APPSETTING_DOCTRINE_CACHE|*String*|-|Database Cache Driver（デフォルト： array）|
 |APPSETTING_SCHEDULE_ENV|*String*|○|スケジュールの接続環境（cinemasunshine/schedule）|
 |APPSETTING_SCHEDULE_API_URL|*String*|○|MPスケジュールAPIのURL|
