@@ -106,6 +106,10 @@ jobs:
     steps:
       - checkout
 
+      - run:
+          name: Create includes env yaml
+          command: echo $ENV_VARIABLES_DEV | base64 --decode > ./.gcp/env.yaml
+
       - gcp-cli/install
 
       - gcp-cli/initialize:
