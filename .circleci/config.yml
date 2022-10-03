@@ -74,10 +74,6 @@ jobs:
           command: cp .env.test .env
 
       - run:
-          name: Generate ORM proxies
-          command: vendor/bin/doctrine orm:generate-proxies
-
-      - run:
           name: PHP Lint
           command: composer phplint
 
