@@ -23,10 +23,7 @@ commands:
       - setup_remote_docker
       - run:
           name: install redis extension
-          command: |
-            sudo pecl install -o -f redis
-            sudo rm -rf /tmp/pear
-            sudo docker-php-ext-enable redis
+          command: sudo pecl install redis
 
   fix_composer_version:
     description: "Composerのバージョンを固定"
@@ -41,7 +38,7 @@ orbs:
 executors:
   build:
     docker:
-      - image: circleci/php:7.4
+      - image: cimg/php:7.4
         <<: *docker_hub_authentication
 
 jobs:
