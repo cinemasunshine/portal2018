@@ -3,14 +3,14 @@
 .git
 .gitignore
 
-.circleci/
-.gcp/env.example.yaml
-.gcp/README.md
-cache/
-docker/
-report/
-tests/
-vendor/
+/.circleci/
+/.gcp/env.example.yaml
+/.gcp/README.md
+/cache/
+/docker/
+/report/
+/tests/
+/vendor/
 .editorconfig
 .env
 .env.example
