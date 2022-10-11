@@ -86,15 +86,19 @@ $getLoggerSetting = static function () {
         ];
     }
 
-    $settings['fingers_crossed'] = [
-        'activation_strategy' => Logger::ERROR,
-    ];
+    if (in_array(APP_ENV, ['dev', 'prod'])) {
+        $settings['fingers_crossed'] = [
+            'activation_strategy' => Logger::ERROR,
+        ];
 
-    $settings['azure_blob_storage'] = [
-        'level' => Logger::INFO,
-        'container' => 'frontend-log',
-        'blob' => date('Ymd') . '.log',
-    ];
+        $settings['google_cloud_logging'] = [
+            'name' => 'app',
+            'level' => Logger::INFO,
+            'client_options' => [
+                'projectId' => getenv('GOOGLE_CLOUD_PROJECT'),
+            ],
+        ];
+    }
 
     return $settings;
 };
