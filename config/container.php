@@ -27,7 +27,7 @@ use App\Twig\Extension\TheaterExtension;
 use App\Twig\Extension\UserExtension;
 use App\User\Manager as UserManager;
 use Doctrine\Common\Cache\ArrayCache;
-use Doctrine\Common\Cache\WinCacheCache;
+use Doctrine\Common\Cache\FilesystemCache;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Tools\Setup;
 use Google\Cloud\Logging\LoggingClient;
@@ -194,8 +194,8 @@ $container['em'] = static function ($container) {
      *
      * @see \Doctrine\ORM\Tools\Setup::createCacheInstance()
      */
-    if ($settings['cache'] === 'wincache') {
-        $cache = new WinCacheCache();
+    if ($settings['cache'] === 'filesystem') {
+        $cache = new FilesystemCache($settings['filesystem_cache_dir']);
     } else {
         $cache = new ArrayCache();
     }
