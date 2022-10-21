@@ -14,7 +14,6 @@ use App\Application\Handlers\NotFound;
 use App\Application\Handlers\PhpError;
 use App\Authorization\Manager as AuthorizationManager;
 use App\Logger\DbalLogger;
-use App\Logger\Handler\GoogleCloudLoggingHandler;
 use App\Session\SessionManager;
 use App\Twig\Extension\AdvanceTicketExtension;
 use App\Twig\Extension\AzureStorageExtension;
@@ -26,11 +25,11 @@ use App\Twig\Extension\SeoExtension;
 use App\Twig\Extension\TheaterExtension;
 use App\Twig\Extension\UserExtension;
 use App\User\Manager as UserManager;
+use Blue32a\MonologGoogleCloudLoggingHandler\GoogleCloudLoggingHandler;
 use Doctrine\Common\Cache\ArrayCache;
 use Doctrine\Common\Cache\FilesystemCache;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Tools\Setup;
-use Google\Cloud\Logging\LoggingClient;
 use Laminas\Session\Config\SessionConfig;
 use MicrosoftAzure\Storage\Blob\BlobRestProxy;
 use Monolog\Handler\BrowserConsoleHandler;
@@ -162,10 +161,13 @@ $container['logger'] = static function ($container) {
 
     if (isset($settings['google_cloud_logging'])) {
         $googleCloudLoggingSettings = $settings['google_cloud_logging'];
-        $googleCloudLoggingClient   = new LoggingClient($googleCloudLoggingSettings['client_options']);
+        $googleCloudLoggingClient   = GoogleCloudLoggingHandler::factoryLoggingClient(
+            $googleCloudLoggingSettings['client_options']
+        );
         $googleCloudLoggingHandler  = new GoogleCloudLoggingHandler(
             $googleCloudLoggingSettings['name'],
             $googleCloudLoggingClient,
+            [],
             $googleCloudLoggingSettings['level']
         );
 

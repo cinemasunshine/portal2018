@@ -23,9 +23,9 @@
     "require": {
         "php": "~7.4",
         "ext-redis": "*",
+        "blue32a/monolog-google-cloud-logging": "^1.0",
         "cinemasunshine/portal2018-orm": "^2.0",
         "doctrine/orm": "~2.7.4",
-        "google/cloud-logging": "^1.24",
         "guzzlehttp/guzzle": "^6.5",
         "laminas/laminas-session": "^2.9",
         "microsoft/azure-storage-blob": "^1.5",
