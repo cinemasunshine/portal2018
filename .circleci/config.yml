@@ -307,7 +307,7 @@ workflows:
           <<: *job_setup
           filters:
             branches:
-              only: develop
+              only: azure/develop
 
       - test:
           <<: *job_setup
@@ -325,9 +325,7 @@ workflows:
           <<: *job_setup
           filters:
             branches:
-              ignore:
-                - develop
-                - master
+              only: azure/develop
 
       - test:
           <<: *job_setup
@@ -350,7 +348,7 @@ workflows:
           <<: *job_setup
           filters:
             branches:
-              only: master
+              only: azure/master
 
       - test:
           <<: *job_setup
@@ -388,7 +386,6 @@ workflows:
           cron: "0 0 * * *"
           filters:
             branches:
-              only:
-                - master
+              only: azure/master
     jobs:
       - test_login_to_azure
