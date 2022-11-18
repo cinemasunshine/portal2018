@@ -14,7 +14,6 @@ use App\Application\Handlers\NotFound;
 use App\Application\Handlers\PhpError;
 use App\Authorization\Manager as AuthorizationManager;
 use App\Logger\DbalLogger;
-use App\Logger\Handler\AzureBlobStorageHandler;
 use App\Session\SessionManager;
 use App\Twig\Extension\AdvanceTicketExtension;
 use App\Twig\Extension\AzureStorageExtension;
@@ -26,8 +25,9 @@ use App\Twig\Extension\SeoExtension;
 use App\Twig\Extension\TheaterExtension;
 use App\Twig\Extension\UserExtension;
 use App\User\Manager as UserManager;
+use Blue32a\MonologGoogleCloudLoggingHandler\GoogleCloudLoggingHandler;
 use Doctrine\Common\Cache\ArrayCache;
-use Doctrine\Common\Cache\WinCacheCache;
+use Doctrine\Common\Cache\FilesystemCache;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Tools\Setup;
 use Laminas\Session\Config\SessionConfig;
@@ -159,19 +159,24 @@ $container['logger'] = static function ($container) {
         ));
     }
 
-    $azureBlobStorageSettings = $settings['azure_blob_storage'];
-    $azureBlobStorageHandler  = new AzureBlobStorageHandler(
-        $container->get('bc'),
-        $azureBlobStorageSettings['container'],
-        $azureBlobStorageSettings['blob'],
-        $azureBlobStorageSettings['level']
-    );
+    if (isset($settings['google_cloud_logging'])) {
+        $googleCloudLoggingSettings = $settings['google_cloud_logging'];
+        $googleCloudLoggingClient   = GoogleCloudLoggingHandler::factoryLoggingClient(
+            $googleCloudLoggingSettings['client_options']
+        );
+        $googleCloudLoggingHandler  = new GoogleCloudLoggingHandler(
+            $googleCloudLoggingSettings['name'],
+            $googleCloudLoggingClient,
+            [],
+            $googleCloudLoggingSettings['level']
+        );
 
-    $fingersCrossedSettings = $settings['fingers_crossed'];
-    $logger->pushHandler(new FingersCrossedHandler(
-        $azureBlobStorageHandler,
-        $fingersCrossedSettings['activation_strategy']
-    ));
+        $fingersCrossedSettings = $settings['fingers_crossed'];
+        $logger->pushHandler(new FingersCrossedHandler(
+            $googleCloudLoggingHandler,
+            $fingersCrossedSettings['activation_strategy']
+        ));
+    }
 
     return $logger;
 };
@@ -191,8 +196,8 @@ $container['em'] = static function ($container) {
      *
      * @see \Doctrine\ORM\Tools\Setup::createCacheInstance()
      */
-    if ($settings['cache'] === 'wincache') {
-        $cache = new WinCacheCache();
+    if ($settings['cache'] === 'filesystem') {
+        $cache = new FilesystemCache($settings['filesystem_cache_dir']);
     } else {
         $cache = new ArrayCache();
     }

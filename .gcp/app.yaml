@@ -1,0 +1,98 @@
+runtime: php74
+
+instance_class: F2
+
+# includesに分離できないのでCIで書き換える
+vpc_access_connector:
+  name: projects/:PROJECT_ID:/locations/asia-northeast1/connectors/connector01
+  egress_setting: all-traffic
+
+runtime_config:
+  document_root: ./public
+
+includes:
+- .gcp/env.yaml
+
+env_variables:
+  APPSETTING_VIEW_CACHE_DIR: /tmp/view
+
+  APPSETTING_DOCTRINE_CACHE: filesystem
+  APPSETTING_DOCTRINE_FILESYSTEM_CACHE_DIR: /tmp/doctrine
+
+handlers:
+  - url: /dev/(.*)
+    script: auto
+    login: admin
+
+  - url: /css
+    static_dir: public/css
+
+  - url: /images
+    static_dir: public/images
+
+  - url: /js
+    static_dir: public/js
+
+  - url: /robots.txt
+    static_files: public/robots.txt
+    upload: public/robots\.txt
+
+  - url: /sitemap.xml
+    static_files: public/sitemap.xml
+    upload: public/sitemap\.xml
+
+  - url: /bestia/
+    static_files: public/bestia/index.html
+    upload: public/bestia/index.html
+
+  - url: /bestia/(.*)
+    static_files: public/bestia/\1
+    upload: public/bestia/(.*)
+
+  - url: /gdcs/
+    static_files: public/gdcs/index.html
+    upload: public/gdcs/index.html
+
+  - url: /gdcs/(.*)
+    static_files: public/gdcs/\1
+    upload: public/gdcs/(.*)
+
+  - url: /form/
+    static_files: public/form/index.html
+    upload: public/form/index.html
+
+  - url: /form/(.*)
+    static_files: public/form/\1
+    upload: public/form/(.*)
+
+  - url: /point-transfer/
+    static_files: public/point-transfer/index.html
+    upload: public/point-transfer/index.html
+
+  - url: /point-transfer/(.*)
+    static_files: public/point-transfer/\1
+    upload: public/point-transfer/(.*)
+
+  - url: /lp/4dx/
+    static_files: public/lp/4dx/index.html
+    upload: public/lp/4dx/index.html
+
+  - url: /lp/4dx/(.*)
+    static_files: public/lp/4dx/\1
+    upload: public/lp/4dx/(.*)
+
+  - url: /lp/imax/
+    static_files: public/lp/imax/index.html
+    upload: public/lp/imax/index.html
+
+  - url: /lp/imax/(.*)
+    static_files: public/lp/imax/\1
+    upload: public/lp/imax/(.*)
+
+  - url: /lp/screen-x/
+    static_files: public/lp/screen-x/index.html
+    upload: public/lp/screen-x/index.html
+
+  - url: /lp/screen-x/(.*)
+    static_files: public/lp/screen-x/\1
+    upload: public/lp/screen-x/(.*)
