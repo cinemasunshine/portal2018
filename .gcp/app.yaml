@@ -96,3 +96,8 @@ handlers:
   - url: /lp/screen-x/(.*)
     static_files: public/lp/screen-x/\1
     upload: public/lp/screen-x/(.*)
+
+  - url: .*
+    script: auto
+    secure: always
+    redirect_http_response_code: 301
