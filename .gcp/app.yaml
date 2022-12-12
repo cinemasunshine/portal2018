@@ -65,7 +65,7 @@ handlers:
     static_files: public/form/\1
     upload: public/form/(.*)
 
-  - url: /point-transfer/
+  - url: /point-transfer/?
     static_files: public/point-transfer/index.html
     upload: public/point-transfer/index.html
 
