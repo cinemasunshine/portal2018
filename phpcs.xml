@@ -80,4 +80,7 @@
     <rule ref="SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint">
         <exclude-pattern>src/Schedule/Collection/*.php</exclude-pattern>
     </rule>
+    <rule ref="SlevomatCodingStandard.Functions.StaticClosure.ClosureNotStatic">
+        <exclude-pattern>config/routes.php</exclude-pattern>
+    </rule>
 </ruleset>
