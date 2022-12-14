@@ -141,6 +141,7 @@ $app->group('/api', function (): void {
 $app->get('/_ah/warmup', function ($request, $response): ResponseInterface {
     // ウォームアップ リクエストを有効にするための最低限の実装
     $response->getBody()->write('Warmup successful');
+
     return $response;
 });
 
