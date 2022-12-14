@@ -20,6 +20,7 @@ use App\Controller\Theater\IndexController as TheaterIndexController;
 use App\Controller\Theater\NewsController as TheaterNewsController;
 use App\Controller\Theater\ScheduleController as TheaterScheduleController;
 use App\Controller\TheaterListController;
+use Psr\Http\Message\ResponseInterface;
 use Slim\App as SlimApp;
 
 // phpcs:disable SlevomatCodingStandard.Commenting.InlineDocCommentDeclaration
@@ -132,6 +133,15 @@ $app->group('/api', function (): void {
     $this->group('/auth', function (): void {
         $this->get('/token', AuthorizationAPIController::class . ':token');
     });
+});
+
+/**
+ * @link https://cloud.google.com/appengine/docs/standard/php-gen2/configuring-warmup-requests?hl=ja
+ */
+$app->get('/_ah/warmup', function ($request, $response): ResponseInterface {
+    // ウォームアップ リクエストを有効にするための最低限の実装
+    $response->getBody()->write('Warmup successful');
+    return $response;
 });
 
 /**
