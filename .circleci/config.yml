@@ -127,6 +127,40 @@ jobs:
       # composerのコマンドイベントを使いたいのでキャッシュを無効にする
       - run: gcloud --quiet app deploy --no-cache
 
+  deploy_to_4st:
+    working_directory: ~/deployment-4st
+    executor: gcp-cli/default
+    steps:
+      - checkout
+
+      - run:
+          name: Create app.yaml
+          command: sed s/:PROJECT_ID:/$GOOGLE_PROJECT_ID_4ST/ ./.gcp/app.yaml > app.yaml
+
+      - store_artifacts:
+          path: ./app.yaml
+
+      - run:
+          name: Copy php.ini
+          command: cp ./.gcp/php.4st.ini php.ini
+
+      - run:
+          name: Create includes env yaml
+          command: echo $ENV_VARIABLES_4ST | base64 --decode > ./.gcp/env.yaml
+
+      - store_artifacts:
+          path: ./.gcp/env.yaml
+
+      - gcp-cli/install
+
+      - gcp-cli/initialize:
+          gcloud-service-key: GCLOUD_SERVICE_KEY_4ST
+          google-compute-region: GOOGLE_COMPUTE_REGION_4ST
+          google-project-id: GOOGLE_PROJECT_ID_4ST
+
+      # composerのコマンドイベントを使いたいのでキャッシュを無効にする
+      - run: gcloud --quiet app deploy --no-cache
+
   deploy_to_production:
     working_directory: ~/deployment-prod
     executor: gcp-cli/default
@@ -173,6 +207,12 @@ workflows:
               ignore: master
 
       - deploy_to_development:
+          <<: *job_setup
+          filters:
+            branches:
+              ignore: master
+
+      - deploy_to_4st:
           <<: *job_setup
           filters:
             branches:
