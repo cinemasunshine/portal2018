@@ -4,7 +4,7 @@ instance_class: F2
 
 automatic_scaling:
   target_throughput_utilization: 0.7
-  max_concurrent_requests: 30
+  max_concurrent_requests: 40
   min_pending_latency: 3s
 
 inbound_services:
