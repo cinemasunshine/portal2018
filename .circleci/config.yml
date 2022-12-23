@@ -212,12 +212,6 @@ workflows:
             branches:
               ignore: master
 
-      - deploy_to_4st:
-          <<: *job_setup
-          filters:
-            branches:
-              ignore: master
-
   deploy_production:
     jobs:
       - test:
@@ -232,6 +226,11 @@ workflows:
             - test
 
       - deploy_to_production:
+          <<: *job_setup
+          requires:
+            - deploy_approval
+
+      - deploy_to_4st:
           <<: *job_setup
           requires:
             - deploy_approval
