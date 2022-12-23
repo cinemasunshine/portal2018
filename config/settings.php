@@ -86,7 +86,7 @@ $getLoggerSetting = static function () {
         ];
     }
 
-    if (in_array(APP_ENV, ['dev', 'prod'])) {
+    if (in_array(APP_ENV, ['dev', '4st', 'prod'])) {
         $settings['fingers_crossed'] = [
             'activation_strategy' => Logger::ERROR,
         ];
