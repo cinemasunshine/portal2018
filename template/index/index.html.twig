@@ -11,6 +11,7 @@
 {% endblock %}
 
 {% block javascript %}
+<script src="/js/lib/jquery.inview.min.js"></script>
 <script src="/js/top.js"></script>
 {% endblock %}
 
@@ -48,9 +49,7 @@
 
 {% include 'include/adsense/top.html.twig' only %}
 
-{% include 'index/include/ranking.html.twig' with {
-    titleRanking: titleRanking
-} only %}
+{% include 'index/include/ranking.html.twig' only %}
 
 {% include 'include/adsense/top-ranking.html.twig' only %}
 

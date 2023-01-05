@@ -23,8 +23,6 @@ class IndexController extends GeneralController
 
         $trailer = $this->getTrailer();
 
-        $titleRanking = $this->getTitleRanking();
-
         $newsList = $this->getNewsList(Entity\News::CATEGORY_NEWS);
 
         $imaxNewsList = $this->getNewsList(Entity\News::CATEGORY_IMAX);
@@ -43,7 +41,6 @@ class IndexController extends GeneralController
             'mainBanners' => $mainBanners,
             'areaToTheaters' => $areaToTheaters,
             'trailer' => $trailer,
-            'titleRanking' => $titleRanking,
             'newsList' => $newsList,
             'imaxNewsList' => $imaxNewsList,
             'fourdxNewsList' => $fourdxNewsList,
@@ -101,13 +98,6 @@ class IndexController extends GeneralController
         shuffle($trailers);
 
         return $trailers[0];
-    }
-
-    protected function getTitleRanking(): Entity\TitleRanking
-    {
-        return $this->em
-            ->getRepository(Entity\TitleRanking::class)
-            ->findOneById(1);
     }
 
     /**

@@ -10,6 +10,7 @@ use App\Session\SessionManager;
 use App\User\Manager as UserManager;
 use Doctrine\ORM\EntityManager;
 use LogicException;
+use MicrosoftAzure\Storage\Blob\BlobRestProxy;
 use Monolog\Logger;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\UriInterface;
@@ -21,6 +22,7 @@ use Slim\Views\Twig;
 
 /**
  * @property-read AuthorizationManager $am
+ * @property-read BlobRestProxy $bc
  * @property-read EntityManager $em
  * @property-read Environment $environment
  * @property-read Logger $logger

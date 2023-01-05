@@ -1,46 +1,9 @@
-<div class="width mx-auto px-3 ranking mb-5">
-    {% set fromDate = null %}
-
-    {% if titleRanking.getFromDate() %}
-        {% set fromDate = titleRanking.getFromDate()|date('n/j') ~ '(' ~ titleRanking.getFromDate()|weekday ~ ')' %}
-    {% endif %}
-
-    {% set toDate = null %}
-
-    {% if titleRanking.getToDate() %}
-        {% set toDate = titleRanking.getToDate()|date('n/j') ~ '(' ~ titleRanking.getToDate()|weekday ~ ')' %}
-    {% endif %}
-
+<div id="ranking" class="width mx-auto px-3 ranking mb-5">
     <h3 class="font-weight-bold large text-center text-md-left line-height-1 mb-3">ランキング<br><span class="small">RANKING</span></h3>
-    <p class="mb-4">{{ fromDate }}-{{ toDate }}に集計したランキングになります。</p>
+    <p class="mb-4 help"><span class="from"></span>-<span class="to"></span>に集計したランキングになります。</p>
 
     <div class="scroll">
         <ul class="d-flex">
-
-    {% for titleRank in titleRanking.getRanks() %}
-        {% if titleRank.getTitle() %}
-            {% set title = titleRank.getTitle() %}
-            <li class="ml-0">
-                <div class="rank-0{{ titleRank.getRank() }} text-center text-white mb-2 py-1 small">{{ titleRank.getRank() }}</div>
-                <div class="mb-2 border">
-
-                {% if titleRank.getDetailUrl() %}
-                    <a href="{{ titleRank.getDetailUrl() }}">
-                {% endif %}
-
-                    {% set image = title.getImage() ? file_url(title.getImage()) : '/images/common/no_img_movie.png' %}
-                    <img class="w-100" src="{{ image }}">
-
-                {% if titleRank.getDetailUrl() %}
-                    </a>
-                {% endif %}
-
-                </div>
-                <p class="mb-0"><a href="{{ titleRank.getDetailUrl() }}">{{ title.getName() }}</a></p>
-            </li>
-        {% endif %}
-    {% endfor %}
-
         </ul>
     </div>
 
