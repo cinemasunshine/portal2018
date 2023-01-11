@@ -27,6 +27,18 @@ class TheaterRepository extends BaseRepository
     }
 
     /**
+     * theaterとtheate_metaのN+1問題を解決するためのクエリを追加
+     *
+     * @see https://www.doctrine-project.org/projects/doctrine-orm/en/latest/reference/faq.html#why-is-an-extra-sql-query-executed-every-time-i-fetch-an-entity-with-a-one-to-one-relation
+     */
+    protected function addFixTheaterMetaNPlasOneQuery(QueryBuilder $qb, string $alias, string $metaAlias): void
+    {
+        $qb
+            ->select(sprintf('%s, %s', $alias, $metaAlias))
+            ->innerJoin($alias . '.meta', $metaAlias);
+    }
+
+    /**
      * @return Theater[]
      */
     public function findByActive(): array
@@ -34,6 +46,7 @@ class TheaterRepository extends BaseRepository
         $alias = 't';
         $qb    = $this->createQueryBuilder($alias);
 
+        $this->addFixTheaterMetaNPlasOneQuery($qb, $alias, 'tm');
         $this->addActiveQuery($qb, $alias);
 
         $qb->orderBy($alias . '.displayOrder', 'ASC');
@@ -46,6 +59,7 @@ class TheaterRepository extends BaseRepository
         $alias = 't';
         $qb    = $this->createQueryBuilder($alias);
 
+        $this->addFixTheaterMetaNPlasOneQuery($qb, $alias, 'tm');
         $this->addActiveQuery($qb, $alias);
 
         $qb
@@ -63,6 +77,7 @@ class TheaterRepository extends BaseRepository
         $alias = 't';
         $qb    = $this->createQueryBuilder($alias);
 
+        $this->addFixTheaterMetaNPlasOneQuery($qb, $alias, 'tm');
         $this->addActiveQuery($qb, $alias);
 
         $ailiasSpecialSites = 's';
