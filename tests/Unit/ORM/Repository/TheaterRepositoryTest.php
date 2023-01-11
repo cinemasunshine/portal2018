@@ -89,6 +89,36 @@ final class TheaterRepositoryTest extends TestCase
     /**
      * @test
      */
+    public function testAddFixTheaterMetaNPlasOneQuery(): void
+    {
+        $alias     = 'ts';
+        $aliasMeta = 'tsm';
+
+        $queryBuilderMock = $this->createQueryBuilderMock();
+
+        $queryBuilderMock
+            ->shouldReceive('select')
+            ->once()
+            ->with($alias . ', ' . $aliasMeta)
+            ->andReturn($queryBuilderMock);
+
+        $queryBuilderMock
+            ->shouldReceive('innerJoin')
+            ->once()
+            ->with($alias . '.meta', $aliasMeta);
+
+        $targetMock = $this->createTargetMock();
+        $targetRef  = $this->createTargetReflection();
+
+        $addActiveQueryRef = $targetRef->getMethod('addFixTheaterMetaNPlasOneQuery');
+        $addActiveQueryRef->setAccessible(true);
+
+        $addActiveQueryRef->invoke($targetMock, $queryBuilderMock, $alias, $aliasMeta);
+    }
+
+    /**
+     * @test
+     */
     public function testFindByActive(): void
     {
         $alias = 't';
@@ -104,6 +134,10 @@ final class TheaterRepositoryTest extends TestCase
             ->once()
             ->with($alias)
             ->andReturn($queryBuilderMock);
+        $targetMock
+            ->shouldReceive('addFixTheaterMetaNPlasOneQuery')
+            ->once()
+            ->with($queryBuilderMock, $alias, 'tm');
         $targetMock
             ->shouldReceive('addActiveQuery')
             ->once()
@@ -147,6 +181,10 @@ final class TheaterRepositoryTest extends TestCase
             ->once()
             ->with($alias)
             ->andReturn($queryBuilderMock);
+        $targetMock
+            ->shouldReceive('addFixTheaterMetaNPlasOneQuery')
+            ->once()
+            ->with($queryBuilderMock, $alias, 'tm');
         $targetMock
             ->shouldReceive('addActiveQuery')
             ->once()
@@ -196,6 +234,10 @@ final class TheaterRepositoryTest extends TestCase
             ->once()
             ->with($alias)
             ->andReturn($queryBuilderMock);
+        $targetMock
+            ->shouldReceive('addFixTheaterMetaNPlasOneQuery')
+            ->once()
+            ->with($queryBuilderMock, $alias, 'tm');
         $targetMock
             ->shouldReceive('addActiveQuery')
             ->once()
