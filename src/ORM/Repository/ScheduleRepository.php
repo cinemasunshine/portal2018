@@ -6,7 +6,9 @@ namespace App\ORM\Repository;
 
 use App\ORM\Entity\Schedule;
 use App\ORM\Entity\ShowingFormat;
+use App\ORM\Entity\Title;
 use Cinemasunshine\ORM\Repositories\ScheduleRepository as BaseRepository;
+use Doctrine\ORM\Mapping\ClassMetadata;
 
 /**
  * @extends BaseRepository<Schedule>
@@ -21,9 +23,22 @@ class ScheduleRepository extends BaseRepository
         $alias = 's';
         $qb    = $this->createQueryBuilder($alias);
 
+        $aliasShowingFormats  = 'sf';
+        $aliasShowingTheaters = 'st';
+        $aliasTitle           = 't';
+        $qb
+            ->select(sprintf('%s, %s, %s, %s', $alias, $aliasShowingFormats, $aliasShowingTheaters, $aliasTitle))
+            ->innerJoin($alias . '.showingFormats', $aliasShowingFormats)
+            ->innerJoin($alias . '.showingTheaters', $aliasShowingTheaters)
+            ->innerJoin($alias . '.title', $aliasTitle);
+
         $this->addNowShowingQuery($qb, $alias);
 
-        return $qb->getQuery()->getResult();
+        $query = $qb->getQuery();
+        $query
+            ->setFetchMode(Title::class, 'image', ClassMetadata::FETCH_EAGER);
+
+        return $query->getResult();
     }
 
     /**
@@ -135,9 +150,22 @@ class ScheduleRepository extends BaseRepository
         $alias = 's';
         $qb    = $this->createQueryBuilder($alias);
 
+        $aliasShowingFormats  = 'sf';
+        $aliasShowingTheaters = 'st';
+        $aliasTitle           = 't';
+        $qb
+            ->select(sprintf('%s, %s, %s, %s', $alias, $aliasShowingFormats, $aliasShowingTheaters, $aliasTitle))
+            ->innerJoin($alias . '.showingFormats', $aliasShowingFormats)
+            ->innerJoin($alias . '.showingTheaters', $aliasShowingTheaters)
+            ->innerJoin($alias . '.title', $aliasTitle);
+
         $this->addComingSoonQuery($qb, $alias);
 
-        return $qb->getQuery()->getResult();
+        $query = $qb->getQuery();
+        $query
+            ->setFetchMode(Title::class, 'image', ClassMetadata::FETCH_EAGER);
+
+        return $query->getResult();
     }
 
     /**
