@@ -31,7 +31,7 @@ $(function () {
             });
     });
 
-    $('#ranking').on('inview', () => {
+    $('#ranking').one('inview', () => {
         const $ranking = $(this);
 
         $.ajax('api/title/ranking')
