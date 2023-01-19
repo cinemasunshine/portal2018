@@ -52,6 +52,6 @@ class NewsController extends BaseController
     {
         return $this->em
             ->getRepository(News::class)
-            ->findByPage($page, $category, 8);
+            ->findByPage($page, $category, $limit);
     }
 }
