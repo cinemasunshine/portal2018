@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Tests\Unit\Controller;
 
 use App\Controller\IndexController;
-use App\ORM\Entity\News;
 use Mockery;
 use Mockery\LegacyMockInterface;
 use Mockery\MockInterface;
@@ -55,13 +54,6 @@ final class IndexControllerTest extends BaseTestCase
             ->with()
             ->andReturn($trailer);
 
-        $infoNewsList = [];
-        $targetMock
-            ->shouldReceive('getNewsList')
-            ->once()
-            ->with(News::CATEGORY_INFO)
-            ->andReturn($infoNewsList);
-
         $campaigns = [];
         $targetMock
             ->shouldReceive('findCampaigns')
@@ -73,7 +65,6 @@ final class IndexControllerTest extends BaseTestCase
             'mainBanners' => $mainBanners,
             'areaToTheaters' => $areaToTheaters,
             'trailer' => $trailer,
-            'infoNewsList' => $infoNewsList,
             'campaigns' => $campaigns,
         ];
         $targetMock

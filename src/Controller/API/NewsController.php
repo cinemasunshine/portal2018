@@ -35,6 +35,7 @@ class NewsController extends BaseController
                 'headline' => $news->getHeadline(),
                 'image' => $image,
                 'url' => $url,
+                'start_date' => $news->getStartDt()->format('Y-m-d'),
             ];
         }
 

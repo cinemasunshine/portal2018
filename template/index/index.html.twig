@@ -12,6 +12,7 @@
 
 {% block javascript %}
 <script src="/js/lib/jquery.inview.min.js"></script>
+<script src="/js/lib/dayjs@1.11.7.min.js"></script>
 <script src="/js/top.js"></script>
 {% endblock %}
 
@@ -69,9 +70,7 @@
     campaigns: campaigns
 } only %}
 
-{% include 'index/include/infomation.html.twig' with {
-    newsList: infoNewsList
-} only %}
+{% include 'index/include/infomation.html.twig' only %}
 
 {% include 'include/adsense/all-top-square.html.twig' only %}
 {% endblock %}

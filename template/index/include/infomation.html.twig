@@ -1,28 +1,12 @@
-{% if newsList %}
-<div class="mb-5">
+<img id="news-infomation-inview" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+<div id="news-infomation" class="mb-5 d-none">
     <div class="width mx-auto px-3 infomation pjack-bg">
         <h3 class="mb-4 font-weight-bold line-height-1">インフォメーション<br><span class="small">INFORMATION</span></h3>
         <div class="mb-5">
-            <ul class="border-top border-light-gray">
-            {% for news in newsList|slice(0, 4) %}
-                <li class="border-bottom border-light-gray">
-                    <a href="{{ path_for('news_show', { id: news.getId() }) }}" class="d-md-flex d-block py-3 pl-3 pr-5">
-                        <div class="mb-md-0 mb-2 infomation-date">{{ news.getStartDt()|date('Y/n/j') }}</div>
-                        <div>{{ news.getHeadline() }}</div>
-                    </a>
-                </li>
-            {% endfor %}
+            <ul class="border-top border-light-gray head">
             </ul>
 
-            <ul class="border-gray d-none" data-contents="imax-more-contents">
-            {% for news in newsList|slice(4, 4) %}
-                <li class="border-bottom border-gray">
-                    <a href="{{ path_for('news_show', { id: news.getId() }) }}" class="d-md-flex d-block py-3 pl-3 pr-5">
-                        <div class="mb-md-0 mb-2 infomation-date">{{ news.getStartDt()|date('Y/n/j') }}</div>
-                        <div>{{ news.getHeadline() }}</div>
-                    </a>
-                </li>
-            {% endfor %}
+            <ul class="border-gray d-none more" data-contents="imax-more-contents">
             </ul>
         </div>
 
@@ -32,7 +16,5 @@
         <div class="button-01 shadow-01 mx-auto d-none list-display" data-button="imax-more-button">
             <a href="{{ path_for('news_list') }}">一覧表示</a>
         </div>
-
     </div>
 </div>
-{% endif %}

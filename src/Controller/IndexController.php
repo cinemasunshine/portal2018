@@ -23,15 +23,12 @@ class IndexController extends GeneralController
 
         $trailer = $this->getTrailer();
 
-        $infoNewsList = $this->getNewsList(Entity\News::CATEGORY_INFO);
-
         $campaigns = $this->findCampaigns();
 
         return $this->render($response, 'index/index.html.twig', [
             'mainBanners' => $mainBanners,
             'areaToTheaters' => $areaToTheaters,
             'trailer' => $trailer,
-            'infoNewsList' => $infoNewsList,
             'campaigns' => $campaigns,
         ]);
     }
@@ -83,15 +80,5 @@ class IndexController extends GeneralController
         shuffle($trailers);
 
         return $trailers[0];
-    }
-
-    /**
-     * @return Entity\News[]
-     */
-    protected function getNewsList(int $category): array
-    {
-        return $this->em
-            ->getRepository(Entity\News::class)
-            ->findByPage(self::PAGE_ID, $category, 8);
     }
 }
