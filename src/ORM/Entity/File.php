@@ -7,6 +7,7 @@ namespace App\ORM\Entity;
 use Cinemasunshine\ORM\Entities\File as BaseFile;
 use Doctrine\ORM\Mapping as ORM;
 use LogicException;
+use MicrosoftAzure\Storage\Blob\BlobRestProxy;
 
 /**
  * File entity class
@@ -78,5 +79,14 @@ class File extends BaseFile
     public function setSize(int $size): void
     {
         throw new LogicException('Not allowed.');
+    }
+
+    public function fileUrl(BlobRestProxy $blobRestProxy, ?string $publicEndpoint): string
+    {
+        if ($publicEndpoint) {
+            return sprintf('%s/%s/%s', $publicEndpoint, self::getBlobContainer(), $this->getName());
+        }
+
+        return $blobRestProxy->getBlobUrl(self::getBlobContainer(), $this->getName());
     }
 }

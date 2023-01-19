@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Controller\API;
 
-use App\ORM\Entity\File;
 use App\ORM\Entity\TitleRanking;
 use Slim\Http\Request;
 use Slim\Http\Response;
@@ -18,9 +17,9 @@ class TitleController extends BaseController
     {
         $meta = ['name' => 'Title ranking API'];
 
-        $ranking = $this->em
-            ->getRepository(TitleRanking::class)
-            ->findOneById(1);
+        $ranking = $this->findOneTitleRanking();
+
+        $storagePublicEndpoint = $this->settings['storage']['public_endpoint'];
 
         $data = [
             'date_range' => [
@@ -38,7 +37,7 @@ class TitleController extends BaseController
             }
 
             $image = $title->getImage()
-                ? $this->createFileURL($title->getImage()->getName())
+                ? $title->getImage()->fileUrl($this->bc, $storagePublicEndpoint)
                 : '';
 
             $row = [
@@ -57,14 +56,10 @@ class TitleController extends BaseController
         ]);
     }
 
-    private function createFileURL(string $name): string
+    private function findOneTitleRanking(): TitleRanking
     {
-        $storagePublicEndpoint = $this->settings['storage']['public_endpoint'];
-
-        if ($storagePublicEndpoint) {
-            return sprintf('%s/%s/%s', $storagePublicEndpoint, File::getBlobContainer(), $name);
-        }
-
-        return $this->bc->getBlobUrl(File::getBlobContainer(), $name);
+        return $this->em
+            ->getRepository(TitleRanking::class)
+            ->findOneById(1);
     }
 }

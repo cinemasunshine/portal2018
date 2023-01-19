@@ -23,16 +23,6 @@ class IndexController extends GeneralController
 
         $trailer = $this->getTrailer();
 
-        $newsList = $this->getNewsList(Entity\News::CATEGORY_NEWS);
-
-        $imaxNewsList = $this->getNewsList(Entity\News::CATEGORY_IMAX);
-
-        $fourdxNewsList = $this->getNewsList(Entity\News::CATEGORY_4DX);
-
-        $screenXNewsList = $this->getNewsList(Entity\News::CATEGORY_SCREENX);
-
-        $fourdxScreenNewsList = $this->getNewsList(Entity\News::CATEGORY_4DX_SCREEN);
-
         $infoNewsList = $this->getNewsList(Entity\News::CATEGORY_INFO);
 
         $campaigns = $this->findCampaigns();
@@ -41,11 +31,6 @@ class IndexController extends GeneralController
             'mainBanners' => $mainBanners,
             'areaToTheaters' => $areaToTheaters,
             'trailer' => $trailer,
-            'newsList' => $newsList,
-            'imaxNewsList' => $imaxNewsList,
-            'fourdxNewsList' => $fourdxNewsList,
-            'screenXNewsList' => $screenXNewsList,
-            'fourdxScreenNewsList' => $fourdxScreenNewsList,
             'infoNewsList' => $infoNewsList,
             'campaigns' => $campaigns,
         ]);

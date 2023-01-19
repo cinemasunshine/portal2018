@@ -90,4 +90,124 @@ $(function () {
 
         return $row;
     }
+
+    $('#news-inview').one('inview', () => {
+        $(this).addClass('d-none');
+        const $section = $('#news');
+        const category = 1;
+        findNews(category)
+            .done((response) => {
+                if (response.data.length > 0) {
+                    $section.removeClass('d-none');
+                }
+                response.data.slice(0, 4).forEach((news) => {
+                    const $row = factoryNewsRowElement(news);
+                    $section.find('.container ul.row.head').append($row);
+                });
+                response.data.slice(4, 8).forEach((news) => {
+                    const $row = factoryNewsRowElement(news);
+                    $section.find('.container ul.row.more').append($row);
+                });
+            });
+    });
+
+    $('#news-imax-inview').one('inview', () => {
+        $(this).addClass('d-none');
+        const $section = $('#news-imax');
+        const category = 3;
+        findNews(category)
+            .done((response) => {
+                if (response.data.length > 0) {
+                    $section.removeClass('d-none');
+                }
+                response.data.slice(0, 4).forEach((news) => {
+                    const $row = factoryNewsRowElement(news);
+                    $section.find('.container ul.row.head').append($row);
+                });
+                response.data.slice(4, 8).forEach((news) => {
+                    const $row = factoryNewsRowElement(news);
+                    $section.find('.container ul.row.more').append($row);
+                });
+            });
+    });
+
+    $('#news-4dx-inview').one('inview', () => {
+        $(this).addClass('d-none');
+        const $section = $('#news-4dx');
+        const category = 4;
+        findNews(category)
+            .done((response) => {
+                if (response.data.length > 0) {
+                    $section.removeClass('d-none');
+                }
+                response.data.slice(0, 4).forEach((news) => {
+                    const $row = factoryNewsRowElement(news);
+                    $section.find('.container ul.row.head').append($row);
+                });
+                response.data.slice(4, 8).forEach((news) => {
+                    const $row = factoryNewsRowElement(news);
+                    $section.find('.container ul.row.more').append($row);
+                });
+            });
+    });
+
+    $('#news-screenx-inview').one('inview', () => {
+        $(this).addClass('d-none');
+        const $section = $('#news-screenx');
+        const category = 6;
+        findNews(category)
+            .done((response) => {
+                if (response.data.length > 0) {
+                    $section.removeClass('d-none');
+                }
+                response.data.slice(0, 4).forEach((news) => {
+                    const $row = factoryNewsRowElement(news);
+                    $section.find('.container ul.row.head').append($row);
+                });
+                response.data.slice(4, 8).forEach((news) => {
+                    const $row = factoryNewsRowElement(news);
+                    $section.find('.container ul.row.more').append($row);
+                });
+            });
+    });
+
+    $('#news-4dx-screenx-inview').one('inview', () => {
+        $(this).addClass('d-none');
+        const $section = $('#news-4dx-screenx');
+        const category = 7;
+        findNews(category)
+            .done((response) => {
+                if (response.data.length > 0) {
+                    $section.removeClass('d-none');
+                }
+                response.data.slice(0, 4).forEach((news) => {
+                    const $row = factoryNewsRowElement(news);
+                    $section.find('.container ul.row.head').append($row);
+                });
+                response.data.slice(4, 8).forEach((news) => {
+                    const $row = factoryNewsRowElement(news);
+                    $section.find('.container ul.row.more').append($row);
+                });
+            });
+    });
+
+    function findNews(category) {
+        return $.ajax(`api/news/page/1/category/${category}?limit=8`);
+    }
+
+    function factoryNewsRowElement(news) {
+        const $el = $('<li>').addClass('col-md-3 col-6 py-2 mb-4');
+        const $link = ((news) => {
+            const $el = $('<a>').addClass('d-block').attr('href', news.url);
+            if (news.image.length > 0) {
+                $el.append($('<div>')
+                    .addClass('border mb-2 image border-gray')
+                    .css('background-image', `url(${news.image})`));
+            }
+            $el.append($('<p>').addClass('mb-0').text(news.headline));
+            return $el;
+        })(news);
+        $el.append($link);
+        return $el;
+    }
 });

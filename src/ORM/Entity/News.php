@@ -16,6 +16,8 @@ use LogicException;
  * @ORM\Entity(readOnly=true, repositoryClass="App\ORM\Repository\NewsRepository")
  * @ORM\Table(name="news", options={"collate"="utf8mb4_general_ci"})
  * @ORM\HasLifecycleCallbacks
+ *
+ * @method File|null getImage()
  */
 class News extends BaseNews
 {

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use App\Controller\AboutController;
 use App\Controller\API\AuthorizationController as AuthorizationAPIController;
+use App\Controller\API\NewsController as NewsAPIController;
 use App\Controller\API\TitleController as TitleAPIController;
 use App\Controller\AuthorizationController;
 use App\Controller\Development\DoctrineController;
@@ -137,6 +138,10 @@ $app->group('/api', function (): void {
 
     $this->group('/title', function (): void {
         $this->get('/ranking', TitleAPIController::class . ':ranking');
+    });
+
+    $this->group('/news', function (): void {
+        $this->get('/page/{page:[0-9]+}/category/{category:[0-9]+}', NewsAPIController::class . ':page');
     });
 });
 

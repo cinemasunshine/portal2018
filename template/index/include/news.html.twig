@@ -1,22 +1,12 @@
-{% if newsList %}
-<div class="mb-5">
+<img id="news-inview" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+<div id="news" class="mb-5 d-none">
     <div class="width mx-auto px-3 news pjack-bg">
         <h3 class="font-weight-bold large mb-4 text-center text-md-left line-height-1">ニュース<br><span class="small">NEWS</span></h3>
         <div class="container w-100 mw-100 m-0 mb-4 px-1">
-            <ul class="row mb-0">
-            {% for news in newsList|slice(0, 4) %}
-                {% include "index/include/news_row.html.twig" with {
-                    news: news
-                } only %}
-            {% endfor %}
+            <ul class="row mb-0 head">
             </ul>
 
-            <ul class="row d-none" data-contents="more-contents">
-            {% for news in newsList|slice(4, 4) %}
-                {% include "index/include/news_row.html.twig" with {
-                    news: news
-                } only %}
-            {% endfor %}
+            <ul class="row d-none more" data-contents="more-contents">
             </ul>
         </div>
 
@@ -28,4 +18,3 @@
         </div>
     </div>
 </div>
-{% endif %}

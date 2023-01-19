@@ -15,6 +15,8 @@ use LogicException;
  *
  * @ORM\Entity
  * @ORM\Table(name="title_ranking_rank", options={"collate"="utf8mb4_general_ci"})
+ *
+ * @method Title|null getTitle()
  */
 class TitleRankingRank extends BaseTitleRankingRank
 {

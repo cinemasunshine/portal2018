@@ -55,41 +55,6 @@ final class IndexControllerTest extends BaseTestCase
             ->with()
             ->andReturn($trailer);
 
-        $newsList = [];
-        $targetMock
-            ->shouldReceive('getNewsList')
-            ->once()
-            ->with(News::CATEGORY_NEWS)
-            ->andReturn($newsList);
-
-        $imaxNewsList = [];
-        $targetMock
-            ->shouldReceive('getNewsList')
-            ->once()
-            ->with(News::CATEGORY_IMAX)
-            ->andReturn($imaxNewsList);
-
-        $fourdxNewsList = [];
-        $targetMock
-            ->shouldReceive('getNewsList')
-            ->once()
-            ->with(News::CATEGORY_4DX)
-            ->andReturn($fourdxNewsList);
-
-        $screenXNewsList = [];
-        $targetMock
-            ->shouldReceive('getNewsList')
-            ->once()
-            ->with(News::CATEGORY_SCREENX)
-            ->andReturn($screenXNewsList);
-
-        $fourdxScreenNewsList = [];
-        $targetMock
-            ->shouldReceive('getNewsList')
-            ->once()
-            ->with(News::CATEGORY_4DX_SCREEN)
-            ->andReturn($fourdxScreenNewsList);
-
         $infoNewsList = [];
         $targetMock
             ->shouldReceive('getNewsList')
@@ -108,11 +73,6 @@ final class IndexControllerTest extends BaseTestCase
             'mainBanners' => $mainBanners,
             'areaToTheaters' => $areaToTheaters,
             'trailer' => $trailer,
-            'newsList' => $newsList,
-            'imaxNewsList' => $imaxNewsList,
-            'fourdxNewsList' => $fourdxNewsList,
-            'screenXNewsList' => $screenXNewsList,
-            'fourdxScreenNewsList' => $fourdxScreenNewsList,
             'infoNewsList' => $infoNewsList,
             'campaigns' => $campaigns,
         ];

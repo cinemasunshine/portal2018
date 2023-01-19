@@ -1,5 +1,5 @@
-{% if newsList %}
-<div class="width mx-auto mb-5 px-3 news news-imax pjack-bg">
+<img id="news-imax-inview" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+<div id="news-imax" class="width mx-auto mb-5 px-3 news news-imax pjack-bg d-none">
     <div class="d-md-flex mb-4 align-items-end">
         <h3 class="text-center text-md-left mb-3 mb-md-0">
             <div class="mr-md-2 d-inline-block"><img src="/images/common/imax_logo.svg"></div>
@@ -10,20 +10,10 @@
             </a></div>
     </div>
     <div class="container w-100 mw-100 m-0 mb-4 px-1">
-        <ul class="row mb-0">
-        {% for news in newsList|slice(0, 4) %}
-            {% include "index/include/news_row.html.twig" with {
-                news: news
-            } only %}
-        {% endfor %}
+        <ul class="row mb-0 head">
         </ul>
 
-        <ul class="row d-none" data-contents="imax-more-contents">
-        {% for news in newsList|slice(4, 4) %}
-            {% include "index/include/news_row.html.twig" with {
-                news: news
-            } only %}
-        {% endfor %}
+        <ul class="row d-none more" data-contents="imax-more-contents">
         </ul>
     </div>
     <div class="button-01 shadow-01 mx-auto see-more">
@@ -33,4 +23,3 @@
         <a href="{{ path_for('news_list') }}">一覧表示</a>
     </div>
 </div>
-{% endif %}
