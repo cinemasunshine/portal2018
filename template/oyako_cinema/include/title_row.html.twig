@@ -20,7 +20,8 @@
                     {% for oyakoCinemaTheater in oyakoCinemaSchedule.getOyakoCinemaTheaters() %}
                         {% set theater = oyakoCinemaTheater.getTheater() %}
                         <div class="area-button mb-md-2 pr-md-2 mb-2 px-1 px-md-0 small font-weight-bold">
-                            <a href="{{ theater.getMeta().getOyakoCinemaUrl() }}" class="d-flex align-items-center justify-content-center bg-white text-blue border-blue">{{ theater|theater_name_ja2 }}</a>
+                            <!--<a href="{{ theater.getMeta().getOyakoCinemaUrl() }}" class="d-flex align-items-center justify-content-center bg-white text-blue border-blue">{{ theater|theater_name_ja2 }}</a>-->
+                            <a href="{{ path_for('theater', { name: theater.getName() }) }}" class="d-flex align-items-center justify-content-center bg-white text-blue border-blue">{{ theater|theater_name_ja2 }}</a>
                         </div>
                     {% endfor %}
 
