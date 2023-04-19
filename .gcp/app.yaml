@@ -106,10 +106,6 @@ handlers:
     static_files: public/lp/screen-x/\1
     upload: public/lp/screen-x/(.*)
 
-  - url: /.well-known/acme-challenge/(.*)
-    static_files: public/.well-known/acme-challenge/\1
-    upload: public/.well-known/acme-challenge/(.*)
-
   - url: .*
     script: auto
     secure: always
