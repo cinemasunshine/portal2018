@@ -24,7 +24,6 @@ $(function () {
     initInformations();
     // スケジュールレンダリング
     scheduleRender();
-    $('#schedule').removeClass('d-none');
 });
 
 /**
@@ -104,4 +103,11 @@ function scrollProcess() {
  */
 function isSignIn() {
     return $('#signIn').length > 0;
+}
+
+/**
+ * サインイン種類取得
+ */
+function getSignInType() {
+    return $('#signIn').val();
 }

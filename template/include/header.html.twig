@@ -33,6 +33,7 @@
                 <div class="pr-2 d-flex">
                     {% if is_login() %}
                     {% set user = login_user() %}
+                    {# TODO 現行会員ログイン分岐 #}
                     <div>
                         <p class="mb-0 small"><span class="username">{{ user.name }}</span>さん</p>
                         <div>
@@ -40,14 +41,27 @@
                                 href="{{ logout_url(full_url_for('logout')) }}" role="button">ログアウト</a>
                         </div>
                     </div>
+                    {# TODO 新会員ログイン分岐 #}
+                    <div class="mr-2">
+                        {# マイページURL設定 #}
+                        <a class="btn btn-primary btn-sm x-small" href="#" role="button">マイページ</a>
+                    </div>
+                    <div>
+                        {# TODO 新会員ログアウトURL設定 #}
+                        <a id="signOutButton" class="btn btn-danger btn-sm d-inline-block x-small"
+                            href="#" role="button">ログアウト</a>
+                    </div>
+                    {# TODO ログイン種類をvalueへ追加(新会員ならNewMembership, 現行会員ならMembership) #}
                     <input type="hidden" name="signIn" id="signIn">
                     {% else %}
-                    <!-- <div class="mr-2">
-                            <a class="btn btn-outline-primary btn-sm" href="#" role="button">会員登録</a>
-                        </div> -->
+                    <div class="mr-2">
+                        {# TODO 会員登録URL設定 #}
+                        <a class="btn btn-outline-primary btn-sm x-small" href="#" role="button">会員登録</a>
+                    </div>
                     <div>
-                        <a id="signInButton" class="btn btn-sm bg-blue text-white d-inline-block"
-                            href="{{ login_url(full_url_for('login')) }}" role="button">ログイン</a>
+                        <a id="signInButton" class="btn btn-sm bg-blue text-white d-inline-block x-small"
+                        href="#" data-toggle="modal"
+                        data-target="#signInModal" role="button">ログイン</a>
                     </div>
                     {% endif %}
                 </div>
@@ -67,3 +81,25 @@
         </div>
     </div>
 </header>
+<div class="modal fade" id="signInModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered justify-content-center d-flex m-0" role="document">
+        <div class="modal-content py-3 px-4" style="max-width: 300px; overflow: visible;">
+            <a class="d-block close-button pointer" data-dismiss="modal" role="button">
+                <img class="w-100" src="/images/common/close.svg">
+        </a>
+            <div class="mb-4">
+                <p class="mb-2">シネマサンシャインリワード会員の方はこちら</p>
+                <a id="signInButton" class="btn bg-blue text-white btn-block d-block"
+                    href="{{ login_url(full_url_for('login')) }}"
+                    role="button">ログイン</a>
+            </div>
+            <div class="">
+                <p class="mb-2">シネマサンシャイン会員の方はこちら</p>
+                {# TODO 新会員ログインURL設定 #}
+                <a id="signInButton" class="btn bg-blue text-white btnd-block d-block"
+                    href="#"
+                    role="button">ログイン</a>
+            </div>
+        </div>
+    </div>
+</div>
