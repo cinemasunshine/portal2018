@@ -1,60 +1,32 @@
 <?php
 
-/**
- * MotionpictureTicketExtensionTest.php
- */
-
 declare(strict_types=1);
 
 namespace Tests\Unit\Twig\Extension;
 
 use App\Twig\Extension\MotionpictureTicketExtension;
-use Mockery;
-use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use PHPUnit\Framework\TestCase;
-use ReflectionClass;
 use Twig\TwigFunction;
 
 /**
- * MotionpictureTicket extension test
+ * @covers \App\Twig\Extension\MotionpictureTicketExtension
+ * @testdox モーションピクチャーのチケットサイトに関するTwig拡張機能
  */
 final class MotionpictureTicketExtensionTest extends TestCase
 {
-    use MockeryPHPUnitIntegration;
-
     /**
+     * @covers ::getFunctions
      * @test
      */
-    public function testConstruct(): void
+    public function Twigヘルパー関数であるTwigFunctionのリストを返す(): void
     {
-        $extensionMock = Mockery::mock(MotionpictureTicketExtension::class);
-        $settings      = [];
+        // Arrange
+        $extensions = new MotionpictureTicketExtension([]);
 
-        $extensionClassRef = new ReflectionClass(MotionpictureTicketExtension::class);
+        // Act
+        $functions = $extensions->getFunctions();
 
-        // execute constructor
-        $constructorRef = $extensionClassRef->getConstructor();
-        $constructorRef->invoke($extensionMock, $settings);
-
-        // test property "settings"
-        $settingsPropertyRef = $extensionClassRef->getProperty('settings');
-        $settingsPropertyRef->setAccessible(true);
-        $this->assertEquals(
-            $settings,
-            $settingsPropertyRef->getValue($extensionMock)
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function testGetFunctions(): void
-    {
-        $extensionMock = Mockery::mock(MotionpictureTicketExtension::class)
-            ->makePartial();
-
-        $functions = $extensionMock->getFunctions();
-
+        // Assrt
         $this->assertIsArray($functions);
 
         foreach ($functions as $function) {
@@ -63,47 +35,89 @@ final class MotionpictureTicketExtensionTest extends TestCase
     }
 
     /**
+     * @covers ::getFunctions
+     * @dataProvider functionNameDataProvider
      * @test
      */
-    public function testGetTicketInquiryUrl(): void
+    public function 決まった名称のtwigヘルパー関数が含まれる(string $name): void
     {
-        $settings = ['ticket_url' => 'http://example.com'];
+        // Arrange
+        $extensions = new MotionpictureTicketExtension([]);
 
-        $extensionMock = Mockery::mock(MotionpictureTicketExtension::class)
-            ->makePartial();
+        // Act
+        $functions = $extensions->getFunctions();
 
-        $extensionClassRef = new ReflectionClass(MotionpictureTicketExtension::class);
+        // Assert
+        $functionNames = [];
 
-        $settingsPropertyRef = $extensionClassRef->getProperty('settings');
-        $settingsPropertyRef->setAccessible(true);
-        $settingsPropertyRef->setValue($extensionMock, $settings);
+        foreach ($functions as $function) {
+            $functionNames[] = $function->getName();
+        }
 
-        $theaterCode = '001';
-
-        $result = $extensionMock->getTicketInquiryUrl($theaterCode);
-        $this->assertStringContainsString($settings['ticket_url'], $result);
-        $this->assertStringContainsString($theaterCode, $result);
+        $this->assertContains($name, $functionNames);
     }
 
     /**
+     * @return array<array<string>>
+     */
+    public function functionNameDataProvider(): array
+    {
+        return [
+            ['mp_ticket_inquiry'],
+            ['mp_ticket_entrance'],
+            ['mp_ticket'],
+        ];
+    }
+
+    /**
+     * @covers ::getTicketInquiryUrl
      * @test
      */
-    public function testGetTicketEntranceUrl(): void
+    public function 劇場ごとの問い合わせURLを返す(): void
     {
-        $settings = ['ticket_entrance_url' => 'http://example.com'];
+        // Arrange
+        $theaterCode = '001';
+        $settings    = ['ticket_url' => 'https://ticket.example.com'];
+        $extension   = new MotionpictureTicketExtension($settings);
 
-        $extensionMock = Mockery::mock(MotionpictureTicketExtension::class)
-            ->makePartial();
+        // Act
+        $result = $extension->getTicketInquiryUrl($theaterCode);
 
-        $extensionClassRef = new ReflectionClass(MotionpictureTicketExtension::class);
+        // Assert
+        $this->assertSame('https://ticket.example.com/inquiry/login?theater=001', $result);
+    }
 
-        $settingsPropertyRef = $extensionClassRef->getProperty('settings');
-        $settingsPropertyRef->setAccessible(true);
-        $settingsPropertyRef->setValue($extensionMock, $settings);
+    /**
+     * @covers ::getTicketEntranceUrl
+     * @test
+     */
+    public function エントランスURLを返す(): void
+    {
+        // Arrange
+        $settings  = ['ticket_entrance_url' => 'https://entrance.example.com'];
+        $extension = new MotionpictureTicketExtension($settings);
 
-        $this->assertEquals(
-            $settings['ticket_entrance_url'],
-            $extensionMock->getTicketEntranceUrl()
-        );
+        // Act
+        $result = $extension->getTicketEntranceUrl();
+
+        // Assert
+        $this->assertSame('https://entrance.example.com', $result);
+    }
+
+    /**
+     * @covers ::getTicketUrl
+     * @test
+     */
+    public function オンラインチケットサイトのURLを返す(): void
+    {
+        // Arrange
+        $settings  = ['ticket_url' => 'https://ticket.example.com'];
+        $extension = new MotionpictureTicketExtension($settings);
+
+        // Act
+        $result = $extension->getTicketUrl();
+
+        // Assert
+        $this->assertSame('https://ticket.example.com', $result);
     }
 }
