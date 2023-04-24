@@ -18,6 +18,7 @@ use App\Session\SessionManager;
 use App\Twig\Extension\AdvanceTicketExtension;
 use App\Twig\Extension\AzureStorageExtension;
 use App\Twig\Extension\CommonExtension;
+use App\Twig\Extension\MembershipExtension;
 use App\Twig\Extension\MotionpictureTicketExtension;
 use App\Twig\Extension\NewsExtension;
 use App\Twig\Extension\ScheduleExtension;
@@ -112,6 +113,9 @@ $container['view'] = static function ($container) {
         $container->get('settings')['storage']['public_endpoint']
     ));
     $view->addExtension(new CommonExtension(APP_ENV));
+    $view->addExtension(new MembershipExtension(
+        $container->get('settings')['membership']
+    ));
     $view->addExtension(new MotionpictureTicketExtension(
         $container->get('settings')['mp_service']
     ));

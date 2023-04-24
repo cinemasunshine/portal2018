@@ -204,8 +204,9 @@ $getMpServiceSetting = static function () {
         'cliennt_credentials_client_secret' => getenv('APPSETTING_MP_CLIENT_CREDENTIALS_CLIENT_SECRET'),
 
         // Ticket
-        'ticket_url'          => getenv('APPSETTING_MP_TICKET_URL'),
-        'ticket_entrance_url' => getenv('APPSETTING_MP_TICKET_ENTRANCE_URL'),
+        'ticket_url'             => getenv('APPSETTING_MP_TICKET_URL'),
+        'ticket_entrance_url'    => getenv('APPSETTING_MP_TICKET_ENTRANCE_URL'),
+        'ticket_transaction_url' => getenv('APPSETTING_MP_TICKET_TRANSACTION_URL'),
     ];
 
     $baseScopeList = [
@@ -237,6 +238,10 @@ $settings['mp_service'] = $getMpServiceSetting();
 $settings['schedule'] = [
     'env'     => getenv('APPSETTING_SCHEDULE_ENV'),
     'api_url' => getenv('APPSETTING_SCHEDULE_API_URL'),
+];
+
+$settings['membership'] = [
+    'mypage_url' => getenv('APPSETTING_MEMBERSHIP_MYPAGE_URL'),
 ];
 
 return $settings;

@@ -66,6 +66,7 @@ final class MotionpictureTicketExtensionTest extends TestCase
             ['mp_ticket_inquiry'],
             ['mp_ticket_entrance'],
             ['mp_ticket'],
+            ['mp_ticket_transaction'],
         ];
     }
 
@@ -119,5 +120,22 @@ final class MotionpictureTicketExtensionTest extends TestCase
 
         // Assert
         $this->assertSame('https://ticket.example.com', $result);
+    }
+
+    /**
+     * @covers ::getTransactionUrl
+     * @test
+     */
+    public function 取引URLを返す(): void
+    {
+        // Arrange
+        $settings  = ['ticket_transaction_url' => 'https://transaction.example.com'];
+        $extension = new MotionpictureTicketExtension($settings);
+
+        // Act
+        $result = $extension->getTransactionUrl();
+
+        // Assert
+        $this->assertSame('https://transaction.example.com', $result);
     }
 }

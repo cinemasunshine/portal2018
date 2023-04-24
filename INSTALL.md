@@ -76,6 +76,8 @@ Azure Web Appsのアプリケーション設定で設定する場合はプレフ
 |APPSETTING_MP_CLIENT_CREDENTIALS_CLIENT_SECRET|*String*|○|Client Credentials Grantのクライアント シークレット|
 |APPSETTING_MP_TICKET_URL|*String*|○|MPオンラインチケットのURL|
 |APPSETTING_MP_TICKET_ENTRANCE_URL|*String*|○|MPオンラインチケットのエントランスURL|
+|APPSETTING_MP_TICKET_TRANSACTION_URL|*String*|○|取引URL|
+|APPSETTING_MEMBERSHIP_MYPAGE_URL|*String*|○|マイページURL|
 
 #### 接続文字列
 
