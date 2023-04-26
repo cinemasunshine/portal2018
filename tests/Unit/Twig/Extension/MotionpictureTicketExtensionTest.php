@@ -9,31 +9,11 @@ use PHPUnit\Framework\TestCase;
 use Twig\TwigFunction;
 
 /**
- * @covers \App\Twig\Extension\MotionpictureTicketExtension
+ * @coversDefaultClass \App\Twig\Extension\MotionpictureTicketExtension
  * @testdox モーションピクチャーのチケットサイトに関するTwig拡張機能
  */
 final class MotionpictureTicketExtensionTest extends TestCase
 {
-    /**
-     * @covers ::getFunctions
-     * @test
-     */
-    public function Twigヘルパー関数であるTwigFunctionのリストを返す(): void
-    {
-        // Arrange
-        $extensions = new MotionpictureTicketExtension([]);
-
-        // Act
-        $functions = $extensions->getFunctions();
-
-        // Assrt
-        $this->assertIsArray($functions);
-
-        foreach ($functions as $function) {
-            $this->assertInstanceOf(TwigFunction::class, $function);
-        }
-    }
-
     /**
      * @covers ::getFunctions
      * @dataProvider functionNameDataProvider
@@ -51,6 +31,7 @@ final class MotionpictureTicketExtensionTest extends TestCase
         $functionNames = [];
 
         foreach ($functions as $function) {
+            $this->assertInstanceOf(TwigFunction::class, $function);
             $functionNames[] = $function->getName();
         }
 
@@ -58,7 +39,7 @@ final class MotionpictureTicketExtensionTest extends TestCase
     }
 
     /**
-     * @return array<array<string>>
+     * @return array<array{string}>
      */
     public function functionNameDataProvider(): array
     {

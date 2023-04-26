@@ -9,31 +9,11 @@ use PHPUnit\Framework\TestCase;
 use Twig\TwigFunction;
 
 /**
- * @covers \App\Twig\Extension\MembershipExtension
+ * @coversDefaultClass \App\Twig\Extension\MembershipExtension
  * @testdox 会員に関するTwig拡張機能
  */
 class MembershipExtensionTest extends TestCase
 {
-    /**
-     * @covers ::getFunctions
-     * @test
-     */
-    public function Twigヘルパー関数であるTwigFunctionのリストを返す(): void
-    {
-        // Arrange
-        $extensions = new MembershipExtension([]);
-
-        // Act
-        $functions = $extensions->getFunctions();
-
-        // Assrt
-        $this->assertIsArray($functions);
-
-        foreach ($functions as $function) {
-            $this->assertInstanceOf(TwigFunction::class, $function);
-        }
-    }
-
     /**
      * @covers ::getFunctions
      * @dataProvider functionNameDataProvider
@@ -51,6 +31,7 @@ class MembershipExtensionTest extends TestCase
         $functionNames = [];
 
         foreach ($functions as $function) {
+            $this->assertInstanceOf(TwigFunction::class, $function);
             $functionNames[] = $function->getName();
         }
 
@@ -58,7 +39,7 @@ class MembershipExtensionTest extends TestCase
     }
 
     /**
-     * @return array<array<string>>
+     * @return array<array{string}>
      */
     public function functionNameDataProvider(): array
     {
