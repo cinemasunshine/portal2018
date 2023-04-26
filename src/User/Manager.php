@@ -32,7 +32,7 @@ class Manager
          * ユーザ情報
          * 情報が増えてきたらオブジェクト化など考える。
          */
-        $claims = $authorizationToken->decodeAccessToken()->getClaims();
+        $claims = $authorizationToken->getDecodedAccessToken()->getClaims();
 
         $user = [
             'name' => $claims['username'],

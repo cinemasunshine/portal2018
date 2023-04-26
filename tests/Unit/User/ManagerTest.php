@@ -70,7 +70,7 @@ final class ManagerTest extends TestCase
 
         $authorizationCodeTokenMock = $this->createAuthorizationCodeTokenMock();
         $authorizationCodeTokenMock
-            ->shouldReceive('decodeAccessToken')
+            ->shouldReceive('getDecodedAccessToken')
             ->once()
             ->with()
             ->andReturn($decodedAccessTokenMock);
