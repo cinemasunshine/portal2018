@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Authorization;
 
 use App\Authorization\Grant\AuthorizationCode as AuthorizationCodeGrant;
-use App\Authorization\Grant\RefreshToken as RefreshTokenGrant;
 use App\Authorization\Token\AuthorizationCodeToken as Token;
 use App\Session\Container as SessionContainer;
 
@@ -26,8 +25,6 @@ class Manager
     protected string $codeChallengeMethod = 'S256';
 
     protected string $host;
-
-    protected ?RefreshTokenGrant $refreshTokenGrant = null;
 
     /** @var string[] */
     protected array $scopeList;
@@ -132,23 +129,5 @@ class Manager
     public function getLogoutUrl(string $redirectUri): string
     {
         return $this->getAuthorizationCodeGrunt()->getLogoutUrl($redirectUri);
-    }
-
-    protected function getRefreshTokenGrant(): RefreshTokenGrant
-    {
-        if (! $this->refreshTokenGrant) {
-            $this->refreshTokenGrant = new RefreshTokenGrant(
-                $this->host,
-                $this->clientId,
-                $this->clientSecret
-            );
-        }
-
-        return $this->refreshTokenGrant;
-    }
-
-    public function refreshToken(string $refreshToken): Token
-    {
-        return $this->getRefreshTokenGrant()->requestToken($refreshToken);
     }
 }

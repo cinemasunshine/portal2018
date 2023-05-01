@@ -3,7 +3,6 @@
 declare(strict_types=1);
 
 use App\Controller\AboutController;
-use App\Controller\API\AuthorizationController as AuthorizationAPIController;
 use App\Controller\AuthorizationController;
 use App\Controller\Development\DoctrineController;
 use App\Controller\FourdxController;
@@ -126,13 +125,6 @@ $app->group('/4dx-screen', function (): void {
     $this->get('/news/{id:[0-9]+}.php', FourdxScreenController::class . ':newsShow')
         ->setName('4dx_screen_news_show');
     $this->get('/theater/', FourdxScreenController::class . ':theater')->setName('4dx_screen_theater');
-});
-
-// APIのURL設計はひとまずそのまま SASAKI-315
-$app->group('/api', function (): void {
-    $this->group('/auth', function (): void {
-        $this->get('/token', AuthorizationAPIController::class . ':token');
-    });
 });
 
 /**
