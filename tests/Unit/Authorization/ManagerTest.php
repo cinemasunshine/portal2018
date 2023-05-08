@@ -1,15 +1,10 @@
 <?php
 
-/**
- * ManagerTest.php
- */
-
 declare(strict_types=1);
 
 namespace Tests\Unit\Authorization;
 
 use App\Authorization\Grant\AuthorizationCode as AuthorizationCodeGrant;
-use App\Authorization\Grant\RefreshToken as RefreshTokenGrant;
 use App\Authorization\Manager as AuthorizationManager;
 use App\Authorization\Token\AuthorizationCodeToken;
 use App\Session\Container as SessionContainer;
@@ -68,14 +63,6 @@ final class ManagerTest extends TestCase
     protected function createAuthorizationCodeGrantMock()
     {
         return Mockery::mock(AuthorizationCodeGrant::class);
-    }
-
-    /**
-     * @return MockInterface|LegacyMockInterface|RefreshTokenGrant
-     */
-    protected function createRefreshTokenGrantMock()
-    {
-        return Mockery::mock(RefreshTokenGrant::class);
     }
 
     /**
@@ -476,76 +463,5 @@ final class ManagerTest extends TestCase
 
         $result = $targetMock->getLogoutUrl($redirectUri);
         $this->assertEquals($logoutUrl, $result);
-    }
-
-    /**
-     * @test
-     */
-    public function testGetRefreshTokenGrant(): void
-    {
-        $targetMock = $this->createTargetMock();
-        $targetMock->shouldAllowMockingProtectedMethods()
-            ->makePartial();
-        $targetRef = $this->createTargetReflection();
-
-        $host = 'example.com';
-
-        $hostPropertyRef = $targetRef->getProperty('host');
-        $hostPropertyRef->setAccessible(true);
-        $hostPropertyRef->setValue($targetMock, $host);
-
-        $clientId = 'client_id';
-
-        $clientIdPropertyRef = $targetRef->getProperty('clientId');
-        $clientIdPropertyRef->setAccessible(true);
-        $clientIdPropertyRef->setValue($targetMock, $clientId);
-
-        $clientSecret = 'client_secret';
-
-        $clientSecretPropertyRef = $targetRef->getProperty('clientSecret');
-        $clientSecretPropertyRef->setAccessible(true);
-        $clientSecretPropertyRef->setValue($targetMock, $clientSecret);
-
-        $targetMethodRef = $targetRef->getMethod('getRefreshTokenGrant');
-        $targetMethodRef->setAccessible(true);
-
-        $result = $targetMethodRef->invoke($targetMock);
-
-        $refreshTokenGrantPropertyRef = $targetRef->getProperty('refreshTokenGrant');
-        $refreshTokenGrantPropertyRef->setAccessible(true);
-
-        $this->assertEquals(
-            $refreshTokenGrantPropertyRef->getValue($targetMock),
-            $result
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function testRefreshToken(): void
-    {
-        $tokenMock = $this->createAuthorizationCodeTokenMock();
-
-        $refreshToken = 'refresh_token';
-
-        $refreshTokenGrantMock = $this->createRefreshTokenGrantMock();
-        $refreshTokenGrantMock
-            ->shouldReceive('requestToken')
-            ->once()
-            ->with($refreshToken)
-            ->andReturn($tokenMock);
-
-        $targetMock = $this->createTargetMock();
-        $targetMock->shouldAllowMockingProtectedMethods()
-            ->makePartial();
-        $targetMock
-            ->shouldReceive('getRefreshTokenGrant')
-            ->once()
-            ->with()
-            ->andReturn($refreshTokenGrantMock);
-
-        $result = $targetMock->refreshToken($refreshToken);
-        $this->assertEquals($tokenMock, $result);
     }
 }
