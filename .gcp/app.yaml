@@ -106,6 +106,14 @@ handlers:
     static_files: public/lp/screen-x/\1
     upload: public/lp/screen-x/(.*)
 
+  - url: /meal/
+    static_files: public/meal/index.html
+    upload: public/meal/index.html
+
+  - url: /meal/(.*)
+    static_files: public/meal/\1
+    upload: public/meal/(.*)
+
   - url: .*
     script: auto
     secure: always
