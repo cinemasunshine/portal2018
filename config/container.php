@@ -13,6 +13,7 @@ use App\Application\Handlers\NotAllowed;
 use App\Application\Handlers\NotFound;
 use App\Application\Handlers\PhpError;
 use App\Authorization\Manager as AuthorizationManager;
+use App\Authorization\SessionContainer as AuthorizationSessionContainer;
 use App\Logger\DbalLogger;
 use App\Session\SessionManager;
 use App\Twig\Extension\AdvanceTicketExtension;
@@ -51,8 +52,6 @@ use Twig\Extra\String\StringExtension;
 $container = $app->getContainer();
 
 /**
- * Authorization Manager
- *
  * @return AuthorizationManager
  */
 $container['am'] = static function ($container) {
@@ -62,9 +61,13 @@ $container['am'] = static function ($container) {
      */
     $sessionContainerName = 'authorization_20200907';
 
+    $sessionContainer = new AuthorizationSessionContainer(
+        $container->get('sm')->getContainer($sessionContainerName)
+    );
+
     return new AuthorizationManager(
         $container->get('settings')['mp_service'],
-        $container->get('sm')->getContainer($sessionContainerName)
+        $sessionContainer
     );
 };
 

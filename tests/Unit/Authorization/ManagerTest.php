@@ -6,10 +6,11 @@ namespace Tests\Unit\Authorization;
 
 use App\Authorization\Grant\AuthorizationCode as AuthorizationCodeGrant;
 use App\Authorization\Manager as AuthorizationManager;
+use App\Authorization\SessionContainer as AuthorizationSessionContainer;
 use App\Authorization\Token\AuthorizationCodeToken;
-use App\Session\Container as SessionContainer;
 use App\Session\SessionManager;
 use Laminas\Session\Config\StandardConfig;
+use Laminas\Session\Storage\ArrayStorage;
 use Mockery;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use Mockery\LegacyMockInterface;
@@ -17,22 +18,37 @@ use Mockery\MockInterface;
 use PHPUnit\Framework\TestCase;
 use ReflectionClass;
 
+/**
+ * @covers \App\Authorization\Manager
+ * @testdox 認可処理を扱うクラス
+ */
 final class ManagerTest extends TestCase
 {
     use MockeryPHPUnitIntegration;
 
-    private SessionManager $sessionManager;
-
-    protected function setUp(): void
+    private function createSessionManager(): SessionManager
     {
-        $sessionConfig = new StandardConfig();
-        $sessionConfig->setOptions(['name' => 'test']);
-        $this->sessionManager = new SessionManager($sessionConfig);
+        $sessionConfig  = new StandardConfig();
+        $sessionManager = new SessionManager($sessionConfig);
+        $sessionManager->setStorage(new ArrayStorage());
+
+        return $sessionManager;
     }
 
-    protected function tearDown(): void
+    /**
+     * @return array<string, mixed>
+     */
+    private function createSettings(): array
     {
-        $this->sessionManager->getStorage()->clear();
+        return [
+            'authorization_code_host' => 'dummy-auth.example.com',
+            'authorization_code_client_id' => 'xxxxx',
+            'authorization_code_client_secret' => 'xxxxxxxxxxx',
+            'authorization_code_scope' => [
+                'openid',
+                'email',
+            ],
+        ];
     }
 
     /**
@@ -47,7 +63,7 @@ final class ManagerTest extends TestCase
      * @param array<string, mixed> $settings
      * @return MockInterface|LegacyMockInterface|AuthorizationManager
      */
-    protected function createTargetMockWithArgs(array $settings, SessionContainer $session)
+    protected function createTargetMockWithArgs(array $settings, AuthorizationSessionContainer $session)
     {
         return Mockery::mock(AuthorizationManager::class, [$settings, $session]);
     }
@@ -76,68 +92,6 @@ final class ManagerTest extends TestCase
     /**
      * @test
      */
-    public function testConstruct(): void
-    {
-        $settings = [
-            'authorization_code_host' => 'host',
-            'authorization_code_client_id' => 'client_id',
-            'authorization_code_client_secret' => 'client_secret',
-            'authorization_code_scope' => ['scope'],
-        ];
-
-        $sessionContainer = $this->sessionManager->getContainer();
-
-        $targetMock = $this->createTargetMock();
-        $targetRef  = $this->createTargetReflection();
-
-        // execute constructor
-        $constructorRef = $targetRef->getConstructor();
-        $constructorRef->invoke($targetMock, $settings, $sessionContainer);
-
-        // test property "host"
-        $hostPropertyRef = $targetRef->getProperty('host');
-        $hostPropertyRef->setAccessible(true);
-        $this->assertEquals(
-            $settings['authorization_code_host'],
-            $hostPropertyRef->getValue($targetMock)
-        );
-
-        // test property "clientId"
-        $clientIdPropertyRef = $targetRef->getProperty('clientId');
-        $clientIdPropertyRef->setAccessible(true);
-        $this->assertEquals(
-            $settings['authorization_code_client_id'],
-            $clientIdPropertyRef->getValue($targetMock)
-        );
-
-        // test property "clientSecret"
-        $clientSecretPropertyRef = $targetRef->getProperty('clientSecret');
-        $clientSecretPropertyRef->setAccessible(true);
-        $this->assertEquals(
-            $settings['authorization_code_client_secret'],
-            $clientSecretPropertyRef->getValue($targetMock)
-        );
-
-        // test property "scopeList"
-        $scopeListPropertyRef = $targetRef->getProperty('scopeList');
-        $scopeListPropertyRef->setAccessible(true);
-        $this->assertEquals(
-            $settings['authorization_code_scope'],
-            $scopeListPropertyRef->getValue($targetMock)
-        );
-
-        // test property "session"
-        $sessionPropertyRef = $targetRef->getProperty('session');
-        $sessionPropertyRef->setAccessible(true);
-        $this->assertEquals(
-            $sessionContainer,
-            $sessionPropertyRef->getValue($targetMock)
-        );
-    }
-
-    /**
-     * @test
-     */
     public function testGetAuthorizationCodeGrunt(): void
     {
         $settings = [
@@ -147,7 +101,10 @@ final class ManagerTest extends TestCase
             'authorization_code_scope' => ['scope'],
         ];
 
-        $sessionContainer = $this->sessionManager->getContainer();
+        $sessionManager   = $this->createSessionManager();
+        $sessionContainer = new AuthorizationSessionContainer(
+            $sessionManager->getContainer('test')
+        );
 
         $targetMock = $this->createTargetMockWithArgs($settings, $sessionContainer);
         $targetRef  = $this->createTargetReflection();
@@ -222,38 +179,6 @@ final class ManagerTest extends TestCase
     /**
      * @test
      */
-    public function testInitAuthorizationState(): void
-    {
-        $targetMock = $this->createTargetMock();
-        $targetMock->shouldAllowMockingProtectedMethods()
-            ->makePartial();
-
-        $authorizationState = 'unique_authorization_state';
-        $targetMock
-            ->shouldReceive('createUniqueStr')
-            ->once()
-            ->with(Mockery::type('string'))
-            ->andReturn($authorizationState);
-
-        $targetRef = $this->createTargetReflection();
-
-        $sessionContainer = $this->sessionManager->getContainer();
-
-        $sessionPropertyRef = $targetRef->getProperty('session');
-        $sessionPropertyRef->setAccessible(true);
-        $sessionPropertyRef->setValue($targetMock, $sessionContainer);
-
-        $targetMethodRef = $targetRef->getMethod('initAuthorizationState');
-        $targetMethodRef->setAccessible(true);
-
-        $targetMethodRef->invoke($targetMock);
-
-        $this->assertEquals($authorizationState, $sessionContainer['authorization_state']);
-    }
-
-    /**
-     * @test
-     */
     public function testCreateUniqueStr(): void
     {
         $targetMock = $this->createTargetMock();
@@ -274,127 +199,69 @@ final class ManagerTest extends TestCase
     }
 
     /**
+     * @covers ::getAuthorizationState
      * @test
      */
-    public function testGetAuthorizationState(): void
+    public function AuthorizationStateを取得する(): void
     {
-        $targetMock = $this->createTargetMock();
-        $targetMock->shouldAllowMockingProtectedMethods()
-            ->makePartial();
-        $targetMock
-            ->shouldReceive('initAuthorizationState')
-            ->once()
-            ->with()
-            ->passthru();
+        // Arrange
+        $sessionManager   = $this->createSessionManager();
+        $sessionContainer = new AuthorizationSessionContainer(
+            $sessionManager->getContainer('test')
+        );
+        $settings         = $this->createSettings();
+        $manager          = new AuthorizationManager($settings, $sessionContainer);
 
-        $targetRef = $this->createTargetReflection();
+        // Act
+        $result = $manager->getAuthorizationState();
 
-        $sessionContainer = $this->sessionManager->getContainer();
-
-        $sessionPropertyRef = $targetRef->getProperty('session');
-        $sessionPropertyRef->setAccessible(true);
-        $sessionPropertyRef->setValue($targetMock, $sessionContainer);
-
-        $result = $targetMock->getAuthorizationState();
-
-        $this->assertEquals($sessionContainer['authorization_state'], $result);
-
-        $targetMock
-            ->shouldReceive('initAuthorizationState')
-            ->never();
-
-        $targetMock->getAuthorizationState();
+        // Assert
+        $this->assertSame($sessionContainer->getAuthorizationState(), $result);
     }
 
     /**
+     * @covers ::getAuthorizationState
      * @test
      */
-    public function testClearAuthorizationState(): void
+    public function 初回以降も同じAuthorizationStateを取得する(): void
     {
-        $targetMock = $this->createTargetMock();
-        $targetMock->makePartial();
+        // Arrange
+        $sessionManager   = $this->createSessionManager();
+        $sessionContainer = new AuthorizationSessionContainer(
+            $sessionManager->getContainer('test')
+        );
+        $settings         = $this->createSettings();
+        $manager          = new AuthorizationManager($settings, $sessionContainer);
 
-        $targetRef = $this->createTargetReflection();
+        // Act
+        $first  = $manager->getAuthorizationState();
+        $second = $manager->getAuthorizationState();
 
-        $sessionContainer = $this->sessionManager->getContainer();
-
-        $sessionContainer['authorization_state'] = 'example';
-
-        $sessionPropertyRef = $targetRef->getProperty('session');
-        $sessionPropertyRef->setAccessible(true);
-        $sessionPropertyRef->setValue($targetMock, $sessionContainer);
-
-        $targetMock->clearAuthorizationState();
-
-        $this->assertNull($sessionContainer['authorization_state']);
+        // Assert
+        $this->assertSame($first, $second);
     }
 
     /**
+     * @covers ::clearAuthorizationState
      * @test
      */
-    public function testInitCodeVerifier(): void
+    public function AuthorizationStateをクリアすると新たな値を取得する(): void
     {
-        $targetMock = $this->createTargetMock();
-        $targetMock->shouldAllowMockingProtectedMethods()
-            ->makePartial();
+        // Arrange
+        $sessionManager   = $this->createSessionManager();
+        $sessionContainer = new AuthorizationSessionContainer(
+            $sessionManager->getContainer('test')
+        );
+        $settings         = $this->createSettings();
+        $manager          = new AuthorizationManager($settings, $sessionContainer);
+        $first            = $manager->getAuthorizationState();
 
-        $codeVerifier = 'unique_code_verifier';
-        $targetMock
-            ->shouldReceive('createUniqueStr')
-            ->once()
-            ->with(Mockery::type('string'))
-            ->andReturn($codeVerifier);
+        // Act
+        $manager->clearAuthorizationState();
 
-        $targetRef = $this->createTargetReflection();
-
-        $sessionContainer = $this->sessionManager->getContainer();
-
-        $sessionPropertyRef = $targetRef->getProperty('session');
-        $sessionPropertyRef->setAccessible(true);
-        $sessionPropertyRef->setValue($targetMock, $sessionContainer);
-
-        $targetMethodRef = $targetRef->getMethod('initCodeVerifier');
-        $targetMethodRef->setAccessible(true);
-
-        $targetMethodRef->invoke($targetMock);
-
-        $this->assertEquals($codeVerifier, $sessionContainer['code_verifier']);
-    }
-
-    /**
-     * @test
-     */
-    public function testGetCodeVerifier(): void
-    {
-        $targetMock = $this->createTargetMock();
-        $targetMock->shouldAllowMockingProtectedMethods()
-            ->makePartial();
-        $targetMock
-            ->shouldReceive('initCodeVerifier')
-            ->once()
-            ->with()
-            ->passthru();
-
-        $targetRef = $this->createTargetReflection();
-
-        $sessionContainer = $this->sessionManager->getContainer();
-
-        $sessionPropertyRef = $targetRef->getProperty('session');
-        $sessionPropertyRef->setAccessible(true);
-        $sessionPropertyRef->setValue($targetMock, $sessionContainer);
-
-        $targetMethodRef = $targetRef->getMethod('getCodeVerifier');
-        $targetMethodRef->setAccessible(true);
-
-        $result = $targetMethodRef->invoke($targetMock);
-
-        $this->assertEquals($sessionContainer['code_verifier'], $result);
-
-        $targetMock
-            ->shouldReceive('initCodeVerifier')
-            ->never();
-
-        $targetMethodRef->invoke($targetMock);
+        // Assert
+        $second = $manager->getAuthorizationState();
+        $this->assertNotSame($first, $second);
     }
 
     /**

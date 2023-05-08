@@ -6,7 +6,6 @@ namespace App\Authorization;
 
 use App\Authorization\Grant\AuthorizationCode as AuthorizationCodeGrant;
 use App\Authorization\Token\AuthorizationCodeToken as Token;
-use App\Session\Container as SessionContainer;
 
 /**
  * Authorization Manager class
@@ -76,7 +75,7 @@ class Manager
      */
     protected function initAuthorizationState(): void
     {
-        $this->session['authorization_state'] = $this->createUniqueStr('authorization_state');
+        $this->session->setAuthorizationState($this->createUniqueStr('authorization_state'));
     }
 
     protected function createUniqueStr(string $name, string $salt = 'salt'): string
@@ -86,21 +85,21 @@ class Manager
 
     public function getAuthorizationState(): string
     {
-        if (! isset($this->session['authorization_state'])) {
+        if (! $this->session->hasAuthorizationState()) {
             $this->initAuthorizationState();
         }
 
-        return $this->session['authorization_state'];
+        return $this->session->getAuthorizationState();
     }
 
     public function clearAuthorizationState(): void
     {
-        unset($this->session['authorization_state']);
+        $this->session->clearAuthorizationState();
     }
 
     protected function initCodeVerifier(): void
     {
-        $this->session['code_verifier'] = $this->createUniqueStr('code_verifier');
+        $this->session->setCodeVerifier($this->createUniqueStr('code_verifier'));
     }
 
     /**
@@ -110,11 +109,11 @@ class Manager
      */
     protected function getCodeVerifier(): string
     {
-        if (! isset($this->session['code_verifier'])) {
+        if (! $this->session->hasCodeVerifier()) {
             $this->initCodeVerifier();
         }
 
-        return $this->session['code_verifier'];
+        return $this->session->getCodeVerifier();
     }
 
     public function requestToken(string $code, string $redirectUri): Token
