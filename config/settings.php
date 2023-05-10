@@ -227,7 +227,7 @@ $getMpServiceSetting = static function () {
 
     $apiUrl = 'https://' . $settings['api_host'];
 
-    $settings['authorization_code_scope'] = str_replace('<API_URL>', $apiUrl, $baseScopeList);
+    $settings['authorization_code_scopes'] = str_replace('<API_URL>', $apiUrl, $baseScopeList);
 
     return $settings;
 };

@@ -13,6 +13,7 @@ use App\Application\Handlers\NotAllowed;
 use App\Application\Handlers\NotFound;
 use App\Application\Handlers\PhpError;
 use App\Authorization\Manager as AuthorizationManager;
+use App\Authorization\Provider\CinemaSunshineRewardProvider;
 use App\Authorization\SessionContainer as AuthorizationSessionContainer;
 use App\Logger\DbalLogger;
 use App\Session\SessionManager;
@@ -65,10 +66,15 @@ $container['am'] = static function ($container) {
         $container->get('sm')->getContainer($sessionContainerName)
     );
 
-    return new AuthorizationManager(
-        $container->get('settings')['mp_service'],
-        $sessionContainer
+    $settings = $container->get('settings')['mp_service'];
+    $provider = new CinemaSunshineRewardProvider(
+        $settings['authorization_code_host'],
+        $settings['authorization_code_client_id'],
+        $settings['authorization_code_client_secret'],
+        $settings['authorization_code_scopes']
     );
+
+    return new AuthorizationManager($provider, $sessionContainer);
 };
 
 /**

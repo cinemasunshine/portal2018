@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tests\Unit\Authorization;
 
 use App\Authorization\Manager as AuthorizationManager;
+use App\Authorization\Provider\CinemaSunshineRewardProvider;
 use App\Authorization\SessionContainer as AuthorizationSessionContainer;
 use App\Session\SessionManager;
 use Laminas\Session\Config\StandardConfig;
@@ -27,19 +28,16 @@ final class ManagerTest extends TestCase
     }
 
     /**
-     * @return array<string, mixed>
+     * @param array<string, mixed> $params
      */
-    private function createSettings(): array
+    private function createProvider(array $params = []): CinemaSunshineRewardProvider
     {
-        return [
-            'authorization_code_host' => 'dummy-auth.example.com',
-            'authorization_code_client_id' => 'xxxxx',
-            'authorization_code_client_secret' => 'xxxxxxxxxxx',
-            'authorization_code_scope' => [
-                'openid',
-                'email',
-            ],
-        ];
+        return new CinemaSunshineRewardProvider(
+            $params['host'] ?? 'example.com',
+            $params['client_id'] ?? 'client',
+            $params['client_secret'] ?? 'secret',
+            $params['scopes'] ?? ['openid']
+        );
     }
 
     /**
@@ -54,17 +52,16 @@ final class ManagerTest extends TestCase
             $sessionManager->getContainer('test')
         );
 
-        $settings = [
-            'authorization_code_host' => 'auth.example.com',
-            'authorization_code_client_id' => 'example_client',
-            'authorization_code_client_secret' => 'example_secret',
-            'authorization_code_scope' => [
+        $provider = $this->createProvider([
+            'host' => 'auth.example.com',
+            'client_id' => 'example_client',
+            'scopes' => [
                 'openid',
                 'email',
             ],
-        ];
+        ]);
 
-        $manager = new AuthorizationManager($settings, $sessionContainer);
+        $manager = new AuthorizationManager($provider, $sessionContainer);
 
         $redirectUri = 'https://example.com/redirect';
 
@@ -92,8 +89,8 @@ final class ManagerTest extends TestCase
         $sessionContainer = new AuthorizationSessionContainer(
             $sessionManager->getContainer('test')
         );
-        $settings         = $this->createSettings();
-        $manager          = new AuthorizationManager($settings, $sessionContainer);
+        $provider         = $this->createProvider();
+        $manager          = new AuthorizationManager($provider, $sessionContainer);
 
         // Act
         $result = $manager->getAuthorizationState();
@@ -113,8 +110,8 @@ final class ManagerTest extends TestCase
         $sessionContainer = new AuthorizationSessionContainer(
             $sessionManager->getContainer('test')
         );
-        $settings         = $this->createSettings();
-        $manager          = new AuthorizationManager($settings, $sessionContainer);
+        $provider         = $this->createProvider();
+        $manager          = new AuthorizationManager($provider, $sessionContainer);
 
         // Act
         $first  = $manager->getAuthorizationState();
@@ -135,8 +132,8 @@ final class ManagerTest extends TestCase
         $sessionContainer = new AuthorizationSessionContainer(
             $sessionManager->getContainer('test')
         );
-        $settings         = $this->createSettings();
-        $manager          = new AuthorizationManager($settings, $sessionContainer);
+        $provider         = $this->createProvider();
+        $manager          = new AuthorizationManager($provider, $sessionContainer);
 
         $manager->getAuthorizationUrl('https://dummy.com');
 
@@ -159,17 +156,12 @@ final class ManagerTest extends TestCase
             $sessionManager->getContainer('test')
         );
 
-        $settings = [
-            'authorization_code_host' => 'auth.example.com',
-            'authorization_code_client_id' => 'example_client',
-            'authorization_code_client_secret' => 'example_secret',
-            'authorization_code_scope' => [
-                'openid',
-                'email',
-            ],
-        ];
+        $provider = $this->createProvider([
+            'host' => 'auth.example.com',
+            'client_id' => 'example_client',
+        ]);
 
-        $manager = new AuthorizationManager($settings, $sessionContainer);
+        $manager = new AuthorizationManager($provider, $sessionContainer);
 
         $redirectUri = 'https://example.com/redirect';
 

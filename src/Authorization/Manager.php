@@ -4,62 +4,26 @@ declare(strict_types=1);
 
 namespace App\Authorization;
 
-use App\Authorization\Grant\AuthorizationCode as AuthorizationCodeGrant;
-use App\Authorization\Token\AuthorizationCodeToken as Token;
+use App\Authorization\Provider\CinemaSunshineRewardProvider;
 use App\Authorization\Token\AuthorizationCodeToken;
-use League\OAuth2\Client\Provider\GenericProvider;
 
-/**
- * Authorization Manager class
- *
- * Authorization Codeによる認可フローを実装します。
- * 全ての認可処理を実装するものではありません。
- */
 class Manager
 {
-    protected AuthorizationCodeGrant $authorizationCodeGrunt;
-
-    protected GenericProvider $provider;
-
+    protected CinemaSunshineRewardProvider $provider;
     protected SessionContainer $session;
 
-    /**
-     * @param array<string, mixed> $settings
-     */
-    public function __construct(array $settings, SessionContainer $session)
+    public function __construct(CinemaSunshineRewardProvider $provider, SessionContainer $session)
     {
-        $host         = $settings['authorization_code_host'];
-        $clientId     = $settings['authorization_code_client_id'];
-        $clientSecret = $settings['authorization_code_client_secret'];
-        $scopes       = $settings['authorization_code_scope'];
-
-        $this->authorizationCodeGrunt = new AuthorizationCodeGrant(
-            $host,
-            $clientId,
-            $clientSecret
-        );
-
-        $this->provider = new GenericProvider([
-            'pkceMethod' => GenericProvider::PKCE_METHOD_S256,
-            'clientId' => $clientId,
-            'clientSecret' => $clientSecret,
-            'urlAuthorize' => 'https://' . $host . '/authorize',
-            'urlAccessToken' => 'https://' . $host . '/token',
-            'urlResourceOwnerDetails' => 'https://' . $host . '/xxxxx',
-            'scopes' => $scopes,
-            'scopeSeparator' => ' ',
-        ]);
-
-        $this->session = $session;
+        $this->provider = $provider;
+        $this->session  = $session;
     }
 
     public function getAuthorizationUrl(string $redirectUri): string
     {
         $this->initAuthorizationState();
-        $url = $this->provider->getAuthorizationUrl([
-            'redirect_uri' => $redirectUri,
-            'state' => $this->getAuthorizationState(),
-        ]);
+
+        $url = $this->provider->getAuthorizationUrl($redirectUri, $this->getAuthorizationState());
+
         $this->session->setCodeVerifier($this->provider->getPkceCode());
 
         return $url;
@@ -87,29 +51,22 @@ class Manager
         $this->session->clearAuthorizationState();
     }
 
-    /**
-     * return code_verifier
-     *
-     * 新たに認証を開始する時は code_verifier を初期化してください。
-     */
     protected function getCodeVerifier(): ?string
     {
         return $this->session->getCodeVerifier();
     }
 
-    public function requestToken(string $code, string $redirectUri): Token
+    public function requestToken(string $code, string $redirectUri): AuthorizationCodeToken
     {
-        $this->provider->setPkceCode($this->getCodeVerifier());
-        $accessToken = $this->provider->getAccessToken('authorization_code', [
-            'code' => $code,
-            'redirect_uri' => $redirectUri,
-        ]);
-
-        return AuthorizationCodeToken::create($accessToken);
+        return $this->provider->requestAuthorizationCodeToken(
+            $code,
+            $redirectUri,
+            $this->getCodeVerifier()
+        );
     }
 
     public function getLogoutUrl(string $redirectUri): string
     {
-        return $this->authorizationCodeGrunt->getLogoutUrl($redirectUri);
+        return $this->provider->getLogoutUrl($redirectUri);
     }
 }
