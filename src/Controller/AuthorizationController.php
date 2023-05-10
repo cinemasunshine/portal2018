@@ -4,14 +4,11 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use GuzzleHttp\Exception\BadResponseException;
 use Slim\Http\Request;
 use Slim\Http\Response;
 use Slim\Http\Uri as HttpUri;
+use Throwable;
 
-/**
- * Authorization controller
- */
 class AuthorizationController extends BaseController
 {
     /**
@@ -51,7 +48,7 @@ class AuthorizationController extends BaseController
 
         try {
             $token = $this->am->requestToken($code, $redirectUri);
-        } catch (BadResponseException $e) {
+        } catch (Throwable $e) {
             $this->logger->error($e->getMessage());
 
             return $this->renderError($response);
