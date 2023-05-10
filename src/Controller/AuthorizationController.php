@@ -56,18 +56,8 @@ class AuthorizationController extends BaseController
 
         $this->um->login($token);
 
-        // redirect
-        $redirectPath = $this->router->pathFor('homepage');
-        $session      = $this->sm->getContainer();
-
-        if (isset($session['viewed_theater'])) {
-            $redirectPath = $this->router->pathFor(
-                'theater',
-                ['name' => $session['viewed_theater']]
-            );
-        }
-
-        $this->redirect($redirectPath);
+        $redirectUrl = $this->getRedirectUrlOnSuccessful();
+        $this->redirect($redirectUrl);
     }
 
     protected function renderError(Response $response): Response
@@ -84,17 +74,21 @@ class AuthorizationController extends BaseController
     {
         $this->um->logout();
 
-        // redirect
-        $redirectPath = $this->router->pathFor('homepage');
-        $session      = $this->sm->getContainer();
+        $redirectUrl = $this->getRedirectUrlOnSuccessful();
+        $this->redirect($redirectUrl);
+    }
+
+    private function getRedirectUrlOnSuccessful(): string
+    {
+        $session = $this->sm->getContainer();
 
         if (isset($session['viewed_theater'])) {
-            $redirectPath = $this->router->pathFor(
+            return $this->router->pathFor(
                 'theater',
                 ['name' => $session['viewed_theater']]
             );
         }
 
-        $this->redirect($redirectPath);
+        return $this->router->pathFor('homepage');
     }
 }
