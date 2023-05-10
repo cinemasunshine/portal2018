@@ -41,8 +41,6 @@ class AuthorizationController extends BaseController
             return $this->renderError($response);
         }
 
-        $this->am->clearAuthorizationState();
-
         $uri         = HttpUri::createFromEnvironment($this->environment);
         $redirectUri = $this->router->fullUrlFor($uri, 'login');
 

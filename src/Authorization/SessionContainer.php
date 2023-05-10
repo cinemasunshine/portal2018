@@ -15,11 +15,6 @@ class SessionContainer
         $this->container = $container;
     }
 
-    public function clearAuthorizationState(): void
-    {
-        unset($this->container['authorization_state']);
-    }
-
     public function hasAuthorizationState(): bool
     {
         return isset($this->container['authorization_state']);

@@ -122,29 +122,6 @@ final class ManagerTest extends TestCase
     }
 
     /**
-     * @covers ::clearAuthorizationState
-     * @test
-     */
-    public function AuthorizationStateがクリアされる(): void
-    {
-        // Arrange
-        $sessionManager   = $this->createSessionManager();
-        $sessionContainer = new AuthorizationSessionContainer(
-            $sessionManager->getContainer('test')
-        );
-        $provider         = $this->createProvider();
-        $manager          = new AuthorizationManager($provider, $sessionContainer);
-
-        $manager->getAuthorizationUrl('https://dummy.com');
-
-        // Act
-        $manager->clearAuthorizationState();
-
-        // Assert
-        $this->assertNull($manager->getAuthorizationState());
-    }
-
-    /**
      * @covers ::getLogoutUrl
      * @test
      */

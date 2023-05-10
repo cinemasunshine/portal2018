@@ -46,11 +46,6 @@ class Manager
         return $this->session->getAuthorizationState();
     }
 
-    public function clearAuthorizationState(): void
-    {
-        $this->session->clearAuthorizationState();
-    }
-
     protected function getCodeVerifier(): ?string
     {
         return $this->session->getCodeVerifier();

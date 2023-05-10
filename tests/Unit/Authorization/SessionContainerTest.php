@@ -113,24 +113,6 @@ class SessionContainerTest extends TestCase
     }
 
     /**
-     * @covers ::clearAuthorizationState
-     * @test
-     */
-    public function AuthorizationStateをクリアする(): void
-    {
-        // Arrange
-        $sessionManager   = $this->createSessionManager();
-        $sessionContainer = new SessionContainer($sessionManager->getContainer('test'));
-        $sessionContainer->setAuthorizationState('example_state');
-
-        // Act
-        $sessionContainer->clearAuthorizationState();
-
-        // Assert
-        $this->assertNull($sessionContainer->getAuthorizationState());
-    }
-
-    /**
      * @covers ::hasCodeVerifier
      * @test
      */
