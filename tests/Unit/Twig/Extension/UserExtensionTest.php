@@ -1,197 +1,93 @@
 <?php
 
-/**
- * UserExtensionTest.php
- */
-
 declare(strict_types=1);
 
 namespace Tests\Unit\Twig\Extension;
 
 use App\Authorization\Manager as AuthorizationManager;
+use App\Authorization\Provider\CinemaSunshineRewardProvider;
+use App\Authorization\SessionContainer;
+use App\Session\SessionManager;
 use App\Twig\Extension\UserExtension;
 use App\User\Manager as UserManager;
-use Mockery;
-use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
-use Mockery\LegacyMockInterface;
-use Mockery\MockInterface;
+use Laminas\Session\Config\StandardConfig;
+use Laminas\Session\Storage\ArrayStorage;
 use PHPUnit\Framework\TestCase;
-use ReflectionClass;
 use Twig\TwigFunction;
 
 /**
- * User extension test
+ * @coversDefaultClass \App\Twig\Extension\UserExtension
+ * @testdox ユーザーに関するTwig拡張機能
  */
 final class UserExtensionTest extends TestCase
 {
-    use MockeryPHPUnitIntegration;
-
-    /**
-     * @return MockInterface|LegacyMockInterface|AuthorizationManager
-     */
-    protected function createAuthorizationManagerMock()
+    private function createAuthorizationManager(): AuthorizationManager
     {
-        return Mockery::mock(AuthorizationManager::class);
-    }
-
-    /**
-     * @return MockInterface|LegacyMockInterface|UserManager
-     */
-    protected function createUserManagerMock()
-    {
-        return Mockery::mock(UserManager::class);
-    }
-
-    /**
-     * @test
-     */
-    public function testConstruct(): void
-    {
-        $extensionMock            = Mockery::mock(UserExtension::class);
-        $userManagerMock          = $this->createUserManagerMock();
-        $authorizationManagerMock = $this->createAuthorizationManagerMock();
-
-        $extensionClassRef = new ReflectionClass(UserExtension::class);
-
-        // execute constructor
-        $constructorRef = $extensionClassRef->getConstructor();
-        $constructorRef->invoke($extensionMock, $userManagerMock, $authorizationManagerMock);
-
-        // test property "userManager"
-        $userManagerPropertyRef = $extensionClassRef->getProperty('userManager');
-        $userManagerPropertyRef->setAccessible(true);
-        $this->assertEquals(
-            $userManagerMock,
-            $userManagerPropertyRef->getValue($extensionMock)
+        $provider = new CinemaSunshineRewardProvider(
+            'example.com',
+            'client',
+            'secret',
+            ['openid'],
+            'https://default.com/login',
+            'https://default.com/logout'
         );
 
-        // test property "authorizationManager"
-        $authorizationManagerPropertyRef = $extensionClassRef->getProperty('authorizationManager');
-        $authorizationManagerPropertyRef->setAccessible(true);
-        $this->assertEquals(
-            $authorizationManagerMock,
-            $authorizationManagerPropertyRef->getValue($extensionMock)
+        $sessionConfig  = new StandardConfig();
+        $sessionManager = new SessionManager($sessionConfig);
+        $sessionManager->setStorage(new ArrayStorage());
+        $sessionContainer = new SessionContainer(
+            $sessionManager->getContainer('auth')
         );
+
+        return new AuthorizationManager($provider, $sessionContainer);
+    }
+
+    private function createUserManager(): UserManager
+    {
+        $sessionConfig  = new StandardConfig();
+        $sessionManager = new SessionManager($sessionConfig);
+        $sessionManager->setStorage(new ArrayStorage());
+
+        return new UserManager($sessionManager->getContainer('user'));
     }
 
     /**
+     * @covers ::getFunctions
+     * @dataProvider functionNameDataProvider
      * @test
      */
-    public function testGetFunctions(): void
+    public function 決まった名称のtwigヘルパー関数が含まれる(string $name): void
     {
-        $extensionMock = Mockery::mock(UserExtension::class)
-            ->makePartial();
+        // Arrange
+        $extension = new UserExtension(
+            $this->createUserManager(),
+            $this->createAuthorizationManager()
+        );
 
-        $functions = $extensionMock->getFunctions();
+        // Act
+        $functions = $extension->getFunctions();
 
-        $this->assertIsArray($functions);
+        // Assert
+        $functionNames = [];
 
         foreach ($functions as $function) {
             $this->assertInstanceOf(TwigFunction::class, $function);
+            $functionNames[] = $function->getName();
         }
+
+        $this->assertContains($name, $functionNames);
     }
 
     /**
-     * @test
+     * @return array<array{string}>
      */
-    public function testGetLoginUrl(): void
+    public function functionNameDataProvider(): array
     {
-        $extensionMock = Mockery::mock(UserExtension::class)
-            ->makePartial();
-
-        $loginUrl = 'https://example.com/login';
-
-        $authorizationManagerMock = $this->createAuthorizationManagerMock();
-        $authorizationManagerMock
-            ->shouldReceive('getAuthorizationUrl')
-            ->once()
-            ->with()
-            ->andReturn($loginUrl);
-
-        $extensionClassRef = new ReflectionClass(UserExtension::class);
-
-        $authorizationManagerPropertyRef = $extensionClassRef->getProperty('authorizationManager');
-        $authorizationManagerPropertyRef->setAccessible(true);
-        $authorizationManagerPropertyRef->setValue($extensionMock, $authorizationManagerMock);
-
-        $this->assertEquals($loginUrl, $extensionMock->getLoginUrl());
-    }
-
-    /**
-     * @test
-     */
-    public function testGetLogoutUrl(): void
-    {
-        $extensionMock = Mockery::mock(UserExtension::class)
-            ->makePartial();
-
-        $logoutUrl = 'https://example.com/logout';
-
-        $authorizationManagerMock = $this->createAuthorizationManagerMock();
-        $authorizationManagerMock
-            ->shouldReceive('getLogoutUrl')
-            ->once()
-            ->with()
-            ->andReturn($logoutUrl);
-
-        $extensionClassRef = new ReflectionClass(UserExtension::class);
-
-        $authorizationManagerPropertyRef = $extensionClassRef->getProperty('authorizationManager');
-        $authorizationManagerPropertyRef->setAccessible(true);
-        $authorizationManagerPropertyRef->setValue($extensionMock, $authorizationManagerMock);
-
-        $this->assertEquals($logoutUrl, $extensionMock->getLogoutUrl());
-    }
-
-    /**
-     * @test
-     */
-    public function testGetUser(): void
-    {
-        $extensionMock = Mockery::mock(UserExtension::class)
-            ->makePartial();
-
-        $user = [];
-
-        $userManagerMock = $this->createUserManagerMock();
-        $userManagerMock
-            ->shouldReceive('getUser')
-            ->once()
-            ->with()
-            ->andReturn($user);
-
-        $extensionClassRef = new ReflectionClass(UserExtension::class);
-
-        $userManagerPropertyRef = $extensionClassRef->getProperty('userManager');
-        $userManagerPropertyRef->setAccessible(true);
-        $userManagerPropertyRef->setValue($extensionMock, $userManagerMock);
-
-        $this->assertEquals($user, $extensionMock->getUser());
-    }
-
-    /**
-     * @test
-     */
-    public function testIsLogin(): void
-    {
-        $extensionMock = Mockery::mock(UserExtension::class)
-            ->makePartial();
-
-        $isAuthenticated = true;
-
-        $userManagerMock = $this->createUserManagerMock();
-        $userManagerMock
-            ->shouldReceive('isAuthenticated')
-            ->once()
-            ->with()
-            ->andReturn($isAuthenticated);
-
-        $extensionClassRef = new ReflectionClass(UserExtension::class);
-
-        $userManagerPropertyRef = $extensionClassRef->getProperty('userManager');
-        $userManagerPropertyRef->setAccessible(true);
-        $userManagerPropertyRef->setValue($extensionMock, $userManagerMock);
-
-        $this->assertEquals($isAuthenticated, $extensionMock->isLogin());
+        return [
+            ['login_url'],
+            ['logout_url'],
+            ['is_login'],
+            ['login_user'],
+        ];
     }
 }
