@@ -4,30 +4,27 @@ declare(strict_types=1);
 
 namespace App\Authorization\Token;
 
-class AuthorizationCodeToken extends AbstractToken
+use League\OAuth2\Client\Token\AccessTokenInterface;
+
+class AuthorizationCodeToken
 {
     protected string $accessToken;
     protected DecodedAccessToken $decodedAccessToken;
     protected string $tokenType;
     protected string $refreshToken;
-    protected int $expiresIn;
     protected int $expires;
     protected string $idToken;
 
-    /**
-     * @param array<string, mixed> $data
-     */
-    public static function create(array $data): self
+    public static function create(AccessTokenInterface $accessToken): self
     {
         $token = new self();
 
-        $token->accessToken        = $data['access_token'];
+        $token->accessToken        = $accessToken->getToken();
         $token->decodedAccessToken = DecodedAccessToken::decodeJWT($token->accessToken);
-        $token->tokenType          = $data['token_type'];
-        $token->refreshToken       = $data['refresh_token'];
-        $token->expiresIn          = (int) $data['expires_in'];
-        $token->expires            = time() + $token->expiresIn;
-        $token->idToken            = $data['id_token'];
+        $token->tokenType          = $accessToken->getValues()['token_type'];
+        $token->refreshToken       = $accessToken->getRefreshToken();
+        $token->expires            = $accessToken->getExpires();
+        $token->idToken            = $accessToken->getValues()['id_token'];
 
         return $token;
     }
@@ -54,11 +51,6 @@ class AuthorizationCodeToken extends AbstractToken
     public function getRefreshToken(): string
     {
         return $this->refreshToken;
-    }
-
-    public function getExpiresIn(): int
-    {
-        return $this->expiresIn;
     }
 
     public function getExpires(): int

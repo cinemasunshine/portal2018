@@ -28,6 +28,7 @@
         "doctrine/orm": "~2.7.4",
         "guzzlehttp/guzzle": "^6.5",
         "laminas/laminas-session": "^2.9",
+        "league/oauth2-client": "^2.7",
         "microsoft/azure-storage-blob": "^1.5",
         "monolog/monolog": "^2.1",
         "slim/slim": "^3.12",

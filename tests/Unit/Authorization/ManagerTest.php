@@ -4,19 +4,12 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Authorization;
 
-use App\Authorization\Grant\AuthorizationCode as AuthorizationCodeGrant;
 use App\Authorization\Manager as AuthorizationManager;
 use App\Authorization\SessionContainer as AuthorizationSessionContainer;
-use App\Authorization\Token\AuthorizationCodeToken;
 use App\Session\SessionManager;
 use Laminas\Session\Config\StandardConfig;
 use Laminas\Session\Storage\ArrayStorage;
-use Mockery;
-use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
-use Mockery\LegacyMockInterface;
-use Mockery\MockInterface;
 use PHPUnit\Framework\TestCase;
-use ReflectionClass;
 
 /**
  * @covers \App\Authorization\Manager
@@ -24,8 +17,6 @@ use ReflectionClass;
  */
 final class ManagerTest extends TestCase
 {
-    use MockeryPHPUnitIntegration;
-
     private function createSessionManager(): SessionManager
     {
         $sessionConfig  = new StandardConfig();
@@ -52,150 +43,42 @@ final class ManagerTest extends TestCase
     }
 
     /**
-     * @return MockInterface|LegacyMockInterface|AuthorizationManager
-     */
-    protected function createTargetMock()
-    {
-        return Mockery::mock(AuthorizationManager::class);
-    }
-
-    /**
-     * @param array<string, mixed> $settings
-     * @return MockInterface|LegacyMockInterface|AuthorizationManager
-     */
-    protected function createTargetMockWithArgs(array $settings, AuthorizationSessionContainer $session)
-    {
-        return Mockery::mock(AuthorizationManager::class, [$settings, $session]);
-    }
-
-    protected function createTargetReflection(): ReflectionClass
-    {
-        return new ReflectionClass(AuthorizationManager::class);
-    }
-
-    /**
-     * @return MockInterface|LegacyMockInterface|AuthorizationCodeGrant
-     */
-    protected function createAuthorizationCodeGrantMock()
-    {
-        return Mockery::mock(AuthorizationCodeGrant::class);
-    }
-
-    /**
-     * @return MockInterface|LegacyMockInterface|AuthorizationCodeToken
-     */
-    protected function createAuthorizationCodeTokenMock()
-    {
-        return Mockery::mock(AuthorizationCodeToken::class);
-    }
-
-    /**
+     * @covers ::getAuthorizationUrl
      * @test
      */
-    public function testGetAuthorizationCodeGrunt(): void
+    public function 認可URLを取得する(): void
     {
-        $settings = [
-            'authorization_code_host' => 'host',
-            'authorization_code_client_id' => 'client_id',
-            'authorization_code_client_secret' => 'client_secret',
-            'authorization_code_scope' => ['scope'],
-        ];
-
+        // Arrange
         $sessionManager   = $this->createSessionManager();
         $sessionContainer = new AuthorizationSessionContainer(
             $sessionManager->getContainer('test')
         );
 
-        $targetMock = $this->createTargetMockWithArgs($settings, $sessionContainer);
-        $targetRef  = $this->createTargetReflection();
+        $settings = [
+            'authorization_code_host' => 'auth.example.com',
+            'authorization_code_client_id' => 'example_client',
+            'authorization_code_client_secret' => 'example_secret',
+            'authorization_code_scope' => [
+                'openid',
+                'email',
+            ],
+        ];
 
-        $authorizationCodeGruntPropertyRef = $targetRef->getProperty('authorizationCodeGrunt');
-        $authorizationCodeGruntPropertyRef->setAccessible(true);
+        $manager = new AuthorizationManager($settings, $sessionContainer);
 
-        $this->assertNull($authorizationCodeGruntPropertyRef->getValue($targetMock));
+        $redirectUri = 'https://example.com/redirect';
 
-        $targetMethodRef = $targetRef->getMethod('getAuthorizationCodeGrunt');
-        $targetMethodRef->setAccessible(true);
+        // Act
+        $result = $manager->getAuthorizationUrl($redirectUri);
 
-        $result = $targetMethodRef->invoke($targetMock);
+        // Assert
+        $parsedUrl = parse_url($result);
+        $this->assertSame('auth.example.com', $parsedUrl['host']);
 
-        $this->assertInstanceOf(
-            AuthorizationCodeGrant::class,
-            $authorizationCodeGruntPropertyRef->getValue($targetMock)
-        );
-        $this->assertEquals($authorizationCodeGruntPropertyRef->getValue($targetMock), $result);
-    }
-
-    /**
-     * @test
-     */
-    public function testGetAuthorizationUrl(): void
-    {
-        $redirectUri      = 'https://example.com/redirect';
-        $authorizationUrl = 'https://example.com/authorization';
-
-        $authorizationCodeGruntMock = $this->createAuthorizationCodeGrantMock();
-        $authorizationCodeGruntMock
-            ->shouldReceive('getAuthorizationUrl')
-            ->once()
-            ->with(
-                Mockery::type('string'),
-                $redirectUri,
-                Mockery::type('array'),
-                Mockery::type('string')
-            )
-            ->andReturn($authorizationUrl);
-
-        $targetMock = $this->createTargetMock();
-        $targetMock->shouldAllowMockingProtectedMethods()
-            ->makePartial();
-
-        $targetMock
-            ->shouldReceive('getAuthorizationCodeGrunt')
-            ->once()
-            ->with()
-            ->andReturn($authorizationCodeGruntMock);
-        $targetMock
-            ->shouldReceive('getCodeVerifier')
-            ->once()
-            ->with()
-            ->andReturn('code_verifier');
-        $targetMock
-            ->shouldReceive('getAuthorizationState')
-            ->once()
-            ->with()
-            ->andReturn('authorization_state');
-
-        $targetRef = $this->createTargetReflection();
-
-        $scopeListPropertyRef = $targetRef->getProperty('scopeList');
-        $scopeListPropertyRef->setAccessible(true);
-        $scopeListPropertyRef->setValue($targetMock, []);
-
-        $result = $targetMock->getAuthorizationUrl($redirectUri);
-        $this->assertEquals($authorizationUrl, $result);
-    }
-
-    /**
-     * @test
-     */
-    public function testCreateUniqueStr(): void
-    {
-        $targetMock = $this->createTargetMock();
-        $targetRef  = $this->createTargetReflection();
-
-        $targetMethodRef = $targetRef->getMethod('createUniqueStr');
-        $targetMethodRef->setAccessible(true);
-
-        $list = [];
-
-        for ($i = 0; $i < 1000; $i++) {
-            $list[] = $targetMethodRef->invoke($targetMock, 'test');
-        }
-
-        $uniqueList = array_unique($list, SORT_STRING);
-
-        $this->assertEquals(count($list), count($uniqueList));
+        parse_str($parsedUrl['query'], $query);
+        $this->assertSame('example_client', $query['client_id']);
+        $this->assertSame('openid email', $query['scope']);
+        $this->assertSame('https://example.com/redirect', $query['redirect_uri']);
     }
 
     /**
@@ -245,7 +128,7 @@ final class ManagerTest extends TestCase
      * @covers ::clearAuthorizationState
      * @test
      */
-    public function AuthorizationStateをクリアすると新たな値を取得する(): void
+    public function AuthorizationStateがクリアされる(): void
     {
         // Arrange
         $sessionManager   = $this->createSessionManager();
@@ -254,81 +137,51 @@ final class ManagerTest extends TestCase
         );
         $settings         = $this->createSettings();
         $manager          = new AuthorizationManager($settings, $sessionContainer);
-        $first            = $manager->getAuthorizationState();
+
+        $manager->getAuthorizationUrl('https://dummy.com');
 
         // Act
         $manager->clearAuthorizationState();
 
         // Assert
-        $second = $manager->getAuthorizationState();
-        $this->assertNotSame($first, $second);
+        $this->assertNull($manager->getAuthorizationState());
     }
 
     /**
+     * @covers ::getLogoutUrl
      * @test
      */
-    public function testRequestToken(): void
+    public function ログアウトURLを取得する(): void
     {
-        $tokenMock = $this->createAuthorizationCodeTokenMock();
+        // Arrange
+        $sessionManager   = $this->createSessionManager();
+        $sessionContainer = new AuthorizationSessionContainer(
+            $sessionManager->getContainer('test')
+        );
 
-        $code         = 'example_code';
-        $redirectUri  = 'http://example.com/redirect';
-        $codeVerifier = 'unique_code_verifier';
+        $settings = [
+            'authorization_code_host' => 'auth.example.com',
+            'authorization_code_client_id' => 'example_client',
+            'authorization_code_client_secret' => 'example_secret',
+            'authorization_code_scope' => [
+                'openid',
+                'email',
+            ],
+        ];
 
-        $authorizationCodeGruntMock = $this->createAuthorizationCodeGrantMock();
-        $authorizationCodeGruntMock
-            ->shouldReceive('requestToken')
-            ->once()
-            ->with(
-                $code,
-                $redirectUri,
-                $codeVerifier
-            )
-            ->andReturn($tokenMock);
+        $manager = new AuthorizationManager($settings, $sessionContainer);
 
-        $targetMock = $this->createTargetMock();
-        $targetMock->shouldAllowMockingProtectedMethods()
-            ->makePartial();
-        $targetMock
-            ->shouldReceive('getAuthorizationCodeGrunt')
-            ->once()
-            ->with()
-            ->andReturn($authorizationCodeGruntMock);
-        $targetMock
-            ->shouldReceive('getCodeVerifier')
-            ->once()
-            ->with()
-            ->andReturn($codeVerifier);
+        $redirectUri = 'https://example.com/redirect';
 
-        $result = $targetMock->requestToken($code, $redirectUri);
-        $this->assertEquals($tokenMock, $result);
-    }
+        // Act
+        $result = $manager->getLogoutUrl($redirectUri);
 
-    /**
-     * @test
-     */
-    public function testGetLogoutUrl(): void
-    {
-        $logoutUrl   = 'https://example.com/logout';
-        $redirectUri = 'http://example.com/redirect';
+        // Assert
+        $parsedUrl = parse_url($result);
+        $this->assertSame('auth.example.com', $parsedUrl['host']);
 
-        $authorizationCodeGruntMock = $this->createAuthorizationCodeGrantMock();
-        $authorizationCodeGruntMock
-            ->shouldReceive('getLogoutUrl')
-            ->once()
-            ->with($redirectUri)
-            ->andReturn($logoutUrl);
-
-        $targetMock = $this->createTargetMock();
-        $targetMock->shouldAllowMockingProtectedMethods()
-            ->makePartial();
-        $targetMock
-            ->shouldReceive('getAuthorizationCodeGrunt')
-            ->once()
-            ->with()
-            ->andReturn($authorizationCodeGruntMock);
-
-        $result = $targetMock->getLogoutUrl($redirectUri);
-        $this->assertEquals($logoutUrl, $result);
+        parse_str($parsedUrl['query'], $query);
+        $this->assertSame('example_client', $query['client_id']);
+        $this->assertSame('https://example.com/redirect', $query['logout_uri']);
     }
 }
