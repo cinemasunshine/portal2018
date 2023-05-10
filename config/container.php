@@ -66,12 +66,19 @@ $container['am'] = static function ($container) {
         $container->get('sm')->getContainer($sessionContainerName)
     );
 
+    $uri       = Uri::createFromEnvironment($container->get('environment'));
+    $loginUrl  = $container->get('router')->fullUrlFor($uri, 'login');
+    $logoutUrl = $container->get('router')->fullUrlFor($uri, 'logout');
+
     $settings = $container->get('settings')['mp_service'];
+
     $provider = new CinemaSunshineRewardProvider(
         $settings['authorization_code_host'],
         $settings['authorization_code_client_id'],
         $settings['authorization_code_client_secret'],
-        $settings['authorization_code_scopes']
+        $settings['authorization_code_scopes'],
+        $loginUrl,
+        $logoutUrl
     );
 
     return new AuthorizationManager($provider, $sessionContainer);

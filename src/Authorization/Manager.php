@@ -18,11 +18,11 @@ class Manager
         $this->session  = $session;
     }
 
-    public function getAuthorizationUrl(string $redirectUri): string
+    public function getAuthorizationUrl(): string
     {
         $this->initAuthorizationState();
 
-        $url = $this->provider->getAuthorizationUrl($redirectUri, $this->getAuthorizationState());
+        $url = $this->provider->getAuthorizationUrl($this->getAuthorizationState());
 
         $this->session->setCodeVerifier($this->provider->getPkceCode());
 
@@ -51,17 +51,16 @@ class Manager
         return $this->session->getCodeVerifier();
     }
 
-    public function requestToken(string $code, string $redirectUri): AuthorizationCodeToken
+    public function requestToken(string $code): AuthorizationCodeToken
     {
         return $this->provider->requestAuthorizationCodeToken(
             $code,
-            $redirectUri,
             $this->getCodeVerifier()
         );
     }
 
-    public function getLogoutUrl(string $redirectUri): string
+    public function getLogoutUrl(): string
     {
-        return $this->provider->getLogoutUrl($redirectUri);
+        return $this->provider->getLogoutUrl();
     }
 }

@@ -6,7 +6,6 @@ namespace App\Controller;
 
 use Slim\Http\Request;
 use Slim\Http\Response;
-use Slim\Http\Uri as HttpUri;
 use Throwable;
 
 class AuthorizationController extends BaseController
@@ -41,11 +40,8 @@ class AuthorizationController extends BaseController
             return $this->renderError($response);
         }
 
-        $uri         = HttpUri::createFromEnvironment($this->environment);
-        $redirectUri = $this->router->fullUrlFor($uri, 'login');
-
         try {
-            $token = $this->am->requestToken($code, $redirectUri);
+            $token = $this->am->requestToken($code);
         } catch (Throwable $e) {
             $this->logger->error($e->getMessage());
 

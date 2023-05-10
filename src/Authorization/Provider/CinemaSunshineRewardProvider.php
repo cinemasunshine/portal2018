@@ -13,12 +13,19 @@ class CinemaSunshineRewardProvider
     private string $baseEndpoint;
     private string $clientId;
     private AbstractProvider $baseProvider;
+    private string $logoutUrl;
 
     /**
      * @param string[] $scopes
      */
-    public function __construct(string $host, string $clientId, string $clientSecret, array $scopes)
-    {
+    public function __construct(
+        string $host,
+        string $clientId,
+        string $clientSecret,
+        array $scopes,
+        string $loginUrl,
+        string $logoutUrl
+    ) {
         $this->baseEndpoint = 'https://' . $host;
         $this->clientId     = $clientId;
 
@@ -26,20 +33,20 @@ class CinemaSunshineRewardProvider
             'pkceMethod' => GenericProvider::PKCE_METHOD_S256,
             'clientId' => $this->clientId,
             'clientSecret' => $clientSecret,
+            'redirectUri' => $loginUrl,
             'urlAuthorize' => $this->baseEndpoint . '/authorize',
             'urlAccessToken' => $this->baseEndpoint . '/token',
             'urlResourceOwnerDetails' => $this->baseEndpoint . '/unused',
             'scopes' => $scopes,
             'scopeSeparator' => ' ',
         ]);
+
+        $this->logoutUrl = $logoutUrl;
     }
 
-    public function getAuthorizationUrl(string $redirectUri, string $state): string
+    public function getAuthorizationUrl(string $state): string
     {
-        return $this->baseProvider->getAuthorizationUrl([
-            'redirect_uri' => $redirectUri,
-            'state' => $state,
-        ]);
+        return $this->baseProvider->getAuthorizationUrl(['state' => $state]);
     }
 
     public function getPkceCode(): ?string
@@ -49,24 +56,23 @@ class CinemaSunshineRewardProvider
 
     public function requestAuthorizationCodeToken(
         string $code,
-        string $redirectUri,
         string $pkceCode
     ): AuthorizationCodeToken {
         $this->baseProvider->setPkceCode($pkceCode);
 
-        $accessToken = $this->baseProvider->getAccessToken('authorization_code', [
-            'code' => $code,
-            'redirect_uri' => $redirectUri,
-        ]);
+        $accessToken = $this->baseProvider->getAccessToken(
+            'authorization_code',
+            ['code' => $code]
+        );
 
         return AuthorizationCodeToken::create($accessToken);
     }
 
-    public function getLogoutUrl(string $redirectUri): string
+    public function getLogoutUrl(): string
     {
         $params = [
             'client_id'  => $this->clientId,
-            'logout_uri' => $redirectUri,
+            'logout_uri' => $this->logoutUrl,
         ];
 
         $base = $this->baseEndpoint . '/logout';

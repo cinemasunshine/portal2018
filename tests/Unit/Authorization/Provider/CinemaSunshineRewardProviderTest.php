@@ -22,7 +22,9 @@ class CinemaSunshineRewardProviderTest extends TestCase
             $params['host'] ?? 'example.com',
             $params['client_id'] ?? 'client',
             $params['client_secret'] ?? 'secret',
-            $params['scopes'] ?? ['openid']
+            $params['scopes'] ?? ['openid'],
+            $params['login_url'] ?? 'https://default.com/login',
+            $params['logout_url'] ?? 'https://default.com/logout'
         );
     }
 
@@ -40,13 +42,11 @@ class CinemaSunshineRewardProviderTest extends TestCase
                 'openid',
                 'email',
             ],
+            'login_url' => 'https://thissite.com/login',
         ]);
 
         // Act
-        $result = $provider->getAuthorizationUrl(
-            'https://example.com/redirect',
-            'example_state'
-        );
+        $result = $provider->getAuthorizationUrl('example_state');
 
         // Assert
         $parsedUrl = parse_url($result);
@@ -57,7 +57,7 @@ class CinemaSunshineRewardProviderTest extends TestCase
         $this->assertSame('code', $query['response_type']);
         $this->assertSame('example_client', $query['client_id']);
         $this->assertSame('openid email', $query['scope']);
-        $this->assertSame('https://example.com/redirect', $query['redirect_uri']);
+        $this->assertSame('https://thissite.com/login', $query['redirect_uri']);
         $this->assertSame('S256', $query['code_challenge_method']);
         $this->assertNotEmpty($query['code_challenge']);
         $this->assertSame('example_state', $query['state']);
@@ -71,7 +71,7 @@ class CinemaSunshineRewardProviderTest extends TestCase
     {
         // Arrange
         $provider = $this->createProvider();
-        $provider->getAuthorizationUrl('https://example.com/dummy', 'dummy');
+        $provider->getAuthorizationUrl('dummy');
 
         // Act
         $result = $provider->getPkceCode();
@@ -90,10 +90,11 @@ class CinemaSunshineRewardProviderTest extends TestCase
         $provider = $this->createProvider([
             'host' => 'auth.example.com',
             'client_id' => 'example_client',
+            'logout_url' => 'https://thissite.com/logout',
         ]);
 
         // Act
-        $result = $provider->getLogoutUrl('https://example.com/callback');
+        $result = $provider->getLogoutUrl();
 
         // Assert
         $parsedUrl = parse_url($result);
@@ -102,6 +103,6 @@ class CinemaSunshineRewardProviderTest extends TestCase
 
         parse_str($parsedUrl['query'], $query);
         $this->assertSame('example_client', $query['client_id']);
-        $this->assertSame('https://example.com/callback', $query['logout_uri']);
+        $this->assertSame('https://thissite.com/logout', $query['logout_uri']);
     }
 }

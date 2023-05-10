@@ -36,7 +36,9 @@ final class ManagerTest extends TestCase
             $params['host'] ?? 'example.com',
             $params['client_id'] ?? 'client',
             $params['client_secret'] ?? 'secret',
-            $params['scopes'] ?? ['openid']
+            $params['scopes'] ?? ['openid'],
+            $params['login_url'] ?? 'https://default.com/login',
+            $params['logouturl'] ?? 'https://default.com/logout'
         );
     }
 
@@ -52,30 +54,16 @@ final class ManagerTest extends TestCase
             $sessionManager->getContainer('test')
         );
 
-        $provider = $this->createProvider([
-            'host' => 'auth.example.com',
-            'client_id' => 'example_client',
-            'scopes' => [
-                'openid',
-                'email',
-            ],
-        ]);
+        $provider = $this->createProvider();
 
         $manager = new AuthorizationManager($provider, $sessionContainer);
 
-        $redirectUri = 'https://example.com/redirect';
-
         // Act
-        $result = $manager->getAuthorizationUrl($redirectUri);
+        $result = $manager->getAuthorizationUrl();
 
         // Assert
         $parsedUrl = parse_url($result);
-        $this->assertSame('auth.example.com', $parsedUrl['host']);
-
-        parse_str($parsedUrl['query'], $query);
-        $this->assertSame('example_client', $query['client_id']);
-        $this->assertSame('openid email', $query['scope']);
-        $this->assertSame('https://example.com/redirect', $query['redirect_uri']);
+        $this->assertSame('/authorize', $parsedUrl['path']);
     }
 
     /**
@@ -133,24 +121,15 @@ final class ManagerTest extends TestCase
             $sessionManager->getContainer('test')
         );
 
-        $provider = $this->createProvider([
-            'host' => 'auth.example.com',
-            'client_id' => 'example_client',
-        ]);
+        $provider = $this->createProvider();
 
         $manager = new AuthorizationManager($provider, $sessionContainer);
 
-        $redirectUri = 'https://example.com/redirect';
-
         // Act
-        $result = $manager->getLogoutUrl($redirectUri);
+        $result = $manager->getLogoutUrl();
 
         // Assert
         $parsedUrl = parse_url($result);
-        $this->assertSame('auth.example.com', $parsedUrl['host']);
-
-        parse_str($parsedUrl['query'], $query);
-        $this->assertSame('example_client', $query['client_id']);
-        $this->assertSame('https://example.com/redirect', $query['logout_uri']);
+        $this->assertSame('/logout', $parsedUrl['path']);
     }
 }

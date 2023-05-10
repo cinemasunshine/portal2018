@@ -37,14 +37,14 @@ class UserExtension extends AbstractExtension
         ];
     }
 
-    public function getLoginUrl(string $redirectUri): string
+    public function getLoginUrl(): string
     {
-        return $this->authorizationManager->getAuthorizationUrl($redirectUri);
+        return $this->authorizationManager->getAuthorizationUrl();
     }
 
-    public function getLogoutUrl(string $redirectUri): string
+    public function getLogoutUrl(): string
     {
-        return $this->authorizationManager->getLogoutUrl($redirectUri);
+        return $this->authorizationManager->getLogoutUrl();
     }
 
     /**

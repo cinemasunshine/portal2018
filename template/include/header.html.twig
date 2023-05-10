@@ -38,7 +38,7 @@
                         <p class="mb-0 small"><span class="username">{{ user.name }}</span>さん</p>
                         <div>
                             <a id="signOutButton" class="btn btn-danger btn-sm d-inline-block"
-                                href="{{ logout_url(full_url_for('logout')) }}" role="button">ログアウト</a>
+                                href="{{ logout_url() }}" role="button">ログアウト</a>
                         </div>
                     </div>
                     {# TODO 新会員ログイン分岐 #}
@@ -90,7 +90,7 @@
             <div class="mb-4">
                 <p class="mb-2">シネマサンシャインリワード会員の方はこちら</p>
                 <a id="signInButton" class="btn bg-blue text-white btn-block d-block"
-                    href="{{ login_url(full_url_for('login')) }}"
+                    href="{{ login_url() }}"
                     role="button">ログイン</a>
             </div>
             <div class="">

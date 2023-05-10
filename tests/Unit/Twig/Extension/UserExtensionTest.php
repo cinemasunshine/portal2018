@@ -99,14 +99,13 @@ final class UserExtensionTest extends TestCase
         $extensionMock = Mockery::mock(UserExtension::class)
             ->makePartial();
 
-        $redirectUrl = 'http://example.com/redirect';
-        $loginUrl    = 'https://example.com/login';
+        $loginUrl = 'https://example.com/login';
 
         $authorizationManagerMock = $this->createAuthorizationManagerMock();
         $authorizationManagerMock
             ->shouldReceive('getAuthorizationUrl')
             ->once()
-            ->with($redirectUrl)
+            ->with()
             ->andReturn($loginUrl);
 
         $extensionClassRef = new ReflectionClass(UserExtension::class);
@@ -115,7 +114,7 @@ final class UserExtensionTest extends TestCase
         $authorizationManagerPropertyRef->setAccessible(true);
         $authorizationManagerPropertyRef->setValue($extensionMock, $authorizationManagerMock);
 
-        $this->assertEquals($loginUrl, $extensionMock->getLoginUrl($redirectUrl));
+        $this->assertEquals($loginUrl, $extensionMock->getLoginUrl());
     }
 
     /**
@@ -126,14 +125,13 @@ final class UserExtensionTest extends TestCase
         $extensionMock = Mockery::mock(UserExtension::class)
             ->makePartial();
 
-        $redirectUrl = 'http://example.com/redirect';
-        $logoutUrl   = 'https://example.com/logout';
+        $logoutUrl = 'https://example.com/logout';
 
         $authorizationManagerMock = $this->createAuthorizationManagerMock();
         $authorizationManagerMock
             ->shouldReceive('getLogoutUrl')
             ->once()
-            ->with($redirectUrl)
+            ->with()
             ->andReturn($logoutUrl);
 
         $extensionClassRef = new ReflectionClass(UserExtension::class);
@@ -142,7 +140,7 @@ final class UserExtensionTest extends TestCase
         $authorizationManagerPropertyRef->setAccessible(true);
         $authorizationManagerPropertyRef->setValue($extensionMock, $authorizationManagerMock);
 
-        $this->assertEquals($logoutUrl, $extensionMock->getLogoutUrl($redirectUrl));
+        $this->assertEquals($logoutUrl, $extensionMock->getLogoutUrl());
     }
 
     /**
