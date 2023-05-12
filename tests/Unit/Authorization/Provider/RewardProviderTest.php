@@ -4,21 +4,21 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Authorization\Provider;
 
-use App\Authorization\Provider\CinemaSunshineRewardProvider;
+use App\Authorization\Provider\RewardProvider;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \App\Authorization\Provider\CinemaSunshineRewardProvider
+ * @covers \App\Authorization\Provider\RewardProvider
  * @testdox シネマサンシャインリワードの認可プロバイダー
  */
-class CinemaSunshineRewardProviderTest extends TestCase
+class RewardProviderTest extends TestCase
 {
     /**
      * @param array<string, mixed> $params
      */
-    private function createProvider(array $params = []): CinemaSunshineRewardProvider
+    private function createProvider(array $params = []): RewardProvider
     {
-        return new CinemaSunshineRewardProvider(
+        return new RewardProvider(
             $params['host'] ?? 'example.com',
             $params['client_id'] ?? 'client',
             $params['client_secret'] ?? 'secret',

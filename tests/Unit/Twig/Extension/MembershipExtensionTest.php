@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Twig\Extension;
 
+use App\Authorization\MembershipManager as AuthorizationManager;
+use App\Authorization\Provider\MembershipProvider;
 use App\Twig\Extension\MembershipExtension;
 use PHPUnit\Framework\TestCase;
 use Twig\TwigFunction;
@@ -14,6 +16,20 @@ use Twig\TwigFunction;
  */
 class MembershipExtensionTest extends TestCase
 {
+    private function createAuthorizationManager(): AuthorizationManager
+    {
+        $provider = new MembershipProvider(
+            'https://example.com',
+            'client',
+            'secret',
+            ['openid'],
+            'https://default.com/login',
+            'https://default.com/logout'
+        );
+
+        return new AuthorizationManager($provider);
+    }
+
     /**
      * @covers ::getFunctions
      * @dataProvider functionNameDataProvider
@@ -22,10 +38,13 @@ class MembershipExtensionTest extends TestCase
     public function 決まった名称のtwigヘルパー関数が含まれる(string $name): void
     {
         // Arrange
-        $extensions = new MembershipExtension([]);
+        $extension = new MembershipExtension(
+            'https://example.com/mypage',
+            $this->createAuthorizationManager()
+        );
 
         // Act
-        $functions = $extensions->getFunctions();
+        $functions = $extension->getFunctions();
 
         // Assert
         $functionNames = [];
@@ -45,6 +64,9 @@ class MembershipExtensionTest extends TestCase
     {
         return [
             ['membership_mypage_url'],
+            ['membership_signup_url'],
+            ['membership_login_url'],
+            ['membership_logout_url'],
         ];
     }
 
@@ -55,8 +77,10 @@ class MembershipExtensionTest extends TestCase
     public function マイページのURLを返す(): void
     {
         // Arrange
-        $settings  = ['mypage_url' => 'https://example.com/mypage'];
-        $extension = new MembershipExtension($settings);
+        $extension = new MembershipExtension(
+            'https://example.com/mypage',
+            $this->createAuthorizationManager()
+        );
 
         // Act
         $result = $extension->getMypageUrl();

@@ -4,27 +4,41 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Twig\Extension;
 
+use App\Authorization\Provider\RewardProvider;
+use App\Authorization\RewardManager as AuthorizationManager;
+use App\Authorization\SessionContainer;
 use App\Session\SessionManager;
-use App\Twig\Extension\UserExtension;
-use App\User\Manager as UserManager;
+use App\Twig\Extension\RewardExtension;
 use Laminas\Session\Config\StandardConfig;
 use Laminas\Session\Storage\ArrayStorage;
 use PHPUnit\Framework\TestCase;
 use Twig\TwigFunction;
 
 /**
- * @coversDefaultClass \App\Twig\Extension\UserExtension
- * @testdox ユーザーに関するTwig拡張機能
+ * @covers \App\Twig\Extension\RewardExtension
+ * @testdox シネマサンシャインリワードに関するTwig拡張機能
  */
-final class UserExtensionTest extends TestCase
+class RewardExtensionTest extends TestCase
 {
-    private function createUserManager(): UserManager
+    private function createAuthorizationManager(): AuthorizationManager
     {
+        $provider = new RewardProvider(
+            'example.com',
+            'client',
+            'secret',
+            ['openid'],
+            'https://default.com/login',
+            'https://default.com/logout'
+        );
+
         $sessionConfig  = new StandardConfig();
         $sessionManager = new SessionManager($sessionConfig);
         $sessionManager->setStorage(new ArrayStorage());
+        $sessionContainer = new SessionContainer(
+            $sessionManager->getContainer('auth')
+        );
 
-        return new UserManager($sessionManager->getContainer('user'));
+        return new AuthorizationManager($provider, $sessionContainer);
     }
 
     /**
@@ -35,7 +49,7 @@ final class UserExtensionTest extends TestCase
     public function 決まった名称のtwigヘルパー関数が含まれる(string $name): void
     {
         // Arrange
-        $extension = new UserExtension($this->createUserManager());
+        $extension = new RewardExtension($this->createAuthorizationManager());
 
         // Act
         $functions = $extension->getFunctions();
@@ -57,10 +71,8 @@ final class UserExtensionTest extends TestCase
     public function functionNameDataProvider(): array
     {
         return [
-            ['is_login'],
-            ['user_name'],
-            ['is_reward_user'],
-            ['is_membership_user'],
+            ['reward_login_url'],
+            ['reward_logout_url'],
         ];
     }
 }

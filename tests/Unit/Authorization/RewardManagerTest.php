@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Authorization;
 
-use App\Authorization\Manager as AuthorizationManager;
-use App\Authorization\Provider\CinemaSunshineRewardProvider;
+use App\Authorization\Provider\RewardProvider;
+use App\Authorization\RewardManager as RewardAuthorizationManager;
 use App\Authorization\SessionContainer as AuthorizationSessionContainer;
 use App\Session\SessionManager;
 use Laminas\Session\Config\StandardConfig;
@@ -13,10 +13,10 @@ use Laminas\Session\Storage\ArrayStorage;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \App\Authorization\Manager
+ * @covers \App\Authorization\RewardManager
  * @testdox 認可処理を扱うクラス
  */
-final class ManagerTest extends TestCase
+final class RewardManagerTest extends TestCase
 {
     private function createSessionManager(): SessionManager
     {
@@ -30,9 +30,9 @@ final class ManagerTest extends TestCase
     /**
      * @param array<string, mixed> $params
      */
-    private function createProvider(array $params = []): CinemaSunshineRewardProvider
+    private function createProvider(array $params = []): RewardProvider
     {
-        return new CinemaSunshineRewardProvider(
+        return new RewardProvider(
             $params['host'] ?? 'example.com',
             $params['client_id'] ?? 'client',
             $params['client_secret'] ?? 'secret',
@@ -56,7 +56,7 @@ final class ManagerTest extends TestCase
 
         $provider = $this->createProvider();
 
-        $manager = new AuthorizationManager($provider, $sessionContainer);
+        $manager = new RewardAuthorizationManager($provider, $sessionContainer);
 
         // Act
         $result = $manager->getAuthorizationUrl();
@@ -78,7 +78,7 @@ final class ManagerTest extends TestCase
             $sessionManager->getContainer('test')
         );
         $provider         = $this->createProvider();
-        $manager          = new AuthorizationManager($provider, $sessionContainer);
+        $manager          = new RewardAuthorizationManager($provider, $sessionContainer);
 
         // Act
         $result = $manager->getAuthorizationState();
@@ -99,7 +99,7 @@ final class ManagerTest extends TestCase
             $sessionManager->getContainer('test')
         );
         $provider         = $this->createProvider();
-        $manager          = new AuthorizationManager($provider, $sessionContainer);
+        $manager          = new RewardAuthorizationManager($provider, $sessionContainer);
 
         // Act
         $first  = $manager->getAuthorizationState();
@@ -123,7 +123,7 @@ final class ManagerTest extends TestCase
 
         $provider = $this->createProvider();
 
-        $manager = new AuthorizationManager($provider, $sessionContainer);
+        $manager = new RewardAuthorizationManager($provider, $sessionContainer);
 
         // Act
         $result = $manager->getLogoutUrl();

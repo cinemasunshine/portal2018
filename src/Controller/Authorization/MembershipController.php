@@ -2,20 +2,16 @@
 
 declare(strict_types=1);
 
-namespace App\Controller;
+namespace App\Controller\Authorization;
 
+use App\User\User;
 use Slim\Http\Request;
 use Slim\Http\Response;
 use Throwable;
 
-class AuthorizationController extends BaseController
+class MembershipController extends BaseController
 {
     /**
-     * login action
-     *
-     * リクエストエラーは認可サーバで処理される。
-     * ただしそこからパラメータ無しで戻るリンクがある。
-     *
      * @param array<string, mixed> $args
      */
     public function executeLogin(Request $request, Response $response, array $args): Response
@@ -25,30 +21,20 @@ class AuthorizationController extends BaseController
         $state = $request->getParam('state');
         $code  = $request->getParam('code');
 
-        // Authorization URLエラーページからの戻りはパラメータ無し
         if (empty($state) && empty($code)) {
             $this->logger->info('Authorization URL error.');
             $this->redirect($this->router->pathFor('homepage'));
         }
 
-        if (
-            empty($state)
-            || $state !== $this->am->getAuthorizationState()
-        ) {
-            $this->logger->info('Invalid state.');
-
-            return $this->renderError($response);
-        }
-
         try {
-            $token = $this->am->requestToken($code);
+            $token = $this->membershipAuth->requestToken($code);
         } catch (Throwable $e) {
             $this->logger->error($e->getMessage());
 
             return $this->renderError($response);
         }
 
-        $this->um->login($token);
+        $this->um->login($token, User::SERVICE_TYPE_MEMBERSHIP);
 
         $redirectUrl = $this->getRedirectUrlOnSuccessful();
         $this->redirect($redirectUrl);
@@ -60,8 +46,6 @@ class AuthorizationController extends BaseController
     }
 
     /**
-     * logout action
-     *
      * @param array<string, mixed> $args
      */
     public function executeLogout(Request $request, Response $response, array $args): void

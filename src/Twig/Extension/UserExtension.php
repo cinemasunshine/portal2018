@@ -4,24 +4,19 @@ declare(strict_types=1);
 
 namespace App\Twig\Extension;
 
-use App\Authorization\Manager as AuthorizationManager;
 use App\User\Manager as UserManager;
+use App\User\User;
+use LogicException;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 
-/**
- * User twig extension class
- */
 class UserExtension extends AbstractExtension
 {
     protected UserManager $userManager;
 
-    protected AuthorizationManager $authorizationManager;
-
-    public function __construct(UserManager $userManager, AuthorizationManager $authorizationManager)
+    public function __construct(UserManager $userManager)
     {
-        $this->userManager          = $userManager;
-        $this->authorizationManager = $authorizationManager;
+        $this->userManager = $userManager;
     }
 
     /**
@@ -30,35 +25,44 @@ class UserExtension extends AbstractExtension
     public function getFunctions(): array
     {
         return [
-            new TwigFunction('login_url', [$this, 'getLoginUrl'], [ 'is_safe' => ['all'] ]),
-            new TwigFunction('logout_url', [$this, 'getLogoutUrl'], [ 'is_safe' => ['all'] ]),
             new TwigFunction('is_login', [$this, 'isLogin'], [ 'is_safe' => ['all'] ]),
-            new TwigFunction('login_user', [$this, 'getUser'], [ 'is_safe' => ['all'] ]),
+            new TwigFunction('user_name', [$this, 'getUserName'], [ 'is_safe' => ['all'] ]),
+            new TwigFunction('is_reward_user', [$this, 'isRewardUser'], [ 'is_safe' => ['all'] ]),
+            new TwigFunction('is_membership_user', [$this, 'isMembershipUser'], [ 'is_safe' => ['all'] ]),
         ];
-    }
-
-    public function getLoginUrl(): string
-    {
-        return $this->authorizationManager->getAuthorizationUrl();
-    }
-
-    public function getLogoutUrl(): string
-    {
-        return $this->authorizationManager->getLogoutUrl();
-    }
-
-    /**
-     * return authorized user data
-     *
-     * @return array<string, mixed>|null
-     */
-    public function getUser(): ?array
-    {
-        return $this->userManager->getUser();
     }
 
     public function isLogin(): bool
     {
         return $this->userManager->isAuthenticated();
+    }
+
+    public function getUserName(): string
+    {
+        $user = $this->userManager->getUser();
+
+        return $user ? $user->getName() : '';
+    }
+
+    public function isRewardUser(): bool
+    {
+        $user = $this->userManager->getUser();
+
+        if (! $user) {
+            throw new LogicException('Not authenticated');
+        }
+
+        return $user->getServiceType() === User::SERVICE_TYPE_REWRD;
+    }
+
+    public function isMembershipUser(): bool
+    {
+        $user = $this->userManager->getUser();
+
+        if (! $user) {
+            throw new LogicException('Not authenticated');
+        }
+
+        return $user->getServiceType() === User::SERVICE_TYPE_MEMBERSHIP;
     }
 }

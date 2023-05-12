@@ -193,10 +193,10 @@ $getMpServiceSetting = static function () {
         // 認可トークンの期限バッファー（秒）
         'authorization_token_expiration_buffer' => 60 * 5,
 
-        // Authorization Code Grant
-        'authorization_code_host'          => getenv('APPSETTING_MP_AUTHORIZATION_CODE_HOST'),
-        'authorization_code_client_id'     => getenv('APPSETTING_MP_AUTHORIZATION_CODE_CLIENT_ID'),
-        'authorization_code_client_secret' => getenv('APPSETTING_MP_AUTHORIZATION_CODE_CLIENT_SECRET'),
+        // リワード Authorization
+        'reward_authorization_host'          => getenv('APPSETTING_MP_AUTHORIZATION_CODE_HOST'),
+        'reward_authorization_client_id'     => getenv('APPSETTING_MP_AUTHORIZATION_CODE_CLIENT_ID'),
+        'reward_authorization_client_secret' => getenv('APPSETTING_MP_AUTHORIZATION_CODE_CLIENT_SECRET'),
 
         // Client Credentials Grant
         'cliennt_credentials_host'          => getenv('APPSETTING_MP_CLIENT_CREDENTIALS_HOST'),
@@ -209,7 +209,7 @@ $getMpServiceSetting = static function () {
         'ticket_transaction_url' => getenv('APPSETTING_MP_TICKET_TRANSACTION_URL'),
     ];
 
-    $baseScopeList = [
+    $rewardBaseScopes = [
         'phone',
         'openid',
         'email',
@@ -227,7 +227,7 @@ $getMpServiceSetting = static function () {
 
     $apiUrl = 'https://' . $settings['api_host'];
 
-    $settings['authorization_code_scopes'] = str_replace('<API_URL>', $apiUrl, $baseScopeList);
+    $settings['reward_authorization_scopes'] = str_replace('<API_URL>', $apiUrl, $rewardBaseScopes);
 
     return $settings;
 };
@@ -241,7 +241,11 @@ $settings['schedule'] = [
 ];
 
 $settings['membership'] = [
-    'mypage_url' => getenv('APPSETTING_MEMBERSHIP_MYPAGE_URL'),
+    'mypage_url'                  => getenv('APPSETTING_MEMBERSHIP_MYPAGE_URL'),
+    'authorization_host'          => getenv('APPSETTING_MEMBERSHIP_AUTHORIZATION_HOST'),
+    'authorization_client_id'     => getenv('APPSETTING_MEMBERSHIP_AUTHORIZATION_CLIENT_ID'),
+    'authorization_client_secret' => getenv('APPSETTING_MEMBERSHIP_AUTHORIZATION_CLIENT_SECRET'),
+    'authorization_scopes'        => ['aws.cognito.signin.user.admin+email+openid+phone+profile'],
 ];
 
 return $settings;

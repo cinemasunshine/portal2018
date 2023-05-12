@@ -7,9 +7,6 @@ namespace App\User;
 use App\Authorization\Token\AuthorizationCodeToken as AuthorizationToken;
 use App\Session\Container as SessionContainer;
 
-/**
- * User manager class
- */
 class Manager
 {
     protected SessionContainer $session;
@@ -19,26 +16,18 @@ class Manager
         $this->session = $session;
     }
 
-    /**
-     * login
-     *
-     * logoutも適宜更新してください。
-     */
-    public function login(AuthorizationToken $authorizationToken): void
-    {
+    public function login(
+        AuthorizationToken $authorizationToken,
+        string $userServiceType
+    ): void {
         $this->session['authorization_token'] = $authorizationToken;
 
-        /**
-         * ユーザ情報
-         * 情報が増えてきたらオブジェクト化など考える。
-         */
         $claims = $authorizationToken->getDecodedAccessToken()->getClaims();
 
-        $user = [
-            'name' => $claims['username'],
-        ];
-
-        $this->session['user'] = $user;
+        $this->session['user'] = new User(
+            $claims['username'],
+            $userServiceType
+        );
 
         $this->session['authenticated'] = true;
     }
@@ -48,20 +37,12 @@ class Manager
         $this->session->clear();
     }
 
-    /**
-     * 認証判定
-     */
     public function isAuthenticated(): bool
     {
         return isset($this->session['authenticated']) && $this->session['authenticated'] === true;
     }
 
-    /**
-     * return authenticated user data
-     *
-     * @return array<string, mixed>|null
-     */
-    public function getUser(): ?array
+    public function getUser(): ?User
     {
         return $this->session['user'];
     }
@@ -73,10 +54,5 @@ class Manager
         }
 
         return null;
-    }
-
-    public function setAuthorizationToken(AuthorizationToken $token): void
-    {
-        $this->session['authorization_token'] = $token;
     }
 }

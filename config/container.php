@@ -12,8 +12,10 @@ use App\Application\Handlers\Error;
 use App\Application\Handlers\NotAllowed;
 use App\Application\Handlers\NotFound;
 use App\Application\Handlers\PhpError;
-use App\Authorization\Manager as AuthorizationManager;
-use App\Authorization\Provider\CinemaSunshineRewardProvider;
+use App\Authorization\MembershipManager as MembershipAuthorizationManager;
+use App\Authorization\Provider\MembershipProvider;
+use App\Authorization\Provider\RewardProvider;
+use App\Authorization\RewardManager as RewardAuthorizationManager;
 use App\Authorization\SessionContainer as AuthorizationSessionContainer;
 use App\Logger\DbalLogger;
 use App\Session\SessionManager;
@@ -23,6 +25,7 @@ use App\Twig\Extension\CommonExtension;
 use App\Twig\Extension\MembershipExtension;
 use App\Twig\Extension\MotionpictureTicketExtension;
 use App\Twig\Extension\NewsExtension;
+use App\Twig\Extension\RewardExtension;
 use App\Twig\Extension\ScheduleExtension;
 use App\Twig\Extension\SeoExtension;
 use App\Twig\Extension\TheaterExtension;
@@ -53,40 +56,57 @@ use Twig\Extra\String\StringExtension;
 $container = $app->getContainer();
 
 /**
- * @return AuthorizationManager
+ * @return RewardAuthorizationManager
  */
-$container['am'] = static function ($container) {
+$container['rewardAuth'] = static function ($container) {
     /**
      * 名称変更によるclearを想定しておく。（仕様変更などがあった場合）
      * must consist of alphanumerics, backslashes and underscores only.
      */
-    $sessionContainerName = 'authorization_20200907';
+    $sessionContainerName = 'authorization_20230511';
 
     $sessionContainer = new AuthorizationSessionContainer(
         $container->get('sm')->getContainer($sessionContainerName)
     );
 
     $uri       = Uri::createFromEnvironment($container->get('environment'));
-    $loginUrl  = $container->get('router')->fullUrlFor($uri, 'login');
-    $logoutUrl = $container->get('router')->fullUrlFor($uri, 'logout');
+    $loginUrl  = $container->get('router')->fullUrlFor($uri, 'reward_login');
+    $logoutUrl = $container->get('router')->fullUrlFor($uri, 'reward_logout');
 
     $settings = $container->get('settings')['mp_service'];
 
-    $provider = new CinemaSunshineRewardProvider(
-        $settings['authorization_code_host'],
-        $settings['authorization_code_client_id'],
-        $settings['authorization_code_client_secret'],
-        $settings['authorization_code_scopes'],
+    $provider = new RewardProvider(
+        $settings['reward_authorization_host'],
+        $settings['reward_authorization_client_id'],
+        $settings['reward_authorization_client_secret'],
+        $settings['reward_authorization_scopes'],
         $loginUrl,
         $logoutUrl
     );
 
-    return new AuthorizationManager($provider, $sessionContainer);
+    return new RewardAuthorizationManager($provider, $sessionContainer);
+};
+
+$container['membershipAuth'] = static function ($container) {
+    $uri       = Uri::createFromEnvironment($container->get('environment'));
+    $loginUrl  = $container->get('router')->fullUrlFor($uri, 'membership_login');
+    $logoutUrl = $container->get('router')->fullUrlFor($uri, 'membership_logout');
+
+    $settings = $container->get('settings')['membership'];
+
+    $provider = new MembershipProvider(
+        $settings['authorization_host'],
+        $settings['authorization_client_id'],
+        $settings['authorization_client_secret'],
+        $settings['authorization_scopes'],
+        $loginUrl,
+        $logoutUrl
+    );
+
+    return new MembershipAuthorizationManager($provider);
 };
 
 /**
- * User Manager
- *
  * @return UserManager
  */
 $container['um'] = static function ($container) {
@@ -94,7 +114,7 @@ $container['um'] = static function ($container) {
      * 名称変更によるclearを想定しておく。（仕様変更などがあった場合）
      * must consist of alphanumerics, backslashes and underscores only.
      */
-    $sessionContainerName = 'user_20200907';
+    $sessionContainerName = 'user_20230511';
 
     return new UserManager(
         $container->get('sm')->getContainer($sessionContainerName)
@@ -130,7 +150,8 @@ $container['view'] = static function ($container) {
     ));
     $view->addExtension(new CommonExtension(APP_ENV));
     $view->addExtension(new MembershipExtension(
-        $container->get('settings')['membership']
+        $container->get('settings')['membership']['mypage_url'],
+        $container->get('membershipAuth')
     ));
     $view->addExtension(new MotionpictureTicketExtension(
         $container->get('settings')['mp_service']
@@ -146,8 +167,10 @@ $container['view'] = static function ($container) {
         APP_ROOT . '/data/theater/keywords.json'
     ));
     $view->addExtension(new UserExtension(
-        $container->get('um'),
-        $container->get('am')
+        $container->get('um')
+    ));
+    $view->addExtension(new RewardExtension(
+        $container->get('rewardAuth')
     ));
 
     return $view;

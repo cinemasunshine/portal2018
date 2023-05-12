@@ -1,175 +1,142 @@
 <?php
 
-/**
- * ManagerTest.php
- */
-
 declare(strict_types=1);
 
 namespace Tests\Unit\User;
 
 use App\Authorization\Token\AuthorizationCodeToken;
-use App\Authorization\Token\DecodedAccessToken;
 use App\Session\SessionManager;
 use App\User\Manager as UserManager;
+use App\User\User;
 use Laminas\Session\Config\StandardConfig;
-use Mockery;
-use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
-use Mockery\LegacyMockInterface;
-use Mockery\MockInterface;
+use Laminas\Session\Storage\ArrayStorage;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @covers \App\User\Manager
+ * @testdox ユーザーについて扱うクラス
+ */
 final class ManagerTest extends TestCase
 {
-    use MockeryPHPUnitIntegration;
-
-    private SessionManager $sessionManager;
-
-    protected function setUp(): void
+    private function createSessionManager(): SessionManager
     {
-        $sessionConfig = new StandardConfig();
-        $sessionConfig->setOptions(['name' => 'test']);
-        $this->sessionManager = new SessionManager($sessionConfig);
+        $sessionConfig  = new StandardConfig();
+        $sessionManager = new SessionManager($sessionConfig);
+        $sessionManager->setStorage(new ArrayStorage());
+
+        return $sessionManager;
     }
 
-    protected function tearDown(): void
+    private function createAuthorizationCodeToken(string $accessToken): AuthorizationCodeToken
     {
-        $this->sessionManager->getStorage()->clear();
-    }
+        $accessToken = new TestAccessToken($accessToken);
 
-    /**
-     * @return MockInterface|LegacyMockInterface|AuthorizationCodeToken
-     */
-    protected function createAuthorizationCodeTokenMock()
-    {
-        return Mockery::mock(AuthorizationCodeToken::class);
+        return AuthorizationCodeToken::create($accessToken);
     }
 
     /**
-     * @return MockInterface|LegacyMockInterface|DecodedAccessToken
-     */
-    protected function createDecodedAccessTokenMock()
-    {
-        return Mockery::mock(DecodedAccessToken::class);
-    }
-
-    /**
+     * @covers ::isAuthenticated
      * @test
      */
-    public function testLogin(): void
+    public function ログイン前は認証されていない状態(): void
     {
-        $username = 'username';
-        $claims   = ['username' => $username];
+        // Arrange
+        $sessionManager = $this->createSessionManager();
+        $manager        = new UserManager($sessionManager->getContainer('test'));
 
-        $decodedAccessTokenMock = $this->createDecodedAccessTokenMock();
-        $decodedAccessTokenMock
-            ->shouldReceive('getClaims')
-            ->once()
-            ->with()
-            ->andReturn($claims);
+        // Act
+        $result = $manager->isAuthenticated();
 
-        $authorizationCodeTokenMock = $this->createAuthorizationCodeTokenMock();
-        $authorizationCodeTokenMock
-            ->shouldReceive('getDecodedAccessToken')
-            ->once()
-            ->with()
-            ->andReturn($decodedAccessTokenMock);
-
-        $sessionContainer = $this->sessionManager->getContainer();
-
-        $userManager = new UserManager($sessionContainer);
-        $userManager->login($authorizationCodeTokenMock);
-
-        $this->assertSame(
-            $authorizationCodeTokenMock,
-            $sessionContainer['authorization_token']
-        );
+        // Assert
+        $this->assertFalse($result);
     }
 
     /**
+     * @covers ::getUser
      * @test
      */
-    public function testLogout(): void
+    public function ログイン前はユーザ情報が無い(): void
     {
-        $sessionContainer         = $this->sessionManager->getContainer();
-        $sessionContainer['hoge'] = 'hoge';
+        // Arrange
+        $sessionManager = $this->createSessionManager();
+        $manager        = new UserManager($sessionManager->getContainer('test'));
 
-        $userManager = new UserManager($sessionContainer);
-        $userManager->logout();
+        // Act
+        $result = $manager->getUser();
 
-        $this->assertEmpty($sessionContainer['hoge']);
+        // Assert
+        $this->assertNull($result);
     }
 
     /**
+     * @covers ::getAuthorizationToken
      * @test
      */
-    public function testIsAuthenticated(): void
+    public function ログイン前は認可トークンが無い(): void
     {
-        $sessionContainer = $this->sessionManager->getContainer();
-        $userManager      = new UserManager($sessionContainer);
+        // Arrange
+        $sessionManager = $this->createSessionManager();
+        $manager        = new UserManager($sessionManager->getContainer('test'));
 
-        $this->assertFalse($userManager->isAuthenticated());
+        // Act
+        $result = $manager->getAuthorizationToken();
 
-        $sessionContainer['authenticated'] = true;
-        $this->assertTrue($userManager->isAuthenticated());
+        // Assert
+        $this->assertNull($result);
     }
 
     /**
+     * @covers ::login
      * @test
      */
-    public function testGetUser(): void
+    public function ログインするとログイン状態になる(): void
     {
-        $user = ['name' => 'username'];
+        // Arrange
+        $sessionManager = $this->createSessionManager();
+        $manager        = new UserManager($sessionManager->getContainer('test'));
 
-        $sessionContainer         = $this->sessionManager->getContainer();
-        $sessionContainer['user'] = $user;
+        // phpcs:disable Generic.Files.LineLength.TooLong
+        $accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkpvaG4gRG9lIn0.BHWfixVfgjk4JG_j5qxZg_FpeZthQlnq9zu99wJxDgw';
+        // phpcs:enable
 
-        $userManager = new UserManager($sessionContainer);
+        $authorizationCodeToken = $this->createAuthorizationCodeToken($accessToken);
 
-        $this->assertSame($user, $userManager->getUser());
+        // Act
+        $manager->login($authorizationCodeToken, User::SERVICE_TYPE_MEMBERSHIP);
+
+        // Assert
+        $this->assertTrue($manager->isAuthenticated());
+
+        $user = $manager->getUser();
+        $this->assertSame('John Doe', $user->getName());
+        $this->assertSame(User::SERVICE_TYPE_MEMBERSHIP, $user->getServiceType());
+
+        $this->assertSame($authorizationCodeToken, $manager->getAuthorizationToken());
     }
 
     /**
+     * @covers ::methodName
      * @test
      */
-    public function testGetAuthorizationTokenNotLogin(): void
+    public function ログイン状態からログアウトをするとログインしていない状態になる(): void
     {
-        $sessionContainer = $this->sessionManager->getContainer();
-        $userManager      = new UserManager($sessionContainer);
+        // Arrange
+        $sessionManager = $this->createSessionManager();
+        $manager        = new UserManager($sessionManager->getContainer('test'));
 
-        $this->assertNull($userManager->getAuthorizationToken());
-    }
+        // phpcs:disable Generic.Files.LineLength.TooLong
+        $accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkpvaG4gRG9lIn0.BHWfixVfgjk4JG_j5qxZg_FpeZthQlnq9zu99wJxDgw';
+        // phpcs:enable
 
-    /**
-     * @test
-     */
-    public function testGetAuthorizationTokenLoggedIn(): void
-    {
-        $sessionContainer = $this->sessionManager->getContainer();
-        $userManager      = new UserManager($sessionContainer);
+        $authorizationCodeToken = $this->createAuthorizationCodeToken($accessToken);
 
-        $authorizationCodeTokenMock = $this->createAuthorizationCodeTokenMock();
+        // Act
+        $manager->login($authorizationCodeToken, User::SERVICE_TYPE_REWRD);
+        $manager->logout();
 
-        $sessionContainer['authorization_token'] = $authorizationCodeTokenMock;
-        $sessionContainer['authenticated']       = true;
-
-        $this->assertSame($authorizationCodeTokenMock, $userManager->getAuthorizationToken());
-    }
-
-    /**
-     * @test
-     */
-    public function testSetAuthorizationToken(): void
-    {
-        $sessionContainer = $this->sessionManager->getContainer();
-        $userManager      = new UserManager($sessionContainer);
-
-        $authorizationCodeTokenMock = $this->createAuthorizationCodeTokenMock();
-        $userManager->setAuthorizationToken($authorizationCodeTokenMock);
-
-        $this->assertEquals(
-            $authorizationCodeTokenMock,
-            $sessionContainer['authorization_token']
-        );
+        // Assert
+        $this->assertFalse($manager->isAuthenticated());
+        $this->assertNull($manager->getUser());
+        $this->assertNull($manager->getAuthorizationToken());
     }
 }

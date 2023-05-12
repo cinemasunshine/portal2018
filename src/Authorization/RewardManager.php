@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace App\Authorization;
 
-use App\Authorization\Provider\CinemaSunshineRewardProvider;
+use App\Authorization\Provider\RewardProvider;
 use App\Authorization\Token\AuthorizationCodeToken;
 
-class Manager
+class RewardManager
 {
-    protected CinemaSunshineRewardProvider $provider;
+    protected RewardProvider $provider;
     protected SessionContainer $session;
 
-    public function __construct(CinemaSunshineRewardProvider $provider, SessionContainer $session)
+    public function __construct(RewardProvider $provider, SessionContainer $session)
     {
         $this->provider = $provider;
         $this->session  = $session;

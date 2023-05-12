@@ -8,7 +8,7 @@ use App\Authorization\Token\AuthorizationCodeToken;
 use League\OAuth2\Client\Provider\AbstractProvider;
 use League\OAuth2\Client\Provider\GenericProvider;
 
-class CinemaSunshineRewardProvider
+class RewardProvider
 {
     private string $baseEndpoint;
     private string $clientId;
