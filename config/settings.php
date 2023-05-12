@@ -190,9 +190,6 @@ $getMpServiceSetting = static function () {
         // API
         'api_host' => getenv('APPSETTING_MP_API_HOST'),
 
-        // 認可トークンの期限バッファー（秒）
-        'authorization_token_expiration_buffer' => 60 * 5,
-
         // リワード Authorization
         'reward_authorization_host'          => getenv('APPSETTING_MP_AUTHORIZATION_CODE_HOST'),
         'reward_authorization_client_id'     => getenv('APPSETTING_MP_AUTHORIZATION_CODE_CLIENT_ID'),
