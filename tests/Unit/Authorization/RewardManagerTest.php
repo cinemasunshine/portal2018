@@ -67,6 +67,30 @@ final class RewardManagerTest extends TestCase
     }
 
     /**
+     * @covers ::getAuthorizationUrl
+     * @test
+     */
+    public function 認可URLは取得する度に異なるURLを返す(): void
+    {
+        // Arrange
+        $sessionManager   = $this->createSessionManager();
+        $sessionContainer = new AuthorizationSessionContainer(
+            $sessionManager->getContainer('test')
+        );
+
+        $provider = $this->createProvider();
+
+        $manager = new RewardAuthorizationManager($provider, $sessionContainer);
+
+        // Act
+        $first  = $manager->getAuthorizationUrl();
+        $second = $manager->getAuthorizationUrl();
+
+        // Assert
+        $this->assertNotSame($first, $second);
+    }
+
+    /**
      * @covers ::getAuthorizationState
      * @test
      */

@@ -11,6 +11,7 @@ use Twig\TwigFunction;
 class RewardExtension extends AbstractExtension
 {
     protected RewardAuthorizationManager $authorizationManager;
+    protected ?string $loginUrl;
 
     /**
      * @return TwigFunction[]
@@ -26,11 +27,16 @@ class RewardExtension extends AbstractExtension
     public function __construct(RewardAuthorizationManager $authorizationManager)
     {
         $this->authorizationManager = $authorizationManager;
+        $this->loginUrl             = null;
     }
 
     public function getLoginUrl(): string
     {
-        return $this->authorizationManager->getAuthorizationUrl();
+        if (is_null($this->loginUrl)) {
+            $this->loginUrl = $this->authorizationManager->getAuthorizationUrl();
+        }
+
+        return $this->loginUrl;
     }
 
     public function getLogoutUrl(): string

@@ -75,4 +75,21 @@ class RewardExtensionTest extends TestCase
             ['reward_logout_url'],
         ];
     }
+
+    /**
+     * @covers ::getLoginUrl
+     * @test
+     */
+    public function ログインURLを複数回取得しても同じURLを返す(): void
+    {
+        // Arrange
+        $extension = new RewardExtension($this->createAuthorizationManager());
+
+        // Act
+        $first  = $extension->getLoginUrl();
+        $second = $extension->getLoginUrl();
+
+        // Assert
+        $this->assertSame($first, $second);
+    }
 }
