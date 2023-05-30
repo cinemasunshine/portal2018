@@ -4,13 +4,15 @@ declare(strict_types=1);
 
 namespace Tests\Unit\User;
 
-use App\Authorization\Token\AuthorizationCodeToken;
 use App\Session\SessionManager;
 use App\User\Manager as UserManager;
+use App\User\Provider\MembershipProvider;
+use App\User\Provider\RewardProvider;
 use App\User\User;
 use Laminas\Session\Config\StandardConfig;
 use Laminas\Session\Storage\ArrayStorage;
 use PHPUnit\Framework\TestCase;
+use Slim\Http\Cookies;
 
 /**
  * @covers \App\User\Manager
@@ -27,116 +29,50 @@ final class ManagerTest extends TestCase
         return $sessionManager;
     }
 
-    private function createAuthorizationCodeToken(string $accessToken): AuthorizationCodeToken
-    {
-        $accessToken = new TestAccessToken($accessToken);
-
-        return AuthorizationCodeToken::create($accessToken);
-    }
-
     /**
-     * @covers ::isAuthenticated
+     * @covers ::getUserState
      * @test
      */
-    public function ログイン前は認証されていない状態(): void
+    public function Cookieにloginedが含まれる場合、ログイン状態のシネマサンシャイン会員ユーザの情報が取得できる(): void
     {
         // Arrange
         $sessionManager = $this->createSessionManager();
-        $manager        = new UserManager($sessionManager->getContainer('test'));
+        $rewardProvider = new RewardProvider($sessionManager->getContainer('test'));
+
+        $membershipProvider = new MembershipProvider();
+
+        $cookies = new Cookies(['logined' => 'foobar']);
 
         // Act
-        $result = $manager->isAuthenticated();
+        $manager = new UserManager($rewardProvider, $membershipProvider, $cookies);
+        $result  = $manager->getUserState();
 
         // Assert
-        $this->assertFalse($result);
-    }
+        $this->assertTrue($result->isAuthenticated());
 
-    /**
-     * @covers ::getUser
-     * @test
-     */
-    public function ログイン前はユーザ情報が無い(): void
-    {
-        // Arrange
-        $sessionManager = $this->createSessionManager();
-        $manager        = new UserManager($sessionManager->getContainer('test'));
-
-        // Act
-        $result = $manager->getUser();
-
-        // Assert
-        $this->assertNull($result);
-    }
-
-    /**
-     * @covers ::getAuthorizationToken
-     * @test
-     */
-    public function ログイン前は認可トークンが無い(): void
-    {
-        // Arrange
-        $sessionManager = $this->createSessionManager();
-        $manager        = new UserManager($sessionManager->getContainer('test'));
-
-        // Act
-        $result = $manager->getAuthorizationToken();
-
-        // Assert
-        $this->assertNull($result);
-    }
-
-    /**
-     * @covers ::login
-     * @test
-     */
-    public function ログインするとログイン状態になる(): void
-    {
-        // Arrange
-        $sessionManager = $this->createSessionManager();
-        $manager        = new UserManager($sessionManager->getContainer('test'));
-
-        // phpcs:disable Generic.Files.LineLength.TooLong
-        $accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkpvaG4gRG9lIn0.BHWfixVfgjk4JG_j5qxZg_FpeZthQlnq9zu99wJxDgw';
-        // phpcs:enable
-
-        $authorizationCodeToken = $this->createAuthorizationCodeToken($accessToken);
-
-        // Act
-        $manager->login($authorizationCodeToken, User::SERVICE_TYPE_MEMBERSHIP);
-
-        // Assert
-        $this->assertTrue($manager->isAuthenticated());
-
-        $user = $manager->getUser();
-        $this->assertSame('John Doe', $user->getName());
+        $user = $result->getUser();
         $this->assertSame(User::SERVICE_TYPE_MEMBERSHIP, $user->getServiceType());
-
-        $this->assertSame($authorizationCodeToken, $manager->getAuthorizationToken());
     }
 
     /**
-     * @covers ::methodName
+     * @covers ::getUserState
      * @test
      */
-    public function ログイン状態からログアウトをするとログインしていない状態になる(): void
+    public function Cookieにlogined含まれない場合、非ログイン状態のユーザ情報が取得できる(): void
     {
         // Arrange
         $sessionManager = $this->createSessionManager();
-        $manager        = new UserManager($sessionManager->getContainer('test'));
+        $rewardProvider = new RewardProvider($sessionManager->getContainer('test'));
 
-        // phpcs:disable Generic.Files.LineLength.TooLong
-        $accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkpvaG4gRG9lIn0.BHWfixVfgjk4JG_j5qxZg_FpeZthQlnq9zu99wJxDgw';
-        // phpcs:enable
+        $membershipProvider = new MembershipProvider();
 
-        $authorizationCodeToken = $this->createAuthorizationCodeToken($accessToken);
+        $cookies = new Cookies();
 
         // Act
-        $manager->login($authorizationCodeToken, User::SERVICE_TYPE_REWRD);
-        $manager->logout();
+        $manager = new UserManager($rewardProvider, $membershipProvider, $cookies);
+        $result  = $manager->getUserState();
 
         // Assert
-        $this->assertFalse($manager->isAuthenticated());
-        $this->assertNull($manager->getUser());
-        $this->assertNull($manager->getAuthorizationToken());
+        $this->assertNull($result->getUser());
     }
 }

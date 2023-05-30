@@ -12,9 +12,7 @@ use App\Application\Handlers\Error;
 use App\Application\Handlers\NotAllowed;
 use App\Application\Handlers\NotFound;
 use App\Application\Handlers\PhpError;
-use App\Authorization\MembershipManager as MembershipAuthorizationManager;
-use App\Authorization\Provider\MembershipProvider;
-use App\Authorization\Provider\RewardProvider;
+use App\Authorization\Provider\RewardProvider as RewardAuthorizationProvider;
 use App\Authorization\RewardManager as RewardAuthorizationManager;
 use App\Authorization\SessionContainer as AuthorizationSessionContainer;
 use App\Logger\DbalLogger;
@@ -31,6 +29,8 @@ use App\Twig\Extension\SeoExtension;
 use App\Twig\Extension\TheaterExtension;
 use App\Twig\Extension\UserExtension;
 use App\User\Manager as UserManager;
+use App\User\Provider\MembershipProvider as MembershipUserProvider;
+use App\User\Provider\RewardProvider as RewardUserProvider;
 use Blue32a\MonologGoogleCloudLoggingHandler\GoogleCloudLoggingHandler;
 use Doctrine\Common\Cache\ArrayCache;
 use Doctrine\Common\Cache\FilesystemCache;
@@ -42,6 +42,7 @@ use Monolog\Handler\BrowserConsoleHandler;
 use Monolog\Handler\FingersCrossedHandler;
 use Monolog\Logger;
 use Slim\App as SlimApp;
+use Slim\Http\Cookies;
 use Slim\Http\Environment;
 use Slim\Http\Uri;
 use Slim\Views\Twig;
@@ -75,7 +76,7 @@ $container['rewardAuth'] = static function ($container) {
 
     $settings = $container->get('settings')['mp_service'];
 
-    $provider = new RewardProvider(
+    $provider = new RewardAuthorizationProvider(
         $settings['reward_authorization_host'],
         $settings['reward_authorization_client_id'],
         $settings['reward_authorization_client_secret'],
@@ -87,25 +88,6 @@ $container['rewardAuth'] = static function ($container) {
     return new RewardAuthorizationManager($provider, $sessionContainer);
 };
 
-$container['membershipAuth'] = static function ($container) {
-    $uri       = Uri::createFromEnvironment($container->get('environment'));
-    $loginUrl  = $container->get('router')->fullUrlFor($uri, 'membership_login');
-    $logoutUrl = $container->get('router')->fullUrlFor($uri, 'membership_logout');
-
-    $settings = $container->get('settings')['membership'];
-
-    $provider = new MembershipProvider(
-        $settings['authorization_host'],
-        $settings['authorization_client_id'],
-        $settings['authorization_client_secret'],
-        $settings['authorization_scopes'],
-        $loginUrl,
-        $logoutUrl
-    );
-
-    return new MembershipAuthorizationManager($provider);
-};
-
 /**
  * @return UserManager
  */
@@ -114,10 +96,20 @@ $container['um'] = static function ($container) {
      * 名称変更によるclearを想定しておく。（仕様変更などがあった場合）
      * must consist of alphanumerics, backslashes and underscores only.
      */
-    $sessionContainerName = 'user_20230511';
+    $sessionContainerName = 'reward_user_20230530';
+
+    $rewardProvider = new RewardUserProvider(
+        $container->get('sm')->getContainer($sessionContainerName)
+    );
+
+    $membershipProvider = new MembershipUserProvider();
+
+    $cookies = new Cookies($container->get('request')->getCookieParams());
 
     return new UserManager(
-        $container->get('sm')->getContainer($sessionContainerName)
+        $rewardProvider,
+        $membershipProvider,
+        $cookies
     );
 };
 
@@ -150,8 +142,7 @@ $container['view'] = static function ($container) {
     ));
     $view->addExtension(new CommonExtension(APP_ENV));
     $view->addExtension(new MembershipExtension(
-        $container->get('settings')['membership']['mypage_url'],
-        $container->get('membershipAuth')
+        $container->get('settings')['membership']['site_url']
     ));
     $view->addExtension(new MotionpictureTicketExtension(
         $container->get('settings')['mp_service']
@@ -167,7 +158,7 @@ $container['view'] = static function ($container) {
         APP_ROOT . '/data/theater/keywords.json'
     ));
     $view->addExtension(new UserExtension(
-        $container->get('um')
+        $container->get('um')->getUserState()
     ));
     $view->addExtension(new RewardExtension(
         $container->get('rewardAuth')

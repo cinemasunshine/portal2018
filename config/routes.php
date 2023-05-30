@@ -3,7 +3,6 @@
 declare(strict_types=1);
 
 use App\Controller\AboutController;
-use App\Controller\Authorization\MembershipController;
 use App\Controller\Authorization\RewardController;
 use App\Controller\Development\DoctrineController;
 use App\Controller\FourdxController;
@@ -28,11 +27,6 @@ use Slim\App as SlimApp;
 // phpcs:enable
 
 $app->get('/', IndexController::class . ':index')->setName('homepage');
-
-$app->group('/member', function (): void {
-    $this->get('/login/', MembershipController::class . ':login')->setName('membership_login');
-    $this->get('/logout/', MembershipController::class . ':logout')->setName('membership_logout');
-});
 
 $app->get('/login/', RewardController::class . ':login')->setName('reward_login');
 $app->get('/logout/', RewardController::class . ':logout')->setName('reward_logout');

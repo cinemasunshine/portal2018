@@ -4,11 +4,8 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Twig\Extension;
 
-use App\Session\SessionManager;
 use App\Twig\Extension\UserExtension;
-use App\User\Manager as UserManager;
-use Laminas\Session\Config\StandardConfig;
-use Laminas\Session\Storage\ArrayStorage;
+use App\User\Provider\MembershipProvider;
 use PHPUnit\Framework\TestCase;
 use Twig\TwigFunction;
 
@@ -18,15 +15,6 @@ use Twig\TwigFunction;
  */
 final class UserExtensionTest extends TestCase
 {
-    private function createUserManager(): UserManager
-    {
-        $sessionConfig  = new StandardConfig();
-        $sessionManager = new SessionManager($sessionConfig);
-        $sessionManager->setStorage(new ArrayStorage());
-
-        return new UserManager($sessionManager->getContainer('user'));
-    }
-
     /**
      * @covers ::getFunctions
      * @dataProvider functionNameDataProvider
@@ -35,7 +23,8 @@ final class UserExtensionTest extends TestCase
     public function 決まった名称のtwigヘルパー関数が含まれる(string $name): void
     {
         // Arrange
-        $extension = new UserExtension($this->createUserManager());
+        $userState = new MembershipProvider();
+        $extension = new UserExtension($userState);
 
         // Act
         $functions = $extension->getFunctions();

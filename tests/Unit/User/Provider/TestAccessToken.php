@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Unit\User;
+namespace Tests\Unit\User\Provider;
 
 use League\OAuth2\Client\Token\AccessTokenInterface;
 

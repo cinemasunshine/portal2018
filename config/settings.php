@@ -233,11 +233,7 @@ $settings['schedule'] = [
 ];
 
 $settings['membership'] = [
-    'mypage_url'                  => getenv('APPSETTING_MEMBERSHIP_MYPAGE_URL'),
-    'authorization_host'          => getenv('APPSETTING_MEMBERSHIP_AUTHORIZATION_HOST'),
-    'authorization_client_id'     => getenv('APPSETTING_MEMBERSHIP_AUTHORIZATION_CLIENT_ID'),
-    'authorization_client_secret' => getenv('APPSETTING_MEMBERSHIP_AUTHORIZATION_CLIENT_SECRET'),
-    'authorization_scopes'        => ['aws.cognito.signin.user.admin+email+openid+phone+profile'],
+    'site_url' => getenv('APPSETTING_MEMBERSHIP_SITE_URL'),
 ];
 
 return $settings;

@@ -4,13 +4,18 @@ declare(strict_types=1);
 
 namespace App\Controller\Authorization;
 
-use App\User\User;
+use App\User\Provider\RewardProvider as RewardUserProvider;
 use Slim\Http\Request;
 use Slim\Http\Response;
 use Throwable;
 
 class RewardController extends BaseController
 {
+    private function getRewardUserProvider(): RewardUserProvider
+    {
+        return $this->um->getRewardProvider();
+    }
+
     /**
      * login action
      *
@@ -49,7 +54,7 @@ class RewardController extends BaseController
             return $this->renderError($response);
         }
 
-        $this->um->login($token, User::SERVICE_TYPE_REWRD);
+        $this->getRewardUserProvider()->login($token);
 
         $redirectUrl = $this->getRedirectUrlOnSuccessful();
         $this->redirect($redirectUrl);
@@ -67,7 +72,7 @@ class RewardController extends BaseController
      */
     public function executeLogout(Request $request, Response $response, array $args): void
     {
-        $this->um->logout();
+        $this->getRewardUserProvider()->logout();
 
         $redirectUrl = $this->getRedirectUrlOnSuccessful();
         $this->redirect($redirectUrl);

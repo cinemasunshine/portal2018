@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Authorization\MembershipManager as MembershipAuthorizationManager;
 use App\Authorization\RewardManager as RewardAuthorizationManager;
 use App\Exception\RedirectException;
 use App\Session\SessionManager;
@@ -21,7 +20,6 @@ use Slim\Router;
 use Slim\Views\Twig;
 
 /**
- * @property-read MembershipAuthorizationManager $membershipAuth
  * @property-read RewardAuthorizationManager $rewardAuth
  * @property-read EntityManager $em
  * @property-read Environment $environment

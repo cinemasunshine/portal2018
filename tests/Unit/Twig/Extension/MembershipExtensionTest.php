@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Twig\Extension;
 
-use App\Authorization\MembershipManager as AuthorizationManager;
-use App\Authorization\Provider\MembershipProvider;
 use App\Twig\Extension\MembershipExtension;
 use PHPUnit\Framework\TestCase;
 use Twig\TwigFunction;
@@ -16,20 +14,6 @@ use Twig\TwigFunction;
  */
 class MembershipExtensionTest extends TestCase
 {
-    private function createAuthorizationManager(): AuthorizationManager
-    {
-        $provider = new MembershipProvider(
-            'https://example.com',
-            'client',
-            'secret',
-            ['openid'],
-            'https://default.com/login',
-            'https://default.com/logout'
-        );
-
-        return new AuthorizationManager($provider);
-    }
-
     /**
      * @covers ::getFunctions
      * @dataProvider functionNameDataProvider
@@ -38,10 +22,7 @@ class MembershipExtensionTest extends TestCase
     public function 決まった名称のtwigヘルパー関数が含まれる(string $name): void
     {
         // Arrange
-        $extension = new MembershipExtension(
-            'https://example.com/mypage',
-            $this->createAuthorizationManager()
-        );
+        $extension = new MembershipExtension('https://membership.example.com');
 
         // Act
         $functions = $extension->getFunctions();
@@ -74,18 +55,63 @@ class MembershipExtensionTest extends TestCase
      * @covers ::getMyPageUrl
      * @test
      */
-    public function マイページのURLを返す(): void
+    public function メソッドgetMyPageUrlは会員サイトトップのURLを返す(): void
     {
         // Arrange
-        $extension = new MembershipExtension(
-            'https://example.com/mypage',
-            $this->createAuthorizationManager()
-        );
+        $extension = new MembershipExtension('https://membership.example.com');
 
         // Act
         $result = $extension->getMypageUrl();
 
         // Assert
-        $this->assertSame('https://example.com/mypage', $result);
+        $this->assertSame('https://membership.example.com', $result);
+    }
+
+    /**
+     * @covers ::getSignupUrl
+     * @test
+     */
+    public function メソッドgetSignupUrlは会員サイトトップのURLを返す(): void
+    {
+        // Arrange
+        $extension = new MembershipExtension('https://membership.example.com');
+
+        // Act
+        $result = $extension->getSignupUrl();
+
+        // Assert
+        $this->assertSame('https://membership.example.com', $result);
+    }
+
+    /**
+     * @covers ::getLoginUrl
+     * @test
+     */
+    public function メソッドgetLoginUrlは会員サイトトップのURLを返す(): void
+    {
+        // Arrange
+        $extension = new MembershipExtension('https://membership.example.com');
+
+        // Act
+        $result = $extension->getSignupUrl();
+
+        // Assert
+        $this->assertSame('https://membership.example.com', $result);
+    }
+
+    /**
+     * @covers ::getLogoutUrl
+     * @test
+     */
+    public function メソッドgetLogoutUrlは会員サイトのログアウトURLを返す(): void
+    {
+        // Arrange
+        $extension = new MembershipExtension('https://membership.example.com');
+
+        // Act
+        $result = $extension->getLogoutUrl();
+
+        // Assert
+        $this->assertSame('https://membership.example.com/logout', $result);
     }
 }

@@ -4,19 +4,16 @@ declare(strict_types=1);
 
 namespace App\Twig\Extension;
 
-use App\Authorization\MembershipManager as AuthorizationManager;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 
 class MembershipExtension extends AbstractExtension
 {
-    private string $mypageUrl;
-    private AuthorizationManager $authorizationManager;
+    private string $membershipSiteUrl;
 
-    public function __construct(string $mypageUrl, AuthorizationManager $authorizationManager)
+    public function __construct(string $membershipSiteUrl)
     {
-        $this->mypageUrl            = $mypageUrl;
-        $this->authorizationManager = $authorizationManager;
+        $this->membershipSiteUrl = $membershipSiteUrl;
     }
 
     /**
@@ -34,21 +31,21 @@ class MembershipExtension extends AbstractExtension
 
     public function getMypageUrl(): string
     {
-        return $this->mypageUrl;
+        return $this->membershipSiteUrl;
     }
 
     public function getSignupUrl(): string
     {
-        return $this->authorizationManager->getSignupUrl();
+        return $this->membershipSiteUrl;
     }
 
     public function getLoginUrl(): string
     {
-        return $this->authorizationManager->getAuthorizationUrl();
+        return $this->membershipSiteUrl;
     }
 
     public function getLogoutUrl(): string
     {
-        return $this->authorizationManager->getLogoutUrl();
+        return $this->membershipSiteUrl . '/logout';
     }
 }
