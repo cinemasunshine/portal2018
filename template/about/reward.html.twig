@@ -11,30 +11,15 @@
 {% endblock %}
 
 {% block contents %}
-<div class="width mx-auto p-3">
-    <div class="breadcrumb-list small mb-5 d-md-block d-none">
-        <a href="{{ path_for('homepage') }}">ホーム　|　</a>
-        <span class="font-weight-bold">リワード会員移行手続きの流れ</span>
-    </div>
+    
     <section>
         <div class="width mx-auto p-3">
-            <h1 class="mb-md-4 mb-0 text-center font-weight-bold py-4 large">シネマサンシャインリワードが新しくなります</h3>
-            <div class="reward-main-img">
-                <img src="/images/reward/img01.png" width="100%">
+            <div class="breadcrumb-list small mb-5 d-md-block d-none">
+                <a href="{{ path_for('homepage') }}">ホーム　|　</a>
+                <span class="font-weight-bold">リワード会員移行手続きの流れ</span>
             </div>
-            <p class="text-center py-4">
-                現在、新会員サービスへの<br>移行方法ならびに新規会員登録方法に関する<br>ご案内ページを準備しております。<br>
-                こちらページの公開予定は下記になります。
-            </p>
-            <div class="mb-md-4 text-center font-weight-bold py-4">
-                <p class="large">6月6日公開予定</p>
-            </div>
-        </div>
-    </section>
-    
-    <!--<section>
-        <div class="width mx-auto p-3">
             <h1 class="mb-md-4 mb-0 text-center font-weight-bold py-4">シネマサンシャインリワードが新しくなります</h3>
+            <p class="text-center">「シネマサンシャインリワード」はアプリからWEBブラウザの会員サービスに<br>リニューアル致します。</p>
             <div class="reward-main-img">
                 <img src="/images/reward/img01.png" width="100%">
             </div>
@@ -44,16 +29,376 @@
             </div>
             <p>
                 新会員サービスのご入会をお願いいたします。<br>
-                シネマサンシャインリワードアプリ会員のお客様は2023年9月30日（土）まではそのままご利用頂けますが、10月1日（日）からはWEBブラウザの新会員サービ
-                スにご移行後に利用可能となります。<br>
+                <span class="font-weight-bold text-red">シネマサンシャインリワードアプリ会員のお客様は2023年9月30日（土）まではそのままご利用頂けますが、10月1日（日）からはWEBブラウザの新会員サービ
+                スにご移行後に利用可能となります。</span><br>
                 上記移行期間中に新会員サービスへの移行手続きをお願いいたします。<br>
-                なお６月12日以降、有効期限の自動更新はございませんので、新会員サービスへ移行後、ご自身で更新のお手続きをお願いいたします。
+                なお６月12日以降、有効期限の自動更新はございませんので、新会員サービスへ移行後、ご自身で更新のお手続きをお願いいたします。<br>
+                新会員サービスに移行後もアプリ会員のポイント、鑑賞履歴、有効期限は引き継がれます。
             </p>
             <div class="reward-anker-link py-4">
-                <a class="transfer-flow anker-link-btn">現アプリ会員からの移行手順はこちら</a>
-                <a class="new-entry anker-link-btn">新規登録方法はこちら</a>
+                <a class="transfer-flow anker-link-btn" href="#transfer-flow">現アプリ会員からの<br class="smp-disp">移行手順はこちら</a>
+                <a class="new-entry anker-link-btn" href="#entry">新規登録方法はこちら</a>
             </div>
         </div>
-    </section>-->
-</div>
+    </section>
+    <section>
+        <a id="transfer-flow"></a>
+        <h2 class="reward-subtit text-center font-weight-bold large mb-5">現アプリ会員からの移行手順</h2>
+        <div class="width mx-auto p-3">
+            <h3 class="text-center mb-md-2 font-weight-bold large">移行完了までの流れ</h3>
+            <p class="text-center py-4">移行完了までの全体の流れは下記になります。</p>
+            <div class="reward-flow-list mb-5">
+                <div class="rtf-list">
+                    <p class="list-txt font-weight-bold"><span class="flow-num">1</span>アプリにログイン、<br>マイページにアクセス</p>
+                    <p class="list-txt font-weight-bold"><span class="flow-num">2</span>会員移行ボタンを押して、<br>移行手続きを開始</p>
+                    <p class="list-txt font-weight-bold"><span class="flow-num">3</span>メールアドレスとパスワードで<br>認証コードの発行・認証</p>
+                    <p class="list-txt font-weight-bold"><span class="flow-num">4</span>新会員サービスへ<br>会員情報登録</p>
+                    <p class="list-txt font-weight-bold"><span class="flow-num">5</span>会員情報<br>登録内容の確認</p>
+                    <p class="list-txt font-weight-bold"><span class="flow-num">6</span>新会員への移行手続き完了</p>
+                </div>
+            </div>
+            <h3 class="text-center mb-md-2 font-weight-bold large text-red py-4">移行手続きに関する注意事項</h3>
+            <p class="text-center mb-md-2 font-weight-bold text-red">下記注意事項をご確認いただいてからお手続きを開始してください、</p>
+            <ul class="trans-note text-red mb-5">
+                <li>※&emsp;移行手続きを開始するとアプリにログインすることができなくなるため、移行完了までお手続きを進めてください。</li>
+                <li>※&emsp;6/12以降で会員移行前にアプリ会員の会員更新がされていない方は移行手続き時に年会費の決済が発生いたしますのでご了承ください。</li>
+                <li>※&emsp;ブラウザで移行手続きを行う場合は、シークレットウィンドなど履歴が残らない状態では移行手続きは正常に行えない場合があります。</li>
+                <li>※&emsp;移行開始から移行完了までの間に、アプリのアンインストールやデータ（キャッシュ、閲覧履歴など）の消去を行わないでください。</li>
+                <li>※&emsp;移行のお手続きを行う場合は、移行開始から移行完了までの期間をあけず、当日中に手続きを完了させてください。</li>
+            </ul>
+            <article class="mb-3">
+                <h4 class="rtf-flow-tit font-weight-bold large mb-3"><span class="flow-num-tit">1</span>アプリにログイン、マイページにアクセス</h4>
+                <p>アプリからログインを行い、マイページを開いてください。アプリからログインを行い、マイページを開いてください。</p>
+                <div class="step-wrap">
+                    <div class="rtf-flow-step">
+                        <h5 class="rtf-step-tit large font-weight-bold">STEP.1</h5>
+                        <div class="step-flow-txtarea">
+                            <p class="step-flow-txt">アプリにログインしてください。</p>
+                            <p class="step-flow-note small text-red">※既にログイン状態のお客様はSTEP.2にお進みください。</p>    
+                        </div>
+                        <img src="/images/reward/img02.jpg" width="100%">
+                    </div>
+
+                    <div class="rtf-flow-step">
+                        <h5 class="rtf-step-tit large font-weight-bold">STEP.2</h5>
+                        <div class="step-flow-txtarea">
+                            <p class="step-flow-txt">ログインが完了しましたら、マイページを開いてください。</p>
+                            <p class="step-flow-note small text-red"></p>    
+                        </div>
+                        <img src="/images/reward/img03.jpg" width="100%">
+                    </div>
+                </div>
+            </article>
+
+            <article class="mb-3">
+                <h4 class="rtf-flow-tit font-weight-bold large mb-3"><span class="flow-num-tit">2</span>会員移行ボタンを押して、移行手続きを開始</h4>
+                <p>マイページ内にある「会員移行」ボタンを押して、会員移行手続きを開始してください。</p>
+                <p class="step-flow-note small text-red">※会員移行手続きを開始するとアプリにはログインすることができなくなりますのでご注意ください。</p>
+                <div class="step-wrap">
+                    <div class="rtf-flow-step">
+                        <h5 class="rtf-step-tit large font-weight-bold">STEP.3</h5>
+                        <div class="step-flow-txtarea">
+                            <p class="step-flow-txt">マイページにある「会員移行」ボタンを押してください。</p>
+                            <p class="step-flow-note small text-red"></p>    
+                        </div>
+                        <img src="/images/reward/img04.jpg" width="100%">
+                    </div>
+
+                    <div class="rtf-flow-step">
+                        <h5 class="rtf-step-tit large font-weight-bold">STEP.4</h5>
+                        <div class="step-flow-txtarea">
+                            <p class="step-flow-txt">再度、「会員移行」ボタンを押して手続きを開始してください。</p>
+                            <p class="step-flow-note small text-red">※ボタンを押した後、意志確認が表示されます。その際に、ユーザーネームも表示されますので必ずお控えください。</p>    
+                        </div>
+                        <img src="/images/reward/img05.jpg" width="100%">
+                    </div>
+                </div>
+            </article>
+
+            <article class="mb-3">
+                <h4 class="rtf-flow-tit font-weight-bold large mb-3"><span class="flow-num-tit">3</span>認証コードの発行・認証</h4>
+                <div class="mb-3">
+                    <p>（１）新会員サービスで登録するメールアドレスとパスワードを入力し、「認証コードを送信」ボタンを押して認証コードを発行してください。</p>
+                    <p class="step-flow-note small text-red">※登録するメールアドレスがキャリアメールアドレスの場合は、受信できない場合があるためgmailなどを推奨しております。</p>
+                    <div class="step-wrap">
+                        <div class="rtf-flow-step">
+                            <h5 class="rtf-step-tit large font-weight-bold">STEP.5</h5>
+                            <div class="step-flow-txtarea">
+                                <p class="step-flow-txt">新会員サービスで登録するメールアドレスとパスワードを入力。</p>
+                                <p class="step-flow-note small text-red"></p>    
+                            </div>
+                            <img src="/images/reward/img06.jpg" width="100%">
+                        </div>
+
+                        <div class="rtf-flow-step">
+                            <h5 class="rtf-step-tit large font-weight-bold">STEP.6</h5>
+                            <div class="step-flow-txtarea">
+                                <p class="step-flow-txt"> 「認証コードを送信」ボタンを押してください。</p>
+                                <p class="step-flow-note small text-red"></p>    
+                            </div>
+                            <img src="/images/reward/img07.jpg" width="100%">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <p>（２）「認証コードを送信」ボタンを押すと、認証コード入力画面に自動で切り替わり、入力したメールアドレス宛に認証コード（数字6桁）が記載された
+                        メールが送付されます。メール本文内に記載されている認証コード（数字６桁）を認証コード入力画面に入力して認証ボタンを押してください。</p>
+                    <p class="step-flow-note small text-red">※認証の途中で画面を閉じてしまった場合は、ページ内の「移行手続きでのトラブルについて」>「認証コードの認証手続き途中でブラウザを閉じてしまった
+                        場合」の流れに沿って再度お手続きをお願いいたします。<br>
+                        ※発行した認証コードの有効期限は24時間となります。</p>
+                    <div class="step-wrap">
+                        <div class="rtf-flow-step">
+                            <h5 class="rtf-step-tit large font-weight-bold">STEP.7</h5>
+                            <div class="step-flow-txtarea">
+                                <p class="step-flow-txt">登録していたメールアドレスに認証コードが記載されたメールが送信されるので認証コードを控えてください。</p>
+                                <p class="step-flow-note small text-red"></p>    
+                            </div>
+                            <img src="/images/reward/img08.jpg" width="100%">
+                        </div>
+
+                        <div class="rtf-flow-step">
+                            <h5 class="rtf-step-tit large font-weight-bold">STEP.8</h5>
+                            <div class="step-flow-txtarea">
+                                <p class="step-flow-txt">赤枠部分にメールで届いた認証コード（数字6桁）を入力し「登録」ボタンを押してください。</p>
+                                <p class="step-flow-note small text-red"></p>    
+                            </div>
+                            <img src="/images/reward/img09.jpg" width="100%">
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="mb-3">
+                <h4 class="rtf-flow-tit font-weight-bold large mb-3"><span class="flow-num-tit">4</span>新会員サービスへ会員情報登録</h4>
+                <p>認証コードの認証完了後、会員情報登録画面に切り替わります。<br>各項目に沿って会員情報を入力し、入力が完了しましたら「確認」ボタンを押してください。</p>
+                <p class="step-flow-note small text-red"></p>
+                <div class="step-wrap">
+                    <div class="rtf-flow-step">
+                        <h5 class="rtf-step-tit large font-weight-bold">STEP.9</h5>
+                        <div class="step-flow-txtarea">
+                            <p class="step-flow-txt">各項目をご入力ください。</p>
+                            <p class="step-flow-note small text-red">※会員移行番号をスクリーンショットなどで控えていただきお問合せ時にご共有いただけますと幸いです。</p>    
+                        </div>
+                        <img src="/images/reward/img10.jpg" width="100%">
+                    </div>
+
+                    <div class="rtf-flow-step">
+                        <h5 class="rtf-step-tit large font-weight-bold">STEP.10</h5>
+                        <div class="step-flow-txtarea">
+                            <p class="step-flow-txt">会員情報の入力が完了しましたら「確認」ボタンを押してください。</p>
+                            <p class="step-flow-note small text-red"></p>    
+                        </div>
+                        <img src="/images/reward/img11.jpg" width="100%">
+                    </div>
+                </div>
+            </article>
+
+            <article class="mb-3">
+                <h4 class="rtf-flow-tit font-weight-bold large mb-3"><span class="flow-num-tit">5</span>会員情報登録内容の確認</h4>
+                <p>入力した会員情報をご確認いただき、問題がありませんでしたら「送信」ボタンを押してください。</p>
+                <p class="step-flow-note small text-red"></p>
+                <div class="step-wrap">
+                    <div class="rtf-flow-step">
+                        <h5 class="rtf-step-tit large font-weight-bold">STEP.11</h5>
+                        <div class="step-flow-txtarea">
+                            <p class="step-flow-txt">内容をご確認いただき、「送信」ボタンを押してください。</p>
+                            <p class="step-flow-note small text-red"></p>    
+                        </div>
+                        <img src="/images/reward/img12.jpg" width="100%">
+                    </div>
+
+                    <div class="rtf-flow-step">
+                        <h5 class="rtf-step-tit large font-weight-bold">STEP.12</h5>
+                        <div class="step-flow-txtarea">
+                            <p class="step-flow-txt">登録完了のメッセージが表示されましたら、「閉じる」ボタンを押してください。</p>
+                            <p class="step-flow-note small text-red"></p>    
+                        </div>
+                        <img src="/images/reward/img13.jpg" width="100%">
+                    </div>
+                </div>
+            </article>
+
+            <article class="mb-3">
+                <h4 class="rtf-flow-tit font-weight-bold large mb-3"><span class="flow-num-tit">6</span>新会員への移行手続き完了</h4>
+                <p>会員の移行手続きが完了しますと、自動でマイページ画面へ切り替わります。アプリで保有していたポイントは移行手続き完了時に自動で移行されます。</p>
+                <div class="step-wrap">
+                    <div class="rtf-flow-step">
+                        <h5 class="rtf-step-tit large font-weight-bold">STEP.13</h5>
+                        <div class="step-flow-txtarea">
+                            <p class="step-flow-txt">移行手続きが完了するとマイページに自動で切り替わります。</p>
+                            <p class="step-flow-note small text-red"></p>    
+                        </div>
+                        <img src="/images/reward/img14.jpg" width="100%">
+                    </div>
+                </div>
+            </article>
+
+            <article class="mb-3">
+                <h4 class="rtf-flow-tit font-weight-bold large mb-3">移行手続きでのトラブルについて</h4>
+                <p>移行手続き途中で発生する可能性があるトラブルについて記載させていただきまます。</p>
+                <p class="step-flow-note small text-red"></p>
+
+                <h5 class="trouble-tit-blu large font-weight-bold mb-2">■　認証コードの認証途中でブラウザを閉じてしまった場合</h5>
+                <p>認証コード入力画面は認証コード発行1回につき１度しか表示されないため、認証手続きの際に、認証コード入力画面を閉じてしまった場合は下記の手順で移行手続きを再開してください。</p>
+                <div class="step-trouble-wrap mb-5">
+                    <div class="trouble-step">
+                        <p class="font-weight-bold mb-0">STEP.1</p>
+                        <p class="trouble-step-txt">ポータルサイトの「ログイン」ボタンを押してください。</p>
+                        <img src="/images/reward/img16.jpg" width="100%">
+                    </div>
+                    <div class="trouble-step">
+                        <p class="font-weight-bold mb-0">STEP.2</p>
+                        <p class="trouble-step-txt">新会員サービスのログインを押してください。</p>
+                        <img src="/images/reward/img17.jpg" width="100%">
+                    </div>
+                    <div class="trouble-step">
+                        <p class="font-weight-bold mb-0">STEP.3</p>
+                        <p class="trouble-step-txt">「認証コードを再送する方はこちら」を押して認証コード発行手続きから再開してください。</p>
+                        <img src="/images/reward/img18.jpg" width="100%">
+                    </div>
+                </div>
+
+                <h5 class="trouble-tit-blu large font-weight-bold mb-2">■ 会員情報の登録手続きの途中でブラウザを閉じてしまった場合</h5>
+                <p>会員情報の登録手続きの途中でブラウザを閉じてしまった場合は下記の手順で移行手続きを再開してください。</p>
+                <div class="step-trouble-wrap mb-5">
+                    <div class="trouble-step">
+                        <p class="font-weight-bold mb-0">STEP.1</p>
+                        <p class="trouble-step-txt">ポータルサイトの「ログイン」ボタンを押してください。</p>
+                        <img src="/images/reward/img16.jpg" width="100%">
+                    </div>
+                    <div class="trouble-step">
+                        <p class="font-weight-bold mb-0">STEP.2</p>
+                        <p class="trouble-step-txt">新会員サービスのログインを押してください。</p>
+                        <img src="/images/reward/img17.jpg" width="100%">
+                    </div>
+                    <div class="trouble-step">
+                        <p class="font-weight-bold mb-0">STEP.3</p>
+                        <p class="trouble-step-txt">認証コード発行時に登録したメールアドレスとパスワードでログインし手続きを再開してください。</p>
+                        <img src="/images/reward/img19.jpg" width="100%">
+                    </div>
+                </div>
+
+                <h5 class="trouble-tit-blu large font-weight-bold mb-2">■ 会員移行手続きが完了しているのにアプリのポイントが移行されていない場合</h5>
+                <p>正常であればアプリで保有していたポイントは会員移行手続きの完了と合わせて、自動でポイントも移行されます。<br>
+                    しかし、何らかの原因でポイントが移行できなかった場合は新会員サービスのマイページに「旧ポイント移行」ボタンが表示されますのでそのボタンを押してポイント移行を行なってください。</p>
+                <div class="step-trouble-wrap mb-5">
+                    <div class="trouble-step">
+                        <img src="/images/reward/img20.jpg" width="100%">
+                    </div>
+                </div>
+
+                <h5 class="trouble-tit-blu large font-weight-bold mb-2">■ 会員登録はしているがアプリはインストールしていない（既に消去してしまった）場合</h5>
+                <p>アプリ会員には登録しているが、ブラウザでログインして利用していてアプリはインストールしていない、端末からは既に消してしまっている場合は<br>
+                    下記のリンクボタンからアプリ会員情報でログインしていただき移行手続きを行なってください。</p>
+                <p class="step-flow-note small text-red">※ブラウザで移行手続きを行う場合は、シークレットウィンドなど履歴が残らない状態では移行手続きは正常に行えない場合があります。<br>
+                    ※移行開始から移行完了までの間に、アプリのアンインストールやデータ（キャッシュ、閲覧履歴など）の消去を行わないでください。<br>
+                    ※移行のお手続きを行う場合は、移行開始から移行完了までの期間をあけず、当日中に手続きを完了させてください。</p>
+                <div class="mt-3 mb-5">
+                    <a class="app-brows-link">ブラウザで会員移行をはじめる</a>
+                    <p class="small text-center my-2">※こちらのリンクボタンは6/12以降からご利用いただけます。</p>
+                </div>
+            </article>
+        </div>
+    </section>
+    <section>
+        <a id="entry"></a>
+        <h2 class="reward-subtit text-center font-weight-bold large mb-5">新規会員登録手順</h2>
+        <div class="width mx-auto p-3">
+            <h3 class="text-center mb-md-2 font-weight-bold large">新規会員登録の流れ</h3>
+            <p class="text-center py-2 mb-0">移行完了までの全体の流れは下記になります。</p>
+            <p class="text-center mb-md-2 text-red">※ご登録いただくメールアドレスがキャリアメールアドレスの場合は、受信できない場合があるためgmailなどを推奨しております。</p>
+
+            <div class="step-wrap">
+                <div class="rtf-flow-step mb-3">
+                    <h5 class="rtf-step-tit large font-weight-bold">STEP.1</h5>
+                    <div class="entry-step-flow-txtarea">
+                        <p class="step-flow-txt">ポータルサイトの「会員登録」を押してください。</p>
+                        <p class="step-flow-note small text-red"></p>    
+                    </div>
+                    <img src="/images/reward/img21.jpg" width="100%">
+                </div>
+                <div class="rtf-flow-step mb-3">
+                    <h5 class="rtf-step-tit large font-weight-bold">STEP.2</h5>
+                    <div class="entry-step-flow-txtarea">
+                        <p class="step-flow-txt">ポータルサイトの「会員登録」を押してください。</p>
+                        <p class="step-flow-note small text-red"></p>    
+                    </div>
+                    <img src="/images/reward/img22.jpg" width="100%">
+                </div>
+                <div class="rtf-flow-step mb-3">
+                    <h5 class="rtf-step-tit large font-weight-bold">STEP.3</h5>
+                    <div class="entry-step-flow-txtarea">
+                        <p class="step-flow-txt">登録するメールアドレスとパスワードを入力し、「認証コードを送信」を押してください。</p>
+                        <p class="step-flow-note small text-red">※パスワード条件が全てチェックマークになるようにパスワードを設定してください。</p>    
+                    </div>
+                    <img src="/images/reward/img23.jpg" width="100%">
+                </div>
+                <div class="rtf-flow-step mb-3">
+                    <h5 class="rtf-step-tit large font-weight-bold">STEP.4</h5>
+                    <div class="entry-step-flow-txtarea">
+                        <p class="step-flow-txt">自動で認証コード入力画面に切り替わり、登録したアドレス宛に認証コードが記載されたメールが送信されます。</p>
+                        <p class="step-flow-note small text-red">※認証コード入力画面は1回のコード発行で１度しか表示されないためページを閉じないようメールを確認してください。</p>    
+                    </div>
+                    <img src="/images/reward/img24.jpg" width="100%">
+                </div>
+                <div class="rtf-flow-step mb-3">
+                    <h5 class="rtf-step-tit large font-weight-bold">STEP.5</h5>
+                    <div class="entry-step-flow-txtarea">
+                        <p class="step-flow-txt">登録したメールアドレス宛に認証コードが記載されたメールが送信されますので、認証コードを確認してください。</p>
+                        <p class="step-flow-note small text-red"></p>    
+                    </div>
+                    <img src="/images/reward/img08.jpg" width="100%">
+                </div>
+                <div class="rtf-flow-step mb-3">
+                    <h5 class="rtf-step-tit large font-weight-bold">STEP.6</h5>
+                    <div class="entry-step-flow-txtarea">
+                        <p class="step-flow-txt">メールで届いた認証コードを入力し、「登録」ボタンを押してください。</p>
+                        <p class="step-flow-note small text-red"></p>    
+                    </div>
+                    <img src="/images/reward/img25.jpg" width="100%">
+                </div>
+                <div class="rtf-flow-step mb-3">
+                    <h5 class="rtf-step-tit large font-weight-bold">STEP.7</h5>
+                    <div class="entry-step-flow-txtarea">
+                        <p class="step-flow-txt">会員情報を登録してください。</p>
+                        <p class="step-flow-note small text-red">※必須項目は全てご登録をお願いいたします。</p>    
+                    </div>
+                    <img src="/images/reward/img26.jpg" width="100%">
+                </div>
+                <div class="rtf-flow-step mb-3">
+                    <h5 class="rtf-step-tit large font-weight-bold">STEP.8</h5>
+                    <div class="entry-step-flow-txtarea">
+                        <p class="step-flow-txt">登録内容に問題がありませんでしたら、「送信」ボタンを押してください。</p>
+                        <p class="step-flow-note small text-red"></p>    
+                    </div>
+                    <img src="/images/reward/img27.jpg" width="100%">
+                </div>
+                <div class="rtf-flow-step mb-3">
+                    <h5 class="rtf-step-tit large font-weight-bold">STEP.9</h5>
+                    <div class="entry-step-flow-txtarea">
+                        <p class="step-flow-txt">年会費の決済を行うため、クレジットカード情報を入力してください。入力後、「確認」ボタンを押してください。</p>
+                        <p class="step-flow-note small text-red"></p>    
+                    </div>
+                    <img src="/images/reward/img28.jpg" width="100%">
+                </div>
+                <div class="rtf-flow-step mb-3">
+                    <h5 class="rtf-step-tit large font-weight-bold">STEP.10</h5>
+                    <div class="entry-step-flow-txtarea">
+                        <p class="step-flow-txt">内容をご確認いただき問題がありませんでしたら、「購入」ボタンを押してください。</p>
+                        <p class="step-flow-note small text-red"></p>    
+                    </div>
+                    <img src="/images/reward/img29.jpg" width="100%">
+                </div>
+                <div class="rtf-flow-step mb-3">
+                    <h5 class="rtf-step-tit large font-weight-bold">STEP.11</h5>
+                    <div class="entry-step-flow-txtarea">
+                        <p class="step-flow-txt">決済が完了しましたら、新規会員登録のお手続きは完了となります。</p>
+                        <p class="step-flow-note small text-red"></p>    
+                    </div>
+                    <img src="/images/reward/img30.jpg" width="100%">
+                </div>
+            </div>
+        </div>
+    </section>
 {% endblock %}
