@@ -1,0 +1,7 @@
+.reward-main-img{max-width: 400px;margin: 0 auto;}
+.reward-main-img img{width: 100%;}
+.reward-anker-link{display: flex;flex-direction: row;justify-content:space-between;width: 90%;margin: 0 auto;}
+.anker-link-btn{border: 1px solid #999;border-radius: 5px;padding: 20px;width: 100%; max-width: 450px;text-align: center;}
+@media (max-width: 767.98px) {
+
+}

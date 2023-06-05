@@ -6,15 +6,54 @@
 
 {% block keywords %}{{ meta_keywords('about_reward') }}{% endblock %}
 
+{% block css %}
+<link href="/css/reward/reward-style.css" rel="stylesheet">
+{% endblock %}
+
 {% block contents %}
 <div class="width mx-auto p-3">
     <div class="breadcrumb-list small mb-5 d-md-block d-none">
         <a href="{{ path_for('homepage') }}">ホーム　|　</a>
         <span class="font-weight-bold">リワード会員移行手続きの流れ</span>
     </div>
-
-    <div class="mb-5 pjack-bg">
-        <h3>現在、こちらのページは工事中となります</h3>
-    </div>
+    <section>
+        <div class="width mx-auto p-3">
+            <h1 class="mb-md-4 mb-0 text-center font-weight-bold py-4 large">シネマサンシャインリワードが新しくなります</h3>
+            <div class="reward-main-img">
+                <img src="/images/reward/img01.png" width="100%">
+            </div>
+            <p class="text-center py-4">
+                現在、新会員サービスへの<br>移行方法ならびに新規会員登録方法に関する<br>ご案内ページを準備しております。<br>
+                こちらページの公開予定は下記になります。
+            </p>
+            <div class="mb-md-4 text-center font-weight-bold py-4">
+                <p class="large">6月6日公開予定</p>
+            </div>
+        </div>
+    </section>
+    
+    <!--<section>
+        <div class="width mx-auto p-3">
+            <h1 class="mb-md-4 mb-0 text-center font-weight-bold py-4">シネマサンシャインリワードが新しくなります</h3>
+            <div class="reward-main-img">
+                <img src="/images/reward/img01.png" width="100%">
+            </div>
+            <div class="mb-md-4 text-center font-weight-bold py-4">
+                <h3 class="mb-md-2 font-weight-bold large">会員移行期間</h3>
+                <p class="large">2023年6月12日〜2024年6月30日</p>
+            </div>
+            <p>
+                新会員サービスのご入会をお願いいたします。<br>
+                シネマサンシャインリワードアプリ会員のお客様は2023年9月30日（土）まではそのままご利用頂けますが、10月1日（日）からはWEBブラウザの新会員サービ
+                スにご移行後に利用可能となります。<br>
+                上記移行期間中に新会員サービスへの移行手続きをお願いいたします。<br>
+                なお６月12日以降、有効期限の自動更新はございませんので、新会員サービスへ移行後、ご自身で更新のお手続きをお願いいたします。
+            </p>
+            <div class="reward-anker-link py-4">
+                <a class="transfer-flow anker-link-btn">現アプリ会員からの移行手順はこちら</a>
+                <a class="new-entry anker-link-btn">新規登録方法はこちら</a>
+            </div>
+        </div>
+    </section>-->
 </div>
 {% endblock %}
