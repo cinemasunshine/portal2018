@@ -42,7 +42,7 @@ $getSessionSetting = static function () {
         /**
          * セッションに関して変更があった場合に適宜変更する。
          */
-        'prefix' => 'session_v20200327:',
+        'prefix' => 'session_v20230608:',
 
         /**
          * 「Azure Cache for Redis のベスト プラクティス」を参考にひとまず15秒とする
