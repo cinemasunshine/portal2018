@@ -826,6 +826,11 @@ footer {
     line-height: 1.8;
 }
 
+/* リワード */
+.reward p {
+    line-height: 1.8;
+}
+
 /* 会社概要 マップ*/
 .map iframe {
     max-width: 1200px;
