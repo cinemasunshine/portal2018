@@ -830,6 +830,10 @@ footer {
 .reward p {
     line-height: 1.8;
 }
+/* CSリワード */
+.cs_reward p {
+    line-height: 1.5;
+}
 
 /* 会社概要 マップ*/
 .map iframe {
