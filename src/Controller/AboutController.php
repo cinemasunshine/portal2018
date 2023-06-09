@@ -84,7 +84,7 @@ class AboutController extends GeneralController
      *
      * @param array<string, mixed> $args
      */
-    public function executeCsReward(Request $request, Response $response, array $args): Response
+    public function executeCs_reward(Request $request, Response $response, array $args): Response
     {
         return $this->render($response, 'about/cs_reward.html.twig');
     }
