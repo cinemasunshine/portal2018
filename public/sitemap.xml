@@ -63,6 +63,11 @@
   <changefreq>never</changefreq>
 </url>
 <url>
+  <loc>https://www.cinemasunshine.co.jp/cs_reward/</loc>
+  <priority>0.1</priority>
+  <changefreq>never</changefreq>
+</url>
+<url>
   <loc>https://www.cinemasunshine.co.jp/sitemap/</loc>
   <priority>0.3</priority>
   <changefreq>yearly </changefreq>

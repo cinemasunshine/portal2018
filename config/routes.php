@@ -38,6 +38,7 @@ $app->get('/app/', AboutController::class . ':officialApp')->setName('official_a
 $app->get('/online/', AboutController::class . ':onlineTicket')->setName('online_ticket');
 $app->get('/privacy/', AboutController::class . ':privacy')->setName('privacy');
 $app->get('/reward/', AboutController::class . ':reward')->setName('reward');
+$app->get('/cs_reward/', AboutController::class . ':cs_reward')->setName('cs_reward');
 $app->get('/question/', AboutController::class . ':question')->setName('question');
 $app->get('/sitemap/', AboutController::class . ':sitemap')->setName('sitemap');
 $app->get('/special_ticket/', AboutController::class . ':specialTicket')->setName('special_ticket');
