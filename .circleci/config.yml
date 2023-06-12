@@ -212,14 +212,6 @@ workflows:
             branches:
               ignore: master
 
-  deploy_4st:
-    jobs:
-      - deploy_to_4st:
-          <<: *job_setup
-          filters:
-            branches:
-              only: feature/SSKTS-1470
-
   deploy_production:
     jobs:
       - test:
@@ -238,7 +230,7 @@ workflows:
           requires:
             - deploy_approval
 
-      # - deploy_to_4st:
-      #     <<: *job_setup
-      #     requires:
-      #       - deploy_approval
+      - deploy_to_4st:
+          <<: *job_setup
+          requires:
+            - deploy_approval
