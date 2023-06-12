@@ -230,7 +230,7 @@ workflows:
           requires:
             - deploy_approval
 
-      # - deploy_to_4st:
-      #     <<: *job_setup
-      #     requires:
-      #       - deploy_approval
+      - deploy_to_4st:
+          <<: *job_setup
+          requires:
+            - deploy_approval

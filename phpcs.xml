@@ -83,4 +83,9 @@
     <rule ref="SlevomatCodingStandard.Functions.StaticClosure.ClosureNotStatic">
         <exclude-pattern>config/routes.php</exclude-pattern>
     </rule>
+
+    <!-- テストケース名をわかりやすくするため -->
+    <rule ref="PSR1.Methods.CamelCapsMethodName.NotCamelCaps">
+        <exclude-pattern>tests</exclude-pattern>
+    </rule>
 </ruleset>

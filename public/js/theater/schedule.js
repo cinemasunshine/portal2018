@@ -6,6 +6,8 @@ var API_TIMEOUT = 60 * 1000;
 var PRE_SALE_DIFFERENCE_DAY = 2;
 var SCHEDULE_STATUS_THRESHOLD_VALUE = 20;
 var SELLER;
+var MP_MYPAGE_URL;
+var MP_TRANSACTION_URL;
 
 /**
  * パフォーマンス
@@ -97,14 +99,30 @@ var Performance = (function () {
      */
     Performance.prototype.createURL = function () {
         var id = SELLER.branchCode + this.movie.movie_short_code + this.movie.movie_branch_code + this.date + this.screen.screen_code + this.time.start_time;
+        if (!isSignIn()) {
+            // 非会員
+            var url = MP_TICKET_ENTRANCE + '/purchase/index.html';
+            return url + '?' + object2query({
+                id: id,
+                member: '0',
+                sellerId: SELLER.id,
+                redirectUrl: encodeURIComponent(MP_TICKET),
+            });
+        }
+        if (isSignIn() && getSignInType() === 'NewMembership') {
+            // 新会員
+            var url = MP_MYPAGE_URL + '/login?redirect_uri=' + MP_TRANSACTION_URL + '/' + id + '?login=1';
+            return url;
+        }
+        // 現行会員
         var url = MP_TICKET_ENTRANCE + '/purchase/index.html';
-        return url + '?' + object2query({
-            id: id,
-            member: isSignIn() ? '1' : '0',
-            sellerId: SELLER.id,
-            redirectUrl: encodeURIComponent(MP_TICKET),
-            username: isSignIn() ? $('.username').text() : undefined
-        });
+            return url + '?' + object2query({
+                id: id,
+                member: '1',
+                sellerId: SELLER.id,
+                redirectUrl: encodeURIComponent(MP_TICKET),
+                username: $('.username').text()
+            });
     };
     return Performance;
 }());
@@ -166,7 +184,10 @@ Vue.component('purchase-performance', {
     created: function () { },
     template: '\
     <li v-if="performance.isDisplay()" class="mb-3">\
-        <a v-on:click="$emit(\'selectPerformance\', {event: $event, performance: performance})" v-bind:href="performance.createURL()" class= "d-block position-relative py-2 mx-2" \
+        <a v-on:click="$emit(\'selectPerformance\', {event: $event, performance: performance})" \
+        v-bind:href="performance.createURL()" \
+        v-bind:target="isSignIn() && getSignInType() === \'NewMembership\' ? \'_blank\' : \'_self\'"\
+        class= "d-block position-relative py-2 mx-2" \
             v-bind:class="[\
                 (performance.isSalse()) ? performance.getAvailability().className : \'bg-light-gray text-dark-gray\',\
                 { first: performance.time.late === 1, late: performance.time.late === 2 }\
@@ -204,8 +225,12 @@ Vue.component('purchase-performance-sp', {
         </div>\
         <div class="x-small mx-2">{{ performance.screen.name }}</div>\
         <div class="purchase-button text-center">\
-            <a v-on:click="$emit(\'selectPerformance\', {event: $event, performance: performance})" v-if="performance.isSalse()" v-bind:href="performance.createURL()" \
-            class="d-flex align-items-center justify-content-center py-3" v-bind:class="performance.getAvailability().className">\
+            <a v-on:click="$emit(\'selectPerformance\', {event: $event, performance: performance})" \
+            v-if="performance.isSalse()" \
+            v-bind:href="performance.createURL()" \
+            v-bind:target="isSignIn() && getSignInType() === \'NewMembership\' ? \'_blank\' : \'_self\'"\
+            class="d-flex align-items-center justify-content-center py-3" \
+            v-bind:class="performance.getAvailability().className">\
                 <span class="mr-2" v-bind:class="performance.getAvailability().symbolClassName">{{ performance.getAvailability().symbolText }}</span>\
                 <span>{{ performance.getAvailability().text }}</span>\
             </a>\
@@ -241,7 +266,6 @@ Vue.component('purchase-performance-film', {
                 return;
             }
             data.event.preventDefault();
-            $('#appearPopupNext').attr('href', performance.createURL());
             var title = (popupMessage1 === undefined)
                 ? ''
                 : $('<p class="mb-2 text-danger font-weight-bold large"></p>').text(popupMessage1);
@@ -253,6 +277,8 @@ Vue.component('purchase-performance-film', {
                 .append(title)
                 .append(read);
             $('#appearPopupNext').attr('href', performance.createURL());
+            var target = isSignIn() && getSignInType() === 'NewMembership' ? '_blank' : '_self';
+            $('#appearPopupNext').attr('target', target);
             $('#appearPopup').modal('show');
         }
     },
@@ -280,7 +306,9 @@ Vue.component('purchase-performance-film', {
     <div class="schedule-sort-film-sp d-md-none">\
         <div v-for="movie of schedule.movie" v-bind:class="{ \'d-none\': !hasDisplayPerformance(performances, movie) }" class="rounded mb-3 shadow-01">\
             <div class="border-bottom">\
-                <a class="bg-light-gray p-3 pr-5 d-block" href="#" data-toggle="collapse" v-bind:data-target="\'#collapse\' + movie.movie_code" aria-expanded="false">\
+                <a class="bg-light-gray p-3 pr-5 d-block" href="#" data-toggle="collapse" \
+                v-bind:data-target="\'#collapse\' + movie.movie_code" \
+                aria-expanded="false">\
                     <div class="font-weight-bold mb-2" v-html="movie.name"></div>\
                     <div class="small text-dark-gray d-flex align-items-center">\
                         <i class="mr-2 time-icon"></i>\
@@ -510,6 +538,8 @@ function scheduleRender() {
     MP_TICKET_ENTRANCE = $('input[name=MP_TICKET_ENTRANCE]').val();
     MP_TICKET = $('input[name=MP_TICKET]').val();
     APP_ENV = $('input[name=APP_ENV]').val();
+    MP_MYPAGE_URL = $('input[name=MP_MYPAGE_URL]').val();
+    MP_TRANSACTION_URL = $('input[name=MP_TRANSACTION_URL]').val();
 
     var now = moment().format('YYYYMMDDHHmm');
     var options = {
@@ -530,7 +560,9 @@ function scheduleRender() {
         }
         SELLER = findResult;
         var app = createVueInstance();
+        $('#schedule').removeClass('d-none');
     }).fail(function (error) {
+        $('#schedule').removeClass('d-none');
         console.error(error);
     });;
 }

@@ -1,65 +1,120 @@
 <?php
 
-/**
- * NewsExtensionTest.php
- */
-
 declare(strict_types=1);
 
 namespace Tests\Unit\Twig\Extension;
 
 use App\ORM\Entity\News;
 use App\Twig\Extension\NewsExtension;
-use Mockery;
-use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use PHPUnit\Framework\TestCase;
 use Twig\TwigFunction;
 
 /**
- * News extension test
+ * @coversDefaultClass \App\Twig\Extension\NewsExtension
+ * @testdox ニュースに関するTwig拡張機能
  */
 final class NewsExtensionTest extends TestCase
 {
-    use MockeryPHPUnitIntegration;
-
     /**
+     * @covers ::getFunctions
+     * @dataProvider functionNameDataProvider
      * @test
      */
-    public function testGetFunctions(): void
+    public function 決まった名称のtwigヘルパー関数が含まれる(string $name): void
     {
-        $extensionMock = Mockery::mock(NewsExtension::class)
-            ->makePartial();
+        // Arrange
+        $extensions = new NewsExtension();
 
-        $functions = $extensionMock->getFunctions();
+        // Act
+        $functions = $extensions->getFunctions();
 
-        $this->assertIsArray($functions);
+        // Assert
+        $functionNames = [];
 
         foreach ($functions as $function) {
             $this->assertInstanceOf(TwigFunction::class, $function);
+            $functionNames[] = $function->getName();
         }
+
+        $this->assertContains($name, $functionNames);
     }
 
     /**
-     * @test
+     * @return array<array{string}>
      */
-    public function testGetCategoryLabel(): void
+    public function functionNameDataProvider(): array
     {
-        $extensionMock = Mockery::mock(NewsExtension::class)
-            ->makePartial();
-
-        $this->assertIsString($extensionMock->getCategoryLabel(News::CATEGORY_INFO));
-        $this->assertNull($extensionMock->getCategoryLabel(99));
+        return [
+            ['news_category_label'],
+            ['news_category_label_class'],
+        ];
     }
 
     /**
+     * @covers ::getCategoryLabel
+     * @dataProvider categoryLabelDataProvider
      * @test
      */
-    public function testGetCategoryLabelClass(): void
+    public function カテゴリーに対応するラベル文字列を返す(?string $expected, int $category): void
     {
-        $extensionMock = Mockery::mock(NewsExtension::class)
-            ->makePartial();
+        // Arrange
+        $extensions = new NewsExtension();
 
-        $this->assertIsString($extensionMock->getCategoryLabelClass(News::CATEGORY_INFO));
-        $this->assertNull($extensionMock->getCategoryLabelClass(99));
+        // Act
+        $result = $extensions->getCategoryLabel($category);
+
+        // Assert
+        $this->assertSame($expected, $result);
+    }
+
+    /**
+     * @return array<array{string|null, int}>
+     */
+    public function categoryLabelDataProvider(): array
+    {
+        return [
+            ['ニュース', News::CATEGORY_NEWS],
+            ['インフォメーション', News::CATEGORY_INFO],
+            ['IMAX', News::CATEGORY_IMAX],
+            ['4DX', News::CATEGORY_4DX],
+            ['ScreenX', News::CATEGORY_SCREENX],
+            ['ライブビューイング・イベント', News::CATEGORY_EVENT],
+            ['4DX SCREEN', News::CATEGORY_4DX_SCREEN],
+            [null, 99],
+        ];
+    }
+
+    /**
+     * @covers ::getCategoryLabelClass
+     * @dataProvider categoryClassDataProvider
+     * @test
+     */
+    public function カテゴリに対応するclass属性の値を返す(?string $expected, int $category): void
+    {
+        // Arrange
+        $extensions = new NewsExtension();
+
+        // Act
+        $result = $extensions->getCategoryLabelClass($category);
+
+        // Assert
+        $this->assertSame($expected, $result);
+    }
+
+    /**
+     * @return array<array{string|null, int}>
+     */
+    public function categoryClassDataProvider(): array
+    {
+        return [
+            ['list-type-news', News::CATEGORY_NEWS],
+            ['list-type-information', News::CATEGORY_INFO],
+            ['list-type-imax', News::CATEGORY_IMAX],
+            ['list-type-4dx', News::CATEGORY_4DX],
+            ['list-type-scx', News::CATEGORY_SCREENX],
+            ['list-type-event', News::CATEGORY_EVENT],
+            ['list-type-4dxwscx', News::CATEGORY_4DX_SCREEN],
+            [null, 99],
+        ];
     }
 }

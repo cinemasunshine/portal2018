@@ -12,19 +12,25 @@ use App\Application\Handlers\Error;
 use App\Application\Handlers\NotAllowed;
 use App\Application\Handlers\NotFound;
 use App\Application\Handlers\PhpError;
-use App\Authorization\Manager as AuthorizationManager;
+use App\Authorization\Provider\RewardProvider as RewardAuthorizationProvider;
+use App\Authorization\RewardManager as RewardAuthorizationManager;
+use App\Authorization\SessionContainer as AuthorizationSessionContainer;
 use App\Logger\DbalLogger;
 use App\Session\SessionManager;
 use App\Twig\Extension\AdvanceTicketExtension;
 use App\Twig\Extension\AzureStorageExtension;
 use App\Twig\Extension\CommonExtension;
+use App\Twig\Extension\MembershipExtension;
 use App\Twig\Extension\MotionpictureTicketExtension;
 use App\Twig\Extension\NewsExtension;
+use App\Twig\Extension\RewardExtension;
 use App\Twig\Extension\ScheduleExtension;
 use App\Twig\Extension\SeoExtension;
 use App\Twig\Extension\TheaterExtension;
 use App\Twig\Extension\UserExtension;
 use App\User\Manager as UserManager;
+use App\User\Provider\MembershipProvider as MembershipUserProvider;
+use App\User\Provider\RewardProvider as RewardUserProvider;
 use Blue32a\MonologGoogleCloudLoggingHandler\GoogleCloudLoggingHandler;
 use Doctrine\Common\Cache\ArrayCache;
 use Doctrine\Common\Cache\FilesystemCache;
@@ -36,6 +42,7 @@ use Monolog\Handler\BrowserConsoleHandler;
 use Monolog\Handler\FingersCrossedHandler;
 use Monolog\Logger;
 use Slim\App as SlimApp;
+use Slim\Http\Cookies;
 use Slim\Http\Environment;
 use Slim\Http\Uri;
 use Slim\Views\Twig;
@@ -50,26 +57,38 @@ use Twig\Extra\String\StringExtension;
 $container = $app->getContainer();
 
 /**
- * Authorization Manager
- *
- * @return AuthorizationManager
+ * @return RewardAuthorizationManager
  */
-$container['am'] = static function ($container) {
+$container['rewardAuth'] = static function ($container) {
     /**
      * 名称変更によるclearを想定しておく。（仕様変更などがあった場合）
      * must consist of alphanumerics, backslashes and underscores only.
      */
-    $sessionContainerName = 'authorization_20200907';
+    $sessionContainerName = 'authorization_20230511';
 
-    return new AuthorizationManager(
-        $container->get('settings')['mp_service'],
+    $sessionContainer = new AuthorizationSessionContainer(
         $container->get('sm')->getContainer($sessionContainerName)
     );
+
+    $uri       = Uri::createFromEnvironment($container->get('environment'));
+    $loginUrl  = $container->get('router')->fullUrlFor($uri, 'reward_login');
+    $logoutUrl = $container->get('router')->fullUrlFor($uri, 'reward_logout');
+
+    $settings = $container->get('settings')['mp_service'];
+
+    $provider = new RewardAuthorizationProvider(
+        $settings['reward_authorization_host'],
+        $settings['reward_authorization_client_id'],
+        $settings['reward_authorization_client_secret'],
+        $settings['reward_authorization_scopes'],
+        $loginUrl,
+        $logoutUrl
+    );
+
+    return new RewardAuthorizationManager($provider, $sessionContainer);
 };
 
 /**
- * User Manager
- *
  * @return UserManager
  */
 $container['um'] = static function ($container) {
@@ -77,10 +96,20 @@ $container['um'] = static function ($container) {
      * 名称変更によるclearを想定しておく。（仕様変更などがあった場合）
      * must consist of alphanumerics, backslashes and underscores only.
      */
-    $sessionContainerName = 'user_20200907';
+    $sessionContainerName = 'reward_user_20230530';
+
+    $rewardProvider = new RewardUserProvider(
+        $container->get('sm')->getContainer($sessionContainerName)
+    );
+
+    $membershipProvider = new MembershipUserProvider();
+
+    $cookies = new Cookies($container->get('request')->getCookieParams());
 
     return new UserManager(
-        $container->get('sm')->getContainer($sessionContainerName)
+        $rewardProvider,
+        $membershipProvider,
+        $cookies
     );
 };
 
@@ -112,6 +141,9 @@ $container['view'] = static function ($container) {
         $container->get('settings')['storage']['public_endpoint']
     ));
     $view->addExtension(new CommonExtension(APP_ENV));
+    $view->addExtension(new MembershipExtension(
+        $container->get('settings')['membership']['site_url']
+    ));
     $view->addExtension(new MotionpictureTicketExtension(
         $container->get('settings')['mp_service']
     ));
@@ -126,8 +158,10 @@ $container['view'] = static function ($container) {
         APP_ROOT . '/data/theater/keywords.json'
     ));
     $view->addExtension(new UserExtension(
-        $container->get('um'),
-        $container->get('am')
+        $container->get('um')->getUserState()
+    ));
+    $view->addExtension(new RewardExtension(
+        $container->get('rewardAuth')
     ));
 
     return $view;

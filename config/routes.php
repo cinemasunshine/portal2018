@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 use App\Controller\AboutController;
-use App\Controller\AuthorizationController;
+use App\Controller\Authorization\RewardController;
 use App\Controller\Development\DoctrineController;
 use App\Controller\FourdxController;
 use App\Controller\FourdxScreenController;
@@ -28,8 +28,8 @@ use Slim\App as SlimApp;
 
 $app->get('/', IndexController::class . ':index')->setName('homepage');
 
-$app->get('/login/', AuthorizationController::class . ':login')->setName('login');
-$app->get('/logout/', AuthorizationController::class . ':logout')->setName('logout');
+$app->get('/login/', RewardController::class . ':login')->setName('reward_login');
+$app->get('/logout/', RewardController::class . ':logout')->setName('reward_logout');
 
 $app->get('/company/', AboutController::class . ':company')->setName('company');
 $app->get('/magazine/', AboutController::class . ':mailMagazine')->setName('mail_magazine');

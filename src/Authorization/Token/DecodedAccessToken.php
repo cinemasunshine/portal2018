@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Authorization\Token;
 
-use UnexpectedValueException;
+use InvalidArgumentException;
 
 /**
  * Decoded Access Token class
@@ -31,7 +31,7 @@ class DecodedAccessToken
         $segments = explode('.', $token);
 
         if (count($segments) !== 3) {
-            throw new UnexpectedValueException('Invalid number of segments.');
+            throw new InvalidArgumentException('Invalid number of segments.');
         }
 
         [$headB64, $claimsB64, $signatureB64] = $segments;
