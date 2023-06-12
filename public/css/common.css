@@ -864,6 +864,10 @@ footer {
     appearance: none;
 }
 
+#signInModal .modal-dialog {
+    max-width: 100%;
+}
+
 /* spハンバーガー */
 .sp-menu {
     background-color: rgba(0, 0, 0, 0.9);

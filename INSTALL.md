@@ -71,11 +71,10 @@ Azure Web Appsのアプリケーション設定で設定する場合はプレフ
 |APPSETTING_MP_AUTHORIZATION_CODE_HOST|*String*|○|Authorization Code Grantのホスト名|
 |APPSETTING_MP_AUTHORIZATION_CODE_CLIENT_ID|*String*|○|Authorization Code GrantのクライアントID|
 |APPSETTING_MP_AUTHORIZATION_CODE_CLIENT_SECRET|*String*|○|Authorization Code Grantのクライアント シークレット|
-|APPSETTING_MP_CLIENT_CREDENTIALS_HOST|*String*|○|Client Credentials Grantのホスト名|
-|APPSETTING_MP_CLIENT_CREDENTIALS_CLIENT_ID|*String*|○|Client Credentials GrantのクライアントID|
-|APPSETTING_MP_CLIENT_CREDENTIALS_CLIENT_SECRET|*String*|○|Client Credentials Grantのクライアント シークレット|
 |APPSETTING_MP_TICKET_URL|*String*|○|MPオンラインチケットのURL|
 |APPSETTING_MP_TICKET_ENTRANCE_URL|*String*|○|MPオンラインチケットのエントランスURL|
+|APPSETTING_MP_TICKET_TRANSACTION_URL|*String*|○|取引URL|
+|APPSETTING_MEMBERSHIP_SITE_URL|*String*|○|会員サイトURL|
 
 #### 接続文字列
 

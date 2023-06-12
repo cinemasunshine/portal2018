@@ -1,175 +1,78 @@
 <?php
 
-/**
- * ManagerTest.php
- */
-
 declare(strict_types=1);
 
 namespace Tests\Unit\User;
 
-use App\Authorization\Token\AuthorizationCodeToken;
-use App\Authorization\Token\DecodedAccessToken;
 use App\Session\SessionManager;
 use App\User\Manager as UserManager;
+use App\User\Provider\MembershipProvider;
+use App\User\Provider\RewardProvider;
+use App\User\User;
 use Laminas\Session\Config\StandardConfig;
-use Mockery;
-use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
-use Mockery\LegacyMockInterface;
-use Mockery\MockInterface;
+use Laminas\Session\Storage\ArrayStorage;
 use PHPUnit\Framework\TestCase;
+use Slim\Http\Cookies;
 
+/**
+ * @covers \App\User\Manager
+ * @testdox ユーザーについて扱うクラス
+ */
 final class ManagerTest extends TestCase
 {
-    use MockeryPHPUnitIntegration;
-
-    private SessionManager $sessionManager;
-
-    protected function setUp(): void
+    private function createSessionManager(): SessionManager
     {
-        $sessionConfig = new StandardConfig();
-        $sessionConfig->setOptions(['name' => 'test']);
-        $this->sessionManager = new SessionManager($sessionConfig);
-    }
+        $sessionConfig  = new StandardConfig();
+        $sessionManager = new SessionManager($sessionConfig);
+        $sessionManager->setStorage(new ArrayStorage());
 
-    protected function tearDown(): void
-    {
-        $this->sessionManager->getStorage()->clear();
+        return $sessionManager;
     }
 
     /**
-     * @return MockInterface|LegacyMockInterface|AuthorizationCodeToken
-     */
-    protected function createAuthorizationCodeTokenMock()
-    {
-        return Mockery::mock(AuthorizationCodeToken::class);
-    }
-
-    /**
-     * @return MockInterface|LegacyMockInterface|DecodedAccessToken
-     */
-    protected function createDecodedAccessTokenMock()
-    {
-        return Mockery::mock(DecodedAccessToken::class);
-    }
-
-    /**
+     * @covers ::getUserState
      * @test
      */
-    public function testLogin(): void
+    public function Cookieにloginedが含まれる場合、ログイン状態のシネマサンシャイン会員ユーザの情報が取得できる(): void
     {
-        $username = 'username';
-        $claims   = ['username' => $username];
+        // Arrange
+        $sessionManager = $this->createSessionManager();
+        $rewardProvider = new RewardProvider($sessionManager->getContainer('test'));
 
-        $decodedAccessTokenMock = $this->createDecodedAccessTokenMock();
-        $decodedAccessTokenMock
-            ->shouldReceive('getClaims')
-            ->once()
-            ->with()
-            ->andReturn($claims);
+        $membershipProvider = new MembershipProvider();
 
-        $authorizationCodeTokenMock = $this->createAuthorizationCodeTokenMock();
-        $authorizationCodeTokenMock
-            ->shouldReceive('decodeAccessToken')
-            ->once()
-            ->with()
-            ->andReturn($decodedAccessTokenMock);
+        $cookies = new Cookies(['logined' => 'foobar']);
 
-        $sessionContainer = $this->sessionManager->getContainer();
+        // Act
+        $manager = new UserManager($rewardProvider, $membershipProvider, $cookies);
+        $result  = $manager->getUserState();
 
-        $userManager = new UserManager($sessionContainer);
-        $userManager->login($authorizationCodeTokenMock);
+        // Assert
+        $this->assertTrue($result->isAuthenticated());
 
-        $this->assertSame(
-            $authorizationCodeTokenMock,
-            $sessionContainer['authorization_token']
-        );
+        $user = $result->getUser();
+        $this->assertSame(User::SERVICE_TYPE_MEMBERSHIP, $user->getServiceType());
     }
 
     /**
+     * @covers ::getUserState
      * @test
      */
-    public function testLogout(): void
+    public function Cookieにlogined含まれない場合、非ログイン状態のユーザ情報が取得できる(): void
     {
-        $sessionContainer         = $this->sessionManager->getContainer();
-        $sessionContainer['hoge'] = 'hoge';
+        // Arrange
+        $sessionManager = $this->createSessionManager();
+        $rewardProvider = new RewardProvider($sessionManager->getContainer('test'));
 
-        $userManager = new UserManager($sessionContainer);
-        $userManager->logout();
+        $membershipProvider = new MembershipProvider();
 
-        $this->assertEmpty($sessionContainer['hoge']);
-    }
+        $cookies = new Cookies();
 
-    /**
-     * @test
-     */
-    public function testIsAuthenticated(): void
-    {
-        $sessionContainer = $this->sessionManager->getContainer();
-        $userManager      = new UserManager($sessionContainer);
+        // Act
+        $manager = new UserManager($rewardProvider, $membershipProvider, $cookies);
+        $result  = $manager->getUserState();
 
-        $this->assertFalse($userManager->isAuthenticated());
-
-        $sessionContainer['authenticated'] = true;
-        $this->assertTrue($userManager->isAuthenticated());
-    }
-
-    /**
-     * @test
-     */
-    public function testGetUser(): void
-    {
-        $user = ['name' => 'username'];
-
-        $sessionContainer         = $this->sessionManager->getContainer();
-        $sessionContainer['user'] = $user;
-
-        $userManager = new UserManager($sessionContainer);
-
-        $this->assertSame($user, $userManager->getUser());
-    }
-
-    /**
-     * @test
-     */
-    public function testGetAuthorizationTokenNotLogin(): void
-    {
-        $sessionContainer = $this->sessionManager->getContainer();
-        $userManager      = new UserManager($sessionContainer);
-
-        $this->assertNull($userManager->getAuthorizationToken());
-    }
-
-    /**
-     * @test
-     */
-    public function testGetAuthorizationTokenLoggedIn(): void
-    {
-        $sessionContainer = $this->sessionManager->getContainer();
-        $userManager      = new UserManager($sessionContainer);
-
-        $authorizationCodeTokenMock = $this->createAuthorizationCodeTokenMock();
-
-        $sessionContainer['authorization_token'] = $authorizationCodeTokenMock;
-        $sessionContainer['authenticated']       = true;
-
-        $this->assertSame($authorizationCodeTokenMock, $userManager->getAuthorizationToken());
-    }
-
-    /**
-     * @test
-     */
-    public function testSetAuthorizationToken(): void
-    {
-        $sessionContainer = $this->sessionManager->getContainer();
-        $userManager      = new UserManager($sessionContainer);
-
-        $authorizationCodeTokenMock = $this->createAuthorizationCodeTokenMock();
-        $userManager->setAuthorizationToken($authorizationCodeTokenMock);
-
-        $this->assertEquals(
-            $authorizationCodeTokenMock,
-            $sessionContainer['authorization_token']
-        );
+        // Assert
+        $this->assertNull($result->getUser());
     }
 }

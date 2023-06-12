@@ -1,86 +1,76 @@
 <?php
 
-/**
- * ScheduleExtensionTest.php
- */
-
 declare(strict_types=1);
 
 namespace Tests\Unit\Twig\Extension;
 
 use App\Twig\Extension\ScheduleExtension;
-use Mockery;
-use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use PHPUnit\Framework\TestCase;
-use ReflectionClass;
 use Twig\TwigFunction;
 
 /**
- * Schedule extension test
+ * @coversDefaultClass \App\Twig\Extension\ScheduleExtension
+ * @testdox スケジュールに関するTwig拡張機能
  */
 final class ScheduleExtensionTest extends TestCase
 {
-    use MockeryPHPUnitIntegration;
-
     /**
-     * @test
+     * @param array{'api_url'?: string} $prams
      */
-    public function testConstruct(): void
+    private function createScheduleExtension(array $prams = []): ScheduleExtension
     {
-        $extensionMock = Mockery::mock(ScheduleExtension::class);
-        $settings      = [];
+        $settings = array_merge(['api_url' => 'https://api.example.com'], $prams);
 
-        $extensionClassRef = new ReflectionClass(ScheduleExtension::class);
-
-        // execute constructor
-        $constructorRef = $extensionClassRef->getConstructor();
-        $constructorRef->invoke($extensionMock, $settings);
-
-        // test property "settings"
-        $settingsPropertyRef = $extensionClassRef->getProperty('settings');
-        $settingsPropertyRef->setAccessible(true);
-        $this->assertEquals(
-            $settings,
-            $settingsPropertyRef->getValue($extensionMock)
-        );
+        return new ScheduleExtension($settings);
     }
 
     /**
+     * @covers ::getFunctions
+     * @dataProvider functionNameDataProvider
      * @test
      */
-    public function testGetFunctions(): void
+    public function 決まった名称のtwigヘルパー関数が含まれる(string $name): void
     {
-        $extensionMock = Mockery::mock(ScheduleExtension::class)
-            ->makePartial();
+        // Arrange
+        $extensions = $this->createScheduleExtension();
 
-        $functions = $extensionMock->getFunctions();
+        // Act
+        $functions = $extensions->getFunctions();
 
-        $this->assertIsArray($functions);
+        // Assert
+        $functionNames = [];
 
         foreach ($functions as $function) {
             $this->assertInstanceOf(TwigFunction::class, $function);
+            $functionNames[] = $function->getName();
         }
+
+        $this->assertContains($name, $functionNames);
     }
 
     /**
+     * @return array<array{string}>
+     */
+    public function functionNameDataProvider(): array
+    {
+        return [
+            ['schedule_api'],
+        ];
+    }
+
+    /**
+     * @covers ::getApiUrl
      * @test
      */
-    public function testGetApiUrl(): void
+    public function APIのURLを返す(): void
     {
-        $settings = ['api_url' => 'http://example.com'];
+        // Arrange
+        $extension = $this->createScheduleExtension(['api_url' => 'https://api.example.com']);
 
-        $extensionMock = Mockery::mock(ScheduleExtension::class)
-            ->makePartial();
+        // Act
+        $result = $extension->getApiUrl();
 
-        $extensionClassRef = new ReflectionClass(ScheduleExtension::class);
-
-        $settingsPropertyRef = $extensionClassRef->getProperty('settings');
-        $settingsPropertyRef->setAccessible(true);
-        $settingsPropertyRef->setValue($extensionMock, $settings);
-
-        $this->assertEquals(
-            $settings['api_url'],
-            $extensionMock->getApiUrl()
-        );
+        // Assert
+        $this->assertSame('https://api.example.com', $result);
     }
 }

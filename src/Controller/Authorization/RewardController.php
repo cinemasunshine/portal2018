@@ -2,18 +2,20 @@
 
 declare(strict_types=1);
 
-namespace App\Controller;
+namespace App\Controller\Authorization;
 
-use GuzzleHttp\Exception\BadResponseException;
+use App\User\Provider\RewardProvider as RewardUserProvider;
 use Slim\Http\Request;
 use Slim\Http\Response;
-use Slim\Http\Uri as HttpUri;
+use Throwable;
 
-/**
- * Authorization controller
- */
-class AuthorizationController extends BaseController
+class RewardController extends BaseController
 {
+    private function getRewardUserProvider(): RewardUserProvider
+    {
+        return $this->um->getRewardProvider();
+    }
+
     /**
      * login action
      *
@@ -37,40 +39,25 @@ class AuthorizationController extends BaseController
 
         if (
             empty($state)
-            || $state !== $this->am->getAuthorizationState()
+            || $state !== $this->rewardAuth->getAuthorizationState()
         ) {
             $this->logger->info('Invalid state.');
 
             return $this->renderError($response);
         }
 
-        $this->am->clearAuthorizationState();
-
-        $uri         = HttpUri::createFromEnvironment($this->environment);
-        $redirectUri = $this->router->fullUrlFor($uri, 'login');
-
         try {
-            $token = $this->am->requestToken($code, $redirectUri);
-        } catch (BadResponseException $e) {
+            $token = $this->rewardAuth->requestToken($code);
+        } catch (Throwable $e) {
             $this->logger->error($e->getMessage());
 
             return $this->renderError($response);
         }
 
-        $this->um->login($token);
+        $this->getRewardUserProvider()->login($token);
 
-        // redirect
-        $redirectPath = $this->router->pathFor('homepage');
-        $session      = $this->sm->getContainer();
-
-        if (isset($session['viewed_theater'])) {
-            $redirectPath = $this->router->pathFor(
-                'theater',
-                ['name' => $session['viewed_theater']]
-            );
-        }
-
-        $this->redirect($redirectPath);
+        $redirectUrl = $this->getRedirectUrlOnSuccessful();
+        $this->redirect($redirectUrl);
     }
 
     protected function renderError(Response $response): Response
@@ -85,19 +72,23 @@ class AuthorizationController extends BaseController
      */
     public function executeLogout(Request $request, Response $response, array $args): void
     {
-        $this->um->logout();
+        $this->getRewardUserProvider()->logout();
 
-        // redirect
-        $redirectPath = $this->router->pathFor('homepage');
-        $session      = $this->sm->getContainer();
+        $redirectUrl = $this->getRedirectUrlOnSuccessful();
+        $this->redirect($redirectUrl);
+    }
+
+    private function getRedirectUrlOnSuccessful(): string
+    {
+        $session = $this->sm->getContainer();
 
         if (isset($session['viewed_theater'])) {
-            $redirectPath = $this->router->pathFor(
+            return $this->router->pathFor(
                 'theater',
                 ['name' => $session['viewed_theater']]
             );
         }
 
-        $this->redirect($redirectPath);
+        return $this->router->pathFor('homepage');
     }
 }

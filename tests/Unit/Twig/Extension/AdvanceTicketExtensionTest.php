@@ -1,62 +1,80 @@
 <?php
 
-/**
- * AdvanceTicketExtensionTest.php
- */
-
 declare(strict_types=1);
 
 namespace Tests\Unit\Twig\Extension;
 
 use App\ORM\Entity\AdvanceTicket;
 use App\Twig\Extension\AdvanceTicketExtension;
-use Mockery;
-use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use PHPUnit\Framework\TestCase;
 use Twig\TwigFunction;
 
 /**
- * AdvanceTicket extension test
+ * @coversDefaultClass \App\Twig\Extension\AdvanceTicketExtension
+ * @testdox 前売り券に関するTwig拡張機能
  */
 final class AdvanceTicketExtensionTest extends TestCase
 {
-    use MockeryPHPUnitIntegration;
-
     /**
+     * @covers ::getFunctions
+     * @dataProvider functionNameDataProvider
      * @test
      */
-    public function testGetFunctions(): void
+    public function 決まった名称のtwigヘルパー関数が含まれる(string $name): void
     {
-        $extensionMock = Mockery::mock(AdvanceTicketExtension::class)
-            ->makePartial();
+        // Arrange
+        $extensions = new AdvanceTicketExtension();
 
-        $functions = $extensionMock->getFunctions();
+        // Act
+        $functions = $extensions->getFunctions();
 
-        $this->assertIsArray($functions);
+        // Assert
+        $functionNames = [];
 
         foreach ($functions as $function) {
             $this->assertInstanceOf(TwigFunction::class, $function);
+            $functionNames[] = $function->getName();
         }
+
+        $this->assertContains($name, $functionNames);
     }
 
     /**
+     * @return array<array{string}>
+     */
+    public function functionNameDataProvider(): array
+    {
+        return [
+            ['advance_ticket_type_label'],
+        ];
+    }
+
+    /**
+     * @covers ::getTypeLabel
+     * @dataProvider typeLabelDataProvider
      * @test
      */
-    public function testGetTypeLabel(): void
+    public function testGetTypeLabel(int $input, ?string $expected): void
     {
-        $extensionMock = Mockery::mock(AdvanceTicketExtension::class)
-            ->makePartial();
+        // Arrange
+        $extensions = new AdvanceTicketExtension();
 
-        $this->assertEquals(
-            'ムビチケカード',
-            $extensionMock->getTypeLabel(AdvanceTicket::TYPE_MVTK)
-        );
+        // Act
+        $result = $extensions->getTypeLabel($input);
 
-        $this->assertEquals(
-            '紙券',
-            $extensionMock->getTypeLabel(AdvanceTicket::TYPE_PAPER)
-        );
+        // Assert
+        $this->assertSame($expected, $result);
+    }
 
-        $this->assertNull($extensionMock->getTypeLabel(99));
+    /**
+     * @return array<array{int, ?string}>
+     */
+    public function typeLabelDataProvider(): array
+    {
+        return [
+            [AdvanceTicket::TYPE_MVTK, 'ムビチケカード'],
+            [AdvanceTicket::TYPE_PAPER, '紙券'],
+            [99, null],
+        ];
     }
 }

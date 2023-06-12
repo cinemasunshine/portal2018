@@ -4,79 +4,39 @@ declare(strict_types=1);
 
 namespace App\User;
 
-use App\Authorization\Token\AuthorizationCodeToken as AuthorizationToken;
-use App\Session\Container as SessionContainer;
+use App\User\Provider\MembershipProvider;
+use App\User\Provider\ReadUserStateInterface;
+use App\User\Provider\RewardProvider;
+use Slim\Http\Cookies;
 
-/**
- * User manager class
- */
 class Manager
 {
-    protected SessionContainer $session;
+    private RewardProvider $rewardProvider;
+    private ReadUserStateInterface $userState;
 
-    public function __construct(SessionContainer $session)
-    {
-        $this->session = $session;
-    }
+    public function __construct(
+        RewardProvider $rewardProvider,
+        MembershipProvider $membershipProvider,
+        Cookies $cookies
+    ) {
+        $this->rewardProvider = $rewardProvider;
+        $this->userState      = $rewardProvider;
 
-    /**
-     * login
-     *
-     * logoutも適宜更新してください。
-     */
-    public function login(AuthorizationToken $authorizationToken): void
-    {
-        $this->session['authorization_token'] = $authorizationToken;
-
-        /**
-         * ユーザ情報
-         * 情報が増えてきたらオブジェクト化など考える。
-         */
-        $claims = $authorizationToken->decodeAccessToken()->getClaims();
-
-        $user = [
-            'name' => $claims['username'],
-        ];
-
-        $this->session['user'] = $user;
-
-        $this->session['authenticated'] = true;
-    }
-
-    public function logout(): void
-    {
-        $this->session->clear();
-    }
-
-    /**
-     * 認証判定
-     */
-    public function isAuthenticated(): bool
-    {
-        return isset($this->session['authenticated']) && $this->session['authenticated'] === true;
-    }
-
-    /**
-     * return authenticated user data
-     *
-     * @return array<string, mixed>|null
-     */
-    public function getUser(): ?array
-    {
-        return $this->session['user'];
-    }
-
-    public function getAuthorizationToken(): ?AuthorizationToken
-    {
-        if ($this->isAuthenticated()) {
-            return $this->session['authorization_token'];
+        if (! $cookies->get('logined')) {
+            return;
         }
 
-        return null;
+        $membershipProvider->login();
+        $this->userState = $membershipProvider;
     }
 
-    public function setAuthorizationToken(AuthorizationToken $token): void
+    public function getRewardProvider(): RewardProvider
     {
-        $this->session['authorization_token'] = $token;
+        return $this->rewardProvider;
+    }
+
+    public function getUserState(): ReadUserStateInterface
+    {
+        return $this->userState;
     }
 }

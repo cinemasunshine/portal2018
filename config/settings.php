@@ -42,7 +42,7 @@ $getSessionSetting = static function () {
         /**
          * セッションに関して変更があった場合に適宜変更する。
          */
-        'prefix' => 'session_v20200327:',
+        'prefix' => 'session_v20230608:',
 
         /**
          * 「Azure Cache for Redis のベスト プラクティス」を参考にひとまず15秒とする
@@ -190,25 +190,18 @@ $getMpServiceSetting = static function () {
         // API
         'api_host' => getenv('APPSETTING_MP_API_HOST'),
 
-        // 認可トークンの期限バッファー（秒）
-        'authorization_token_expiration_buffer' => 60 * 5,
-
-        // Authorization Code Grant
-        'authorization_code_host'          => getenv('APPSETTING_MP_AUTHORIZATION_CODE_HOST'),
-        'authorization_code_client_id'     => getenv('APPSETTING_MP_AUTHORIZATION_CODE_CLIENT_ID'),
-        'authorization_code_client_secret' => getenv('APPSETTING_MP_AUTHORIZATION_CODE_CLIENT_SECRET'),
-
-        // Client Credentials Grant
-        'cliennt_credentials_host'          => getenv('APPSETTING_MP_CLIENT_CREDENTIALS_HOST'),
-        'cliennt_credentials_client_id'     => getenv('APPSETTING_MP_CLIENT_CREDENTIALS_CLIENT_ID'),
-        'cliennt_credentials_client_secret' => getenv('APPSETTING_MP_CLIENT_CREDENTIALS_CLIENT_SECRET'),
+        // リワード Authorization
+        'reward_authorization_host'          => getenv('APPSETTING_MP_AUTHORIZATION_CODE_HOST'),
+        'reward_authorization_client_id'     => getenv('APPSETTING_MP_AUTHORIZATION_CODE_CLIENT_ID'),
+        'reward_authorization_client_secret' => getenv('APPSETTING_MP_AUTHORIZATION_CODE_CLIENT_SECRET'),
 
         // Ticket
-        'ticket_url'          => getenv('APPSETTING_MP_TICKET_URL'),
-        'ticket_entrance_url' => getenv('APPSETTING_MP_TICKET_ENTRANCE_URL'),
+        'ticket_url'             => getenv('APPSETTING_MP_TICKET_URL'),
+        'ticket_entrance_url'    => getenv('APPSETTING_MP_TICKET_ENTRANCE_URL'),
+        'ticket_transaction_url' => getenv('APPSETTING_MP_TICKET_TRANSACTION_URL'),
     ];
 
-    $baseScopeList = [
+    $rewardBaseScopes = [
         'phone',
         'openid',
         'email',
@@ -226,7 +219,7 @@ $getMpServiceSetting = static function () {
 
     $apiUrl = 'https://' . $settings['api_host'];
 
-    $settings['authorization_code_scope'] = str_replace('<API_URL>', $apiUrl, $baseScopeList);
+    $settings['reward_authorization_scopes'] = str_replace('<API_URL>', $apiUrl, $rewardBaseScopes);
 
     return $settings;
 };
@@ -237,6 +230,10 @@ $settings['mp_service'] = $getMpServiceSetting();
 $settings['schedule'] = [
     'env'     => getenv('APPSETTING_SCHEDULE_ENV'),
     'api_url' => getenv('APPSETTING_SCHEDULE_API_URL'),
+];
+
+$settings['membership'] = [
+    'site_url' => getenv('APPSETTING_MEMBERSHIP_SITE_URL'),
 ];
 
 return $settings;

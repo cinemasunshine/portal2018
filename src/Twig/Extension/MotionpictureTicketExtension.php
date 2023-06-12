@@ -7,9 +7,6 @@ namespace App\Twig\Extension;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 
-/**
- * Motionpicture Ticket twig extension class
- */
 class MotionpictureTicketExtension extends AbstractExtension
 {
     /** @var array<string, mixed> */
@@ -32,6 +29,7 @@ class MotionpictureTicketExtension extends AbstractExtension
             new TwigFunction('mp_ticket_inquiry', [$this, 'getTicketInquiryUrl'], [ 'is_safe' => ['html'] ]),
             new TwigFunction('mp_ticket_entrance', [$this, 'getTicketEntranceUrl'], [ 'is_safe' => ['html'] ]),
             new TwigFunction('mp_ticket', [$this, 'getTicketUrl'], [ 'is_safe' => ['html'] ]),
+            new TwigFunction('mp_ticket_transaction', [$this, 'getTransactionUrl'], [ 'is_safe' => ['html'] ]),
         ];
     }
 
@@ -50,5 +48,10 @@ class MotionpictureTicketExtension extends AbstractExtension
     public function getTicketUrl(): string
     {
         return $this->settings['ticket_url'];
+    }
+
+    public function getTransactionUrl(): string
+    {
+        return $this->settings['ticket_transaction_url'];
     }
 }

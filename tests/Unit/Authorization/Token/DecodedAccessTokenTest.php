@@ -1,178 +1,62 @@
 <?php
 
-/**
- * DecodedAccessTokenTest.php
- */
-
 declare(strict_types=1);
 
 namespace Tests\Unit\Authorization\Token;
 
 use App\Authorization\Token\DecodedAccessToken;
-use Mockery;
-use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
-use Mockery\LegacyMockInterface;
-use Mockery\MockInterface;
+use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
-use ReflectionClass;
-use UnexpectedValueException;
 
 /**
- * DecodedAccessToken test
+ * @coversDefaultClass \App\Authorization\Token\DecodedAccessToken
+ * @testdox デコードされた Access Token を示すクラス
  */
 final class DecodedAccessTokenTest extends TestCase
 {
-    use MockeryPHPUnitIntegration;
-
     /**
-     * @return MockInterface|LegacyMockInterface|DecodedAccessToken
-     */
-    protected function createTargetMock()
-    {
-        return Mockery::mock(DecodedAccessToken::class);
-    }
-
-    protected function createTargetReflection(): ReflectionClass
-    {
-        return new ReflectionClass(DecodedAccessToken::class);
-    }
-
-    /**
-     * @param array<string, string> $header
-     * @param array<string, mixed>  $claims
-     */
-    protected function encodeJWT(array $header, array $claims, string $signature): string
-    {
-        $headerBase64    = base64_encode(json_encode($header));
-        $claimsBase64    = base64_encode(json_encode($claims));
-        $signatureBase64 = base64_encode($signature);
-
-        return implode('.', [$headerBase64, $claimsBase64, $signatureBase64]);
-    }
-
-    /**
+     * @covers ::decodeJWT
      * @test
      */
-    public function testDecodeJWT(): void
+    public function JSON_Web_TokenからDecodedAccessTokenオブジェクトを生成する(): void
     {
-        $header    = ['foo' => 'example_header'];
-        $claims    = ['bar' => 'example_claims'];
-        $signature = 'example_signature';
+        // Arrange
+        // phpcs:disable Generic.Files.LineLength.TooLong
+        $jwt = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.eW91ci1zZWNyZXQ=';
+        // phpcs:enable
 
-        $jwt = $this->encodeJWT($header, $claims, $signature);
-
+        // Act
         $result = DecodedAccessToken::decodeJWT($jwt);
-        $this->assertInstanceOf(DecodedAccessToken::class, $result);
+
+        // Assert
+        $this->assertSame(['alg' => 'HS256', 'typ' => 'JWT'], $result->getHeader());
+        $this->assertSame(
+            ['sub' => '1234567890', 'name' => 'John Doe', 'iat' => 1516239022],
+            $result->getClaims()
+        );
+        $this->assertSame('your-secret', $result->getSignature());
     }
 
     /**
-     * test decodeJWT (segments few)
-     *
+     * @covers ::decodeJWT
+     * @dataProvider invalidJSONWebTokenDataProvider
      * @test
      */
-    public function testDecodeJWTSegmentsFew(): void
+    public function ドットで区切られた３つのセグメントで構成されない場合は例外が発生する(string $value): void
     {
-        $this->expectException(UnexpectedValueException::class);
-        DecodedAccessToken::decodeJWT('aaa.bbb');
+        $this->expectException(InvalidArgumentException::class);
+
+        DecodedAccessToken::decodeJWT($value);
     }
 
     /**
-     * test decodeJWT (segments many)
-     *
-     * @test
+     * @return array<string, array{string}>
      */
-    public function testDecodeJWTSegmentsMany(): void
+    public function invalidJSONWebTokenDataProvider(): array
     {
-        $this->expectException(UnexpectedValueException::class);
-        DecodedAccessToken::decodeJWT('aaa.bbb.ccc.ddd');
-    }
-
-    /**
-     * @test
-     */
-    public function testConstruct(): void
-    {
-        $header    = ['foo' => 'example_header'];
-        $claims    = ['bar' => 'example_claims'];
-        $signature = 'example_signature';
-
-        $targetMock = $this->createTargetMock();
-        $targetRef  = $this->createTargetReflection();
-
-        // execute constructor
-        $constructorRef = $targetRef->getConstructor();
-        $constructorRef->invoke($targetMock, $header, $claims, $signature);
-
-        // test property "header"
-        $headerPropertyRef = $targetRef->getProperty('header');
-        $headerPropertyRef->setAccessible(true);
-        $this->assertEquals($header, $headerPropertyRef->getValue($targetMock));
-
-        // test property "claims"
-        $claimsPropertyRef = $targetRef->getProperty('claims');
-        $claimsPropertyRef->setAccessible(true);
-        $this->assertEquals($claims, $claimsPropertyRef->getValue($targetMock));
-
-        // test property "signature"
-        $signaturePropertyRef = $targetRef->getProperty('signature');
-        $signaturePropertyRef->setAccessible(true);
-        $this->assertEquals($signature, $signaturePropertyRef->getValue($targetMock));
-    }
-
-    /**
-     * @test
-     */
-    public function testGetHeader(): void
-    {
-        $header = ['foo' => 'example_header'];
-
-        $targetMock = $this->createTargetMock();
-        $targetMock->makePartial();
-
-        $targetRef = $this->createTargetReflection();
-
-        $headerPropertyRef = $targetRef->getProperty('header');
-        $headerPropertyRef->setAccessible(true);
-        $headerPropertyRef->setValue($targetMock, $header);
-
-        $this->assertEquals($header, $targetMock->getHeader());
-    }
-
-    /**
-     * @test
-     */
-    public function testGetClaims(): void
-    {
-        $claims = ['bar' => 'example_claims'];
-
-        $targetMock = $this->createTargetMock();
-        $targetMock->makePartial();
-
-        $targetRef = $this->createTargetReflection();
-
-        $claimsPropertyRef = $targetRef->getProperty('claims');
-        $claimsPropertyRef->setAccessible(true);
-        $claimsPropertyRef->setValue($targetMock, $claims);
-
-        $this->assertEquals($claims, $targetMock->getClaims());
-    }
-
-    /**
-     * @test
-     */
-    public function testGetSignature(): void
-    {
-        $signature = 'example_signature';
-
-        $targetMock = $this->createTargetMock();
-        $targetMock->makePartial();
-
-        $targetRef = $this->createTargetReflection();
-
-        $signaturePropertyRef = $targetRef->getProperty('signature');
-        $signaturePropertyRef->setAccessible(true);
-        $signaturePropertyRef->setValue($targetMock, $signature);
-
-        $this->assertEquals($signature, $targetMock->getSignature());
+        return [
+            'セグメントが２つ' => ['aaa.bbb'],
+            'セグメントが４つ' => ['aaa.bbb.ccc.ddd'],
+        ];
     }
 }
