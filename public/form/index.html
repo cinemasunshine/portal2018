@@ -30,6 +30,7 @@
                     <label for="app-matter" class="label-name">お問合わせ内容<span class="req-icon">必須</span></label>
                     <select required id="app-matter" name="app-matter" onchange="changeMatter(this);">
                         <option hidden>選択してください</option>
+                        <option value="7">会員移行に関して</option>
                         <option value="1">ユーザーネームがわからない</option>
                         <option value="2">登録済メールアドレスの変更希望</option>
                         <option value="3">ワンタイムパスワードが届かない</option>
@@ -100,6 +101,18 @@
                 <li>
                     <label for="app-mail" class="label-name">メールアドレス<span class="req-icon">必須</span></label>
                     <input required type="email" id="change-mail" name="change-mail" placeholder="例）sample@sample.com"
+                        pattern=".*\S+.*">
+                </li>
+            </ul>
+            <h2 class="migrate d-none">移行に関するお問い合わせ</h2>
+            <ul class="migrate d-none">
+                <li>
+                    <label for="app-username" class="label-name">アプリのユーザーネーム<span class="req-icon">必須</span></label>
+                    <input required type="email" id="app-username" name="app-username" placeholder="不明の場合は不明とご記入ください">
+                </li> 
+                <li>
+                    <label for="app-newEmail" class="label-name">移行後のメールアドレス<span class="req-icon">必須</span></label>
+                    <input required type="email" id="app-newEmail" name="app-newEmail" placeholder="例）sample@sample.com"
                         pattern=".*\S+.*">
                 </li>
             </ul>
@@ -224,6 +237,16 @@
                 case '6':
                     $('.guidance').removeClass('d-none');
                     $('.others').removeClass('d-none');
+                    break;
+                case '7':
+                    //active
+                    $('.contact').removeClass('d-none');
+                    $('.contact input').prop('disabled', false)
+                    $('.profile').removeClass('d-none');
+                    $('.profile input').prop('disabled', false)
+                    $('.migrate').removeClass('d-none');
+                    $('.migrate').prop('disabled', false)
+                    $('.btn-area').removeClass('d-none');                    
                     break;
                 default:
                     break;
