@@ -21,7 +21,7 @@ $(function () {
     });
     var scrollTimer = null;
     // お知らせ表示
-    initInformations();
+    //initInformations();
     // スケジュールレンダリング
     scheduleRender();
 });

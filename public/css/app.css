@@ -82,8 +82,14 @@
 .function-colum{
     border-bottom: 1px solid rgb(154,154,154);
 }
-
+.app_csr_linkbtn{
+    background-color: #db0606;color: #fff;border-radius: 5px;width: 100%;margin: 0 auto;max-width: 450px;padding: 20px;font-weight: bold;display:inline-block;
+}
+.smp-dis-none{display: block;}
+.pc-dis-none{display: none;}
 @media (max-width: 767.98px) {
+    .smp-dis-none{display: none;}
+    .pc-dis-none{display: block;}
     .smp-img img {
         max-width: 280px;
     }
