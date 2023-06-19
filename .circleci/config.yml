@@ -213,9 +213,9 @@ jobs:
       - gcp-cli/install
 
       - gcp-cli/initialize:
-          gcloud-service-key: GCLOUD_SERVICE_KEY_DEVELOPMENT
-          google-compute-region: GOOGLE_COMPUTE_REGION_DEVELOPMENT
-          google-project-id: GOOGLE_PROJECT_ID_DEVELOPMENT
+          gcloud-service-key: GCLOUD_SERVICE_KEY_PRODUCTION
+          google-compute-region: GOOGLE_COMPUTE_REGION_PRODUCTION
+          google-project-id: GOOGLE_PROJECT_ID_PRODUCTION
 
       - attach_workspace:
           at: .
@@ -224,7 +224,7 @@ jobs:
           name: Migrating traffic
           command: |
             version=$(cat version.txt)
-            gcloud app services set-traffic default --splits=$version=1
+            gcloud app services set-traffic default --splits=$version=1 --quiet
 
 workflows:
   version: 2
