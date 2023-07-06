@@ -10,7 +10,7 @@ parameters:
 	paths:
 		- %currentWorkingDirectory%/src
 		- %currentWorkingDirectory%/tests
-	excludes_analyse:
+	excludePaths:
 		- %currentWorkingDirectory%/src/ORM/Proxy/*
 		- %currentWorkingDirectory%/tests/entity-manager.php
 	earlyTerminatingMethodCalls:
