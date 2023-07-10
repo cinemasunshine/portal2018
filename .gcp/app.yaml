@@ -114,6 +114,10 @@ handlers:
     static_files: public/meal/\1
     upload: public/meal/(.*)
 
+  - url: /.well-known/acme-challenge/(.*)
+    static_files: public/.well-known/acme-challenge/\1
+    upload: public/.well-known/acme-challenge/(.*)
+
   - url: .*
     script: auto
     secure: always
