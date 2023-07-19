@@ -20,11 +20,33 @@ use App\Controller\Theater\NewsController as TheaterNewsController;
 use App\Controller\Theater\ScheduleController as TheaterScheduleController;
 use App\Controller\TheaterListController;
 use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use Slim\App as SlimApp;
 
 // phpcs:disable SlevomatCodingStandard.Commenting.InlineDocCommentDeclaration
 /** @var SlimApp $app */
 // phpcs:enable
+
+/**
+ * 新しいポータルサイトへの移行に伴いwww付きドメインへリダイレクトする。
+ * www無しは引き続きこちらに割り当てられている。
+ */
+$app->add(function (ServerRequestInterface $request, ResponseInterface $response, callable $next) {
+    if (APP_ENV === 'prod') {
+        $host = $request->getUri()->getHost();
+
+        if (strpos($host, 'www') === false) {
+            $uri = $request->getUri()->withHost('www.' . $host);
+
+            return $response->withHeader('Location', (string) $uri)
+                ->withStatus(301);
+        }
+    }
+
+    $response = $next($request, $response);
+
+    return $response;
+});
 
 $app->get('/', IndexController::class . ':index')->setName('homepage');
 
